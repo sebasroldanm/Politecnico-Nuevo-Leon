@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UContrasenia.cs" />
+    <Compile Include="UReg.cs" />
+    <Compile Include="UToken.cs" />
     <Compile Include="UUser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
