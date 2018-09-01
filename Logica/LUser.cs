@@ -83,7 +83,7 @@ namespace Logica
                 user.Mensaje = "Usuario Y/o Clave Incorrecto";
                 //Session["userId"] = null;
                 user.SUserId = null;
-                user.Url = "~/View/Loggin.aspx";
+                //user.Url = "~/View/Loggin.aspx";
             }
             return user;
         }
