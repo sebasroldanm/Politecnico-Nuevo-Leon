@@ -46,7 +46,7 @@
         </asp:GridView>
 
 
-    <asp:ObjectDataSource ID="DAOdocen" runat="server" SelectMethod="listardocente" TypeName="DaoUser"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="DAOdocen" runat="server" SelectMethod="listardocente" TypeName="Datos.DUser"></asp:ObjectDataSource>
 </div>
 
     </asp:Content>

@@ -18,11 +18,11 @@
             <br />
             <asp:DropDownList ID="ddt_anio" Class="form-control" runat="server" DataSourceID="ODS_anio" DataTextField="nombre_anio" DataValueField="id_anio" AutoPostBack="True" Width="132px"></asp:DropDownList>
 
-            <asp:ObjectDataSource ID="ODS_anio" runat="server" SelectMethod="obtenertodosAnio" TypeName="DaoUser"></asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="ODS_anio" runat="server" SelectMethod="obtenertodosAnio" TypeName="Datos.DUser"></asp:ObjectDataSource>
             <label for="curso" class="control-label" style="color: #FFFFFF">Curso :</label>
             <asp:DropDownList ID="ODL_Curso" runat="server" Class="form-control" AutoPostBack="True" DataSourceID="ODS_Curso" DataTextField="nombre_curso" DataValueField="id_ancu"></asp:DropDownList>
 
-            <asp:ObjectDataSource ID="ODS_Curso" runat="server" SelectMethod="obtenerCursoanio" TypeName="DaoUser">
+            <asp:ObjectDataSource ID="ODS_Curso" runat="server" SelectMethod="obtenerCursoanio" TypeName="Datos.DUser">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="ddt_anio" Name="anio" PropertyName="SelectedValue" Type="Int32" />
                 </SelectParameters>
@@ -76,7 +76,7 @@
             <asp:ObjectDataSource ID="OBD_est" runat="server" SelectMethod="listarestudiante" TypeName="DaoUser"></asp:ObjectDataSource>
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server"></asp:ObjectDataSource>
 
-            <asp:ObjectDataSource ID="ODS_ListarEstudianteCurso" runat="server" SelectMethod="gEstudiante" TypeName="DaoUser">
+            <asp:ObjectDataSource ID="ODS_ListarEstudianteCurso" runat="server" SelectMethod="gEstudiante" TypeName="Datos.DUser">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="ODL_Curso" Name="curs" PropertyName="SelectedValue" Type="Int32" />
                 </SelectParameters>
