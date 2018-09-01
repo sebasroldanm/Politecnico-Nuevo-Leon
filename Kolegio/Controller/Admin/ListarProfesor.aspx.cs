@@ -22,9 +22,6 @@ public partial class View_Admin_ListarProfesor : System.Web.UI.Page
     {
         Page.RegisterStartupScript("script", "<script>window.open('/View/Admin/DescargarProfesores.aspx' ,'Descargar','height=300', 'width=300')</script>");
 
-
-
-
     }
 
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

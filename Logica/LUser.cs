@@ -263,9 +263,6 @@ namespace Logica
             string sSeco = Convert.ToString(DateTime.Now.Second);
             string sFecha = sDia + sMes + sAgno + sHora + sMinu + sSeco;
 
-
-
-
             ClientScriptManager cm = this.ClientScript;
             String nombreArchivo = System.IO.Path.GetFileName(foto.PostedFile.FileName);
             String extension = System.IO.Path.GetExtension(foto.PostedFile.FileName);
@@ -275,7 +272,6 @@ namespace Logica
             {
                 cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>");
                 //btnigm_calendar.Visible = true;
-
 
                 return null;
             }
@@ -362,6 +358,62 @@ namespace Logica
             }
             return usua;
         }
+
+        public UUser editarBuscarUser(int documento)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            usua.Documento = documento.ToString();
+
+            DataTable registros = dat.obtenerUsuarioMod(usua);
+
+            if (registros.Rows.Count > 0)
+            {
+                usua.Nombre = Convert.ToString(registros.Rows[0]["nombre_usua"].ToString());
+                usua.Apellido = Convert.ToString(registros.Rows[0]["apellido_usua"].ToString());
+                usua.Correo = Convert.ToString(registros.Rows[0]["correo"].ToString());
+                usua.Direccion = Convert.ToString(registros.Rows[0]["direccion"].ToString());
+                usua.Telefono = Convert.ToString(registros.Rows[0]["telefono"].ToString());
+                usua.UserName = Convert.ToString(registros.Rows[0]["user_name"].ToString());
+                usua.Clave = Convert.ToString(registros.Rows[0]["clave"].ToString());
+                usua.fecha_nacimiento = Convert.ToString(registros.Rows[0]["fecha_nac"].ToString());
+                usua.Foto = Convert.ToString(registros.Rows[0]["foto_usua"].ToString());
+
+                Session["fotosinedit"] = Convert.ToString(registros.Rows[0]["foto_usua"].ToString());
+
+                usua.Departamento = Convert.ToString(registros.Rows[0]["dep_nacimiento"].ToString());
+
+                //DDT_Ciudad.DataBind();
+
+                usua.Ciudad = Convert.ToString(registros.Rows[0]["ciu_nacimiento"].ToString());
+
+                string ddl = registros.Rows[0]["estado"].ToString();
+
+                if (registros.Rows[0]["estado"].ToString() == "True")
+                {
+                    usua.Estado = "Activo";
+                }
+                else
+                {
+                    usua.Estado = "Inactivo";
+                }
+                usua.L_Aceptar1 = false;
+                usua.B_Botones1 = true;
+            }
+            else
+            {
+                usua.Mensaje = "Sin Registros";
+            }
+
+            return usua;
+        }
+
+
+
+
+
+
 
 
 

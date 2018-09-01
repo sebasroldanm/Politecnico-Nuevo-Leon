@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
 {
@@ -44,76 +46,88 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
 
     protected void btn_AdministradorAceptar_Click(object sender, EventArgs e)
     {
-        EUser usua = new EUser();
-        DaoUser dat = new DaoUser();
 
-        usua.Documento = tb_EstudianteId.Text;
+        LUser logica = new LUser();
+        UUser usua = new UUser();
 
-        DataTable registros = dat.obtenerUsuarioMod(usua);
+        usua = logica.editarBuscarUser(int.Parse(tb_EstudianteId.Text));
 
-        if (registros.Rows.Count > 0)
-        {
-            tb_EstudianteNombre.Text = Convert.ToString(registros.Rows[0]["nombre_usua"].ToString());
-            tb_EstudianteApellido.Text = Convert.ToString(registros.Rows[0]["apellido_usua"].ToString());
-            tb_EstudianteCorreo.Text = Convert.ToString(registros.Rows[0]["correo"].ToString());
-            tb_EstudianteDireccion.Text = Convert.ToString(registros.Rows[0]["direccion"].ToString());
-            tb_EstudianteTelefono.Text = Convert.ToString(registros.Rows[0]["telefono"].ToString());
-            tb_EstudianteUsuario.Text = Convert.ToString(registros.Rows[0]["user_name"].ToString());
-            tb_EstudianteContrasenia.Text = Convert.ToString(registros.Rows[0]["clave"].ToString());
-            fechanac.Text= Convert.ToString(registros.Rows[0]["fecha_nac"].ToString());
-            ImagenEst.ImageUrl = Convert.ToString(registros.Rows[0]["foto_usua"].ToString());
+        //EUser usua = new EUser();
+        //DaoUser dat = new DaoUser();
 
+        //usua.Documento = tb_EstudianteId.Text;
 
-            Session["fotosinedit"] = Convert.ToString(registros.Rows[0]["foto_usua"].ToString());
+        //DataTable registros = dat.obtenerUsuarioMod(usua);
 
-
-
-
-
+        //if (registros.Rows.Count > 0)
+        //{
+        //    tb_EstudianteNombre.Text = Convert.ToString(registros.Rows[0]["nombre_usua"].ToString());
+        //    tb_EstudianteApellido.Text = Convert.ToString(registros.Rows[0]["apellido_usua"].ToString());
+        //    tb_EstudianteCorreo.Text = Convert.ToString(registros.Rows[0]["correo"].ToString());
+        //    tb_EstudianteDireccion.Text = Convert.ToString(registros.Rows[0]["direccion"].ToString());
+        //    tb_EstudianteTelefono.Text = Convert.ToString(registros.Rows[0]["telefono"].ToString());
+        //    tb_EstudianteUsuario.Text = Convert.ToString(registros.Rows[0]["user_name"].ToString());
+        //    tb_EstudianteContrasenia.Text = Convert.ToString(registros.Rows[0]["clave"].ToString());
+        //    fechanac.Text= Convert.ToString(registros.Rows[0]["fecha_nac"].ToString());
+        //    ImagenEst.ImageUrl = Convert.ToString(registros.Rows[0]["foto_usua"].ToString());
 
 
-            ddt_lugarnacimDep.SelectedValue = Convert.ToString(registros.Rows[0]["dep_nacimiento"].ToString());
-
-            DDT_Ciudad.DataBind();
-
-            DDT_Ciudad.SelectedValue = Convert.ToString(registros.Rows[0]["ciu_nacimiento"].ToString());
-
-            string ddl = registros.Rows[0]["estado"].ToString();
-
-            if (registros.Rows[0]["estado"].ToString() == "True")
-            {
-                DDL_Estado.SelectedValue = "Activo";
-            }
-            else
-            {
-                DDL_Estado.SelectedValue = "Inactivo";
-            }
+        //    Session["fotosinedit"] = Convert.ToString(registros.Rows[0]["foto_usua"].ToString());
 
 
 
-            tb_EstudianteId.ReadOnly = true;
-            tb_EstudianteNombre.ReadOnly = false;
-            tb_EstudianteApellido.ReadOnly = false;
-            tb_EstudianteCorreo.ReadOnly = false;
-            tb_EstudianteDireccion.ReadOnly = false;
-            tb_EstudianteTelefono.ReadOnly = false;
-            tb_EstudianteUsuario.ReadOnly = false;
-            tb_EstudianteContrasenia.ReadOnly = false;
-            fechanac.ReadOnly = false;
-            L_ErrorEstudiante.Text = "";
-
-            btn_EstudianteEditar.Visible = true;
-            btn_EstudianteNuevo.Visible = true;
-            btn_EstudianteAceptar.Visible = false;
-        }
-        else
-        {
-            L_ErrorEstudiante.Text = "Sin Registros";
-        }
 
 
 
-    
+
+        //    ddt_lugarnacimDep.SelectedValue = Convert.ToString(registros.Rows[0]["dep_nacimiento"].ToString());
+
+        //    DDT_Ciudad.DataBind();
+
+        //    DDT_Ciudad.SelectedValue = Convert.ToString(registros.Rows[0]["ciu_nacimiento"].ToString());
+
+        //    string ddl = registros.Rows[0]["estado"].ToString();
+
+        //    if (registros.Rows[0]["estado"].ToString() == "True")
+        //    {
+        //        DDL_Estado.SelectedValue = "Activo";
+        //    }
+        //    else
+        //    {
+        //        DDL_Estado.SelectedValue = "Inactivo";
+        //    }
+
+        tb_EstudianteId.ReadOnly = usua.B_Botones1;
+        tb_EstudianteNombre.ReadOnly = usua.L_Aceptar1;
+        tb_EstudianteNombre.Text = usua.Nombre;
+        tb_EstudianteApellido.ReadOnly = usua.L_Aceptar1;
+        tb_EstudianteApellido.Text = usua.Apellido;
+        tb_EstudianteCorreo.ReadOnly = usua.L_Aceptar1;
+        tb_EstudianteCorreo.Text = usua.Correo;
+        tb_EstudianteDireccion.ReadOnly = usua.L_Aceptar1;
+        tb_EstudianteDireccion.Text = usua.Direccion;
+        tb_EstudianteTelefono.ReadOnly = usua.L_Aceptar1;
+        tb_EstudianteTelefono.Text = usua.Telefono;
+        tb_EstudianteUsuario.ReadOnly = usua.L_Aceptar1;
+        tb_EstudianteUsuario.Text = usua.UserName;
+        tb_EstudianteContrasenia.ReadOnly = usua.L_Aceptar1;
+        tb_EstudianteContrasenia.Text = usua.Clave;
+        ddt_lugarnacimDep.SelectedValue = usua.Departamento;
+        DDT_Ciudad.DataBind();
+        DDT_Ciudad.SelectedValue = usua.Ciudad;
+        fechanac.ReadOnly = usua.L_Aceptar1;
+        fechanac.Text = usua.fecha_nacimiento;
+        ImagenEst.ImageUrl = usua.Foto;
+        L_ErrorEstudiante.Text = "";
+
+        btn_EstudianteEditar.Visible = usua.B_Botones1;
+        btn_EstudianteNuevo.Visible = usua.B_Botones1;
+        btn_EstudianteAceptar.Visible = usua.L_Aceptar1;
+        //}    
+        //else
+        //{
+        L_ErrorEstudiante.Text = usua.Mensaje;
+        //}
     }
 
     protected void btn_AdministradorEdditar_Click(object sender, EventArgs e)

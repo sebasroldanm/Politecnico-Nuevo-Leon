@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
 {
@@ -34,71 +36,74 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
 
     protected void btn_AcudienteAceptar_Click(object sender, EventArgs e)
     {
-        EUser usua = new EUser();
-        DaoUser dat = new DaoUser();
 
-        usua.Documento = tb_AcudienteId.Text;
+        LUser logica = new LUser();
+        UUser usua = new UUser();
 
-        DataTable registros = dat.obtenerUsuarioMod(usua);
-
-        
-
-        if (registros.Rows.Count > 0)
-        {
-            tb_AcudienteNombre.Text = Convert.ToString(registros.Rows[0]["nombre_usua"].ToString());
-            tb_AcudienteApellido.Text = Convert.ToString(registros.Rows[0]["apellido_usua"].ToString());
-            tb_AcudienteCorreo.Text = Convert.ToString(registros.Rows[0]["correo"].ToString());
-            tb_AcudienteDireccion.Text = Convert.ToString(registros.Rows[0]["direccion"].ToString());
-            tb_AcudienteTelefono.Text = Convert.ToString(registros.Rows[0]["telefono"].ToString());
-            tb_AcudienteUsuario.Text = Convert.ToString(registros.Rows[0]["user_name"].ToString());
-            tb_AcudienteContrasenia.Text = Convert.ToString(registros.Rows[0]["clave"].ToString());
-            fechanac.Text = Convert.ToString(registros.Rows[0]["fecha_nac"].ToString());
-            ImagenEst.ImageUrl = Convert.ToString(registros.Rows[0]["foto_usua"].ToString());
-
-            Session["fotosinedit"] = Convert.ToString(registros.Rows[0]["foto_usua"].ToString());
+        usua = logica.editarBuscarUser(int.Parse(tb_AcudienteId.Text));
 
 
+        //EUser usua = new EUser();
+        //DaoUser dat = new DaoUser();
 
-            if (Convert.ToString(registros.Rows[0]["estado"].ToString()) == "True")
-            {
-                DDL_Estado.SelectedValue = "Activo";
-            }
-            else
-            {
-                DDL_Estado.SelectedValue = "Inactivo";
-            }
+        //usua.Documento = tb_AcudienteId.Text;
 
-            ddt_lugarnacimDep.SelectedValue = Convert.ToString(registros.Rows[0]["dep_nacimiento"].ToString());
+        //DataTable registros = dat.obtenerUsuarioMod(usua);
 
-            DDT_Ciudad.DataBind();
+        //if (registros.Rows.Count > 0)
+        //{
+        //    tb_AcudienteNombre.Text = Convert.ToString(registros.Rows[0]["nombre_usua"].ToString());
+        //    tb_AcudienteApellido.Text = Convert.ToString(registros.Rows[0]["apellido_usua"].ToString());
+        //    tb_AcudienteCorreo.Text = Convert.ToString(registros.Rows[0]["correo"].ToString());
+        //    tb_AcudienteDireccion.Text = Convert.ToString(registros.Rows[0]["direccion"].ToString());
+        //    tb_AcudienteTelefono.Text = Convert.ToString(registros.Rows[0]["telefono"].ToString());
+        //    tb_AcudienteUsuario.Text = Convert.ToString(registros.Rows[0]["user_name"].ToString());
+        //    tb_AcudienteContrasenia.Text = Convert.ToString(registros.Rows[0]["clave"].ToString());
+        //    fechanac.Text = Convert.ToString(registros.Rows[0]["fecha_nac"].ToString());
+        //    ImagenEst.ImageUrl = Convert.ToString(registros.Rows[0]["foto_usua"].ToString());
 
-            DDT_Ciudad.SelectedValue = Convert.ToString(registros.Rows[0]["ciu_nacimiento"].ToString());
+        //    Session["fotosinedit"] = Convert.ToString(registros.Rows[0]["foto_usua"].ToString());
 
+        //    if (Convert.ToString(registros.Rows[0]["estado"].ToString()) == "True")
+        //    {
+        //        DDL_Estado.SelectedValue = "Activo";
+        //    }
+        //    else
+        //    {
+        //        DDL_Estado.SelectedValue = "Inactivo";
+        //    }
 
+        tb_AcudienteId.ReadOnly = usua.B_Botones1;
+        tb_AcudienteNombre.ReadOnly = usua.L_Aceptar1;
+        tb_AcudienteNombre.Text = usua.Nombre;
+        tb_AcudienteApellido.ReadOnly = usua.L_Aceptar1;
+        tb_AcudienteApellido.Text = usua.Apellido;
+        tb_AcudienteCorreo.ReadOnly = usua.L_Aceptar1;
+        tb_AcudienteCorreo.Text = usua.Correo;
+        tb_AcudienteDireccion.ReadOnly = usua.L_Aceptar1;
+        tb_AcudienteDireccion.Text = usua.Direccion;
+        tb_AcudienteTelefono.ReadOnly = usua.L_Aceptar1;
+        tb_AcudienteTelefono.Text = usua.Telefono;
+        tb_AcudienteUsuario.ReadOnly = usua.L_Aceptar1;
+        tb_AcudienteUsuario.Text = usua.UserName;
+        tb_AcudienteContrasenia.ReadOnly = usua.L_Aceptar1;
+        tb_AcudienteContrasenia.Text = usua.Clave;
+        ddt_lugarnacimDep.SelectedValue = usua.Departamento;
+        DDT_Ciudad.DataBind();
+        DDT_Ciudad.SelectedValue = usua.Ciudad;
+        fechanac.ReadOnly = usua.L_Aceptar1;
+        fechanac.Text = usua.fecha_nacimiento;
+        ImagenEst.ImageUrl = usua.Foto;
+        L_ErrorAdmin.Text = "";
 
-
-
-            tb_AcudienteId.ReadOnly = true;
-            tb_AcudienteNombre.ReadOnly = false;
-            tb_AcudienteApellido.ReadOnly = false;
-            tb_AcudienteCorreo.ReadOnly = false;
-            tb_AcudienteDireccion.ReadOnly = false;
-            tb_AcudienteTelefono.ReadOnly = false;
-            tb_AcudienteUsuario.ReadOnly = false;
-            tb_AcudienteContrasenia.ReadOnly = false;
-            fechanac.ReadOnly = false;
-            L_ErrorAdmin.Text = "";
-            btn_AcudienteEditar.Visible = true;
-            btn_AcudienteNuevo.Visible = true;
-            btn_AcudienteAceptar.Visible = false;
-
-        }
-        else
-        {
-
-            L_ErrorAdmin.Text = "Sin Registros";
-
-        }
+        btn_AcudienteEditar.Visible = usua.B_Botones1;
+        btn_AcudienteNuevo.Visible = usua.B_Botones1;
+        btn_AcudienteAceptar.Visible = usua.L_Aceptar1;
+        //}    
+        //else
+        //{
+        L_ErrorAdmin.Text = usua.Mensaje;
+        //}
     }
 
     protected void btn_AcudienteEditar_Click(object sender, EventArgs e)
