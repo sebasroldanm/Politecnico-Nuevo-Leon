@@ -56,6 +56,6 @@
             </asp:GridView>
             <asp:ObjectDataSource ID="ODS_prueba" runat="server"></asp:ObjectDataSource>
         </div>
-        <asp:ObjectDataSource ID="DaoUser" runat="server" SelectMethod="listarusuario" TypeName="DaoUser"></asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="DaoUser" runat="server" SelectMethod="listarusuario" TypeName="Datos.DUser"></asp:ObjectDataSource>
     </div>
 </asp:Content>
