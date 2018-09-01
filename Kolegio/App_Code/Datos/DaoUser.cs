@@ -1709,9 +1709,9 @@ public class DaoUser
         try
         {
             NpgsqlDataAdapter dataAdapt = new NpgsqlDataAdapter("registro.f_obtener_nota", conection);
-            dataAdapt.SelectCommand.Parameters.Add("_id_usua", NpgsqlDbType.Integer).Value = dat.Id_estudiante;
-            dataAdapt.SelectCommand.Parameters.Add("_id_ancu", NpgsqlDbType.Integer).Value = dat.Curso;
-            dataAdapt.SelectCommand.Parameters.Add("_id_materia", NpgsqlDbType.Integer).Value = dat.Materia;
+            dataAdapt.SelectCommand.Parameters.Add("_id_usua", NpgsqlDbType.Integer).Value = int.Parse(dat.Id_estudiante);
+            dataAdapt.SelectCommand.Parameters.Add("_id_ancu", NpgsqlDbType.Integer).Value = int.Parse(dat.Curso);
+            dataAdapt.SelectCommand.Parameters.Add("_id_materia", NpgsqlDbType.Integer).Value = int.Parse(dat.Materia);
             dataAdapt.SelectCommand.CommandType = CommandType.StoredProcedure;
 
             conection.Open();
@@ -1740,11 +1740,11 @@ public class DaoUser
         try
         {
             NpgsqlDataAdapter dataAdapt = new NpgsqlDataAdapter("registro.f_editar_nota", conection);
-            dataAdapt.SelectCommand.Parameters.Add("_id_nota", NpgsqlDbType.Integer).Value = dat.IdNota;
-            dataAdapt.SelectCommand.Parameters.Add("_nota1", NpgsqlDbType.Double).Value = dat.Nota1;
-            dataAdapt.SelectCommand.Parameters.Add("_nota2", NpgsqlDbType.Double).Value = dat.Nota2;
-            dataAdapt.SelectCommand.Parameters.Add("_nota3", NpgsqlDbType.Double).Value = dat.Nota3;
-            dataAdapt.SelectCommand.Parameters.Add("_notadef", NpgsqlDbType.Double).Value = dat.Notadef;
+            dataAdapt.SelectCommand.Parameters.Add("_id_nota", NpgsqlDbType.Integer).Value = int.Parse(dat.IdNota);
+            dataAdapt.SelectCommand.Parameters.Add("_nota1", NpgsqlDbType.Double).Value = double.Parse(dat.Nota1);
+            dataAdapt.SelectCommand.Parameters.Add("_nota2", NpgsqlDbType.Double).Value = double.Parse(dat.Nota2);
+            dataAdapt.SelectCommand.Parameters.Add("_nota3", NpgsqlDbType.Double).Value = double.Parse(dat.Nota3);
+            dataAdapt.SelectCommand.Parameters.Add("_notadef", NpgsqlDbType.Double).Value = double.Parse(dat.Notadef);
             dataAdapt.SelectCommand.CommandType = CommandType.StoredProcedure;
 
             conection.Open();
