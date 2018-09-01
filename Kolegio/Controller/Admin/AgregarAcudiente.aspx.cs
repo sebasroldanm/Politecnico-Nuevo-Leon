@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
 {
@@ -32,49 +34,71 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
     protected void btn_AcudienteAceptar_Click(object sender, EventArgs e)
     {
 
-        EUser usua = new EUser();
-        DaoUser dat = new DaoUser();
-        int rol = 4;
+        LUser logica = new LUser();
+        UUser usua = new UUser();
 
+        usua = logica.AgregarAdmin(
+            int.Parse(ddt_lugarnacimDep.SelectedValue),
+            int.Parse(DDT_Ciudad.SelectedValue),
+            tb_AcudienteNombre.Text,
+            tb_AcudienteApellido.Text,
+            tb_AcudienteDireccion.Text,
+            tb_AcudienteTelefono.Text,
+            tb_AcudienteContrasenia.Text,
+            tb_AcudienteCorreo.Text,
+            tb_Foto,
+            int.Parse(tb_AcudienteId.Text),
+            tb_AcudienteUsuario.Text,
+            2,
+            fechanac.Text,
+            Session.SessionID
+            );
 
-        int dep;
-        dep = int.Parse(ddt_lugarnacimDep.SelectedValue);
+        L_ErrorUsuario.Text = usua.Mensaje;
+        btn_AcudienteAceptar.Visible = false;
+        this.Page.Response.Write(usua.Notificacion);
 
-        int ciu;
-        ciu = int.Parse(DDT_Ciudad.SelectedValue);
+        //EUser usua = new EUser();
+        //DaoUser dat = new DaoUser();
+        //int rol = 4;
 
-        if(ddt_lugarnacimDep.SelectedValue == "0" || DDT_Ciudad.SelectedValue == "0")
-        {
-            L_ErrorUsuario.Text = "Debe seleccionar una opcion";
-        }
-        else
-        { 
-            String acu = usua.Id_estudiante;
+        //int dep;
+        //dep = int.Parse(ddt_lugarnacimDep.SelectedValue);
 
-            usua.Nombre = tb_AcudienteNombre.Text;
-            usua.Rol = Convert.ToString(rol);
-            usua.UserName = tb_AcudienteUsuario.Text;
-            usua.Clave = tb_AcudienteContrasenia.Text;
-            usua.Correo = tb_AcudienteCorreo.Text;
-            usua.Apellido = tb_AcudienteApellido.Text;
-            usua.Direccion = tb_AcudienteDireccion.Text;
-            usua.Telefono = tb_AcudienteTelefono.Text;
-            usua.Documento = tb_AcudienteId.Text;
-            usua.fecha_nacimiento = fechanac.Text;
-            usua.Departamento = Convert.ToString(dep);
-            usua.Ciudad = Convert.ToString(ciu);
-            usua.Foto = cargarImagen();
-            usua.Session = Session.SessionID;
+        //int ciu;
+        //ciu = int.Parse(DDT_Ciudad.SelectedValue);
 
-            if (usua.Foto != null)
-            {
-                dat.insertarUsuarios(usua);
-                this.Page.Response.Write("<script language='JavaScript'>window.alert('Acudiente Insertado con Exito');</script>");
+        //if(ddt_lugarnacimDep.SelectedValue == "0" || DDT_Ciudad.SelectedValue == "0")
+        //{
+        //    L_ErrorUsuario.Text = "Debe seleccionar una opcion";
+        //}
+        //else
+        //{ 
+        //    String acu = usua.Id_estudiante;
 
-                btn_AcudienteAceptar.Visible = false;
+        //    usua.Nombre = tb_AcudienteNombre.Text;
+        //    usua.Rol = Convert.ToString(rol);
+        //    usua.UserName = tb_AcudienteUsuario.Text;
+        //    usua.Clave = tb_AcudienteContrasenia.Text;
+        //    usua.Correo = tb_AcudienteCorreo.Text;
+        //    usua.Apellido = tb_AcudienteApellido.Text;
+        //    usua.Direccion = tb_AcudienteDireccion.Text;
+        //    usua.Telefono = tb_AcudienteTelefono.Text;
+        //    usua.Documento = tb_AcudienteId.Text;
+        //    usua.fecha_nacimiento = fechanac.Text;
+        //    usua.Departamento = Convert.ToString(dep);
+        //    usua.Ciudad = Convert.ToString(ciu);
+        //    usua.Foto = cargarImagen();
+        //    usua.Session = Session.SessionID;
 
-            }
-        }
+        //    if (usua.Foto != null)
+        //    {
+        //        dat.insertarUsuarios(usua);
+        //        this.Page.Response.Write("<script language='JavaScript'>window.alert('Acudiente Insertado con Exito');</script>");
+
+        //        btn_AcudienteAceptar.Visible = false;
+        //    }
+        //}
     }
 
     protected void btn_AcudienteNuevo_Click(object sender, EventArgs e)
@@ -104,36 +128,45 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
 
     protected void btn_validar_Click(object sender, EventArgs e)
     {
-        EUser usua = new EUser();
-        DaoUser dat = new DaoUser();
 
+        LUser logica = new LUser();
+        UUser usua = new UUser();
 
-        usua.UserName = tb_AcudienteUsuario.Text;
-        usua.Documento = tb_AcudienteId.Text;
+        usua = logica.validarUser(tb_AcudienteUsuario.Text, tb_AcudienteId.Text);
+        L_ErrorUsuario.Text = usua.Mensaje;
 
-        DataTable registros = dat.validar_usuarioadmin(usua);
+        btn_AcudienteAceptar.Visible = usua.L_Aceptar1;
+        btn_AcudienteNuevo.Visible = usua.L_Aceptar1;
 
-        if (registros.Rows.Count > 0)
-        {
+        tb_AcudienteUsuario.ReadOnly = usua.L_Aceptar1;
+        tb_AcudienteId.ReadOnly = usua.L_Aceptar1;
+        btn_validar.Visible = usua.B_Botones1;
 
-            tb_Vusuario.Text = Convert.ToString(registros.Rows[0]["user_name"].ToString());
-            tb_Vdocumento.Text = Convert.ToString(registros.Rows[0]["num_documento"].ToString());
-            L_ErrorUsuario.Text = "El Usuario ya existe";
+        //EUser usua = new EUser();
+        //DaoUser dat = new DaoUser();
 
+        //usua.UserName = tb_AcudienteUsuario.Text;
+        //usua.Documento = tb_AcudienteId.Text;
 
+        //DataTable registros = dat.validar_usuarioadmin(usua);
 
-        }
-        else
-        {
-            L_ErrorUsuario.Text = "";
-            L_OkUsuario.Text = "Usuario Disponible";
-            btn_AcudienteAceptar.Visible = true;
-            btn_AcudienteNuevo.Visible = true;
-            btn_validar.Visible = false;
-            tb_AcudienteId.ReadOnly = true;
-            tb_AcudienteUsuario.ReadOnly = true;
+        //if (registros.Rows.Count > 0)
+        //{
 
-        }
+        //    tb_Vusuario.Text = Convert.ToString(registros.Rows[0]["user_name"].ToString());
+        //    tb_Vdocumento.Text = Convert.ToString(registros.Rows[0]["num_documento"].ToString());
+        //    L_ErrorUsuario.Text = "El Usuario ya existe";
+        //}
+        //else
+        //{
+        //    L_ErrorUsuario.Text = "";
+        //    L_OkUsuario.Text = "Usuario Disponible";
+        //    btn_AcudienteAceptar.Visible = true;
+        //    btn_AcudienteNuevo.Visible = true;
+        //    btn_validar.Visible = false;
+        //    tb_AcudienteId.ReadOnly = true;
+        //    tb_AcudienteUsuario.ReadOnly = true;
+        //}
 
     }
 

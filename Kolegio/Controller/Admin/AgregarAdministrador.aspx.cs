@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using Logica;
+using Utilitarios;
 
 
 
@@ -37,50 +39,72 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
     protected void btn_AdministradorAceptar_Click2(object sender, EventArgs e)
     {
 
+        LUser Logica = new LUser();
+        UUser usua = new UUser();
 
-        L_fecha.Text = fechanac.Text;
+        usua = Logica.AgregarAdmin(
+            int.Parse(ddt_lugarnacimDep.SelectedValue),
+            int.Parse(DDT_Ciudad.SelectedValue),
+            tb_AdministradorAdministradorNombre.Text,
+            tb_AdministradorAdministradorApellido.Text,
+            tb_AdministradorAdministradorDireccion.Text,
+            tb_AdministradorTelefono.Text,
+            tb_AdministradorContrasenia.Text,
+            tb_AdministradorAdministradorCorreo.Text,
+            tb_AdministradorFoto,
+            int.Parse(tb_AministradorAdministradorId.Text),
+            tb_AdministradorUsuario.Text,
+            1,
+            fechanac.Text,
+            Session.SessionID);
+        L_ErrorUsuario.Text = usua.Mensaje;
+        this.Page.Response.Write(usua.Notificacion);
+        btn_AdministradorAceptar.Visible = usua.L_Aceptar1;
+        btn_EstudianteNuevo.Visible = usua.B_Botones1;
 
-        EUser usua = new EUser();
-        DaoUser dat = new DaoUser();
-        int rol = 1;
+        //L_fecha.Text = fechanac.Text;
 
-        int dep;
-        dep = int.Parse(ddt_lugarnacimDep.SelectedValue);
+        //EUser usua = new EUser();
+        //DaoUser dat = new DaoUser();
+        //int rol = 1;
 
-        int ciu;
-        ciu = int.Parse(DDT_Ciudad.SelectedValue);
+        //int dep;
+        //dep = int.Parse(ddt_lugarnacimDep.SelectedValue);
 
-        if (ddt_lugarnacimDep.SelectedValue == "0" || DDT_Ciudad.SelectedValue == "0")
-        {
-            L_ErrorUsuario.Text = "Debe seleccionar una opcion";
-        }
-        else
-        { 
-            usua.Nombre = tb_AdministradorAdministradorNombre.Text;
-            usua.Rol = Convert.ToString(rol);
-            usua.UserName = tb_AdministradorUsuario.Text;
-            usua.Clave = tb_AdministradorContrasenia.Text;
-            usua.Correo = tb_AdministradorAdministradorCorreo.Text;
-            usua.Apellido = tb_AdministradorAdministradorApellido.Text;
-            usua.Direccion = tb_AdministradorAdministradorDireccion.Text;
-            usua.Telefono = tb_AdministradorTelefono.Text;
-            usua.Documento = tb_AministradorAdministradorId.Text;
-            usua.fecha_nacimiento = L_fecha.Text;
-            usua.Departamento = Convert.ToString(dep);
-            usua.Ciudad = Convert.ToString(ciu);
-            usua.Session = Session.SessionID;
-            usua.Foto = cargarImagen();
-      
+        //int ciu;
+        //ciu = int.Parse(DDT_Ciudad.SelectedValue);
 
-            if (usua.Foto != null)
-            {
-                dat.insertarUsuarios(usua);
-                this.Page.Response.Write("<script language='JavaScript'>window.alert('Administrador Insertado con Exito');</script>");
+        //if (ddt_lugarnacimDep.SelectedValue == "0" || DDT_Ciudad.SelectedValue == "0")
+        //{
+        //    L_ErrorUsuario.Text = "Debe seleccionar una opcion";
+        //}
+        //else
+        //{ 
+        //    usua.Nombre = tb_AdministradorAdministradorNombre.Text;
+        //    usua.Rol = Convert.ToString(rol);
+        //    usua.UserName = tb_AdministradorUsuario.Text;
+        //    usua.Clave = tb_AdministradorContrasenia.Text;
+        //    usua.Correo = tb_AdministradorAdministradorCorreo.Text;
+        //    usua.Apellido = tb_AdministradorAdministradorApellido.Text;
+        //    usua.Direccion = tb_AdministradorAdministradorDireccion.Text;
+        //    usua.Telefono = tb_AdministradorTelefono.Text;
+        //    usua.Documento = tb_AministradorAdministradorId.Text;
+        //    usua.fecha_nacimiento = L_fecha.Text;
+        //    usua.Departamento = Convert.ToString(dep);
+        //    usua.Ciudad = Convert.ToString(ciu);
+        //    usua.Session = Session.SessionID;
+        //    usua.Foto = cargarImagen();
 
-                btn_AdministradorAceptar.Visible = false;
 
-            }
-        }
+        //    if (usua.Foto != null)
+        //    {
+        //        dat.insertarUsuarios(usua);
+        //        this.Page.Response.Write("<script language='JavaScript'>window.alert('Administrador Insertado con Exito');</script>");
+
+        //        btn_AdministradorAceptar.Visible = false;
+
+        //    }
+        //}
     }
 
     protected void btn_AdministradorNuevo_Click(object sender, EventArgs e)
@@ -113,36 +137,44 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
 
     protected void btn_validar_Click(object sender, EventArgs e)
     {
-  
-        EUser usua = new EUser();
-        DaoUser dat = new DaoUser();
 
+        LUser logica = new LUser();
+        UUser usua = new UUser();
 
-        usua.UserName = tb_AdministradorUsuario.Text;
-        usua.Documento = (Convert.ToInt64(tb_AministradorAdministradorId.Text)).ToString();
+        usua = logica.validarUser(tb_AdministradorUsuario.Text, tb_AministradorAdministradorId.Text);
+        L_ErrorUsuario.Text = usua.Mensaje;
+        btn_AdministradorAceptar.Visible = usua.L_Aceptar1;
+        tb_AministradorAdministradorId.Visible = usua.L_Aceptar1;
+        tb_AdministradorUsuario.ReadOnly = usua.L_Aceptar1;
+        tb_AministradorAdministradorId.ReadOnly = usua.L_Aceptar1;
+        btn_validar.Visible = usua.B_Botones1;
 
-        DataTable registros = dat.validar_usuarioadmin(usua);
+        //    EUser usua = new EUser();
+        //    DaoUser dat = new DaoUser();
 
-        if (registros.Rows.Count > 0)
-        {
+        //    usua.UserName = tb_AdministradorUsuario.Text;
+        //    usua.Documento = (Convert.ToInt64(tb_AministradorAdministradorId.Text)).ToString();
 
-            tb_Vusuario.Text = Convert.ToString(registros.Rows[0]["user_name"].ToString());
-            tb_Vdocumento.Text = Convert.ToString(registros.Rows[0]["num_documento"].ToString());
-            L_ErrorUsuario.Text = "El Usuario ya existe";
-            
-        }
-        else
-        {
-            L_ErrorUsuario.Text = "";
-            L_OkUsuario.Text = "Usuario Disponible";
-            btn_AdministradorAceptar.Visible = true;
-            btn_EstudianteNuevo.Visible = true;
-            btn_validar.Visible = false;
-            tb_AdministradorUsuario.ReadOnly = true;
-            tb_AministradorAdministradorId.ReadOnly = true;
-            tb_AdministradorFoto.Enabled = true;
-            btnigm_calendar.Visible = true;
-        }
+        //    DataTable registros = dat.validar_usuarioadmin(usua);
+
+        //    if (registros.Rows.Count > 0)
+        //    {
+        //        tb_Vusuario.Text = Convert.ToString(registros.Rows[0]["user_name"].ToString());
+        //        tb_Vdocumento.Text = Convert.ToString(registros.Rows[0]["num_documento"].ToString());
+        //        L_ErrorUsuario.Text = "El Usuario ya existe";
+        //    }
+        //    else
+        //    {
+        //        L_ErrorUsuario.Text = "";
+        //        L_OkUsuario.Text = "Usuario Disponible";
+        //        btn_AdministradorAceptar.Visible = true;
+        //        btn_EstudianteNuevo.Visible = true;
+        //        btn_validar.Visible = false;
+        //        tb_AdministradorUsuario.ReadOnly = true;
+        //        tb_AministradorAdministradorId.ReadOnly = true;
+        //        tb_AdministradorFoto.Enabled = true;
+        //        btnigm_calendar.Visible = true;
+        //    }
 
 
     }

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_Admin_AgregarProfesor : System.Web.UI.Page
 {
@@ -29,61 +31,82 @@ public partial class View_Admin_AgregarProfesor : System.Web.UI.Page
     protected void btn_AdministradorAceptar_Click2(object sender, EventArgs e)
     {
 
+        LUser logica = new LUser();
+        UUser usua = new UUser();
 
-        EUser usua = new EUser();
-        DaoUser dat = new DaoUser();
-        int rol = 2;
+        usua = logica.AgregarAdmin(
+            int.Parse(ddt_lugarnacimDep.SelectedValue),
+            int.Parse(DDT_Ciudad.SelectedValue),
+            tb_DocenteNombre.Text,
+            tb_DocenteApellido.Text,
+            tb_DocenteDireccion.Text,
+            tb_DocenteTelefono.Text,
+            tb_DocenteContrasenia.Text,
+            tb_DocenteCorreo.Text,
+            tb_Foto,
+            int.Parse(tb_DocenteId.Text),
+            tb_DocenteUsuario.Text,
+            2,
+            fechanac.Text,
+            Session.SessionID
+            );
+
+        L_ErrorUsuario.Text = usua.Mensaje;
+        btn_DocenteAceptar.Visible = false;
+        this.Page.Response.Write(usua.Notificacion);
+
+        //EUser usua = new EUser();
+        //DaoUser dat = new DaoUser();
+        //int rol = 2;
+
+        //int dep;
+        //dep = int.Parse(ddt_lugarnacimDep.SelectedValue);
+
+        //int ciu;
+        //ciu = int.Parse(DDT_Ciudad.SelectedValue);
+
+        //if (ddt_lugarnacimDep.SelectedValue == "0" || DDT_Ciudad.SelectedValue == "0")
+        //{
+        //    L_ErrorUsuario.Text = "Debe seleccionar una opcion";
+        //}
+        //else
+        //{
+        //    usua.Nombre = tb_DocenteNombre.Text;
+        //    usua.Rol = Convert.ToString(rol);
+        //    usua.UserName = tb_DocenteUsuario.Text;
+        //    usua.Clave = tb_DocenteContrasenia.Text;
+        //    usua.Correo = tb_DocenteCorreo.Text;
+        //    usua.Apellido = tb_DocenteApellido.Text;
+        //    usua.Direccion = tb_DocenteDireccion.Text;
+        //    usua.Telefono = tb_DocenteTelefono.Text;
+        //    usua.Documento = tb_DocenteId.Text;
+
+        //    usua.fecha_nacimiento = fechanac.Text;
+        //    usua.Departamento = Convert.ToString(dep);
+        //    usua.Ciudad = Convert.ToString(ciu);
+        //    usua.Foto = cargarImagen();
+        //    usua.Session = Session.SessionID;
+
+        //    if (usua.Foto != null)
+        //    {
+        //        dat.insertarUsuarios(usua);
+        //        this.Page.Response.Write("<script language='JavaScript'>window.alert('Docente Insertado con Exito');</script>");
+
+        //      btn_DocenteAceptar.Visible = false;
+        //    }
+
+        //    tb_DocenteId.ReadOnly = true;
+        //    tb_DocenteNombre.ReadOnly = true;
+        //    tb_DocenteApellido.ReadOnly = true;
+        //    tb_DocenteCorreo.ReadOnly = true;
+        //    tb_DocenteTelefono.ReadOnly = true;
+        //    tb_DocenteContrasenia.ReadOnly = true;
+        //    tb_DocenteDireccion.ReadOnly = true;
+        //    fechanac.ReadOnly = true;
+        //    tb_DocenteUsuario.ReadOnly = true;
+        //}
 
 
-        int dep;
-        dep = int.Parse(ddt_lugarnacimDep.SelectedValue);
-
-        int ciu;
-        ciu = int.Parse(DDT_Ciudad.SelectedValue);
-
-        if (ddt_lugarnacimDep.SelectedValue == "0" || DDT_Ciudad.SelectedValue == "0")
-        {
-            L_ErrorUsuario.Text = "Debe seleccionar una opcion";
-        }
-        else
-        {
-            usua.Nombre = tb_DocenteNombre.Text;
-            usua.Rol = Convert.ToString(rol);
-            usua.UserName = tb_DocenteUsuario.Text;
-            usua.Clave = tb_DocenteContrasenia.Text;
-            usua.Correo = tb_DocenteCorreo.Text;
-            usua.Apellido = tb_DocenteApellido.Text;
-            usua.Direccion = tb_DocenteDireccion.Text;
-            usua.Telefono = tb_DocenteTelefono.Text;
-            usua.Documento = tb_DocenteId.Text;
- 
-            usua.fecha_nacimiento = fechanac.Text;
-            usua.Departamento = Convert.ToString(dep);
-            usua.Ciudad = Convert.ToString(ciu);
-            usua.Foto = cargarImagen();
-            usua.Session = Session.SessionID;
-
-            if (usua.Foto != null)
-            {
-                dat.insertarUsuarios(usua);
-                this.Page.Response.Write("<script language='JavaScript'>window.alert('Docente Insertado con Exito');</script>");
-
-              btn_DocenteAceptar.Visible = false;
-
-            }
-
-            tb_DocenteId.ReadOnly = true;
-            tb_DocenteNombre.ReadOnly = true;
-            tb_DocenteApellido.ReadOnly = true;
-            tb_DocenteCorreo.ReadOnly = true;
-            tb_DocenteTelefono.ReadOnly = true;
-            tb_DocenteContrasenia.ReadOnly = true;
-            tb_DocenteDireccion.ReadOnly = true;
-            fechanac.ReadOnly = true;
-            tb_DocenteUsuario.ReadOnly = true;
-        }
-
-        
 
     }
 
@@ -115,35 +138,45 @@ public partial class View_Admin_AgregarProfesor : System.Web.UI.Page
 
     protected void btn_validar_Click(object sender, EventArgs e)
     {
-        EUser usua = new EUser();
-        DaoUser dat = new DaoUser();
+
+        LUser logica = new LUser();
+        UUser usua = new UUser();
+
+        usua = logica.validarUser(tb_DocenteUsuario.Text, tb_DocenteId.Text);
+        L_ErrorUsuario.Text = usua.Mensaje;
+        btn_DocenteAceptar.Visible = usua.L_Aceptar1;
+        btn_DocenteNuevo.Visible = usua.L_Aceptar1;
+        tb_DocenteUsuario.ReadOnly = usua.L_Aceptar1;
+        tb_DocenteId.ReadOnly = usua.L_Aceptar1;
+        btn_validar.Visible = usua.B_Botones1;
+
+        //EUser usua = new EUser();
+        //DaoUser dat = new DaoUser();
 
 
-        usua.UserName = tb_DocenteUsuario.Text;
-        usua.Documento = tb_DocenteId.Text;
+        //usua.UserName = tb_DocenteUsuario.Text;
+        //usua.Documento = tb_DocenteId.Text;
 
-        DataTable registros = dat.validar_usuarioadmin(usua);
+        //DataTable registros = dat.validar_usuarioadmin(usua);
 
-        if (registros.Rows.Count > 0)
-        {
+        //if (registros.Rows.Count > 0)
+        //{
 
-            tb_Vusuario.Text = Convert.ToString(registros.Rows[0]["user_name"].ToString());
-            tb_Vdocumento.Text = Convert.ToString(registros.Rows[0]["num_documento"].ToString());
-            L_ErrorUsuario.Text = "El Usuario ya existe";
+        //    tb_Vusuario.Text = Convert.ToString(registros.Rows[0]["user_name"].ToString());
+        //    tb_Vdocumento.Text = Convert.ToString(registros.Rows[0]["num_documento"].ToString());
+        //    L_ErrorUsuario.Text = "El Usuario ya existe";
 
-        }
-        else
-        {
-            L_ErrorUsuario.Text = "";
-            L_OkUsuario.Text = "Usuario Disponible";
-            btn_DocenteAceptar.Visible = true;
-            btn_DocenteNuevo.Visible = true;
-            btn_validar.Visible = false;
-            tb_DocenteUsuario.ReadOnly = true;
-            tb_DocenteId.ReadOnly = true;
-
-        }
-
+        //}
+        //else
+        //{
+        //    L_ErrorUsuario.Text = "";
+        //    L_OkUsuario.Text = "Usuario Disponible";
+        //    btn_DocenteAceptar.Visible = true;
+        //    btn_DocenteNuevo.Visible = true;
+        //    btn_validar.Visible = false;
+        //    tb_DocenteUsuario.ReadOnly = true;
+        //    tb_DocenteId.ReadOnly = true;
+        //}
 
     }
 
