@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Datos;
 using Utilitarios;
 using System.Data;
+using System.IO;
 
 namespace Logica
 {
@@ -408,6 +410,244 @@ namespace Logica
 
             return usua;
         }
+
+        //public UUser editarAdmin(
+        //    string nombre,
+        //    int rol,
+        //    string userName,
+        //    string clave,
+        //    string correo,
+        //    string apellido,
+        //    string direccion,
+        //    string telefono,
+        //    int documento,
+        //    int estado,
+        //    string fechanac,
+        //    int departamento,
+        //    int ciudad,
+        //    string session,
+        //    FileUpload foto
+        //    )
+        //{
+        //    UUser usua = new UUser();
+        //    DUser dat = new DUser();
+        //    rol = 1;
+
+
+        //    if (departamento == 0 || ciudad == 0)
+        //    {
+        //        usua.Mensaje = "Debe seleccionar una opcion";
+        //    }
+        //    else
+        //    {
+        //        String est;
+
+        //        if (estado == 0)
+        //        {
+        //            est = "true";
+        //        }
+        //        else
+        //        {
+        //            est = "false";
+        //        }
+
+
+        //        if (foto.ToString() == "")
+        //        {
+
+        //            usua.Nombre = nombre;
+        //            usua.Rol = rol.ToString();
+        //            usua.UserName = userName;
+        //            usua.Clave = clave;
+        //            usua.Correo = correo;
+        //            usua.Apellido = apellido;
+        //            usua.Direccion = direccion;
+        //            usua.Telefono = telefono;
+        //            usua.Documento = documento.ToString();
+        //            usua.Estado = est;
+        //            usua.fecha_nacimiento = fechanac;
+        //            usua.Departamento = departamento.ToString();
+        //            usua.Ciudad = ciudad.ToString();
+        //            usua.Session = Session.SessionID;
+        //            usua.Foto = foto;
+
+        //            if (foto != null)
+        //            {
+        //                DataTable registros = dat.EditarUsuario(usua);
+        //                this.Page.Response.Write("<script language='JavaScript'>window.alert('Administrador Editado con Exito');</script>");
+        //                usua.B_Botones1 = false;
+        //                //btn_AdministradorAceptar.Visible = false;
+
+        //            }
+
+        //        }
+        //        else
+        //        {
+
+        //            usua.Nombre = nombre;
+        //            usua.Rol = rol.ToString();
+        //            usua.UserName = userName;
+        //            usua.Clave = clave;
+        //            usua.Correo = correo;
+        //            usua.Apellido = apellido;
+        //            usua.Direccion = direccion;
+        //            usua.Telefono = telefono;
+        //            usua.Documento = documento.ToString();
+        //            usua.Estado = est;
+        //            usua.fecha_nacimiento = fechanac;
+        //            usua.Departamento = departamento.ToString();
+        //            usua.Ciudad = ciudad.ToString();
+        //            usua.Session = Session.SessionID;
+        //            usua.Foto = cargarImagen(foto);
+
+
+
+
+
+        //            if (usua.Foto != null)
+        //            {
+        //                DataTable registros = dat.EditarUsuario(usua);
+        //                this.Page.Response.Write("<script language='JavaScript'>window.alert('Administrador Editado con Exito');</script>");
+        //                usua.B_Botones1 = false;
+        //                //btn_AdministradorAceptar.Visible = false;
+
+        //            }
+        //        }
+
+
+
+
+        //    }
+        //    return usua;
+        //}
+
+
+
+    public void reporteAdmin(DataTable informacion)
+        {
+            DUser administrador = new DUser();
+            DataRow fila;
+            DataTable Intermedio = administrador.obtenerAdministradores();
+            for (int i = 0; i < Intermedio.Rows.Count; i++)
+            {
+
+                fila = informacion.NewRow();
+                ///El primero [""]  es como se llama el campo de la tabla de crystal y el segundo [""] el campo de la tabla en postgres
+                fila["Apellido"] = Intermedio.Rows[i]["apellido_usua"].ToString();
+                fila["Nombre"] = Intermedio.Rows[i]["nombre_usua"].ToString();
+                fila["Documento"] = int.Parse(Intermedio.Rows[i]["num_documento"].ToString());
+                fila["Telefono"] = Intermedio.Rows[i]["telefono"].ToString();
+                fila["Correo"] = Intermedio.Rows[i]["correo"].ToString();
+                fila["Foto"] = streamFile(Intermedio.Rows[i]["foto_usua"].ToString());
+
+                informacion.Rows.Add(fila);
+            }
+        }
+
+        public void reporteAcudiente(DataTable informacion)
+        {
+            DUser administrador = new DUser();
+            DataRow fila;
+            DataTable Intermedio = administrador.obteneracudientes();
+            for (int i = 0; i < Intermedio.Rows.Count; i++) // for para llenar la lista con cada usurario
+                                                            //// si es solo un dato como con el certificado de estudio, no se hace el for
+            {
+                fila = informacion.NewRow();
+                ///El primero [""]  es como se llama el campo de la tabla de crystal y el segundo [""] el campo de la tabla en postgres
+                fila["Apellido"] = Intermedio.Rows[i]["apellido_usua"].ToString();
+                fila["Nombre"] = Intermedio.Rows[i]["nombre_usua"].ToString();
+                fila["Documento"] = int.Parse(Intermedio.Rows[i]["num_documento"].ToString());
+                fila["Telefono"] = Intermedio.Rows[i]["telefono"].ToString();
+                fila["Correo"] = Intermedio.Rows[i]["correo"].ToString();
+                informacion.Rows.Add(fila);
+            }
+        }
+
+        public void reporteProfe(DataTable informacion)
+        {
+            DUser profe = new DUser();
+            DataRow fila;
+            DataTable Intermedio = profe.obtenerprofesores();
+            for (int i = 0; i < Intermedio.Rows.Count; i++) // for para llenar la lista con cada usurario
+                                                            //// si es solo un dato como con el certificado de estudio, no se hace el for
+            {
+                fila = informacion.NewRow();
+                ///El primero [""]  es como se llama el campo de la tabla de crystal y el segundo [""] el campo de la tabla en postgres
+                fila["Apellido"] = Intermedio.Rows[i]["apellido_usua"].ToString();
+                fila["Nombre"] = Intermedio.Rows[i]["nombre_usua"].ToString();
+                fila["Documento"] = int.Parse(Intermedio.Rows[i]["num_documento"].ToString());
+                fila["Telefono"] = Intermedio.Rows[i]["telefono"].ToString();
+                fila["Correo"] = Intermedio.Rows[i]["correo"].ToString();
+                fila["Foto"] = streamFile(Intermedio.Rows[i]["foto_usua"].ToString());
+                informacion.Rows.Add(fila);
+            }
+        }
+
+        public void reporteEstudiante(DataTable informacion, int curso)
+        {
+            DUser estudiante = new DUser();
+            DataRow fila;
+
+            DataTable Intermedio = estudiante.gEstudiante(curso);
+
+
+            for (int i = 0; i < Intermedio.Rows.Count; i++) // for para llenar la lista con cada usurario
+                                                            //// si es solo un dato como con el certificado de estudio, no se hace el for
+            {
+                fila = informacion.NewRow();
+                ///El primero [""]  es como se llama el campo de la tabla de crystal y el segundo [""] el campo de la tabla en postgres
+                fila["Apellido"] = Intermedio.Rows[i]["apellido_usua"].ToString();
+                fila["Nombre"] = Intermedio.Rows[i]["nombre_usua"].ToString();
+                informacion.Rows.Add(fila);
+            }
+        }
+
+        public void reporteDiploma(DataTable informacion, UUser documento)
+        {
+            DUser diploma = new DUser();
+            DataRow fila;
+
+            DataTable Intermedio = diploma.obtenerUsuarioMod(documento);
+            for (int i = 0; i < Intermedio.Rows.Count; i++) // for para llenar la lista con cada usurario
+                                                            //// si es solo un dato como con el certificado de estudio, no se hace el for
+            {
+                fila = informacion.NewRow();
+                ///El primero [""]  es como se llama el campo de la tabla de crystal y el segundo [""] el campo de la tabla en postgres
+                fila["Apellido"] = Intermedio.Rows[i]["apellido_usua"].ToString();
+                fila["Nombre"] = Intermedio.Rows[i]["nombre_usua"].ToString();
+                fila["Documento"] = int.Parse(Intermedio.Rows[i]["num_documento"].ToString());
+                fila["Foto"] = streamFile(Intermedio.Rows[i]["foto_usua"].ToString());
+                informacion.Rows.Add(fila);
+            }
+        }
+
+        private byte[] streamFile(string filename)
+        {
+            FileStream fs;
+
+            if (!filename.Equals(""))
+            {
+                fs = new FileStream(Server.MapPath(filename), FileMode.Open, FileAccess.Read);
+            }
+
+            else
+            {
+                fs = new FileStream(Server.MapPath("~/FotosUser/Useruser.png"), FileMode.Open, FileAccess.Read);
+
+            }
+
+
+            // Create a byte array of file stream length
+            byte[] ImageData = new byte[fs.Length];
+
+            //Read block of bytes from stream into the byte array
+            fs.Read(ImageData, 0, System.Convert.ToInt32(fs.Length));
+
+            //Close the File Stream
+            fs.Close();
+            return ImageData; //return the byte data
+        }
+
 
 
 

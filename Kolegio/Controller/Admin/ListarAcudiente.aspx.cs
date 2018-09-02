@@ -28,6 +28,5 @@ public partial class View_Admin_ListarAcudiente : System.Web.UI.Page
     protected void btn_descargar_Click(object sender, EventArgs e)
     {
         Page.RegisterStartupScript("script", "<script>window.open('/View/Admin/DescargarAcudientes.aspx' ,'Descargar','height=300', 'width=300')</script>");
-
     }
 }
