@@ -703,7 +703,48 @@ namespace Logica
             return usua;
         }
 
+        public UUser ModifConfiguracion(
+                        FileUpload fotoName,
+                        string userName,
+                        string contraseña,
+                        string correo,
+                        string sesion,
+                        string SuserId,
+                        string Sfoto,
+                        string Suser,
+                        string Sclave,
+                        string Scorreo)
+        {
+            UUser enc = new UUser();
+            DUser datos = new DUser();
 
+            String foto = System.IO.Path.GetFileName(fotoName.PostedFile.FileName);
+
+            if (fotoName.FileName == "")
+            {
+                enc.Id_estudiante = SuserId;
+                enc.UserName = userName;
+                enc.Clave = contraseña;
+                enc.Correo = correo;
+                enc.Session = sesion;
+                enc.Foto = Sfoto;
+
+            }
+            else
+            {
+                foto = "~/FotosUser/" + fotoName.FileName;
+                enc.Id_estudiante = SuserId;
+                enc.UserName = userName;
+                enc.Clave = contraseña;
+                enc.Correo = correo;
+                enc.Foto = cargarImagen(fotoName);
+                enc.Session = Session.SessionID;
+            }
+
+            DataTable resultado = datos.editarConfig(enc);
+
+            return enc;
+        }
 
 
 
