@@ -26,10 +26,9 @@ public partial class View_Estudiante_EstudianteHorario : System.Web.UI.Page
             DataTable registro = logic.horario(curso, 3);
             GridView1.DataSource = registro;
             GridView1.DataBind();
-
         }
         else
-            Response.Redirect("AccesoDenegado.aspx");
+            Response.Redirect("~/View/Estudiante/AccesoDenegado.aspx");
         
     }
 
