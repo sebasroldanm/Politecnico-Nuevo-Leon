@@ -27,13 +27,15 @@ namespace Logica
                     //Horario Curso
                     registro = datos.horarioCurso(id_curso);
                     break;
-
+                case 2:
+                    //Horario Profesor
+                    registro = datos.horarioProf(id_curso.ToString());
+                    break;
                 default:
                     registro = datos.horarioCurso(id_curso);
                     break;
             }
 
-            registro = datos.horarioCurso(id_curso);
             int n = registro.DefaultView.Count;
             DataSet reg = new DataSet();
 
