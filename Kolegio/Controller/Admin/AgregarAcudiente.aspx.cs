@@ -17,6 +17,7 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
         {
             //fechanac.ReadOnly = true;
             //btnigm_calendar.Visible = false;
+            
             int year;
             year = int.Parse(DateTime.Now.ToString("yyyy"));
             year = year - 18;

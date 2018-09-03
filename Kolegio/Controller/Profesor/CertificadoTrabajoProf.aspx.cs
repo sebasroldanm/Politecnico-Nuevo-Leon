@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
 
 public partial class View_Profesor_CertificadoTrabajoProf : System.Web.UI.Page
 {
