@@ -45,7 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LInicio.cs" />
     <Compile Include="LReg.cs" />
     <Compile Include="LUser.cs">
       <SubType>ASPXCodeBehind</SubType>
