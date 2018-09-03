@@ -27,13 +27,15 @@ namespace Logica
                     //Horario Curso
                     registro = datos.horarioCurso(id_curso);
                     break;
-
+                case 2:
+                    //Horario Profesor
+                    registro = datos.horarioProf(id_curso.ToString());
+                    break;
                 default:
                     registro = datos.horarioCurso(id_curso);
                     break;
             }
 
-            registro = datos.horarioCurso(id_curso);
             int n = registro.DefaultView.Count;
             DataSet reg = new DataSet();
 
@@ -219,9 +221,109 @@ namespace Logica
         }
 
 
+        public UUser subirNota(string alumno, string materia, string curso, string nota1, string nota2, string nota3)
+        {
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+            enc.Mensaje = " ";
 
+            if (alumno == "0" || materia == "0" || curso == "0")
+            {
+                enc.Mensaje = "Falta seleccionar";
+            }
+            else
+            {
+                enc.Id_estudiante = alumno;
+                enc.Materia = materia;
+                enc.Curso = curso;
+                DataTable registros = datos.obtenerNota(enc);
 
+                enc.IdNota = registros.Rows[0]["id_nota"].ToString();
+                Double n1 = Convert.ToDouble(nota1);
+                Double n2 = Convert.ToDouble(nota2);
+                Double n3 = Convert.ToDouble(nota3);
 
+                Double nd = (n1 + n2 + n3) / 3.0;
+
+                enc.Nota1 = n1.ToString();
+                enc.Nota2 = n2.ToString();
+                enc.Nota3 = n3.ToString();
+
+                enc.Notadef = nd.ToString();
+                datos.insertarNota(enc);
+
+            }
+            return enc;
+        }
+
+        public UUser verNota(string alumno, string materia, string curso)
+        {
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+            enc.Mensaje = " ";
+            if (alumno == "0" || materia == "0" || curso == "0")
+            {
+                enc.Mensaje = "Falta seleccionar";
+            }
+            else
+            {
+                enc.Id_estudiante = alumno;
+                enc.Materia = materia;
+                enc.Curso = curso;
+                DataTable registros = datos.obtenerNota(enc);
+
+                enc.Nota1 = registros.Rows[0]["nota1"].ToString();
+                enc.Nota2 = registros.Rows[0]["nota2"].ToString();
+                enc.Nota3 = registros.Rows[0]["nota3"].ToString();
+
+                enc.Notadef = registros.Rows[0]["notadef"].ToString();
+            }
+            return enc;
+        }
+
+        public UUser ObAniodeCurso(string sesion)
+        {
+            UUser enc = new UUser();
+            DUser datos = new DUser();
+            if (sesion != null)
+            {
+                DateTime fecha = DateTime.Now;
+                string año = (fecha.Year).ToString();
+                año = año + "-01-01";
+                DataTable re = datos.obtenerAniodeCurso(año);
+                enc.Año = re.Rows[0]["id_anio"].ToString();
+            }
+            else
+                enc.Url = "~/View/Profesor/AccesoDenegado.aspx";
+
+            return enc;
+        }
+
+        public UUser selecObservador(string documento)
+        {
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+
+            enc.Documento = documento;
+
+            DataTable registro = datos.obtenerUsuarioMod(enc);
+            enc.Id_estudiante = registro.Rows[0]["id_usua"].ToString();
+            enc.Mensaje = ("~/View/Profesor/ProfesorListado.aspx");
+
+            return enc;
+        }
+
+        public UUser insertObservacion(string id, string observacion)
+        {
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+
+            enc.Id_estudiante = id;
+            enc.Observacion = observacion;
+
+            datos.insertarObservacion(enc);
+            return enc;
+        }
 
 
 
