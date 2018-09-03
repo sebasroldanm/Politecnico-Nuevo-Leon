@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using Datos;
+using Logica;
+using Utilitarios;
 
 public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Page
 {
@@ -43,43 +46,25 @@ public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Pag
 
     protected void btn_Aceptar_Click(object sender, EventArgs e)
     {
+        UUser enc = new UUser();
+        DUser datos = new DUser();
+        LUser logic = new LUser();
 
-        EUser enc = new EUser();
-        DaoUser datos = new DaoUser();
         String foto = System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName);
-
-        if (tb_Foto.FileName == "")
-        {
-            enc.Id_estudiante = Session["userId"].ToString();
-            enc.UserName = tb_usuario.Text;
-            enc.Clave = tb_contrasenia.Text;
-            enc.Correo = tb_correo.Text;
-            enc.Session = Session.SessionID;
-            enc.Foto = Session["foto"].ToString();
-            tb_usuario.Text = Session["userName"].ToString();
-            tb_contrasenia.Text = Session["clave"].ToString();
-            tb_correo.Text = Session["correo"].ToString();
-            ImagenEst.ImageUrl = Session["foto"].ToString();
-
-        }
-        else
-        {
+        enc = logic.ModifConfiguracion(
+                           tb_Foto,
+                           tb_usuario.Text,
+                           tb_contrasenia.Text,
+                           tb_correo.Text,
+                           Session.SessionID,
+                           Session["userId"].ToString(),
+                           Session["foto"].ToString(),
+                           Session["userName"].ToString(),
+                           Session["clave"].ToString(),
+                           Session["correo"].ToString()
+            );
 
 
-            foto = "~/FotosUser/" + tb_Foto.FileName;
-            enc.Id_estudiante = Session["userId"].ToString();
-            enc.UserName = tb_usuario.Text;
-            enc.Clave = tb_contrasenia.Text;
-            enc.Correo = tb_correo.Text;
-            enc.Foto = cargarImagen();
-            enc.Session = Session.SessionID;
-        }
-
-
-
-
-
-        DataTable resultado = datos.editarConfig(enc);
         Session["userName"] = enc.UserName;
         Session["clave"] = enc.Clave;
         Session["correo"] = enc.Correo;
@@ -95,50 +80,6 @@ public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Pag
         btn_Aceptar.Visible = false;
     }
 
-
-
-    protected String cargarImagen()
-    {
-
-
-        string sDia = Convert.ToString(DateTime.Now.Day);
-        string sMes = Convert.ToString(DateTime.Now.Month);
-        string sAgno = Convert.ToString(DateTime.Now.Year);
-        string sHora = Convert.ToString(DateTime.Now.Hour);
-        string sMinu = Convert.ToString(DateTime.Now.Minute);
-        string sSeco = Convert.ToString(DateTime.Now.Second);
-        string sFecha = sDia + sMes + sAgno + sHora + sMinu + sSeco;
-
-
-
-
-        ClientScriptManager cm = this.ClientScript;
-        String nombreArchivo = System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName);
-        String extension = System.IO.Path.GetExtension(tb_Foto.PostedFile.FileName);
-        String saveLocation = "";
-
-        if (!(string.Compare(extension, ".png", true) == 0 || string.Compare(extension, ".jpeg", true) == 0 || string.Compare(extension, ".jpg", true) == 0))
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>");
-
-
-
-            return null;
-        }
-
-        saveLocation = Server.MapPath("~/FotosUser") + "/" + sFecha + sMinu + nombreArchivo;
-
-        if (System.IO.File.Exists(saveLocation))
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe una imagen en el servidor con ese nombre');</script>");
-            return null;
-        }
-
-        tb_Foto.PostedFile.SaveAs(saveLocation);
-        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo de imagen ha sido cargado');</script>");
-
-        return "~/FotosUser" + "/" + sFecha + sMinu + nombreArchivo;
-    }
 
     protected void btn_cancelar_Click(object sender, EventArgs e)
     {

@@ -82,4 +82,9 @@ public partial class View_Admin_ConfiguraionAdministrador : System.Web.UI.Page
         btn_Aceptar.Visible = false;
     }
 
+
+    protected void btn_cancelar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/View/Admin/AgregarAdministrador.aspx");
+    }
 }

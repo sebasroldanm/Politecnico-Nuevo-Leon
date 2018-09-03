@@ -1803,8 +1803,8 @@ public class DaoUser
         try
         {
             NpgsqlDataAdapter dataAdapt = new NpgsqlDataAdapter("registro.f_obtener_curso_de_est", conection);
-            dataAdapt.SelectCommand.Parameters.Add("_id_ec_estudiante", NpgsqlDbType.Integer).Value = dat.Id_estudiante;
-            dataAdapt.SelectCommand.Parameters.Add("_id_anio", NpgsqlDbType.Integer).Value = dat.Año;
+            dataAdapt.SelectCommand.Parameters.Add("_id_ec_estudiante", NpgsqlDbType.Integer).Value = int.Parse(dat.Id_estudiante);
+            dataAdapt.SelectCommand.Parameters.Add("_id_anio", NpgsqlDbType.Integer).Value = int.Parse(dat.Año);
             dataAdapt.SelectCommand.CommandType = CommandType.StoredProcedure;
 
             conection.Open();
