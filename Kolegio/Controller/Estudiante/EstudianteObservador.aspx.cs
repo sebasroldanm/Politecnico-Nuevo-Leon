@@ -15,7 +15,7 @@ public partial class View_Estudiante_EstudianteObservador : System.Web.UI.Page
             Console.WriteLine("");
         }
         else
-            Response.Redirect("AccesoDenegado.aspx");
+            Response.Redirect("~/View/Estudiante/AccesoDenegado.aspx");
     }
 
     protected void btn_descargar_Click(object sender, EventArgs e)
