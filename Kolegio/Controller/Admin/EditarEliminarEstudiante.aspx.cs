@@ -118,6 +118,7 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
         fechanac.ReadOnly = usua.L_Aceptar1;
         fechanac.Text = usua.fecha_nacimiento;
         ImagenEst.ImageUrl = usua.Foto;
+        Session["fotosinedit"] = usua.Foto;
         L_ErrorEstudiante.Text = "";
 
         btn_EstudianteEditar.Visible = usua.B_Botones1;
@@ -132,101 +133,42 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
 
     protected void btn_AdministradorEdditar_Click(object sender, EventArgs e)
     {
-        {
-            EUser Edusua = new EUser();
-            DaoUser datos = new DaoUser();
-            int rol = 3;
 
-            if (ddt_lugarnacimDep.SelectedValue == "0" || DDT_Ciudad.SelectedValue == "0")
-            {
-                L_Error.Text = "Debe seleccionar una opcion";
-            }
-            else
-            {
-                String est;
+            LUser logica = new LUser();
+            UUser usua = new UUser();
 
-                if (DDL_Estado.SelectedValue == "Activo")
-                {
-                    est = "true";
-                }
-                else
-                {
-                    est = "false";
-                }
-                if (FileUpload1.FileName == "")
-                {
-
-                    Edusua.Nombre = tb_EstudianteNombre.Text;
-                    Edusua.Rol = Convert.ToString(rol);
-                    Edusua.UserName = tb_EstudianteUsuario.Text;
-                    Edusua.Clave = tb_EstudianteContrasenia.Text;
-                    Edusua.Correo = tb_EstudianteCorreo.Text;
-                    Edusua.Apellido = tb_EstudianteApellido.Text;
-                    Edusua.Direccion = tb_EstudianteDireccion.Text;
-                    Edusua.Telefono = tb_EstudianteTelefono.Text;
-                    Edusua.Documento = tb_EstudianteId.Text;
-                    Edusua.Estado = est;
-                    Edusua.fecha_nacimiento = fechanac.Text;
-                    Edusua.Departamento = ddt_lugarnacimDep.SelectedValue;
-                    Edusua.Ciudad = DDT_Ciudad.SelectedValue;
-                    Edusua.Session = Session.SessionID;
-                    Edusua.Foto = Session["fotosinedit"].ToString();
+            usua = logica.editarAdmin(
+                tb_EstudianteNombre.Text,
+                tb_EstudianteUsuario.Text,
+                tb_EstudianteContrasenia.Text,
+                tb_EstudianteCorreo.Text,
+                tb_EstudianteApellido.Text,
+                tb_EstudianteDireccion.Text,
+                tb_EstudianteTelefono.Text,
+                int.Parse(tb_EstudianteId.Text),
+                DDL_Estado.SelectedValue,
+                fechanac.Text,
+                int.Parse(ddt_lugarnacimDep.SelectedValue),
+                int.Parse(DDT_Ciudad.SelectedValue),
+                Session.SessionID,
+                FileUpload1,
+                Session["fotosinedit"].ToString()
+                );
+        this.Page.Response.Write(usua.Notificacion);
 
 
 
-                    if (Edusua.Foto != null)
-                    {
-                        DataTable registros = datos.EditarUsuario(Edusua);
-                        this.Page.Response.Write("<script language='JavaScript'>window.alert('Estudiante Editado con Exito');</script>");
-                        btn_EstudianteAceptar.Visible = false;
-
-                    }
-
-                }
-                else
-                {
-
-                    Edusua.Nombre = tb_EstudianteNombre.Text;
-                    Edusua.Rol = Convert.ToString(rol);
-                    Edusua.UserName = tb_EstudianteUsuario.Text;
-                    Edusua.Clave = tb_EstudianteContrasenia.Text;
-                    Edusua.Correo = tb_EstudianteCorreo.Text;
-                    Edusua.Apellido = tb_EstudianteApellido.Text;
-                    Edusua.Direccion = tb_EstudianteDireccion.Text;
-                    Edusua.Telefono = tb_EstudianteTelefono.Text;
-                    Edusua.Documento = tb_EstudianteId.Text;
-                    Edusua.Estado = est;
-                    Edusua.fecha_nacimiento = fechanac.Text;
-                    Edusua.Departamento = ddt_lugarnacimDep.SelectedValue;
-                    Edusua.Ciudad = DDT_Ciudad.SelectedValue;
-                    Edusua.Session = Session.SessionID;
-                    Edusua.Foto = cargarImagen();
-                    if (Edusua.Foto != null)
-                    {
-                        DataTable registros = datos.EditarUsuario(Edusua);
-                        this.Page.Response.Write("<script language='JavaScript'>window.alert('Estudiante Editado con Exito');</script>");
-                        btn_EstudianteAceptar.Visible = false;
-
-                    }
-                }
-
-
-
-
-            }
-        }
-
-        tb_EstudianteId.ReadOnly = true;
-        tb_EstudianteNombre.ReadOnly = false;
-        tb_EstudianteApellido.ReadOnly = false;
-        tb_EstudianteCorreo.ReadOnly = false;
-        tb_EstudianteDireccion.ReadOnly = false;
-        tb_EstudianteTelefono.ReadOnly = false;
-        tb_EstudianteUsuario.ReadOnly = false;
-        tb_EstudianteContrasenia.ReadOnly = false;
-        btn_EstudianteEditar.Visible = false;
-        btn_EstudianteNuevo.Visible = true;
-        btn_EstudianteAceptar.Visible = false;
+        tb_EstudianteId.ReadOnly = usua.BotonTrue;
+        tb_EstudianteNombre.ReadOnly = usua.BotonFalse;
+        tb_EstudianteApellido.ReadOnly = usua.BotonFalse;
+        tb_EstudianteCorreo.ReadOnly = usua.BotonFalse;
+        tb_EstudianteDireccion.ReadOnly = usua.BotonFalse;
+        tb_EstudianteTelefono.ReadOnly = usua.BotonFalse;
+        tb_EstudianteUsuario.ReadOnly = usua.BotonFalse;
+        tb_EstudianteContrasenia.ReadOnly = usua.BotonFalse;
+        btn_EstudianteEditar.Visible = usua.BotonFalse;
+        btn_EstudianteNuevo.Visible = usua.BotonTrue;
+        btn_EstudianteAceptar.Visible = usua.BotonFalse;
 
     }
             
@@ -270,48 +212,48 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
 
 
 
-    protected String cargarImagen()
-    {
+    //protected String cargarImagen()
+    //{
 
 
-        string sDia = Convert.ToString(DateTime.Now.Day);
-        string sMes = Convert.ToString(DateTime.Now.Month);
-        string sAgno = Convert.ToString(DateTime.Now.Year);
-        string sHora = Convert.ToString(DateTime.Now.Hour);
-        string sMinu = Convert.ToString(DateTime.Now.Minute);
-        string sSeco = Convert.ToString(DateTime.Now.Second);
-        string sFecha = sDia + sMes + sAgno + sHora + sMinu + sSeco;
-
-
-
-
-        ClientScriptManager cm = this.ClientScript;
-        String nombreArchivo = System.IO.Path.GetFileName(FileUpload1.PostedFile.FileName);
-        String extension = System.IO.Path.GetExtension(FileUpload1.PostedFile.FileName);
-        String saveLocation = "";
-
-        if (!(string.Compare(extension, ".png", true) == 0 || string.Compare(extension, ".jpeg", true) == 0 || string.Compare(extension, ".jpg", true) == 0))
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>");
+    //    string sDia = Convert.ToString(DateTime.Now.Day);
+    //    string sMes = Convert.ToString(DateTime.Now.Month);
+    //    string sAgno = Convert.ToString(DateTime.Now.Year);
+    //    string sHora = Convert.ToString(DateTime.Now.Hour);
+    //    string sMinu = Convert.ToString(DateTime.Now.Minute);
+    //    string sSeco = Convert.ToString(DateTime.Now.Second);
+    //    string sFecha = sDia + sMes + sAgno + sHora + sMinu + sSeco;
 
 
 
-            return null;
-        }
 
-        saveLocation = Server.MapPath("~/FotosUser") + "/" + sFecha + sMinu + nombreArchivo;
+    //    ClientScriptManager cm = this.ClientScript;
+    //    String nombreArchivo = System.IO.Path.GetFileName(FileUpload1.PostedFile.FileName);
+    //    String extension = System.IO.Path.GetExtension(FileUpload1.PostedFile.FileName);
+    //    String saveLocation = "";
 
-        if (System.IO.File.Exists(saveLocation))
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe una imagen en el servidor con ese nombre');</script>");
-            return null;
-        }
+    //    if (!(string.Compare(extension, ".png", true) == 0 || string.Compare(extension, ".jpeg", true) == 0 || string.Compare(extension, ".jpg", true) == 0))
+    //    {
+    //        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>");
 
-        FileUpload1.PostedFile.SaveAs(saveLocation);
-        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo de imagen ha sido cargado');</script>");
 
-        return "~/FotosUser" + "/" + sFecha + sMinu + nombreArchivo;
-    }
+
+    //        return null;
+    //    }
+
+    //    saveLocation = Server.MapPath("~/FotosUser") + "/" + sFecha + sMinu + nombreArchivo;
+
+    //    if (System.IO.File.Exists(saveLocation))
+    //    {
+    //        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe una imagen en el servidor con ese nombre');</script>");
+    //        return null;
+    //    }
+
+    //    FileUpload1.PostedFile.SaveAs(saveLocation);
+    //    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo de imagen ha sido cargado');</script>");
+
+    //    return "~/FotosUser" + "/" + sFecha + sMinu + nombreArchivo;
+    //}
 
 
 }

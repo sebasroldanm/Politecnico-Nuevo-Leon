@@ -24,6 +24,8 @@ namespace Utilitarios
         private Boolean L_Aceptar;
         private Boolean B_Botones;
         private String notificacion;
+        private Boolean botonTrue;
+        private Boolean botonFalse;
 
         //
         //Correo
@@ -151,5 +153,7 @@ namespace Utilitarios
         public string Inicio { get => inicio; set => inicio = value; }
         public string Mision { get => mision; set => mision = value; }
         public string Vision { get => vision; set => vision = value; }
+        public bool BotonTrue { get => botonTrue; set => botonTrue = value; }
+        public bool BotonFalse { get => botonFalse; set => botonFalse = value; }
     }
 }
