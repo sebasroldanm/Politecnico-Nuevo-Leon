@@ -32,7 +32,7 @@
                     <label typeof="text" class="control-label" style="color: #FFFFFF">Curso :</label>
                     <asp:DropDownList ID="ddt_curso" Class="form-control" runat="server" AutoPostBack="True" DataSourceID="ODB_curso" DataTextField="nombre_curso" DataValueField="id_ancu" OnSelectedIndexChanged="ddt_curso_SelectedIndexChanged"></asp:DropDownList>
 
-                    <asp:ObjectDataSource ID="ODB_curso" runat="server" SelectMethod="cursoProfesor" TypeName="DaoUser">
+                    <asp:ObjectDataSource ID="ODB_curso" runat="server" SelectMethod="cursoProfesor" TypeName="Datos.DUser">
                         <SelectParameters>
                             <asp:SessionParameter DefaultValue="userId" Name="id_p" SessionField="userId" Type="String" />
                             <asp:SessionParameter DefaultValue="" Name="anio" SessionField="anio" Type="String" />
@@ -43,7 +43,7 @@
                     <label typeof="text" class="control-label" style="color: #FFFFFF">Materia :</label>
                     <asp:DropDownList ID="ddl_materia" Class="form-control" runat="server" DataSourceID="ODS_Materia" DataTextField="nombre_materia" DataValueField="id_materia"></asp:DropDownList>
 
-                    <asp:ObjectDataSource ID="ODS_Materia" runat="server" SelectMethod="obtenermateriacurso" TypeName="DaoUser">
+                    <asp:ObjectDataSource ID="ODS_Materia" runat="server" SelectMethod="obtenermateriacurso" TypeName="Datos.DUser">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="ddt_curso" Name="Curso" PropertyName="SelectedValue" Type="String" />
                             <asp:SessionParameter Name="Prof" SessionField="userId" Type="String" />
@@ -54,7 +54,7 @@
                     <label typeof="text" class="control-label" style="color: #FFFFFF">Alumno :</label>
                     <asp:DropDownList ID="ddl_alumno" Class="form-control" runat="server" DataSourceID="ODS_estudiantes" DataTextField="nombre_usua" DataValueField="id_usua"></asp:DropDownList>
 
-                    <asp:ObjectDataSource ID="ODS_estudiantes" runat="server" SelectMethod="obtenerEstApel" TypeName="DaoUser">
+                    <asp:ObjectDataSource ID="ODS_estudiantes" runat="server" SelectMethod="obtenerEstApel" TypeName="Datos.DUser">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="ddt_curso" Name="curs" PropertyName="SelectedValue" Type="Int32" />
                         </SelectParameters>
