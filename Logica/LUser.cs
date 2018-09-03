@@ -644,7 +644,39 @@ namespace Logica
             return ImageData; //return the byte data
         }
 
+        public UUser verificarCorreo(
+            string userId,
+            string persona,
+            string apePersona,
+            string correo_l,
+            string destinatario,
+            string asunto,
+            string mensaje
+            )
+        {
+            DUser dat = new DUser();
+            UUser usua = new UUser();
 
+            DataTable resultado = dat.verificarCorreo(destinatario);
+
+            if (resultado.Rows.Count > 0)
+            {
+                mensaje = mensaje + "<br><br>Atentamente: " + persona + " " + apePersona + "<br>Correo para responder: " + correo_l + "";
+                string cadena = mensaje;
+                DCorreoEnviar correo = new DCorreoEnviar();
+                correo.enviarCorreoEnviar(destinatario, asunto, mensaje);
+                usua.Notificacion = "<script language='JavaScript'>window.alert('Se ha enviado su mensaje con éxito');</script>";
+                usua.Url = "AdministradorMensaje.aspx";
+            }
+            else
+            {
+                usua.Mensaje = "El correo digitado no existe";
+                usua.CDestinatario = "";
+            }
+
+
+            return usua;
+        }
 
 
 

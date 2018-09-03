@@ -1130,7 +1130,7 @@ namespace Datos
         //** ENVIO MENSAJE CORREO - ** ENVIO MENSAJE CORREO - ** ENVIO MENSAJE CORREO - ** ENVIO MENSAJE CORREO - ** ENVIO MENSAJE CORREO 
 
 
-        public DataTable verificarCorreo(UUser enc)
+        public DataTable verificarCorreo(string correo)
         {
             DataTable Usuario = new DataTable();
             NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
@@ -1139,7 +1139,7 @@ namespace Datos
             {
                 NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_verificar_correo", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_correo", NpgsqlDbType.Text).Value = enc.Correo;
+                dataAdapter.SelectCommand.Parameters.Add("_correo", NpgsqlDbType.Text).Value = correo;
 
                 conection.Open();
                 dataAdapter.Fill(Usuario);

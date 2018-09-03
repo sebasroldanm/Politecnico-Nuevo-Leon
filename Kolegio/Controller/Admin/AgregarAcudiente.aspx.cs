@@ -104,7 +104,7 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
 
     protected void btn_AcudienteNuevo_Click(object sender, EventArgs e)
     {
-        Response.Redirect("/View/Admin/AgregarAcudiente.aspx");
+        Response.Redirect("~/View/Admin/AgregarAcudiente.aspx");
 
         fechanac.Text = "";
         tb_AcudienteNombre.Text = "";
