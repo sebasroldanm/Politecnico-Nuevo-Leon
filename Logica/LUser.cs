@@ -291,30 +291,30 @@ namespace Logica
 
             return "~/FotosUser" + "/" + sFecha + sMinu + nombreArchivo;
 
-        //ClientScriptManager cm = this.ClientScript;
-        //String nombreArchivo = System.IO.Path.GetFileName(foto.PostedFile.FileName);
-        //String extension = System.IO.Path.GetExtension(foto.PostedFile.FileName);
-        //String saveLocation = "";
+            //ClientScriptManager cm = this.ClientScript;
+            //String nombreArchivo = System.IO.Path.GetFileName(foto.PostedFile.FileName);
+            //String extension = System.IO.Path.GetExtension(foto.PostedFile.FileName);
+            //String saveLocation = "";
 
-        //if (!(string.Compare(extension, ".png", true) == 0 || string.Compare(extension, ".jpeg", true) == 0 || string.Compare(extension, ".jpg", true) == 0))
-        //{
-        //    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>");
-        //    //btnigm_calendar.Visible = true;
-        //    return null;
-        //}
+            //if (!(string.Compare(extension, ".png", true) == 0 || string.Compare(extension, ".jpeg", true) == 0 || string.Compare(extension, ".jpg", true) == 0))
+            //{
+            //    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>");
+            //    //btnigm_calendar.Visible = true;
+            //    return null;
+            //}
 
-        //saveLocation = Server.MapPath("~/FotosUser") + "/" + nombreArchivo;
+            //saveLocation = Server.MapPath("~/FotosUser") + "/" + nombreArchivo;
 
-        //if (System.IO.File.Exists(saveLocation))
-        //{
-        //    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe una imagen en el servidor con ese nombre');</script>");
-        //    return null;
-        //}
+            //if (System.IO.File.Exists(saveLocation))
+            //{
+            //    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe una imagen en el servidor con ese nombre');</script>");
+            //    return null;
+            //}
 
-        //foto.PostedFile.SaveAs(saveLocation);
-        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo de imagen ha sido cargado');</script>");
+            //foto.PostedFile.SaveAs(saveLocation);
+            //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo de imagen ha sido cargado');</script>");
 
-        //return "~/FotosUser" + "/" + nombreArchivo;
+            //return "~/FotosUser" + "/" + nombreArchivo;
         }
 
         public UUser buscarAcudiete(int departamento, int ciudad, String documento)
@@ -499,7 +499,7 @@ namespace Logica
                     usua.Ciudad = ciudad.ToString();
                     usua.Session = Session.SessionID;
                     usua.Foto = cargarImagen(fotoup);
-                    
+
                     if (usua.Foto != null)
                     {
                         DataTable registros = dat.EditarUsuario(usua);
@@ -509,7 +509,7 @@ namespace Logica
 
                     }
                 }
-                
+
             }
             usua.BotonFalse = false;
             usua.BotonTrue = true;
@@ -644,39 +644,49 @@ namespace Logica
             return ImageData; //return the byte data
         }
 
-        public UUser verificarCorreo(
-            string userId,
-            string persona,
-            string apePersona,
-            string correo_l,
-            string destinatario,
-            string asunto,
-            string mensaje
-            )
+        public UUser ModifConfiguracion(
+                        FileUpload fotoName,
+                        string userName,
+                        string contraseña,
+                        string correo,
+                        string sesion,
+                        string SuserId,
+                        string Sfoto,
+                        string Suser,
+                        string Sclave,
+                        string Scorreo    )
         {
-            DUser dat = new DUser();
-            UUser usua = new UUser();
+            UUser enc = new UUser();
+            DUser datos = new DUser();
 
-            DataTable resultado = dat.verificarCorreo(destinatario);
+            String foto = System.IO.Path.GetFileName(fotoName.PostedFile.FileName);
 
-            if (resultado.Rows.Count > 0)
+            if (fotoName.FileName == "")
             {
-                mensaje = mensaje + "<br><br>Atentamente: " + persona + " " + apePersona + "<br>Correo para responder: " + correo_l + "";
-                string cadena = mensaje;
-                DCorreoEnviar correo = new DCorreoEnviar();
-                correo.enviarCorreoEnviar(destinatario, asunto, mensaje);
-                usua.Notificacion = "<script language='JavaScript'>window.alert('Se ha enviado su mensaje con éxito');</script>";
-                usua.Url = "AdministradorMensaje.aspx";
+                enc.Id_estudiante = SuserId;
+                enc.UserName = userName;
+                enc.Clave = contraseña;
+                enc.Correo = correo;
+                enc.Session = sesion;
+                enc.Foto = Sfoto;
+
             }
             else
             {
-                usua.Mensaje = "El correo digitado no existe";
-                usua.CDestinatario = "";
+                foto = "~/FotosUser/" + fotoName.FileName;
+                enc.Id_estudiante = SuserId;
+                enc.UserName = userName;
+                enc.Clave = contraseña;
+                enc.Correo = correo;
+                enc.Foto = cargarImagen(fotoName);
+                enc.Session = Session.SessionID;
             }
 
+            DataTable resultado = datos.editarConfig(enc);
 
-            return usua;
+            return enc;
         }
+
 
 
 

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Datos;
+using Utilitarios;
 
 public partial class View_Profesor_MasterProfesor : System.Web.UI.MasterPage
 {
@@ -22,8 +25,8 @@ public partial class View_Profesor_MasterProfesor : System.Web.UI.MasterPage
         Session["userId"] = null;
         Session["nombre"] = null;
 
-        DaoUser user = new DaoUser();
-        EUser datos = new EUser();
+        DUser user = new DUser();
+        UUser datos = new UUser();
         datos.Session = Session.SessionID;
         user.cerrarSession(datos);
 
