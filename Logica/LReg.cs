@@ -31,6 +31,10 @@ namespace Logica
                     //Horario Profesor
                     registro = datos.horarioProf(id_curso.ToString());
                     break;
+                case 3:
+                    //Horario Estudiante
+                    registro = datos.horario(id_curso.ToString());
+                    break;
                 default:
                     registro = datos.horarioCurso(id_curso);
                     break;
