@@ -411,119 +411,115 @@ namespace Logica
             return usua;
         }
 
-        //public UUser editarAdmin(
-        //    string nombre,
-        //    int rol,
-        //    string userName,
-        //    string clave,
-        //    string correo,
-        //    string apellido,
-        //    string direccion,
-        //    string telefono,
-        //    int documento,
-        //    int estado,
-        //    string fechanac,
-        //    int departamento,
-        //    int ciudad,
-        //    string session,
-        //    FileUpload foto
-        //    )
-        //{
-        //    UUser usua = new UUser();
-        //    DUser dat = new DUser();
-        //    rol = 1;
+        public UUser editarAdmin(
+            string nombre,
+            string userName,
+            string clave,
+            string correo,
+            string apellido,
+            string direccion,
+            string telefono,
+            int documento,
+            string estado,
+            string fechanac,
+            int departamento,
+            int ciudad,
+            string session,
+            FileUpload fotoup,
+            string foto
+            )
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+            int rol = 1;
 
 
-        //    if (departamento == 0 || ciudad == 0)
-        //    {
-        //        usua.Mensaje = "Debe seleccionar una opcion";
-        //    }
-        //    else
-        //    {
-        //        String est;
+            if (departamento == 0 || ciudad == 0)
+            {
+                usua.Mensaje = "Debe seleccionar una opcion";
+            }
+            else
+            {
+                String est;
 
-        //        if (estado == 0)
-        //        {
-        //            est = "true";
-        //        }
-        //        else
-        //        {
-        //            est = "false";
-        //        }
-
-
-        //        if (foto.ToString() == "")
-        //        {
-
-        //            usua.Nombre = nombre;
-        //            usua.Rol = rol.ToString();
-        //            usua.UserName = userName;
-        //            usua.Clave = clave;
-        //            usua.Correo = correo;
-        //            usua.Apellido = apellido;
-        //            usua.Direccion = direccion;
-        //            usua.Telefono = telefono;
-        //            usua.Documento = documento.ToString();
-        //            usua.Estado = est;
-        //            usua.fecha_nacimiento = fechanac;
-        //            usua.Departamento = departamento.ToString();
-        //            usua.Ciudad = ciudad.ToString();
-        //            usua.Session = Session.SessionID;
-        //            usua.Foto = foto;
-
-        //            if (foto != null)
-        //            {
-        //                DataTable registros = dat.EditarUsuario(usua);
-        //                this.Page.Response.Write("<script language='JavaScript'>window.alert('Administrador Editado con Exito');</script>");
-        //                usua.B_Botones1 = false;
-        //                //btn_AdministradorAceptar.Visible = false;
-
-        //            }
-
-        //        }
-        //        else
-        //        {
-
-        //            usua.Nombre = nombre;
-        //            usua.Rol = rol.ToString();
-        //            usua.UserName = userName;
-        //            usua.Clave = clave;
-        //            usua.Correo = correo;
-        //            usua.Apellido = apellido;
-        //            usua.Direccion = direccion;
-        //            usua.Telefono = telefono;
-        //            usua.Documento = documento.ToString();
-        //            usua.Estado = est;
-        //            usua.fecha_nacimiento = fechanac;
-        //            usua.Departamento = departamento.ToString();
-        //            usua.Ciudad = ciudad.ToString();
-        //            usua.Session = Session.SessionID;
-        //            usua.Foto = cargarImagen(foto);
+                if (estado == "Activo")
+                {
+                    est = "true";
+                }
+                else
+                {
+                    est = "false";
+                }
 
 
+                if (fotoup.FileName == "")
+                {
 
+                    usua.Nombre = nombre;
+                    usua.Rol = rol.ToString();
+                    usua.UserName = userName;
+                    usua.Clave = clave;
+                    usua.Correo = correo;
+                    usua.Apellido = apellido;
+                    usua.Direccion = direccion;
+                    usua.Telefono = telefono;
+                    usua.Documento = documento.ToString();
+                    usua.Estado = est;
+                    usua.fecha_nacimiento = fechanac;
+                    usua.Departamento = departamento.ToString();
+                    usua.Ciudad = ciudad.ToString();
+                    usua.Session = Session.SessionID;
+                    usua.Foto = foto;
 
+                    if (foto != null)
+                    {
+                        DataTable registros = dat.EditarUsuario(usua);
+                        usua.Notificacion = "<script language='JavaScript'>window.alert('Usuario Editado con Éxito');</script>";
+                        usua.B_Botones1 = false;
+                        //btn_AdministradorAceptar.Visible = false;
 
-        //            if (usua.Foto != null)
-        //            {
-        //                DataTable registros = dat.EditarUsuario(usua);
-        //                this.Page.Response.Write("<script language='JavaScript'>window.alert('Administrador Editado con Exito');</script>");
-        //                usua.B_Botones1 = false;
-        //                //btn_AdministradorAceptar.Visible = false;
+                    }
 
-        //            }
-        //        }
+                }
+                else
+                {
 
+                    usua.Nombre = nombre;
+                    usua.Rol = rol.ToString();
+                    usua.UserName = userName;
+                    usua.Clave = clave;
+                    usua.Correo = correo;
+                    usua.Apellido = apellido;
+                    usua.Direccion = direccion;
+                    usua.Telefono = telefono;
+                    usua.Documento = documento.ToString();
+                    usua.Estado = est;
+                    usua.fecha_nacimiento = fechanac;
+                    usua.Departamento = departamento.ToString();
+                    usua.Ciudad = ciudad.ToString();
+                    usua.Session = Session.SessionID;
+                    usua.Foto = cargarImagen(fotoup);
+                    
+                    if (usua.Foto != null)
+                    {
+                        DataTable registros = dat.EditarUsuario(usua);
+                        usua.Notificacion = " <script language='JavaScript'>window.alert('Usuario Editado con Éxito');</script>";
+                        usua.B_Botones1 = false;
+                        //btn_AdministradorAceptar.Visible = false;
 
+                    }
+                }
+                
+            }
+            usua.BotonFalse = false;
+            usua.BotonTrue = true;
 
-
-        //    }
-        //    return usua;
-        //}
+            return usua;
+        }
 
 
 
-    public void reporteAdmin(DataTable informacion)
+        public void reporteAdmin(DataTable informacion)
         {
             DUser administrador = new DUser();
             DataRow fila;
