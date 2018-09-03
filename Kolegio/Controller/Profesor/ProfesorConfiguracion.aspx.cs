@@ -26,7 +26,7 @@ public partial class View_Profesor_ProfesorConfiguracion : System.Web.UI.Page
         else
             Response.Redirect("AccesoDenegado.aspx");
 
-       
+
     }
 
     protected void btn_Editar_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ public partial class View_Profesor_ProfesorConfiguracion : System.Web.UI.Page
     }
 
     protected void btn_Aceptar_Click(object sender, EventArgs e)
-    { 
+    {
         UUser enc = new UUser();
         DUser datos = new DUser();
         LUser logic = new LUser();
@@ -86,6 +86,6 @@ public partial class View_Profesor_ProfesorConfiguracion : System.Web.UI.Page
         Response.Redirect("~/View/Profesor/ProfesorHorario.aspx");
     }
 
-  
+
 
 }

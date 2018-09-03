@@ -1130,7 +1130,7 @@ namespace Datos
         //** ENVIO MENSAJE CORREO - ** ENVIO MENSAJE CORREO - ** ENVIO MENSAJE CORREO - ** ENVIO MENSAJE CORREO - ** ENVIO MENSAJE CORREO 
 
 
-        public DataTable verificarCorreo(UUser enc)
+        public DataTable verificarCorreo(UUser datos)
         {
             DataTable Usuario = new DataTable();
             NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
@@ -1139,7 +1139,7 @@ namespace Datos
             {
                 NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_verificar_correo", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_correo", NpgsqlDbType.Text).Value = enc.Correo;
+                dataAdapter.SelectCommand.Parameters.Add("_correo", NpgsqlDbType.Text).Value = datos.Correo;
 
                 conection.Open();
                 dataAdapter.Fill(Usuario);
@@ -1795,7 +1795,7 @@ namespace Datos
             {
                 NpgsqlDataAdapter dataAdapt = new NpgsqlDataAdapter("registro.f_obtener_curso_de_est", conection);
                 dataAdapt.SelectCommand.Parameters.Add("_id_ec_estudiante", NpgsqlDbType.Integer).Value = int.Parse(dat.Id_estudiante);
-                dataAdapt.SelectCommand.Parameters.Add("_id_anio", NpgsqlDbType.Integer).Value = dat.Año;
+                dataAdapt.SelectCommand.Parameters.Add("_id_anio", NpgsqlDbType.Integer).Value = int.Parse(dat.Año);
                 dataAdapt.SelectCommand.CommandType = CommandType.StoredProcedure;
 
                 conection.Open();
