@@ -317,7 +317,7 @@ public class DaoUser
         {
             NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_obtener_modusua", conection);
             dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dataAdapter.SelectCommand.Parameters.Add("_num_documento", NpgsqlDbType.Integer).Value = dat.Documento;
+            dataAdapter.SelectCommand.Parameters.Add("_num_documento", NpgsqlDbType.Integer).Value = int.Parse(dat.Documento);
 
             conection.Open();
             dataAdapter.Fill(Usua);
@@ -1323,7 +1323,7 @@ public class DaoUser
         try
         {
             NpgsqlDataAdapter dataAdapt = new NpgsqlDataAdapter("registro.f_obtener_materia_curso", conection);
-            dataAdapt.SelectCommand.Parameters.Add("_id_curso", NpgsqlDbType.Integer).Value = reg.Curso;
+            dataAdapt.SelectCommand.Parameters.Add("_id_curso", NpgsqlDbType.Integer).Value = int.Parse(reg.Curso);
             dataAdapt.SelectCommand.CommandType = CommandType.StoredProcedure;
 
             conection.Open();
@@ -1477,8 +1477,8 @@ public class DaoUser
         {
             NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("registro.f_insertar_est_curso", conection);
             dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-            dataAdapter.SelectCommand.Parameters.Add("_id_ec_estudiante", NpgsqlDbType.Integer).Value = dat.Id_estudiante;
-            dataAdapter.SelectCommand.Parameters.Add("_id_ec_curso", NpgsqlDbType.Integer).Value = dat.Curso;
+            dataAdapter.SelectCommand.Parameters.Add("_id_ec_estudiante", NpgsqlDbType.Integer).Value = int.Parse(dat.Id_estudiante);
+            dataAdapter.SelectCommand.Parameters.Add("_id_ec_curso", NpgsqlDbType.Integer).Value = int.Parse(dat.Curso);
 
             conection.Open();
             dataAdapter.Fill(Usua);
