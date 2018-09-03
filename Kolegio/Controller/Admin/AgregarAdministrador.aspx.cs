@@ -21,25 +21,27 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         Response.Cache.SetCacheability(HttpCacheability.NoCache);
 
 
-        if (Session["userId"] != null)
-        {
-            //fechanac.ReadOnly = true;
-            //btnigm_calendar.Visible = false;va
-            int year;
-            year = int.Parse(DateTime.Now.ToString("yyyy"));
-            year = year - 18;
-            CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + year);
-        }
-        else
-            Response.Redirect("AccesoDenegado.aspx");
+        //if (Session["userId"] != null)
+        //{
+        //    //fechanac.ReadOnly = true;
+        //    //btnigm_calendar.Visible = false;va
+        //    int year;
+        //    year = int.Parse(DateTime.Now.ToString("yyyy"));
+        //    year = year - 18;
+        //    CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + year);
+        //}
+        //else
+        //    Response.Redirect("AccesoDenegado.aspx");
 
-        //LLogin Logica = new LLogin();
-        //UUser usua = new UUser();
+        LLogin Logica = new LLogin();
+        UUser usua = new UUser();
 
-        //Logica.logAgregarAdmin(Session["userId"].ToString());
-        //Response.Redirect(usua.Url);
-        //CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + usua.RolId);
-
+        string session = Session["userId"].ToString();
+        usua = Logica.logAgregarAdmin(session);
+        string prueba = usua.Url;
+        base.OnLoad(e);
+        Response.Redirect(usua.Url);
+        CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + usua.RolId);
     }
 
     protected void btn_AdministradorAceptar_Click2(object sender, EventArgs e)

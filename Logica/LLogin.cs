@@ -19,20 +19,46 @@ namespace Logica
             UUser usua = new UUser();
             DUser datos = new DUser();
 
-            if (userId != null)
-            {
-                //fechanac.ReadOnly = true;
-                //btnigm_calendar.Visible = false;va
-                int year;
-                year = int.Parse(DateTime.Now.ToString("yyyy"));
-                usua.RolId = year - 18;
-                usua.Url = "AgregarAdministrador.aspx";
-                //CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + year);
-            }
-            else
-                usua.Url="AccesoDenegado.aspx";
+            //if (!IsPostBack)
+            //{
+                if (userId != "pailas")
+                {
+                    //fechanac.ReadOnly = true;
+                    //btnigm_calendar.Visible = false;va
+                    int year;
+                    year = int.Parse(DateTime.Now.ToString("yyyy"));
+                    usua.RolId = year - 18;
+                    string url = "AgregarAdministrador.aspx";
+                    usua.Url = url;
+                    //CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + year);
+                }
+                else
+                {
+                    string url = "AccesoDenegado.aspx";
+                    usua.Url = url;
+                }
 
+            //}
             return usua;
+
+            //if (userId != "pailas")
+            //{
+            //    //fechanac.ReadOnly = true;
+            //    //btnigm_calendar.Visible = false;va
+            //    int year;
+            //    year = int.Parse(DateTime.Now.ToString("yyyy"));
+            //    usua.RolId = year - 18;
+            //    string url = "";
+            //    usua.Url = url;
+            //    //CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + year);
+            //}
+            //else
+            //{
+            //    string url = "AccesoDenegado.aspx";
+            //    usua.Url = url;
+            //}
+
+            //return usua;
         }
     }
 }

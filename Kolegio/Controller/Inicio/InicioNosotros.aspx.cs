@@ -11,7 +11,7 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         
-        Session["userId"] = null;
+        Session["userId"] = "pailas";
         Session["nombre"] = null;
 
         DaoUser user = new DaoUser();

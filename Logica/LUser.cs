@@ -617,6 +617,40 @@ namespace Logica
             }
         }
 
+        public void reporteCertificadoTrabajoProfe(DataTable informacion, UUser documento)
+        {
+            DUser estudiante = new DUser();
+            DataRow fila;
+
+            DataTable Intermedio = estudiante.obtenerCertificadoProf(reg);
+
+            for (int i = 0; i < Intermedio.Rows.Count; i++)
+            {
+                fila = informacion.NewRow();
+                fila["Apellido"] = Intermedio.Rows[i]["apellido_usua"].ToString();
+                fila["Nombre"] = Intermedio.Rows[i]["nombre_usua"].ToString();
+                fila["Documento"] = int.Parse(Intermedio.Rows[i]["num_documento"].ToString());
+                informacion.Rows.Add(fila);
+            }
+        }
+
+        public void reporteCertidicadoEstudiante(DataTable informacion, UUser docuemtno)
+        {
+            DUser estudiante = new DUser();
+            DataRow fila;
+
+            DataTable Intermedio = estudiante.obtenerCertificadoEst(reg);
+
+            for (int i = 0; i < Intermedio.Rows.Count; i++)
+            {
+                fila = informacion.NewRow();
+                fila["Apellido"] = Intermedio.Rows[i]["apellido_usua"].ToString();
+                fila["Nombre"] = Intermedio.Rows[i]["nombre_usua"].ToString();
+                fila["Documento"] = int.Parse(Intermedio.Rows[i]["num_documento"].ToString());
+                informacion.Rows.Add(fila);
+            }
+        }
+
         private byte[] streamFile(string filename)
         {
             FileStream fs;
