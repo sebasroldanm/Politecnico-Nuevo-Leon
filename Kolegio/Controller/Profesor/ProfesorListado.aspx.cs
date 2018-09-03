@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Datos;
+using Utilitarios;
+using Logica;
 
 public partial class View_Profesor_ProfesorListado : System.Web.UI.Page
 {
@@ -16,7 +19,7 @@ public partial class View_Profesor_ProfesorListado : System.Web.UI.Page
             tb_documentoestudiante.ReadOnly = true;
         }
         else
-            Response.Redirect("AccesoDenegado.aspx");
+            Response.Redirect("~View/Profesor/AccesoDenegado.aspx");
         
        
     }
@@ -29,13 +32,10 @@ public partial class View_Profesor_ProfesorListado : System.Web.UI.Page
 
     protected void btn_AdministradorAceptar_Click2(object sender, EventArgs e)
     {
-        DaoUser datos = new DaoUser();
-        EUser enc = new EUser();
-
-        enc.Id_estudiante = Session["id"].ToString();
-        enc.Observacion = TB_Observ.Text.ToString();
-
-        datos.insertarObservacion(enc);
+        DUser datos = new DUser();
+        UUser enc = new UUser();
+        LReg logic = new LReg();
+        enc = logic.insertObservacion(Session["id"].ToString(), TB_Observ.Text.ToString());
         GridView1.DataBind();
     }
 

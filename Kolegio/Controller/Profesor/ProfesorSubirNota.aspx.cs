@@ -16,17 +16,15 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
         Response.Cache.SetNoStore();
         if (Session["userId"] != null)
         {
-            DaoUser datos = new DaoUser();
-            DateTime fecha = DateTime.Now;
-            string año = (fecha.Year).ToString();
-            año = año + "-01-01";
-            DataTable re = datos.obtenerAniodeCurso(año);
-            Session["anio"] = re.Rows[0]["id_anio"];
-            btn_Subirnota.Visible = true;
+            LReg logic = new LReg();
+            UUser enc = new UUser();
+            enc = logic.ObAniodeCurso(Session["userId"].ToString());
+            Session["anio"] = enc.Año;
+            btn_Subirnota.Visible = false;
             ButtonVerNota.Visible = true;
         }
         else
-            Response.Redirect("/View/Acudiente/AccesoDenegado.aspx");
+            Response.Redirect("~/View/Acudiente/AccesoDenegado.aspx");
         
     }
 

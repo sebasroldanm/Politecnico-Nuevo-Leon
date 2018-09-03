@@ -281,7 +281,49 @@ namespace Logica
             return enc;
         }
 
+        public UUser ObAniodeCurso(string sesion)
+        {
+            UUser enc = new UUser();
+            DUser datos = new DUser();
+            if (sesion != null)
+            {
+                DateTime fecha = DateTime.Now;
+                string año = (fecha.Year).ToString();
+                año = año + "-01-01";
+                DataTable re = datos.obtenerAniodeCurso(año);
+                enc.Año = re.Rows[0]["id_anio"].ToString();
+            }
+            else
+                enc.Url = "~/View/Profesor/AccesoDenegado.aspx";
 
+            return enc;
+        }
+
+        public UUser selecObservador(string documento)
+        {
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+
+            enc.Documento = documento;
+
+            DataTable registro = datos.obtenerUsuarioMod(enc);
+            enc.Id_estudiante = registro.Rows[0]["id_usua"].ToString();
+            enc.Mensaje = ("~/View/Profesor/ProfesorListado.aspx");
+
+            return enc;
+        }
+
+        public UUser insertObservacion(string id, string observacion)
+        {
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+
+            enc.Id_estudiante = id;
+            enc.Observacion = observacion;
+
+            datos.insertarObservacion(enc);
+            return enc;
+        }
 
 
 
