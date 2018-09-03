@@ -308,7 +308,7 @@ namespace Logica
 
             DataTable registro = datos.obtenerUsuarioMod(enc);
             enc.Id_estudiante = registro.Rows[0]["id_usua"].ToString();
-            enc.Mensaje = ("~/View/Profesor/ProfesorListado.aspx");
+            enc.Url = ("~/View/Profesor/ProfesorListado.aspx");
 
             return enc;
         }
@@ -325,6 +325,58 @@ namespace Logica
             return enc;
         }
 
+        public UUser ActualizarMensajeProf(int ddl_alumno )
+        {
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+            int alumno = ddl_alumno;
+
+            DataTable mensaje = datos.acudientemensaje(alumno);
+            if (mensaje.Rows.Count > 0)
+            {
+                enc.Mensaje = mensaje.Rows[0]["correo"].ToString();
+                enc.CDestinatario = mensaje.Rows[0]["correo"].ToString();
+            }
+            else
+            {
+                enc.Mensaje = "";
+            }
+            return enc;
+        }
+
+        public UUser enviarMensajeProf(string materia, string alumno, string curso, string userId, string persona, string apePersona, string correo_l, string asunto, string mensaje, string tb_destinatario, string destinatario)
+        {
+            UUser encapsular = new UUser();
+            DUser datos = new DUser();
+            
+
+            if (materia == "0" || alumno == "0" || curso == "0")
+            {
+                encapsular.Mensaje = "Debe seleccionar una opcion";
+            }
+            else
+            {
+                //CORREO*******************************
+                encapsular.Correo = tb_destinatario;
+                DataTable resultado = datos.verificarCorreo(encapsular);
+
+                if (resultado.Rows.Count > 0)
+                {
+                    mensaje = mensaje + "<br><br>Atentamente: " + persona + " " + apePersona + "<br>Correo para responder: " + correo_l + "";
+                    string cadena = mensaje;
+                    DCorreoEnviar correo = new DCorreoEnviar();
+                    correo.enviarCorreoEnviar(destinatario, asunto, mensaje);
+                    encapsular.MensajeAcudiente = "mensaje";
+                    encapsular.Notificacion = /* "mensaje",*/ "<script type='text/javascript'>alert('Su Mensaje ha sido Enviado.');window.location=\"ProfesorMensaje.aspx\"</script>";
+                }
+                else
+                {
+                    encapsular.Mensaje = "El correo digitado no existe";
+                    encapsular.CDestinatario = "";
+                }
+            }
+            return encapsular;
+        }
 
 
         public bool validar_mat(string materia)

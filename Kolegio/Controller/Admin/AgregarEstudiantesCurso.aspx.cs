@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Datos;
+using Logica;
 
 public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
 {
@@ -89,7 +92,7 @@ public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
 
                     for (int k = 0; k < n; k++)
                     {
-                        enc.Materia = materias.Rows[i]["id_materia"].ToString();
+                        enc.Materia = materias.Rows[k]["id_materia"].ToString();
                         datos.insertarNotaMateria(enc);
 
                     }

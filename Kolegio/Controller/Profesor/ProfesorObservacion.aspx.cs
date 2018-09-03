@@ -42,7 +42,7 @@ public partial class View_Profesor_ProfesorObservacion : System.Web.UI.Page
        
         Session["id"] = enc.Id_estudiante;
 
-        Response.Redirect(enc.Mensaje);
+        Response.Redirect(enc.Url);
 
     }
 }
