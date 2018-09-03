@@ -14,7 +14,6 @@ public partial class View_Acudiente_AcudienteBoletin : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
-
         LUser logica = new LUser();
         UUser usua = new UUser();
 
@@ -22,27 +21,7 @@ public partial class View_Acudiente_AcudienteBoletin : System.Web.UI.Page
         string año = (fecha.Year).ToString();
         año = año + "-01-01";
 
-
         logica.acudienteBoletin(año, int.Parse(DDT_estudiante.SelectedValue));
-
-
         
-
-        //DataTable re = datos.obtenerAniodeCurso(año);
-        //enc.Año = re.Rows[0]["id_anio"].ToString();
-        //enc.Id_estudiante = DDT_estudiante.SelectedValue;
-
-        //DataTable registros = datos.obtenerCursoEst(enc);
-        //if (registros.Rows.Count > 0)
-        //{
-        //    Session["anio"] = registros.Rows[0]["id_ancu"].ToString();
-        //    Session["est"] = DDT_estudiante.SelectedValue;
-        //}
-        //else
-        //{
-        //    Session["anio"] = "0";
-        //    Session["est"] = DDT_estudiante.SelectedValue;
-        //}
-
     }
 }

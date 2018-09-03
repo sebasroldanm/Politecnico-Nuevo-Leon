@@ -668,6 +668,7 @@ namespace Logica
                 correo.enviarCorreoEnviar(destinatario, asunto, mensaje);
                 usua.Notificacion = "<script language='JavaScript'>window.alert('Se ha enviado su mensaje con éxito');</script>";
                 usua.Url = "AdministradorMensaje.aspx";
+                usua.Mensaje = "";
             }
             else
             {
@@ -698,6 +699,30 @@ namespace Logica
             {
                 Session["anio"] = "0";
                 Session["est"] = idEstudiante;
+            }
+
+            return usua;
+        }
+
+        public UUser acudienteObservador(string anio, int estudiante)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            DataTable re = dat.obtenerAniodeCurso(anio);
+            usua.Año = re.Rows[0]["id_anio"].ToString();
+            usua.Id_estudiante = estudiante.ToString();
+
+            DataTable registros = dat.obtenerCursoEst(usua);
+            if (registros.Rows.Count > 0)
+            {
+                Session["anio"] = registros.Rows[0]["id_ancu"].ToString();
+                Session["est"] = estudiante.ToString();
+            }
+            else
+            {
+                Session["anio"] = "0";
+                Session["est"] = estudiante.ToString();
             }
 
             return usua;

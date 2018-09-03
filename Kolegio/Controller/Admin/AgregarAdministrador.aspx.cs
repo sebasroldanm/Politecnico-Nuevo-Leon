@@ -33,6 +33,12 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         else
             Response.Redirect("AccesoDenegado.aspx");
 
+        //LLogin Logica = new LLogin();
+        //UUser usua = new UUser();
+
+        //Logica.logAgregarAdmin(Session["userId"].ToString());
+        //Response.Redirect(usua.Url);
+        //CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + usua.RolId);
 
     }
 
