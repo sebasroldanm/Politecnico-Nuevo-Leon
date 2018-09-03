@@ -39,7 +39,7 @@ public partial class View_Profesor_ProfesorHorario : System.Web.UI.Page
 
     protected void btn_descargar_Click(object sender, EventArgs e)
     {
-        Page.RegisterStartupScript("script", "<script>window.open('~/View/Profesor/CertificadoTrabajoProf.aspx' ,'Descargar','height=300', 'width=300')</script>");
+        Page.RegisterStartupScript("script", "<script>window.open('CertificadoTrabajoProf.aspx' ,'Descargar','height=300', 'width=300')</script>");
 
     }
 }

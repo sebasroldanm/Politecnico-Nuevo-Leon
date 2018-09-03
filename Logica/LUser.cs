@@ -617,7 +617,7 @@ namespace Logica
             }
         }
 
-        public void reporteCertificadoTrabajoProfe(DataTable informacion, UUser documento)
+        public void reporteCertificadoTrabajoProfe(DataTable informacion, string documento)
         {
             DUser estudiante = new DUser();
             DataRow fila;
@@ -634,7 +634,7 @@ namespace Logica
             }
         }
 
-        public void reporteCertidicadoEstudiante(DataTable informacion, UUser docuemtno)
+        public void reporteCertidicadoEstudiante(DataTable informacion, string docuemtno)
         {
             DUser estudiante = new DUser();
             DataRow fila;

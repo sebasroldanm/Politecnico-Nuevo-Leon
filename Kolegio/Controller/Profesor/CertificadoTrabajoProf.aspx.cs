@@ -45,12 +45,11 @@ public partial class View_Profesor_CertificadoTrabajoProf : System.Web.UI.Page
 
         informacion = datos.Tables["ProfesorCert"]; // nombre de la tabla que cree en crystal en el InfReporte.xsd
 
-        UUser dat = new UUser();
-        dat.Documento = Session["userId"].ToString();
+        string documento = Session["userId"].ToString();
 
         LUser logica = new LUser();
 
-        logica.reporteCertificadoTrabajoProfe(informacion, dat);
+        logica.reporteCertificadoTrabajoProfe(informacion, documento);
         
         return datos;
     }

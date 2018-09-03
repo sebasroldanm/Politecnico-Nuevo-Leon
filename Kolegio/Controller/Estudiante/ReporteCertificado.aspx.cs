@@ -40,12 +40,11 @@ public partial class View_Estudiante_ReporteCertificado : System.Web.UI.Page
 
         informacion = datos.Tables["Estudiante"]; // nombre de la tabla que cree en crystal en el InfReporte.xsd
 
-        UUser usua = new UUser();
-        usua.Documento = Session["userId"].ToString(); ;
+        string documento = Session["userId"].ToString(); ;
 
         LUser reporte = new LUser();
 
-        reporte.reporteCertidicadoEstudiante(informacion, usua);
+        reporte.reporteCertidicadoEstudiante(informacion, documento);
         
         return datos;
     }
