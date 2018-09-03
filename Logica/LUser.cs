@@ -622,7 +622,7 @@ namespace Logica
             DUser estudiante = new DUser();
             DataRow fila;
 
-            DataTable Intermedio = estudiante.obtenerCertificadoProf(reg);
+            DataTable Intermedio = estudiante.obtenerCertificadoProf(documento.ToString());
 
             for (int i = 0; i < Intermedio.Rows.Count; i++)
             {
@@ -639,7 +639,7 @@ namespace Logica
             DUser estudiante = new DUser();
             DataRow fila;
 
-            DataTable Intermedio = estudiante.obtenerCertificadoEst(reg);
+            DataTable Intermedio = estudiante.obtenerCertificadoEst(docuemtno.ToString());
 
             for (int i = 0; i < Intermedio.Rows.Count; i++)
             {
