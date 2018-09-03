@@ -33,7 +33,7 @@
             <SortedDescendingHeaderStyle BackColor="#3E3277" />
         </asp:GridView>
 
-        <asp:ObjectDataSource ID="ODS_Boletin" runat="server" SelectMethod="obtenerBoletin" TypeName="DaoUser">
+        <asp:ObjectDataSource ID="ODS_Boletin" runat="server" SelectMethod="obtenerBoletin" TypeName="Datos.DUser">
             <SelectParameters>
                 <asp:SessionParameter Name="usu" SessionField="userId" Type="String" />
                 <asp:SessionParameter Name="ancu" SessionField="anio" Type="String" />

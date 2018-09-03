@@ -29,7 +29,7 @@
                 <div class="form-inline">
                     <label for="ddl_materia" class="control-label" style="color: #FFFFFF">Profesor :</label>
                     <asp:DropDownList class="control-label" ID="DDL_Materia" runat="server" AutoPostBack="True" DataSourceID="ODS_MensajeProfe" DataTextField="nombre_usua" DataValueField="correo"></asp:DropDownList>
-                    <asp:ObjectDataSource ID="ODS_MensajeProfe" runat="server" SelectMethod="profemensaje" TypeName="DaoUser">
+                    <asp:ObjectDataSource ID="ODS_MensajeProfe" runat="server" SelectMethod="profemensaje" TypeName="Datos.DUser">
                         <SelectParameters>
                             <asp:SessionParameter Name="id_usua" SessionField="userId" Type="Int32" />
                         </SelectParameters>
