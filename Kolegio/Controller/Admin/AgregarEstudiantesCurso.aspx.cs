@@ -19,92 +19,31 @@ public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
             Console.WriteLine("");
         }
         else
-            Response.Redirect("AccesoDenegado.aspx");
+            Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
     }
 
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (ddt_curso.SelectedValue == "0")
-        {
-            L_ErrorUsuario.Text = "Debe Elegir un Curso";
-        }
-        else
-        {
+        DUser datos = new DUser();
+        UUser enc = new UUser();
+        LReg logic = new LReg();
 
-            DaoUser datos = new DaoUser();
-            EUser enc = new EUser();
-
-            enc.Documento = GridView1.SelectedRow.Cells[0].Text;
-            DataTable reg = datos.obtenerUsuarioMod(enc);
-
-            enc.Id_estudiante = reg.Rows[0]["id_usua"].ToString();
-            enc.Curso = ddt_curso.SelectedValue;
-            datos.insertarEstudianteCurso(enc);
-
-            DataTable materias = datos.obtener_MatCur(enc);
-            int n = materias.DefaultView.Count;
-
-            for (int i = 0; i < n; i++)
-            {
-                enc.Materia = materias.Rows[i]["id_materia"].ToString();
-                datos.insertarNotaMateria(enc);
-
-            }
-
-            GridView1.DataBind();
-            L_ErrorUsuario.Text = "";
-        }
-
-
-
-
+        enc = logic.selecEstudianteACurso(ddt_curso.SelectedValue, GridView1.SelectedRow.Cells[0].Text);
+        GridView1.DataBind();
+        L_ErrorUsuario.Text = enc.Mensaje; 
     }
 
     protected void btn_Aceptar_Click(object sender, EventArgs e)
     {
+        DUser datos = new DUser();
+        UUser enc = new UUser();
+        LReg logic = new LReg();
 
-
-        if (ddt_curso.SelectedValue == "0" || ddt_curso.SelectedValue == "0")
-        {
-            L_ErrorUsuario.Text = "Debe Elegir un Curso";
-        }
-        else
-        {
-
-            for (int i = 0; i < GridView1.Rows.Count; i++)
-            {
-                CheckBox ch = (CheckBox)GridView1.Rows[i].FindControl("CBest");
-                Label lb = (Label)GridView1.Rows[i].FindControl("label1");
-                if (ch.Checked == true)
-                {
-
-                    DaoUser datos = new DaoUser();
-                    EUser enc = new EUser();
-                    enc.Documento = lb.Text;
-                    DataTable reg = datos.obtenerUsuarioMod(enc);
-
-                    enc.Id_estudiante = reg.Rows[0]["id_usua"].ToString();
-                    enc.Curso = ddt_curso.SelectedValue;
-                    datos.insertarEstudianteCurso(enc);
-
-                    DataTable materias = datos.obtener_MatCur(enc);
-                    int n = materias.DefaultView.Count;
-
-                    for (int k = 0; k < n; k++)
-                    {
-                        enc.Materia = materias.Rows[k]["id_materia"].ToString();
-                        datos.insertarNotaMateria(enc);
-
-                    }
-
-                    //L_ErrorUsuario.Text = "Debe Elegir un Curso";
-                    L_OkUsuario.Text = "Estudiantes Agregados al curso";
-                    GridView1.DataBind();
-
-                }
-            }
-
-        }
+        enc = logic.agregarEstudianteACurso(ddt_anio.SelectedValue, ddt_curso.SelectedValue, GridView1.Rows.Count, GridView1);
+               
+        L_ErrorUsuario.Text = enc.Mensaje;
+        L_OkUsuario.Text = enc.MensajeAcudiente;
+        GridView1.DataBind();
     }
 
 }

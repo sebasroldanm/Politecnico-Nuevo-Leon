@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Datos;
 using Utilitarios;
 using System.Data;
+using System.Web.UI.WebControls;
 
 namespace Logica
 {
@@ -382,6 +383,86 @@ namespace Logica
             return encapsular;
         }
 
+        public UUser selecEstudianteACurso(string curso, string seleccion)
+        {
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+
+            if (curso == "0")
+            {
+                enc.Mensaje = "Debe Elegir un Curso";
+            }
+            else
+            {
+                enc.Documento = seleccion;
+                DataTable reg = datos.obtenerUsuarioMod(enc);
+
+                enc.Id_estudiante = reg.Rows[0]["id_usua"].ToString();
+                enc.Curso = curso;
+                datos.insertarEstudianteCurso(enc);
+
+                DataTable materias = datos.obtener_MatCur(enc);
+                int n = materias.DefaultView.Count;
+
+                for (int i = 0; i < n; i++)
+                {
+                    enc.Materia = materias.Rows[i]["id_materia"].ToString();
+                    datos.insertarNotaMateria(enc);
+
+                }
+
+                enc.Mensaje = "";
+            }
+
+            return enc;
+        }
+
+        public UUser agregarEstudianteACurso(string anio, string curso, int cont, GridView GridView1)
+        {
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+            enc.Mensaje = "";
+            enc.MensajeAcudiente = "";
+
+            if (anio == "0" || curso == "0")
+            {
+                enc.Mensaje = "Debe Elegir un Curso";
+            }
+            else
+            {
+                for (int i = 0; i < cont; i++)
+                {
+                    CheckBox ch = (CheckBox)GridView1.Rows[i].FindControl("CBest");
+                    Label lb = (Label)GridView1.Rows[i].FindControl("label1");
+
+                    if (ch.Checked == true)
+                    {
+                        enc.Documento = lb.Text;
+                        DataTable reg = datos.obtenerUsuarioMod(enc);
+
+                        enc.Id_estudiante = reg.Rows[0]["id_usua"].ToString();
+                        enc.Curso = curso;
+                        datos.insertarEstudianteCurso(enc);
+
+                        DataTable materias = datos.obtener_MatCur(enc);
+                        int n = materias.DefaultView.Count;
+
+                        for (int k = 0; k < n; k++)
+                        {
+                            enc.Materia = materias.Rows[k]["id_materia"].ToString();
+                            datos.insertarNotaMateria(enc);
+
+                        }
+
+                        //L_ErrorUsuario.Text = "Debe Elegir un Curso";
+                        enc.MensajeAcudiente = "Estudiantes Agregados al curso";
+
+                    }
+                }
+
+            }
+            return enc;
+        }
 
         public bool validar_mat(string materia)
         {
