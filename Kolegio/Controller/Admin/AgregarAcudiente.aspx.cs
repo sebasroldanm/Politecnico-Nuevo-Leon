@@ -51,7 +51,7 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
             tb_Foto,
             int.Parse(tb_AcudienteId.Text),
             tb_AcudienteUsuario.Text,
-            2,
+            4,
             fechanac.Text,
             Session.SessionID
             );

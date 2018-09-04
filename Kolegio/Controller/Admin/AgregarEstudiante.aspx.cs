@@ -45,7 +45,7 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
             tb_EstudianteCorreo.Text,
             tb_Foto,
             int.Parse(tb_EstudianteId.Text),
-            tb_EstudianteId.Text,
+            tb_EstudianteUsuario.Text,
             3,
             fechanac.Text,
             Session.SessionID,
@@ -213,34 +213,4 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
     }
 
 
-
-    protected String cargarImagen()
-    {
-        ClientScriptManager cm = this.ClientScript;
-        String nombreArchivo = System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName);
-        String extension = System.IO.Path.GetExtension(tb_Foto.PostedFile.FileName);
-        String saveLocation = "";
-
-        if (!(string.Compare(extension, ".png", true) == 0 || string.Compare(extension, ".jpeg", true) == 0 || string.Compare(extension, ".jpg", true) == 0))
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>");
-            btnigm_calendar.Visible = true;
-
-
-            return null;
-        }
-
-        saveLocation = Server.MapPath("~/FotosUser") + "/" + nombreArchivo;
-
-        if (System.IO.File.Exists(saveLocation))
-        {
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe una imagen en el servidor con ese nombre');</script>");
-            return null;
-        }
-
-        tb_Foto.PostedFile.SaveAs(saveLocation);
-        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo de imagen ha sido cargado');</script>");
-
-        return "~/FotosUser" + "/" + nombreArchivo;
-    }
 }
