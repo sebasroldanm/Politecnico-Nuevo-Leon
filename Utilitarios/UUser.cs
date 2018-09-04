@@ -93,6 +93,7 @@ namespace Utilitarios
         private String inicio;
         private String mision;
         private String vision;
+        private String nosotros;
 
         public string Url { get => url; set => url = value; }
         public int UserId { get => userId; set => userId = value; }
@@ -155,5 +156,6 @@ namespace Utilitarios
         public string Vision { get => vision; set => vision = value; }
         public bool BotonTrue { get => botonTrue; set => botonTrue = value; }
         public bool BotonFalse { get => botonFalse; set => botonFalse = value; }
+        public string Nosotros { get => nosotros; set => nosotros = value; }
     }
 }

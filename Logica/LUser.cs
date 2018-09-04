@@ -805,6 +805,68 @@ namespace Logica
             return enc;
         }
 
+        ///////////////////////CONFIGURACION DE PAGINA//////////////////////
+
+        public UUser ModificarPaginaInicio(string nosotros, string mision, string vision, string sesion)
+        {
+
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            usua.Inicio = nosotros;
+            usua.Mision = mision;
+            usua.Vision = vision;
+            usua.Session = Session.SessionID;
+
+            DataTable registros = dat.editarInicio(usua);
+            usua.Notificacion = "<script language='JavaScript'>window.alert('Datos Modificados');</script>";
+            return usua;
+
+
+
+        }
+
+        public UUser TraerDatosPagina()
+        {
+
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+
+
+
+
+            DataTable registros = dat.incio();
+
+            if (registros.Rows.Count > 0)
+            {
+                usua.Mision = Convert.ToString(registros.Rows[0]["mision_inicio"].ToString());
+                usua.Vision = Convert.ToString(registros.Rows[0]["vision_inicio"].ToString());
+                usua.Nosotros = Convert.ToString(registros.Rows[0]["inicio_cont"].ToString());
+
+            }
+
+            return usua;
+
+        }
+
+        public UUser insertarfechafin(string fechater)
+        {
+
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            usua.Año = fechater;
+            dat.editaFinaño(usua);
+            bool ok = true;
+            dat.editaBool(ok);
+            usua.Notificacion = "<script language='JavaScript'>window.alert('Insertado con Exito');</script>";
+
+            return usua;
+        }
+
+
+        ////////////////////////FIN CONFIGURACION PAGINA//////////////////     
 
 
 
