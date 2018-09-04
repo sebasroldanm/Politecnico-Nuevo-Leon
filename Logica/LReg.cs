@@ -464,7 +464,154 @@ namespace Logica
             return enc;
         }
 
-        public bool validar_mat(string materia)
+        public UUser pasarAño()
+        {
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+
+            DataTable dati = datos.comparaFecha();
+
+            if (dati.Rows.Count > 0)
+            {
+                datos.insertar_Año();
+
+                DataTable reg = datos.obtienePromedio();
+                int n = reg.DefaultView.Count;
+
+                for (int i = 0; i < n; i++)
+                {
+                    int a = Convert.ToInt32(reg.Rows[i]["nombre_curso"]);
+                    double b = Convert.ToDouble(reg.Rows[i]["notadef"]);
+                    if ((Convert.ToInt32(reg.Rows[i]["nombre_curso"]) > 1100) & (Convert.ToDouble(reg.Rows[i]["notadef"]) >= 30.0))
+                    {
+                        enc.Id_estudiante = reg.Rows[i]["id_usua"].ToString();
+                        //update
+                        datos.editarOnce(enc);
+
+                    }
+                }
+                DataTable ultaño = datos.obtenerUltimoAño();
+                enc.Año = ultaño.Rows[0]["id_anio"].ToString();
+
+                DataTable registro = datos.obtienePromedio();
+                n = registro.DefaultView.Count;
+
+                for (int i = 0; i < n; i++)
+                {
+                    if (Convert.ToDouble(registro.Rows[i]["notadef"]) >= 30.0)
+                    {
+                        int curso = Convert.ToInt32(registro.Rows[i]["nombre_curso"]);
+                        enc.Id_estudiante = registro.Rows[i]["id_usua"].ToString();
+                        curso = curso + 100;
+                        if (curso >= 1 & curso <= 9)
+                        {
+                            enc.Curso = "00" + (curso.ToString());
+                        }
+                        else
+                        {
+                            enc.Curso = curso.ToString();
+                        }
+                        DataTable idcurso = datos.obteneridCurso(enc);
+                        enc.Curso = idcurso.Rows[0]["id_ancu"].ToString();
+                        datos.insertarEstudianteCurso(enc);
+                    }
+                    else
+                    {
+                        int curso = Convert.ToInt32(registro.Rows[i]["nombre_curso"]);
+                        enc.Id_estudiante = registro.Rows[i]["id_usua"].ToString();
+                        if (curso >= 1 & curso <= 9)
+                        {
+                            enc.Curso = "00" + (curso.ToString());
+                        }
+                        else
+                        {
+                            enc.Curso = curso.ToString();
+                        }
+                        DataTable idcurso = datos.obteneridCurso(enc);
+                        enc.Curso = idcurso.Rows[0]["id_ancu"].ToString();
+                        datos.insertarEstudianteCurso(enc);
+                    }
+                }
+
+                bool ok = false;
+                datos.editaBool(ok);
+                enc.Notificacion = "<script language='JavaScript'>window.alert('Se ha migrado de año con Exito');</script>";
+
+            }
+
+            return enc;
+        }
+
+        public UUser pasarAñoClick()
+        {
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+            datos.insertar_Año();
+
+            DataTable reg = datos.obtienePromedio();
+            int n = reg.DefaultView.Count;
+
+            for (int i = 0; i < n; i++)
+            {
+                int a = Convert.ToInt32(reg.Rows[i]["nombre_curso"]);
+                double b = Convert.ToDouble(reg.Rows[i]["notadef"]);
+                if ((Convert.ToInt32(reg.Rows[i]["nombre_curso"]) > 1100) & (Convert.ToDouble(reg.Rows[i]["notadef"]) >= 30.0))
+                {
+                    enc.Id_estudiante = reg.Rows[i]["id_usua"].ToString();
+                    //update
+                    datos.editarOnce(enc);
+
+                }
+            }
+            DataTable ultaño = datos.obtenerUltimoAño();
+            enc.Año = ultaño.Rows[0]["id_anio"].ToString();
+
+            DataTable registro = datos.obtienePromedio();
+            n = registro.DefaultView.Count;
+
+            for (int i = 0; i < n; i++)
+            {
+                if (Convert.ToDouble(registro.Rows[i]["notadef"]) >= 30.0)
+                {
+                    int curso = Convert.ToInt32(registro.Rows[i]["nombre_curso"]);
+                    enc.Id_estudiante = registro.Rows[i]["id_usua"].ToString();
+                    curso = curso + 100;
+                    if (curso >= 1 & curso <= 9)
+                    {
+                        enc.Curso = "00" + (curso.ToString());
+                    }
+                    else
+                    {
+                        enc.Curso = curso.ToString();
+                    }
+                    DataTable idcurso = datos.obteneridCurso(enc);
+                    enc.Curso = idcurso.Rows[0]["id_ancu"].ToString();
+                    datos.insertarEstudianteCurso(enc);
+                }
+                else
+                {
+                    int curso = Convert.ToInt32(registro.Rows[i]["nombre_curso"]);
+                    enc.Id_estudiante = registro.Rows[i]["id_usua"].ToString();
+                    if (curso >= 1 & curso <= 9)
+                    {
+                        enc.Curso = "00" + (curso.ToString());
+                    }
+                    else
+                    {
+                        enc.Curso = curso.ToString();
+                    }
+                    DataTable idcurso = datos.obteneridCurso(enc);
+                    enc.Curso = idcurso.Rows[0]["id_ancu"].ToString();
+                    datos.insertarEstudianteCurso(enc);
+                }
+            }
+            enc.Notificacion = "<script language='JavaScript'>window.alert('Se ha migraido de año con Exito');</script>";
+
+            return enc;
+        }
+
+
+    public bool validar_mat(string materia)
         {
             DUser datos = new DUser();
             bool ok = true;

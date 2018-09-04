@@ -17,20 +17,16 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
         Session["userId"] = "wpygkcrggjyqsrtf50nlfjlu";
         Session["nombre"] = null;
 
-
         LUser logica = new LUser();
         UUser usua = new UUser();
+        DUser user = new DUser();
 
         usua = logica.TraerDatosPagina();
 
         L_Inicio.Text = usua.Nosotros;
 
-
-
-        DUser user = new DUser();
-        UUser dat = new UUser();
-        dat.Session = Session.SessionID;
-        user.cerrarSession(dat);
+        usua.Session = Session.SessionID;
+        user.cerrarSession(usua);
 
 
         //DataTable regi = user.incio();
@@ -40,79 +36,11 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
         //    L_Inicio.Text = Convert.ToString(regi.Rows[0]["inicio_cont"].ToString());
         //}
 
-        DaoUser datos = new DaoUser();
-        EUser enc = new EUser();
+        UUser enc = new UUser();
+        LReg logic = new LReg();
 
-        DataTable dati = datos.comparaFecha();
-
-        if (dati.Rows.Count > 0)
-        {
-            datos.insertar_Año();
-
-            DataTable reg = datos.obtienePromedio();
-            int n = reg.DefaultView.Count;
-
-            for (int i = 0; i < n; i++)
-            {
-                int a = Convert.ToInt32(reg.Rows[i]["nombre_curso"]);
-                double b = Convert.ToDouble(reg.Rows[i]["notadef"]);
-                if ((Convert.ToInt32(reg.Rows[i]["nombre_curso"]) > 1100) & (Convert.ToDouble(reg.Rows[i]["notadef"]) >= 30.0))
-                {
-                    enc.Id_estudiante = reg.Rows[i]["id_usua"].ToString();
-                    //update
-                    datos.editarOnce(enc);
-
-                }
-            }
-            DataTable ultaño = datos.obtenerUltimoAño();
-            enc.Año = ultaño.Rows[0]["id_anio"].ToString();
-
-            DataTable registro = datos.obtienePromedio();
-            n = registro.DefaultView.Count;
-
-            for (int i = 0; i < n; i++)
-            {
-                if (Convert.ToDouble(registro.Rows[i]["notadef"]) >= 30.0)
-                {
-                    int curso = Convert.ToInt32(registro.Rows[i]["nombre_curso"]);
-                    enc.Id_estudiante = registro.Rows[i]["id_usua"].ToString();
-                    curso = curso + 100;
-                    if (curso >= 1 & curso <= 9)
-                    {
-                        enc.Curso = "00" + (curso.ToString());
-                    }
-                    else
-                    {
-                        enc.Curso = curso.ToString();
-                    }
-                    DataTable idcurso = datos.obteneridCurso(enc);
-                    enc.Curso = idcurso.Rows[0]["id_ancu"].ToString();
-                    datos.insertarEstudianteCurso(enc);
-                }
-                else
-                {
-                    int curso = Convert.ToInt32(registro.Rows[i]["nombre_curso"]);
-                    enc.Id_estudiante = registro.Rows[i]["id_usua"].ToString();
-                    if (curso >= 1 & curso <= 9)
-                    {
-                        enc.Curso = "00" + (curso.ToString());
-                    }
-                    else
-                    {
-                        enc.Curso = curso.ToString();
-                    }
-                    DataTable idcurso = datos.obteneridCurso(enc);
-                    enc.Curso = idcurso.Rows[0]["id_ancu"].ToString();
-                    datos.insertarEstudianteCurso(enc);
-                }
-            }
-
-            bool ok = false;
-            datos.editaBool(ok);
-            this.Page.Response.Write("<script language='JavaScript'>window.alert('Se ha migrado de año con Exito');</script>");
-
-        }
-
+        enc = logic.pasarAño();
+        this.Page.Response.Write(enc.Notificacion);
 
     }
 }
