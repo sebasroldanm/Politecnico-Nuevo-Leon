@@ -15,22 +15,23 @@ public partial class View_Acudiente_AcudienteObservador : System.Web.UI.Page
         Response.Cache.SetNoStore();
 
 
-        if (Session["userId"] != null)
+        try
         {
             LUser logic = new LUser();
+            LLogin log = new LLogin();
             UUser enc = new UUser();
 
             enc = logic.PL_AcudienteObservador(DDT_estudiante.SelectedValue);
             Session["anio"] = enc.SAño;
             Session["est"] = enc.SEstudiante;
+            enc = log.logAcudienteSecillo(Session["userId"].ToString());
+            Response.Redirect(enc.Url);
 
-
-
-           
         }
-        else
-            Response.Redirect("AccesoDenegado.aspx");
+        catch
+        {
 
+        }
 
 
         //try

@@ -757,6 +757,40 @@ namespace Logica
             return usua;
         }
 
+        public UUser verificarCorreoContactenos(
+            string nombres,
+            string apellidos,
+            string correo_l,
+            string telefono,
+            string mensaje
+            )
+        {
+            DUser dat = new DUser();
+            UUser usua = new UUser();
+
+            string destinatario = "colegiorespuesta@gmail.com";
+            string asunto = "**¡¡CONTACTENOS!!**";
+
+
+            usua.Correo = destinatario;
+            DataTable resultado = dat.verificarCorreo(usua);
+
+            if (resultado.Rows.Count > 0)
+            {
+                mensaje = mensaje + "<br><br>Atentamente: " + nombres + "<br>" + apellidos + "<br>Correo para responder: " + correo_l + "<br>Telefono: " + telefono + "";
+                string cadena = mensaje;
+                DCorreoEnviar correo = new DCorreoEnviar();
+                correo.enviarCorreoEnviar(destinatario, asunto, mensaje);
+                usua.Notificacion = "<script language='JavaScript'>window.alert('Se ha enviado su mensaje con éxito');</script>";
+                usua.Url = "InicioNosotros.aspx";
+            }
+            else
+            {
+                usua.Notificacion = "<script language='JavaScript'>window.alert('Ha ocurrido un problema.');</script>";
+            }
+            return usua;
+        }
+
         public UUser acudienteBoletin(string anio, int idEstudiante)
         {
             DUser dat = new DUser();
@@ -806,6 +840,28 @@ namespace Logica
             return enc;
         }
 
+        public UUser PL_EstudianteVerNotas()
+        {
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+            DateTime fecha = DateTime.Now;
+            string año = (fecha.Year).ToString();
+            año = año + "-01-01";
+            DataTable re = datos.obtenerAniodeCurso(año);
+            enc.Año = re.Rows[0]["id_anio"].ToString();
+            enc.Id_estudiante = Session["userId"].ToString();
+
+            DataTable registros = datos.obtenerCursoEst(enc);
+            if (registros.Rows.Count > 0)
+            {
+                enc.SAño = registros.Rows[0]["id_ancu"].ToString();
+            }
+            else
+            {
+                enc.SAño = "0";
+            }
+            return enc;
+        }
         public UUser ModifConfiguracion(
                         FileUpload fotoName,
                         string userName,

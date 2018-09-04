@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using System.Data;
 using Logica;
 using Utilitarios;
-using Datos;
 
 public partial class View_Profesor_ProfesorHorario : System.Web.UI.Page
 {
@@ -19,7 +18,7 @@ public partial class View_Profesor_ProfesorHorario : System.Web.UI.Page
             LLogin log = new LLogin();
             UUser util = new UUser();
             LReg logic = new LReg();
-            DUser datos = new DUser();
+
             String id_est = Session["userId"].ToString();
             int curso = int.Parse(id_est);
 
@@ -29,8 +28,6 @@ public partial class View_Profesor_ProfesorHorario : System.Web.UI.Page
 
             util = log.logAdminSecillo(Session["userId"].ToString());
             Response.Redirect(util.Url);
-
-
         }
         catch
         {

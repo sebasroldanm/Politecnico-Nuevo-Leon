@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_Inicio_InicioContactenos : System.Web.UI.Page
 {
@@ -14,33 +16,17 @@ public partial class View_Inicio_InicioContactenos : System.Web.UI.Page
     }
     protected void B_Enviar_Click(object sender, EventArgs e)
     {
-        String nombres = TB_Nombres.Text;
-        String apellidos = TB_Apellidos.Text;
-        String correo_l = TB_Correo.Text;
-        String telefono = TB_Telefono.Text;
-        String mensaje = TB_Mensaje.Text;
+        UUser usua = new UUser();
+        LUser logica = new LUser();
 
-        string destinatario = "colegiorespuesta@gmail.com";
-        string asunto = "**¡¡CONTACTENOS!!**";
+        usua = logica.verificarCorreoContactenos(
+            TB_Nombres.Text, 
+            TB_Apellidos.Text, 
+            TB_Correo.Text, 
+            TB_Telefono.Text, 
+            TB_Mensaje.Text);
 
-        //CORREO*******************************
-        EUser encapsular = new EUser();
-        DaoUser datos = new DaoUser();
-        encapsular.Correo = destinatario.ToString();
-        DataTable resultado = datos.verificarCorreo(encapsular);
-
-        if (resultado.Rows.Count > 0)
-        {
-            DaoUser dao = new DaoUser();
-            mensaje = mensaje + "<br><br>Atentamente: " + nombres + "<br>" + apellidos + "<br>Correo para responder: " + correo_l + "<br>Telefono: " + telefono + "";
-            string cadena = mensaje;
-            CorreoEnviar correo = new CorreoEnviar();
-            correo.enviarCorreoEnviar(destinatario, asunto, mensaje);
-            this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Su Mensaje ha sido Enviado.');window.location=\"InicioContactenos.aspx\"</script>");
-        }
-        else
-        {
-            this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('Ha ocurrido un problema.');window.location=\"InicioContactenos.aspx\"</script>");
-        }
+        this.Page.Response.Write(usua.Notificacion);
+        Response.Redirect(usua.Url);
     }
 }
