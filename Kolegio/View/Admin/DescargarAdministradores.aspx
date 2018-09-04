@@ -19,7 +19,7 @@
 
 
     <CR:CrystalReportSource ID="CRS_admin" runat="server">
-        <Report FileName="../Acudiente/Certificado/CertificadoEst.rpt">
+        <Report FileName="../../Reportes/ListaAdministradores.rpt">
         </Report>
     </CR:CrystalReportSource>
 

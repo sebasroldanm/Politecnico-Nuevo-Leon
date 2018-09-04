@@ -14,7 +14,7 @@ public partial class View_Acudiente_AcudienteObservador : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
-        Response.Cache.SetNoStore();
+
         if (Session["userId"] != null)
         {
             LUser logic = new LUser();
@@ -23,6 +23,8 @@ public partial class View_Acudiente_AcudienteObservador : System.Web.UI.Page
             enc = logic.PL_AcudienteObservador(DDT_estudiante.SelectedValue);
             Session["anio"] = enc.SAño;
             Session["est"] = enc.SEstudiante;
+
+
 
            
         }
