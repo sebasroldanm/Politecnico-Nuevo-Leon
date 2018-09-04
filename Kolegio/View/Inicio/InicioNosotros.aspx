@@ -92,19 +92,19 @@ img {vertical-align: middle;}
         <div class="mySlides fade">
             <div class="numbertext"></div>
             <img src="../../Imagenes/1f.png" style="width: 100%">
-            <div class="text">Kolegio</div>
+            <div class="text">Colegio</div>
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext"></div>
             <img src="../../Imagenes/4f.png" style="width: 100%">
-            <div class="text">Kolegio</div>
+            <div class="text">Colegio</div>
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext"></div>
             <img src="../../Imagenes/3f.png" style="width: 100%">
-            <div class="text">Kolegio</div>
+            <div class="text">Colegio</div>
         </div>
     </div>
     <br>
@@ -138,10 +138,15 @@ img {vertical-align: middle;}
     </script>
 
 
-
     <div class="container">
         <div class="jumbotron">
-            <h2>Plataforma Estudiantil</h2>
+            <h2 class="auto-style1">Plataforma Estudiantil</h2>
+            <p class="auto-style1">
+                <asp:Label ID="Label1" runat="server" Text="Descarga el Manual de Uso desde los siguientes enlaces"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:HyperLink ID="HyperLink1" runat="server" Text="Drive" NavigateUrl="https://drive.google.com/open?id=1axnOALu2NQmb8VXYpS5_Hl6j_QhgyNn_" Target="_blank"></asp:HyperLink>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:HyperLink ID="HyperLink3" runat="server" Text="DropBox" NavigateUrl="https://www.dropbox.com/s/pahhqvsnu1bonc8/MANUAL%20DEL%20USUARIO.pdf?dl=0" Target="_blank"></asp:HyperLink>
+            </p>
+            <h2>Nosotros</h2>
             <p>
                 <asp:Label ID="L_Inicio" runat="server" Text="Label"></asp:Label>
             </p>
