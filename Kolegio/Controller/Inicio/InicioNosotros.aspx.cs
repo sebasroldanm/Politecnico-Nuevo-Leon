@@ -17,18 +17,28 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
         Session["userId"] = "wpygkcrggjyqsrtf50nlfjlu";
         Session["nombre"] = null;
 
+
+        LUser logica = new LUser();
+        UUser usua = new UUser();
+
+        usua = logica.TraerDatosPagina();
+
+        L_Inicio.Text = usua.Nosotros;
+
+
+
         DUser user = new DUser();
         UUser dat = new UUser();
         dat.Session = Session.SessionID;
         user.cerrarSession(dat);
 
 
-        DataTable regi = user.incio();
+        //DataTable regi = user.incio();
 
-        if (regi.Rows.Count > 0)
-        {
-            L_Inicio.Text = Convert.ToString(regi.Rows[0]["inicio_cont"].ToString());
-        }
+        //if (regi.Rows.Count > 0)
+        //{
+        //    L_Inicio.Text = Convert.ToString(regi.Rows[0]["inicio_cont"].ToString());
+        //}
 
         DaoUser datos = new DaoUser();
         EUser enc = new EUser();
