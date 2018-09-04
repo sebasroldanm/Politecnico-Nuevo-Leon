@@ -5,17 +5,20 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utilitarios;
+using Logica;
+using Datos;
 
 public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         
-        Session["userId"] = "pailas";
+        Session["userId"] = "wpygkcrggjyqsrtf50nlfjlu";
         Session["nombre"] = null;
 
-        DaoUser user = new DaoUser();
-        EUser dat = new EUser();
+        DUser user = new DUser();
+        UUser dat = new UUser();
         dat.Session = Session.SessionID;
         user.cerrarSession(dat);
 

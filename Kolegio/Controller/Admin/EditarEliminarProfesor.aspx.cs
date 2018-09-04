@@ -13,19 +13,25 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        try
         {
+            LLogin logica = new LLogin();
+            UUser usua = new UUser();
+
+            usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documentoa"].ToString());
             tb_DocenteId.Text = (string)Session["documento"];
-            tb_DocenteNombre.ReadOnly = true;
-            tb_DocenteApellido.ReadOnly = true;
-            tb_DocenteCorreo.ReadOnly = true;
-            tb_DocenteDireccion.ReadOnly = true;
-            tb_DocenteTelefono.ReadOnly = true;
-            tb_DocenteUsuario.ReadOnly = true;
-            tb_DocenteContrasenia.ReadOnly = true;
+            tb_DocenteNombre.ReadOnly = usua.BotonTrue;
+            tb_DocenteApellido.ReadOnly = usua.BotonTrue;
+            tb_DocenteCorreo.ReadOnly = usua.BotonTrue;
+            tb_DocenteDireccion.ReadOnly = usua.BotonTrue;
+            tb_DocenteTelefono.ReadOnly = usua.BotonTrue;
+            tb_DocenteUsuario.ReadOnly = usua.BotonTrue;
+            tb_DocenteContrasenia.ReadOnly = usua.BotonTrue;
         }
-        else
-            Response.Redirect("AccesoDenegado.aspx");
+        catch
+        {
+
+        }
     }
     protected void btn_DocenteAceptar_Click(object sender, EventArgs e)
     {

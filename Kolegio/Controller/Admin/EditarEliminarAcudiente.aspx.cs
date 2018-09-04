@@ -13,20 +13,26 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        try
         {
+            LLogin logica = new LLogin();
+            UUser usua = new UUser();
+
+            usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documentoa"].ToString());
+            Response.Redirect(usua.Url);
             tb_AcudienteId.Text = (string)Session["documentoa"];
-            tb_AcudienteNombre.ReadOnly = true;
-            tb_AcudienteApellido.ReadOnly = true;
-            tb_AcudienteCorreo.ReadOnly = true;
-            tb_AcudienteDireccion.ReadOnly = true;
-            tb_AcudienteTelefono.ReadOnly = true;
-            tb_AcudienteUsuario.ReadOnly = true;
-            tb_AcudienteContrasenia.ReadOnly = true;
+            tb_AcudienteNombre.ReadOnly = usua.BotonTrue;
+            tb_AcudienteApellido.ReadOnly = usua.BotonTrue;
+            tb_AcudienteCorreo.ReadOnly = usua.BotonTrue;
+            tb_AcudienteDireccion.ReadOnly = usua.BotonTrue;
+            tb_AcudienteTelefono.ReadOnly = usua.BotonTrue;
+            tb_AcudienteUsuario.ReadOnly = usua.BotonTrue;
+            tb_AcudienteContrasenia.ReadOnly = usua.BotonTrue;
         }
-        else
-            Response.Redirect("AccesoDenegado.aspx");
-        
+        catch
+        {
+
+        }
     }
 
     protected void btn_AdministradorEstudianteEditar_Click(object sender, EventArgs e)

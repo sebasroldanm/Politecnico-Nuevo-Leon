@@ -14,12 +14,19 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        horario();
+        try
         {
-            horario();
+            LLogin logica = new LLogin();
+            UUser usua = new UUser();
+
+            usua = logica.logAdminSecillo(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
         }
-        else
-            Response.Redirect("AccesoDenegado.aspx");
+        catch
+        {
+
+        }
     }
 
     protected void btn_CursoMateriaAceptar_Click(object sender, EventArgs e)

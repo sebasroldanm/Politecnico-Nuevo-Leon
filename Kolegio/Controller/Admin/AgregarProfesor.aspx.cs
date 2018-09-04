@@ -13,19 +13,19 @@ public partial class View_Admin_AgregarProfesor : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        try
         {
-            //fechanac.ReadOnly = true;
-            //btnigm_calendar.Visible = false;
-            int year;
-            year = int.Parse(DateTime.Now.ToString("yyyy"));
-            year = year - 18;
-            CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + year);
-            
+            LLogin Logica = new LLogin();
+            UUser usua = new UUser();
+
+            usua = Logica.logAgregarAdmin(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
+            CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + usua.RolId);
         }
-        else
-            Response.Redirect("AccesoDenegado.aspx");
-        
+        catch
+        {
+
+        }
     }
 
     protected void btn_AdministradorAceptar_Click2(object sender, EventArgs e)

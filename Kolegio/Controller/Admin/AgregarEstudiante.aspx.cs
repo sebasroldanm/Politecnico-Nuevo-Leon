@@ -13,14 +13,20 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        try
         {
-            fechanac.ReadOnly = true;
-            btnigm_calendar.Visible = false;
-        }
-        else
-            Response.Redirect("AccesoDenegado.aspx");
+            LLogin logica = new LLogin();
+            UUser usua = new UUser();
 
+            usua = logica.logAgregaEstudiante(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
+            fechanac.ReadOnly = usua.BotonTrue;
+            btnigm_calendar.Visible = usua.BotonFalse;
+        }
+        catch
+        {
+
+        }
     }
 
     protected void btn_AdministradorAceptar_Click2(object sender, EventArgs e)

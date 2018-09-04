@@ -20,28 +20,21 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
         Response.Cache.SetCacheability(HttpCacheability.NoCache);
 
-
-        if (Session["userId"] != null)
+        try
         {
-            //fechanac.ReadOnly = true;
-            //btnigm_calendar.Visible = false;va
-            int year;
-            year = int.Parse(DateTime.Now.ToString("yyyy"));
-            year = year - 18;
-            CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + year);
+            LLogin Logica = new LLogin();
+            UUser usua = new UUser();
+
+            string sesion = Session["userId"].ToString();
+            usua = Logica.logAgregarAdmin(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
+            CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + usua.RolId);
         }
-        else
-            Response.Redirect("AccesoDenegado.aspx");
+        catch
+        {
 
-        //LLogin Logica = new LLogin();
-        //UUser usua = new UUser();
+        }
 
-        //string session = Session["userId"].ToString();
-        //usua = Logica.logAgregarAdmin(session);
-        //string prueba = usua.Url;
-        //base.OnLoad(e);
-        //Response.Redirect(usua.Url);
-        //CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + usua.RolId);
     }
 
     protected void btn_AdministradorAceptar_Click2(object sender, EventArgs e)

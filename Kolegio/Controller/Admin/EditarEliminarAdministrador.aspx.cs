@@ -13,20 +13,25 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        try
         {
-            tb_AministradorAdministradorId.Text = (string)Session["documento"];
-            tb_AdministradorAdministradorNombre.ReadOnly = true;
-            tb_AdministradorAdministradorApellido.ReadOnly = true;
-            tb_AdministradorAdministradorCorreo.ReadOnly = true;
-            tb_AdministradorAdministradorDireccion.ReadOnly = true;
-            tb_AdministradorTelefono.ReadOnly = true;
-            tb_AdministradorUsuario.ReadOnly = true;
-            tb_AdministradorContrasenia.ReadOnly = true;
+            LLogin logica = new LLogin();
+            UUser usua = new UUser();
+
+            usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documentoa"].ToString());
+            tb_AministradorAdministradorId.Text = Session["documentoa"].ToString();
+            tb_AdministradorAdministradorNombre.ReadOnly = usua.BotonTrue;
+            tb_AdministradorAdministradorApellido.ReadOnly = usua.BotonTrue;
+            tb_AdministradorAdministradorCorreo.ReadOnly = usua.BotonTrue;
+            tb_AdministradorAdministradorDireccion.ReadOnly = usua.BotonTrue;
+            tb_AdministradorTelefono.ReadOnly = usua.BotonTrue;
+            tb_AdministradorUsuario.ReadOnly = usua.BotonTrue;
+            tb_AdministradorContrasenia.ReadOnly = usua.BotonTrue;
         }
-        else
-            Response.Redirect("AccesoDenegado.aspx");
-        
+        catch
+        {
+
+        }
     }
 
     protected void btn_AdministradorAceptar_Click(object sender, EventArgs e)

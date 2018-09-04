@@ -14,7 +14,14 @@ public partial class View_Admin_Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-     
+        Response.Cache.SetNoStore();
+        try
+        {
+            LLogin logica = new LLogin();
+            UUser usua = new UUser();
+
+            usua = logica.logAdminSecillo(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
             try
             {
                 InfReporte reporte = ObtenerInforme();
@@ -26,6 +33,11 @@ public partial class View_Admin_Default : System.Web.UI.Page
 
                 throw;
             }
+        }
+        catch
+        {
+
+        }
        
     }
 
