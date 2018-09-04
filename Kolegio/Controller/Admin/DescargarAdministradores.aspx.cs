@@ -20,7 +20,6 @@ public partial class View_Admin_DescargarAdministradores : System.Web.UI.Page
             UUser usua = new UUser();
 
             usua = logica.logAdminSecillo(Session["userId"].ToString());
-            Response.Redirect(usua.Url);
 
             try
             {
@@ -33,6 +32,7 @@ public partial class View_Admin_DescargarAdministradores : System.Web.UI.Page
 
                 throw;
             }
+            Response.Redirect(usua.Url);
         }
         catch
         {

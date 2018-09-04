@@ -5,8 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-using Logica;
-using Utilitarios;
 
 public partial class View_Estudiante_EstudianteVernotas : System.Web.UI.Page
 {
@@ -16,11 +14,25 @@ public partial class View_Estudiante_EstudianteVernotas : System.Web.UI.Page
         Response.Cache.SetNoStore();
         if (Session["userId"] != null)
         {
-            LReg logic = new LReg();
-            UUser enc = new UUser();
+            DaoUser datos = new DaoUser();
+            EUser enc = new EUser();
+            DateTime fecha = DateTime.Now;
+            string año = (fecha.Year).ToString();
+            año = año + "-01-01";
+            DataTable re = datos.obtenerAniodeCurso(año);
+            enc.Año = re.Rows[0]["id_anio"].ToString();
+            enc.Id_estudiante = Session["userId"].ToString();
 
-            enc = logic.obtenerAñodeCurso();
-            Session["anio"] = enc.Año;
+            DataTable registros =  datos.obtenerCursoEst(enc);
+            if (registros.Rows.Count > 0)
+            {
+                Session["anio"] = registros.Rows[0]["id_ancu"].ToString();
+            }
+            else
+            {
+                Session["anio"] = "0";
+            }
+
         }
         else
             Response.Redirect("AccesoDenegado.aspx");

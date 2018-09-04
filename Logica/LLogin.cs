@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -107,6 +108,24 @@ namespace Logica
             return usua;
         }
 
+        public UUser logAcudienteBoletin(string sesion)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            if (sesion != "wpygkcrggjyqsrtf50nlfjlu")
+            {
+                Console.WriteLine("");
+                DateTime fecha = DateTime.Now;
+                string año = (fecha.Year).ToString();
+                usua.Año = año + "-01-01";
+            }
+            else
+                usua.Url = "~/View/Acudiente/AccesoDenegado.aspx";
+
+            return usua;
+        }
+
         public UUser logConfiguracionAcudiente(string sesion, string foto)
         {
             UUser usua = new UUser();
@@ -125,6 +144,7 @@ namespace Logica
             return usua;
         }
 
+
         //ESTUDIANTE
 
         public UUser logEstudianteSecillo(string sesion)
@@ -137,7 +157,7 @@ namespace Logica
                 Console.WriteLine("");
             }
             else
-                usua.Url = "~/View/Acudiente/AccesoDenegado.aspx";
+                usua.Url = "~/View/Estudiante/AccesoDenegado.aspx";
 
             return usua;
         }
@@ -154,8 +174,38 @@ namespace Logica
                 usua.BotonTrue = true;
             }
             else
-                usua.Url = "~/View/Acudiente/AccesoDenegado.aspx";
+                usua.Url = "~/View/Estudiante/AccesoDenegado.aspx";
 
+            return usua;
+        }
+
+        public UUser logEstudianteVerNotas(string sesion)
+        {
+            UUser usua = new UUser();
+            DUser datos = new DUser();
+
+            if (sesion != "wpygkcrggjyqsrtf50nlfjlu")
+            {
+                UUser enc = new UUser();
+                DateTime fecha = DateTime.Now;
+                string año = (fecha.Year).ToString();
+                año = año + "-01-01";
+                DataTable re = datos.obtenerAniodeCurso(año);
+                enc.Año = re.Rows[0]["id_anio"].ToString();
+                enc.Id_estudiante = sesion;
+
+                DataTable registros = datos.obtenerCursoEst(enc);
+                if (registros.Rows.Count > 0)
+                {
+                    usua.Año = registros.Rows[0]["id_ancu"].ToString();
+                }
+                else
+                {
+                    usua.Año = "0";
+                }
+            }
+            else
+                usua.Url = "~/View/Acudiente/AccesoDenegado.aspx";
 
             return usua;
         }

@@ -609,30 +609,9 @@ namespace Logica
 
             return enc;
         }
-        public UUser obtenerAñodeCurso()
-        {
-            DUser datos = new DUser();
-            UUser enc = new UUser();
-            DateTime fecha = DateTime.Now;
-            string año = (fecha.Year).ToString();
-            año = año + "-01-01";
-            DataTable re = datos.obtenerAniodeCurso(año);
-            enc.Año = re.Rows[0]["id_anio"].ToString();
-            enc.Id_estudiante = enc.SUserName;
 
-            DataTable registros = datos.obtenerCursoEst(enc);
-            if (registros.Rows.Count > 0)
-            {
-                enc.SAño = registros.Rows[0]["id_ancu"].ToString();
-            }
-            else
-            {
-                enc.SAño = "0";
-            }
-            return enc;
-        }
 
-        public bool validar_mat(string materia)
+    public bool validar_mat(string materia)
         {
             DUser datos = new DUser();
             bool ok = true;

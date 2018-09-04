@@ -35,7 +35,7 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
 
     protected void btn_AcudienteAceptar_Click(object sender, EventArgs e)
     {
-        //
+
         LUser logica = new LUser();
         UUser usua = new UUser();
 

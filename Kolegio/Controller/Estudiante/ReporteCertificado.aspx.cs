@@ -12,9 +12,12 @@ public partial class View_Estudiante_ReporteCertificado : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        try
         {
+            LLogin logica = new LLogin();
+            UUser usua = new UUser();
+
+            usua = logica.logAdminSecillo(Session["userId"].ToString());
             try
             {
                 InfReporte reporte = ObtenerInforme();
@@ -26,9 +29,12 @@ public partial class View_Estudiante_ReporteCertificado : System.Web.UI.Page
 
                 throw;
             }
-            }
-        else
-            Response.Redirect("AccesoDenegado.aspx");
+            Response.Redirect(usua.Url);
+        }
+        catch
+        {
+
+        }
         
     }
 

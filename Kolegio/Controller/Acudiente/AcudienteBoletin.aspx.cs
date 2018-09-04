@@ -21,12 +21,8 @@ public partial class View_Acudiente_AcudienteBoletin : System.Web.UI.Page
             UUser usua = new UUser();
 
             usua = log.logAcudienteSecillo(Session["userId"].ToString());
-            
 
-            DateTime fecha = DateTime.Now;
-            string año = (fecha.Year).ToString();
-            año = año + "-01-01";
-            logica.acudienteBoletin(año, int.Parse(DDT_estudiante.SelectedValue));
+            logica.acudienteBoletin(usua.Año, int.Parse(DDT_estudiante.SelectedValue));
             Response.Redirect(usua.Url);
         }
         catch

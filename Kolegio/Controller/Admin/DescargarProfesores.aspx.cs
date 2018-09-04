@@ -22,7 +22,6 @@ public partial class View_Admin_DescargarProfesores : System.Web.UI.Page
             UUser usua = new UUser();
 
             usua = logica.logAdminSecillo(Session["userId"].ToString());
-            Response.Redirect(usua.Url);
             try
             {
                 InfReporte reporte = ObtenerInforme();
@@ -34,6 +33,7 @@ public partial class View_Admin_DescargarProfesores : System.Web.UI.Page
 
                 throw;
             }
+            Response.Redirect(usua.Url);
         }
         catch
         {

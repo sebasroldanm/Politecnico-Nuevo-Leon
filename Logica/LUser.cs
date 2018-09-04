@@ -716,6 +716,47 @@ namespace Logica
             return usua;
         }
 
+        public UUser verificarCorreoEstudoiante(
+            string materia,
+            string userId,
+            string persona,
+            string apePersona,
+            string correo_l,
+            string destinatario,
+            string asunto,
+            string mensaje
+            )
+        {
+            DUser dat = new DUser();
+            UUser usua = new UUser();
+
+            usua.Correo = destinatario;
+            DataTable resultado = dat.verificarCorreo(usua);
+            if (materia == "0")
+            {
+                usua.Mensaje = "Debe seleccionar una opcion";
+            }
+            else
+            {
+                if (resultado.Rows.Count > 0)
+                {
+                    mensaje = mensaje + "<br><br>Atentamente: " + persona + " " + apePersona + "<br>Correo para responder: " + correo_l + "";
+                    string cadena = mensaje;
+                    DCorreoEnviar correo = new DCorreoEnviar();
+                    correo.enviarCorreoEnviar(destinatario, asunto, mensaje);
+                    usua.Notificacion = "<script language='JavaScript'>window.alert('Se ha enviado su mensaje con éxito');</script>";
+                    usua.Url = "EstudianteProfesor.aspx";
+                    usua.Mensaje = "";
+                }
+                else
+                {
+                    usua.Mensaje = "El correo digitado no existe";
+                    usua.CDestinatario = "";
+                }
+            }
+            return usua;
+        }
+
         public UUser acudienteBoletin(string anio, int idEstudiante)
         {
             DUser dat = new DUser();
@@ -740,28 +781,29 @@ namespace Logica
             return usua;
         }
 
-        public UUser acudienteObservador(string anio, int estudiante)
+        public UUser PL_AcudienteObservador(string estudiante)
         {
-            UUser usua = new UUser();
-            DUser dat = new DUser();
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+            DateTime fecha = DateTime.Now;
+            string año = (fecha.Year).ToString();
+            año = año + "-01-01";
+            DataTable re = datos.obtenerAniodeCurso(año);
+            enc.Año = re.Rows[0]["id_anio"].ToString();
+            enc.Id_estudiante = estudiante;
 
-            DataTable re = dat.obtenerAniodeCurso(anio);
-            usua.Año = re.Rows[0]["id_anio"].ToString();
-            usua.Id_estudiante = estudiante.ToString();
-
-            DataTable registros = dat.obtenerCursoEst(usua);
+            DataTable registros = datos.obtenerCursoEst(enc);
             if (registros.Rows.Count > 0)
             {
-                Session["anio"] = registros.Rows[0]["id_ancu"].ToString();
-                Session["est"] = estudiante.ToString();
+                enc.SAño = registros.Rows[0]["id_ancu"].ToString();
+                enc.SEstudiante = estudiante;
             }
             else
             {
-                Session["anio"] = "0";
-                Session["est"] = estudiante.ToString();
+                enc.SAño = "0";
+                enc.SEstudiante = estudiante;
             }
-
-            return usua;
+            return enc;
         }
 
         public UUser ModifConfiguracion(
