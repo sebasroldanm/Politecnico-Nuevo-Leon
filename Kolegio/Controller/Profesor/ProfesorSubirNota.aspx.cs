@@ -14,17 +14,25 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        try
         {
+            LLogin logica = new LLogin();
+            UUser usua = new UUser();
+
             LReg logic = new LReg();
             UUser enc = new UUser();
             enc = logic.ObAniodeCurso(Session["userId"].ToString());
             Session["anio"] = enc.Año;
             btn_Subirnota.Visible = false;
             ButtonVerNota.Visible = true;
+
+            usua = logica.logAdminSecillo(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
         }
-        else
-            Response.Redirect("~/View/Acudiente/AccesoDenegado.aspx");
+        catch
+        {
+
+        }
         
     }
 

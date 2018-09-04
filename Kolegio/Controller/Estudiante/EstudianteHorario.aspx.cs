@@ -14,10 +14,13 @@ public partial class View_Estudiante_EstudianteHorario : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        try
         {
-
+            LLogin log = new LLogin();
             UUser util = new UUser();
+
+            util = log.logEstudianteSecillo(Session["userId"].ToString());
+
             LReg logic = new LReg();
             DUser datos = new DUser();
             String id_est = Session["userId"].ToString();
@@ -26,9 +29,13 @@ public partial class View_Estudiante_EstudianteHorario : System.Web.UI.Page
             DataTable registro = logic.horario(curso, 3);
             GridView1.DataSource = registro;
             GridView1.DataBind();
+
+            Response.Redirect(util.Url);
         }
-        else
-            Response.Redirect("~/View/Estudiante/AccesoDenegado.aspx");
+        catch
+        {
+
+        }
         
     }
 

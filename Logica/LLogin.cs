@@ -10,6 +10,7 @@ namespace Logica
 {
     public class LLogin
     {
+        //****ADMINISTRADOR
         public UUser logAgregarAdmin(string sesion)
         {
             UUser usua = new UUser();
@@ -90,6 +91,90 @@ namespace Logica
             return usua;
         }
 
-        
+        //ACUDIENTE
+        public UUser logAcudienteSecillo(string sesion)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            if (sesion != "wpygkcrggjyqsrtf50nlfjlu")
+            {
+                Console.WriteLine("");
+            }
+            else
+                usua.Url = "~/View/Acudiente/AccesoDenegado.aspx";
+
+            return usua;
+        }
+
+        public UUser logConfiguracionAcudiente(string sesion, string foto)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            if (sesion != "wpygkcrggjyqsrtf50nlfjlu")
+            {
+                usua.Foto = foto;
+                usua.BotonFalse = false;
+                usua.BotonTrue = true;
+            }
+            else
+                usua.Url = "~/View/Acudiente/AccesoDenegado.aspx";
+
+
+            return usua;
+        }
+
+        //ESTUDIANTE
+
+        public UUser logEstudianteSecillo(string sesion)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            if (sesion != "wpygkcrggjyqsrtf50nlfjlu")
+            {
+                Console.WriteLine("");
+            }
+            else
+                usua.Url = "~/View/Acudiente/AccesoDenegado.aspx";
+
+            return usua;
+        }
+
+        public UUser logConfiguracionEstudiante(string sesion, string foto)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            if (sesion != "wpygkcrggjyqsrtf50nlfjlu")
+            {
+                usua.Foto = foto;
+                usua.BotonFalse = false;
+                usua.BotonTrue = true;
+            }
+            else
+                usua.Url = "~/View/Acudiente/AccesoDenegado.aspx";
+
+
+            return usua;
+        }
+        //PROFESOR
+        public UUser logProfesorSecillo(string sesion)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            if (sesion != "wpygkcrggjyqsrtf50nlfjlu")
+            {
+                Console.WriteLine("");
+            }
+            else
+                usua.Url = "~/View/Profesor/AccesoDenegado.aspx";
+
+            return usua;
+        }
+
+
     }
 }

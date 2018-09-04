@@ -14,18 +14,24 @@ public partial class View_Acudiente_AcudienteConfiguracion : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        try
+        {
+            LLogin logica = new LLogin();
+            UUser usua = new UUser();
+
+            usua = logica.logAdminSecillo(Session["userId"].ToString());
+            ImagenEst.ImageUrl = usua.Foto;
+            tb_correo.ReadOnly = usua.BotonTrue;
+            tb_contrasenia.ReadOnly = usua.BotonTrue;
+            tb_usuario.ReadOnly = usua.BotonTrue;
+            tb_Foto.Visible = usua.BotonTrue;
+            lb_foto.Visible = usua.BotonTrue;
+            Response.Redirect(usua.Url);
+        }
+        catch
         {
 
-            ImagenEst.ImageUrl = Session["foto"].ToString();
-            tb_correo.ReadOnly = true;
-            tb_contrasenia.ReadOnly = true;
-            tb_usuario.ReadOnly = true;
-            tb_Foto.Visible = false;
-            lb_foto.Visible = false;
         }
-        else
-            Response.Redirect("AccesoDenegado.aspx");
         
 
     }

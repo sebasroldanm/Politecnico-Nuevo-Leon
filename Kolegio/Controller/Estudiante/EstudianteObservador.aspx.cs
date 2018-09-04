@@ -4,18 +4,27 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Logica;
+using Utilitarios;
 
 public partial class View_Estudiante_EstudianteObservador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        try
         {
-            Console.WriteLine("");
+
+            LLogin logica = new LLogin();
+            UUser usua = new UUser();
+
+            usua = logica.logAdminSecillo(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
         }
-        else
-            Response.Redirect("~/View/Estudiante/AccesoDenegado.aspx");
+        catch
+        {
+
+        }
     }
 
     protected void btn_descargar_Click(object sender, EventArgs e)

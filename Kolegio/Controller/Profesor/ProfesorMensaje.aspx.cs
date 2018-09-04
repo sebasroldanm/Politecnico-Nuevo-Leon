@@ -16,8 +16,11 @@ public partial class View_Profesor_ProfesorMensaje : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        try
         {
+            LLogin logica = new LLogin();
+            UUser usua = new UUser();
+
             DaoUser datos = new DaoUser();
             DateTime fecha = DateTime.Now;
             string año = (fecha.Year).ToString();
@@ -25,9 +28,14 @@ public partial class View_Profesor_ProfesorMensaje : System.Web.UI.Page
             DataTable re = datos.obtenerAniodeCurso(año);
             Session["anio"] = re.Rows[0]["id_anio"];
             TB_Destinatario.Enabled = false;
+
+            usua = logica.logAdminSecillo(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
         }
-        else
-            Response.Redirect("AccesoDenegado.aspx");
+        catch
+        {
+
+        }
     }
 
     protected void B_Actualizar_Click(object sender, EventArgs e)

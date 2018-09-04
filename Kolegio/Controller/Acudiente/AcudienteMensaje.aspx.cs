@@ -13,12 +13,18 @@ public partial class View_Acudiente_AcudienteMensaje : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        try
         {
-            Console.WriteLine("");
+            LLogin logica = new LLogin();
+            UUser usua = new UUser();
+
+            usua = logica.logAcudienteSecillo(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
         }
-        else
-            Response.Redirect("AccesoDenegado.aspx");
+        catch
+        {
+
+        }
     }
 
     protected void B_Enviar_Click(object sender, EventArgs e)

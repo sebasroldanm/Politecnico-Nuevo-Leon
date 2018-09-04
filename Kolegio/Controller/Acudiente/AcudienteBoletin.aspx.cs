@@ -14,14 +14,32 @@ public partial class View_Acudiente_AcudienteBoletin : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
 
-        LUser logica = new LUser();
-        UUser usua = new UUser();
+        try
+        {
+            LUser logica = new LUser();
+            LLogin log = new LLogin();
+            UUser usua = new UUser();
 
-        DateTime fecha = DateTime.Now;
-        string año = (fecha.Year).ToString();
-        año = año + "-01-01";
+            usua = log.logAcudienteSecillo(Session["userId"].ToString());
+            
 
-        logica.acudienteBoletin(año, int.Parse(DDT_estudiante.SelectedValue));
+            DateTime fecha = DateTime.Now;
+            string año = (fecha.Year).ToString();
+            año = año + "-01-01";
+            logica.acudienteBoletin(año, int.Parse(DDT_estudiante.SelectedValue));
+            Response.Redirect(usua.Url);
+        }
+        catch
+        {
+
+        }
+
+        
+
+        
+        
+
+        
         
     }
 }

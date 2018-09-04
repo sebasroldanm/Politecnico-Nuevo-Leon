@@ -15,8 +15,12 @@ public partial class View_Profesor_CertificadoTrabajoProf : System.Web.UI.Page
 
 
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        try
         {
+            LLogin logica = new LLogin();
+            UUser usua = new UUser();
+
+            usua = logica.logProfesorSecillo(Session["userId"].ToString());
             try
             {
                 InfReporte reporte = ObtenerInforme();
@@ -28,10 +32,12 @@ public partial class View_Profesor_CertificadoTrabajoProf : System.Web.UI.Page
 
                 throw;
             }
+            Response.Redirect(usua.Url);
         }
-        else
-            Response.Redirect("AccesoDenegado.aspx");
+        catch
+        {
 
+        }
 
     }
 

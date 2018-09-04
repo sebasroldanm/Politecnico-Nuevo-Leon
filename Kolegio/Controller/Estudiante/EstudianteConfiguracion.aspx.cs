@@ -14,17 +14,25 @@ public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Pag
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        try
         {
+            LLogin logica = new LLogin();
+            UUser usua = new UUser();
+
+            usua = logica.logAgregaEstudiante(Session["userId"].ToString());
+            
             ImagenEst.ImageUrl = Session["foto"].ToString();
-            tb_correo.ReadOnly = true;
-            tb_contrasenia.ReadOnly = true;
-            tb_usuario.ReadOnly = true;
-            tb_Foto.Visible = false;
-            lb_foto.Visible = false;
+            tb_correo.ReadOnly = usua.BotonTrue;
+            tb_contrasenia.ReadOnly = usua.BotonTrue;
+            tb_usuario.ReadOnly = usua.BotonTrue;
+            tb_Foto.Visible = usua.BotonFalse;
+            lb_foto.Visible = usua.BotonFalse;
+            Response.Redirect(usua.Url);
         }
-        else
-            Response.Redirect("AccesoDenegado.aspx");
+        catch
+        {
+
+        }
         
     }
 

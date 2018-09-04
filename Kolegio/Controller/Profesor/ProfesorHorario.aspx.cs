@@ -14,8 +14,9 @@ public partial class View_Profesor_ProfesorHorario : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+        try
         {
+            LLogin log = new LLogin();
             UUser util = new UUser();
             LReg logic = new LReg();
             DUser datos = new DUser();
@@ -26,10 +27,15 @@ public partial class View_Profesor_ProfesorHorario : System.Web.UI.Page
             GridView1.DataSource = registro;
             GridView1.DataBind();
 
-            
+            util = log.logAdminSecillo(Session["userId"].ToString());
+            Response.Redirect(util.Url);
+
+
         }
-        else
-            Response.Redirect("~/View/Profesor/AccesoDenegado.aspx");
+        catch
+        {
+
+        }
     }
 
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

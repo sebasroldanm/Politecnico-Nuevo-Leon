@@ -13,15 +13,21 @@ public partial class View_Profesor_ProfesorListado : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        if (Session["userId"] != null)
+
+        try
         {
-            tb_documentoestudiante.Text = (string)Session["documentoestudiante"];
+            LLogin logica = new LLogin();
+            UUser usua = new UUser();
             tb_documentoestudiante.ReadOnly = true;
+            usua = logica.logAdminSecillo(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
         }
-        else
-            Response.Redirect("~View/Profesor/AccesoDenegado.aspx");
-        
-       
+        catch
+        {
+
+        }
+
+
     }
 
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
