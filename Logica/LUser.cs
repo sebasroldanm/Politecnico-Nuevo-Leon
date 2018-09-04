@@ -10,6 +10,8 @@ using Datos;
 using Utilitarios;
 using System.Data;
 using System.IO;
+using Newtonsoft.Json;
+using System.Security.Cryptography;
 
 namespace Logica
 {
@@ -868,6 +870,92 @@ namespace Logica
 
         ////////////////////////FIN CONFIGURACION PAGINA//////////////////     
 
+        public UUser recuperarContra(string userName)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            System.Data.DataTable validez = dat.generarToken(userName);
+            if (int.Parse(validez.Rows[0]["id_usua"].ToString()) > 0)
+            {
+                UToken token = new UToken();
+                //EUserToken token = new EUserToken();
+                token.Id = int.Parse(validez.Rows[0]["id_usua"].ToString());
+                token.Nombre = validez.Rows[0]["nombre_usua"].ToString();
+                token.User_name = validez.Rows[0]["user_name"].ToString();
+                token.Estado = int.Parse(validez.Rows[0]["state_t"].ToString());
+
+                token.Correo = validez.Rows[0]["correo"].ToString();
+                token.Fecha = DateTime.Now.ToFileTimeUtc();
+
+
+                String userToken = encriptar(JsonConvert.SerializeObject(token));
+                dat.almacenarToken(userToken, token.Id);
+
+                DCorreo correo = new DCorreo();
+
+                String mensaje = "Su link de acceso es: " + "http://localhost:58629/View/Contrasenia.aspx?" + userToken;
+                correo.enviarCorreo(token.Correo, userToken, mensaje);
+
+                usua.Mensaje = "Revisar su correo para recuperar contraseña";
+            }
+            else if (int.Parse(validez.Rows[0]["id_usua"].ToString()) == -2)
+            {
+                usua.Mensaje = "Ya extsite un link de recuperación, por favor verifique su correo.";
+            }
+            else
+            {
+                usua.Mensaje = "El usuario digitado no existe";
+            }
+
+            return usua;
+        }
+
+        private string encriptar(string input)
+        {
+            SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
+
+            byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+            byte[] hashedBytes = provider.ComputeHash(inputBytes);
+
+            StringBuilder output = new StringBuilder();
+
+            for (int i = 0; i < hashedBytes.Length; i++)
+                output.Append(hashedBytes[i].ToString("x2").ToLower());
+
+            return output.ToString();
+        }
+
+        public UUser cambiarContra(int QueryString, string Query)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+           
+            if (QueryString > 0)
+            {
+                DataTable info = dat.obtenerUsusarioToken(Query);
+
+                if (int.Parse(info.Rows[0][0].ToString()) == -1)
+                {
+                    //this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('El Token es invalido. Genere uno nuevo');window.location=\"Loggin.aspx\"</script>");
+                    usua.Notificacion = "<script language='JavaScript'>window.alert('El Token es invalido. Genere uno nuevo');</script>";
+                    usua.Url = "~/View/Loggin.aspx";
+                }
+                else if (int.Parse(info.Rows[0][0].ToString()) == -1)
+                {
+                    //this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('El Token esta vencido. Genere uno nuevo');window.location=\"Loggin.aspx\"</script>");
+                    usua.Notificacion = "<script language='JavaScript'>window.alert('El Token esta vencido. Genere uno nuevo');</script>";
+                    usua.Url = "~/View/Loggin.aspx";
+                }
+                else
+                    Session["user_id"] = int.Parse(info.Rows[0][0].ToString());
+            }
+            else
+                //Response.Redirect("~/View/Loggin.aspx");
+                usua.Url = "~/View/Loggin.aspx";
+
+            return usua;
+        }
 
 
 
