@@ -53,6 +53,7 @@ namespace Utilitarios
         private String sCorreo;
         private String sDocumento;
         private String sFoto;
+        private String sAño;
 
         //
 
@@ -157,5 +158,6 @@ namespace Utilitarios
         public bool BotonTrue { get => botonTrue; set => botonTrue = value; }
         public bool BotonFalse { get => botonFalse; set => botonFalse = value; }
         public string Nosotros { get => nosotros; set => nosotros = value; }
+        public string SAño { get => sAño; set => sAño = value; }
     }
 }
