@@ -19,7 +19,7 @@
                     <label for="ddl_estudiante" class="control-label" style="color: #FFFFFF">Estudiante :</label>
                     <asp:DropDownList class="control-label" ID="DDL_Estudiante" runat="server" AutoPostBack="True" DataSourceID="ODS_obtener_est_acu" DataTextField="nombre_usua" DataValueField="id_usua"></asp:DropDownList>
 
-                    <asp:ObjectDataSource ID="ODS_obtener_est_acu" runat="server" SelectMethod="obtener_est_acu" TypeName="DaoUser">
+                    <asp:ObjectDataSource ID="ODS_obtener_est_acu" runat="server" SelectMethod="obtener_est_acu" TypeName="Datos.DUser">
                         <SelectParameters>
                             <asp:SessionParameter Name="id_usua" SessionField="userId" Type="Int32" />
                         </SelectParameters>
@@ -28,7 +28,7 @@
                     <label for="ddl_materia" class="control-label" style="color: #FFFFFF">Profesor :</label>
                     <asp:DropDownList ID="DDL_Profesor" class="control-label" runat="server" AutoPostBack="True" DataSourceID="ODS_profe_mensaje_aco" DataTextField="nombre_usua" DataValueField="correo"></asp:DropDownList>
 
-                    <asp:ObjectDataSource ID="ODS_profe_mensaje_aco" runat="server" SelectMethod="profemensaje" TypeName="DaoUser">
+                    <asp:ObjectDataSource ID="ODS_profe_mensaje_aco" runat="server" SelectMethod="profemensaje" TypeName="Datos.DUser">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="DDL_Estudiante" Name="id_usua" PropertyName="SelectedValue" Type="Int32" />
                         </SelectParameters>

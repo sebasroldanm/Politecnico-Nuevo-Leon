@@ -29,7 +29,7 @@
             <SortedDescendingCellStyle BackColor="#D8D8F0" />
             <SortedDescendingHeaderStyle BackColor="#3E3277" />
         </asp:GridView>
-        <asp:ObjectDataSource ID="ODS_Boletin" runat="server" SelectMethod="listarObservador" TypeName="DaoUser">
+        <asp:ObjectDataSource ID="ODS_Boletin" runat="server" SelectMethod="listarObservador" TypeName="Datos.DUser">
             <SelectParameters>
                 <asp:SessionParameter Name="dat" SessionField="est" Type="String" />
             </SelectParameters>
