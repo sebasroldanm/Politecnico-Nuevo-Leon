@@ -45,13 +45,7 @@ public partial class View_Acudiente_AcudienteMensaje : System.Web.UI.Page
             );
 
         this.Page.Response.Write(usua.Notificacion);
-        //Response.Redirect(usua.Url);
         L_Verificar.Text = usua.Mensaje;
-        //TB_Destinatario.Text = usua.CDestinatario;
-
-        //string a = DDL_Estudiante.SelectedValue.ToString();
-        //int estu;
-        //estu = Convert.ToInt32(a);
 
         TB_Mensaje.Text = usua.Mensaje;
     }
