@@ -44,6 +44,7 @@ public partial class Loggin : System.Web.UI.Page
         }
         else
         {
+            logic.logicaGuardarSesion(int.Parse(Session["userId"].ToString()));
             Response.Redirect(datos.Url);
         }
     }

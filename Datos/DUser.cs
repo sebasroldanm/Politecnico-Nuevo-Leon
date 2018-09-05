@@ -42,8 +42,64 @@ namespace Datos
             return Usuario;
         }
 
+        public DataTable guardadoSession(UUser datos)
+        {
+            DataTable Usuario = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("security.f_guardado_session", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_user_id", NpgsqlDbType.Integer).Value = datos.UserId;
+                dataAdapter.SelectCommand.Parameters.Add("_ip", NpgsqlDbType.Varchar, 100).Value = datos.Ip;
+                dataAdapter.SelectCommand.Parameters.Add("_mac", NpgsqlDbType.Varchar, 100).Value = datos.Mac;
+                dataAdapter.SelectCommand.Parameters.Add("_session", NpgsqlDbType.Text).Value = datos.Session;
 
+                conection.Open();
+                dataAdapter.Fill(Usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuario;
+        }
+
+        public DataTable cerrarSession(UUser datos)
+        {
+            DataTable Usuario = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("security.f_cerrar_session", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_session", NpgsqlDbType.Text).Value = datos.Session;
+
+                conection.Open();
+                dataAdapter.Fill(Usuario);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuario;
+        }
 
         public DataTable almacenarToken(String token, Int32 userId)
         {
@@ -1066,65 +1122,6 @@ namespace Datos
                 }
             }
             return usua;
-        }
-
-        public DataTable guardadoSession(UUser datos)
-        {
-            DataTable Usuario = new DataTable();
-            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
-
-            try
-            {
-                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("security.f_guardado_session", conection);
-                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_user_id", NpgsqlDbType.Integer).Value = int.Parse(datos.Id_estudiante);
-                dataAdapter.SelectCommand.Parameters.Add("_ip", NpgsqlDbType.Varchar, 100).Value = datos.Ip;
-                dataAdapter.SelectCommand.Parameters.Add("_mac", NpgsqlDbType.Varchar, 100).Value = datos.Mac;
-                dataAdapter.SelectCommand.Parameters.Add("_session", NpgsqlDbType.Text).Value = datos.Session;
-
-                conection.Open();
-                dataAdapter.Fill(Usuario);
-            }
-            catch (Exception Ex)
-            {
-                throw Ex;
-            }
-            finally
-            {
-                if (conection != null)
-                {
-                    conection.Close();
-                }
-            }
-            return Usuario;
-        }
-
-        public DataTable cerrarSession(UUser datos)
-        {
-            DataTable Usuario = new DataTable();
-            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
-
-            try
-            {
-                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("security.f_cerrar_session", conection);
-                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_session", NpgsqlDbType.Text).Value = datos.Session;
-
-                conection.Open();
-                dataAdapter.Fill(Usuario);
-            }
-            catch (Exception Ex)
-            {
-                throw Ex;
-            }
-            finally
-            {
-                if (conection != null)
-                {
-                    conection.Close();
-                }
-            }
-            return Usuario;
         }
 
         //** ENVIO MENSAJE CORREO - ** ENVIO MENSAJE CORREO - ** ENVIO MENSAJE CORREO - ** ENVIO MENSAJE CORREO - ** ENVIO MENSAJE CORREO 

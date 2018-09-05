@@ -92,6 +92,30 @@ namespace Logica
             return user;
         }
 
+        public void logicaGuardarSesion(int id)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+            MAC datosConexion = new MAC();
+
+            usua.UserId = id;
+            usua.Ip = datosConexion.ip();
+            usua.Mac = datosConexion.mac();
+            usua.Session = Session.SessionID;
+
+            dat.guardadoSession(usua);
+        }
+
+        public void cerrarSession(string sesion)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            usua.Session = sesion;
+
+            dat.cerrarSession(usua);
+        }
+
         public UUser AgregarAdmin(
               int departamento,
               int ciudad,
