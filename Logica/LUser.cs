@@ -854,7 +854,7 @@ namespace Logica
             return enc;
         }
 
-        public UUser PL_EstudianteVerNotas()
+        public UUser PL_EstudianteVerNotas(string userId)
         {
             DUser datos = new DUser();
             UUser enc = new UUser();
@@ -863,7 +863,7 @@ namespace Logica
             año = año + "-01-01";
             DataTable re = datos.obtenerAniodeCurso(año);
             enc.Año = re.Rows[0]["id_anio"].ToString();
-            enc.Id_estudiante = Session["userId"].ToString();
+            enc.Id_estudiante = userId;
 
             DataTable registros = datos.obtenerCursoEst(enc);
             if (registros.Rows.Count > 0)

@@ -25,7 +25,8 @@ public partial class View_Profesor_ProfesorListado : System.Web.UI.Page
         {
 
         }
-
+        tb_documentoestudiante.Text = (string)Session["documentoestudiante"];
+        tb_documentoestudiante.ReadOnly = true;
 
     }
 
@@ -40,6 +41,7 @@ public partial class View_Profesor_ProfesorListado : System.Web.UI.Page
         UUser enc = new UUser();
         LReg logic = new LReg();
         enc = logic.insertObservacion(Session["id"].ToString(), TB_Observ.Text.ToString());
+
         GridView1.DataBind();
     }
 

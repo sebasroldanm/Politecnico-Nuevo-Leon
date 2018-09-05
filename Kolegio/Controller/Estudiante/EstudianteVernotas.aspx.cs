@@ -20,8 +20,9 @@ public partial class View_Estudiante_EstudianteVernotas : System.Web.UI.Page
             UUser enc = new UUser();
             LLogin log = new LLogin();
 
-            enc = logic.PL_EstudianteVerNotas();
-            Session["anio"] = enc.Año;
+            enc = logic.PL_EstudianteVerNotas(Session["userId"].ToString());
+            Session["anio"] = enc.SAño;
+            Session["userId"] = enc.Id_estudiante;
 
             enc = log.logAdminSecillo(Session["userId"].ToString());
             Response.Redirect(enc.Url);
