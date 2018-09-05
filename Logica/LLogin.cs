@@ -225,6 +225,20 @@ namespace Logica
             return usua;
         }
 
+        public UUser cerrarSessionAcudiente(string session)
+        {
+            DUser user = new DUser();
+            UUser datos = new UUser();
+
+            datos.SUserId = null;
+            datos.SNombre = null;
+
+            datos.Session = session;
+            user.cerrarSession(datos);
+
+            datos.Url =("../Inicio/InicioNosotros.aspx");
+            return datos;
+        }
 
     }
 }
