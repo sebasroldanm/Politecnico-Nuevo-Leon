@@ -979,6 +979,16 @@ namespace Logica
             return usua;
         }
 
+        public UContrasenia ContraseñaBEnviar(string NuevamenteClave, string userId)
+        {
+            DUser datos = new DUser();
+            UContrasenia usua = new UContrasenia();
+
+            usua.UserId = int.Parse(userId);
+            usua.Clave = NuevamenteClave;
+            datos.actualziarContrasena(usua);
+            return usua;
+        }
 
         ////////////////////////FIN CONFIGURACION PAGINA//////////////////     
 

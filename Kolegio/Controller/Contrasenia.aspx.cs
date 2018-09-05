@@ -7,7 +7,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
-using Datos;
 
 public partial class View_Contrasenia : System.Web.UI.Page
 {
@@ -33,14 +32,11 @@ public partial class View_Contrasenia : System.Web.UI.Page
 
     protected void B_Enviar_Click(object sender, EventArgs e)
     {
-        DUser logica = new DUser();
+        LUser logic = new LUser();
         UContrasenia usua = new UContrasenia();
+        usua = logic.ContraseñaBEnviar(TB_NuevamenteClave.Text, Session["user_id"].ToString());
 
-        usua.UserId = int.Parse(Session["user_id"].ToString());
-        usua.Clave = TB_NuevamenteClave.Text;
-
-        logica.actualziarContrasena(usua);
         this.Page.Response.Write("<script language='JavaScript'>window.alert('El Token esta vencido. Genere uno nuevo');</script>");
-        Response.Redirect("Loggin.aspx");
+        Response.Redirect("~/View/Loggin.aspx");
     }
 }
