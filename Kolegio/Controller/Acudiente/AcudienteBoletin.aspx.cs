@@ -22,7 +22,7 @@ public partial class View_Acudiente_AcudienteBoletin : System.Web.UI.Page
 
             usua = log.logAcudienteSecillo(Session["userId"].ToString());
 
-            logica.acudienteBoletin(usua.Año, int.Parse(DDT_estudiante.SelectedValue));
+            logica.PL_AcudienteObservador(DDT_estudiante.SelectedValue);
             Response.Redirect(usua.Url);
         }
         catch

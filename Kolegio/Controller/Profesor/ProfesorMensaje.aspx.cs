@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
-using Datos;
 using Utilitarios;
 
 
@@ -18,18 +17,16 @@ public partial class View_Profesor_ProfesorMensaje : System.Web.UI.Page
         Response.Cache.SetNoStore();
         try
         {
-            LLogin logica = new LLogin();
+            LLogin log = new LLogin();
             UUser usua = new UUser();
+            LUser logica = new LUser();
 
-            DaoUser datos = new DaoUser();
-            DateTime fecha = DateTime.Now;
-            string año = (fecha.Year).ToString();
-            año = año + "-01-01";
-            DataTable re = datos.obtenerAniodeCurso(año);
-            Session["anio"] = re.Rows[0]["id_anio"];
-            TB_Destinatario.Enabled = false;
+            usua = logica.profeMensaje();
 
-            usua = logica.logAdminSecillo(Session["userId"].ToString());
+            Session["anio"] = usua.Año;
+            TB_Destinatario.Enabled = usua.BotonFalse;
+
+            usua = log.logAdminSecillo(Session["userId"].ToString());
             Response.Redirect(usua.Url);
         }
         catch
@@ -40,7 +37,6 @@ public partial class View_Profesor_ProfesorMensaje : System.Web.UI.Page
 
     protected void B_Actualizar_Click(object sender, EventArgs e)
     {
-        DUser datos = new DUser();
         UUser enc = new UUser();
         LReg logic = new LReg();
 
@@ -51,7 +47,6 @@ public partial class View_Profesor_ProfesorMensaje : System.Web.UI.Page
 
     protected void B_Enviar_Click(object sender, EventArgs e)
     {
-        DUser datos = new DUser();
         UUser enc = new UUser();
         LReg logic = new LReg();
 

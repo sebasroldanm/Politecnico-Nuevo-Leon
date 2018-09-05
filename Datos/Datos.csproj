@@ -60,8 +60,8 @@
   <ItemGroup>
     <Compile Include="DCorreo.cs" />
     <Compile Include="DCorreoEnviar.cs" />
-    <Compile Include="DMAC.cs" />
     <Compile Include="DUser.cs" />
+    <Compile Include="MAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

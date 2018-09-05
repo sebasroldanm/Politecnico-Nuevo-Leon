@@ -62,7 +62,7 @@ namespace Logica
 
                         case 4:
                             //Response.Redirect("Acudiente/AcudienteBoletin.aspx");
-                            user.Url = "~/View/Acudiente/AcudienteBoletin.aspx";
+                            user.Url = "~/View/Acudiente/AcudienteObservador.aspx";
                             break;
 
                         default:
@@ -292,31 +292,6 @@ namespace Logica
             cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo de imagen ha sido cargado');</script>");
 
             return "~/FotosUser" + "/" + sFecha + sMinu + nombreArchivo;
-
-        //ClientScriptManager cm = this.ClientScript;
-        //String nombreArchivo = System.IO.Path.GetFileName(foto.PostedFile.FileName);
-        //String extension = System.IO.Path.GetExtension(foto.PostedFile.FileName);
-        //String saveLocation = "";
-
-        //if (!(string.Compare(extension, ".png", true) == 0 || string.Compare(extension, ".jpeg", true) == 0 || string.Compare(extension, ".jpg", true) == 0))
-        //{
-        //    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>");
-        //    //btnigm_calendar.Visible = true;
-        //    return null;
-        //}
-
-        //saveLocation = Server.MapPath("~/FotosUser") + "/" + nombreArchivo;
-
-        //if (System.IO.File.Exists(saveLocation))
-        //{
-        //    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe una imagen en el servidor con ese nombre');</script>");
-        //    return null;
-        //}
-
-        //foto.PostedFile.SaveAs(saveLocation);
-        //cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo de imagen ha sido cargado');</script>");
-
-        //return "~/FotosUser" + "/" + nombreArchivo;
         }
 
         public UUser buscarAcudiete(int departamento, int ciudad, String documento)
@@ -716,6 +691,21 @@ namespace Logica
             return usua;
         }
 
+        public UUser profeMensaje()
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            DateTime fecha = DateTime.Now;
+            string año = (fecha.Year).ToString();
+            año = año + "-01-01";
+            DataTable re = dat.obtenerAniodeCurso(año);
+            usua.Año = re.Rows[0]["id_anio"].ToString();
+            usua.BotonFalse = false;
+
+            return usua;
+        }
+
         public UUser verificarCorreoEstudoiante(
             string materia,
             string userId,
@@ -791,29 +781,29 @@ namespace Logica
             return usua;
         }
 
-        public UUser acudienteBoletin(string anio, int idEstudiante)
-        {
-            DUser dat = new DUser();
-            UUser usua = new UUser();
+        //public UUser acudienteBoletin(string anio, int idEstudiante)
+        //{
+        //    DUser dat = new DUser();
+        //    UUser usua = new UUser();
 
-            DataTable re = dat.obtenerAniodeCurso(anio);
-            usua.Año = re.Rows[0]["id_anio"].ToString();
-            usua.Id_estudiante = idEstudiante.ToString();
+        //    DataTable re = dat.obtenerAniodeCurso(anio);
+        //    usua.Año = re.Rows[0]["id_anio"].ToString();
+        //    usua.Id_estudiante = idEstudiante.ToString();
 
-            DataTable registros = dat.obtenerCursoEst(usua);
-            if (registros.Rows.Count > 0)
-            {
-                Session["anio"] = registros.Rows[0]["id_ancu"].ToString();
-                Session["est"] = idEstudiante;
-            }
-            else
-            {
-                Session["anio"] = "0";
-                Session["est"] = idEstudiante;
-            }
+        //    DataTable registros = dat.obtenerCursoEst(usua);
+        //    if (registros.Rows.Count > 0)
+        //    {
+        //        Session["anio"] = registros.Rows[0]["id_ancu"].ToString();
+        //        Session["est"] = idEstudiante;
+        //    }
+        //    else
+        //    {
+        //        Session["anio"] = "0";
+        //        Session["est"] = idEstudiante;
+        //    }
 
-            return usua;
-        }
+        //    return usua;
+        //}
 
         public UUser PL_AcudienteObservador(string estudiante)
         {
