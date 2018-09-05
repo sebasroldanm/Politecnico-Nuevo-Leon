@@ -8,7 +8,7 @@
         <asp:DropDownList ID="DDT_estudiante" runat="server" Class="form-control" DataSourceID="ODS_Estudiante" DataTextField="nombre_usua" DataValueField="id_usua" AutoPostBack="True">
             <asp:ListItem Value="0"></asp:ListItem>
         </asp:DropDownList>
-        <asp:ObjectDataSource ID="ODS_Estudiante" runat="server" SelectMethod="listarEstAcudiente" TypeName="DaoUser">
+        <asp:ObjectDataSource ID="ODS_Estudiante" runat="server" SelectMethod="listarEstAcudiente" TypeName="Datos.DUser">
             <SelectParameters>
                 <asp:SessionParameter Name="usu" SessionField="userId" Type="String" />
             </SelectParameters>
