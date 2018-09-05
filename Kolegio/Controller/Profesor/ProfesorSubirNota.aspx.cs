@@ -7,7 +7,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
-using Datos;
 
 public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
 {
@@ -43,7 +42,6 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
 
     protected void btn_Subirnota_Click(object sender, EventArgs e)
     {
-        DUser datos = new DUser();
         UUser enc = new UUser();
         LReg logic = new LReg();
 
@@ -58,7 +56,6 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
 
     protected void ButtonVerNota_Click(object sender, EventArgs e)
     {
-        DUser datos = new DUser();
         UUser enc = new UUser();
         LReg logic = new LReg();
 

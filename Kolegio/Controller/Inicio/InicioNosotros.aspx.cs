@@ -7,7 +7,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilitarios;
 using Logica;
-//using Datos;
 
 public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
 {
@@ -19,7 +18,6 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
 
         LUser logica = new LUser();
         UUser usua = new UUser();
-        //DUser user = new DUser();
 
 
 

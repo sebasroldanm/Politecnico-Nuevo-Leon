@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Datos;
 using Utilitarios;
 using Logica;
 
@@ -38,7 +37,6 @@ public partial class View_Profesor_ProfesorListado : System.Web.UI.Page
 
     protected void btn_AdministradorAceptar_Click2(object sender, EventArgs e)
     {
-        DUser datos = new DUser();
         UUser enc = new UUser();
         LReg logic = new LReg();
         enc = logic.insertObservacion(Session["id"].ToString(), TB_Observ.Text.ToString());

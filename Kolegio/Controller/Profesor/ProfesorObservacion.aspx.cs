@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Datos;
 using Logica;
 using Utilitarios;
 
@@ -41,7 +40,6 @@ public partial class View_Profesor_ProfesorObservacion : System.Web.UI.Page
 
     protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
     {
-        DUser datos = new DUser();
         UUser enc = new UUser();
         LReg logic = new LReg();
 

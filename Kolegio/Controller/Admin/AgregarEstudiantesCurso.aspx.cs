@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilitarios;
-using Datos;
 using Logica;
 
 public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
@@ -30,7 +29,6 @@ public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
 
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        DUser datos = new DUser();
         UUser enc = new UUser();
         LReg logic = new LReg();
 
@@ -41,7 +39,6 @@ public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
 
     protected void btn_Aceptar_Click(object sender, EventArgs e)
     {
-        DUser datos = new DUser();
         UUser enc = new UUser();
         LReg logic = new LReg();
 

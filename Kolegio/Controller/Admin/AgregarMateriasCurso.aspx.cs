@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
-using Datos;
 using Utilitarios;
 
 public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
@@ -51,7 +50,6 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
     {
         UUser util = new UUser();
         LReg logic = new LReg();
-        DUser datos = new DUser();
 
         int curso = int.Parse(ddt_curso.SelectedValue);
 
@@ -72,7 +70,6 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
 
     protected void btn_pasaranio_Click(object sender, EventArgs e)
     {
-        DUser datos = new DUser();
         UUser enc = new UUser();
         LReg logic = new LReg();
 

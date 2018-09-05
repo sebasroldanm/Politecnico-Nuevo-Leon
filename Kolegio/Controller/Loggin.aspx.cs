@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using Utilitarios;
-using Datos;
 using Logica;
 
 public partial class Loggin : System.Web.UI.Page

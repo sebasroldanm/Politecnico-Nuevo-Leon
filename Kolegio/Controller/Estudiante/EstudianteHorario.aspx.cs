@@ -7,7 +7,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
-using Datos;
 
 public partial class View_Estudiante_EstudianteHorario : System.Web.UI.Page
 {
@@ -22,7 +21,6 @@ public partial class View_Estudiante_EstudianteHorario : System.Web.UI.Page
             util = log.logEstudianteSecillo(Session["userId"].ToString());
 
             LReg logic = new LReg();
-            DUser datos = new DUser();
             String id_est = Session["userId"].ToString();
             int curso = int.Parse(id_est);
 

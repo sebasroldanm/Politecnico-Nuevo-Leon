@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Datos;
 using Logica;
 using Utilitarios;
 
@@ -54,7 +53,6 @@ public partial class View_Profesor_ProfesorConfiguracion : System.Web.UI.Page
     protected void btn_Aceptar_Click(object sender, EventArgs e)
     {
         UUser enc = new UUser();
-        DUser datos = new DUser();
         LUser logic = new LUser();
 
         String foto = System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName);
