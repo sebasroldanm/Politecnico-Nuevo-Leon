@@ -14,17 +14,24 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
         horario();
+        LLogin logica = new LLogin();
+        UUser usua = new UUser();
+
         try
         {
-            LLogin logica = new LLogin();
-            UUser usua = new UUser();
-
             usua = logica.logAdminSecillo(Session["userId"].ToString());
             Response.Redirect(usua.Url);
         }
         catch
         {
-
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
+            }
         }
     }
 

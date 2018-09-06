@@ -11,17 +11,24 @@ public partial class View_Admin_ListarAdministrador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetNoStore();
+        LLogin logica = new LLogin();
+        UUser usua = new UUser();
         try
         {
-            LLogin logica = new LLogin();
-            UUser usua = new UUser();
-
             usua = logica.logAdminSecillo(Session["userId"].ToString());
             Response.Redirect(usua.Url);
         }
         catch
         {
-
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
+            }
         }
     }
 

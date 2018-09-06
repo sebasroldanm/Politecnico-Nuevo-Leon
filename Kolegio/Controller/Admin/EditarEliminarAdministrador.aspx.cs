@@ -13,11 +13,10 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
+        LLogin logica = new LLogin();
+        UUser usua = new UUser();
         try
         {
-            LLogin logica = new LLogin();
-            UUser usua = new UUser();
-
             usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documentoa"].ToString());
             tb_AministradorAdministradorId.Text = Session["documentoa"].ToString();
             tb_AdministradorAdministradorNombre.ReadOnly = usua.BotonTrue;
@@ -30,7 +29,14 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
         }
         catch
         {
-
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
+            }
         }
     }
 

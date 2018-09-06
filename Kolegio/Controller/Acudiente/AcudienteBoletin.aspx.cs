@@ -13,13 +13,11 @@ public partial class View_Acudiente_AcudienteBoletin : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-
+        LUser logica = new LUser();
+        LLogin log = new LLogin();
+        UUser usua = new UUser();
         try
         {
-            LUser logica = new LUser();
-            LLogin log = new LLogin();
-            UUser usua = new UUser();
-
             usua = log.logAcudienteSecillo(Session["userId"].ToString());
 
             logica.PL_AcudienteObservador(DDT_estudiante.SelectedValue);
@@ -27,7 +25,14 @@ public partial class View_Acudiente_AcudienteBoletin : System.Web.UI.Page
         }
         catch
         {
-
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Acudiente/AccesoDenegado.aspx");
+            }
         }
 
         

@@ -50,6 +50,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InfReporte.xsd</DependentUpon>
     </Compile>
+    <Compile Include="MAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UContrasenia.cs" />
     <Compile Include="UReg.cs" />

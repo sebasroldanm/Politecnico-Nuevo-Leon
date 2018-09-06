@@ -15,12 +15,11 @@ public partial class View_Profesor_ProfesorMensaje : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
+        LLogin log = new LLogin();
+        UUser usua = new UUser();
+        LUser logica = new LUser();
         try
         {
-            LLogin log = new LLogin();
-            UUser usua = new UUser();
-            LUser logica = new LUser();
-
             usua = logica.profeMensaje();
 
             Session["anio"] = usua.Año;
@@ -31,7 +30,14 @@ public partial class View_Profesor_ProfesorMensaje : System.Web.UI.Page
         }
         catch
         {
-
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Profesor/AccesoDenegado.aspx");
+            }
         }
     }
 

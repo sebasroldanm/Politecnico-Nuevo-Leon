@@ -14,12 +14,11 @@ public partial class View_Estudiante_EstudianteVernotas : System.Web.UI.Page
     {
 
         Response.Cache.SetNoStore();
+        LUser logic = new LUser();
+        UUser enc = new UUser();
+        LLogin log = new LLogin();
         try
         {
-            LUser logic = new LUser();
-            UUser enc = new UUser();
-            LLogin log = new LLogin();
-
             enc = logic.PL_EstudianteVerNotas(Session["userId"].ToString());
             Session["anio"] = enc.SAño;
             Session["userId"] = enc.Id_estudiante;
@@ -30,7 +29,14 @@ public partial class View_Estudiante_EstudianteVernotas : System.Web.UI.Page
         }
         catch
         {
-
+            try
+            {
+                enc.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Estudiante/AccesoDenegado.aspx");
+            }
         }
 
     }

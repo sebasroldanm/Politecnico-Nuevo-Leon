@@ -43,7 +43,12 @@ public partial class Loggin : System.Web.UI.Page
         }
         else
         {
-            logic.logicaGuardarSesion(int.Parse(Session["userId"].ToString()));
+            MAC datosConexion = new MAC();
+            int prueba = int.Parse(Session["userId"].ToString());
+            logic.logicaGuardarSesion(int.Parse(Session["userId"].ToString()),
+                datosConexion.ip(),
+                datosConexion.mac(),
+                Session.SessionID);
             Response.Redirect(datos.Url);
         }
     }

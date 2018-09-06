@@ -17,7 +17,7 @@ namespace Logica
             UUser usua = new UUser();
             DUser dat = new DUser();
 
-            if (sesion != "wpygkcrggjyqsrtf50nlfjlu")
+            if (sesion != null)
             {
                 int year;
                 year = int.Parse(DateTime.Now.ToString("yyyy"));
@@ -29,12 +29,44 @@ namespace Logica
 
             return usua;
         }
+
+        public UUser prueba(UUser sesion)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            if (sesion.Session != null)
+            {
+                int year;
+                year = int.Parse(DateTime.Now.ToString("yyyy"));
+                year = year - 18;
+                usua.RolId = year;
+            }
+            else
+                usua.Url = "~/View/Admin/AccesoDenegado.aspx";
+
+            return usua;
+        }
+
+        public UUser prueba1(UUser sesion)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            if(sesion.Session == null)
+            {
+                usua.Url = "~/View/Admin/AccesoDenegado.aspx";
+            }
+            return usua;
+        }
+
+
         public UUser logAdminSecillo(string sesion)
         {
             UUser usua = new UUser();
             DUser dat = new DUser();
 
-            if (sesion != "wpygkcrggjyqsrtf50nlfjlu")
+            if (sesion != null)
             {
                 Console.WriteLine("");
             }
@@ -48,7 +80,7 @@ namespace Logica
             UUser usua = new UUser();
             DUser dat = new DUser();
 
-            if (sesion != "wpygkcrggjyqsrtf50nlfjlu")
+            if (sesion != null)
             {
                 usua.BotonTrue = true;
                 usua.BotonFalse = false;

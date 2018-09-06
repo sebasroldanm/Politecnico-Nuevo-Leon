@@ -92,16 +92,16 @@ namespace Logica
             return user;
         }
 
-        public void logicaGuardarSesion(int id)
+        public void logicaGuardarSesion(int id, string ip, string mac, string sesion)
         {
             UUser usua = new UUser();
             DUser dat = new DUser();
-            MAC datosConexion = new MAC();
+            //Mac datosConexion = new MAC();
 
             usua.UserId = id;
-            usua.Ip = datosConexion.ip();
-            usua.Mac = datosConexion.mac();
-            usua.Session = Session.SessionID;
+            usua.Ip = ip;
+            usua.Mac = mac;
+            usua.Session = sesion;
 
             dat.guardadoSession(usua);
         }

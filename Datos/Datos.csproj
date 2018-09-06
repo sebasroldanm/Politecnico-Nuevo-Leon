@@ -61,7 +61,6 @@
     <Compile Include="DCorreo.cs" />
     <Compile Include="DCorreoEnviar.cs" />
     <Compile Include="DUser.cs" />
-    <Compile Include="MAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -13,11 +13,10 @@ public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Pag
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
+        LLogin logica = new LLogin();
+        UUser usua = new UUser();
         try
         {
-            LLogin logica = new LLogin();
-            UUser usua = new UUser();
-
             usua = logica.logAgregaEstudiante(Session["userId"].ToString());
             
             ImagenEst.ImageUrl = Session["foto"].ToString();
@@ -30,7 +29,14 @@ public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Pag
         }
         catch
         {
-
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Estudiante/AccesoDenegado.aspx");
+            }
         }
         
     }

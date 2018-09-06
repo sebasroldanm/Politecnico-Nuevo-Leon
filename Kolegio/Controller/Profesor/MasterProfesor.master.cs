@@ -11,19 +11,19 @@ public partial class View_Profesor_MasterProfesor : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.Cache.SetNoStore();
-        try
-        {
-            LLogin logica = new LLogin();
-            UUser usua = new UUser();
+        //Response.Cache.SetNoStore();
+        //try
+        //{
+        //    LLogin logica = new LLogin();
+        //    UUser usua = new UUser();
 
-            usua = logica.logProfesorSecillo(Session["userId"].ToString());
-            Response.Redirect(usua.Url);
-        }
-        catch
-        {
+        //    usua = logica.logProfesorSecillo(Session["userId"].ToString());
+        //    Response.Redirect(usua.Url);
+        //}
+        //catch
+        //{
 
-        }
+        //}
     }
     protected void B_Cerrar_Click(object sender, EventArgs e)
     {

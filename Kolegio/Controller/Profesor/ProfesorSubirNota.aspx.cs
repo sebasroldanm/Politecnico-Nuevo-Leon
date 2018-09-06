@@ -13,13 +13,13 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        try
-        {
-            LLogin logica = new LLogin();
-            UUser usua = new UUser();
+        LLogin logica = new LLogin();
+        UUser usua = new UUser();
 
-            LReg logic = new LReg();
-            UUser enc = new UUser();
+        LReg logic = new LReg();
+        UUser enc = new UUser();
+        try
+        {   
             enc = logic.ObAniodeCurso(Session["userId"].ToString());
             Session["anio"] = enc.Año;
             btn_Subirnota.Visible = false;
@@ -30,7 +30,14 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
         }
         catch
         {
-
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Profesor/AccesoDenegado.aspx");
+            }
         }
         
     }

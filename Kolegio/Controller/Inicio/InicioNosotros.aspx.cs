@@ -13,7 +13,7 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         
-        Session["userId"] = "wpygkcrggjyqsrtf50nlfjlu";
+        Session["userId"] = null;
         Session["nombre"] = null;
 
         LUser logica = new LUser();

@@ -13,11 +13,10 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
+        LLogin logica = new LLogin();
+        UUser usua = new UUser();
         try
         {
-            LLogin logica = new LLogin();
-            UUser usua = new UUser();
-
             usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documentoa"].ToString());
             tb_DocenteId.Text = (string)Session["documento"];
             tb_DocenteNombre.ReadOnly = usua.BotonTrue;
@@ -30,7 +29,14 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
         }
         catch
         {
-
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
+            }
         }
     }
     protected void btn_DocenteAceptar_Click(object sender, EventArgs e)

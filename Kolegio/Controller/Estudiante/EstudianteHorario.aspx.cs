@@ -13,11 +13,10 @@ public partial class View_Estudiante_EstudianteHorario : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
+        LLogin log = new LLogin();
+        UUser util = new UUser();
         try
         {
-            LLogin log = new LLogin();
-            UUser util = new UUser();
-
             util = log.logEstudianteSecillo(Session["userId"].ToString());
 
             LReg logic = new LReg();
@@ -32,7 +31,14 @@ public partial class View_Estudiante_EstudianteHorario : System.Web.UI.Page
         }
         catch
         {
-
+            try
+            {
+                util.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Estudiante/AccesoDenegado.aspx");
+            }
         }
         
     }

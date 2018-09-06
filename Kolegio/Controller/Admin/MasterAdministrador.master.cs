@@ -12,18 +12,18 @@ public partial class View_Administrador_MasterAdministrador : System.Web.UI.Mast
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.Cache.SetNoStore();
-        try
-        {
-            LLogin logica = new LLogin();
-            UUser usua = new UUser();
+        //Response.Cache.SetNoStore();
+        //try
+        //{
+        //    LLogin logica = new LLogin();
+        //    UUser usua = new UUser();
 
-            usua = logica.logAdminSecillo(Session["userId"].ToString());
-            Response.Redirect(usua.Url);
-        }
-        catch
-        {
+        //    usua = logica.logAdminSecillo(Session["userId"].ToString());
+        //    Response.Redirect(usua.Url);
+        //}
+        //catch
+        //{
 
-        }
+        //}
     }
 }

@@ -11,18 +11,18 @@ public partial class View_MasterEstudiante : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.Cache.SetNoStore();
-        try
-        {
-            LLogin logica = new LLogin();
-            UUser usua = new UUser();
+        //Response.Cache.SetNoStore();
+        //try
+        //{
+        //    LLogin logica = new LLogin();
+        //    UUser usua = new UUser();
 
-            usua = logica.logEstudianteSecillo(Session["userId"].ToString());
-            Response.Redirect(usua.Url);
-        }
-        catch
-        {
+        //    usua = logica.logEstudianteSecillo(Session["userId"].ToString());
+        //    Response.Redirect(usua.Url);
+        //}
+        //catch
+        //{
 
-        }
+        //}
     }
 }
