@@ -11,6 +11,7 @@ public partial class View_Admin_ListarAcudiente : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+       
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();
@@ -30,6 +31,7 @@ public partial class View_Admin_ListarAcudiente : System.Web.UI.Page
                 Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
             }
         }
+  
     }
 
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

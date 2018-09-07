@@ -18,25 +18,42 @@
     <asp:GridView ID="GridView1" runat="server"  CssClass="table table-bordered bs-table" AutoGenerateColumns="False" DataSourceID="DAOacu" BackColor="White" BorderColor="#660033" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" PageSize="3">
         <AlternatingRowStyle BackColor="#F7F7F7" BorderColor="#0677D2" />
         <Columns>
-             <asp:ImageField DataImageUrlField="foto_usua" HeaderText="Foto ">
+             <asp:ImageField DataImageUrlField="fotoacudiente" HeaderText="Acudiente">
                         <ControlStyle Height="100px" Width="90px" />
                         <HeaderStyle HorizontalAlign="Justify" VerticalAlign="Middle" />
                     </asp:ImageField>
-            <asp:BoundField DataField="apellido_usua" HeaderText="Apellido" />
-            <asp:BoundField DataField="nombre_usua" HeaderText="Nombre" >
+            <asp:BoundField DataField="apeacudiente" HeaderText="Apellido" />
+            <asp:BoundField DataField="nomacudiente" HeaderText="Nombre" >
             <ControlStyle Font-Size="Large" />
             </asp:BoundField>
-            <asp:BoundField DataField="num_documento" HeaderText="Documento" />
-            <asp:BoundField DataField="correo" HeaderText="Correo" />
-            <asp:BoundField DataField="telefono" HeaderText="Telefono" />
-            <asp:BoundField DataField="user_name" HeaderText="Usuario" />
-            <asp:BoundField DataField="clave" HeaderText="Contraseña" />
-             <asp:TemplateField HeaderText="Estado">
-                        <ItemTemplate>
-                            <%# Convert.ToBoolean(Eval("estado")) ? "Activo" : "Inactivo" %>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+            <asp:BoundField DataField="docacudiente" HeaderText="Documento" />
+            <asp:BoundField DataField="telefonoacudiente" HeaderText="Telefono" />
+            <asp:BoundField DataField="useracudiente" HeaderText="Usuario" />
+            <asp:BoundField DataField="claveacudiente" HeaderText="Contraseña" />
                            <asp:CommandField SelectText="Editar" ShowSelectButton="True" HeaderImageUrl="~/Imagenes/edituser2.png" SelectImageUrl="~/Imagenes/EditarUser.png" UpdateImageUrl="~/Imagenes/EditarUser.png" />
+
+             <asp:ImageField DataImageUrlField="fotoestudiante" HeaderText="Estudiante">
+                 <ControlStyle Height="100px" Width="90px" />
+                 <HeaderStyle HorizontalAlign="Justify" VerticalAlign="Middle" BackColor="#DE0101" />
+                 <ItemStyle BackColor="#FFDFDF" />
+             </asp:ImageField>
+            <asp:BoundField DataField="nomestudiante" HeaderText="Nombre" >
+             <ControlStyle BackColor="Red" BorderColor="Lime" ForeColor="Yellow" />
+             <HeaderStyle BackColor="#DE0101" />
+             <ItemStyle BackColor="#FFDFDF" />
+             </asp:BoundField>
+             <asp:BoundField DataField="apeestudiante" HeaderText="Apellido" >
+             <HeaderStyle BackColor="#DE0101" />
+             <ItemStyle BackColor="#FFDFDF" />
+             </asp:BoundField>
+             <asp:BoundField DataField="docestudiante" HeaderText="Documento" >
+             <HeaderStyle BackColor="#DE0101" />
+             <ItemStyle BackColor="#FFDFDF" />
+             </asp:BoundField>
+             <asp:BoundField DataField="telefonoestudiante" HeaderText="Telefono" >
+             <HeaderStyle BackColor="#DE0101" />
+             <ItemStyle BackColor="#FFDFDF" />
+             </asp:BoundField>
 
         </Columns>
         <EmptyDataTemplate>
@@ -55,7 +72,7 @@
         </asp:GridView>
 
 
-        <asp:ObjectDataSource ID="DAOacu" runat="server" SelectMethod="listaracudiente" TypeName="Datos.DUser"></asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="DAOacu" runat="server" SelectMethod="listaacuestu" TypeName="Datos.DUser"></asp:ObjectDataSource>
 
 
 </div>
