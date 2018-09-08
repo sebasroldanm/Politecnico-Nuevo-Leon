@@ -22,7 +22,7 @@ namespace Logica
                 int year;
                 year = int.Parse(DateTime.Now.ToString("yyyy"));
                 year = year - 18;
-                usua.RolId = year;
+                usua.Año = year.ToString();
             }
             else
                 usua.Url = "~/View/Admin/AccesoDenegado.aspx";

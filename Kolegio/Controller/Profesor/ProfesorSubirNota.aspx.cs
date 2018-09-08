@@ -24,6 +24,9 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
             Session["anio"] = enc.Año;
             btn_Subirnota.Visible = false;
             ButtonVerNota.Visible = true;
+            tb_nt.Enabled = false;
+            tb_nt2 .Enabled = false;
+            tb_nt3.Enabled = false;
 
             usua = logica.logAdminSecillo(Session["userId"].ToString());
             Response.Redirect(usua.Url);
@@ -59,6 +62,7 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
         ButtonVerNota.Visible = true;
         btn_Subirnota.Visible = false;
 
+
     }
 
     protected void ButtonVerNota_Click(object sender, EventArgs e)
@@ -76,6 +80,9 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
         L_Error.Text = enc.Mensaje;
 
         btn_Subirnota.Visible = true;
+        tb_nt.Enabled = true;
+        tb_nt2.Enabled = true;
+        tb_nt3.Enabled = true;
 
     }
 }

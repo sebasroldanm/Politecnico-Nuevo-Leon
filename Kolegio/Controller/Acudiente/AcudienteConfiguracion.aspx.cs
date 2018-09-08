@@ -18,10 +18,10 @@ public partial class View_Acudiente_AcudienteConfiguracion : System.Web.UI.Page
         try
         {
             usua = logica.logAdminSecillo(Session["userId"].ToString());
-            ImagenEst.ImageUrl = usua.Foto;
+            ImagenEst.ImageUrl = Session["foto"].ToString();
             tb_correo.ReadOnly = usua.BotonTrue;
             tb_contrasenia.ReadOnly = usua.BotonTrue;
-            tb_usuario.ReadOnly = usua.BotonTrue;
+            tb_usuario.ReadOnly = true;
             tb_Foto.Visible = usua.BotonTrue;
             lb_foto.Visible = usua.BotonTrue;
             Response.Redirect(usua.Url);

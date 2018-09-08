@@ -27,7 +27,9 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         try
         {
             usua = Logica.logAgregarAdmin(Session["userId"].ToString());
-            btnigm_calendar.Visible = false;
+            //btnigm_calendar.Visible = false;
+
+            CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + int.Parse(usua.Año));
             Response.Redirect(usua.Url);
         }
         catch

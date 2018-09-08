@@ -18,8 +18,7 @@ public partial class View_Profesor_ProfesorConfiguracion : System.Web.UI.Page
         try
         {
             usua = logica.logAgregaEstudiante(Session["userId"].ToString());
-            
-            ImagenEst.ImageUrl = usua.Foto;
+            ImagenEst.ImageUrl = Session["foto"].ToString();
             tb_correo.ReadOnly = usua.BotonTrue;
             tb_contrasenia.ReadOnly = usua.BotonTrue;
             tb_usuario.ReadOnly = usua.BotonTrue;
