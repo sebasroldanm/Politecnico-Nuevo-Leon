@@ -18,8 +18,8 @@ public partial class View_Admin_AgregarProfesor : System.Web.UI.Page
         try
         {
             usua = Logica.logAgregarAdmin(Session["userId"].ToString());
+            CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + int.Parse(usua.Año));
             Response.Redirect(usua.Url);
-            CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + usua.RolId);
         }
         catch
         {
