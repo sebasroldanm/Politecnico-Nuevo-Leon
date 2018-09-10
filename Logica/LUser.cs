@@ -163,7 +163,7 @@ namespace Logica
                     dat.insertarUsuarios(usua);
                     usua.Notificacion = "<script language='JavaScript'>window.alert('Usuario Insertado con Exito');</script>";
                     usua.B_Botones1 = true;
-                    usua.L_Aceptar1 = false;
+                    usua.L_Aceptar1 = true;
 
                 }
                 else

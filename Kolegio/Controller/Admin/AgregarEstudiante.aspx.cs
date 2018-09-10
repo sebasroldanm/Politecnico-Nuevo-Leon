@@ -21,6 +21,7 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
             Response.Redirect(usua.Url);
             fechanac.ReadOnly = usua.BotonTrue;
             btnigm_calendar.Visible = usua.BotonFalse;
+
         }
         catch
         {
@@ -61,6 +62,7 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
         btn_EstudianteAceptar.Visible = usua.L_Aceptar1;
         L_ErrorUser.Visible = usua.L_Aceptar1;
         btn_EstudianteNuevo.Visible = usua.B_Botones1;
+
 
     }
 
