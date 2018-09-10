@@ -101,6 +101,8 @@ namespace Utilitarios
         // Foto
         // 
         private String fotoSinEdit;
+        private String saveLocation;
+        private String fotoCargada;
 
         public string Url { get => url; set => url = value; }
         public int UserId { get => userId; set => userId = value; }
@@ -167,5 +169,7 @@ namespace Utilitarios
         public string SAño { get => sAño; set => sAño = value; }
         public string SEstudiante { get => sEstudiante; set => sEstudiante = value; }
         public string FotoSinEdit { get => fotoSinEdit; set => fotoSinEdit = value; }
+        public string SaveLocation { get => saveLocation; set => saveLocation = value; }
+        public string FotoCargada { get => fotoCargada; set => fotoCargada = value; }
     }
 }

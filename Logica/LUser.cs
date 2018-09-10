@@ -117,20 +117,20 @@ namespace Logica
         }
 
         public UUser AgregarAdmin(
-              int departamento,
-              int ciudad,
-              string nombre,
-              string apellido,
-              string direccion,
-              string telefono,
-              string clave,
-              string correo,
-              FileUpload foto,
-              int documento,
-              string usuario,
-              int rol,
-              string fechanac,
-              string session)
+               int departamento,
+               int ciudad,
+               string nombre,
+               string apellido,
+               string direccion,
+               string telefono,
+               string clave,
+               string correo,
+               string foto,
+               int documento,
+               string usuario,
+               int rol,
+               string fechanac,
+               string session)
         {
 
             UUser usua = new UUser();
@@ -161,7 +161,7 @@ namespace Logica
                 usua.Departamento = Convert.ToString(dep);
                 usua.Ciudad = Convert.ToString(ciu);
                 usua.Session = session;
-                usua.Foto = cargarImagen(foto);
+                usua.Foto = foto;
 
 
                 if (usua.Foto != null)
@@ -179,6 +179,9 @@ namespace Logica
             }
             return usua;
         }
+
+
+
 
         public UUser validarUser(string usuario, string documento)
         {
@@ -226,7 +229,7 @@ namespace Logica
             string telefono,
             string clave,
             string correo,
-            FileUpload foto,
+            string foto,
             int documento,
             string usuario,
             int rol,
@@ -264,7 +267,7 @@ namespace Logica
                 usua.Departamento = Convert.ToString(dep);
                 usua.Ciudad = Convert.ToString(ciu);
                 usua.Session = session;
-                usua.Foto = cargarImagen(foto);
+                usua.Foto = foto;
                 usua.id_Acudiente = Convert.ToString(id_acu);
 
                 if (usua.Foto != null)
@@ -300,7 +303,7 @@ namespace Logica
             {
                 cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>");
                 //btnigm_calendar.Visible = true;
-
+                
                 return null;
             }
 
@@ -317,6 +320,44 @@ namespace Logica
 
             return "~/FotosUser" + "/" + sFecha + sMinu + nombreArchivo;
         }
+
+        public UUser CargaFotoM(string fotoIO, string fotExten, string foto, string server)
+        {
+            UUser enc = new UUser();
+            DUser datos = new DUser();
+            string sDia = Convert.ToString(DateTime.Now.Day);
+            string sMes = Convert.ToString(DateTime.Now.Month);
+            string sAgno = Convert.ToString(DateTime.Now.Year);
+            string sHora = Convert.ToString(DateTime.Now.Hour);
+            string sMinu = Convert.ToString(DateTime.Now.Minute);
+            string sSeco = Convert.ToString(DateTime.Now.Second);
+            string sFecha = sDia + sMes + sAgno + sHora + sMinu + sSeco;
+
+            String nombreArchivo = fotoIO;
+            String extension = fotExten;
+            String saveLocation = "";
+            string ext = extension;
+            if (!(string.Compare(extension, ".png", true) == 0 || string.Compare(extension, ".jpeg", true) == 0 || string.Compare(extension, ".jpg", true) == 0))
+            {
+                enc.Notificacion = "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>";
+                return enc;
+            }
+
+            saveLocation = server + "/" + sFecha + sMinu + nombreArchivo;
+
+            if (System.IO.File.Exists(saveLocation))
+            {
+                enc.Notificacion = "<script type='text/javascript'>alert('Ya existe una imagen en el servidor con ese nombre');</script>";
+                return enc;
+            }
+            enc.Notificacion = "<script type='text/javascript'>alert('El archivo de imagen ha sido cargado');</script>";
+            enc.SaveLocation = saveLocation;
+            enc.FotoCargada = "~/FotosUser" + "/" + sFecha + sMinu + nombreArchivo;
+            return enc;
+        }
+
+
+
 
         public UUser buscarAcudiete(int departamento, int ciudad, String documento)
         {
@@ -340,20 +381,7 @@ namespace Logica
 
                 usua.L_Aceptar1 = true;
                 usua.Notificacion = ("<script language='JavaScript'>window.alert('Acudiente Seleccionado');</script>");
-                //tb_AcudienteNombre.ReadOnly = true;
-                //tb_AcudienteId.ReadOnly = true;
-                //tb_AcudienteApellido.ReadOnly = true;
-                //L_ErrorAcudiente.Text = "";
 
-                //tb_EstudianteNombre.ReadOnly = false;
-                //tb_EstudianteApellido.ReadOnly = false;
-                //tb_EstudianteId.ReadOnly = false;
-                //tb_EstudianteDireccion.ReadOnly = false;
-                //tb_EstudianteTelefono.ReadOnly = false;
-                //tb_EstudianteUsuario.ReadOnly = false;
-                //tb_EstudianteContrasenia.ReadOnly = false;
-                //btnigm_calendar.Visible = true;
-                //tb_EstudianteCorreo.ReadOnly = false;
             }
             else
             {
