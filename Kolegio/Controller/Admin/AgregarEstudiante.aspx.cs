@@ -18,10 +18,12 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
         try
         {
             usua = logica.logAgregaEstudiante(Session["userId"].ToString());
-            Response.Redirect(usua.Url);
+            int year;
+            year = int.Parse(DateTime.Now.ToString("yyyy"));
+            year = year - 4;
+            CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + year);
             fechanac.ReadOnly = usua.BotonTrue;
-            btnigm_calendar.Visible = usua.BotonFalse;
-
+            Response.Redirect(usua.Url);
         }
         catch
         {
