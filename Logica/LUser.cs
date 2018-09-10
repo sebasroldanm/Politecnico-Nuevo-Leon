@@ -282,44 +282,7 @@ namespace Logica
             }
             return usua;
         }
-
-        protected String cargarImagen(FileUpload foto)
-        {
-
-            string sDia = Convert.ToString(DateTime.Now.Day);
-            string sMes = Convert.ToString(DateTime.Now.Month);
-            string sAgno = Convert.ToString(DateTime.Now.Year);
-            string sHora = Convert.ToString(DateTime.Now.Hour);
-            string sMinu = Convert.ToString(DateTime.Now.Minute);
-            string sSeco = Convert.ToString(DateTime.Now.Second);
-            string sFecha = sDia + sMes + sAgno + sHora + sMinu + sSeco;
-
-            ClientScriptManager cm = this.ClientScript;
-            String nombreArchivo = System.IO.Path.GetFileName(foto.PostedFile.FileName);
-            String extension = System.IO.Path.GetExtension(foto.PostedFile.FileName);
-            String saveLocation = "";
-
-            if (!(string.Compare(extension, ".png", true) == 0 || string.Compare(extension, ".jpeg", true) == 0 || string.Compare(extension, ".jpg", true) == 0))
-            {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>");
-                //btnigm_calendar.Visible = true;
-                
-                return null;
-            }
-
-            saveLocation = Server.MapPath("~/FotosUser") + "/" + sFecha + sMinu + nombreArchivo;
-
-            if (System.IO.File.Exists(saveLocation))
-            {
-                cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe una imagen en el servidor con ese nombre');</script>");
-                return null;
-            }
-
-            foto.PostedFile.SaveAs(saveLocation);
-            cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo de imagen ha sido cargado');</script>");
-
-            return "~/FotosUser" + "/" + sFecha + sMinu + nombreArchivo;
-        }
+        
 
         public UUser CargaFotoM(string fotoIO, string fotExten, string foto, string server)
         {
@@ -705,6 +668,7 @@ namespace Logica
             return ImageData; //return the byte data
         }
 
+
         public UUser verificarCorreo(
             string userId,
             string persona,
@@ -903,7 +867,7 @@ namespace Logica
             return enc;
         }
         public UUser ModifConfiguracion(
-                        FileUpload fotoName,
+                        string fotoName,
                         string userName,
                         string contraseña,
                         string correo,
@@ -918,9 +882,9 @@ namespace Logica
             UUser enc = new UUser();
             DUser datos = new DUser();
 
-            String foto = System.IO.Path.GetFileName(fotoName.PostedFile.FileName);
+            //String foto = System.IO.Path.GetFileName(fotoName.PostedFile.FileName);
 
-            if (fotoName.FileName == "")
+            if (fotoName == null)
             {
                 enc.Id_estudiante = SuserId;
                 enc.UserName = userName;
@@ -932,12 +896,12 @@ namespace Logica
             }
             else
             {
-                foto = "~/FotosUser/" + fotoName.FileName;
+                //foto = "~/FotosUser/" + fotoName;
                 enc.Id_estudiante = SuserId;
                 enc.UserName = userName;
                 enc.Clave = contraseña;
                 enc.Correo = correo;
-                enc.Foto = cargarImagen(fotoName);
+                enc.Foto = fotoName;
                 enc.Session = sesion;
               
 

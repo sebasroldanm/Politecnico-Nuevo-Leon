@@ -60,10 +60,10 @@ public partial class View_Acudiente_AcudienteConfiguracion : System.Web.UI.Page
     {
         UUser enc = new UUser();
         LUser logic = new LUser();
-
+        string fo = cargarImagen();
         String foto = System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName);
         enc = logic.ModifConfiguracion(
-                           tb_Foto,
+                           fo,
                            tb_usuario.Text,
                            tb_contrasenia.Text,
                            tb_correo.Text,
@@ -96,5 +96,24 @@ public partial class View_Acudiente_AcudienteConfiguracion : System.Web.UI.Page
     protected void btn_cancelar_Click(object sender, EventArgs e)
     {
         Response.Redirect("/View/Acudiente/AcudienteBoletin.aspx");
+    }
+
+    protected string cargarImagen()
+    {
+        LUser logic = new LUser();
+        UUser enc = new UUser();
+        enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName), System.IO.Path.GetExtension(tb_Foto.PostedFile.FileName), tb_Foto.ToString(), Server.MapPath("~/FotosUser"));
+        try
+        {
+            ClientScriptManager cm = this.ClientScript;
+            //cm.RegisterClientScriptBlock(this.GetType(), "", enc.Notificacion);
+
+            tb_Foto.PostedFile.SaveAs(enc.SaveLocation);
+            return enc.FotoCargada;
+        }
+        catch
+        {
+            return null;
+        }
     }
 }
