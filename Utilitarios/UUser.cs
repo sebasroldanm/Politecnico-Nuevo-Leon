@@ -97,6 +97,11 @@ namespace Utilitarios
         private String vision;
         private String nosotros;
 
+        //
+        // Foto
+        // 
+        private String fotoSinEdit;
+
         public string Url { get => url; set => url = value; }
         public int UserId { get => userId; set => userId = value; }
         public int RolId { get => rolId; set => rolId = value; }
@@ -161,5 +166,6 @@ namespace Utilitarios
         public string Nosotros { get => nosotros; set => nosotros = value; }
         public string SAño { get => sAño; set => sAño = value; }
         public string SEstudiante { get => sEstudiante; set => sEstudiante = value; }
+        public string FotoSinEdit { get => fotoSinEdit; set => fotoSinEdit = value; }
     }
 }

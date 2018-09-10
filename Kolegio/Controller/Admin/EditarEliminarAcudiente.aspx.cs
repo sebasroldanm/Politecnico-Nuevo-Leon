@@ -33,7 +33,7 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
         {
             try
             {
-                usua.Session = Session["userId"].ToString();
+                usua.SUserId = Session["userId"].ToString();
             }
             catch
             {
@@ -51,6 +51,7 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
     {
         LUser logica = new LUser();
         UUser usua = new UUser();
+        
 
         usua = logica.editarBuscarUser(int.Parse(tb_AcudienteId.Text));
 
@@ -75,6 +76,8 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
         fechanac.ReadOnly = usua.L_Aceptar1;
         fechanac.Text = usua.fecha_nacimiento;
         ImagenEst.ImageUrl = usua.Foto;
+        Session["fotosinedit"] = usua.Foto;
+
         L_ErrorAdmin.Text = "";
 
         btn_AcudienteEditar.Visible = usua.B_Botones1;

@@ -16,7 +16,7 @@ public partial class View_Contrasenia : System.Web.UI.Page
         UUser usua = new UUser();
         LUser logica = new LUser();
 
-        usua = logica.cambiarContra(Request.QueryString.Count, Request.QueryString[0]);
+        usua = logica.cambiarContra(Request.QueryString.Count, Request.QueryString[0], usua.SUserId);
 
         try
         {
@@ -34,7 +34,9 @@ public partial class View_Contrasenia : System.Web.UI.Page
     {
         LUser logic = new LUser();
         UContrasenia usua = new UContrasenia();
-        usua = logic.ContraseñaBEnviar(TB_NuevamenteClave.Text, Session["user_id"].ToString());
+        usua.UserId = int.Parse(Session["user_id"].ToString());
+
+        usua = logic.ContraseñaBEnviar(TB_NuevamenteClave.Text, usua.UserId.ToString());
 
         this.Page.Response.Write("<script language='JavaScript'>window.alert('El Token esta vencido. Genere uno nuevo');</script>");
         Response.Redirect("~/View/Loggin.aspx");

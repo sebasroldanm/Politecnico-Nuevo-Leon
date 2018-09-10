@@ -362,7 +362,7 @@ namespace Logica
             return usua;
         }
 
-        public UUser editarBuscarUser(int documento)
+        public UUser editarBuscarUser(int documento )
         {
             UUser usua = new UUser();
             DUser dat = new DUser();
@@ -382,9 +382,7 @@ namespace Logica
                 usua.Clave = Convert.ToString(registros.Rows[0]["clave"].ToString());
                 usua.fecha_nacimiento = Convert.ToString(registros.Rows[0]["fecha_nac"].ToString());
                 usua.Foto = Convert.ToString(registros.Rows[0]["foto_usua"].ToString());
-
-                Session["fotosinedit"] = Convert.ToString(registros.Rows[0]["foto_usua"].ToString());
-
+                
                 usua.Departamento = Convert.ToString(registros.Rows[0]["dep_nacimiento"].ToString());
 
                 //DDT_Ciudad.DataBind();
@@ -469,7 +467,7 @@ namespace Logica
                     usua.fecha_nacimiento = fechanac;
                     usua.Departamento = departamento.ToString();
                     usua.Ciudad = ciudad.ToString();
-                    usua.Session = Session.SessionID;
+                    usua.Session = session;
                     usua.Foto = foto;
 
                     if (foto != null)
@@ -498,7 +496,7 @@ namespace Logica
                     usua.fecha_nacimiento = fechanac;
                     usua.Departamento = departamento.ToString();
                     usua.Ciudad = ciudad.ToString();
-                    usua.Session = Session.SessionID;
+                    usua.Session = session;
                     usua.Foto = cargarImagen(fotoup);
                     
                     if (usua.Foto != null)
@@ -886,7 +884,8 @@ namespace Logica
                         string Sfoto,
                         string Suser,
                         string Sclave,
-                        string Scorreo)
+                        string Scorreo
+                       )
         {
             UUser enc = new UUser();
             DUser datos = new DUser();
@@ -911,7 +910,10 @@ namespace Logica
                 enc.Clave = contraseña;
                 enc.Correo = correo;
                 enc.Foto = cargarImagen(fotoName);
-                enc.Session = Session.SessionID;
+                enc.Session = sesion;
+              
+
+   
             }
 
             DataTable resultado = datos.editarConfig(enc);
@@ -921,7 +923,7 @@ namespace Logica
 
         ///////////////////////CONFIGURACION DE PAGINA//////////////////////
 
-        public UUser ModificarPaginaInicio(string nosotros, string mision, string vision, string sesion)
+        public UUser ModificarPaginaInicio(string nosotros, string mision, string vision, string session)
         {
 
             UUser usua = new UUser();
@@ -930,7 +932,9 @@ namespace Logica
             usua.Inicio = nosotros;
             usua.Mision = mision;
             usua.Vision = vision;
-            usua.Session = Session.SessionID;
+            
+            usua.Session = session;
+
 
             DataTable registros = dat.editarInicio(usua);
             usua.Notificacion = "<script language='JavaScript'>window.alert('Datos Modificados');</script>";
@@ -1048,7 +1052,7 @@ namespace Logica
             return output.ToString();
         }
 
-        public UUser cambiarContra(int QueryString, string Query)
+        public UUser cambiarContra(int QueryString, string Query, string session)
         {
             UUser usua = new UUser();
             DUser dat = new DUser();
@@ -1070,7 +1074,7 @@ namespace Logica
                     usua.Url = "~/View/Loggin.aspx";
                 }
                 else
-                    Session["user_id"] = int.Parse(info.Rows[0][0].ToString());
+                    usua.UserId = int.Parse((info.Rows[0][0].ToString()));
             }
             else
                 //Response.Redirect("~/View/Loggin.aspx");
