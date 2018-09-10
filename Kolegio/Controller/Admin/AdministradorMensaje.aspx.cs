@@ -51,11 +51,8 @@ public partial class View_Administrador_AdministradorMensaje : System.Web.UI.Pag
             );
 
         this.Page.Response.Write(usua.Notificacion);
-        Response.Redirect(usua.Url);
         L_Verificar.Text = usua.Mensaje;
         TB_Destinatario.Text = usua.CDestinatario;
-
-        TB_Mensaje.Text = usua.Mensaje;
         
     }
 }

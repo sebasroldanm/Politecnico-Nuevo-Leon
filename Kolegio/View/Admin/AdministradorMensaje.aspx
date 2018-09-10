@@ -32,7 +32,7 @@
 
                         <label for="TB_Asuto" class="control-label" style="color: #FFFFFF">Asunto :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
                         &nbsp;<asp:TextBox ID="TB_Asuto" runat="server" class="form-control" Width="359px" MaxLength="30"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RV_Asunto" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TB_Asuto" ValidationGroup="form_ejm" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RV_Asunto" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TB_Asuto" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator>
                         <br />
                         <asp:RegularExpressionValidator ID="REV_Asuto" runat="server" ControlToValidate="TB_Asuto" ErrorMessage="No se aceptan caracteres especiales" ValidationExpression="^[a-zA-Z0-9ñÑ\s,.áéíóú]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
                     </div>
@@ -45,7 +45,7 @@
                     <div class="form-group">
                         <label for="TB_Destinatario" class="control-label" style="color: #FFFFFF">Destinatario :</label>
                         <asp:TextBox ID="TB_Destinatario" class="form-control" runat="server" Width="359px" MaxLength="50"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RV_Destinatario" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TB_Destinatario" ValidationGroup="form_ejm" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RV_Destinatario" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TB_Destinatario" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator>
                         <br />
                         <asp:RegularExpressionValidator ID="REV_Destinatario" runat="server" ControlToValidate="TB_Destinatario" ErrorMessage="No se aceptan caracteres especiales" ValidationExpression="^[a-zA-Z0-9ñÑ_@.]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
                     </div>
@@ -58,7 +58,7 @@
                     <div class="form-group">
                         <label for="TB_Mensaje" class="control-label" style="color: #FFFFFF">Mensaje :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label>
                         &nbsp;<asp:TextBox ID="TB_Mensaje" class="form-control" runat="server" Height="100px" Width="378px" TextMode="MultiLine"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RV_Mensaje" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TB_Mensaje" ValidationGroup="form_ejm" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RV_Mensaje" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TB_Mensaje" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator>
                         <br />
                         <asp:RegularExpressionValidator ID="REV_Mensaje" runat="server" ControlToValidate="TB_Mensaje" ErrorMessage="No se aceptan caracteres especiales" ValidationExpression="^[a-zA-Z0-9ñÑ\s,.áéíóú]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
                     </div>
