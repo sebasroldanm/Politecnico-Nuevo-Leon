@@ -31,6 +31,8 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
             {
                 Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
             }
+
+            
         }
 
 

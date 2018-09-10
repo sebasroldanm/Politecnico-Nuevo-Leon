@@ -5,6 +5,8 @@ using NpgsqlTypes;
 using System.Data;
 using System.Configuration;
 
+
+
 namespace Datos
 {
     public class DUser
@@ -246,6 +248,7 @@ namespace Datos
             catch (Exception Ex)
             {
                 throw Ex;
+             
             }
             finally
             {

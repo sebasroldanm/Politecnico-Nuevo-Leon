@@ -171,6 +171,7 @@ namespace Logica
                     usua.Notificacion = "<script language='JavaScript'>window.alert('Error al Seleccionar la Foto');</script>";
                 }
             }
+           
             return usua;
         }
 

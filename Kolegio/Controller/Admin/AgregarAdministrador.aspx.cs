@@ -14,15 +14,12 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
 {
 
     protected void Page_Load(object sender, EventArgs e)
-    {
-    
+    {   
         Response.Cache.SetNoStore();
         Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
         Response.Cache.SetCacheability(HttpCacheability.NoCache);
-
         UUser usua = new UUser();
         LLogin Logica = new LLogin();
-
         Response.Cache.SetNoStore();
         try
         {
@@ -42,7 +39,8 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
             {
                 Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
             }
-            
+
+            ///Response.Redirect("~/View/Inicio/MantenimientoPagina.aspx");
         }
         
 
