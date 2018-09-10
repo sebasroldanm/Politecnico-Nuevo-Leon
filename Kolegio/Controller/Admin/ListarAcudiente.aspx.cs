@@ -37,8 +37,8 @@ public partial class View_Admin_ListarAcudiente : System.Web.UI.Page
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
 
-        Session["documentoa"] = GridView1.SelectedRow.Cells[3].Text;
-        Response.Redirect("/View/Admin/EditarEliminarAcudiente.aspx");
+        Session["documento"] = GridView1.SelectedRow.Cells[3].Text;
+        Response.Redirect("~/View/Admin/EditarEliminarAcudiente.aspx");
     }
 
     protected void btn_descargar_Click(object sender, EventArgs e)

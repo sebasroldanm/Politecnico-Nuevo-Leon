@@ -17,8 +17,8 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
         UUser usua = new UUser();
         try
         {
-            usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documentoa"].ToString());
-            tb_AministradorAdministradorId.Text = Session["documentoa"].ToString();
+            usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documento"].ToString());
+            tb_AministradorAdministradorId.Text = Session["documento"].ToString();
             tb_AdministradorAdministradorNombre.ReadOnly = usua.BotonTrue;
             tb_AdministradorAdministradorApellido.ReadOnly = usua.BotonTrue;
             tb_AdministradorAdministradorCorreo.ReadOnly = usua.BotonTrue;
@@ -59,7 +59,7 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
         tb_AdministradorAdministradorDireccion.Text = usua.Direccion;
         tb_AdministradorTelefono.ReadOnly = usua.L_Aceptar1;
         tb_AdministradorTelefono.Text = usua.Telefono;
-        tb_AdministradorUsuario.ReadOnly = usua.L_Aceptar1;
+        tb_AdministradorUsuario.ReadOnly = true;
         tb_AdministradorUsuario.Text = usua.UserName;
         tb_AdministradorContrasenia.ReadOnly = usua.L_Aceptar1;
         tb_AdministradorContrasenia.Text = usua.Clave;
@@ -83,7 +83,7 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
     {
         LUser logica = new LUser();
         UUser usua = new UUser();
-
+        string foto = cargarImagen();
 
         usua = logica.editarAdmin(
             tb_AdministradorAdministradorNombre.Text,
@@ -99,7 +99,7 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
             int.Parse(ddt_lugarnacimDep.SelectedValue),
             int.Parse(DDT_Ciudad.SelectedValue),
             Session.SessionID,
-            tb_AdministradorFoto,
+            foto,
             Session["fotosinedit"].ToString()
             );
 
@@ -156,52 +156,26 @@ protected void btn_AdministradorNuevo_Click(object sender, EventArgs e)
 
     }
 
+    protected string cargarImagen()
+    {
+        LUser logic = new LUser();
+        UUser enc = new UUser();
+        enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_AdministradorFoto.PostedFile.FileName), System.IO.Path.GetExtension(tb_AdministradorFoto.PostedFile.FileName), tb_AdministradorFoto.ToString(), Server.MapPath("~/FotosUser"));
+        try
+        {
+            ClientScriptManager cm = this.ClientScript;
+            //cm.RegisterClientScriptBlock(this.GetType(), "", enc.Notificacion);
+            btnigm_calendar.Visible = true;
 
+            tb_AdministradorFoto.PostedFile.SaveAs(enc.SaveLocation);
+            return enc.FotoCargada;
+        }
+        catch
+        {
+            return null;
+        }
+    }
 
-    //protected String cargarImagen()
-    //{
-
-
-    //    string sDia = Convert.ToString(DateTime.Now.Day);
-    //    string sMes = Convert.ToString(DateTime.Now.Month);
-    //    string sAgno = Convert.ToString(DateTime.Now.Year);
-    //    string sHora = Convert.ToString(DateTime.Now.Hour);
-    //    string sMinu = Convert.ToString(DateTime.Now.Minute);
-    //    string sSeco = Convert.ToString(DateTime.Now.Second);
-    //    string sFecha = sDia + sMes + sAgno + sHora + sMinu + sSeco;
-
-
-
-
-    //    ClientScriptManager cm = this.ClientScript;
-    //    String nombreArchivo = System.IO.Path.GetFileName(tb_AdministradorFoto.PostedFile.FileName);
-    //    String extension = System.IO.Path.GetExtension(tb_AdministradorFoto.PostedFile.FileName);
-    //    String saveLocation = "";
-
-    //    if (!(string.Compare(extension, ".png", true) == 0 || string.Compare(extension, ".jpeg", true) == 0 || string.Compare(extension, ".jpg", true) == 0))
-    //    {
-    //        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>");
-
-
-
-    //        return null;
-    //    }
-
-    //    saveLocation = Server.MapPath("~/FotosUser") + "/" + sFecha + sMinu + nombreArchivo;
-
-    //    if (System.IO.File.Exists(saveLocation))
-    //    {
-    //        cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('Ya existe una imagen en el servidor con ese nombre');</script>");
-    //        return null;
-    //    }
-
-    //    tb_AdministradorFoto.PostedFile.SaveAs(saveLocation);
-    //    cm.RegisterClientScriptBlock(this.GetType(), "", "<script type='text/javascript'>alert('El archivo de imagen ha sido cargado');</script>");
-
-    //    return "~/FotosUser" + "/" + sFecha + sMinu + nombreArchivo;
-    //}
-
-
-
+    
 
 }

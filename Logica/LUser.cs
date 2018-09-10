@@ -452,7 +452,7 @@ namespace Logica
             int departamento,
             int ciudad,
             string session,
-            FileUpload fotoup,
+            string fotoup,
             string foto
             )
         {
@@ -479,7 +479,7 @@ namespace Logica
                 }
 
 
-                if (fotoup.FileName == "")
+                if (fotoup == null)
                 {
 
                     usua.Nombre = nombre;
@@ -498,7 +498,7 @@ namespace Logica
                     usua.Session = session;
                     usua.Foto = foto;
 
-                    if (foto != null)
+                    if (usua.Foto != null)
                     {
                         DataTable registros = dat.EditarUsuario(usua);
                         usua.Notificacion = "<script language='JavaScript'>window.alert('Usuario Editado con Éxito');</script>";
@@ -525,7 +525,7 @@ namespace Logica
                     usua.Departamento = departamento.ToString();
                     usua.Ciudad = ciudad.ToString();
                     usua.Session = session;
-                    usua.Foto = cargarImagen(fotoup);
+                    usua.Foto = fotoup;
                     
                     if (usua.Foto != null)
                     {

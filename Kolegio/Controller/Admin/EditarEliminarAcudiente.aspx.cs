@@ -18,9 +18,8 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
         try
         {
     
-            usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documentoa"].ToString());
-            Response.Redirect(usua.Url);
-            tb_AcudienteId.Text = (string)Session["documentoa"];
+            usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documento"].ToString());
+            tb_AcudienteId.Text = Session["documento"].ToString();
             tb_AcudienteNombre.ReadOnly = usua.BotonTrue;
             tb_AcudienteApellido.ReadOnly = usua.BotonTrue;
             tb_AcudienteCorreo.ReadOnly = usua.BotonTrue;
@@ -66,7 +65,7 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
         tb_AcudienteDireccion.Text = usua.Direccion;
         tb_AcudienteTelefono.ReadOnly = usua.L_Aceptar1;
         tb_AcudienteTelefono.Text = usua.Telefono;
-        tb_AcudienteUsuario.ReadOnly = usua.L_Aceptar1;
+        tb_AcudienteUsuario.ReadOnly = true;
         tb_AcudienteUsuario.Text = usua.UserName;
         tb_AcudienteContrasenia.ReadOnly = usua.L_Aceptar1;
         tb_AcudienteContrasenia.Text = usua.Clave;
@@ -90,7 +89,7 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
     {
         LUser logica = new LUser();
         UUser usua = new UUser();
-
+        string foto = cargarImagen();
         usua = logica.editarAdmin(
             tb_AcudienteNombre.Text,
             tb_AcudienteUsuario.Text,
@@ -105,7 +104,7 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
             int.Parse(ddt_lugarnacimDep.SelectedValue),
             int.Parse(DDT_Ciudad.SelectedValue),
             Session.SessionID,
-            FileUpload1,
+            foto,
             Session["fotosinedit"].ToString()
             );
 
@@ -154,5 +153,24 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
         btn_AcudienteNuevo.Visible = false;
         btn_AcudienteAceptar.Visible = true;
 
+    }
+    protected string cargarImagen()
+    {
+        LUser logic = new LUser();
+        UUser enc = new UUser();
+        enc = logic.CargaFotoM(System.IO.Path.GetFileName(FileUpload1.PostedFile.FileName), System.IO.Path.GetExtension(FileUpload1.PostedFile.FileName), FileUpload1.ToString(), Server.MapPath("~/FotosUser"));
+        try
+        {
+            ClientScriptManager cm = this.ClientScript;
+            //cm.RegisterClientScriptBlock(this.GetType(), "", enc.Notificacion);
+            btnigm_calendar.Visible = true;
+
+            FileUpload1.PostedFile.SaveAs(enc.SaveLocation);
+            return enc.FotoCargada;
+        }
+        catch
+        {
+            return null;
+        }
     }
 }

@@ -17,8 +17,8 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
         UUser usua = new UUser();
         try
         {
-            usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documentoa"].ToString());
-            tb_EstudianteId.Text = (string)Session["documentoe"];
+            usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documento"].ToString());
+            tb_EstudianteId.Text = (string)Session["documento"];
             tb_EstudianteNombre.ReadOnly = usua.BotonTrue;
             tb_EstudianteApellido.ReadOnly = usua.BotonTrue;
             tb_EstudianteCorreo.ReadOnly = usua.BotonTrue;
@@ -74,7 +74,7 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
         tb_EstudianteDireccion.Text = usua.Direccion;
         tb_EstudianteTelefono.ReadOnly = usua.L_Aceptar1;
         tb_EstudianteTelefono.Text = usua.Telefono;
-        tb_EstudianteUsuario.ReadOnly = usua.L_Aceptar1;
+        tb_EstudianteUsuario.ReadOnly = true;
         tb_EstudianteUsuario.Text = usua.UserName;
         tb_EstudianteContrasenia.ReadOnly = usua.L_Aceptar1;
         tb_EstudianteContrasenia.Text = usua.Clave;
@@ -98,7 +98,7 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
 
             LUser logica = new LUser();
             UUser usua = new UUser();
-
+        string foto = cargarImagen();
             usua = logica.editarAdmin(
                 tb_EstudianteNombre.Text,
                 tb_EstudianteUsuario.Text,
@@ -113,7 +113,7 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
                 int.Parse(ddt_lugarnacimDep.SelectedValue),
                 int.Parse(DDT_Ciudad.SelectedValue),
                 Session.SessionID,
-                FileUpload1,
+                foto,
                 Session["fotosinedit"].ToString()
                 );
         this.Page.Response.Write(usua.Notificacion);
@@ -167,10 +167,25 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
         btn_EstudianteNuevo.Visible = false;
         btn_EstudianteAceptar.Visible = true;
 
-
-
-
     }
-    
 
+    protected string cargarImagen()
+    {
+        LUser logic = new LUser();
+        UUser enc = new UUser();
+        enc = logic.CargaFotoM(System.IO.Path.GetFileName(FileUpload1.PostedFile.FileName), System.IO.Path.GetExtension(FileUpload1.PostedFile.FileName), FileUpload1.ToString(), Server.MapPath("~/FotosUser"));
+        try
+        {
+            ClientScriptManager cm = this.ClientScript;
+            //cm.RegisterClientScriptBlock(this.GetType(), "", enc.Notificacion);
+            btnigm_calendar.Visible = true;
+
+            FileUpload1.PostedFile.SaveAs(enc.SaveLocation);
+            return enc.FotoCargada;
+        }
+        catch
+        {
+            return null;
+        }
+    }
 }

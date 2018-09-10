@@ -17,7 +17,7 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
         UUser usua = new UUser();
         try
         {
-            usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documentoa"].ToString());
+            usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documento"].ToString());
             tb_DocenteId.Text = (string)Session["documento"];
             tb_DocenteNombre.ReadOnly = usua.BotonTrue;
             tb_DocenteApellido.ReadOnly = usua.BotonTrue;
@@ -56,7 +56,7 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
         tb_DocenteDireccion.Text = usua.Direccion;
         tb_DocenteTelefono.ReadOnly = usua.L_Aceptar1;
         tb_DocenteTelefono.Text = usua.Telefono;
-        tb_DocenteUsuario.ReadOnly = usua.L_Aceptar1;
+        tb_DocenteUsuario.ReadOnly = true;
         tb_DocenteUsuario.Text = usua.UserName;
         tb_DocenteContrasenia.ReadOnly = usua.L_Aceptar1;
         tb_DocenteContrasenia.Text = usua.Clave;
@@ -79,7 +79,7 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
     {
         LUser logica = new LUser();
         UUser usua = new UUser();
-
+        string foto = cargarImagen();
         usua = logica.editarAdmin(
             tb_DocenteNombre.Text,
             tb_DocenteUsuario.Text,
@@ -94,7 +94,7 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
             int.Parse(ddt_lugarnacimDep.SelectedValue),
             int.Parse(DDT_Ciudad.SelectedValue),
             Session.SessionID,
-            FileUpload1,
+            foto,
             Session["fotosinedit"].ToString()
             );
 
@@ -148,5 +148,23 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
 
     }
 
+    protected string cargarImagen()
+    {
+        LUser logic = new LUser();
+        UUser enc = new UUser();
+        enc = logic.CargaFotoM(System.IO.Path.GetFileName(FileUpload1.PostedFile.FileName), System.IO.Path.GetExtension(FileUpload1.PostedFile.FileName), FileUpload1.ToString(), Server.MapPath("~/FotosUser"));
+        try
+        {
+            ClientScriptManager cm = this.ClientScript;
+            //cm.RegisterClientScriptBlock(this.GetType(), "", enc.Notificacion);
+            btnigm_calendar.Visible = true;
 
+            FileUpload1.PostedFile.SaveAs(enc.SaveLocation);
+            return enc.FotoCargada;
+        }
+        catch
+        {
+            return null;
+        }
+    }
 }
