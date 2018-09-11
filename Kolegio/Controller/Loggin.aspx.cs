@@ -14,6 +14,7 @@ public partial class Loggin : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
         Session["userId"] = null;
+        TB_UserName.Attributes.Add("placeholder", "Dijite Usuario");
     }
 
     protected void BT_Ingresar_Click(object sender, EventArgs e)
