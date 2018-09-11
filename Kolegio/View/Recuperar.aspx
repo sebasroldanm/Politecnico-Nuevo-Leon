@@ -31,16 +31,16 @@
             <div class="modal-body" style="margin: -30px 0px 0px 503px;">
                 <div class="row">
                     <div class="auto-style2">
-                        <h2>Recuperar Cuenta</h2>
+                        <h2><asp:Label ID="L_RecuperarTitulo" runat="server"></asp:Label></h2>
                         <div class="auto-style1">
-                            <label for="idusuario" class="control-label">Usuario :</label>
-                            <asp:TextBox ID="TB_Usuario" runat="server" MaxLength="20" placeholder="Digitar Usuario" CssClass="form-control"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RFV_Usuario" runat="server" ControlToValidate="TB_Usuario" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
-                            <asp:RegularExpressionValidator ID="REV_Usuario" runat="server" ControlToValidate="TB_Usuario" ErrorMessage="No se aceptan caracteres especiales" ValidationExpression="^[a-zA-z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
+                            <label for="idusuario" class="control-label"><asp:Label ID="L_RecuperarUsuario" runat="server"></asp:Label></label>
+                            <asp:TextBox ID="TB_Usuario" runat="server" MaxLength="20" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RFV_Usuario" runat="server" ControlToValidate="TB_Usuario"  CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
+                            <asp:RegularExpressionValidator ID="REV_Usuario" runat="server" ControlToValidate="TB_Usuario" ValidationExpression="^[a-zA-z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
                             <span class="help-block"></span>
                         </div>
-                        <asp:Button ID="B_Enviar" runat="server" Text="Enviar" CssClass="btn btn-success btn-block" OnClick="B_Enviar_Click" />
-                        <a class="btn btn-danger btn-block" href="Loggin.aspx" role="button" id="btn_RecuperarSalir">Salir</a>
+                        <asp:Button ID="B_Enviar" runat="server" CssClass="btn btn-success btn-block" OnClick="B_Enviar_Click" />
+                        <asp:Button ID="B_Salir" runat="server" CssClass="btn btn-success btn-danger" OnClick="B_Salir_Click" />
                         <asp:Label ID="L_Verificar" runat="server" CssClass="label-danger" Font-Bold="true" ForeColor="White"></asp:Label>
                     </div>
                 </div>

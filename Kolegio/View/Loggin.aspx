@@ -45,7 +45,8 @@
 <body>
     <div class="container">
         <div class="text-center">
-            <h3><span class="label label-info">Ingreso a la plataforma</span></h3>
+            <h3><span class="label label-info">
+                <asp:Label ID="L_LoginTitulo" runat="server"></asp:Label></span></h3>
         </div>
     </div>
     <img id="fondo" src="../Imagenes/nf1.jpg" alt="background image" class="auto-style1" />
@@ -61,30 +62,31 @@
 
                         <div class="form-group">
 
-                            <label for="username" class="control-label label label-info">Usuario</label>
+                            <label for="username" class="control-label label label-info">
+                                <asp:Label ID="L_LoginUsuario" runat="server" ></asp:Label></label>
                             <asp:TextBox ID="TB_UserName" runat="server" CssClass="form-control" MaxLength="20" placeholder="Digitar Usuario"></asp:TextBox>
                             <span class="help-block">
-                                <asp:RequiredFieldValidator ID="RVFUserName" runat="server" ControlToValidate="TB_UserName" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
-                                <asp:RegularExpressionValidator ID="REV_UserName" runat="server" ControlToValidate="TB_UserName" ErrorMessage="No se aceptan caracteres especiales" ValidationExpression="^[a-zA-Z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="RFV_UserName" runat="server" ControlToValidate="TB_UserName"  CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
+                                <asp:RegularExpressionValidator ID="REV_UserName" runat="server" ControlToValidate="TB_UserName" ValidationExpression="^[a-zA-Z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
                             </span>
 
                         </div>
 
                         <div class="form-group">
 
-                            <label for="password" class="control-label label label-info">Contraseña</label>
+                            <label for="password" class="control-label label label-info"><asp:Label ID="L_LoginClave" runat="server"></asp:Label></label>
                             <asp:TextBox ID="TB_Clave" runat="server" Type="password" CssClass="form-control" MaxLength="20" placeholder="Digitar Contraseña"></asp:TextBox>
                             <span class="help-block">
-                                <asp:RequiredFieldValidator ID="RFV_Clave" runat="server" ControlToValidate="TB_Clave" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
-                                <asp:RegularExpressionValidator ID="REV_Clave" runat="server" ControlToValidate="TB_Clave" ErrorMessage="No se aceptan caracteres especiales" ValidationExpression="^[a-zA-Z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
+                                <asp:RequiredFieldValidator ID="RFV_Clave" runat="server" ControlToValidate="TB_Clave" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
+                                <asp:RegularExpressionValidator ID="REV_Clave" runat="server" ControlToValidate="TB_Clave" ValidationExpression="^[a-zA-Z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
                             </span>
 
                         </div>
                         <asp:Label ID="L_Error" runat="server" Font-Bold="True" CssClass="label-danger" ForeColor="White"></asp:Label>
-                        <asp:Button ID="BT_Ingresar" runat="server" Text="Ingresar" CssClass="btn btn-success btn-block" OnClick="BT_Ingresar_Click" />
+                        <asp:Button ID="BT_Ingresar" runat="server" CssClass="btn btn-success btn-block" OnClick="BT_Ingresar_Click" />
 
-                        <asp:Button ID="BT_Recuperar" runat="server" Text="Olvido de Contraseña/Usuario" CssClass="btn btn-info btn-block" OnClick="BT_Recuperar_Click" CausesValidation="False" />
-                        <asp:Button ID="BT_Salir" runat="server" Text="Salir" CssClass="btn btn-danger btn-block" OnClick="BT_Salir_Click" CausesValidation="False" />
+                        <asp:Button ID="BT_Recuperar" runat="server" CssClass="btn btn-info btn-block" OnClick="BT_Recuperar_Click" CausesValidation="False" />
+                        <asp:Button ID="BT_Salir" runat="server"  CssClass="btn btn-danger btn-block" OnClick="BT_Salir_Click" CausesValidation="False" />
                     </div>
                 </div>
             </div>

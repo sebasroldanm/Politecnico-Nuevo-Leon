@@ -15,6 +15,14 @@ public partial class View_Recuperar : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
+
+        L_RecuperarTitulo.Text = "Recuperar Cuenta";
+        L_RecuperarUsuario.Text = "Usuario :";
+        TB_Usuario.Attributes.Add("placeholder", "Digitar Usuario");
+        RFV_Usuario.ErrorMessage = "Campo Vacio";
+        REV_Usuario.ErrorMessage = "No se aceptan caracteres especiales";
+        B_Enviar.Text = "Enviar";
+
     }
 
     protected void B_Enviar_Click(object sender, EventArgs e)

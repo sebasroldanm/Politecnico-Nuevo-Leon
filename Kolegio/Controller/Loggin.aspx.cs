@@ -15,6 +15,20 @@ public partial class Loggin : System.Web.UI.Page
         Response.Cache.SetNoStore();
         Session["userId"] = null;
         TB_UserName.Attributes.Add("placeholder", "Dijite Usuario");
+
+
+        L_LoginTitulo.Text = "Ingreso a la plataforma";
+        L_LoginUsuario.Text = "Usuario";
+        TB_UserName.Attributes.Add("placeholder", "Digitar Usuario");
+        RFV_UserName.ErrorMessage = "Campo Vacio";
+        REV_UserName.ErrorMessage = "No se aceptan caracteres especiales";
+        L_LoginClave.Text = "Contraseña";
+        TB_Clave.Attributes.Add("placeholder", "Digitar Contraseña");
+        RFV_Clave.ErrorMessage = "Campo Vacio";
+        REV_Clave.ErrorMessage = "No se aceptan caracteres especiales";
+        BT_Ingresar.Text = "Ingresar";
+        BT_Recuperar.Text = "Recurperar Contraseña";
+        BT_Salir.Text = "Salir";
     }
 
     protected void BT_Ingresar_Click(object sender, EventArgs e)
