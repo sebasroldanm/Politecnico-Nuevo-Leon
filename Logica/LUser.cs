@@ -6,7 +6,15 @@ using System.Data;
 using System.IO;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
+<<<<<<< HEAD
+//Camilo
+
+
+    //hola prueba
+    //kasjdbskjbdsjkafjksfbsdkflksdnfkls
+=======
 //Camilo Rodriguez
+>>>>>>> 824e39c19ba81401318cd5a0f912f8903f29dbe1
 namespace Logica 
 {
     public class LUser : System.Web.UI.Page
