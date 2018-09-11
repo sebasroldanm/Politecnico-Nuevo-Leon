@@ -6,8 +6,8 @@ using System.Data;
 using System.IO;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
-
-namespace Logica
+//Camilo
+namespace Logica 
 {
     public class LUser : System.Web.UI.Page
     {
