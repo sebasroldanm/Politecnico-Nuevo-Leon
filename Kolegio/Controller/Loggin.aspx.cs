@@ -33,11 +33,17 @@ public partial class Loggin : System.Web.UI.Page
         Session["documento"] = datos.SDocumento;
         Session["foto"] = datos.SFoto;
 
-        //L_Error.Text = datos.Mensaje;
-        //System.Threading.Thread.Sleep(3000);
-        //Response.Redirect(datos.Url);
+        try
+        {
+            Response.Redirect(datos.Url);
+        }
+        catch
+        {
+            L_Error.Text = datos.Mensaje;
+        }
+        
 
-
+        /*
         if (datos.Url == null)
         {
             L_Error.Text = datos.Mensaje;
@@ -52,6 +58,7 @@ public partial class Loggin : System.Web.UI.Page
                 Session.SessionID);
             Response.Redirect(datos.Url);
         }
+        */
     }
 
     protected void BT_Recuperar_Click(object sender, EventArgs e)
