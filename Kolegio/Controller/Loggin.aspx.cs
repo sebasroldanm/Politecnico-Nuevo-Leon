@@ -16,7 +16,7 @@ public partial class Loggin : System.Web.UI.Page
         Session["userId"] = null;
         TB_UserName.Attributes.Add("placeholder", "Dijite Usuario");
 
-
+        Page.Title = "Ingresar";
         L_LoginTitulo.Text = "Ingreso a la plataforma";
         L_LoginUsuario.Text = "Usuario";
         TB_UserName.Attributes.Add("placeholder", "Digitar Usuario");
@@ -29,6 +29,8 @@ public partial class Loggin : System.Web.UI.Page
         BT_Ingresar.Text = "Ingresar";
         BT_Recuperar.Text = "Recurperar Contraseña";
         BT_Salir.Text = "Salir";
+        //L_Error.Text = "Usuario Se Encuentra Inactivo";
+        //L_Error.Text = "Usuario Y/o Clave Incorrecto";
     }
 
     protected void BT_Ingresar_Click(object sender, EventArgs e)

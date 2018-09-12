@@ -42,14 +42,23 @@
                     <a class="navbar-brand" href="InicioNosotros.aspx"></a>
                 </a>
                 <ul class="nav navbar-nav">
-
-                    <li><a href="InicioNosotros.aspx">Nosotros</a></li>
-                    <li><a href="InicioMision.aspx">Mision</a></li>
-                    <li><a href="InicioVision.aspx">Vision</a></li>
-                    <li><a href="InicioContactenos.aspx">Contactenos</a></li>
+                    <li>
+                        <asp:HyperLink ID="HL_InicioNosotros" runat="server" NavigateUrl="~/View/Inicio/InicioNosotros.aspx"></asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="HL_InicioMision" runat="server" NavigateUrl="~/View/Inicio/InicioMision.aspx"></asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="HL_InicioVision" runat="server" NavigateUrl="~/View/Inicio/InicioVision.aspx"></asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="HL_InicioContactenos" runat="server" NavigateUrl="~/View/Inicio/InicioContactenos.aspx"></asp:HyperLink>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="../Loggin.aspx">Iniciar Sesion</a></li>
+                    <li>
+                        <asp:HyperLink ID="HL_InicioLoggin" runat="server" NavigateUrl="~/View/Loggin.aspx"></asp:HyperLink>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

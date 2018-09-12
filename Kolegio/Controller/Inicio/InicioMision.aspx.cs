@@ -12,6 +12,10 @@ public partial class View_Inicio_Mision : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Misión";
+        L_InMisTitulo.Text = "Misión";
+        IMG_Mision.ImageUrl = "~/Imagenes/mision.png";
+
         Session["userId"] = null;
         Session["nombre"] = null;
 
@@ -24,19 +28,5 @@ public partial class View_Inicio_Mision : System.Web.UI.Page
 
         L_Mision.Text = usua.Mision;
        
-
-
-        //DaoUser user = new DaoUser();
-        //EUser datos = new EUser();
-        //datos.Session = Session.SessionID;
-        //user.cerrarSession(datos);
-
-
-        //DataTable registros = user.incio();
-
-        //if (registros.Rows.Count > 0)
-        //{
-        //    L_Mision.Text = Convert.ToString(registros.Rows[0]["mision_inicio"].ToString());
-        //}
     }
 }

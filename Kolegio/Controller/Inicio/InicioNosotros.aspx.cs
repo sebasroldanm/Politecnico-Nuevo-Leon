@@ -12,7 +12,17 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        Page.Title = "Politecnico Leon";
+        IMG_Slider1.ImageUrl = "~/Imagenes/1f.png";
+        IMG_Slider2.ImageUrl = "~/Imagenes/4f.png";
+        IMG_Slider3.ImageUrl = "~/Imagenes/3f.png";
+        L_InNosTitulo.Text = "Plataforma Estudiantil";
+        L_InNosDescarga.Text = "Descarga el Manual de Uso desde los siguientes enlaces";
+        L_InNosSubtitulo.Text = "Nosotros";
+        L_InNosBievenido.Text = "Bienvenidos";
+        L_InNosInstalaciones.Text = "Nuestras Instalaciones";
+
+
         Session["userId"] = null;
         Session["nombre"] = null;
 
@@ -27,13 +37,6 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
 
         logica.cerrarSession(Session.SessionID);
 
-
-        //DataTable regi = user.incio();
-
-        //if (regi.Rows.Count > 0)
-        //{
-        //    L_Inicio.Text = Convert.ToString(regi.Rows[0]["inicio_cont"].ToString());
-        //}
 
         UUser enc = new UUser();
         LReg logic = new LReg();

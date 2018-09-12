@@ -91,20 +91,17 @@ img {vertical-align: middle;}
     <div class="slideshow-container">
         <div class="mySlides fade">
             <div class="numbertext"></div>
-            <img src="../../Imagenes/1f.png" style="width: 100%">
-            <div class="text">Colegio</div>
+            <asp:Image ID="IMG_Slider1" runat="server" />
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext"></div>
-            <img src="../../Imagenes/4f.png" style="width: 100%">
-            <div class="text">Colegio</div>
+            <asp:Image ID="IMG_Slider2" runat="server" />
         </div>
 
         <div class="mySlides fade">
             <div class="numbertext"></div>
-            <img src="../../Imagenes/3f.png" style="width: 100%">
-            <div class="text">Colegio</div>
+            <asp:Image ID="IMG_Slider3" runat="server" />
         </div>
     </div>
     <br>
@@ -140,15 +137,15 @@ img {vertical-align: middle;}
 
     <div class="container">
         <div class="jumbotron">
-            <h2 class="auto-style1">Plataforma Estudiantil</h2>
+            <h2 class="auto-style1"><asp:Label ID="L_InNosTitulo" runat="server" ></asp:Label></h2>
             <p class="auto-style1">
-                <asp:Label ID="Label1" runat="server" Text="Descarga el Manual de Uso desde los siguientes enlaces"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:HyperLink ID="HyperLink1" runat="server" Text="Drive" NavigateUrl="https://drive.google.com/open?id=1axnOALu2NQmb8VXYpS5_Hl6j_QhgyNn_" Target="_blank"></asp:HyperLink>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:HyperLink ID="HyperLink3" runat="server" Text="DropBox" NavigateUrl="https://www.dropbox.com/s/pahhqvsnu1bonc8/MANUAL%20DEL%20USUARIO.pdf?dl=0" Target="_blank"></asp:HyperLink>
+                <asp:Label ID="L_InNosDescarga" runat="server"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:HyperLink ID="HL_Drive" runat="server" Text="Drive" NavigateUrl="https://drive.google.com/open?id=1axnOALu2NQmb8VXYpS5_Hl6j_QhgyNn_" Target="_blank"></asp:HyperLink>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:HyperLink ID="HL_Dropbox" runat="server" Text="DropBox" NavigateUrl="https://www.dropbox.com/s/pahhqvsnu1bonc8/MANUAL%20DEL%20USUARIO.pdf?dl=0" Target="_blank"></asp:HyperLink>
             </p>
-            <h2>Nosotros</h2>
+            <h2><asp:Label ID="L_InNosSubtitulo" runat="server"></asp:Label></h2>
             <p>
-                <asp:Label ID="L_Inicio" runat="server" Text="Label"></asp:Label>
+                <asp:Label ID="L_Inicio" runat="server" ></asp:Label>
             </p>
         </div>
     </div>
@@ -157,9 +154,9 @@ img {vertical-align: middle;}
         <div class="jumbotron" id="jumbo">
             <div class="auto-style1">
                 <div class="card-body">
-                    <h4 class="auto-style1">Bienvenidos</h4>
+                    <h4 class="auto-style1"><asp:Label ID="L_InNosBievenido" runat="server"></asp:Label></h4>
                     <p class="card-text">
-                        Nuestras Instalaciones
+                        <asp:Label ID="L_InNosInstalaciones" runat="server"></asp:Label>
                     </p>
                     <table class="auto-style3">
                         <tr>

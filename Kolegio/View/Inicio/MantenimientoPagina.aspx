@@ -18,7 +18,7 @@
 
 
         </div>
-        <asp:Image ID="Image1" runat="server" CssClass="auto-style1" Height="548px" ImageUrl="~/Imagenes/politecnicoleonmantenimientof.png" Width="1061px" />
+        <asp:Image ID="IMG_Error" runat="server" CssClass="auto-style1" Height="548px" Width="1061px" />
     </form>
 </body>
 </html>

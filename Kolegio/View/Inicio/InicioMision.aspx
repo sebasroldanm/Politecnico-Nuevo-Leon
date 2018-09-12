@@ -14,7 +14,7 @@
 
     <div class="container">
         <div class="text-center">
-            <h1><span class="label label-info">Mision</span></h1>
+            <h1><span class="label label-info"><asp:Label ID="L_InMisTitulo" runat="server"></asp:Label></span></h1>
             <br />
         </div>
     </div>
@@ -27,7 +27,7 @@
                     </td>
                     <td>
                         <div class="card" style="width: 400px">
-                            <asp:Image ID="Image1" runat="server" ImageUrl="~/Imagenes/mision.png" Width="250px" />
+                            <asp:Image ID="IMG_Mision" runat="server" Width="250px" />
                         </div>
                     </td>
                 </tr>

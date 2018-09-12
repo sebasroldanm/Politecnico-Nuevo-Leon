@@ -28,22 +28,22 @@
             <div class="modal-body" style="margin: -30px 0px 0px 503px;">
                 <div class="row">
                     <div class="auto-style1">
-                        <h2>Recuperar Cuenta</h2>
+                        <h2><asp:Label ID="L_ContraseniaTitulo" runat="server"></asp:Label></h2>
                         <div class="form-group">
-                            <label for="idusuario" class="control-label" id="L_DigiteClave">Digite Nueva Clave :</label>
-                            <asp:TextBox ID="TB_NuevaClave" runat="server" CssClass="form-control" TextMode="Password" MaxLength="20" placeholder="Clave"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RFV_Clave" runat="server" ControlToValidate="TB_NuevaClave" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
-                            <asp:RegularExpressionValidator ID="REV_Clave" runat="server" ControlToValidate="TB_NuevaClave" ErrorMessage="No se aceptan caracteres especiales" ValidationExpression="^[a-zA-z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
+                            <label for="idusuario" class="control-label" id="L_DigiteClave"><asp:Label ID="L_ContraseniaNueva" runat="server"></asp:Label></label>
+                            <asp:TextBox ID="TB_NuevaClave" runat="server" CssClass="form-control" TextMode="Password" MaxLength="20" ></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RFV_Clave" runat="server" ControlToValidate="TB_NuevaClave"  CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
+                            <asp:RegularExpressionValidator ID="REV_Clave" runat="server" ControlToValidate="TB_NuevaClave"  ValidationExpression="^[a-zA-z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
                             <span class="help-block"></span>
                         </div>
                         <div class="form-group">
-                            <label for="idusuario" class="control-label" id="L_DigiteClaveN">Digite Nuevamente la Clave :</label>
-                            <asp:TextBox ID="TB_NuevamenteClave" runat="server" CssClass="form-control" TextMode="Password" MaxLength="20" placeholder="Repetir Clave"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RFV_NuevamenteClave" runat="server" ControlToValidate="TB_NuevamenteClave" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
-                            <asp:RegularExpressionValidator ID="REV_NuevamenteClave" runat="server" ControlToValidate="TB_NuevamenteClave" ErrorMessage="No se aceptan caracteres especiales" ValidationExpression="^[a-zA-z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
+                            <label for="idusuario" class="control-label" id="L_DigiteClaveN"><asp:Label ID="L_ContraseniaNuevamente" runat="server"></asp:Label></label>
+                            <asp:TextBox ID="TB_NuevamenteClave" runat="server" CssClass="form-control" TextMode="Password" MaxLength="20" ></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RFV_NuevamenteClave" runat="server" ControlToValidate="TB_NuevamenteClave"  CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
+                            <asp:RegularExpressionValidator ID="REV_NuevamenteClave" runat="server" ControlToValidate="TB_NuevamenteClave"  ValidationExpression="^[a-zA-z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
                             <span class="help-block"></span>
                         </div>
-                        <asp:Button ID="B_Enviar" runat="server" Text="Enviar" CssClass="btn btn-success btn-block" OnClick="B_Enviar_Click" />
+                        <asp:Button ID="B_Enviar" runat="server"  CssClass="btn btn-success btn-block" OnClick="B_Enviar_Click" />
                         <asp:CompareValidator ID="CV_Contrasenia" runat="server" ControlToCompare="TB_NuevaCLave" ControlToValidate="TB_NuevamenteClave" ErrorMessage="No Coninciden las Contraseñas" CssClass="alert-link" ForeColor="White"></asp:CompareValidator><br />
                         <asp:Label ID="L_Verificar" runat="server" CssClass="alert-link" ForeColor="White"></asp:Label>
                     </div>

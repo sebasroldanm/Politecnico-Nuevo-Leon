@@ -18,6 +18,18 @@ public partial class View_Contrasenia : System.Web.UI.Page
 
         usua = logica.cambiarContra(Request.QueryString.Count, Request.QueryString[0], usua.SUserId);
 
+
+        L_ContraseniaTitulo.Text = "Recuperación de la Cuenta";
+        L_ContraseniaNueva.Text = "Digite Nueva Clave :";
+        TB_NuevaClave.Attributes.Add("placeholder", "Digite Nueva Clave");
+        RFV_Clave.ErrorMessage = "Campo Vacio";
+        REV_Clave.ErrorMessage = "No se aceptan caracteres especiales";
+        L_ContraseniaNuevamente.Text = "Digite Nuevamente la Clave :";
+        TB_NuevamenteClave.Attributes.Add("placeholder", "Repetir Clave");
+        RFV_NuevamenteClave.ErrorMessage = "Campo Vacio";
+        REV_Clave.ErrorMessage = "No se aceptan caracteres especiales";
+        B_Enviar.Text = "Enviar";
+
         try
         {
             this.Page.Response.Write(usua.Notificacion);
@@ -38,7 +50,7 @@ public partial class View_Contrasenia : System.Web.UI.Page
 
         usua = logic.ContraseñaBEnviar(TB_NuevamenteClave.Text, usua.UserId.ToString());
 
-        this.Page.Response.Write("<script language='JavaScript'>window.alert('El Token esta vencido. Genere uno nuevo');</script>");
+        //this.Page.Response.Write("<script language='JavaScript'>window.alert('El Token esta vencido. Genere uno nuevo');</script>");
         Response.Redirect("~/View/Loggin.aspx");
     }
 }
