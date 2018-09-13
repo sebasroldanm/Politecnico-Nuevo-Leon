@@ -11,15 +11,20 @@ namespace Logica
 {
     public class LIdioma
     {
-        public DataTable obtIdioma(int form, int idioma)
+        public UIdioma obtIdioma(int form, int idioma)
         { 
             DIdioma datos = new DIdioma();
-            UUser enc = new UUser();
+            UIdioma enc = new UIdioma();
             DataTable reg = new DataTable();
 
-            reg = datos.obtenerIdioma(form, idioma);
+            reg = datos.obtenerIdioma(form,idioma);
 
-            return reg;
+            for (int i = 0; i < reg.Rows.Count; i++)
+            {
+                enc.Texto[i] = reg.Rows[i]["texto"].ToString();
+            }
+
+            return enc;
         }
     }
 }

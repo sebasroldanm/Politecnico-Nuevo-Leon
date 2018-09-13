@@ -49,7 +49,7 @@
     <Compile Include="MAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UContrasenia.cs" />
-    <Compile Include="UReg.cs" />
+    <Compile Include="UIdioma.cs" />
     <Compile Include="UToken.cs" />
     <Compile Include="UUser.cs" />
   </ItemGroup>

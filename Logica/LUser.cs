@@ -2,6 +2,7 @@
 using System.Text;
 using Datos;
 using Utilitarios;
+using Logica;
 using System.Data;
 using System.IO;
 using Newtonsoft.Json;
@@ -16,6 +17,7 @@ namespace Logica
         {
             UUser user = new UUser();
             DUser datos = new DUser();
+            LIdioma idioma = new LIdioma();
 
             user.UserName = userName;
             user.Clave = clave;
