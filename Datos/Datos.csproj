@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="DCorreo.cs" />
     <Compile Include="DCorreoEnviar.cs" />
+    <Compile Include="DIdioma.cs" />
     <Compile Include="DUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

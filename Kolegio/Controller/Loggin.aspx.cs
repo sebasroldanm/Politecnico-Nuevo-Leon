@@ -14,8 +14,12 @@ public partial class Loggin : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
         Session["userId"] = null;
-        TB_UserName.Attributes.Add("placeholder", "Dijite Usuario");
 
+
+        Int32 FORMULARIO = 1;
+        LIdioma idioma = new LIdioma();
+        
+        TB_UserName.Attributes.Add("placeholder", "Dijite Usuario");
         Page.Title = "Ingresar";
         L_LoginTitulo.Text = "Ingreso a la plataforma";
         L_LoginUsuario.Text = "Usuario";
