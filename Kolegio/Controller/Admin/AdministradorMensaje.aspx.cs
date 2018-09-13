@@ -12,6 +12,17 @@ public partial class View_Administrador_AdministradorMensaje : System.Web.UI.Pag
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Mensaje";
+        L_AdminMensaTitulo.Text = "Mensaje Nuevo";
+        L_AdminMensAsunto.Text = "Asunto :";
+        REV_Asuto.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminMensDestinatario.Text = "Destinatario :";
+        REV_Destinatario.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminMensMensaje.Text = "Mensaje :";
+        REV_Mensaje.ErrorMessage = "No se aceptan caracteres especiales";
+        B_Enviar.Text = "Enviar";
+        //L_Verificar.Text -> Ver funciones
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

@@ -14,7 +14,45 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
 {
 
     protected void Page_Load(object sender, EventArgs e)
-    {   
+    {
+        Page.Title = "Agregar Administrador";
+        L_AdminAgreAdminTitulo.Text = "Agregar Administrador";
+
+        L_AdminAgreAdminDocumento.Text = "Número de Documento :";
+        tb_AministradorAdministradorId.Attributes.Add("placeholder", "Número de Documento");
+        REV_AministradorAdministradorId.ErrorMessage = "Digitar solo números";
+        L_AdminAgreAdminNombre.Text = "Nombres :";
+        tb_AdministradorAdministradorNombre.Attributes.Add("placeholder", "Nombres   Administrador");
+        REV_AdministradorAdministradorNombre.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminAgreAdminApellido.Text = "Apellido :";
+        tb_AdministradorAdministradorApellido.Attributes.Add("placeholder", "Apellidos Administrador ");
+        REV_AdministradorAdministradorApellido.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminAgreAdminDep.Text = "Lugar Nacimiento.:";
+        L_AdminAgreAdminFoto.Text = "Foto :";
+        L_AdminAgreAdminFechanac.Text = "Fecha Nacimiento:";
+        fechanac.Attributes.Add("placeholder", "Fecha de Nacimiento");
+        L_AdminAgreAdminCorreo.Text = "Correo :";
+        tb_AdministradorAdministradorCorreo.Attributes.Add("placeholder", "Email");
+        REV_AdministradorAdministradorCorreo.ErrorMessage = "No se aceptan caracteres especiales";
+        L_ADminAgreAdminDir.Text = "Direccion :";
+        tb_AdministradorAdministradorDireccion.Attributes.Add("placeholder", "Dirección");
+        REV_AdministradorAdministradorDireccion.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminAgreAdminTel.Text = "Telefono :";
+        tb_AdministradorTelefono.Attributes.Add("placeholder", "Teléfono");
+        REV_AdministradorTelefono.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminAgreAdminUser.Text = "Usuario :";
+        tb_AdministradorUsuario.Attributes.Add("placeholder", "Usuario");
+        REV_AdministradorUsuario.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminAgreAdminContra.Text = "Contraseña:";
+        tb_AdministradorContrasenia.Attributes.Add(" placeholder", "Contraseña");
+        REV_AdministradorContrasenia.ErrorMessage = "No se aceptan caracteres especiales";
+        btn_validar.Text = "Validar Usuario";
+
+        //L_ErrorUsuario.Text;   
+        btn_AdministradorAceptar.Text = "Agregar";
+        btn_EstudianteNuevo.Text = "Nuevo";
+
+
         Response.Cache.SetNoStore();
         Response.Cache.SetCacheability(HttpCacheability.ServerAndNoCache);
         Response.Cache.SetCacheability(HttpCacheability.NoCache);

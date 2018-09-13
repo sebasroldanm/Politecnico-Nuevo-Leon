@@ -12,6 +12,43 @@ public partial class View_Admin_AgregarProfesor : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Agregar Profesor";
+        L_AdminAgreProTitulo.Text = "Agregar Profesor";
+        L_AdminAgreProDocumento.Text = "Número de Documento :";
+        tb_DocenteId.Attributes.Add("placeholder", "Número de Documento");
+        REV_DocenteId.ErrorMessage = "Digitar solo números";
+        L_AdminAgreProNombre.Text = "Nombres :";
+        tb_DocenteNombre.Attributes.Add("placeholder", "Nombres   Acudiente");
+        REV_DocenteNombre.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminAgreProApellido.Text = "Apellido :";
+        tb_DocenteApellido.Attributes.Add("placeholder", "Apellidos Acudiente ");
+        REV_DocenteApellido.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminAgreProDep.Text = "Lugar Nacimiento.:";
+        L_AdminAgreProFoto.Text = "Foto :";
+        L_AdminAgreProFechanac.Text = "Fecha Nacimiento:";
+        fechanac.Attributes.Add("placeholder", "Fecha de Nacimiento");
+        L_AdminAgreProCorreo.Text = "Correo :";
+        tb_DocenteCorreo.Attributes.Add("placeholder", "Email");
+        REV_DocenteCorreo.ErrorMessage = "No se aceptan caracteres especiales";
+        L_ADminAgreProDir.Text = "Direccion :";
+        tb_DocenteDireccion.Attributes.Add("placeholder", "Dirección");
+        REV_DocenteDireccion.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminAgreProTel.Text = "Telefono :";
+        tb_DocenteTelefono.Attributes.Add("placeholder", "Teléfono");
+        REV_DocenteTelefono.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminAgreProUser.Text = "Usuario :";
+        tb_DocenteUsuario.Attributes.Add("placeholder", "Usuario");
+        REV_DocenteUsuario.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminAgreProContra.Text = "Contraseña:";
+        tb_DocenteContrasenia.Attributes.Add(" placeholder", "Contraseña");
+        REV_DocenteContrasenia.ErrorMessage = "No se aceptan caracteres especiales";
+        btn_validar.Text = "Validar Usuario";
+
+        //L_ErrorUsuario.Text;   
+        btn_DocenteAceptar.Text = "Agregar";
+        btn_DocenteNuevo.Text = "Nuevo";
+
+
         Response.Cache.SetNoStore();
         LLogin Logica = new LLogin();
         UUser usua = new UUser();

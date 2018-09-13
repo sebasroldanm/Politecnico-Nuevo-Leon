@@ -6,7 +6,7 @@
 <head runat="server">
     <meta http-equiv="Refresh" content="6;URL=../Inicio/InicioNosotros.aspx"> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Acceso Denegado</title>
+    <title></title>
     <link href="../Content/bootstrap.css" rel="stylesheet" />
     <script src="../Scripts/jquery-3.0.0.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
@@ -30,13 +30,13 @@
                         <h1>Acceso Denegado</h1>
 
                         <div class="form-group">
-                            <h2>Usted esta intentando visitar la página desde una URL incorrrecta, por favor Iniciar Sesión.
+                            <h2><asp:Label ID="L_AdminAccesoTitulo" runat="server"></asp:Label>
                             </h2>
                         </div>
                         <div class="form-group">
-                            <h3>En caso de ser un error, contactese con Nosotros.<br />
+                            <h3><asp:Label ID="L_AdminAccesoDescrip" runat="server"></asp:Label><br />
                                 <br />
-                                Atentamente: Kolegio
+                                <asp:Label ID="L_AdminAccesoFirma" runat="server"></asp:Label>
                             </h3>
                         </div>
                     </div>
