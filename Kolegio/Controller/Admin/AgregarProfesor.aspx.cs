@@ -48,6 +48,12 @@ public partial class View_Admin_AgregarProfesor : System.Web.UI.Page
         btn_DocenteAceptar.Text = "Agregar";
         btn_DocenteNuevo.Text = "Nuevo";
 
+        L_ErrorUsuario.Text = "Debe seleccionar una opcion";
+        // script Usuario Insertado con Exito //Error al Seleccionar la Foto
+
+        //
+        L_ErrorUsuario.Text = "El Usuario ya existe";
+        L_ErrorUsuario.Text = "Usuario Disponible";
 
         Response.Cache.SetNoStore();
         LLogin Logica = new LLogin();

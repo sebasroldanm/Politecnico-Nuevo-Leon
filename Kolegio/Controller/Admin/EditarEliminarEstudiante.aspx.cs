@@ -12,6 +12,48 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //<asp:Label ID="" runat="server"></asp:Label>
+        Page.Title = "Editar Estudiante";
+        L_AdminEditEstuId.Text = "Numero de Documento ";
+        tb_EstudianteId.Attributes.Add("placeholder", "Numero de Documento");
+        REV_EstudianteId.ErrorMessage = "Digitar solo números";
+        L_AdminEditEstuNombre.Text = "Nombres :";
+        tb_EstudianteNombre.Attributes.Add("placeholder", "Nombres   Estudiante");
+        REV_EstudianteNombre.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditEstuApellido.Text = "Apellido :";
+        tb_EstudianteApellido.Attributes.Add("placeholder", "Apellidos Estudiante ");
+        REV_EstudianteApellido.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditEstuDep.Text = "Lugar Nacimiento.:";
+        L_AdminEditEstuFoto.Text = "Foto :";
+        L_AdminEditEstuFechanac.Text = "Fecha Nacimiento:";
+        fechanac.Attributes.Add("placeholder", "Fecha de Nacimiento");
+        L_AdminEditEstuCorreo.Text = "Correo :";
+        tb_EstudianteCorreo.Attributes.Add("placeholder", "Email");
+        REV_EstudianteCorreo.ErrorMessage = "No se aceptan caracteres especiales";
+        L_ADminEditEstuDir.Text = "Direccion :";
+        tb_EstudianteDireccion.Attributes.Add("placeholder", "Dirección");
+        REV_EstudianteDireccion.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditEstuTel.Text = "Telefono :";
+        tb_EstudianteTelefono.Attributes.Add("placeholder", "Teléfono");
+        REV_EstudianteTelefono.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditEstuUser.Text = "Usuario :";
+        tb_EstudianteUsuario.Attributes.Add("placeholder", "Usuario");
+        REV_EstudianteUsuario.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditEstuContra.Text = "Contraseña:";
+        tb_EstudianteContrasenia.Attributes.Add(" placeholder", "Contraseña");
+        REV_EstudianteContrasenia.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditEstuEstado.Text = "Estado : ";
+        //L_ErrorUsuario.Text;   
+        btn_EstudianteAceptar.Text = "Aceptar";
+        btn_EstudianteEditar.Text = "Editar";
+        btn_EstudianteNuevo.Text = "Nuevo";
+
+        L_ErrorEstudiante.Text = "Debe seleccionar una opcion";
+        L_Error.Text = "Sin Registros";
+        // script Usuario Editado con Exito
+        // script Usuario Editado con Exito
+
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();
@@ -147,7 +189,7 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
         tb_EstudianteDireccion.Text = "";
         tb_EstudianteTelefono.Text = "";
         tb_EstudianteId.Text = "";
-        L_ErrorEstudiante.Text = "";
+        L_Error.Text = "";
         L_Error.Text = "";
         fechanac.Text = "";
         ImagenEst.ImageUrl = "";

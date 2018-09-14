@@ -5,7 +5,7 @@
 <html>
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Plataforma Administrador</title>
+    <title></title>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
       <link href="../../Bootstrap/css2/bootstrap.css" rel="stylesheet" />
@@ -20,41 +20,60 @@
 <body>
 
     <img id="fondo" src="../../Imagenes/fondoadmin.jpg" alt="background image" />
-     <form id="form1" runat="server">
-    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-            <a class="navbar-brand" href="#">Bienvenido Administrador</a>   
-        <div class="container-fluid">
+    <form id="form1" runat="server">
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="#">
+                <asp:Label ID="L_MAdminTitulo" runat="server"></asp:Label></a>
+            <div class="container-fluid">
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+
+                        <li>
+                            <asp:HyperLink ID="HL_MAdminAgreAdmin" runat="server" NavigateUrl="~/View/Admin/AgregarAdministrador.aspx">HyperLink</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HL_MAdminAgreEstu" runat="server" NavigateUrl="~/View/Admin/AgregarEstudiante.aspx">HyperLink</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HL_MAdminAgreProfe" runat="server" NavigateUrl="~/View/Admin/AgregarProfesor.aspx">HyperLink</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HL_MAdminAgreAcu" runat="server" NavigateUrl="~/View/Admin/AgregarAcudiente.aspx">HyperLink</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HL_MAdminAgreMateriaCurso" runat="server" NavigateUrl="~/View/Admin/AgregarMateriasCurso.aspx">HyperLink</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HL_MAdminMensaje" runat="server" NavigateUrl="~/View/Admin/AdministradorMensaje.aspx">HyperLink</asp:HyperLink>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HL_MAdminPagInicio" runat="server" NavigateUrl="~/View/Admin/EditarPaginaInicio.aspx">HyperLink</asp:HyperLink>
+
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="HL_MAdminConfig" runat="server" NavigateUrl="~/View/Admin/ConfiguracionAdministrador.aspx">HyperLink</asp:HyperLink>
+                        </li>
 
 
-                    <li><a href="../Admin/AgregarAdministrador.aspx">Administrador</a></li>
-                    <li><a href="../Admin/AgregarEstudiante.aspx">Estudiante</a></li>
-                    <li><a href="../Admin/AgregarProfesor.aspx">Docente</a></li>
-                    <li><a href="../Admin/AgregarAcudiente.aspx">Acudiente</a></li>
-                    <li><a href="../Admin/AgregarMateriasCurso.aspx">Curso</a></li>
-                    <li><a href="../Admin/AdministradorMensaje.aspx">Mensaje</a></li>
-                    <li><a href="../Admin/EditarPaginaInicio.aspx">Configuracion Leon</a></li>
-                    <li><a href="../Admin/ConfiguracionAdministrador.aspx">Configuracion</a></li>
-
-
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="../Inicio/InicioNosotros.aspx">Cerrar Sesion</a></li>
-                </ul>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <asp:HyperLink ID="HL_MAdminInicio" runat="server" NavigateUrl="~/View/Inicio/InicioNosotros.aspx">HyperLink</asp:HyperLink>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
             </div>
-            <!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-</nav>
+            <!-- /.container-fluid -->
+        </nav>
 
 
-   
-    <div>
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-    </div>
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
 
     </form>
 

@@ -11,18 +11,7 @@ public partial class View_Admin_SubMasterAcudiente : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Response.Cache.SetNoStore();
-        //try
-        //{
-        //    LLogin logica = new LLogin();
-        //    UUser usua = new UUser();
-
-        //    usua = logica.logAdminSecillo(Session["userId"].ToString());
-        //    Response.Redirect(usua.Url);
-        //}
-        //catch
-        //{
-
-        //}
+        L_SubMAcudienteNuevo.Text = "NUEVO";
+        L_SubMAcudienteEditarEliminar.Text = "LISTAR - EDITAR ";
     }
 }

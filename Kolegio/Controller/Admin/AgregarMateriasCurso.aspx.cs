@@ -12,6 +12,27 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Agregar Materias Curso";
+        L_AdminAgreMateCursoTitulo.Text = "Agregar Materias a un Curso";
+        L_AdminAgreMateCursoSubAgregarMateria.Text = "Materia :";
+        REV_materia.ErrorMessage = "No se aceptan caracteres especiales";
+        tb_materia.Attributes.Add("placeholder", "Nombre Materia");
+        btn_agregam.Text = "Agregar Materia";
+        L_AdminAgreMateCursoSubAnio.Text = "Año:";
+        L_AdminAgreMateCursoSubCurso.Text = "Curso :";
+        L_AdminAgreMateCursoSubMateria.Text = "Materia :";
+        L_AdminAgreMateCursoSubDia.Text = "Dia :";
+        //ddt_Dia.Items.Add 
+        L_AdminAgreMateCursoSubHora.Text = "Hora :";
+        btn_CursoMateriaAceptar.Text = "Agregar al Horario";
+        L_Error.Text = "Falta seleccionar";
+        L_Error.Text = "Materia Insertada a Curso con Exito";
+        L_Error.Text = "El docente presenta un cruce de Horarios";
+        L_Error.Text = "Presenta un cruce de Horarios";
+        L_Error.Text = "Materia Insertada con Exito";
+        L_Error.Text = "La Materia ya se encuentra en nuestra Base de Datos";
+        //ENC.NOTIFICACION Se ha migraido de año con Exito script;
+
         Response.Cache.SetNoStore();
         horario();
         LLogin logica = new LLogin();

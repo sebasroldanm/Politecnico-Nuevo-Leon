@@ -12,6 +12,48 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        //<asp:Label ID="" runat="server"></asp:Label>
+        Page.Title = "Editar Profesor";
+        L_AdminEditProTitulo.Text = "Editar Profesor";
+        L_AdminEditProDocumento.Text = "Número de Documento :";
+        tb_DocenteId.Attributes.Add("placeholder", "Número de Documento");
+        REV_DocenteId.ErrorMessage = "Digitar solo números";
+        L_AdminEditProNombre.Text = "Nombres :";
+        tb_DocenteNombre.Attributes.Add("placeholder", "Nombres   Acudiente");
+        REV_DocenteNombre.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditProApellido.Text = "Apellido :";
+        tb_DocenteApellido.Attributes.Add("placeholder", "Apellidos Acudiente ");
+        REV_DocenteApellido.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditProDep.Text = "Lugar Nacimiento.:";
+        L_AdminEditProFoto.Text = "Foto :";
+        L_AdminEditProFechanac.Text = "Fecha Nacimiento:";
+        fechanac.Attributes.Add("placeholder", "Fecha de Nacimiento");
+        L_AdminEditProCorreo.Text = "Correo :";
+        tb_DocenteCorreo.Attributes.Add("placeholder", "Email");
+        REV_DocenteCorreo.ErrorMessage = "No se aceptan caracteres especiales";
+        L_ADminEditProDir.Text = "Direccion :";
+        tb_DocenteDireccion.Attributes.Add("placeholder", "Dirección");
+        REV_DocenteDireccion.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditProTel.Text = "Telefono :";
+        tb_DocenteTelefono.Attributes.Add("placeholder", "Teléfono");
+        REV_DocenteTelefono.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditProUser.Text = "Usuario :";
+        tb_DocenteUsuario.Attributes.Add("placeholder", "Usuario");
+        REV_DocenteUsuario.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditProContra.Text = "Contraseña:";
+        tb_DocenteContrasenia.Attributes.Add(" placeholder", "Contraseña");
+        REV_DocenteContrasenia.ErrorMessage = "No se aceptan caracteres especiales";
+        btn_DocenteAceptar.Text = "Aceptar";
+        btn_DocenteEditar.Text = "Editar";
+        btn_DocenteNuevo.Text = "Nuevo";
+
+        L_Error.Text = "Sin Registros";
+        // script Usuario Insertado con Exito
+        // script Usuario Insertado con Exito
+
+        L_Error.Text = "Debe seleccionar una opción";
+
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

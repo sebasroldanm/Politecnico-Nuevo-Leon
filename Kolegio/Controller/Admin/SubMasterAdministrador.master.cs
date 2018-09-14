@@ -11,18 +11,7 @@ public partial class View_Admin_SubMasterAdministrador : System.Web.UI.MasterPag
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Response.Cache.SetNoStore();
-        //try
-        //{
-        //    LLogin logica = new LLogin();
-        //    UUser usua = new UUser();
-
-        //    usua = logica.logAdminSecillo(Session["userId"].ToString());
-        //    Response.Redirect(usua.Url);
-        //}
-        //catch
-        //{
-
-        //}
+        L_SubMAdminNuevo.Text = "NUEVO";
+        L_SubMAdminEditarEliminar.Text = "LISTAR - EDITAR ";
     }
 }

@@ -12,6 +12,18 @@ public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Agregar Estudiates Curso";
+        L_AdminEstuCursoTitulo.Text = "Agregar Estudiantes a un Curso";
+        L_AdminEstuCursoSubAnio.Text = "Año :";
+        L_AdminEstuCursoSubCurso.Text = "Curso :";
+        //Funcioes
+        L_ErrorUsuario.Text = "Estudiantes Agregados al curso";
+        L_OkUsuario.Text = "Debe Elegir un Curso";
+        //
+        //GW Documento - Nombre - Agregar al Curso - Agregar Curso
+        btn_Aceptar.Text = "Agregar al Curso";
+
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

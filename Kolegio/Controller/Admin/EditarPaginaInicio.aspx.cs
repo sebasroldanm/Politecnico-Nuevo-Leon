@@ -12,6 +12,19 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Página de Inicio";
+        L_AdminPagInicio.Text = "Páginas Inicio";
+        L_AdminPagInicioNosotros.Text = "Nosotros :";
+        RFV_Nosotros.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminpajInicioMision.Text = "Misión :";
+        REV_Mision.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminPagInicioVision.Text = "Visión :";
+        REV_Vision.ErrorMessage = "No se aceptan caracteres especiales";
+        B_Modificar.Text = "Modificar";
+        B_Traer.Text = "Traer Datos";
+        L_AdminPagInicioFechaFin.Text = "Fecha Terminación Año: ";
+        B_Terminaranio.Text = "Insertar Fin";
+
         Response.Cache.SetNoStore();
         LLogin Logica = new LLogin();
         UUser usua = new UUser();

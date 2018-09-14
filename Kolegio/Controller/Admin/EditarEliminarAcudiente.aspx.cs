@@ -12,6 +12,49 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Ediar Acudiente";
+        L_AdminEditAcuTitulo.Text = "Editar Acudiente";
+        L_AdminEditAcuDocumento.Text = "Número de Documento :";
+        tb_AcudienteId.Attributes.Add("placeholder", "Número de Documento");
+        REV_AcudienteId.ErrorMessage = "Digitar solo números";
+        L_AdminEditAcuNombre.Text = "Nombres :";
+        tb_AcudienteNombre.Attributes.Add("placeholder", "Nombres   Acudiente");
+        REV_AcudienteNombre.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditAcuApellido.Text = "Apellido :";
+        tb_AcudienteApellido.Attributes.Add("placeholder", "Apellidos Acudiente ");
+        REV_AcudienteApellido.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditAcuDep.Text = "Lugar Nacimiento.:";
+        L_AdminEditAcuFoto.Text = "Foto :";
+        L_AdminEditAcuFechanac.Text = "Fecha Nacimiento:";
+        fechanac.Attributes.Add("placeholder", "Fecha de Nacimiento");
+        L_AdminEditAcuCorreo.Text = "Correo :";
+        tb_AcudienteCorreo.Attributes.Add("placeholder", "Email");
+        REV_AcudienteCorreo.ErrorMessage = "No se aceptan caracteres especiales";
+        L_ADminEditAcuDir.Text = "Direccion :";
+        tb_AcudienteDireccion.Attributes.Add("placeholder", "Dirección");
+        REV_AcudienteDireccion.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditAcuTel.Text = "Telefono :";
+        tb_AcudienteTelefono.Attributes.Add("placeholder", "Teléfono");
+        REV_AcudienteTelefono.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditAcuUser.Text = "Usuario :";
+        tb_AcudienteUsuario.Attributes.Add("placeholder", "Usuario");
+        REV_AcudienteUsuario.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditAcuContra.Text = "Contraseña:";
+        tb_AcudienteContrasenia.Attributes.Add(" placeholder", "Contraseña");
+        REV_AcudienteContrasenia.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AdminEditAcuEstado.Text = "Estado :";
+
+        btn_AcudienteAceptar.Text = "Aceptar";
+        btn_AcudienteEditar.Text = "Editar";
+        btn_AcudienteNuevo.Text = "Nuevo";
+
+        L_Error.Text = "Sin Registros";
+        // script Usuario Insertado con Exito
+        // script Usuario Insertado con Exito
+        
+        L_Error.Text = "Debe seleccionar una opción";
+
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

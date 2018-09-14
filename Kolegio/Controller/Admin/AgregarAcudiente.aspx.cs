@@ -48,6 +48,13 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
         btn_AcudienteAceptar.Text = "Agregar";
         btn_AcudienteNuevo.Text = "Nuevo";
 
+        L_ErrorUsuario.Text = "Debe seleccionar una opcion";
+        // script Usuario Insertado con Exito //Error al Seleccionar la Foto
+
+        //
+        L_ErrorUsuario.Text = "El Usuario ya existe";
+        L_ErrorUsuario.Text = "Usuario Disponible";
+
 
         Response.Cache.SetNoStore();
         LLogin Logica = new LLogin();

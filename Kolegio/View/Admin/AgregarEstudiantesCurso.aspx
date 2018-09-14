@@ -5,19 +5,22 @@
 
     <div class="container">
         <div class="text-center">
-            <h3><span class="label label-danger">Agregar Estudiantes a un Curso</span></h3>
+            <h3><span class="label label-danger">
+                <asp:Label ID="L_AdminEstuCursoTitulo" runat="server"></asp:Label></span></h3>
             <br />
         </div>
     </div>
     <div class="modal-body" style="margin: 0% 0% 0% 10%">
 
-        <label for="ddt_anio" class="control-label" style="color: #FFFFFF">Año :</label>
+        <label for="ddt_anio" class="control-label" style="color: #FFFFFF">
+            <asp:Label ID="L_AdminEstuCursoSubAnio" runat="server"></asp:Label></label>
         <br />
         <asp:DropDownList ID="ddt_anio" Class="form-control" runat="server" DataSourceID="ODS_anio" DataTextField="nombre_anio" DataValueField="id_anio" AutoPostBack="True" Width="132px"></asp:DropDownList>
 
         <asp:ObjectDataSource ID="ODS_anio" runat="server" SelectMethod="obtenerAnio" TypeName="Datos.DUser"></asp:ObjectDataSource>
 
-        <label for="ddt_curso" class="control-label" style="color: #FFFFFF">Curso :</label>
+        <label for="ddt_curso" class="control-label" style="color: #FFFFFF">
+            <asp:Label ID="L_AdminEstuCursoSubCurso" runat="server"></asp:Label></label>
         <br />
         <asp:DropDownList ID="ddt_curso" Class="form-control" runat="server" DataSourceID="ODS_Cur" DataTextField="nombre_curso" DataValueField="id_ancu" AutoPostBack="True" Width="130px"></asp:DropDownList>
 
@@ -67,7 +70,7 @@
         <asp:ObjectDataSource ID="ODS_estsincur" runat="server"></asp:ObjectDataSource>
 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <asp:Button ID="btn_Aceptar" runat="server" Text="Agregar al Curso" class="btn btn-success btn-lg" Width="203px" BorderColor="#660033" OnClick="btn_Aceptar_Click" />
+      <asp:Button ID="btn_Aceptar" runat="server" class="btn btn-success btn-lg" Width="203px" BorderColor="#660033" OnClick="btn_Aceptar_Click" />
 
     </div>
 

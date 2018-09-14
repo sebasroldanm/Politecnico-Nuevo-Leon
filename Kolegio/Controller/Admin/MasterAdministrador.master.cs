@@ -12,18 +12,15 @@ public partial class View_Administrador_MasterAdministrador : System.Web.UI.Mast
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Response.Cache.SetNoStore();
-        //try
-        //{
-        //    LLogin logica = new LLogin();
-        //    UUser usua = new UUser();
-
-        //    usua = logica.logAdminSecillo(Session["userId"].ToString());
-        //    Response.Redirect(usua.Url);
-        //}
-        //catch
-        //{
-
-        //}
+        L_MAdminTitulo.Text = "Bienvenido Administrador";
+        HL_MAdminAgreAdmin.Text = "Administrador";
+        HL_MAdminAgreEstu.Text = "Estudiante";
+        HL_MAdminAgreProfe.Text = "Docente";
+        HL_MAdminAgreAcu.Text = "Acudiente";
+        HL_MAdminAgreMateriaCurso.Text = "Curso";
+        HL_MAdminMensaje.Text = "Mensaje";
+        HL_MAdminPagInicio.Text = "Configuración Leon";
+        HL_MAdminConfig.Text = "Configuración";
+        HL_MAdminInicio.Text = "Cerrar Sesión";
     }
 }
