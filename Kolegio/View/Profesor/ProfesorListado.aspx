@@ -6,7 +6,7 @@
 
     <div class="container">
         <div class="text-center">
-            <h3><span class="label label-info">Lista de Estudiantes</span></h3>
+            <h3><span class="label label-info"><asp:Label ID="L_ProfeListado" runat="server"></asp:Label></span></h3>
         </div>
     </div>
     <div class="container">
@@ -14,19 +14,20 @@
         <br />
         <br />
         <br />
-        <asp:TextBox ID="tb_documentoestudiante" runat="server" class="form-control" title="Numero de Documento" placeholder="Numero de Documento" Width="202px" OnTextChanged="tb_documentoestudiante_TextChanged" MaxLength="12"></asp:TextBox>
+        <asp:TextBox ID="tb_documentoestudiante" runat="server" class="form-control" title="Numero de Documento"  Width="202px" OnTextChanged="tb_documentoestudiante_TextChanged" MaxLength="12"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RFV_documentoestudiante" runat="server" ControlToValidate="tb_documentoestudiante" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
-        <asp:RegularExpressionValidator ID="REV_documentoestudiante" runat="server" ControlToValidate="tb_documentoestudiante" ErrorMessage="Digitar Solo Números" ValidationExpression="^[0-9]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
+        <asp:RegularExpressionValidator ID="REV_documentoestudiante" runat="server" ControlToValidate="tb_documentoestudiante"  ValidationExpression="^[0-9]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
         <br />
         <br />
-        <asp:TextBox ID="TB_Observ" runat="server" class="form-control" title="Observacion" placeholder="Observacion" Width="734px" Height="110px" TextMode="MultiLine"></asp:TextBox>
+        <asp:TextBox ID="TB_Observ" runat="server" class="form-control" title="Observacion"  Width="734px" Height="110px" TextMode="MultiLine"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RFV_Observ" runat="server" ControlToValidate="TB_Observ" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
-        <asp:RegularExpressionValidator ID="REV_Observ" runat="server" ControlToValidate="TB_Observ" ErrorMessage="No se aceptan caracteres especiales" ValidationExpression="^[a-zA-z0-9ñÑ,.\s]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
+        <asp:RegularExpressionValidator ID="REV_Observ" runat="server" ControlToValidate="TB_Observ"  ValidationExpression="^[a-zA-z0-9ñÑ,.\s]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
         <br />
         <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-    &nbsp;<asp:Button ID="btn_Aceptar" runat="server" Text="Agregar Observacion" class="btn btn-success btn-lg" Width="205px" BorderColor="#660033" OnClick="btn_AdministradorAceptar_Click2" />
+    &nbsp;<asp:Button ID="btn_Aceptar" runat="server"  class="btn btn-success btn-lg" Width="205px" BorderColor="#660033" OnClick="btn_AdministradorAceptar_Click2" />
 
         <br />
         <br />

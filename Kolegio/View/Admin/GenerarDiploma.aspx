@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Descargar Certificado</title>
+    <title></title>
 
     <link href="../../Bootstrap/css2/bootstrap.css" rel="stylesheet" />
   <link href="../../Bootstrap/css2/bootstrap-theme.css" rel="stylesheet" />
@@ -38,7 +38,7 @@
     <form id="form1" runat="server">
         
           <div class="text-center">
-             <h3><span class="label label-danger">Diploma Estudiante</span></h3>
+             <h3><span class="label label-danger"><asp:Label ID="L_AdminGenerarTitulo" runat="server"></asp:Label></span></h3>
          <br />
               </div>
 
@@ -46,7 +46,7 @@
 
             <tr>
                 <td class="auto-style8" colspan="2">
-                    AÑO:</td>
+                    <asp:Label ID="L_AdminGenerarAño" runat="server"></asp:Label></td>
                 <td class="auto-style8">
                     &nbsp;</td>
                 <td colspan="13" rowspan="10">&nbsp;</td>
@@ -63,7 +63,7 @@
                     &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style3" colspan="2">CURSO:</td>
+                <td class="auto-style3" colspan="2"><asp:Label ID="L_AdminGenerarCurso" runat="server"></asp:Label></td>
                 <td class="auto-style3">&nbsp;</td>
             </tr>
             <tr>

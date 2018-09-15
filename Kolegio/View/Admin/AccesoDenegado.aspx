@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta http-equiv="Refresh" content="6;URL=../Inicio/InicioNosotros.aspx"> 
+    <meta http-equiv="Refresh" content="6;URL=../Inicio/InicioNosotros.aspx"/> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <link href="../Content/bootstrap.css" rel="stylesheet" />
@@ -27,10 +27,10 @@
                 <div class="row">
                     <div class="col-xs-12">
 
-                        <h1>Acceso Denegado</h1>
+                        <h1><asp:Label ID="L_AdminAccesoTitulo" runat="server"></asp:Label></h1>
 
                         <div class="form-group">
-                            <h2><asp:Label ID="L_AdminAccesoTitulo" runat="server"></asp:Label>
+                            <h2><asp:Label ID="L_AdminAccesoCuerpo" runat="server"></asp:Label>
                             </h2>
                         </div>
                         <div class="form-group">

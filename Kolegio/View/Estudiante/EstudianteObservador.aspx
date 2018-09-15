@@ -6,9 +6,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container">
         <div class="text-center">
-            <h3><span class="label label-info">Observador - Certificado</span></h3>
+            <h3><span class="label label-info"><asp:Label ID="L_EstuObserTitulo" runat="server"></asp:Label></span></h3>
         </div>
-        <asp:Button ID="btn_descargar" runat="server" Text="Descargar Certificado" class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargar_Click" />
+        <asp:Button ID="btn_descargar" runat="server"  class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargar_Click" />
 
         <asp:GridView ID="GridView1" CssClass="table table-bordered bs-table" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" DataSourceID="ODS_Observador">
             <AlternatingRowStyle BackColor="White" />

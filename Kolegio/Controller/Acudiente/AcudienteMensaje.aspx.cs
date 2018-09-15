@@ -12,6 +12,18 @@ public partial class View_Acudiente_AcudienteMensaje : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Mensaje Profesor";
+        L_AcuMensTitulo.Text = "Mensaje Profesor";
+        L_AcuMensEstudiante.Text = "Estudiante :";
+        L_AcuMensProfe.Text = "Profesor :";
+        L_AcuMensAsunto.Text = "Asunto :";
+        REV_Asuto.ErrorMessage = "No se aceptan caracteres especiales";
+        L_AcuMensMensaje.Text = "Mensaje :";
+        RV_Mensaje.ErrorMessage = "No se aceptan caracteres especiales";
+        B_Enviar.Text = "Enviar";
+        L_Verificar.Text = "El correo digitado no existe";
+
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

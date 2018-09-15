@@ -14,6 +14,19 @@ public partial class View_Profesor_ProfesorMensaje : System.Web.UI.Page
     string destinatario;
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Mensaje";
+        L_ProfeMensajeTitulo.Text = "Mensaje Acudiente:";
+        L_ProfeMensCurso.Text = "Curso :";
+        L_ProfeMensMateria.Text = "Materia :";
+        L_ProfeMensAlumon.Text = "Alumno :";
+        B_Actualizar.Text = "Actualizar Destinatario";
+        L_ProfeMensAsunto.Text = "Asunto :";
+        L_ProfeMensDestinatario.Text = "Destinatario :";
+        L_ProfeMensMensaje.Text = "Mensaje :";
+        REV_Mensaje.ErrorMessage = "No se aceptan caracteres especiales";
+        B_Enviar.Text = "Enviar";
+        L_Verificar.Text = "";
+
         Response.Cache.SetNoStore();
         LLogin log = new LLogin();
         UUser usua = new UUser();

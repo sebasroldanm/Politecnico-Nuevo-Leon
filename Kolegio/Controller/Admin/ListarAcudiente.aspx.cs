@@ -11,7 +11,12 @@ public partial class View_Admin_ListarAcudiente : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+        Page.Title = "Lista de Acudientes";
+        L_AdminListaAcuTitulo.Text = "Lista de Acudientes";
+        btn_descargar.Text = "Descargar Lista";
+        //GridView1.HeaderRow
+
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

@@ -11,19 +11,12 @@ public partial class View_Acudiente_MasterAcudiente : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Response.Cache.SetNoStore();
-        //try
-        //{
-        //    LLogin logica = new LLogin();
-        //    UUser usua = new UUser();
-
-        //    usua = logica.logAcudienteSecillo(Session["userId"].ToString());
-        //    Response.Redirect(usua.Url);
-        //}
-        //catch
-        //{
-
-        //}
+        L_ACuSubTitulo.Text = "Bienvenido Acudiente";
+        L_AcuSubBoletin.Text = "Boletin";
+        L_AcuSubObservador.Text = "Observador";
+        L_AcuSubMensaje.Text = "Mensaje Profesor";
+        L_AcuSubConfig.Text = "Configuración";
+        L_AcuSubCerrar.Text = "Cerrar Sesión";
     }
     protected void B_Cerrar_Click(object sender, EventArgs e)
     {

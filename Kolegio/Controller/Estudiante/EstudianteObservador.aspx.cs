@@ -11,6 +11,11 @@ public partial class View_Estudiante_EstudianteObservador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Observador";
+        L_EstuObserTitulo.Text = "Observador - Certificado";
+        btn_descargar.Text = "Descargar Certificado";
+        //GW
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

@@ -11,6 +11,16 @@ public partial class View_Profesor_ProfesorListado : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Lista de Estudiantes";
+        L_ProfeListado.Text = "Lista de Estudiantes";
+        tb_documentoestudiante.Attributes.Add("placeholder", "Numero de Documento");
+        REV_documentoestudiante.ErrorMessage = "Digitar Solo Números";
+        TB_Observ.Attributes.Add("placeholder", "Observacion");
+        REV_Observ.ErrorMessage = "No se aceptan caracteres especiales";
+        btn_Aceptar.Text = "Agregar Observacion";
+        //GW
+
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

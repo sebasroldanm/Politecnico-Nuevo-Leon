@@ -12,6 +12,9 @@ public partial class View_Acudiente_AcudienteExcuda : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Descargar Certificado";
+        L_AcuDescargar.Text = "Excusa";
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

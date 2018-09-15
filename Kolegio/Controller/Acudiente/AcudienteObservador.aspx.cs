@@ -12,6 +12,10 @@ public partial class View_Acudiente_AcudienteObservador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Observador";
+        L_AcuObEstu.Text = "Observador";
+        //GW
+
         Response.Cache.SetNoStore();
         LUser logic = new LUser();
         LLogin log = new LLogin();

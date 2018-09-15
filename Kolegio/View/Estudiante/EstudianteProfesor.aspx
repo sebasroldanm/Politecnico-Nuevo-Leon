@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container">
         <div class="text-center">
-            <h3><span class="label label-danger">Mensaje Profesor</span></h3>
+            <h3><span class="label label-danger"><asp:Label ID="L_EstuMensaTitulo" runat="server"></asp:Label></span></h3>
         </div>
         <label class="control-label" style="color: #FFFFFF"></label>
         <br />
@@ -27,7 +27,7 @@
                     <br />
                 </div>
                 <div class="form-inline">
-                    <label for="ddl_materia" class="control-label" style="color: #FFFFFF">Profesor :</label>
+                    <label for="ddl_materia" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_EstuMensProfe" runat="server"></asp:Label></label>
                     <asp:DropDownList class="control-label" ID="DDL_Materia" runat="server" AutoPostBack="True" DataSourceID="ODS_MensajeProfe" DataTextField="nombre_usua" DataValueField="correo"></asp:DropDownList>
                     <asp:ObjectDataSource ID="ODS_MensajeProfe" runat="server" SelectMethod="profemensaje" TypeName="Datos.DUser">
                         <SelectParameters>
@@ -37,19 +37,19 @@
                 </div>
                 <div class="form-inline" role="form">
                     <div class="form-group">
-                        <label for="TB_Asuto" class="control-label" style="color: #FFFFFF">Asunto :</label>
+                        <label for="TB_Asuto" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_EstuMenAsunto" runat="server"></asp:Label></label>
                         <asp:TextBox ID="TB_Asuto" runat="server" class="form-control" Width="359px" IsReadOnly="true"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RFV_Asuto" runat="server" ControlToValidate="TB_Asuto" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
-                        <asp:RegularExpressionValidator ID="REV_Asuto" runat="server" ControlToValidate="TB_Asuto" ErrorMessage="No se aceptan caracteres especiales" ValidationExpression="^[a-z&A-z&0-9ñÑ,.\s]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="RFV_Asuto" runat="server" ControlToValidate="TB_Asuto" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True">*</asp:RequiredFieldValidator><br />
+                        <asp:RegularExpressionValidator ID="REV_Asuto" runat="server" ControlToValidate="TB_Asuto"  ValidationExpression="^[a-z&A-z&0-9ñÑ,.\s]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
                     </div>
                     <br />
                     <br />
                 </div>
                 <div class="form-inline" role="form">
                     <div class="form-group">
-                        <label for="TB_Destinatario" class="control-label" style="color: #FFFFFF">Destinatario :</label>
+                        <label for="TB_Destinatario" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_EstuMenDestinatario" runat="server"></asp:Label></label>
                         <asp:TextBox ID="TB_Destinatario" class="form-control" runat="server" Width="359px"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RFV_Destinatario" runat="server" ControlToValidate="TB_Destinatario" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
+                        <asp:RequiredFieldValidator ID="RFV_Destinatario" runat="server" ControlToValidate="TB_Destinatario" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True">*</asp:RequiredFieldValidator><br />
                         <%--<asp:RegularExpressionValidator ID="REV_Destinatario" runat="server" ControlToValidate="TB_Destinatario" ErrorMessage="No se aceptan caracteres especiales" ValidationExpression="^[a-z&A-z&0-9ñÑ.,/@_-]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>--%>
                     </div>
                     <br />
@@ -57,17 +57,17 @@
                 </div>
                 <div class="form-inline" role="form">
                     <div class="form-group">
-                        <label for="TB_Mensaje" class="control-label" style="color: #FFFFFF">Mensaje :</label>
+                        <label for="TB_Mensaje" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_EstuMenMensaje" runat="server"></asp:Label></label>
                         <asp:TextBox ID="TB_Mensaje" class="form-control" runat="server" Height="100px" Width="378px" TextMode="MultiLine"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RFV_Mensaje" runat="server" ControlToValidate="TB_Mensaje" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
-                        <asp:RegularExpressionValidator ID="REV_Mensaje" runat="server" ControlToValidate="TB_Mensaje" ErrorMessage="No se aceptan caracteres especiales" ValidationExpression="^[a-zA-Z0-9ñÑ\s,.áéíóú]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="RFV_Mensaje" runat="server" ControlToValidate="TB_Mensaje" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True">*</asp:RequiredFieldValidator><br />
+                        <asp:RegularExpressionValidator ID="REV_Mensaje" runat="server" ControlToValidate="TB_Mensaje"  ValidationExpression="^[a-zA-Z0-9ñÑ\s,.áéíóú]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
                     </div>
                     <br />
                     <br />
                 </div>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                <asp:Button ID="B_Enviar" runat="server" Text="Enviar" class="btn btn-success btn-lg" Width="141px" BorderColor="#660033" OnClick="B_Enviar_Click" />
+                <asp:Button ID="B_Enviar" runat="server"  class="btn btn-success btn-lg" Width="141px" BorderColor="#660033" OnClick="B_Enviar_Click" />
 
                 <asp:Label ID="L_Verificar" runat="server" ForeColor="White" CssClass="label-danger" Font-Bold="True"></asp:Label>
             </div>

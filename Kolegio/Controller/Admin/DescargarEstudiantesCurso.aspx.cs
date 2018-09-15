@@ -13,6 +13,8 @@ public partial class View_Admin_DescargarEstudiantesCurso : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Descargar Estudiante Curso";
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

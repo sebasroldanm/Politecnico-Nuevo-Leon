@@ -4,14 +4,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="container">
     <div class="text-center">
-             <h3><span class="label label-danger">Lista de Acudientes</span></h3>
+             <h3><span class="label label-danger"><asp:Label ID="L_AdminListaAcuTitulo" runat="server"></asp:Label></span></h3>
          <br />
          </div>
     </div>
 
 
     <div class="container">
-                  <asp:Button ID="btn_descargar" runat="server" Text="Descargar Lista" class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargar_Click"/>
+                  <asp:Button ID="btn_descargar" runat="server"  class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargar_Click"/>
 
 
 

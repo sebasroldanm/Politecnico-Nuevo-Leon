@@ -8,7 +8,7 @@
     
     <div class="container">
          <div class="text-center">
-                                 <h3><span class="label label-info">Excusa</span></h3>
+                                 <h3><span class="label label-info"><asp:Label ID="L_AcuDescargar" runat="server"></asp:Label></span></h3>
                                  </div>
 
     </div>

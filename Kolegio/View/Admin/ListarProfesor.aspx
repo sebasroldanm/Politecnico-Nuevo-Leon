@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
  <div class="container">
     <div class="text-center">
-             <h3><span class="label label-danger">Lista de Profesores</span></h3>
+             <h3><span class="label label-danger"><asp:Label ID="L_AdminListaProfeTitulo" runat="server"></asp:Label></span></h3>
          <br />
          </div>
     </div>

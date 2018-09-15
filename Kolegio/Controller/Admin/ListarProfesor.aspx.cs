@@ -11,6 +11,12 @@ public partial class View_Admin_ListarProfesor : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Lista de Profesor";
+        L_AdminListaProfeTitulo.Text = "Lista de Profesor";
+        btn_descargar.Text = "Descargar Lista";
+        //GW
+
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

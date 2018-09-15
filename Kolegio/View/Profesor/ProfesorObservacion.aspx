@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container">
         <div class="text-center">
-            <h3><span class="label label-info">Lista Estudiantes</span></h3>
+            <h3><span class="label label-info"><asp:Label ID="L_ProfeObseTitulo" runat="server"></asp:Label></span></h3>
         </div>
     </div>
     <div class="modal-body" style="margin: 0% 0% 0% 10%">
@@ -17,7 +17,7 @@
             <br />
         </div>
         <div class="form-inline" role="form">
-            <label for="ddt_curso" class="control-label" style="color: #FFFFFF">Curso :</label>
+            <label for="ddt_curso" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_ProfeObseCurso" runat="server"></asp:Label></label>
             <asp:DropDownList ID="ddt_curso" Class="form-control" runat="server" AutoPostBack="True" DataSourceID="ODS_curs" DataTextField="nombre_curso" DataValueField="id_ancu" OnSelectedIndexChanged="ddt_curso_SelectedIndexChanged"></asp:DropDownList>
 
             <asp:ObjectDataSource ID="ODS_curs" runat="server" SelectMethod="cursoProfesor" TypeName="Datos.DUser">
@@ -36,6 +36,14 @@
                     <asp:BoundField DataField="apellido_usua" HeaderText="Apellido" />
                     <asp:BoundField DataField="nombre_usua" HeaderText="Nombre" />
                     <asp:CommandField HeaderText="Observador" ShowSelectButton="True" />
+                    <asp:TemplateField HeaderText="nombre">
+                        <HeaderTemplate>
+                            <asp:Label ID="L_GW2Titulo1" runat="server" Text="Label"></asp:Label>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("nombre_usua") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
                 <EditRowStyle BackColor="#7C6F57" />
                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />

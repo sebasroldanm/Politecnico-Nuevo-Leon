@@ -6,7 +6,7 @@
 
     <div class="container">
         <div class="text-center">
-            <h3><span class="label label-danger">Lista de Estudiantes</span></h3>
+            <h3><span class="label label-danger"><asp:Label ID="L_AdminListaEstuTitulo" runat="server"></asp:Label></span></h3>
             <br />
         </div>
     </div>
@@ -14,12 +14,12 @@
         <div class="form-inline" role="form">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     
           
-           <label for="ddt_anio" class="control-label" style="color: #FFFFFF">Año :</label>
+           <label for="ddt_anio" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AdminListaEstuAnio" runat="server"></asp:Label></label>
             <br />
             <asp:DropDownList ID="ddt_anio" Class="form-control" runat="server" DataSourceID="ODS_anio" DataTextField="nombre_anio" DataValueField="id_anio" AutoPostBack="True" Width="132px"></asp:DropDownList>
 
             <asp:ObjectDataSource ID="ODS_anio" runat="server" SelectMethod="obtenertodosAnio" TypeName="Datos.DUser"></asp:ObjectDataSource>
-            <label for="curso" class="control-label" style="color: #FFFFFF">Curso :</label>
+            <label for="curso" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AdminListaEstuCurso" runat="server"></asp:Label></label>
             <asp:DropDownList ID="ODL_Curso" runat="server" Class="form-control" AutoPostBack="True" DataSourceID="ODS_Curso" DataTextField="nombre_curso" DataValueField="id_ancu"></asp:DropDownList>
 
             <asp:ObjectDataSource ID="ODS_Curso" runat="server" SelectMethod="obtenerCursoanio" TypeName="Datos.DUser">
@@ -32,8 +32,8 @@
         <br />
         <br />
         <div class="container">
-            <asp:Button ID="btn_descargar" runat="server" Text="Descargar Lista" class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargar_Click" />
-            <asp:Button ID="B_diploma" runat="server" Text="Descargar Diploma" class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargardiploma_Click" />
+            <asp:Button ID="btn_descargar" runat="server" class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargar_Click" />
+            <asp:Button ID="B_diploma" runat="server"  class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargardiploma_Click" />
             <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered bs-table" AutoGenerateColumns="False" DataSourceID="ODS_ListarEstudianteCurso" BackColor="White" BorderColor="#660033" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" PageSize="3">
                 <AlternatingRowStyle BackColor="#F7F7F7" BorderColor="#0677D2" />
                 <Columns>

@@ -12,6 +12,12 @@ public partial class View_Admin_GenerarDiploma : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Generar Diploma";
+        L_AdminGenerarTitulo.Text = "Diploma Estudiante";
+        L_AdminGenerarAño.Text = "AÑO:";
+        L_AdminGenerarCurso.Text = "CURSO:";
+        //GW
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

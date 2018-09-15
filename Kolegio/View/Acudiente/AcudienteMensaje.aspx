@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container">
         <div class="text-center">
-            <h3><span class="label label-danger">Mensaje Profesor</span></h3>
+            <h3><span class="label label-danger"><asp:Label ID="L_AcuMensTitulo" runat="server"></asp:Label></span></h3>
         </div>
         <label class="control-label" style="color: #FFFFFF"></label>
         <br />
@@ -16,7 +16,7 @@
         <div class="modal-body" style="margin: -535px 0px 0px 365px;">
             <div class="form-group">
                 <div class="form-inline">
-                    <label for="ddl_estudiante" class="control-label" style="color: #FFFFFF">Estudiante :</label>
+                    <label for="ddl_estudiante" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AcuMensEstudiante" runat="server"></asp:Label></label>
                     <asp:DropDownList class="control-label" ID="DDL_Estudiante" runat="server" AutoPostBack="True" DataSourceID="ODS_obtener_est_acu" DataTextField="nombre_usua" DataValueField="id_usua"></asp:DropDownList>
 
                     <asp:ObjectDataSource ID="ODS_obtener_est_acu" runat="server" SelectMethod="obtener_est_acu" TypeName="Datos.DUser">
@@ -25,7 +25,7 @@
                         </SelectParameters>
                     </asp:ObjectDataSource>
 
-                    <label for="ddl_materia" class="control-label" style="color: #FFFFFF">Profesor :</label>
+                    <label for="ddl_materia" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AcuMensProfe" runat="server"></asp:Label></label>
                     <asp:DropDownList ID="DDL_Profesor" class="control-label" runat="server" AutoPostBack="True" DataSourceID="ODS_profe_mensaje_aco" DataTextField="nombre_usua" DataValueField="correo"></asp:DropDownList>
 
                     <asp:ObjectDataSource ID="ODS_profe_mensaje_aco" runat="server" SelectMethod="profemensaje" TypeName="Datos.DUser">
@@ -47,29 +47,30 @@
                 <div class="form-inline" role="form">
                     <div class="form-group">
 
-                        <label for="TB_Asuto" class="control-label" style="color: #FFFFFF">Asunto :</label>
+                        <label for="TB_Asuto" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AcuMensAsunto" runat="server"></asp:Label></label>
                         <asp:TextBox ID="TB_Asuto" runat="server" class="form-control" Width="359px"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RV_Asunto" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TB_Asuto" ValidationGroup="form_ejm" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator>
                         <br />
-                        <asp:RegularExpressionValidator ID="REV_Asuto" runat="server" ControlToValidate="TB_Asuto" ErrorMessage="No se aceptan caracteres especiales" ValidationExpression="^[a-zA-Z0-9ñÑ\s,.áéíóú]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="REV_Asuto" runat="server" ControlToValidate="TB_Asuto"  ValidationExpression="^[a-zA-Z0-9ñÑ\s,.áéíóú]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
                     </div>
                     <br />
                     <br />
                 </div>
                 <div class="form-inline" role="form">
                     <div class="form-group">
-                        <label for="TB_Mensaje" class="control-label" style="color: #FFFFFF">Mensaje :</label>
+                        <label for="TB_Mensaje" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AcuMensMensaje" runat="server"></asp:Label></label>
                         <asp:TextBox ID="TB_Mensaje" class="form-control" runat="server" Height="100px" Width="378px" TextMode="MultiLine"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RV_Mensaje" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="TB_Mensaje" ValidationGroup="form_ejm" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator>
                         <br />
-                        <asp:RegularExpressionValidator ID="REV_Mensaje" runat="server" ControlToValidate="TB_Mensaje" ErrorMessage="No se aceptan caracteres especiales" ValidationExpression="^[a-zA-Z0-9ñÑ,.áéíóú]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="REV_Mensaje" runat="server" ControlToValidate="TB_Mensaje"  ValidationExpression="^[a-zA-Z0-9ñÑ,.áéíóú]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
                     </div>
                     <br />
                     <br />
                 </div>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                <asp:Button ID="B_Enviar" runat="server" Text="Enviar" class="btn btn-success btn-lg" Width="141px" BorderColor="#660033" OnClick="B_Enviar_Click" ValidationGroup="form_ejm" />
+                <asp:Button ID="B_Enviar" runat="server"  class="btn btn-success btn-lg" Width="141px" BorderColor="#660033" OnClick="B_Enviar_Click" ValidationGroup="form_ejm" />
 
                 <asp:Label ID="L_Verificar" runat="server" ForeColor="White" CssClass="label-danger" Font-Bold="True"></asp:Label>
 

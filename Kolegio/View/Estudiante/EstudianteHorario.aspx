@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container">
         <div class="text-center">
-            <h3><span class="label label-info">Horario</span></h3>
+            <h3><span class="label label-info"><asp:Label ID="L_EstiHorarioTitulo" runat="server"></asp:Label></span></h3>
         </div>
 
         <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered bs-table" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">

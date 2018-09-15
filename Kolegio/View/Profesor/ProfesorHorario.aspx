@@ -7,11 +7,11 @@
 
     <div class="container">
     <div class="text-center">
-             <h3><span class="label label-info">Horario</span></h3>
+             <h3><span class="label label-info"><asp:Label ID="L_ProfeConfigHorario" runat="server"></asp:Label></span></h3>
          </div>
 
 
-        <asp:Button ID="btn_descargar" runat="server" Text="Descargar Certificado" class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargar_Click"/>
+        <asp:Button ID="btn_descargar" runat="server"  class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargar_Click"/>
 
 
 

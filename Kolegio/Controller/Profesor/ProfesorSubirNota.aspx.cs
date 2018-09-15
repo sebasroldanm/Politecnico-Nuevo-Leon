@@ -12,6 +12,31 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Subir Nota";
+        L_ProfeSubirTitulo.Text = "Subir Nota";
+        L_ProfeSubirCurso.Text = "Curso :";
+        L_ProfeSubirMateria.Text = "Materia :";
+        L_ProfeSubirAlumno.Text = "Alumno :";
+        ButtonVerNota.Text = "Ver Notas";
+        L_Error.Text = "Falta seleccionar";
+        L_Error.Text = "Falta seleccionar";
+        L_Error.Text = "";
+        L_ProfeSubirNota1.Text = "Nota 1:";
+        tb_nt.Attributes.Add("placeholder", "Nota 1");
+        REV_nt.ErrorMessage = "Digitar dos numeros";
+        RV_N1.ErrorMessage = "Sobrepasó el limite";
+        L_ProfeSubirNota2.Text = "Nota 2:";
+        tb_nt2.Attributes.Add("placeholder", "Nota 2");
+        REV_nt2.ErrorMessage = "Digitar dos numeros";
+        RV_n2.ErrorMessage = "Sobrepasó el limite";
+        L_ProfeSubirNota3.Text = "Nota 3:";
+        tb_nt3.Attributes.Add("placeholder", "Nota 3");
+        REV_nt3.ErrorMessage = "Digitar dos numeros";
+        RV_n3.ErrorMessage = "Sobrepasó el limite";
+        L_ProfeSubirNotaDef.Text = "Nota Definitiva:";
+        tb_denifitiva.Attributes.Add("placeholder", "Nota Definitiva");
+        btn_Subirnota.Text = "Subir Calificacion";
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

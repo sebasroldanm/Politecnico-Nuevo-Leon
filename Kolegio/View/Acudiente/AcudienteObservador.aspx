@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container">
-        <label for="curso" class="control-label" style="color: #FFFFFF">Estudiante :</label>
+        <label for="curso" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AcuObEstu" runat="server"></asp:Label></label>
         <asp:DropDownList ID="DDT_estudiante" runat="server" Class="form-control" DataSourceID="ODS_Estudiante" DataTextField="nombre_usua" DataValueField="id_usua" AutoPostBack="True">
             <asp:ListItem Value="0"></asp:ListItem>
         </asp:DropDownList>

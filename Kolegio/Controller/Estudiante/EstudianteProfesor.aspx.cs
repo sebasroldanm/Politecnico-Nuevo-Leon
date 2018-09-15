@@ -13,6 +13,17 @@ public partial class View_Estudiante_EstudianteProfesor : System.Web.UI.Page
     string destinatario;
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Mensaje Profesor";
+        L_EstuMensaTitulo.Text = "Mensaje Profesor";
+        L_EstuMensProfe.Text = "Profesor :";
+        L_EstuMenAsunto.Text = "Asunto :";
+        REV_Asuto.ErrorMessage = "No se aceptan caracteres especiales";
+        L_EstuMenDestinatario.Text = "Destinatario :";
+        L_EstuMenMensaje.Text = "Mensaje :";
+        REV_Mensaje.ErrorMessage = "No se aceptan caracteres especiales";
+        B_Enviar.Text = "Enviar";
+        L_Verificar.Text = "Debe seleccionar una opcion";
+
         Response.Cache.SetNoStore();
         UUser usua = new UUser();
         LLogin log = new LLogin();
@@ -54,7 +65,7 @@ public partial class View_Estudiante_EstudianteProfesor : System.Web.UI.Page
             TB_Asuto.Text,
             TB_Mensaje.Text
             );
-
+        L_Verificar.Text = usua.Mensaje;
         this.Page.Response.Write(usua.Notificacion);
         Response.Redirect(usua.Url);
     }

@@ -43,11 +43,11 @@
     
     <div class="container">
              <div class="text-center">
-             <h3><span class="label label-info">Ver Notas - Boletin</span></h3>
+             <h3><span class="label label-info"><asp:Label ID="L_AcuTituloVerNotas" runat="server"></asp:Label></span></h3>
              </div>
     </div>
     <div class="container">
-         <label for="curso" class="control-label" style="color: #FFFFFF">Estudiante :</label>
+         <label for="curso" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AcuEstudiante" runat="server"></asp:Label></label>
           <asp:DropDownList ID="DDT_estudiante" runat="server" Class="form-control" DataSourceID="ODS_Estudiante" DataTextField="nombre_usua" DataValueField="id_usua" AutoPostBack="True">
               <asp:ListItem Value="0"></asp:ListItem>
          </asp:DropDownList>

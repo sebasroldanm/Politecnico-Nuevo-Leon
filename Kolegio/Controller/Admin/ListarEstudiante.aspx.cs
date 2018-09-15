@@ -11,6 +11,13 @@ public partial class View_Admin_ListarEstudiante : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Lista de Estudiante";
+        L_AdminListaEstuTitulo.Text = "Lista de Estudiante";
+        L_AdminListaEstuAnio.Text = "Año :";
+        L_AdminListaEstuCurso.Text = "Curso :";
+        btn_descargar.Text = "Descargar Lista";
+        B_diploma.Text = "Descargar Diploma";
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

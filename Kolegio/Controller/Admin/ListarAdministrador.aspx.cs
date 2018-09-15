@@ -11,6 +11,11 @@ public partial class View_Admin_ListarAdministrador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Lista de Administrador";
+        L_AdminListaAdminTitulo.Text = "Lista de Administrador";
+        btn_descargar.Text = "Descargar Lista";
+        //GW
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

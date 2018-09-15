@@ -12,6 +12,12 @@ public partial class View_Acudiente_AcudienteBoletin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Ver Notas - Boletin";
+        L_AcuTituloVerNotas.Text = "Ver Notas - Boletin";
+        L_AcuEstudiante.Text = "Estudiante :";
+        //GW
+
+
         Response.Cache.SetNoStore();
         LUser logica = new LUser();
         LLogin log = new LLogin();

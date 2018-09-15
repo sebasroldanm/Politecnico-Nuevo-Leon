@@ -12,6 +12,22 @@ public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Pag
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Configuración";
+        L_EstuTituloConfig.Text = "Configuración";
+        L_EstuConfigUsuario.Text = "Usuario :";
+        tb_usuario.Attributes.Add("placeholder", "Usuario");
+        REV_usuario.ErrorMessage = "No se aceptan caracteres especiales";
+        L_EstuConfigContra.Text = "Contraseña :";
+        tb_contrasenia.Attributes.Add(" placeholder", "Contraseña");
+        REV_contrasenia.ErrorMessage = "No se aceptan caracteres especiales";
+        L_EstuConfigCorreo.Text = "Correo :";
+        tb_correo.Attributes.Add("placeholder", "Correo");
+        REV_correo.ErrorMessage = "No se aceptan caracteres especiales";
+        lb_foto.Text = "Foto :";
+        btn_Editar.Text = "Editar";
+        btn_Aceptar.Text = "Aceptar";
+        btn_cancelar.Text = "Cancelar";
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

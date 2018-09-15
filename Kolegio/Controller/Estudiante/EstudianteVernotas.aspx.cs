@@ -12,6 +12,9 @@ public partial class View_Estudiante_EstudianteVernotas : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Ver Notas";
+        L_EstuVerNotasTitulo.Text = "Ver Notas";
+        //GW
 
         Response.Cache.SetNoStore();
         LUser logic = new LUser();

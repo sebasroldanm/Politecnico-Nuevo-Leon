@@ -11,18 +11,12 @@ public partial class View_MasterEstudiante : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Response.Cache.SetNoStore();
-        //try
-        //{
-        //    LLogin logica = new LLogin();
-        //    UUser usua = new UUser();
-
-        //    usua = logica.logEstudianteSecillo(Session["userId"].ToString());
-        //    Response.Redirect(usua.Url);
-        //}
-        //catch
-        //{
-
-        //}
+        L_EstuMTitulo.Text = "Bienvenido Estudiante";
+        L_EstuMHorario.Text = "Horario";
+        L_EstuMCertifica.Text = "Observador - Certificado";
+        L_EstuMCertifica.Text = "Notas";
+        L_EstuMProfe.Text = "Profesor";
+        L_EstuMConfig.Text = "Configuración";
+        L_EstuMCerrar.Text = "Cerrar Sesion";
     }
 }

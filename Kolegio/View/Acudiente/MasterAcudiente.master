@@ -4,40 +4,48 @@
 
 <html>
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Plataforma Acudiente</title>
-    <asp:ContentPlaceHolder id="head" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 
-  <link href="../../Bootstrap/css2/bootstrap.css" rel="stylesheet" />
-  <link href="../../Bootstrap/css2/bootstrap-theme.css" rel="stylesheet" />
-  <script src="../../Bootstrap/js2/bootstrap.js" type="text/javascript"></script>
-  <link href="../../Bootstrap/Mio/fondoprofesor.css" rel="stylesheet" />
+    <link href="../../Bootstrap/css2/bootstrap.css" rel="stylesheet" />
+    <link href="../../Bootstrap/css2/bootstrap-theme.css" rel="stylesheet" />
+    <script src="../../Bootstrap/js2/bootstrap.js" type="text/javascript"></script>
+    <link href="../../Bootstrap/Mio/fondoprofesor.css" rel="stylesheet" />
 
 
 </head>
 <body>
     <img id="fondo" src="../../Imagenes/tsi.png" alt="background image" />
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-            <a class="navbar-brand" href="#">Bienvenido Acudiente</a>   
-  <div class="container-fluid">
-  
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+        <a class="navbar-brand" href="#">
+            <asp:Label ID="L_ACuSubTitulo" runat="server"></asp:Label></a>
+        <div class="container-fluid">
 
-        
-             
-          <li><a href="AcudienteBoletin.aspx">Boletin</a></li>
-             <li><a href="AcudienteObservador.aspx">Observador</a></li>
-             <li><a href="AcudienteMensaje.aspx">Mensaje Profesor</a></li>
-          <li><a href="AcudienteConfiguracion.aspx">Configuracion</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="../Inicio/InicioNosotros.aspx">Cerrar Sesion</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+
+
+
+                    <li><a href="AcudienteBoletin.aspx">
+                        <asp:Label ID="L_AcuSubBoletin" runat="server"></asp:Label></a></li>
+                    <li><a href="AcudienteObservador.aspx">
+                        <asp:Label ID="L_AcuSubObservador" runat="server"></asp:Label></a></li>
+                    <li><a href="AcudienteMensaje.aspx">
+                        <asp:Label ID="L_AcuSubMensaje" runat="server"></asp:Label></a></li>
+                    <li><a href="AcudienteConfiguracion.aspx">
+                        <asp:Label ID="L_AcuSubConfig" runat="server"></asp:Label></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="../Inicio/InicioNosotros.aspx">
+                        <asp:Label ID="L_AcuSubCerrar" runat="server"></asp:Label></a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 
     <div class="container">
         <div class="row">
@@ -46,19 +54,14 @@
 
 
             <div class="col-md-8">
-               <form id="MasterUsuario" runat="server">
-      <div>
-                           
-          <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-    
-             
+                <form id="MasterUsuario" runat="server">
+                    <div>
 
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
 
-
-                             </asp:ContentPlaceHolder>
-    
-                 </div>
-             </form>
+                    </div>
+                </form>
 
             </div>
 
@@ -67,6 +70,6 @@
     </div>
 
 
-  
+
 </body>
 </html>

@@ -12,6 +12,11 @@ public partial class View_Profesor_ProfesorHorario : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Horario";
+        L_ProfeConfigHorario.Text = "Horario";
+        btn_descargar.Text = "Descargar Certificado";
+
+
         Response.Cache.SetNoStore();
         LLogin log = new LLogin();
         UUser util = new UUser();

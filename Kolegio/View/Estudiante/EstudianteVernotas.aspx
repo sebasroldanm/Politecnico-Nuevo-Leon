@@ -7,7 +7,7 @@
 
     <div class="container">
         <div class="text-center">
-            <h3><span class="label label-info">Ver Notas </span></h3>
+            <h3><span class="label label-info"><asp:Label ID="L_EstuVerNotasTitulo" runat="server"></asp:Label> </span></h3>
         </div>
 
         <br />

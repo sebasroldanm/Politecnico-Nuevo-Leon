@@ -13,6 +13,7 @@ public partial class View_Admin_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Descargar Diploma";
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();

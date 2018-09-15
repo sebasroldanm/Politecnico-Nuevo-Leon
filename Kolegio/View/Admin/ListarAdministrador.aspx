@@ -5,13 +5,13 @@
 
     <div class="container">
         <div class="text-center">
-            <h3><span class="label label-danger">Lista de Administradores</span></h3>
+            <h3><span class="label label-danger"><asp:Label ID="L_AdminListaAdminTitulo" runat="server"></asp:Label></span></h3>
             <br />
         </div>
     </div>
     <div style="text-align: left">
         <div class="container">
-            <asp:Button ID="btn_descargar" runat="server" Text="Descargar Lista" class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargar_Click" />
+            <asp:Button ID="btn_descargar" runat="server" class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargar_Click" />
 
             <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered bs-table" AutoGenerateColumns="False" DataSourceID="DaoUser" BackColor="White" BorderColor="#660033" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" AllowPaging="True" OnDataBound="GridView1_DataBound" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" PageSize="3" HorizontalAlign="Center">
                 <AlternatingRowStyle BackColor="#F7F7F7" BorderColor="#0677D2" />

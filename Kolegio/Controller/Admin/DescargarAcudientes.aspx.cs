@@ -12,6 +12,9 @@ public partial class View_Admin_DescargarAcudientes : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Descargar Acudientes";
+
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

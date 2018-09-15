@@ -12,7 +12,8 @@ public partial class View_Profesor_CertificadoTrabajoProf : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        Page.Title = "Descargar Certificado Trabajo";
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

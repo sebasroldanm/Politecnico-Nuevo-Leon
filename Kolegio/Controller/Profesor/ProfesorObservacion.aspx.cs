@@ -12,6 +12,11 @@ public partial class View_Profesor_ProfesorObservacion : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Lista Estudiantes";
+        L_ProfeObseTitulo.Text = "Lista Estudiantes";
+        L_ProfeObseCurso.Text = "Curso :";
+        GridView2.HeaderRow.Cells[4].Text = "Nombre";
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

@@ -12,6 +12,9 @@ public partial class View_Estudiante_EstudianteHorario : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Horario";
+        L_EstiHorarioTitulo.Text = "Horario";
+
         Response.Cache.SetNoStore();
         LLogin log = new LLogin();
         UUser util = new UUser();
