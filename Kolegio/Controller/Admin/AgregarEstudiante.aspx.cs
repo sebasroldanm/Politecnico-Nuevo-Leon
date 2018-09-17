@@ -23,7 +23,6 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
         L_AdminAgreEstuNumAcu.Text = encId.CompIdioma["L_AdminAgreEstuNumAcu"].ToString();
         tb_AcudienteId.Attributes.Add("placeholder", encId.CompIdioma["tb_AcudienteId"].ToString());
         btn_buscarAcudiente.Text = encId.CompIdioma["btn_buscarAcudiente"].ToString();
-        //L_ErrorAcudiente.Text =
         L_AdminAgreEstuAcuNombre.Text = encId.CompIdioma["L_AdminAgreEstuAcuNombre"].ToString();
         L_AdminAgreEstuAcuApellido.Text = encId.CompIdioma["L_AdminAgreEstuAcuApellido"].ToString();
         L_AdminAgreEstuDocumento.Text = encId.CompIdioma["L_AdminAgreEstuDocumento"].ToString();
@@ -55,15 +54,34 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
         tb_EstudianteContrasenia.Attributes.Add(" placeholder", encId.CompIdioma["tb_EstudianteContrasenia"].ToString());
         REV_EstudianteContrasenia.ErrorMessage = encId.CompIdioma["REV_EstudianteContrasenia"].ToString();
         btn_validar.Text = encId.CompIdioma["btn_validar"].ToString();
-
-        //L_ErrorUsuario.Text;   
         btn_EstudianteAceptar.Text = encId.CompIdioma["btn_EstudianteAceptar"].ToString();
         btn_EstudianteNuevo.Text = encId.CompIdioma["btn_EstudianteNuevo"].ToString();
 
-        L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
-        // script Usuario Insertado con Exito //Error al Seleccionar la Foto
 
-        //
+        //agregarEstudiante
+        //L_ErrorUsuario_Seleccione.Text="Debe seleccionar una opcion";
+        //script_insertado = "Usuario Insertado con Exito";
+
+
+        //validarUser
+        //L_ErrorUser.Text_existe="El Usuario ya existe";
+        //L_ErrorUser.Text_disponible="Usuario Disponible";
+
+
+        //buscarAcudiete
+        //L_ErrorAcudiente.Text = "El Acudiente No se encuentra en la base de Datos";
+        //script_acudiente_ok="Acudiente Seleccionado";
+
+
+
+        //cargarFoto
+        //script_error_formato="Solo se admiten imagenes en formato Jpeg o Gif";
+        //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
+        //script_foto_cargada="El archivo de imagen ha sido cargado";
+
+
+        L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
+
         L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
         L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
 

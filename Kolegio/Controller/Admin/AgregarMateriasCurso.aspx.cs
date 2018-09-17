@@ -25,16 +25,22 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
         L_AdminAgreMateCursoSubCurso.Text = "Curso :";
         L_AdminAgreMateCursoSubMateria.Text = "Materia :";
         L_AdminAgreMateCursoSubDia.Text = "Dia :";
-        //ddt_Dia.Items.Add 
         L_AdminAgreMateCursoSubHora.Text = "Hora :";
         btn_CursoMateriaAceptar.Text = "Agregar al Horario";
-        L_Error.Text = "Falta seleccionar";
-        L_Error.Text = "Materia Insertada a Curso con Exito";
-        L_Error.Text = "El docente presenta un cruce de Horarios";
-        L_Error.Text = "Presenta un cruce de Horarios";
-        L_Error.Text = "Materia Insertada con Exito";
-        L_Error.Text = "La Materia ya se encuentra en nuestra Base de Datos";
-        //ENC.NOTIFICACION Se ha migraido de año con Exito script;
+
+        //funcion agregaraHorario        
+        //L_Error_falta.Text = "Falta seleccionar";
+        //L_Error.Text_materia_insertada = "Materia Insertada a Curso con Exito";
+        //L_Error.Text_docente_cruce = "El docente presenta un cruce de Horarios";
+        //L_Error.Text_curce = "Presenta un cruce de Horarios";
+
+        //funcion agregarMateria
+        //L_Error.Text_falta = "Materia Insertada con Exito";
+        //L_Error.Text_materia_ya_esta = "La Materia ya se encuentra en nuestra Base de Datos";
+
+
+        //pasarAñoClick
+        //script_pasar_anio = "Se ha migraido de año con Exito";
 
         Response.Cache.SetNoStore();
         horario();

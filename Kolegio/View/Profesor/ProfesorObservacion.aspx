@@ -36,14 +36,6 @@
                     <asp:BoundField DataField="apellido_usua" HeaderText="Apellido" />
                     <asp:BoundField DataField="nombre_usua" HeaderText="Nombre" />
                     <asp:CommandField HeaderText="Observador" ShowSelectButton="True" />
-                    <asp:TemplateField HeaderText="nombre">
-                        <HeaderTemplate>
-                            <asp:Label ID="L_GW2Titulo1" runat="server" Text="Label"></asp:Label>
-                        </HeaderTemplate>
-                        <ItemTemplate>
-                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("nombre_usua") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
                 </Columns>
                 <EditRowStyle BackColor="#7C6F57" />
                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />

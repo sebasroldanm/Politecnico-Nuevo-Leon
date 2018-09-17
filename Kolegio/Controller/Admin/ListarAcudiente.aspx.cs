@@ -11,10 +11,22 @@ public partial class View_Admin_ListarAcudiente : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Lista de Acudientes";
+        //Page.Title = "Lista de Acudientes";
         L_AdminListaAcuTitulo.Text = "Lista de Acudientes";
         btn_descargar.Text = "Descargar Lista";
-        //GridView1.HeaderRow
+        
+        GridView1.Columns[0].HeaderText = "Acudiente";
+        GridView1.Columns[1].HeaderText = "Apellido";
+        GridView1.Columns[2].HeaderText = "Nombre";
+        GridView1.Columns[3].HeaderText = "Documento";
+        GridView1.Columns[4].HeaderText = "Teléfono";
+        GridView1.Columns[5].HeaderText = "Usuario";
+        GridView1.Columns[6].HeaderText = "Contraseña";
+        GridView1.Columns[8].HeaderText = "Estudiante";
+        GridView1.Columns[9].HeaderText = "Nombre";
+        GridView1.Columns[10].HeaderText = "Apellido";
+        GridView1.Columns[12].HeaderText = "Documento";
+        GridView1.Columns[13].HeaderText = "Teléfono";
 
 
         Response.Cache.SetNoStore();

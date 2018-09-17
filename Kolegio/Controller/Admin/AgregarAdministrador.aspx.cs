@@ -52,17 +52,25 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         tb_AdministradorContrasenia.Attributes.Add(" placeholder", encId.CompIdioma["tb_AdministradorContrasenia"].ToString());
         REV_AdministradorContrasenia.ErrorMessage = encId.CompIdioma["REV_AdministradorContrasenia"].ToString();
         btn_validar.Text = encId.CompIdioma["btn_validar"].ToString();
+        btn_AdministradorAceptar.Text = "Agregar";
+        btn_EstudianteNuevo.Text = "Nuevo";
 
-        //L_ErrorUsuario.Text;   
-        //btn_AdministradorAceptar.Text = encId.CompIdioma["btn_AdministradorAceptar"].ToString();
-        //btn_EstudianteNuevo.Text = encId.CompIdioma["btn_EstudianteNuevo"].ToString();
 
-        //L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
-        // script Usuario Insertado con Exito //Error al Seleccionar la Foto
+        //AgregarAdmin
+        //L_ErrorUsuario_Seleccione.Text="Debe seleccionar una opcion";
+        //script_insertado = "Usuario Insertado con Exito";
+        //script_error_foto = "Error al Seleccionar la Foto";
 
-        //
-        //L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
-        //L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
+
+        //validarUser
+        //L_ErrorUsuario_usuario_existe.Text="Usuario Disponible";
+        //L_ErrorUsuario_usuario_noexiste.Text="El Usuario ya existe";
+
+
+        //cargarFoto
+        //script_error_formato="Solo se admiten imagenes en formato Jpeg o Gif";
+        //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
+        //script_foto_cargada="El archivo de imagen ha sido cargado";
 
 
         Response.Cache.SetNoStore();

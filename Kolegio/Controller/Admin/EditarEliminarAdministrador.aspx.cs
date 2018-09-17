@@ -46,17 +46,24 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
         tb_AdministradorContrasenia.Attributes.Add(" placeholder", "Contraseña");
         REV_AdministradorContrasenia.ErrorMessage = "No se aceptan caracteres especiales";
         L_AdminEditAdminEstado.Text = "Estado: ";
-
-        //L_ErrorUsuario.Text;   
         btn_AdministradorAceptar.Text = "Aceptar";
         btn_AdministradorEditar.Text = "Editar";
         btn_AdministradorNuevo.Text = "Nuevo";
 
-        L_Error.Text = "Sin Registros";
-        // script Usuario Insertado con Exito
-        // script Usuario Insertado con Exito
+        //editarBuscarUser
+        //L_ErrorAdmin.Text_sin_registro = "Sin Registros";
 
-        L_Error.Text = "Debe seleccionar una opción";
+
+        //editarAdmin
+        //L_ErrorAdmin.Text_sin_selecionar = "Debe seleccionar una opcion";
+        //script_foto = "Usuario Insertado con Exito";
+        //script_foto_null Usuario = "Insertado con Exito";
+
+
+        //cargarFoto
+        //script_error_formato="Solo se admiten imagenes en formato Jpeg o Gif";
+        //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
+        //script_foto_cargada="El archivo de imagen ha sido cargado";
 
 
         Response.Cache.SetNoStore();

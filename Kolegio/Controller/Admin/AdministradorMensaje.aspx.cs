@@ -27,7 +27,11 @@ public partial class View_Administrador_AdministradorMensaje : System.Web.UI.Pag
         L_AdminMensMensaje.Text = encId.CompIdioma["L_AdminMensMensaje"].ToString();
         REV_Mensaje.ErrorMessage = encId.CompIdioma["REV_Mensaje"].ToString();
         B_Enviar.Text = encId.CompIdioma["B_Enviar"].ToString();
-        //L_Verificar.Text -> Ver funciones
+
+
+        //verificarCorreo
+        L_Verificar.Text = "El correo digitado no existe";
+        //scrip_msm_enviado="Se ha enviado su mensaje con éxito";
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();

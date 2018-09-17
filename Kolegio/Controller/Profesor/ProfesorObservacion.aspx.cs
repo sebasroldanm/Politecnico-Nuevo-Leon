@@ -15,7 +15,10 @@ public partial class View_Profesor_ProfesorObservacion : System.Web.UI.Page
         Page.Title = "Lista Estudiantes";
         L_ProfeObseTitulo.Text = "Lista Estudiantes";
         L_ProfeObseCurso.Text = "Curso :";
-        GridView2.HeaderRow.Cells[4].Text = "Nombre";
+        //GridView2.HeaderRow.Cells[0].Text = "Documento";
+        //GridView2.HeaderRow.Cells[1].Text = "Nombre";
+        //GridView2.HeaderRow.Cells[2].Text = "Apellido";
+        //GridView2.HeaderRow.Cells[3].Text = "Observador";
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();

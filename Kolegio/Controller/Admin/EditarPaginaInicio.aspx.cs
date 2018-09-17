@@ -25,6 +25,13 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         L_AdminPagInicioFechaFin.Text = "Fecha Terminación Año: ";
         B_Terminaranio.Text = "Insertar Fin";
 
+
+        //ModificarPaginaInicio
+        //script_datos_modificados="Datos Modificados";
+
+        //insertarfechafin
+        //script_datos_modificados="Insertado con Éxito";
+
         Response.Cache.SetNoStore();
         LLogin Logica = new LLogin();
         UUser usua = new UUser();

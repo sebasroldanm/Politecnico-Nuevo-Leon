@@ -14,7 +14,16 @@ public partial class View_Admin_ListarAdministrador : System.Web.UI.Page
         Page.Title = "Lista de Administrador";
         L_AdminListaAdminTitulo.Text = "Lista de Administrador";
         btn_descargar.Text = "Descargar Lista";
-        //GW
+
+        GridView1.Columns[0].HeaderText = "Foto";
+        GridView1.Columns[1].HeaderText = "Apellido";
+        GridView1.Columns[2].HeaderText = "Nombre";
+        GridView1.Columns[3].HeaderText = "Documento";
+        GridView1.Columns[4].HeaderText = "Correo Electónico";
+        GridView1.Columns[5].HeaderText = "Teléfono";
+        GridView1.Columns[6].HeaderText = "Usuario";
+        GridView1.Columns[7].HeaderText = "Estado";
+
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();

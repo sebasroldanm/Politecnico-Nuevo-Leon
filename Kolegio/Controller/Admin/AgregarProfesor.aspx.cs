@@ -46,17 +46,24 @@ public partial class View_Admin_AgregarProfesor : System.Web.UI.Page
         tb_DocenteContrasenia.Attributes.Add(" placeholder", "Contraseña");
         REV_DocenteContrasenia.ErrorMessage = "No se aceptan caracteres especiales";
         btn_validar.Text = "Validar Usuario";
-
-        //L_ErrorUsuario.Text;   
         btn_DocenteAceptar.Text = "Agregar";
         btn_DocenteNuevo.Text = "Nuevo";
 
-        L_ErrorUsuario.Text = "Debe seleccionar una opcion";
-        // script Usuario Insertado con Exito //Error al Seleccionar la Foto
 
-        //
-        L_ErrorUsuario.Text = "El Usuario ya existe";
-        L_ErrorUsuario.Text = "Usuario Disponible";
+        //AgregarAdmin
+        //L_ErrorUsuario_Seleccione.Text="Debe seleccionar una opcion";
+        //script_insertado = "Usuario Insertado con Exito";
+        //script_error_foto = "Error al Seleccionar la Foto";
+
+        //validarUser
+        //L_ErrorUsuario_usuario_existe.Text="Usuario Disponible";
+        //L_ErrorUsuario_usuario_noexiste.Text="El Usuario ya existe";
+
+
+        //cargarFoto
+        //script_error_formato="Solo se admiten imagenes en formato Jpeg o Gif";
+        //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
+        //script_foto_cargada="El archivo de imagen ha sido cargado";
 
         Response.Cache.SetNoStore();
         LLogin Logica = new LLogin();

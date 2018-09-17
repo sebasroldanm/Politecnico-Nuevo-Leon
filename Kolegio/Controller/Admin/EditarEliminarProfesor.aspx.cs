@@ -50,11 +50,21 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
         btn_DocenteEditar.Text = "Editar";
         btn_DocenteNuevo.Text = "Nuevo";
 
-        L_Error.Text = "Sin Registros";
-        // script Usuario Insertado con Exito
-        // script Usuario Insertado con Exito
 
-        L_Error.Text = "Debe seleccionar una opción";
+        //editarBuscarUser
+        //L_ErrorAdmin.Text_sin_registro = "Sin Registros";
+
+
+        //editarAdmin
+        //L_ErrorAdmin.Text_sin_selecionar = "Debe seleccionar una opcion";
+        //script_foto = "Usuario Insertado con Exito";
+        //script_foto_null Usuario = "Insertado con Exito";
+
+
+        //cargarFoto
+        //script_error_formato="Solo se admiten imagenes en formato Jpeg o Gif";
+        //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
+        //script_foto_cargada="El archivo de imagen ha sido cargado";
 
 
         Response.Cache.SetNoStore();

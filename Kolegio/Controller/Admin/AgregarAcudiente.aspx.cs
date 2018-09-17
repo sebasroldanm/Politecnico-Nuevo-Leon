@@ -49,8 +49,28 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
         tb_AcudienteContrasenia.Attributes.Add(" placeholder", encId.CompIdioma["tb_AcudienteContrasenia"].ToString());
         REV_AcudienteContrasenia.ErrorMessage = encId.CompIdioma["REV_AcudienteContrasenia"].ToString();
         btn_validar.Text = encId.CompIdioma["btn_validar"].ToString();
+        btn_AcudienteAceptar.Text = "Agregar";
+        btn_AcudienteNuevo.Text = "Nuevo";
 
-        //L_ErrorUsuario.Text;   
+
+        //AgregarAdmin
+        //L_ErrorUsuario_Seleccione.Text="Debe seleccionar una opcion";
+        //script_insertado = "Usuario Insertado con Exito";
+        //script_error_foto = "Error al Seleccionar la Foto";
+
+
+        //validarUser
+        //L_ErrorUsuario_usuario_existe.Text="Usuario Disponible";
+        //L_ErrorUsuario_usuario_noexiste.Text="El Usuario ya existe";
+
+
+        //cargarFoto
+        //script_error_formato="Solo se admiten imagenes en formato Jpeg o Gif";
+        //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
+        //script_foto_cargada="El archivo de imagen ha sido cargado";
+
+
+
         btn_AcudienteAceptar.Text = encId.CompIdioma["btn_AcudienteAceptar"].ToString();
         btn_AcudienteNuevo.Text = encId.CompIdioma["btn_AcudienteNuevo"].ToString();
 
@@ -81,14 +101,8 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
             {
                 Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
             }
-
-            
         }
-
-
     }
-
-
 
 
     protected void btn_AcudienteAceptar_Click(object sender, EventArgs e)

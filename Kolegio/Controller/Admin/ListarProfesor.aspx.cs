@@ -14,8 +14,16 @@ public partial class View_Admin_ListarProfesor : System.Web.UI.Page
         Page.Title = "Lista de Profesor";
         L_AdminListaProfeTitulo.Text = "Lista de Profesor";
         btn_descargar.Text = "Descargar Lista";
-        //GW
 
+        GridView1.Columns[0].HeaderText = "Foto";
+        GridView1.Columns[1].HeaderText = "Apellido";
+        GridView1.Columns[2].HeaderText = "Nombre";
+        GridView1.Columns[3].HeaderText = "Documento";
+        GridView1.Columns[4].HeaderText = "Estado";
+        GridView1.Columns[5].HeaderText = "Correo";
+        GridView1.Columns[6].HeaderText = "Teléfono";
+        GridView1.Columns[7].HeaderText = "Usuario";
+        GridView1.Columns[8].HeaderText = "Contraseña";
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();

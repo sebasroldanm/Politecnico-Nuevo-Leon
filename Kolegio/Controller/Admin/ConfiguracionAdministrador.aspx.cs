@@ -31,6 +31,20 @@ public partial class View_Admin_ConfiguraionAdministrador : System.Web.UI.Page
         btn_Aceptar.Text = "Aceptar";
         btn_cancelar.Text = "Cancelar";
 
+            
+        //despues de fucion modificarUsuario -> this.Page.Repose.Write
+        //srcipt = "Datos Modificados con Exito";
+
+
+        //cargarImagen
+        //script_error_formato="Solo se admiten imagenes en formato Jpeg o Gif";
+        //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
+        //script_foto_cargada="El archivo de imagen ha sido cargado";
+
+        
+
+
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();
