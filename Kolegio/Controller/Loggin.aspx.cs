@@ -16,11 +16,13 @@ public partial class Loggin : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
         Session["userId"] = null;  
-        UIdioma encId = new UIdioma();     
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();    
         Int32 FORMULARIO = 40;
-        encId.Idioma = int.Parse(DDL_Idioma.SelectedValue);
-        LIdioma idioma = new LIdioma();
-        encId = idioma.obtIdioma(FORMULARIO, encId.Idioma);
+
+        Int32 Idioma = int.Parse(DDL_Idioma.SelectedValue);
+        Session["idioma"] = Idioma;
+        encId = idioma.obtIdioma(FORMULARIO, Idioma);
 
         Page.Title = encId.CompIdioma["Title"].ToString();
         L_LoginTitulo.Text = encId.CompIdioma["L_LoginTitulo"].ToString();
@@ -82,7 +84,12 @@ public partial class Loggin : System.Web.UI.Page
 
     protected void DDL_Idioma_SelectedIndexChanged(object sender, EventArgs e)
     {
-        Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
-        Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+
+        encId = idioma.obtTerminacionIdioma(int.Parse(Session["idioma"].ToString()));
+
+        Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(encId.IdiomaTermina);
+        Thread.CurrentThread.CurrentUICulture = new CultureInfo(encId.IdiomaTermina);
     }
 }

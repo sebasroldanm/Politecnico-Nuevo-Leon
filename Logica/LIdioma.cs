@@ -26,5 +26,17 @@ namespace Logica
 
             return enc;
         }
+
+        public UIdioma obtTerminacionIdioma(int idioma)
+        {
+            DIdioma datos = new DIdioma();
+            UIdioma enc = new UIdioma();
+            DataTable reg = new DataTable();
+
+            reg = datos.obtenerTerminacionIdioma(idioma);
+            enc.IdiomaTermina = reg.Rows[0]["terminacion"].ToString();
+
+            return enc;
+        }
     }
 }
