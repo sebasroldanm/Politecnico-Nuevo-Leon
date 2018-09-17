@@ -31,6 +31,8 @@ public partial class View_Acudiente_AcudienteConfiguracion : System.Web.UI.Page
         btn_Aceptar.Text = "Aceptar";
         btn_cancelar.Text = "Cancelar";
 
+        //script_modificacion="Datos Modificados con Exito";
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

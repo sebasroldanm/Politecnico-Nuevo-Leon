@@ -18,7 +18,11 @@ public partial class View_Acudiente_AcudienteBoletin : System.Web.UI.Page
         Page.Title = "Ver Notas - Boletin";
         L_AcuTituloVerNotas.Text = "Ver Notas - Boletin";
         L_AcuEstudiante.Text = "Estudiante :";
-        //GW
+        GridView1.Columns[0].HeaderText = "Materia";
+        GridView1.Columns[1].HeaderText = "Primer Periodo";
+        GridView1.Columns[2].HeaderText = "Segundo Periodo";
+        GridView1.Columns[3].HeaderText = "Tercer Periodo";
+        GridView1.Columns[4].HeaderText = "Nota Definitiva";
 
 
         Response.Cache.SetNoStore();

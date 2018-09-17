@@ -25,7 +25,8 @@ public partial class View_Profesor_ProfesorMensaje : System.Web.UI.Page
         L_ProfeMensMensaje.Text = "Mensaje :";
         REV_Mensaje.ErrorMessage = "No se aceptan caracteres especiales";
         B_Enviar.Text = "Enviar";
-        L_Verificar.Text = "";
+        L_Verificar.Text = "Debe seleccionar una opción";
+        //script_msm_enviado="Su Mensaje ha sido Enviado.";
 
         Response.Cache.SetNoStore();
         LLogin log = new LLogin();

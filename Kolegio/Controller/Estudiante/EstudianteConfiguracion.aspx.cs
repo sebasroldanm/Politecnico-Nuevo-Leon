@@ -28,6 +28,8 @@ public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Pag
         btn_Aceptar.Text = "Aceptar";
         btn_cancelar.Text = "Cancelar";
 
+        //script_modificado="Datos Modificados con Exito";
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

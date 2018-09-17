@@ -15,12 +15,12 @@
         <br />
         <br />
         <asp:TextBox ID="tb_documentoestudiante" runat="server" class="form-control" title="Numero de Documento"  Width="202px" OnTextChanged="tb_documentoestudiante_TextChanged" MaxLength="12"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="RFV_documentoestudiante" runat="server" ControlToValidate="tb_documentoestudiante" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
+        <asp:RequiredFieldValidator ID="RFV_documentoestudiante" runat="server" ControlToValidate="tb_documentoestudiante" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True">*</asp:RequiredFieldValidator><br />
         <asp:RegularExpressionValidator ID="REV_documentoestudiante" runat="server" ControlToValidate="tb_documentoestudiante"  ValidationExpression="^[0-9]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
         <br />
         <br />
         <asp:TextBox ID="TB_Observ" runat="server" class="form-control" title="Observacion"  Width="734px" Height="110px" TextMode="MultiLine"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="RFV_Observ" runat="server" ControlToValidate="TB_Observ" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
+        <asp:RequiredFieldValidator ID="RFV_Observ" runat="server" ControlToValidate="TB_Observ" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True">*</asp:RequiredFieldValidator><br />
         <asp:RegularExpressionValidator ID="REV_Observ" runat="server" ControlToValidate="TB_Observ"  ValidationExpression="^[a-zA-z0-9ñÑ,.\s]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
         <br />
         <br />

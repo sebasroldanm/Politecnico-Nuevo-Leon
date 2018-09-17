@@ -23,7 +23,7 @@ public partial class View_Profesor_ProfesorConfiguracion : System.Web.UI.Page
         btn_Aceptar.Text = "Aceptar";
         btn_cancelar.Text = "Cancelar";
 
-
+        //script_datos_modificados="Datos Modificados con Exito";
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();

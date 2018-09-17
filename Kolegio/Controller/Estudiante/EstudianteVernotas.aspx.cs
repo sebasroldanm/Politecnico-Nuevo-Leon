@@ -14,7 +14,11 @@ public partial class View_Estudiante_EstudianteVernotas : System.Web.UI.Page
     {
         Page.Title = "Ver Notas";
         L_EstuVerNotasTitulo.Text = "Ver Notas";
-        //GW
+        GV_boletin.Columns[0].HeaderText = "Materia";
+        GV_boletin.Columns[1].HeaderText = "Primer Periodo";
+        GV_boletin.Columns[2].HeaderText = "Segundo Periodo";
+        GV_boletin.Columns[3].HeaderText = "Tercer Periodo";
+        GV_boletin.Columns[4].HeaderText = "Nota Definitiva";
 
         Response.Cache.SetNoStore();
         LUser logic = new LUser();

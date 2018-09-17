@@ -24,6 +24,8 @@ public partial class View_Estudiante_EstudianteProfesor : System.Web.UI.Page
         B_Enviar.Text = "Enviar";
         L_Verificar.Text = "Debe seleccionar una opcion";
 
+        //script_msm_enviado="Se ha enviado su mensaje con éxito";
+
         Response.Cache.SetNoStore();
         UUser usua = new UUser();
         LLogin log = new LLogin();

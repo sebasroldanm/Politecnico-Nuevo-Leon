@@ -25,6 +25,7 @@ public partial class View_Acudiente_AcudienteMensaje : System.Web.UI.Page
         RV_Mensaje.ErrorMessage = "No se aceptan caracteres especiales";
         B_Enviar.Text = "Enviar";
         L_Verificar.Text = "El correo digitado no existe";
+        //script_mensaje="Se ha enviado su mensaje con éxito";
 
 
         Response.Cache.SetNoStore();
