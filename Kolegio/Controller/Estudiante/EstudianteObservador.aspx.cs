@@ -15,7 +15,7 @@ public partial class View_Estudiante_EstudianteObservador : System.Web.UI.Page
         L_EstuObserTitulo.Text = "Observador - Certificado";
         btn_descargar.Text = "Descargar Certificado";
         GridView1.Columns[0].HeaderText = "Día - Hora";
-        GridView1.Columns[].HeaderText = "Observación";
+        GridView1.Columns[1].HeaderText = "Observación";
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
