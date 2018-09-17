@@ -21,7 +21,7 @@ namespace Logica
 
             for (int i = 0; i < reg.Rows.Count; i++)
             {
-                enc.Texto[i] = reg.Rows[i]["texto"].ToString();
+                enc.CompIdioma.Add(reg.Rows[i]["control"].ToString(), reg.Rows[i]["texto"].ToString());
             }
 
             return enc;

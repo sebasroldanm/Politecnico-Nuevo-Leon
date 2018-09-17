@@ -88,9 +88,11 @@
                         <div class="form-group">
 
                      
-                            <asp:DropDownList ID="DDL_Idioma" Class="form-control" runat="server" Height="35px">
+                            <asp:DropDownList ID="DDL_Idioma" Class="form-control" runat="server" Height="35px" AutoPostBack="True" DataSourceID="ODS_Idioma" DataTextField="nombre" DataValueField="id_idioma" OnSelectedIndexChanged="DDL_Idioma_SelectedIndexChanged">
+                                <asp:ListItem Value="1"></asp:ListItem>
                   
                        </asp:DropDownList>
+                            <asp:ObjectDataSource ID="ODS_Idioma" runat="server" SelectMethod="obtenerSeleccionIdioma" TypeName="Datos.DIdioma"></asp:ObjectDataSource>
                             </div>
 
 
