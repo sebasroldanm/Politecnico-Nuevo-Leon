@@ -12,7 +12,9 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)  //  <asp:Label ID = "" runat="server"></asp:Label>
     {
-
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 16;
         Page.Title = "Editar Administrador";
         L_AdminEditAdminTitulo.Text = "Editar Administrador";
         L_AdminEditAdminDocumento.Text = "Número de Documento :";

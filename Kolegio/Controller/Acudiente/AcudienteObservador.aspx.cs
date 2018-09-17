@@ -12,6 +12,9 @@ public partial class View_Acudiente_AcudienteObservador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 4;
         Page.Title = "Observador";
         L_AcuObEstu.Text = "Observador";
         //GW

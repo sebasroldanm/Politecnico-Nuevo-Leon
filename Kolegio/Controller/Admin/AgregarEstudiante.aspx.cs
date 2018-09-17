@@ -12,54 +12,60 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Agregar Estudiante";
-        L_AdminAgreEstuTitulo.Text = "Agregar Estudiante";
-        L_AdminAgreEstuNumAcu.Text = "Numero de Documento Acudiente :";
-        tb_AcudienteId.Attributes.Add("placeholder", "Numero de Documento");
-        btn_buscarAcudiente.Text = "Buscar";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 8;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AdminAgreEstuTitulo.Text = encId.CompIdioma["L_AdminAgreEstuTitulo"].ToString();
+        L_AdminAgreEstuNumAcu.Text = encId.CompIdioma["L_AdminAgreEstuNumAcu"].ToString();
+        tb_AcudienteId.Attributes.Add("placeholder", encId.CompIdioma["tb_AcudienteId"].ToString());
+        btn_buscarAcudiente.Text = encId.CompIdioma["btn_buscarAcudiente"].ToString();
         //L_ErrorAcudiente.Text =
-        L_AdminAgreEstuAcuNombre.Text = "Nombre Acudiente";
-        L_AdminAgreEstuAcuApellido.Text = "Apellido Acudiente";
-        L_AdminAgreEstuDocumento.Text = "Número de Documento :";
-        tb_EstudianteId.Attributes.Add("placeholder", "Número de Documento");
-        REV_EstudianteId.ErrorMessage = "Digitar solo números";
-        L_AdminAgreEstuNombre.Text = "Nombres :";
-        tb_EstudianteNombre.Attributes.Add("placeholder", "Nombres   Estudiante");
-        REV_EstudianteNombre.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminAgreEstuApellido.Text = "Apellido :";
-        tb_EstudianteApellido.Attributes.Add("placeholder", "Apellidos Estudiante ");
-        REV_EstudianteApellido.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminAgreEstuDep.Text = "Lugar Nacimiento.:";
-        L_AdminAgreEstuFoto.Text = "Foto :";
-        L_AdminAgreEstuFechanac.Text = "Fecha Nacimiento:";
-        fechanac.Attributes.Add("placeholder", "Fecha de Nacimiento");
-        L_AdminAgreEstuCorreo.Text = "Correo :";
-        tb_EstudianteCorreo.Attributes.Add("placeholder", "Email");
-        REV_EstudianteCorreo.ErrorMessage = "No se aceptan caracteres especiales";
-        L_ADminAgreEstuDir.Text = "Direccion :";
-        tb_EstudianteDireccion.Attributes.Add("placeholder", "Dirección");
-        REV_EstudianteDireccion.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminAgreEstuTel.Text = "Telefono :";
-        tb_EstudianteTelefono.Attributes.Add("placeholder", "Teléfono");
-        REV_EstudianteTelefono.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminAgreEstuUser.Text = "Usuario :";
-        tb_EstudianteUsuario.Attributes.Add("placeholder", "Usuario");
-        REV_EstudianteUsuario.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminAgreEstuContra.Text = "Contraseña:";
-        tb_EstudianteContrasenia.Attributes.Add(" placeholder", "Contraseña");
-        REV_EstudianteContrasenia.ErrorMessage = "No se aceptan caracteres especiales";
-        btn_validar.Text = "Validar Usuario";
+        L_AdminAgreEstuAcuNombre.Text = encId.CompIdioma["L_AdminAgreEstuAcuNombre"].ToString();
+        L_AdminAgreEstuAcuApellido.Text = encId.CompIdioma["L_AdminAgreEstuAcuApellido"].ToString();
+        L_AdminAgreEstuDocumento.Text = encId.CompIdioma["L_AdminAgreEstuDocumento"].ToString();
+        tb_EstudianteId.Attributes.Add("placeholder", encId.CompIdioma["tb_EstudianteId"].ToString());
+        REV_EstudianteId.ErrorMessage = encId.CompIdioma["REV_EstudianteId"].ToString();
+        L_AdminAgreEstuNombre.Text = encId.CompIdioma["L_AdminAgreEstuNombre"].ToString();
+        tb_EstudianteNombre.Attributes.Add("placeholder", encId.CompIdioma["tb_EstudianteNombre"].ToString());
+        REV_EstudianteNombre.ErrorMessage = encId.CompIdioma["REV_EstudianteNombre"].ToString();
+        L_AdminAgreEstuApellido.Text = encId.CompIdioma["L_AdminAgreEstuApellido"].ToString();
+        tb_EstudianteApellido.Attributes.Add("placeholder", encId.CompIdioma["tb_EstudianteApellido"].ToString());
+        REV_EstudianteApellido.ErrorMessage = encId.CompIdioma["REV_EstudianteApellido"].ToString();
+        L_AdminAgreEstuDep.Text = encId.CompIdioma["L_AdminAgreEstuDep"].ToString();
+        L_AdminAgreEstuFoto.Text = encId.CompIdioma["L_AdminAgreEstuFoto"].ToString();
+        L_AdminAgreEstuFechanac.Text = encId.CompIdioma["L_AdminAgreEstuFechanac"].ToString();
+        fechanac.Attributes.Add("placeholder", encId.CompIdioma["fechanac"].ToString());
+        L_AdminAgreEstuCorreo.Text = encId.CompIdioma["L_AdminAgreEstuCorreo"].ToString();
+        tb_EstudianteCorreo.Attributes.Add("placeholder", encId.CompIdioma["tb_EstudianteCorreo"].ToString());
+        REV_EstudianteCorreo.ErrorMessage = encId.CompIdioma["REV_EstudianteCorreo"].ToString();
+        L_ADminAgreEstuDir.Text = encId.CompIdioma["L_ADminAgreEstuDir"].ToString();
+        tb_EstudianteDireccion.Attributes.Add("placeholder", encId.CompIdioma["tb_EstudianteDireccion"].ToString());
+        REV_EstudianteDireccion.ErrorMessage = encId.CompIdioma["REV_EstudianteDireccion"].ToString();
+        L_AdminAgreEstuTel.Text = encId.CompIdioma["L_AdminAgreEstuTel"].ToString();
+        tb_EstudianteTelefono.Attributes.Add("placeholder", encId.CompIdioma["tb_EstudianteTelefono"].ToString());
+        REV_EstudianteTelefono.ErrorMessage = encId.CompIdioma["REV_EstudianteTelefono"].ToString();
+        L_AdminAgreEstuUser.Text = encId.CompIdioma["L_AdminAgreEstuUser"].ToString();
+        tb_EstudianteUsuario.Attributes.Add("placeholder", encId.CompIdioma["tb_EstudianteUsuario"].ToString());
+        REV_EstudianteUsuario.ErrorMessage = encId.CompIdioma["REV_EstudianteUsuario"].ToString();
+        L_AdminAgreEstuContra.Text = encId.CompIdioma["L_AdminAgreEstuContra"].ToString();
+        tb_EstudianteContrasenia.Attributes.Add(" placeholder", encId.CompIdioma["tb_EstudianteContrasenia"].ToString());
+        REV_EstudianteContrasenia.ErrorMessage = encId.CompIdioma["REV_EstudianteContrasenia"].ToString();
+        btn_validar.Text = encId.CompIdioma["btn_validar"].ToString();
 
         //L_ErrorUsuario.Text;   
-        btn_EstudianteAceptar.Text = "Agregar";
-        btn_EstudianteNuevo.Text = "Nuevo";
+        btn_EstudianteAceptar.Text = encId.CompIdioma["btn_EstudianteAceptar"].ToString();
+        btn_EstudianteNuevo.Text = encId.CompIdioma["btn_EstudianteNuevo"].ToString();
 
-        L_ErrorUsuario.Text = "Debe seleccionar una opcion";
+        L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
         // script Usuario Insertado con Exito //Error al Seleccionar la Foto
 
         //
-        L_ErrorUsuario.Text = "El Usuario ya existe";
-        L_ErrorUsuario.Text = "Usuario Disponible";
+        L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
+        L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
 
 
         Response.Cache.SetNoStore();

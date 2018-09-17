@@ -12,6 +12,9 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 10;
         Page.Title = "Agregar Materias Curso";
         L_AdminAgreMateCursoTitulo.Text = "Agregar Materias a un Curso";
         L_AdminAgreMateCursoSubAgregarMateria.Text = "Materia :";

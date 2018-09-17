@@ -12,6 +12,9 @@ public partial class View_Acudiente_AcudienteMensaje : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 3;
         Page.Title = "Mensaje Profesor";
         L_AcuMensTitulo.Text = "Mensaje Profesor";
         L_AcuMensEstudiante.Text = "Estudiante :";

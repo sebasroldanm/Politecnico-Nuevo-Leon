@@ -13,6 +13,9 @@ public partial class View_Admin_ConfiguraionAdministrador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 12;
         Page.Title = "Configuración";
         L_AdminConfigTitulo.Text = "Configuración";
         L_AdminConfigUsuario.Text = "Usuario : ";

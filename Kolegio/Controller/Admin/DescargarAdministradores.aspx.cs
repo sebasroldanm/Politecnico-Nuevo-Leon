@@ -13,6 +13,9 @@ public partial class View_Admin_DescargarAdministradores : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 14;
         Page.Title = "Descargar Administradores";
 
         Response.Cache.SetNoStore();

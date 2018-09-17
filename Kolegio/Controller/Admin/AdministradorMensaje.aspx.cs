@@ -12,15 +12,21 @@ public partial class View_Administrador_AdministradorMensaje : System.Web.UI.Pag
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Mensaje";
-        L_AdminMensaTitulo.Text = "Mensaje Nuevo";
-        L_AdminMensAsunto.Text = "Asunto :";
-        REV_Asuto.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminMensDestinatario.Text = "Destinatario :";
-        REV_Destinatario.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminMensMensaje.Text = "Mensaje :";
-        REV_Mensaje.ErrorMessage = "No se aceptan caracteres especiales";
-        B_Enviar.Text = "Enviar";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 5;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AdminMensaTitulo.Text = encId.CompIdioma["L_AdminMensaTitulo"].ToString();
+        L_AdminMensAsunto.Text = encId.CompIdioma["L_AdminMensAsunto"].ToString();
+        REV_Asuto.ErrorMessage = encId.CompIdioma["REV_Asuto"].ToString();
+        L_AdminMensDestinatario.Text = encId.CompIdioma["L_AdminMensDestinatario"].ToString();
+        REV_Destinatario.ErrorMessage = encId.CompIdioma["REV_Destinatario"].ToString();
+        L_AdminMensMensaje.Text = encId.CompIdioma["L_AdminMensMensaje"].ToString();
+        REV_Mensaje.ErrorMessage = encId.CompIdioma["REV_Mensaje"].ToString();
+        B_Enviar.Text = encId.CompIdioma["B_Enviar"].ToString();
         //L_Verificar.Text -> Ver funciones
 
         Response.Cache.SetNoStore();

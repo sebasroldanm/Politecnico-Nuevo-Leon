@@ -12,6 +12,9 @@ public partial class View_Acudiente_AcudienteConfiguracion : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 2;
         Page.Title = "Configuración";
         L_AdminTituloConfig.Text = "Configuración";
         L_AdminConfigUsuario.Text = "Usuario :";

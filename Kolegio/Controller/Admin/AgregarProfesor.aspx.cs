@@ -12,6 +12,9 @@ public partial class View_Admin_AgregarProfesor : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 11;
         Page.Title = "Agregar Profesor";
         L_AdminAgreProTitulo.Text = "Agregar Profesor";
         L_AdminAgreProDocumento.Text = "Número de Documento :";

@@ -15,49 +15,54 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Agregar Administrador";
-        L_AdminAgreAdminTitulo.Text = "Agregar Administrador";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 7;
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
 
-        L_AdminAgreAdminDocumento.Text = "Número de Documento :";
-        tb_AministradorAdministradorId.Attributes.Add("placeholder", "Número de Documento");
-        REV_AministradorAdministradorId.ErrorMessage = "Digitar solo números";
-        L_AdminAgreAdminNombre.Text = "Nombres :";
-        tb_AdministradorAdministradorNombre.Attributes.Add("placeholder", "Nombres   Administrador");
-        REV_AdministradorAdministradorNombre.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminAgreAdminApellido.Text = "Apellido :";
-        tb_AdministradorAdministradorApellido.Attributes.Add("placeholder", "Apellidos Administrador ");
-        REV_AdministradorAdministradorApellido.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminAgreAdminDep.Text = "Lugar Nacimiento.:";
-        L_AdminAgreAdminFoto.Text = "Foto :";
-        L_AdminAgreAdminFechanac.Text = "Fecha Nacimiento:";
-        fechanac.Attributes.Add("placeholder", "Fecha de Nacimiento");
-        L_AdminAgreAdminCorreo.Text = "Correo :";
-        tb_AdministradorAdministradorCorreo.Attributes.Add("placeholder", "Email");
-        REV_AdministradorAdministradorCorreo.ErrorMessage = "No se aceptan caracteres especiales";
-        L_ADminAgreAdminDir.Text = "Direccion :";
-        tb_AdministradorAdministradorDireccion.Attributes.Add("placeholder", "Dirección");
-        REV_AdministradorAdministradorDireccion.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminAgreAdminTel.Text = "Telefono :";
-        tb_AdministradorTelefono.Attributes.Add("placeholder", "Teléfono");
-        REV_AdministradorTelefono.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminAgreAdminUser.Text = "Usuario :";
-        tb_AdministradorUsuario.Attributes.Add("placeholder", "Usuario");
-        REV_AdministradorUsuario.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminAgreAdminContra.Text = "Contraseña:";
-        tb_AdministradorContrasenia.Attributes.Add(" placeholder", "Contraseña");
-        REV_AdministradorContrasenia.ErrorMessage = "No se aceptan caracteres especiales";
-        btn_validar.Text = "Validar Usuario";
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AdminAgreAdminTitulo.Text = encId.CompIdioma["L_AdminAgreAdminTitulo"].ToString();
+
+        L_AdminAgreAdminDocumento.Text = encId.CompIdioma["Title"].ToString();
+        tb_AministradorAdministradorId.Attributes.Add("placeholder", encId.CompIdioma["L_AdminAgreAdminDocumento"].ToString());
+        REV_AministradorAdministradorId.ErrorMessage = encId.CompIdioma["REV_AministradorAdministradorId"].ToString();
+        L_AdminAgreAdminNombre.Text = encId.CompIdioma["L_AdminAgreAdminNombre"].ToString();
+        tb_AdministradorAdministradorNombre.Attributes.Add("tb_AdministradorAdministradorNombre", encId.CompIdioma["Title"].ToString());
+        REV_AdministradorAdministradorNombre.ErrorMessage = encId.CompIdioma["REV_AdministradorAdministradorNombre"].ToString();
+        L_AdminAgreAdminApellido.Text = encId.CompIdioma["L_AdminAgreAdminApellido"].ToString();
+        tb_AdministradorAdministradorApellido.Attributes.Add("placeholder", encId.CompIdioma["tb_AdministradorAdministradorApellido"].ToString());
+        REV_AdministradorAdministradorApellido.ErrorMessage = encId.CompIdioma["REV_AdministradorAdministradorApellido"].ToString();
+        L_AdminAgreAdminDep.Text = encId.CompIdioma["L_AdminAgreAdminDep"].ToString();
+        L_AdminAgreAdminFoto.Text = encId.CompIdioma["L_AdminAgreAdminFoto"].ToString();
+        L_AdminAgreAdminFechanac.Text = encId.CompIdioma["L_AdminAgreAdminFechanac"].ToString();
+        fechanac.Attributes.Add("placeholder", encId.CompIdioma["fechanac"].ToString());
+        L_AdminAgreAdminCorreo.Text = encId.CompIdioma["L_AdminAgreAdminCorreo"].ToString();
+        tb_AdministradorAdministradorCorreo.Attributes.Add("placeholder", encId.CompIdioma["tb_AdministradorAdministradorCorreo"].ToString());
+        REV_AdministradorAdministradorCorreo.ErrorMessage = encId.CompIdioma["REV_AdministradorAdministradorCorreo"].ToString();
+        L_ADminAgreAdminDir.Text = encId.CompIdioma["L_ADminAgreAdminDir"].ToString();
+        tb_AdministradorAdministradorDireccion.Attributes.Add("placeholder", encId.CompIdioma["tb_AdministradorAdministradorDireccion"].ToString());
+        REV_AdministradorAdministradorDireccion.ErrorMessage = encId.CompIdioma["REV_AdministradorAdministradorDireccion"].ToString();
+        L_AdminAgreAdminTel.Text = encId.CompIdioma["L_AdminAgreAdminTel"].ToString();
+        tb_AdministradorTelefono.Attributes.Add("placeholder", encId.CompIdioma["tb_AdministradorTelefono"].ToString());
+        REV_AdministradorTelefono.ErrorMessage = encId.CompIdioma["REV_AdministradorTelefono"].ToString();
+        L_AdminAgreAdminUser.Text = encId.CompIdioma["L_AdminAgreAdminUser"].ToString();
+        tb_AdministradorUsuario.Attributes.Add("placeholder", encId.CompIdioma["tb_AdministradorUsuario"].ToString());
+        REV_AdministradorUsuario.ErrorMessage = encId.CompIdioma["REV_AdministradorUsuario"].ToString();
+        L_AdminAgreAdminContra.Text = encId.CompIdioma["L_AdminAgreAdminContra"].ToString();
+        tb_AdministradorContrasenia.Attributes.Add(" placeholder", encId.CompIdioma["tb_AdministradorContrasenia"].ToString());
+        REV_AdministradorContrasenia.ErrorMessage = encId.CompIdioma["REV_AdministradorContrasenia"].ToString();
+        btn_validar.Text = encId.CompIdioma["btn_validar"].ToString();
 
         //L_ErrorUsuario.Text;   
-        btn_AdministradorAceptar.Text = "Agregar";
-        btn_EstudianteNuevo.Text = "Nuevo";
+        //btn_AdministradorAceptar.Text = encId.CompIdioma["btn_AdministradorAceptar"].ToString();
+        //btn_EstudianteNuevo.Text = encId.CompIdioma["btn_EstudianteNuevo"].ToString();
 
-        L_ErrorUsuario.Text = "Debe seleccionar una opcion";
+        //L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
         // script Usuario Insertado con Exito //Error al Seleccionar la Foto
 
         //
-        L_ErrorUsuario.Text = "El Usuario ya existe";
-        L_ErrorUsuario.Text = "Usuario Disponible";
+        //L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
+        //L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
 
 
         Response.Cache.SetNoStore();

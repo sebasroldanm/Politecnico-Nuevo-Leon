@@ -12,6 +12,9 @@ public partial class View_Acudiente_AcudienteBoletin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 1;
         Page.Title = "Ver Notas - Boletin";
         L_AcuTituloVerNotas.Text = "Ver Notas - Boletin";
         L_AcuEstudiante.Text = "Estudiante :";

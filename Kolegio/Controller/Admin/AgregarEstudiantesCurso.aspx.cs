@@ -12,6 +12,9 @@ public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 9;
         Page.Title = "Agregar Estudiates Curso";
         L_AdminEstuCursoTitulo.Text = "Agregar Estudiantes a un Curso";
         L_AdminEstuCursoSubAnio.Text = "Año :";

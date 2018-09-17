@@ -12,6 +12,9 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 15;
         Page.Title = "Ediar Acudiente";
         L_AdminEditAcuTitulo.Text = "Editar Acudiente";
         L_AdminEditAcuDocumento.Text = "Número de Documento :";
