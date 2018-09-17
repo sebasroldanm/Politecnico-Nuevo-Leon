@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Datos;
 using Utilitarios;
 using System.Data;
+using Logica;
+using System.Globalization;
 
 namespace Logica
 {

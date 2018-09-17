@@ -20,9 +20,7 @@ public partial class Loggin : System.Web.UI.Page
         LIdioma idioma = new LIdioma();    
         Int32 FORMULARIO = 40;
 
-        Int32 Idioma = int.Parse(DDL_Idioma.SelectedValue);
-        Session["idioma"] = Idioma;
-        encId = idioma.obtIdioma(FORMULARIO, Idioma);
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
 
         Page.Title = encId.CompIdioma["Title"].ToString();
         L_LoginTitulo.Text = encId.CompIdioma["L_LoginTitulo"].ToString();
@@ -82,14 +80,4 @@ public partial class Loggin : System.Web.UI.Page
 
     }
 
-    protected void DDL_Idioma_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        UIdioma encId = new UIdioma();
-        LIdioma idioma = new LIdioma();
-
-        encId = idioma.obtTerminacionIdioma(int.Parse(Session["idioma"].ToString()));
-
-        Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(encId.IdiomaTermina);
-        Thread.CurrentThread.CurrentUICulture = new CultureInfo(encId.IdiomaTermina);
-    }
 }

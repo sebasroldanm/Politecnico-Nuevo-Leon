@@ -29,10 +29,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <link href="../../Bootstrap/Mio/jumbo.css" rel="stylesheet" />
 
+    <style type="text/css">
+        .auto-style1 {
+            font-size: medium;
+        }
+        .auto-style2 {
+            text-align: right;
+            margin-bottom: 15px;
+        }
+    </style>
+
 </head>
 
 
 <body>
+    <form id="form1" runat="server">
     <img id="fondo" src="../../Imagenes/nf2.jpg" alt="background image" />
     <nav class=" navbar navbar-expand-sm navbar-dark">
         <div class="container-fluid">
@@ -56,6 +67,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+
                     <li>
                         <asp:HyperLink ID="HL_InicioLoggin" runat="server" NavigateUrl="~/View/Loggin.aspx"></asp:HyperLink>
                     </li>
@@ -65,8 +77,9 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-    <form id="form1" runat="server">
+    
         <div>
+            
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 
 

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Globalization;
+using System.Threading;
 using Utilitarios;
 using Logica;
 
@@ -12,6 +14,16 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 32;
+
+        Int32 Idioma = int.Parse(DDL_Idioma.SelectedValue);
+
+        Session["idioma"] = Idioma;
+
+        encId = idioma.obtIdioma(FORMULARIO, Idioma);
+
         Page.Title = "Politecnico Leon";
         IMG_Slider1.ImageUrl = "~/Imagenes/1f.png";
         IMG_Slider2.ImageUrl = "~/Imagenes/4f.png";
@@ -44,5 +56,15 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
         enc = logic.pasarAño();
         this.Page.Response.Write(enc.Notificacion);
 
+    }
+
+    protected void DDL_Idioma_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        encId = idioma.obtTerminacionIdioma(int.Parse(Session["idioma"].ToString()));
+
+        Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(encId.IdiomaTermina);
+        Thread.CurrentThread.CurrentUICulture = new CultureInfo(encId.IdiomaTermina);
     }
 }
