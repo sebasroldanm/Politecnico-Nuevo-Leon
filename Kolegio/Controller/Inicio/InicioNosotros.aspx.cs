@@ -24,15 +24,15 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
 
         encId = idioma.obtIdioma(FORMULARIO, Idioma);
 
-        Page.Title = "Politecnico Leon";
-        IMG_Slider1.ImageUrl = "~/Imagenes/1f.png";
-        IMG_Slider2.ImageUrl = "~/Imagenes/4f.png";
-        IMG_Slider3.ImageUrl = "~/Imagenes/3f.png";
-        L_InNosTitulo.Text = "Plataforma Estudiantil";
-        L_InNosDescarga.Text = "Descarga el Manual de Uso desde los siguientes enlaces";
-        L_InNosSubtitulo.Text = "Nosotros";
-        L_InNosBievenido.Text = "Bienvenidos";
-        L_InNosInstalaciones.Text = "Nuestras Instalaciones";
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        IMG_Slider1.ImageUrl = encId.CompIdioma["IMG_Slider1"].ToString();
+        IMG_Slider2.ImageUrl = encId.CompIdioma["IMG_Slider2"].ToString();
+        IMG_Slider3.ImageUrl = encId.CompIdioma["IMG_Slider3"].ToString();
+        L_InNosTitulo.Text = encId.CompIdioma["L_InNosTitulo"].ToString();
+        L_InNosDescarga.Text = encId.CompIdioma["L_InNosDescarga"].ToString();
+        L_InNosSubtitulo.Text = encId.CompIdioma["L_InNosSubtitulo"].ToString();
+        L_InNosBievenido.Text = encId.CompIdioma["L_InNosBievenido"].ToString();
+        L_InNosInstalaciones.Text = encId.CompIdioma["L_InNosInstalaciones"].ToString();
 
 
         Session["userId"] = null;

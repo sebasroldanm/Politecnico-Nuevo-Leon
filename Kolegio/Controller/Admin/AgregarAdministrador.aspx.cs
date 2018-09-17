@@ -27,7 +27,7 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         tb_AministradorAdministradorId.Attributes.Add("placeholder", encId.CompIdioma["L_AdminAgreAdminDocumento"].ToString());
         REV_AministradorAdministradorId.ErrorMessage = encId.CompIdioma["REV_AministradorAdministradorId"].ToString();
         L_AdminAgreAdminNombre.Text = encId.CompIdioma["L_AdminAgreAdminNombre"].ToString();
-        tb_AdministradorAdministradorNombre.Attributes.Add("tb_AdministradorAdministradorNombre", encId.CompIdioma["Title"].ToString());
+        tb_AdministradorAdministradorNombre.Attributes.Add("placeholder", encId.CompIdioma["tb_AdministradorAdministradorNombre"].ToString());
         REV_AdministradorAdministradorNombre.ErrorMessage = encId.CompIdioma["REV_AdministradorAdministradorNombre"].ToString();
         L_AdminAgreAdminApellido.Text = encId.CompIdioma["L_AdminAgreAdminApellido"].ToString();
         tb_AdministradorAdministradorApellido.Attributes.Add("placeholder", encId.CompIdioma["tb_AdministradorAdministradorApellido"].ToString());

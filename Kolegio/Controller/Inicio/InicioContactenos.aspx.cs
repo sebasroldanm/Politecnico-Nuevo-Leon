@@ -12,20 +12,26 @@ public partial class View_Inicio_InicioContactenos : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Contactenos";
-        L_InConTitulo.Text = "Contactenos";
-        L_InConSubTitulo.Text = "Contacto con nosotros";
-        TB_Nombres.Attributes.Add("placeholder", "Nombres");
-        REV_Nombres.ErrorMessage = "No se aceptan caracteres especiales";
-        TB_Apellidos.Attributes.Add("placeholder", "Apellidos");
-        REV_Apellidos.ErrorMessage = "No se aceptan caracteres especiales";
-        TB_Correo.Attributes.Add("placeholder", "Correo");
-        REV_Correo.ErrorMessage = "No se aceptan caracteres especiales";
-        TB_Telefono.Attributes.Add("placeholder", "Teléfono");
-        REV_Correo.ErrorMessage = "No se aceptan caracteres especiales";
-        TB_Mensaje.Attributes.Add("placeholder", "Enviamos tu mensaje, nos contactaremos contigo lo mas pronto posible");
-        REV_Mensaje.ErrorMessage = "No se aceptan caracteres especiales";
-        B_Enviar.Text = "Enviar";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 30;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_InConTitulo.Text = encId.CompIdioma["L_InConTitulo"].ToString();
+        L_InConSubTitulo.Text = encId.CompIdioma["L_InConSubTitulo"].ToString();
+        TB_Nombres.Attributes.Add("placeholder", encId.CompIdioma["TB_Nombres"].ToString());
+        REV_Nombres.ErrorMessage = encId.CompIdioma["REV_Nombres"].ToString();
+        TB_Apellidos.Attributes.Add("placeholder", encId.CompIdioma["TB_Apellidos"].ToString());
+        REV_Apellidos.ErrorMessage = encId.CompIdioma["REV_Apellidos"].ToString();
+        TB_Correo.Attributes.Add("placeholder", encId.CompIdioma["TB_Correo"].ToString());
+        REV_Correo.ErrorMessage = encId.CompIdioma["REV_Correo"].ToString();
+        TB_Telefono.Attributes.Add("placeholder", encId.CompIdioma["TB_Telefono"].ToString());
+        REV_Correo.ErrorMessage = encId.CompIdioma["REV_Correo"].ToString();
+        TB_Mensaje.Attributes.Add("placeholder", encId.CompIdioma["TB_Mensaje"].ToString());
+        REV_Mensaje.ErrorMessage = encId.CompIdioma["REV_Mensaje"].ToString();
+        B_Enviar.Text = encId.CompIdioma["B_Enviar"].ToString();
 
     }
     protected void B_Enviar_Click(object sender, EventArgs e)

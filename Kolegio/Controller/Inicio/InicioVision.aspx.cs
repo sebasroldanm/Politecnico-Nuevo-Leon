@@ -12,9 +12,15 @@ public partial class View_Inicio_Vision : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Misión";
-        L_InMisTitulo.Text = "Misión";
-        IMG_Mision.ImageUrl = "~/Imagenes/vision.png";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 33;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_InMisTitulo.Text = encId.CompIdioma["L_InMisTitulo"].ToString();
+        IMG_Mision.ImageUrl = encId.CompIdioma["IMG_Mision"].ToString();
 
 
         Session["userId"] = null;
