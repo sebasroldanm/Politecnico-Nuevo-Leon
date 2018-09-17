@@ -36,7 +36,7 @@ public partial class Loggin : System.Web.UI.Page
         BT_Recuperar.Text = encId.Texto[9];
         BT_Salir.Text = encId.Texto[10];
         TB_Clave.Attributes.Add("placeholder", encId.Texto[11]);
-
+//       DDL_Idioma
 
         //Page.Title = "Ingresar";
         //L_LoginTitulo.Text = info.Rows[0]["texto"].ToString();

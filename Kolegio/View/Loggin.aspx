@@ -83,6 +83,18 @@
 
                         </div>
                         <asp:Label ID="L_Error" runat="server" Font-Bold="True" CssClass="label-danger" ForeColor="White"></asp:Label>
+                       
+                        
+                        <div class="form-group">
+
+                     
+                            <asp:DropDownList ID="DDL_Idioma" Class="form-control" runat="server" Height="35px">
+                  
+                       </asp:DropDownList>
+                            </div>
+
+
+
                         <asp:Button ID="BT_Ingresar" runat="server" CssClass="btn btn-success btn-block" OnClick="BT_Ingresar_Click" />
 
                         <asp:Button ID="BT_Recuperar" runat="server" CssClass="btn btn-info btn-block" OnClick="BT_Recuperar_Click" CausesValidation="False" />
