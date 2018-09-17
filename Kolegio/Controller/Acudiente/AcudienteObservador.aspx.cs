@@ -17,7 +17,8 @@ public partial class View_Acudiente_AcudienteObservador : System.Web.UI.Page
         Int32 FORMULARIO = 4;
         Page.Title = "Observador";
         L_AcuObEstu.Text = "Observador";
-        //GW
+        GridView1.Columns[0].HeaderText = "Fecha - Hora";
+        GridView1.Columns[1].HeaderText = "Observación";
 
         Response.Cache.SetNoStore();
         LUser logic = new LUser();

@@ -18,7 +18,8 @@ public partial class View_Profesor_ProfesorListado : System.Web.UI.Page
         TB_Observ.Attributes.Add("placeholder", "Observacion");
         REV_Observ.ErrorMessage = "No se aceptan caracteres especiales";
         btn_Aceptar.Text = "Agregar Observacion";
-        //GW
+        GridView1.Columns[0].HeaderText = "Fecha y Hora";
+        GridView1.Columns[1].HeaderText = "Observación";
 
 
         Response.Cache.SetNoStore();

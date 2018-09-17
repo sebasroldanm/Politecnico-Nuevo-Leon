@@ -18,9 +18,6 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
         L_ProfeSubirMateria.Text = "Materia :";
         L_ProfeSubirAlumno.Text = "Alumno :";
         ButtonVerNota.Text = "Ver Notas";
-        L_Error.Text = "Falta seleccionar";
-        L_Error.Text = "Falta seleccionar";
-        L_Error.Text = "";
         L_ProfeSubirNota1.Text = "Nota 1:";
         tb_nt.Attributes.Add("placeholder", "Nota 1");
         REV_nt.ErrorMessage = "Digitar dos numeros";
@@ -36,6 +33,14 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
         L_ProfeSubirNotaDef.Text = "Nota Definitiva:";
         tb_denifitiva.Attributes.Add("placeholder", "Nota Definitiva");
         btn_Subirnota.Text = "Subir Calificacion";
+
+
+        //subirNota
+        //L_Error_subirnota.Text = "Falta seleccionar";
+
+        //verNota
+        //L_Error_falta_seleccionar.Text = "Falta seleccionar";
+
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
