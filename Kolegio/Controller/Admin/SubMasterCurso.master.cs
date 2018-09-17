@@ -11,7 +11,13 @@ public partial class View_Admin_SubMasterCurso : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        L_SubMateriasCurso.Text = "Agregar Materias";
-        L_SubEstudiantesCurso.Text = "Agregar Estudiantes";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 51;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        L_SubMateriasCurso.Text = encId.CompIdioma["L_SubMateriasCurso"].ToString();
+        L_SubEstudiantesCurso.Text = encId.CompIdioma["L_SubEstudiantesCurso"].ToString();
     }
 }

@@ -11,7 +11,13 @@ public partial class View_Admin_SubMasterAdministrador : System.Web.UI.MasterPag
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        L_SubMAdminNuevo.Text = "NUEVO";
-        L_SubMAdminEditarEliminar.Text = "LISTAR - EDITAR ";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 50;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        L_SubMAdminNuevo.Text = encId.CompIdioma["L_SubMAdminNuevo"].ToString();
+        L_SubMAdminEditarEliminar.Text = encId.CompIdioma["L_SubMAdminEditarEliminar"].ToString();
     }
 }

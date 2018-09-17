@@ -11,7 +11,13 @@ public partial class View_Admin_SubMasterEstudiante : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        L_SubMEstuNuevo.Text = "NUEVO";
-        L_SubMEstuEditarEliminar.Text = "LISTAR - EDITAR ";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 52;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        L_SubMEstuNuevo.Text = encId.CompIdioma["L_SubMEstuNuevo"].ToString();
+        L_SubMEstuEditarEliminar.Text = encId.CompIdioma["L_SubMEstuEditarEliminar"].ToString();
     }
 }
