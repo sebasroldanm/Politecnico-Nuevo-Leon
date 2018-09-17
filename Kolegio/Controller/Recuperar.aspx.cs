@@ -28,7 +28,7 @@ public partial class View_Recuperar : System.Web.UI.Page
         RFV_Usuario.ErrorMessage = encId.CompIdioma["RFV_Usuario"].ToString();
         REV_Usuario.ErrorMessage = encId.CompIdioma["REV_Usuario"].ToString();
         B_Enviar.Text = encId.CompIdioma["B_Enviar"].ToString();
-        //B_Salir.Text = encId.CompIdioma["B_Salir"].ToString();
+        B_Salir.Text = encId.CompIdioma["B_Salir"].ToString();
 
         //VER FUNCIOEN logica.recuperarContra
         //L_Verificar.Text = "Revisar su correo para recuperar contraseña";
