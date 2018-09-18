@@ -137,6 +137,135 @@ namespace Logica
             return Dt;
         }
 
+        public DataTable horarioEng(int curso, int hor_tipo)
+        {
+            DUser datos = new DUser();
+
+            string l8 = " ", m8 = " ", w8 = " ", j8 = " ", v8 = " ", l10 = " ", m10 = " ", w10 = " ", j10 = " ", v10 = " ", l12 = " ", m12 = " ", w12 = " ", j12 = " ", v12 = " ";
+
+            int id_curso;
+            id_curso = curso;
+            DataTable registro;
+
+            switch (hor_tipo)
+            {
+                case 1:
+                    //Horario Curso
+                    registro = datos.horarioCurso(id_curso);
+                    break;
+                case 2:
+                    //Horario Profesor
+                    registro = datos.horarioProf(id_curso.ToString());
+                    break;
+                case 3:
+                    //Horario Estudiante
+                    registro = datos.horario(id_curso.ToString());
+                    break;
+                default:
+                    registro = datos.horarioCurso(id_curso);
+                    break;
+            }
+
+            int n = registro.DefaultView.Count;
+            DataSet reg = new DataSet();
+
+            DataTable Dt = new DataTable();
+            Dt.Columns.Add("      ", typeof(string));
+            Dt.Columns.Add("  Monday  ", typeof(string));
+            Dt.Columns.Add("  Tuesday   ", typeof(string));
+            Dt.Columns.Add(" Wednesday ", typeof(string));
+            Dt.Columns.Add("  Thursday  ", typeof(string));
+            Dt.Columns.Add("  Friday  ", typeof(string));
+
+
+            for (int i = 0; i < n; i++)
+            {
+                //8:00:00
+                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == "Lunes")
+                {
+                    l8 = registro.Rows[i]["nombre_materia"].ToString();
+                }
+
+                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == "Martes")
+                {
+                    m8 = registro.Rows[i]["nombre_materia"].ToString();
+                }
+
+                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == "Miercoles")
+                {
+                    w8 = registro.Rows[i]["nombre_materia"].ToString();
+                }
+
+                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == "Jueves")
+                {
+                    j8 = registro.Rows[i]["nombre_materia"].ToString();
+                }
+
+                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == "Viernes")
+                {
+                    v8 = registro.Rows[i]["nombre_materia"].ToString();
+                }
+
+                //10:00:00
+                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == "Lunes")
+                {
+                    l10 = registro.Rows[i]["nombre_materia"].ToString();
+                }
+
+                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == "Martes")
+                {
+                    m10 = registro.Rows[i]["nombre_materia"].ToString();
+                }
+
+                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == "Miercoles")
+                {
+                    w10 = registro.Rows[i]["nombre_materia"].ToString();
+                }
+
+                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == "Jueves")
+                {
+                    j10 = registro.Rows[i]["nombre_materia"].ToString();
+                }
+
+                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == "Viernes")
+                {
+                    v10 = registro.Rows[i]["nombre_materia"].ToString();
+                }
+
+                //12:00:00
+                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == "Lunes")
+                {
+                    l12 = registro.Rows[i]["nombre_materia"].ToString();
+                }
+
+                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == "Martes")
+                {
+                    m12 = registro.Rows[i]["nombre_materia"].ToString();
+                }
+
+                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == "Miercoles")
+                {
+                    w12 = registro.Rows[i]["nombre_materia"].ToString();
+                }
+
+                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == "Jueves")
+                {
+                    j12 = registro.Rows[i]["nombre_materia"].ToString();
+                }
+
+                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == "Viernes")
+                {
+                    v12 = registro.Rows[i]["nombre_materia"].ToString();
+                }
+            }
+            Dt.Rows.Add(" 8:00:00-9:29:00 ", l8, m8, w8, j8, v8);
+            Dt.Rows.Add(" 09:30:00-9:59:00 ", "  B  ", "  R  ", " E ", "  A  ", "  K ");
+            Dt.Rows.Add(" 10:00:00-11:59:00", l10, m10, w10, j10, v10);
+            Dt.Rows.Add(" 12:00:00-2:00:00", l12, m12, w12, j12, v12);
+
+            return Dt;
+        }
+
         public UUser agregarMateria(string materia, string sesion)
         {
             UUser user = new UUser();

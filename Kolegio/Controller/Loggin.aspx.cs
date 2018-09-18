@@ -36,9 +36,9 @@ public partial class Loggin : System.Web.UI.Page
         BT_Salir.Text = encId.CompIdioma["BT_Salir"].ToString();
         TB_Clave.Attributes.Add("placeholder", encId.CompIdioma["TB_Clave"].ToString());
 
-        //L_Error.Text = "Usuario Se Encuentra Inactivo";
-        //L_Error.Text = "Usuario Y/o Clave Incorrecto";
-        
+        //L_Error_inactivo.Text = "Usuario Se Encuentra Inactivo";
+        //L_Error_clave_incorrecto.Text = "Usuario Y/o Clave Incorrecto";
+
     }
 
     protected void BT_Ingresar_Click(object sender, EventArgs e)

@@ -64,8 +64,8 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
 
 
         //validarUser
-        //L_ErrorUser.Text_existe="El Usuario ya existe";
-        //L_ErrorUser.Text_disponible="Usuario Disponible";
+        //L_ErrorUser_existe="El Usuario ya existe";
+        //L_ErrorUser_disponible="Usuario Disponible";
 
 
         //buscarAcudiete

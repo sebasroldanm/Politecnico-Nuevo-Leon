@@ -31,9 +31,9 @@ public partial class View_Recuperar : System.Web.UI.Page
         B_Salir.Text = encId.CompIdioma["B_Salir"].ToString();
 
         //VER FUNCIOEN logica.recuperarContra
-        //L_Verificar.Text = "Revisar su correo para recuperar contraseña";
-        //L_Verificar.Text = "Ya extsite un link de recuperación, por favor verifique su correo.";
-        //L_Verificar.Text = "El usuario digitado no existe";
+        //L_Verificar_ver_correo.Text = "Revisar su correo para recuperar contraseña";
+        //L_Verificar_ver_link.Text = "Ya extsite un link de recuperación, por favor verifique su correo.";
+        //L_Verificar_no_existe.Text = "El usuario digitado no existe";
 
     }
 
