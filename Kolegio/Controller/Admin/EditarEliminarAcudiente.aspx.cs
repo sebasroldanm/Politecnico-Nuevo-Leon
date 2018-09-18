@@ -70,6 +70,12 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
         //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
         //script_foto_cargada="El archivo de imagen ha sido cargado";
 
+
+
+        //DDL_Estado
+        //item1="Activo";
+        //item2="Inactivo";
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

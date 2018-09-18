@@ -20,6 +20,17 @@ public partial class View_Estudiante_EstudianteHorario : System.Web.UI.Page
         Page.Title = encId.CompIdioma["Title"].ToString();
         L_EstiHorarioTitulo.Text = encId.CompIdioma["L_EstiHorarioTitulo"].ToString();
 
+
+
+        //HORARIO
+        //ho_lunes = "Lunes";
+        //ho_martes = "Martes";
+        //ho_miercoles = "Miercoles";
+        //ho_jueves = "Jueves";
+        //ho_viernes = "Viernes";
+        //ho_libre = "Libre";
+
+
         Response.Cache.SetNoStore();
         LLogin log = new LLogin();
         UUser util = new UUser();

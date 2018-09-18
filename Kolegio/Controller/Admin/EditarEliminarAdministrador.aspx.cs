@@ -69,6 +69,12 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
         //script_foto_cargada="El archivo de imagen ha sido cargado";
 
 
+
+        //DDL_Estado
+        //item1="Activo";
+        //item2="Inactivo";
+
+
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();

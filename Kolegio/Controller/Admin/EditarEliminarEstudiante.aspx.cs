@@ -66,7 +66,14 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
         //cargarFoto
         //script_error_formato="Solo se admiten imagenes en formato Jpeg o Gif";
         //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
-        //script_foto_cargada="El archivo de imagen ha sido cargado";
+        //script_foto_cargada="El archivo de imagen ha sido cargado;
+
+
+
+        //DDL_Estado
+        //item1="Activo";
+        //item2="Inactivo";
+
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();

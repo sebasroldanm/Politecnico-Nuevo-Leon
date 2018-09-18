@@ -23,6 +23,16 @@ public partial class View_Profesor_ProfesorHorario : System.Web.UI.Page
         btn_descargar.Text = encId.CompIdioma["btn_descargar"].ToString();
 
 
+
+        //HORARIO
+        //ho_lunes = "Lunes";
+        //ho_martes = "Martes";
+        //ho_miercoles = "Miercoles";
+        //ho_jueves = "Jueves";
+        //ho_viernes = "Viernes";
+        //ho_libre = "Libre";
+
+
         Response.Cache.SetNoStore();
         LLogin log = new LLogin();
         UUser util = new UUser();

@@ -44,6 +44,17 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
         //pasarAñoClick
         //script_pasar_anio = "Se ha migraido de año con Exito";
 
+
+
+        //HORARIO
+        //ho_lunes = "Lunes";
+        //ho_martes = "Martes";
+        //ho_miercoles = "Miercoles";
+        //ho_jueves = "Jueves";
+        //ho_viernes = "Viernes";
+        //ho_libre = "Libre";
+
+
         Response.Cache.SetNoStore();
         horario();
         LLogin logica = new LLogin();
