@@ -49,8 +49,8 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
         tb_AcudienteContrasenia.Attributes.Add(" placeholder", encId.CompIdioma["tb_AcudienteContrasenia"].ToString());
         REV_AcudienteContrasenia.ErrorMessage = encId.CompIdioma["REV_AcudienteContrasenia"].ToString();
         btn_validar.Text = encId.CompIdioma["btn_validar"].ToString();
-        btn_AcudienteAceptar.Text = "Agregar";
-        btn_AcudienteNuevo.Text = "Nuevo";
+        btn_AcudienteAceptar.Text = encId.CompIdioma["btn_AcudienteAceptar"].ToString();
+        btn_AcudienteNuevo.Text = encId.CompIdioma["btn_AcudienteNuevo"].ToString();
 
 
         //AgregarAdmin
