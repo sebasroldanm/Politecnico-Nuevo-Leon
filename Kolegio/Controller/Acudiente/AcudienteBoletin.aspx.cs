@@ -20,11 +20,11 @@ public partial class View_Acudiente_AcudienteBoletin : System.Web.UI.Page
         Page.Title = encId.CompIdioma["Title"].ToString();
         L_AcuTituloVerNotas.Text = encId.CompIdioma["L_AcuTituloVerNotas"].ToString();
         L_AcuEstudiante.Text = encId.CompIdioma["L_AcuEstudiante"].ToString();
-        GridView1.Columns[0].HeaderText = "Materia";
-        GridView1.Columns[1].HeaderText = "Primer Periodo";
-        GridView1.Columns[2].HeaderText = "Segundo Periodo";
-        GridView1.Columns[3].HeaderText = "Tercer Periodo";
-        GridView1.Columns[4].HeaderText = "Nota Definitiva";
+        GridView1.Columns[0].HeaderText = encId.CompIdioma["GridView1_0"].ToString();
+        GridView1.Columns[1].HeaderText = encId.CompIdioma["GridView1_1"].ToString();
+        GridView1.Columns[2].HeaderText = encId.CompIdioma["GridView1_2"].ToString();
+        GridView1.Columns[3].HeaderText = encId.CompIdioma["GridView1_3"].ToString();
+        GridView1.Columns[4].HeaderText = encId.CompIdioma["GridView1_4"].ToString();
 
 
         Response.Cache.SetNoStore();

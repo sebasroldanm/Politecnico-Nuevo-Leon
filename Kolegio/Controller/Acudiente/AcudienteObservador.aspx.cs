@@ -19,8 +19,9 @@ public partial class View_Acudiente_AcudienteObservador : System.Web.UI.Page
 
         Page.Title = encId.CompIdioma["Title"].ToString();
         L_AcuObEstu.Text = encId.CompIdioma["L_AcuObEstu"].ToString();
-        GridView1.Columns[0].HeaderText = "Fecha - Hora";
-        GridView1.Columns[1].HeaderText = "Observación";
+
+        GridView1.Columns[0].HeaderText = encId.CompIdioma["GridView1_0"].ToString();
+        GridView1.Columns[1].HeaderText = encId.CompIdioma["GridView1_1"].ToString();
 
         Response.Cache.SetNoStore();
         LUser logic = new LUser();

@@ -21,18 +21,18 @@ public partial class View_Admin_ListarAcudiente : System.Web.UI.Page
         L_AdminListaAcuTitulo.Text = encId.CompIdioma["L_AdminListaAcuTitulo"].ToString();
         btn_descargar.Text = encId.CompIdioma["btn_descargar"].ToString();
 
-        GridView1.Columns[0].HeaderText = "Acudiente";
-        GridView1.Columns[1].HeaderText = "Apellido";
-        GridView1.Columns[2].HeaderText = "Nombre";
-        GridView1.Columns[3].HeaderText = "Documento";
-        GridView1.Columns[4].HeaderText = "Teléfono";
-        GridView1.Columns[5].HeaderText = "Usuario";
-        GridView1.Columns[6].HeaderText = "Contraseña";
-        GridView1.Columns[8].HeaderText = "Estudiante";
-        GridView1.Columns[9].HeaderText = "Nombre";
-        GridView1.Columns[10].HeaderText = "Apellido";
-        GridView1.Columns[11].HeaderText = "Documento";
-        GridView1.Columns[12].HeaderText = "Teléfono";
+        GridView1.Columns[0].HeaderText = encId.CompIdioma["GridView1_0"].ToString();
+        GridView1.Columns[1].HeaderText = encId.CompIdioma["GridView1_1"].ToString();
+        GridView1.Columns[2].HeaderText = encId.CompIdioma["GridView1_2"].ToString();
+        GridView1.Columns[3].HeaderText = encId.CompIdioma["GridView1_3"].ToString();
+        GridView1.Columns[4].HeaderText = encId.CompIdioma["GridView1_4"].ToString();
+        GridView1.Columns[5].HeaderText = encId.CompIdioma["GridView1_5"].ToString();
+        GridView1.Columns[6].HeaderText = encId.CompIdioma["GridView1_6"].ToString();
+        GridView1.Columns[8].HeaderText = encId.CompIdioma["GridView1_8"].ToString();
+        GridView1.Columns[9].HeaderText = encId.CompIdioma["GridView1_9"].ToString();
+        GridView1.Columns[10].HeaderText = encId.CompIdioma["GridView1_10"].ToString();
+        GridView1.Columns[11].HeaderText = encId.CompIdioma["GridView1_11"].ToString();
+        GridView1.Columns[12].HeaderText = encId.CompIdioma["GridView1_12"].ToString();
 
 
         Response.Cache.SetNoStore();

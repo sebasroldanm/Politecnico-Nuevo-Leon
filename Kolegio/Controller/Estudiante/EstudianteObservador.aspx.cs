@@ -21,8 +21,8 @@ public partial class View_Estudiante_EstudianteObservador : System.Web.UI.Page
         L_EstuObserTitulo.Text = encId.CompIdioma["L_EstuObserTitulo"].ToString();
         btn_descargar.Text = encId.CompIdioma["btn_descargar"].ToString();
 
-        GridView1.Columns[0].HeaderText = "Día - Hora";
-        GridView1.Columns[1].HeaderText = "Observación";
+        GridView1.Columns[0].HeaderText = encId.CompIdioma["GridView1_0"].ToString();
+        GridView1.Columns[1].HeaderText = encId.CompIdioma["GridView1_1"].ToString();
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();

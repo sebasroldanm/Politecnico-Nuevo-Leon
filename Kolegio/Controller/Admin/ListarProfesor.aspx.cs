@@ -21,15 +21,15 @@ public partial class View_Admin_ListarProfesor : System.Web.UI.Page
         L_AdminListaProfeTitulo.Text = encId.CompIdioma["L_AdminListaProfeTitulo"].ToString();
         btn_descargar.Text = encId.CompIdioma["btn_descargar"].ToString();
 
-        GridView1.Columns[0].HeaderText = "Foto";
-        GridView1.Columns[1].HeaderText = "Apellido";
-        GridView1.Columns[2].HeaderText = "Nombre";
-        GridView1.Columns[3].HeaderText = "Documento";
-        GridView1.Columns[4].HeaderText = "Estado";
-        GridView1.Columns[5].HeaderText = "Correo";
-        GridView1.Columns[6].HeaderText = "Teléfono";
-        GridView1.Columns[7].HeaderText = "Usuario";
-        GridView1.Columns[8].HeaderText = "Contraseña";
+        GridView1.Columns[0].HeaderText = encId.CompIdioma["GridView1_0"].ToString();
+        GridView1.Columns[1].HeaderText = encId.CompIdioma["GridView1_1"].ToString();
+        GridView1.Columns[2].HeaderText = encId.CompIdioma["GridView1_2"].ToString();
+        GridView1.Columns[3].HeaderText = encId.CompIdioma["GridView1_3"].ToString();
+        GridView1.Columns[4].HeaderText = encId.CompIdioma["GridView1_4"].ToString();
+        GridView1.Columns[5].HeaderText = encId.CompIdioma["GridView1_5"].ToString();
+        GridView1.Columns[6].HeaderText = encId.CompIdioma["GridView1_6"].ToString();
+        GridView1.Columns[7].HeaderText = encId.CompIdioma["GridView1_7"].ToString();
+        GridView1.Columns[8].HeaderText = encId.CompIdioma["GridView1_8"].ToString();
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
