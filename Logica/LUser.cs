@@ -137,6 +137,12 @@ namespace Logica
 
             UUser usua = new UUser();
             DUser dat = new DUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 6;
+
+            encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
 
             int dep;
             dep = (departamento);
@@ -146,7 +152,8 @@ namespace Logica
             usua.Mensaje = "";
             if (departamento == 0 || ciudad == 0)
             {
-                usua.Mensaje = "Debe seleccionar una opcion";
+                //usua.Mensaje = "Debe seleccionar una opcion";
+                usua.Mensaje = encId.CompIdioma["L_ErrorUsuario_Seleccione"].ToString(); 
             }
             else
             {
@@ -169,14 +176,16 @@ namespace Logica
                 if (usua.Foto != null)
                 {
                     dat.insertarUsuarios(usua);
-                    usua.Notificacion = "<script language='JavaScript'>window.alert('Usuario Insertado con Exito');</script>";
+                     //usua.Notificacion = "<script language='JavaScript'>window.alert('Usuario Insertado con Exito');</script>";
+                     usua.Notificacion = "<script language='JavaScript'>window.alert('"+ encId.CompIdioma["script_insertado"].ToString()+"');</script>";
                     usua.B_Botones1 = true;
                     usua.L_Aceptar1 = true;
 
                 }
                 else
                 {
-                    usua.Notificacion = "<script language='JavaScript'>window.alert('Error al Seleccionar la Foto');</script>";
+                    //usua.Notificacion = "<script language='JavaScript'>window.alert('Error al Seleccionar la Foto');</script>";
+                    usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_error_foto"].ToString() + "');</script>";
                 }
             }
            
@@ -190,6 +199,11 @@ namespace Logica
         {
             UUser usua = new UUser();
             DUser dat = new DUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 6;
+
+            encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
 
             usua.UserName = usuario;
             usua.Documento = documento.ToString();
@@ -201,7 +215,8 @@ namespace Logica
 
                 //tb_Vusuario.Text = Convert.ToString(registros.Rows[0]["user_name"].ToString());
                 //tb_Vdocumento.Text = Convert.ToString(registros.Rows[0]["num_documento"].ToString());
-                usua.Mensaje = "El Usuario ya existe";
+                //usua.Mensaje = "El Usuario ya existe";
+                usua.Mensaje = encId.CompIdioma["L_ErrorUsuario_usuario_noexiste"].ToString();
                 usua.L_Aceptar1 = false;
                 usua.B_Botones1 = true;
 
@@ -209,7 +224,9 @@ namespace Logica
             else
             {
                 //L_ErrorUsuario.Text = "";
-                usua.Mensaje = "Usuario Disponible";
+
+                //usua.Mensaje = "Usuario Disponible";
+                usua.Mensaje = encId.CompIdioma["L_ErrorUsuario_usuario_existe"].ToString();
                 //btn_DocenteAceptar.Visible = true;
                 //btn_DocenteNuevo.Visible = true;
                 //btn_validar.Visible = false;
@@ -291,6 +308,12 @@ namespace Logica
         {
             UUser enc = new UUser();
             DUser datos = new DUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 6;
+
+            encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
             string sDia = Convert.ToString(DateTime.Now.Day);
             string sMes = Convert.ToString(DateTime.Now.Month);
             string sAgno = Convert.ToString(DateTime.Now.Year);
@@ -305,7 +328,8 @@ namespace Logica
             string ext = extension;
             if (!(string.Compare(extension, ".png", true) == 0 || string.Compare(extension, ".jpeg", true) == 0 || string.Compare(extension, ".jpg", true) == 0))
             {
-                enc.Notificacion = "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>";
+                enc.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_error_formato"].ToString() + "');</script>";
+                //enc.Notificacion = "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>";
                 return enc;
             }
 
@@ -313,10 +337,13 @@ namespace Logica
 
             if (System.IO.File.Exists(saveLocation))
             {
-                enc.Notificacion = "<script type='text/javascript'>alert('Ya existe una imagen en el servidor con ese nombre');</script>";
+                enc.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_error_foto_repite"].ToString() + "');</script>";
+                //enc.Notificacion = "<script type='text/javascript'>alert('Ya existe una imagen en el servidor con ese nombre');</script>";
                 return enc;
             }
-            enc.Notificacion = "<script type='text/javascript'>alert('El archivo de imagen ha sido cargado');</script>";
+            string h = encId.CompIdioma["script_foto_cargada"].ToString();
+            enc.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_foto_cargada"].ToString() + "');</script>";
+            //enc.Notificacion = "<script type='text/javascript'>alert('El archivo de imagen ha sido cargado');</script>";
             enc.SaveLocation = saveLocation;
             enc.FotoCargada = "~/FotosUser" + "/" + sFecha + sMinu + nombreArchivo;
             return enc;
