@@ -12,27 +12,33 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Subir Nota";
-        L_ProfeSubirTitulo.Text = "Subir Nota";
-        L_ProfeSubirCurso.Text = "Curso :";
-        L_ProfeSubirMateria.Text = "Materia :";
-        L_ProfeSubirAlumno.Text = "Alumno :";
-        ButtonVerNota.Text = "Ver Notas";
-        L_ProfeSubirNota1.Text = "Nota 1:";
-        tb_nt.Attributes.Add("placeholder", "Nota 1");
-        REV_nt.ErrorMessage = "Digitar dos numeros";
-        RV_N1.ErrorMessage = "Sobrepasó el limite";
-        L_ProfeSubirNota2.Text = "Nota 2:";
-        tb_nt2.Attributes.Add("placeholder", "Nota 2");
-        REV_nt2.ErrorMessage = "Digitar dos numeros";
-        RV_n2.ErrorMessage = "Sobrepasó el limite";
-        L_ProfeSubirNota3.Text = "Nota 3:";
-        tb_nt3.Attributes.Add("placeholder", "Nota 3");
-        REV_nt3.ErrorMessage = "Digitar dos numeros";
-        RV_n3.ErrorMessage = "Sobrepasó el limite";
-        L_ProfeSubirNotaDef.Text = "Nota Definitiva:";
-        tb_denifitiva.Attributes.Add("placeholder", "Nota Definitiva");
-        btn_Subirnota.Text = "Subir Calificacion";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 39;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_ProfeSubirTitulo.Text = encId.CompIdioma["L_ProfeSubirTitulo"].ToString();
+        L_ProfeSubirCurso.Text = encId.CompIdioma["L_ProfeSubirCurso"].ToString();
+        L_ProfeSubirMateria.Text = encId.CompIdioma["L_ProfeSubirMateria"].ToString();
+        L_ProfeSubirAlumno.Text = encId.CompIdioma["L_ProfeSubirAlumno"].ToString();
+        ButtonVerNota.Text = encId.CompIdioma["ButtonVerNota"].ToString();
+        L_ProfeSubirNota1.Text = encId.CompIdioma["L_ProfeSubirNota1"].ToString();
+        tb_nt.Attributes.Add("placeholder", encId.CompIdioma["tb_nt"].ToString());
+        REV_nt.ErrorMessage = encId.CompIdioma["REV_nt"].ToString();
+        RV_N1.ErrorMessage = encId.CompIdioma["RV_N1"].ToString();
+        L_ProfeSubirNota2.Text = encId.CompIdioma["L_ProfeSubirNota2"].ToString();
+        tb_nt2.Attributes.Add("placeholder", encId.CompIdioma["tb_nt2"].ToString());
+        REV_nt2.ErrorMessage = encId.CompIdioma["REV_nt2"].ToString();
+        RV_n2.ErrorMessage = encId.CompIdioma["RV_n2"].ToString();
+        L_ProfeSubirNota3.Text = encId.CompIdioma["L_ProfeSubirNota3"].ToString();
+        tb_nt3.Attributes.Add("placeholder", encId.CompIdioma["tb_nt3"].ToString());
+        REV_nt3.ErrorMessage = encId.CompIdioma["REV_nt3"].ToString();
+        RV_n3.ErrorMessage = encId.CompIdioma["RV_n3"].ToString();
+        L_ProfeSubirNotaDef.Text = encId.CompIdioma["L_ProfeSubirNotaDef"].ToString();
+        tb_denifitiva.Attributes.Add("placeholder", encId.CompIdioma["tb_denifitiva"].ToString());
+        btn_Subirnota.Text = encId.CompIdioma["btn_Subirnota"].ToString();
 
 
         //subirNota

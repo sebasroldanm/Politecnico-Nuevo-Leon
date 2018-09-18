@@ -11,13 +11,21 @@ public partial class View_Profesor_ProfesorListado : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Lista de Estudiantes";
-        L_ProfeListado.Text = "Lista de Estudiantes";
-        tb_documentoestudiante.Attributes.Add("placeholder", "Numero de Documento");
-        REV_documentoestudiante.ErrorMessage = "Digitar Solo Números";
-        TB_Observ.Attributes.Add("placeholder", "Observacion");
-        REV_Observ.ErrorMessage = "No se aceptan caracteres especiales";
-        btn_Aceptar.Text = "Agregar Observacion";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 36;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_ProfeListado.Text = encId.CompIdioma["L_ProfeListado"].ToString();
+        tb_documentoestudiante.Attributes.Add("placeholder", encId.CompIdioma["tb_documentoestudiante"].ToString());
+        REV_documentoestudiante.ErrorMessage = encId.CompIdioma["REV_documentoestudiante"].ToString();
+        TB_Observ.Attributes.Add("placeholder", encId.CompIdioma["TB_Observ"].ToString());
+        REV_Observ.ErrorMessage = encId.CompIdioma["REV_Observ"].ToString();
+        btn_Aceptar.Text = encId.CompIdioma["btn_Aceptar"].ToString();
+
+
         GridView1.Columns[0].HeaderText = "Fecha y Hora";
         GridView1.Columns[1].HeaderText = "Observación";
 

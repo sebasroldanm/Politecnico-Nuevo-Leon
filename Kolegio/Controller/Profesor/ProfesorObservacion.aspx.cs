@@ -12,9 +12,17 @@ public partial class View_Profesor_ProfesorObservacion : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Lista Estudiantes";
-        L_ProfeObseTitulo.Text = "Lista Estudiantes";
-        L_ProfeObseCurso.Text = "Curso :";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 38;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_ProfeObseTitulo.Text = encId.CompIdioma["L_ProfeObseTitulo"].ToString();
+        L_ProfeObseCurso.Text = encId.CompIdioma["L_ProfeObseCurso"].ToString();
+
+
         GridView2.Columns[0].HeaderText = "Documento";
         GridView2.Columns[1].HeaderText = "Apellido";
         GridView2.Columns[2].HeaderText = "Nombre";

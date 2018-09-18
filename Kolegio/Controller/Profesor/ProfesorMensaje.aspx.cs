@@ -14,18 +14,24 @@ public partial class View_Profesor_ProfesorMensaje : System.Web.UI.Page
     string destinatario;
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Mensaje";
-        L_ProfeMensajeTitulo.Text = "Mensaje Acudiente:";
-        L_ProfeMensCurso.Text = "Curso :";
-        L_ProfeMensMateria.Text = "Materia :";
-        L_ProfeMensAlumon.Text = "Alumno :";
-        B_Actualizar.Text = "Actualizar Destinatario";
-        L_ProfeMensAsunto.Text = "Asunto :";
-        L_ProfeMensDestinatario.Text = "Destinatario :";
-        L_ProfeMensMensaje.Text = "Mensaje :";
-        REV_Mensaje.ErrorMessage = "No se aceptan caracteres especiales";
-        B_Enviar.Text = "Enviar";
-        L_Verificar.Text = "Debe seleccionar una opción";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 37;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_ProfeMensajeTitulo.Text = encId.CompIdioma["L_ProfeMensajeTitulo"].ToString();
+        L_ProfeMensCurso.Text = encId.CompIdioma["L_ProfeMensCurso"].ToString();
+        L_ProfeMensMateria.Text = encId.CompIdioma["L_ProfeMensMateria"].ToString();
+        L_ProfeMensAlumon.Text = encId.CompIdioma["L_ProfeMensAlumon"].ToString();
+        B_Actualizar.Text = encId.CompIdioma["B_Actualizar"].ToString();
+        L_ProfeMensAsunto.Text = encId.CompIdioma["L_ProfeMensAsunto"].ToString();
+        L_ProfeMensDestinatario.Text = encId.CompIdioma["L_ProfeMensDestinatario"].ToString();
+        L_ProfeMensMensaje.Text = encId.CompIdioma["L_ProfeMensMensaje"].ToString();
+        REV_Mensaje.ErrorMessage = encId.CompIdioma["REV_Mensaje"].ToString();
+        B_Enviar.Text = encId.CompIdioma["B_Enviar"].ToString();
+        L_Verificar.Text = encId.CompIdioma["L_Verificar"].ToString();
         //script_msm_enviado="Su Mensaje ha sido Enviado.";
 
         Response.Cache.SetNoStore();
