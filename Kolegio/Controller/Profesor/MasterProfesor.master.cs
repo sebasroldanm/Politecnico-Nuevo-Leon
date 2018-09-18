@@ -17,7 +17,7 @@ public partial class View_Profesor_MasterProfesor : System.Web.UI.MasterPage
         L_ProfeMHoraio.Text = "Horario";
         L_ProfeMObservacion.Text = "Listado - Observacion";
         L_ProfeMMensaje.Text = "Mensaje";
-        L_ProfeMMensaje.Text = "Configuración";
+        L_ProfeMConfig.Text = "Configuración";
         L_ProfeMCerrar.Text = "Cerrar Sesión";
     }
     protected void B_Cerrar_Click(object sender, EventArgs e)
