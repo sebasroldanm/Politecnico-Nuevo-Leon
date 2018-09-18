@@ -127,7 +127,8 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
             3,
             fechanac.Text,
             Session.SessionID,
-            Convert.ToInt32(Session["id_acu"])
+            Convert.ToInt32(Session["id_acu"]),
+            int.Parse(Session["idioma"].ToString())
             );
         this.Page.Response.Write(usua.Notificacion);
         btn_EstudianteAceptar.Visible = usua.L_Aceptar1;
@@ -166,7 +167,7 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
         LUser logica = new LUser();
         UUser usua = new UUser();
 
-        usua = logica.validarUser(tb_EstudianteUsuario.Text, tb_EstudianteId.Text);
+        usua = logica.validarUser(tb_EstudianteUsuario.Text, tb_EstudianteId.Text, int.Parse(Session["idioma"].ToString()));
         L_ErrorUser.Text = usua.Mensaje;
         btn_EstudianteAceptar.Visible = usua.L_Aceptar1;
         btn_EstudianteNuevo.Visible = usua.L_Aceptar1;
@@ -185,7 +186,8 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
         usua = logica.buscarAcudiete(
             int.Parse(ddt_lugarnacimDep.SelectedValue),
             int.Parse(DDT_Ciudad.SelectedValue),
-            tb_AcudienteId.Text);
+            tb_AcudienteId.Text,
+            int.Parse(Session["idioma"].ToString()));
 
         L_ErrorAcudiente.Text = usua.MensajeAcudiente;
         tb_AcudienteNombre.ReadOnly = usua.L_Aceptar1;
@@ -201,7 +203,7 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
     {
         LUser logic = new LUser();
         UUser enc = new UUser();
-        enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName), System.IO.Path.GetExtension(tb_Foto.PostedFile.FileName), tb_Foto.ToString(), Server.MapPath("~/FotosUser"));
+        enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName), System.IO.Path.GetExtension(tb_Foto.PostedFile.FileName), tb_Foto.ToString(), Server.MapPath("~/FotosUser"), int.Parse(Session["idioma"].ToString()));
         try
         {
             ClientScriptManager cm = this.ClientScript;

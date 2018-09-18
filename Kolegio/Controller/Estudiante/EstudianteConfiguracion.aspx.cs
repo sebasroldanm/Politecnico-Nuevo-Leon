@@ -127,7 +127,7 @@ public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Pag
     {
         LUser logic = new LUser();
         UUser enc = new UUser();
-        enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName), System.IO.Path.GetExtension(tb_Foto.PostedFile.FileName), tb_Foto.ToString(), Server.MapPath("~/FotosUser"));
+        enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName), System.IO.Path.GetExtension(tb_Foto.PostedFile.FileName), tb_Foto.ToString(), Server.MapPath("~/FotosUser"), int.Parse(Session["idioma"].ToString()));
         try
         {
             ClientScriptManager cm = this.ClientScript;

@@ -45,7 +45,7 @@ public partial class Loggin : System.Web.UI.Page
     {
         UUser datos = new UUser();
         LUser logic = new LUser();
-        datos = logic.loggear(TB_UserName.Text, TB_Clave.Text);
+        datos = logic.loggear(TB_UserName.Text, TB_Clave.Text, int.Parse(Session["idioma"].ToString()));
 
         Session["userId"] = datos.SUserId;
         Session["userName"] = datos.SUserName;

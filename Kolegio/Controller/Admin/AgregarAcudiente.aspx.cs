@@ -123,7 +123,8 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
             tb_AcudienteUsuario.Text,
             4,
             fechanac.Text,
-            Session.SessionID
+            Session.SessionID,
+            int.Parse(Session["idioma"].ToString())
             );
 
         L_ErrorUsuario.Text = usua.Mensaje;
@@ -164,7 +165,7 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
         LUser logica = new LUser();
         UUser usua = new UUser();
 
-        usua = logica.validarUser(tb_AcudienteUsuario.Text, tb_AcudienteId.Text);
+        usua = logica.validarUser(tb_AcudienteUsuario.Text, tb_AcudienteId.Text, int.Parse(Session["idioma"].ToString()));
         L_ErrorUsuario.Text = usua.Mensaje;
 
         btn_AcudienteAceptar.Visible = usua.L_Aceptar1;
@@ -180,7 +181,7 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
     {
         LUser logic = new LUser();
         UUser enc = new UUser();
-        enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName), System.IO.Path.GetExtension(tb_Foto.PostedFile.FileName), tb_Foto.ToString(), Server.MapPath("~/FotosUser"));
+        enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName), System.IO.Path.GetExtension(tb_Foto.PostedFile.FileName), tb_Foto.ToString(), Server.MapPath("~/FotosUser"), int.Parse(Session["idioma"].ToString()));
         try
         {
             ClientScriptManager cm = this.ClientScript;

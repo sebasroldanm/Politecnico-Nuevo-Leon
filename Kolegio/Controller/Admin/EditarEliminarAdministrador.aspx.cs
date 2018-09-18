@@ -163,7 +163,8 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
             int.Parse(DDT_Ciudad.SelectedValue),
             Session.SessionID,
             foto,
-            Session["fotosinedit"].ToString()
+            Session["fotosinedit"].ToString(),
+            int.Parse(Session["idioma"].ToString())
             );
 
         this.Page.Response.Write(usua.Notificacion);
@@ -223,7 +224,7 @@ protected void btn_AdministradorNuevo_Click(object sender, EventArgs e)
     {
         LUser logic = new LUser();
         UUser enc = new UUser();
-        enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_AdministradorFoto.PostedFile.FileName), System.IO.Path.GetExtension(tb_AdministradorFoto.PostedFile.FileName), tb_AdministradorFoto.ToString(), Server.MapPath("~/FotosUser"));
+        enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_AdministradorFoto.PostedFile.FileName), System.IO.Path.GetExtension(tb_AdministradorFoto.PostedFile.FileName), tb_AdministradorFoto.ToString(), Server.MapPath("~/FotosUser"), int.Parse(Session["idioma"].ToString()));
         try
         {
             ClientScriptManager cm = this.ClientScript;

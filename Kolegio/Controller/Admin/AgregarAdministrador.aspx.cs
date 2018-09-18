@@ -52,8 +52,9 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         tb_AdministradorContrasenia.Attributes.Add(" placeholder", encId.CompIdioma["tb_AdministradorContrasenia"].ToString());
         REV_AdministradorContrasenia.ErrorMessage = encId.CompIdioma["REV_AdministradorContrasenia"].ToString();
         btn_validar.Text = encId.CompIdioma["btn_validar"].ToString();
-        btn_AdministradorAceptar.Text = encId.CompIdioma["btn_AdministradorAceptar"].ToString();
-        btn_EstudianteNuevo.Text = encId.CompIdioma["btn_EstudianteNuevo"].ToString();
+        //Por Agregar
+        //btn_AdministradorAceptar.Text = encId.CompIdioma["btn_AdministradorAceptar"].ToString();
+        //btn_EstudianteNuevo.Text = encId.CompIdioma["btn_EstudianteNuevo"].ToString();
 
 
         //AgregarAdmin
@@ -125,7 +126,9 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
             tb_AdministradorUsuario.Text,
             1,
             fechanac.Text,
-            Session.SessionID);
+            Session.SessionID,
+            int.Parse(Session["idioma"].ToString())
+            );
         L_ErrorUsuario.Text = usua.Mensaje;
         this.Page.Response.Write(usua.Notificacion);
         btn_AdministradorAceptar.Visible = usua.L_Aceptar1;
@@ -166,7 +169,7 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         LUser logica = new LUser();
         UUser usua = new UUser();
 
-        usua = logica.validarUser(tb_AdministradorUsuario.Text, tb_AministradorAdministradorId.Text);
+        usua = logica.validarUser(tb_AdministradorUsuario.Text, tb_AministradorAdministradorId.Text, int.Parse(Session["idioma"].ToString()));
         L_ErrorUsuario.Text = usua.Mensaje;
         btn_AdministradorAceptar.Visible = usua.L_Aceptar1;
         tb_AministradorAdministradorId.Visible = usua.L_Aceptar1;
@@ -180,7 +183,7 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
     {
         LUser logic = new LUser();
         UUser enc = new UUser();
-        enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_AdministradorFoto.PostedFile.FileName), System.IO.Path.GetExtension(tb_AdministradorFoto.PostedFile.FileName), tb_AdministradorFoto.ToString(), Server.MapPath("~/FotosUser"));
+        enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_AdministradorFoto.PostedFile.FileName), System.IO.Path.GetExtension(tb_AdministradorFoto.PostedFile.FileName), tb_AdministradorFoto.ToString(), Server.MapPath("~/FotosUser"), int.Parse(Session["idioma"].ToString()));
         try
         {
             ClientScriptManager cm = this.ClientScript;
