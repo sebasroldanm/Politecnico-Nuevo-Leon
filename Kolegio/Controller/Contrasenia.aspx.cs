@@ -17,7 +17,11 @@ public partial class View_Contrasenia : System.Web.UI.Page
         LUser logica = new LUser();
 
         usua = logica.cambiarContra(Request.QueryString.Count, Request.QueryString[0], usua.SUserId);
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 42;
 
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
 
         L_ContraseniaTitulo.Text = "Recuperación de la Cuenta";
         L_ContraseniaNueva.Text = "Digite Nueva Clave :";

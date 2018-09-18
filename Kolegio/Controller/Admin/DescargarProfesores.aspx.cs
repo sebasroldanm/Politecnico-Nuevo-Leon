@@ -13,7 +13,13 @@ public partial class View_Admin_DescargarProfesores : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Descargar Profesores";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 46;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
 
 
         Response.Cache.SetNoStore();

@@ -12,18 +12,24 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Página de Inicio";
-        L_AdminPagInicio.Text = "Páginas Inicio";
-        L_AdminPagInicioNosotros.Text = "Nosotros :";
-        RFV_Nosotros.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminpajInicioMision.Text = "Misión :";
-        REV_Mision.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminPagInicioVision.Text = "Visión :";
-        REV_Vision.ErrorMessage = "No se aceptan caracteres especiales";
-        B_Modificar.Text = "Modificar";
-        B_Traer.Text = "Traer Datos";
-        L_AdminPagInicioFechaFin.Text = "Fecha Terminación Año: ";
-        B_Terminaranio.Text = "Insertar Fin";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 19;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AdminPagInicio.Text = encId.CompIdioma["L_AdminPagInicio"].ToString();
+        L_AdminPagInicioNosotros.Text = encId.CompIdioma["L_AdminPagInicioNosotros"].ToString();
+        RFV_Nosotros.ErrorMessage = encId.CompIdioma["RFV_Nosotros"].ToString();
+        L_AdminpajInicioMision.Text = encId.CompIdioma["L_AdminpajInicioMision"].ToString();
+        REV_Mision.ErrorMessage = encId.CompIdioma["REV_Mision"].ToString();
+        L_AdminPagInicioVision.Text = encId.CompIdioma["L_AdminPagInicioVision"].ToString();
+        REV_Vision.ErrorMessage = encId.CompIdioma["REV_Vision"].ToString();
+        B_Modificar.Text = encId.CompIdioma["B_Modificar"].ToString();
+        B_Traer.Text = encId.CompIdioma["B_Traer"].ToString();
+        L_AdminPagInicioFechaFin.Text = encId.CompIdioma["L_AdminPagInicioFechaFin"].ToString();
+        B_Terminaranio.Text = encId.CompIdioma["B_Terminaranio"].ToString();
 
 
         //ModificarPaginaInicio

@@ -13,7 +13,13 @@ public partial class View_Admin_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Descargar Diploma";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 44;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();

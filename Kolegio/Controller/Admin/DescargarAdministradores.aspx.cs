@@ -16,7 +16,10 @@ public partial class View_Admin_DescargarAdministradores : System.Web.UI.Page
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 14;
-        Page.Title = "Descargar Administradores";
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
