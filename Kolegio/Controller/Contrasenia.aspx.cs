@@ -23,16 +23,16 @@ public partial class View_Contrasenia : System.Web.UI.Page
 
         encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
 
-        L_ContraseniaTitulo.Text = "Recuperación de la Cuenta";
-        L_ContraseniaNueva.Text = "Digite Nueva Clave :";
-        TB_NuevaClave.Attributes.Add("placeholder", "Digite Nueva Clave");
-        RFV_Clave.ErrorMessage = "Campo Vacio";
-        REV_Clave.ErrorMessage = "No se aceptan caracteres especiales";
-        L_ContraseniaNuevamente.Text = "Digite Nuevamente la Clave :";
-        TB_NuevamenteClave.Attributes.Add("placeholder", "Repetir Clave");
-        RFV_NuevamenteClave.ErrorMessage = "Campo Vacio";
-        REV_Clave.ErrorMessage = "No se aceptan caracteres especiales";
-        B_Enviar.Text = "Enviar";
+        L_ContraseniaTitulo.Text = encId.CompIdioma["L_ContraseniaTitulo"].ToString();
+        L_ContraseniaNueva.Text = encId.CompIdioma["L_ContraseniaNueva"].ToString();
+        TB_NuevaClave.Attributes.Add("placeholder", encId.CompIdioma["TB_NuevaClave"].ToString());
+        RFV_Clave.ErrorMessage = encId.CompIdioma["RFV_Clave"].ToString();
+        REV_Clave.ErrorMessage = encId.CompIdioma["REV_Clave"].ToString();
+        L_ContraseniaNuevamente.Text = encId.CompIdioma["L_ContraseniaNuevamente"].ToString();
+        TB_NuevamenteClave.Attributes.Add("placeholder", encId.CompIdioma["TB_NuevamenteClave"].ToString());
+        RFV_NuevamenteClave.ErrorMessage = encId.CompIdioma["RFV_NuevamenteClave"].ToString();
+        REV_Clave.ErrorMessage = encId.CompIdioma["REV_Clave"].ToString();
+        B_Enviar.Text = encId.CompIdioma["B_Enviar"].ToString();
 
         try
         {
