@@ -15,41 +15,44 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 15;
-        Page.Title = "Ediar Acudiente";
-        L_AdminEditAcuTitulo.Text = "Editar Acudiente";
-        L_AdminEditAcuDocumento.Text = "Número de Documento :";
-        tb_AcudienteId.Attributes.Add("placeholder", "Número de Documento");
-        REV_AcudienteId.ErrorMessage = "Digitar solo números";
-        L_AdminEditAcuNombre.Text = "Nombres :";
-        tb_AcudienteNombre.Attributes.Add("placeholder", "Nombres   Acudiente");
-        REV_AcudienteNombre.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminEditAcuApellido.Text = "Apellido :";
-        tb_AcudienteApellido.Attributes.Add("placeholder", "Apellidos Acudiente ");
-        REV_AcudienteApellido.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminEditAcuDep.Text = "Lugar Nacimiento.:";
-        L_AdminEditAcuFoto.Text = "Foto :";
-        L_AdminEditAcuFechanac.Text = "Fecha Nacimiento:";
-        fechanac.Attributes.Add("placeholder", "Fecha de Nacimiento");
-        L_AdminEditAcuCorreo.Text = "Correo :";
-        tb_AcudienteCorreo.Attributes.Add("placeholder", "Email");
-        REV_AcudienteCorreo.ErrorMessage = "No se aceptan caracteres especiales";
-        L_ADminEditAcuDir.Text = "Direccion :";
-        tb_AcudienteDireccion.Attributes.Add("placeholder", "Dirección");
-        REV_AcudienteDireccion.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminEditAcuTel.Text = "Telefono :";
-        tb_AcudienteTelefono.Attributes.Add("placeholder", "Teléfono");
-        REV_AcudienteTelefono.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminEditAcuUser.Text = "Usuario :";
-        tb_AcudienteUsuario.Attributes.Add("placeholder", "Usuario");
-        REV_AcudienteUsuario.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminEditAcuContra.Text = "Contraseña:";
-        tb_AcudienteContrasenia.Attributes.Add(" placeholder", "Contraseña");
-        REV_AcudienteContrasenia.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminEditAcuEstado.Text = "Estado :";
 
-        btn_AcudienteAceptar.Text = "Aceptar";
-        btn_AcudienteEditar.Text = "Editar";
-        btn_AcudienteNuevo.Text = "Nuevo";
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AdminEditAcuTitulo.Text = encId.CompIdioma["L_AdminEditAcuTitulo"].ToString();
+        L_AdminEditAcuDocumento.Text = encId.CompIdioma["L_AdminEditAcuDocumento"].ToString();
+        tb_AcudienteId.Attributes.Add("placeholder", encId.CompIdioma["tb_AcudienteId"].ToString());
+        REV_AcudienteId.ErrorMessage = encId.CompIdioma["REV_AcudienteId"].ToString();
+        L_AdminEditAcuNombre.Text = encId.CompIdioma["L_AdminEditAcuNombre"].ToString();
+        tb_AcudienteNombre.Attributes.Add("placeholder", encId.CompIdioma["tb_AcudienteNombre"].ToString());
+        REV_AcudienteNombre.ErrorMessage = encId.CompIdioma["REV_AcudienteNombre"].ToString();
+        L_AdminEditAcuApellido.Text = encId.CompIdioma["L_AdminEditAcuApellido"].ToString();
+        tb_AcudienteApellido.Attributes.Add("placeholder", encId.CompIdioma["tb_AcudienteApellido"].ToString());
+        REV_AcudienteApellido.ErrorMessage = encId.CompIdioma["REV_AcudienteApellido"].ToString();
+        L_AdminEditAcuDep.Text = encId.CompIdioma["L_AdminEditAcuDep"].ToString();
+        L_AdminEditAcuFoto.Text = encId.CompIdioma["L_AdminEditAcuFoto"].ToString();
+        L_AdminEditAcuFechanac.Text = encId.CompIdioma["L_AdminEditAcuFechanac"].ToString();
+        fechanac.Attributes.Add("placeholder", encId.CompIdioma["fechanac"].ToString());
+        L_AdminEditAcuCorreo.Text = encId.CompIdioma["L_AdminEditAcuCorreo"].ToString();
+        tb_AcudienteCorreo.Attributes.Add("placeholder", encId.CompIdioma["tb_AcudienteCorreo"].ToString());
+        REV_AcudienteCorreo.ErrorMessage = encId.CompIdioma["REV_AcudienteCorreo"].ToString();
+        L_ADminEditAcuDir.Text = encId.CompIdioma["L_ADminEditAcuDir"].ToString();
+        tb_AcudienteDireccion.Attributes.Add("placeholder", encId.CompIdioma["tb_AcudienteDireccion"].ToString());
+        REV_AcudienteDireccion.ErrorMessage = encId.CompIdioma["REV_AcudienteDireccion"].ToString();
+        L_AdminEditAcuTel.Text = encId.CompIdioma["L_AdminEditAcuTel"].ToString();
+        tb_AcudienteTelefono.Attributes.Add("placeholder", encId.CompIdioma["tb_AcudienteTelefono"].ToString());
+        REV_AcudienteTelefono.ErrorMessage = encId.CompIdioma["REV_AcudienteTelefono"].ToString();
+        L_AdminEditAcuUser.Text = encId.CompIdioma["L_AdminEditAcuUser"].ToString();
+        tb_AcudienteUsuario.Attributes.Add("placeholder", encId.CompIdioma["tb_AcudienteUsuario"].ToString());
+        REV_AcudienteUsuario.ErrorMessage = encId.CompIdioma["REV_AcudienteUsuario"].ToString();
+        L_AdminEditAcuContra.Text = encId.CompIdioma["L_AdminEditAcuContra"].ToString();
+        tb_AcudienteContrasenia.Attributes.Add(" placeholder", encId.CompIdioma["tb_AcudienteContrasenia"].ToString());
+        REV_AcudienteContrasenia.ErrorMessage = encId.CompIdioma["REV_AcudienteContrasenia"].ToString();
+        L_AdminEditAcuEstado.Text = encId.CompIdioma["L_AdminEditAcuEstado"].ToString();
+
+        btn_AcudienteAceptar.Text = encId.CompIdioma["btn_AcudienteAceptar"].ToString();
+        btn_AcudienteEditar.Text = encId.CompIdioma["btn_AcudienteEditar"].ToString();
+        btn_AcudienteNuevo.Text = encId.CompIdioma["btn_AcudienteNuevo"].ToString();
 
 
         //editarBuscarUser

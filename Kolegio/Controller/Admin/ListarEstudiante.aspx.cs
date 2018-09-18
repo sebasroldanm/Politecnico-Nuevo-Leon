@@ -11,12 +11,18 @@ public partial class View_Admin_ListarEstudiante : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Lista de Estudiante";
-        L_AdminListaEstuTitulo.Text = "Lista de Estudiante";
-        L_AdminListaEstuAnio.Text = "Año :";
-        L_AdminListaEstuCurso.Text = "Curso :";
-        btn_descargar.Text = "Descargar Lista";
-        B_diploma.Text = "Descargar Diploma";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 23;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AdminListaEstuTitulo.Text = encId.CompIdioma["L_AdminListaEstuTitulo"].ToString();
+        L_AdminListaEstuAnio.Text = encId.CompIdioma["L_AdminListaEstuAnio"].ToString();
+        L_AdminListaEstuCurso.Text = encId.CompIdioma["L_AdminListaEstuCurso"].ToString();
+        btn_descargar.Text = encId.CompIdioma["btn_descargar"].ToString();
+        B_diploma.Text = encId.CompIdioma["B_diploma"].ToString();
 
         GridView1.Columns[0].HeaderText = "Foto";
         GridView1.Columns[1].HeaderText = "Apellido";

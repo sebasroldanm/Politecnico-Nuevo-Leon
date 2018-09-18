@@ -16,22 +16,24 @@ public partial class View_Admin_ConfiguraionAdministrador : System.Web.UI.Page
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 12;
-        Page.Title = "Configuración";
-        L_AdminConfigTitulo.Text = "Configuración";
-        L_AdminConfigUsuario.Text = "Usuario : ";
-        tb_usuario.Attributes.Add("placeholder", "Usuario");
-        REV_usuario.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminConfigContra.Text = "Contraseña :";
-        tb_contrasenia.Attributes.Add("placeholder", "Contraseña");
-        REV_contrasenia.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminConfigCorreo.Text = "Correo :";
-        tb_correo.Attributes.Add("placeholder", "Correo");
-        REV_correo.ErrorMessage = "No se aceptan caracteres especiales";
-        btn_Editar.Text = "Editar";
-        btn_Aceptar.Text = "Aceptar";
-        btn_cancelar.Text = "Cancelar";
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
 
-            
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AdminConfigTitulo.Text = encId.CompIdioma["L_AdminConfigTitulo"].ToString();
+        L_AdminConfigUsuario.Text = encId.CompIdioma["L_AdminConfigUsuario"].ToString();
+        tb_usuario.Attributes.Add("placeholder", encId.CompIdioma["tb_usuario"].ToString());
+        REV_usuario.ErrorMessage = encId.CompIdioma["REV_usuario"].ToString();
+        L_AdminConfigContra.Text = encId.CompIdioma["L_AdminConfigContra"].ToString();
+        tb_contrasenia.Attributes.Add("placeholder", encId.CompIdioma["tb_contrasenia"].ToString());
+        REV_contrasenia.ErrorMessage = encId.CompIdioma["REV_contrasenia"].ToString();
+        L_AdminConfigCorreo.Text = encId.CompIdioma["L_AdminConfigCorreo"].ToString();
+        tb_correo.Attributes.Add("placeholder", encId.CompIdioma["tb_correo"].ToString());
+        REV_correo.ErrorMessage = encId.CompIdioma["REV_correo"].ToString();
+        btn_Editar.Text = encId.CompIdioma["btn_Editar"].ToString();
+        btn_Aceptar.Text = encId.CompIdioma["btn_Aceptar"].ToString();
+        btn_cancelar.Text = encId.CompIdioma["btn_cancelar"].ToString();
+
+
         //despues de fucion modificarUsuario -> this.Page.Repose.Write
         //srcipt = "Datos Modificados con Exito";
 
@@ -41,7 +43,7 @@ public partial class View_Admin_ConfiguraionAdministrador : System.Web.UI.Page
         //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
         //script_foto_cargada="El archivo de imagen ha sido cargado";
 
-        
+
 
 
 

@@ -18,11 +18,9 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 32;
 
-        Int32 Idioma = int.Parse(DDL_Idioma.SelectedValue);
-
-        Session["idioma"] = Idioma;
-
-        encId = idioma.obtIdioma(FORMULARIO, Idioma);
+        Int32 IDIOMA = int.Parse(DDL_Idioma.SelectedValue);
+        Session["idioma"] = IDIOMA;
+        encId = idioma.obtIdioma(FORMULARIO, IDIOMA);
 
         Page.Title = encId.CompIdioma["Title"].ToString();
         IMG_Slider1.ImageUrl = encId.CompIdioma["IMG_Slider1"].ToString();

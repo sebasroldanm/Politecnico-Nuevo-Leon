@@ -11,10 +11,16 @@ public partial class View_Admin_ListarAcudiente : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //Page.Title = "Lista de Acudientes";
-        L_AdminListaAcuTitulo.Text = "Lista de Acudientes";
-        btn_descargar.Text = "Descargar Lista";
-        
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 21;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AdminListaAcuTitulo.Text = encId.CompIdioma["L_AdminListaAcuTitulo"].ToString();
+        btn_descargar.Text = encId.CompIdioma["btn_descargar"].ToString();
+
         GridView1.Columns[0].HeaderText = "Acudiente";
         GridView1.Columns[1].HeaderText = "Apellido";
         GridView1.Columns[2].HeaderText = "Nombre";

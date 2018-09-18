@@ -12,10 +12,16 @@ public partial class View_Admin_GenerarDiploma : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Generar Diploma";
-        L_AdminGenerarTitulo.Text = "Diploma Estudiante";
-        L_AdminGenerarAño.Text = "AÑO:";
-        L_AdminGenerarCurso.Text = "CURSO:";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 20;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AdminGenerarTitulo.Text = encId.CompIdioma["L_AdminGenerarTitulo"].ToString();
+        L_AdminGenerarAño.Text = encId.CompIdioma["L_AdminGenerarAño"].ToString();
+        L_AdminGenerarCurso.Text = encId.CompIdioma["L_AdminGenerarCurso"].ToString();
         //GW
 
         Response.Cache.SetNoStore();
