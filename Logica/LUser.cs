@@ -537,29 +537,39 @@ namespace Logica
             return usua;
         }
 
+        //**************REPORTES**************REPORTES**************REPORTES**************REPORTES**************REPORTES**************REPORTES
 
-
-        public void reporteAdmin(DataTable informacion)
+        public InfReporte reporteAdmin(String urlCarpeta)
         {
-            DUser administrador = new DUser();
             DataRow fila;
+
+            DataTable informacion = new DataTable();
+            InfReporte datos = new InfReporte();
+
+            informacion = datos.Tables["Administrador"];
+
+            DUser administrador = new DUser();
             DataTable Intermedio = administrador.obtenerAdministradores();
+
             for (int i = 0; i < Intermedio.Rows.Count; i++)
             {
 
                 fila = informacion.NewRow();
+                string foto = Path.GetFileName(Intermedio.Rows[i]["foto_usua"].ToString());
                 ///El primero [""]  es como se llama el campo de la tabla de crystal y el segundo [""] el campo de la tabla en postgres
                 fila["Apellido"] = Intermedio.Rows[i]["apellido_usua"].ToString();
                 fila["Nombre"] = Intermedio.Rows[i]["nombre_usua"].ToString();
                 fila["Documento"] = int.Parse(Intermedio.Rows[i]["num_documento"].ToString());
                 fila["Telefono"] = Intermedio.Rows[i]["telefono"].ToString();
                 fila["Correo"] = Intermedio.Rows[i]["correo"].ToString();
-                fila["Foto"] = streamFile(Intermedio.Rows[i]["foto_usua"].ToString());
+                fila["Foto"] = streamFile(urlCarpeta + foto);
 
                 informacion.Rows.Add(fila);
             }
+            return datos;
         }
-
+        
+        
         public void reporteAcudiente(DataTable informacion)
         {
             DUser administrador = new DUser();
@@ -579,24 +589,32 @@ namespace Logica
             }
         }
 
-        public void reporteProfe(DataTable informacion)
+        public InfReporte reporteProfe(String urlCarpeta)
         {
-            DUser profe = new DUser();
             DataRow fila;
+
+            DataTable informacion = new DataTable();
+            InfReporte datos = new InfReporte();
+
+            informacion = datos.Tables["Profesor"];
+
+            DUser profe = new DUser();
             DataTable Intermedio = profe.obtenerprofesores();
             for (int i = 0; i < Intermedio.Rows.Count; i++) // for para llenar la lista con cada usurario
                                                             //// si es solo un dato como con el certificado de estudio, no se hace el for
             {
                 fila = informacion.NewRow();
+                string foto = Path.GetFileName(Intermedio.Rows[i]["foto_usua"].ToString());
                 ///El primero [""]  es como se llama el campo de la tabla de crystal y el segundo [""] el campo de la tabla en postgres
                 fila["Apellido"] = Intermedio.Rows[i]["apellido_usua"].ToString();
                 fila["Nombre"] = Intermedio.Rows[i]["nombre_usua"].ToString();
                 fila["Documento"] = int.Parse(Intermedio.Rows[i]["num_documento"].ToString());
                 fila["Telefono"] = Intermedio.Rows[i]["telefono"].ToString();
                 fila["Correo"] = Intermedio.Rows[i]["correo"].ToString();
-                fila["Foto"] = streamFile(Intermedio.Rows[i]["foto_usua"].ToString());
+                fila["Foto"] = streamFile(urlCarpeta + foto);
                 informacion.Rows.Add(fila);
             }
+            return datos;
         }
 
         public void reporteEstudiante(DataTable informacion, int curso)
@@ -618,23 +636,30 @@ namespace Logica
             }
         }
 
-        public void reporteDiploma(DataTable informacion, UUser documento)
+        public InfReporte reporteDiploma(string urlCarpeta, UUser documento)
         {
-            DUser diploma = new DUser();
             DataRow fila;
 
+            DataTable informacion = new DataTable();
+            InfReporte datos = new InfReporte();
+
+            informacion = datos.Tables["EstudianteDiploma"];
+
+            DUser diploma = new DUser();
             DataTable Intermedio = diploma.obtenerUsuarioMod(documento);
             for (int i = 0; i < Intermedio.Rows.Count; i++) // for para llenar la lista con cada usurario
                                                             //// si es solo un dato como con el certificado de estudio, no se hace el for
             {
                 fila = informacion.NewRow();
+                string foto = Path.GetFileName(Intermedio.Rows[i]["foto_usua"].ToString());
                 ///El primero [""]  es como se llama el campo de la tabla de crystal y el segundo [""] el campo de la tabla en postgres
                 fila["Apellido"] = Intermedio.Rows[i]["apellido_usua"].ToString();
                 fila["Nombre"] = Intermedio.Rows[i]["nombre_usua"].ToString();
                 fila["Documento"] = int.Parse(Intermedio.Rows[i]["num_documento"].ToString());
-                fila["Foto"] = streamFile(Intermedio.Rows[i]["foto_usua"].ToString());
+                fila["Foto"] = streamFile(urlCarpeta + foto);
                 informacion.Rows.Add(fila);
             }
+            return datos;
         }
 
         public void reporteCertificadoTrabajoProfe(DataTable informacion, string documento)
@@ -671,31 +696,13 @@ namespace Logica
             }
         }
 
-        private byte[] streamFile(string filename)
+        private byte[] streamFile(String filefoto)
         {
-            FileStream fs;
-
-            if (!filename.Equals(""))
-            {
-                fs = new FileStream(Server.MapPath(filename), FileMode.Open, FileAccess.Read);
-            }
-
-            else
-            {
-                fs = new FileStream(Server.MapPath("~/FotosUser/Useruser.png"), FileMode.Open, FileAccess.Read);
-
-            }
-
-
-            // Create a byte array of file stream length
-            byte[] ImageData = new byte[fs.Length];
-
-            //Read block of bytes from stream into the byte array
-            fs.Read(ImageData, 0, System.Convert.ToInt32(fs.Length));
-
-            //Close the File Stream
+            FileStream fs = new FileStream(filefoto, FileMode.Open, FileAccess.Read);
+            byte[] imagenData = new byte[fs.Length];
+            fs.Read(imagenData, 0, System.Convert.ToInt32(fs.Length));
             fs.Close();
-            return ImageData; //return the byte data
+            return imagenData;
         }
 
 

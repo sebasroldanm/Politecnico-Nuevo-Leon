@@ -29,8 +29,10 @@ public partial class View_Admin_DescargarAdministradores : System.Web.UI.Page
             usua = logica.logAdminSecillo(Session["userId"].ToString());
             try
             {
-                InfReporte reporte = ObtenerInforme(); 
-                CRS_admin.ReportDocument.SetDataSource(reporte);
+                string urlCarpeta = Server.MapPath("~/FotosUser/");
+                LUser log = new LUser();
+
+                CRS_admin.ReportDocument.SetDataSource(log.reporteAdmin(urlCarpeta));
                 CRV_administradores.ReportSource = CRS_admin;
             }
             catch (Exception)
@@ -56,57 +58,13 @@ public partial class View_Admin_DescargarAdministradores : System.Web.UI.Page
     }
 
 
-
-    protected InfReporte ObtenerInforme()
-    {
-
-        DataTable informacion = new DataTable();
-        InfReporte datos = new InfReporte();
-
-        informacion = datos.Tables["Administrador"]; // nombre de la tabla que cree en crystal en el InfReporte.xsd
-
-
-        LUser administrador = new LUser();
-
-        administrador.reporteAdmin(informacion);
-        
-        return datos;
-    }
-
-
-
     protected void CRV_administradores_Init(object sender, EventArgs e)
     {
 
     }
 
 
-    private byte[] streamFile(string filename)
-    {
-        FileStream fs;
-
-        if (!filename.Equals(""))
-        {
-            fs = new FileStream(Server.MapPath(filename), FileMode.Open, FileAccess.Read);
-        }
-
-        else
-        {
-             fs = new FileStream(Server.MapPath("~/FotosUser/Useruser.png"), FileMode.Open, FileAccess.Read);
-
-        }
-
-
-        // Create a byte array of file stream length
-        byte[] ImageData = new byte[fs.Length];
-
-        //Read block of bytes from stream into the byte array
-        fs.Read(ImageData, 0, System.Convert.ToInt32(fs.Length));
-
-        //Close the File Stream
-        fs.Close();
-        return ImageData; //return the byte data
-    }
+    
 
 
 }
