@@ -13,8 +13,7 @@ public partial class View_MasterEstudiante : System.Web.UI.MasterPage
     {
         L_EstuMTitulo.Text = "Bienvenido Estudiante";
         L_EstuMHorario.Text = "Horario";
-        L_EstuMCertifica.Text = "Observador - Certificado";
-        L_EstuMCertifica.Text = "Notas";
+        L_EstuMCertifica.Text = "Certificado";
         L_EstuMProfe.Text = "Profesor";
         L_EstuMConfig.Text = "Configuración";
         L_EstuMCerrar.Text = "Cerrar Sesion";
