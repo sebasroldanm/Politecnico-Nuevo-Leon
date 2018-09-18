@@ -17,8 +17,13 @@ namespace Logica
         {
             UUser user = new UUser();
             DUser datos = new DUser();
-            LIdioma idioma = new LIdioma();
 
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 40;
+
+            encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+            
             user.UserName = userName;
             user.Clave = clave;
 
@@ -71,8 +76,8 @@ namespace Logica
                 }
                 else
                 {
-                    //L_Error.Text = "Usuario Se Encuentra Inactivo";
-                    user.Mensaje = "Usuario Se Encuentra Inactivo";
+                    user.Mensaje = encId.CompIdioma["L_Error_Inactivo"].ToString();
+                    //user.Mensaje = "Usuario Se Encuentra Inactivo";
                     //Session["userId"] = null;
                     user.SUserId = null;
                     //user.Url = "~/View/Loggin.aspx";
@@ -80,8 +85,8 @@ namespace Logica
             }
             else
             {
-                //L_Error.Text = "Usuario Y/o Clave Incorrecto";
-                user.Mensaje = "Usuario Y/o Clave Incorrecto";
+                user.Mensaje = encId.CompIdioma["L_Error_Incorrecto"].ToString();
+                //user.Mensaje = "Usuario Y/o Clave Incorrecto";
                 //Session["userId"] = null;
                 user.SUserId = null;
                 //user.Url = "~/View/Loggin.aspx";
