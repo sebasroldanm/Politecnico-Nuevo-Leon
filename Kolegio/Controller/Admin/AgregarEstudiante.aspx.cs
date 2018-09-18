@@ -80,11 +80,6 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
         //script_foto_cargada="El archivo de imagen ha sido cargado";
 
 
-        L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
-
-        L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
-        L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
-
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();

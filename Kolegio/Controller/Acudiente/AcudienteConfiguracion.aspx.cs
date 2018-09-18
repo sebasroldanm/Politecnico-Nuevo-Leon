@@ -15,21 +15,24 @@ public partial class View_Acudiente_AcudienteConfiguracion : System.Web.UI.Page
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 2;
-        Page.Title = "Configuración";
-        L_AdminTituloConfig.Text = "Configuración";
-        L_AdminConfigUsuario.Text = "Usuario :";
-        tb_usuario.Attributes.Add("placeholder", "Usuario");
-        REV_usuario.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminConfigContra.Text = "Contraseña :";
-        tb_contrasenia.Attributes.Add(" placeholder", "Contraseña");
-        REV_contrasenia.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AdminConfigCorreo.Text = "Correo :";
-        tb_correo.Attributes.Add("placeholder", "Correo");
-        REV_correo.ErrorMessage = "No se aceptan caracteres especiales";
-        lb_foto.Text = "Foto :";
-        btn_Editar.Text = "Editar";
-        btn_Aceptar.Text = "Aceptar";
-        btn_cancelar.Text = "Cancelar";
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AdminTituloConfig.Text = encId.CompIdioma["L_AdminTituloConfig"].ToString();
+        L_AdminConfigUsuario.Text = encId.CompIdioma["L_AdminConfigUsuario"].ToString();
+        tb_usuario.Attributes.Add("placeholder", encId.CompIdioma["tb_usuario"].ToString());
+        REV_usuario.ErrorMessage = encId.CompIdioma["REV_usuario"].ToString();
+        L_AdminConfigContra.Text = encId.CompIdioma["L_AdminConfigContra"].ToString();
+        tb_contrasenia.Attributes.Add(" placeholder", encId.CompIdioma["tb_contrasenia"].ToString());
+        REV_contrasenia.ErrorMessage = encId.CompIdioma["REV_contrasenia"].ToString();
+        L_AdminConfigCorreo.Text = encId.CompIdioma["L_AdminConfigCorreo"].ToString();
+        tb_correo.Attributes.Add("placeholder", encId.CompIdioma["tb_correo"].ToString());
+        REV_correo.ErrorMessage = encId.CompIdioma["REV_correo"].ToString();
+        lb_foto.Text = encId.CompIdioma["lb_foto"].ToString();
+        btn_Editar.Text = encId.CompIdioma["btn_Editar"].ToString();
+        btn_Aceptar.Text = encId.CompIdioma["btn_Aceptar"].ToString();
+        btn_cancelar.Text = encId.CompIdioma["btn_cancelar"].ToString();
 
         //script_modificacion="Datos Modificados con Exito";
 

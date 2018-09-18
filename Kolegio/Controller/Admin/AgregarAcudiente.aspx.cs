@@ -74,12 +74,10 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
         btn_AcudienteAceptar.Text = encId.CompIdioma["btn_AcudienteAceptar"].ToString();
         btn_AcudienteNuevo.Text = encId.CompIdioma["btn_AcudienteNuevo"].ToString();
 
-        L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
         // script Usuario Insertado con Exito //Error al Seleccionar la Foto
 
         //
-        L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
-        L_ErrorUsuario.Text = encId.CompIdioma["L_ErrorUsuario"].ToString();
+
 
 
         Response.Cache.SetNoStore();

@@ -15,9 +15,11 @@ public partial class View_Acudiente_AcudienteBoletin : System.Web.UI.Page
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 1;
-        Page.Title = "Ver Notas - Boletin";
-        L_AcuTituloVerNotas.Text = "Ver Notas - Boletin";
-        L_AcuEstudiante.Text = "Estudiante :";
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AcuTituloVerNotas.Text = encId.CompIdioma["L_AcuTituloVerNotas"].ToString();
+        L_AcuEstudiante.Text = encId.CompIdioma["L_AcuEstudiante"].ToString();
         GridView1.Columns[0].HeaderText = "Materia";
         GridView1.Columns[1].HeaderText = "Primer Periodo";
         GridView1.Columns[2].HeaderText = "Segundo Periodo";

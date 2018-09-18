@@ -15,8 +15,10 @@ public partial class View_Acudiente_AcudienteObservador : System.Web.UI.Page
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 4;
-        Page.Title = "Observador";
-        L_AcuObEstu.Text = "Observador";
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AcuObEstu.Text = encId.CompIdioma["L_AcuObEstu"].ToString();
         GridView1.Columns[0].HeaderText = "Fecha - Hora";
         GridView1.Columns[1].HeaderText = "Observación";
 

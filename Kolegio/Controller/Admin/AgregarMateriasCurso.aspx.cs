@@ -15,18 +15,20 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 10;
-        Page.Title = "Agregar Materias Curso";
-        L_AdminAgreMateCursoTitulo.Text = "Agregar Materias a un Curso";
-        L_AdminAgreMateCursoSubAgregarMateria.Text = "Materia :";
-        REV_materia.ErrorMessage = "No se aceptan caracteres especiales";
-        tb_materia.Attributes.Add("placeholder", "Nombre Materia");
-        btn_agregam.Text = "Agregar Materia";
-        L_AdminAgreMateCursoSubAnio.Text = "Año:";
-        L_AdminAgreMateCursoSubCurso.Text = "Curso :";
-        L_AdminAgreMateCursoSubMateria.Text = "Materia :";
-        L_AdminAgreMateCursoSubDia.Text = "Dia :";
-        L_AdminAgreMateCursoSubHora.Text = "Hora :";
-        btn_CursoMateriaAceptar.Text = "Agregar al Horario";
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AdminAgreMateCursoTitulo.Text = encId.CompIdioma["L_AdminAgreMateCursoTitulo"].ToString();
+        L_AdminAgreMateCursoSubAgregarMateria.Text = encId.CompIdioma["L_AdminAgreMateCursoSubAgregarMateria"].ToString();
+        REV_materia.ErrorMessage = encId.CompIdioma["REV_materia"].ToString();
+        tb_materia.Attributes.Add("placeholder", encId.CompIdioma["tb_materia"].ToString());
+        btn_agregam.Text = encId.CompIdioma["btn_agregam"].ToString();
+        L_AdminAgreMateCursoSubAnio.Text = encId.CompIdioma["L_AdminAgreMateCursoSubAnio"].ToString();
+        L_AdminAgreMateCursoSubCurso.Text = encId.CompIdioma["L_AdminAgreMateCursoSubCurso"].ToString();
+        L_AdminAgreMateCursoSubMateria.Text = encId.CompIdioma["L_AdminAgreMateCursoSubMateria"].ToString();
+        L_AdminAgreMateCursoSubDia.Text = encId.CompIdioma["L_AdminAgreMateCursoSubDia"].ToString();
+        L_AdminAgreMateCursoSubHora.Text = encId.CompIdioma["L_AdminAgreMateCursoSubHora"].ToString();
+        btn_CursoMateriaAceptar.Text = encId.CompIdioma["btn_CursoMateriaAceptar"].ToString();
 
         //funcion agregaraHorario        
         //L_Error_falta.Text = "Falta seleccionar";

@@ -12,8 +12,14 @@ public partial class View_Acudiente_AcudienteExcuda : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Descargar Certificado";
-        L_AcuDescargar.Text = "Excusa";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 58;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AcuDescargar.Text = encId.CompIdioma["L_AcuDescargar"].ToString();
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();

@@ -15,16 +15,19 @@ public partial class View_Acudiente_AcudienteMensaje : System.Web.UI.Page
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 3;
-        Page.Title = "Mensaje Profesor";
-        L_AcuMensTitulo.Text = "Mensaje Profesor";
-        L_AcuMensEstudiante.Text = "Estudiante :";
-        L_AcuMensProfe.Text = "Profesor :";
-        L_AcuMensAsunto.Text = "Asunto :";
-        REV_Asuto.ErrorMessage = "No se aceptan caracteres especiales";
-        L_AcuMensMensaje.Text = "Mensaje :";
-        RV_Mensaje.ErrorMessage = "No se aceptan caracteres especiales";
-        B_Enviar.Text = "Enviar";
-        L_Verificar.Text = "El correo digitado no existe";
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AcuMensTitulo.Text = encId.CompIdioma["L_AcuMensTitulo"].ToString();
+        L_AcuMensEstudiante.Text = encId.CompIdioma["L_AcuMensEstudiante"].ToString();
+        L_AcuMensProfe.Text = encId.CompIdioma["L_AcuMensProfe"].ToString();
+        L_AcuMensAsunto.Text = encId.CompIdioma["L_AcuMensAsunto"].ToString();
+        REV_Asuto.ErrorMessage = encId.CompIdioma["REV_Asuto"].ToString();
+        L_AcuMensMensaje.Text = encId.CompIdioma["L_AcuMensMensaje"].ToString();
+        RV_Mensaje.ErrorMessage = encId.CompIdioma["RV_Mensaje"].ToString();
+        B_Enviar.Text = encId.CompIdioma["B_Enviar"].ToString();
+        L_Verificar.Text = encId.CompIdioma["L_Verificar"].ToString();
         //script_mensaje="Se ha enviado su mensaje con éxito";
 
 
