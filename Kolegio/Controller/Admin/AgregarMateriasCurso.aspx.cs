@@ -92,7 +92,7 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
 
         int curso = int.Parse(ddt_curso.SelectedValue);
 
-        DataTable registro = logic.horarioEng(curso, 1);
+        DataTable registro = logic.horario(curso, 1);
         GridView1.DataSource = registro;
         GridView1.DataBind();
 

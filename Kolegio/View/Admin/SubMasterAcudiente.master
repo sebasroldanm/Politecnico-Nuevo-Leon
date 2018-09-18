@@ -28,7 +28,7 @@
                         </a>
                     </li>
                     <li style="background-color: white">
-                        <a href="EditarEliminarAcudiente.aspx">
+                        <a href="ListarAcudiente.aspx">
                             <h4>
                                 <asp:Label ID="L_SubMAcudienteEditarEliminar" runat="server"></asp:Label></h4>
                         </a>

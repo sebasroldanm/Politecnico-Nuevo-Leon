@@ -31,8 +31,8 @@ public partial class View_Admin_ListarAcudiente : System.Web.UI.Page
         GridView1.Columns[8].HeaderText = "Estudiante";
         GridView1.Columns[9].HeaderText = "Nombre";
         GridView1.Columns[10].HeaderText = "Apellido";
-        GridView1.Columns[12].HeaderText = "Documento";
-        GridView1.Columns[13].HeaderText = "Teléfono";
+        GridView1.Columns[11].HeaderText = "Documento";
+        GridView1.Columns[12].HeaderText = "Teléfono";
 
 
         Response.Cache.SetNoStore();
