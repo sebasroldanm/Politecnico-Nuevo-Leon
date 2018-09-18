@@ -177,7 +177,8 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
                 int.Parse(DDT_Ciudad.SelectedValue),
                 Session.SessionID,
                 foto,
-                Session["fotosinedit"].ToString()
+                Session["fotosinedit"].ToString(),
+                int.Parse(Session["idioma"].ToString())
                 );
         this.Page.Response.Write(usua.Notificacion);
 
@@ -236,7 +237,7 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
     {
         LUser logic = new LUser();
         UUser enc = new UUser();
-        enc = logic.CargaFotoM(System.IO.Path.GetFileName(FileUpload1.PostedFile.FileName), System.IO.Path.GetExtension(FileUpload1.PostedFile.FileName), FileUpload1.ToString(), Server.MapPath("~/FotosUser"));
+        enc = logic.CargaFotoM(System.IO.Path.GetFileName(FileUpload1.PostedFile.FileName), System.IO.Path.GetExtension(FileUpload1.PostedFile.FileName), FileUpload1.ToString(), Server.MapPath("~/FotosUser"), int.Parse(Session["idioma"].ToString()));
         try
         {
             ClientScriptManager cm = this.ClientScript;

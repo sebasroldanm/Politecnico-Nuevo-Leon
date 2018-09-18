@@ -15,16 +15,18 @@ public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 9;
-        Page.Title = "Agregar Estudiates Curso";
-        L_AdminEstuCursoTitulo.Text = "Agregar Estudiantes a un Curso";
-        L_AdminEstuCursoSubAnio.Text = "Año :";
-        L_AdminEstuCursoSubCurso.Text = "Curso :";        
-        btn_Aceptar.Text = "Agregar al Curso";
-        GridView1.Columns[0].HeaderText = "Documento";
-        GridView1.Columns[1].HeaderText = "Nombre";
-        GridView1.Columns[2].HeaderText = "Apellido";
-        GridView1.Columns[3].HeaderText = "Agregar al Curso";
-        GridView1.Columns[4].HeaderText = "Agregar Curso";
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AdminEstuCursoTitulo.Text = encId.CompIdioma["L_AdminEstuCursoTitulo"].ToString();
+        L_AdminEstuCursoSubAnio.Text = encId.CompIdioma["L_AdminEstuCursoSubAnio"].ToString();
+        L_AdminEstuCursoSubCurso.Text = encId.CompIdioma["L_AdminEstuCursoSubCurso"].ToString();
+        btn_Aceptar.Text = encId.CompIdioma["btn_Aceptar"].ToString();
+        GridView1.Columns[0].HeaderText = encId.CompIdioma["GridView1_0"].ToString();
+        GridView1.Columns[1].HeaderText = encId.CompIdioma["GridView1_1"].ToString();
+        GridView1.Columns[2].HeaderText = encId.CompIdioma["GridView1_2"].ToString();
+        GridView1.Columns[3].HeaderText = encId.CompIdioma["GridView1_3"].ToString();
+        GridView1.Columns[4].HeaderText = encId.CompIdioma["GridView1_4"].ToString();
 
 
         //L_ErrorUsuario_estudiante_curso.Text = "Debe Elegir un Curso";

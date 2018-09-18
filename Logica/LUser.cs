@@ -11,9 +11,9 @@ using System.Security.Cryptography;
 
 namespace Logica 
 {
-    public class LUser : System.Web.UI.Page
+    public class LUser
     {
-        public UUser loggear(string userName, string clave)
+        public UUser loggear(string userName, string clave, int selIdioma)
         {
             UUser user = new UUser();
             DUser datos = new DUser();
@@ -22,7 +22,7 @@ namespace Logica
             LIdioma idioma = new LIdioma();
             Int32 FORMULARIO = 40;
 
-            encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
             
             user.UserName = userName;
             user.Clave = clave;
@@ -132,7 +132,8 @@ namespace Logica
                string usuario,
                int rol,
                string fechanac,
-               string session)
+               string session,
+               int selIdioma)
         {
 
             UUser usua = new UUser();
@@ -141,7 +142,7 @@ namespace Logica
             LIdioma idioma = new LIdioma();
             Int32 FORMULARIO = 6;
 
-            encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
 
             int dep;
@@ -195,7 +196,7 @@ namespace Logica
 
 
 
-        public UUser validarUser(string usuario, string documento)
+        public UUser validarUser(string usuario, string documento, int selIdioma)
         {
             UUser usua = new UUser();
             DUser dat = new DUser();
@@ -203,7 +204,7 @@ namespace Logica
             LIdioma idioma = new LIdioma();
             Int32 FORMULARIO = 6;
 
-            encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             usua.UserName = usuario;
             usua.Documento = documento.ToString();
@@ -255,12 +256,17 @@ namespace Logica
             int rol,
             string fechanac,
             string session,
-            int id_acu
+            int id_acu, 
+            int selIdioma
             )
         {
             UUser usua = new UUser();
             DUser dat = new DUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 8;
 
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             int dep;
             dep = (departamento);
@@ -270,7 +276,7 @@ namespace Logica
             usua.Mensaje = "";
             if (departamento == 0 || ciudad == 0)
             {
-                usua.Mensaje = "Debe seleccionar una opcion";
+                usua.Mensaje = encId.CompIdioma["L_ErrorUsuario_Seleccione"].ToString();// "Debe seleccionar una opcion";
             }
             else
             {
@@ -293,7 +299,7 @@ namespace Logica
                 if (usua.Foto != null)
                 {
                     dat.insertarEstudiante(usua);
-                    usua.Notificacion = ("<script language='JavaScript'>window.alert('Estudiante Insertado con Exito');</script>");
+                    usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_insertado"].ToString() + "');</script>"; // ("<script language='JavaScript'>window.alert('Estudiante Insertado con Exito');</script>");
 
                     usua.L_Aceptar1 = false;
                     usua.B_Botones1 = true;
@@ -304,7 +310,7 @@ namespace Logica
         }
         
 
-        public UUser CargaFotoM(string fotoIO, string fotExten, string foto, string server)
+        public UUser CargaFotoM(string fotoIO, string fotExten, string foto, string server, int selIdioma)
         {
             UUser enc = new UUser();
             DUser datos = new DUser();
@@ -312,7 +318,7 @@ namespace Logica
             LIdioma idioma = new LIdioma();
             Int32 FORMULARIO = 6;
 
-            encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             string sDia = Convert.ToString(DateTime.Now.Day);
             string sMes = Convert.ToString(DateTime.Now.Month);
@@ -352,10 +358,15 @@ namespace Logica
 
 
 
-        public UUser buscarAcudiete(int departamento, int ciudad, String documento)
+        public UUser buscarAcudiete(int departamento, int ciudad, String documento, int selIdioma)
         {
             UUser usua = new UUser();
             DUser dat = new DUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 8;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             usua.Documento = documento.ToString();
 
@@ -363,7 +374,7 @@ namespace Logica
 
             if (departamento == 0 || ciudad == 0)
             {
-                usua.Mensaje = "Debe seleccionar una opcion";
+                usua.Mensaje = encId.CompIdioma["L_ErrorUsuario_Seleccione"].ToString(); //"Debe seleccionar una opcion";
             }
 
             if (registros.Rows.Count > 0)
@@ -373,12 +384,12 @@ namespace Logica
                 usua.id_Acudiente = Convert.ToString(registros.Rows[0]["id_usua"].ToString());
 
                 usua.L_Aceptar1 = true;
-                usua.Notificacion = ("<script language='JavaScript'>window.alert('Acudiente Seleccionado');</script>");
+                usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_acudiente_ok"].ToString() + "');</script>";// ("<script language='JavaScript'>window.alert('Acudiente Seleccionado');</script>");
 
             }
             else
             {
-                usua.MensajeAcudiente = "El Acudiente No se encuentra en la base de Datos";
+                usua.MensajeAcudiente = encId.CompIdioma["L_ErrorAcudiente"].ToString();// "El Acudiente No se encuentra en la base de Datos";
             }
             return usua;
         }
@@ -446,13 +457,18 @@ namespace Logica
             int ciudad,
             string session,
             string fotoup,
-            string foto
+            string foto,
+            int selIdioma
             )
         {
             UUser usua = new UUser();
             DUser dat = new DUser();
             int rol = 1;
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 16;
 
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             if (departamento == 0 || ciudad == 0)
             {

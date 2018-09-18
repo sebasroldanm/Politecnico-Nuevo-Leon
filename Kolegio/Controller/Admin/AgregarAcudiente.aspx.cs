@@ -49,8 +49,8 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
         tb_AcudienteContrasenia.Attributes.Add(" placeholder", encId.CompIdioma["tb_AcudienteContrasenia"].ToString());
         REV_AcudienteContrasenia.ErrorMessage = encId.CompIdioma["REV_AcudienteContrasenia"].ToString();
         btn_validar.Text = encId.CompIdioma["btn_validar"].ToString();
-        btn_AcudienteAceptar.Text = "Agregar";
-        btn_AcudienteNuevo.Text = "Nuevo";
+        btn_AcudienteAceptar.Text = encId.CompIdioma["btn_AcudienteAceptar"].ToString();
+        btn_AcudienteNuevo.Text = encId.CompIdioma["btn_AcudienteNuevo"].ToString();
 
 
         //AgregarAdmin
@@ -123,7 +123,8 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
             tb_AcudienteUsuario.Text,
             4,
             fechanac.Text,
-            Session.SessionID
+            Session.SessionID,
+            int.Parse(Session["idioma"].ToString())
             );
 
         L_ErrorUsuario.Text = usua.Mensaje;
@@ -164,7 +165,7 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
         LUser logica = new LUser();
         UUser usua = new UUser();
 
-        usua = logica.validarUser(tb_AcudienteUsuario.Text, tb_AcudienteId.Text);
+        usua = logica.validarUser(tb_AcudienteUsuario.Text, tb_AcudienteId.Text, int.Parse(Session["idioma"].ToString()));
         L_ErrorUsuario.Text = usua.Mensaje;
 
         btn_AcudienteAceptar.Visible = usua.L_Aceptar1;
@@ -180,7 +181,7 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
     {
         LUser logic = new LUser();
         UUser enc = new UUser();
-        enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName), System.IO.Path.GetExtension(tb_Foto.PostedFile.FileName), tb_Foto.ToString(), Server.MapPath("~/FotosUser"));
+        enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName), System.IO.Path.GetExtension(tb_Foto.PostedFile.FileName), tb_Foto.ToString(), Server.MapPath("~/FotosUser"), int.Parse(Session["idioma"].ToString()));
         try
         {
             ClientScriptManager cm = this.ClientScript;
