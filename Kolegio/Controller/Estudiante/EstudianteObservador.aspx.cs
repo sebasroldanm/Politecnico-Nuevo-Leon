@@ -11,9 +11,16 @@ public partial class View_Estudiante_EstudianteObservador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Observador";
-        L_EstuObserTitulo.Text = "Observador - Certificado";
-        btn_descargar.Text = "Descargar Certificado";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 27;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_EstuObserTitulo.Text = encId.CompIdioma["L_EstuObserTitulo"].ToString();
+        btn_descargar.Text = encId.CompIdioma["btn_descargar"].ToString();
+
         GridView1.Columns[0].HeaderText = "Día - Hora";
         GridView1.Columns[1].HeaderText = "Observación";
 

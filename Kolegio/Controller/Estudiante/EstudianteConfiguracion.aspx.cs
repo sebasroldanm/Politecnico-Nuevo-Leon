@@ -12,21 +12,27 @@ public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Pag
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Configuración";
-        L_EstuTituloConfig.Text = "Configuración";
-        L_EstuConfigUsuario.Text = "Usuario :";
-        tb_usuario.Attributes.Add("placeholder", "Usuario");
-        REV_usuario.ErrorMessage = "No se aceptan caracteres especiales";
-        L_EstuConfigContra.Text = "Contraseña :";
-        tb_contrasenia.Attributes.Add(" placeholder", "Contraseña");
-        REV_contrasenia.ErrorMessage = "No se aceptan caracteres especiales";
-        L_EstuConfigCorreo.Text = "Correo :";
-        tb_correo.Attributes.Add("placeholder", "Correo");
-        REV_correo.ErrorMessage = "No se aceptan caracteres especiales";
-        lb_foto.Text = "Foto :";
-        btn_Editar.Text = "Editar";
-        btn_Aceptar.Text = "Aceptar";
-        btn_cancelar.Text = "Cancelar";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 25;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_EstuTituloConfig.Text = encId.CompIdioma["L_EstuTituloConfig"].ToString();
+        L_EstuConfigUsuario.Text = encId.CompIdioma["L_EstuConfigUsuario"].ToString();
+        tb_usuario.Attributes.Add("placeholder", encId.CompIdioma["tb_usuario"].ToString());
+        REV_usuario.ErrorMessage = encId.CompIdioma["REV_usuario"].ToString();
+        L_EstuConfigContra.Text = encId.CompIdioma["L_EstuConfigContra"].ToString();
+        tb_contrasenia.Attributes.Add(" placeholder", encId.CompIdioma["tb_contrasenia"].ToString());
+        REV_contrasenia.ErrorMessage = encId.CompIdioma["REV_contrasenia"].ToString();
+        L_EstuConfigCorreo.Text = encId.CompIdioma["L_EstuConfigCorreo"].ToString();
+        tb_correo.Attributes.Add("placeholder", encId.CompIdioma["tb_correo"].ToString());
+        REV_correo.ErrorMessage = encId.CompIdioma["REV_correo"].ToString();
+        lb_foto.Text = encId.CompIdioma["lb_foto"].ToString();
+        btn_Editar.Text = encId.CompIdioma["btn_Editar"].ToString();
+        btn_Aceptar.Text = encId.CompIdioma["btn_Aceptar"].ToString();
+        btn_cancelar.Text = encId.CompIdioma["btn_cancelar"].ToString();
 
         //script_modificado="Datos Modificados con Exito";
 

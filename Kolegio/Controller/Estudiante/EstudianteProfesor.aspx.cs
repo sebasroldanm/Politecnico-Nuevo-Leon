@@ -13,16 +13,22 @@ public partial class View_Estudiante_EstudianteProfesor : System.Web.UI.Page
     string destinatario;
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Mensaje Profesor";
-        L_EstuMensaTitulo.Text = "Mensaje Profesor";
-        L_EstuMensProfe.Text = "Profesor :";
-        L_EstuMenAsunto.Text = "Asunto :";
-        REV_Asuto.ErrorMessage = "No se aceptan caracteres especiales";
-        L_EstuMenDestinatario.Text = "Destinatario :";
-        L_EstuMenMensaje.Text = "Mensaje :";
-        REV_Mensaje.ErrorMessage = "No se aceptan caracteres especiales";
-        B_Enviar.Text = "Enviar";
-        L_Verificar.Text = "Debe seleccionar una opcion";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 28;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_EstuMensaTitulo.Text = encId.CompIdioma["L_EstuMensaTitulo"].ToString();
+        L_EstuMensProfe.Text = encId.CompIdioma["L_EstuMensProfe"].ToString();
+        L_EstuMenAsunto.Text = encId.CompIdioma["L_EstuMenAsunto"].ToString();
+        REV_Asuto.ErrorMessage = encId.CompIdioma["REV_Asuto"].ToString();
+        L_EstuMenDestinatario.Text = encId.CompIdioma["L_EstuMenDestinatario"].ToString();
+        L_EstuMenMensaje.Text = encId.CompIdioma["L_EstuMenMensaje"].ToString();
+        REV_Mensaje.ErrorMessage = encId.CompIdioma["REV_Mensaje"].ToString();
+        B_Enviar.Text = encId.CompIdioma["B_Enviar"].ToString();
+        L_Verificar.Text = encId.CompIdioma["L_Verificar"].ToString();
 
         //script_msm_enviado="Se ha enviado su mensaje con éxito";
 

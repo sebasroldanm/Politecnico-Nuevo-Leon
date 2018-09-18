@@ -12,8 +12,13 @@ public partial class View_Estudiante_EstudianteHorario : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Horario";
-        L_EstiHorarioTitulo.Text = "Horario";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 26;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_EstiHorarioTitulo.Text = encId.CompIdioma["L_EstiHorarioTitulo"].ToString();
 
         Response.Cache.SetNoStore();
         LLogin log = new LLogin();

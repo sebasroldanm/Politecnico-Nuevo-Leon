@@ -12,8 +12,16 @@ public partial class View_Estudiante_EstudianteVernotas : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Title = "Ver Notas";
-        L_EstuVerNotasTitulo.Text = "Ver Notas";
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+        Int32 FORMULARIO = 29;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_EstuVerNotasTitulo.Text = encId.CompIdioma["L_EstuVerNotasTitulo"].ToString();
+
         GV_boletin.Columns[0].HeaderText = "Materia";
         GV_boletin.Columns[1].HeaderText = "Primer Periodo";
         GV_boletin.Columns[2].HeaderText = "Segundo Periodo";
