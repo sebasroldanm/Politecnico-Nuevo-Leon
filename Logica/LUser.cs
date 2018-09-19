@@ -472,7 +472,8 @@ namespace Logica
 
             if (departamento == 0 || ciudad == 0)
             {
-                usua.Mensaje = "Debe seleccionar una opcion";
+                usua.Mensaje = encId.CompIdioma["L_ErrorAdmin"].ToString();
+                //"Debe seleccionar una opcion";
             }
             else
             {
@@ -510,7 +511,8 @@ namespace Logica
                     if (usua.Foto != null)
                     {
                         DataTable registros = dat.EditarUsuario(usua);
-                        usua.Notificacion = "<script language='JavaScript'>window.alert('Usuario Editado con Éxito');</script>";
+                        usua.Notificacion = "script language='JavaScript'>window.alert('" + encId.CompIdioma["script_foto"].ToString() + "');</script>";
+                        //usua.Notificacion = "<script language='JavaScript'>window.alert('Usuario Editado con Éxito');</script>";
                         usua.B_Botones1 = false;
                         //btn_AdministradorAceptar.Visible = false;
 
@@ -539,7 +541,8 @@ namespace Logica
                     if (usua.Foto != null)
                     {
                         DataTable registros = dat.EditarUsuario(usua);
-                        usua.Notificacion = " <script language='JavaScript'>window.alert('Usuario Editado con Éxito');</script>";
+                        //usua.Notificacion = " <script language='JavaScript'>window.alert('Usuario Editado con Éxito');</script>";
+                        usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_foto_null"].ToString() + "');</script>";
                         usua.B_Botones1 = false;
                         //btn_AdministradorAceptar.Visible = false;
 
@@ -729,7 +732,8 @@ namespace Logica
             string correo_l,
             string destinatario,
             string asunto,
-            string mensaje
+            string mensaje,
+            int selIdioma
             )
         {
             DUser dat = new DUser();
@@ -737,6 +741,11 @@ namespace Logica
 
             usua.Correo = destinatario;
             DataTable resultado = dat.verificarCorreo(usua);
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 5;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             if (resultado.Rows.Count > 0)
             {
@@ -744,13 +753,15 @@ namespace Logica
                 string cadena = mensaje;
                 DCorreoEnviar correo = new DCorreoEnviar();
                 correo.enviarCorreoEnviar(destinatario, asunto, mensaje);
-                usua.Notificacion = "<script language='JavaScript'>window.alert('Se ha enviado su mensaje con éxito');</script>";
+                //usua.Notificacion = "<script language='JavaScript'>window.alert('Se ha enviado su mensaje con éxito');</script>";
+                usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["scrip_msm_enviado"].ToString() + "');</script>";
                 usua.Url = "AdministradorMensaje.aspx";
                 usua.Mensaje = "";
             }
             else
             {
-                usua.Mensaje = "El correo digitado no existe";
+                usua.Mensaje = encId.CompIdioma["L_Verificar"].ToString();
+                //"El correo digitado no existe";
                 usua.CDestinatario = "";
             }
 
@@ -781,7 +792,8 @@ namespace Logica
             string correo_l,
             string destinatario,
             string asunto,
-            string mensaje
+            string mensaje,
+            int selIdioma
             )
         {
             DUser dat = new DUser();
@@ -789,6 +801,13 @@ namespace Logica
 
             usua.Correo = destinatario;
             DataTable resultado = dat.verificarCorreo(usua);
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 28;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+
             if (materia == "0")
             {
                 usua.Mensaje = "Debe seleccionar una opcion";
@@ -801,7 +820,8 @@ namespace Logica
                     string cadena = mensaje;
                     DCorreoEnviar correo = new DCorreoEnviar();
                     correo.enviarCorreoEnviar(destinatario, asunto, mensaje);
-                    usua.Notificacion = "<script language='JavaScript'>window.alert('Se ha enviado su mensaje con éxito');</script>";
+                    //usua.Notificacion = "<script language='JavaScript'>window.alert('Se ha enviado su mensaje con éxito');</script>";
+                    usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_msm_enviado"].ToString() + "');</script>";
                     usua.Url = "EstudianteProfesor.aspx";
                     usua.Mensaje = "";
                 }

@@ -29,8 +29,9 @@ public partial class View_Estudiante_EstudianteProfesor : System.Web.UI.Page
         REV_Mensaje.ErrorMessage = encId.CompIdioma["REV_Mensaje"].ToString();
         B_Enviar.Text = encId.CompIdioma["B_Enviar"].ToString();
         L_Verificar.Text = encId.CompIdioma["L_Verificar"].ToString();
-
+        //falta: seleccione una opcion
         //script_msm_enviado="Se ha enviado su mensaje con éxito";
+        //falta: el correo digitado no existe
 
         Response.Cache.SetNoStore();
         UUser usua = new UUser();
@@ -71,7 +72,8 @@ public partial class View_Estudiante_EstudianteProfesor : System.Web.UI.Page
             Session["correo"].ToString(),
             TB_Destinatario.Text,
             TB_Asuto.Text,
-            TB_Mensaje.Text
+            TB_Mensaje.Text,
+            int.Parse(Session["idioma"].ToString())
             );
         L_Verificar.Text = usua.Mensaje;
         this.Page.Response.Write(usua.Notificacion);

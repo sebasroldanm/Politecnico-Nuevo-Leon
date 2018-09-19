@@ -66,7 +66,8 @@ public partial class View_Acudiente_AcudienteMensaje : System.Web.UI.Page
             Session["correo"].ToString(),
             DDL_Profesor.SelectedValue.ToString(),
             TB_Asuto.Text,
-            TB_Mensaje.Text
+            TB_Mensaje.Text,
+            int.Parse(Session["idioma"].ToString())
             );
 
         this.Page.Response.Write(usua.Notificacion);

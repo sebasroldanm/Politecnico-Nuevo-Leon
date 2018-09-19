@@ -30,7 +30,7 @@ public partial class View_Administrador_AdministradorMensaje : System.Web.UI.Pag
 
 
         //verificarCorreo
-        L_Verificar.Text = "El correo digitado no existe";
+        //L_Verificar.Text = "El correo digitado no existe";
         //scrip_msm_enviado="Se ha enviado su mensaje con éxito";
 
         Response.Cache.SetNoStore();
@@ -68,7 +68,8 @@ public partial class View_Administrador_AdministradorMensaje : System.Web.UI.Pag
             Session["correo"].ToString(),
             TB_Destinatario.Text,
             TB_Asuto.Text,
-            TB_Mensaje.Text
+            TB_Mensaje.Text,
+            int.Parse(Session["idioma"].ToString())
             );
 
         this.Page.Response.Write(usua.Notificacion);
