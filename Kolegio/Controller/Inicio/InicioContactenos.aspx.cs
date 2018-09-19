@@ -44,7 +44,8 @@ public partial class View_Inicio_InicioContactenos : System.Web.UI.Page
             TB_Apellidos.Text, 
             TB_Correo.Text, 
             TB_Telefono.Text, 
-            TB_Mensaje.Text);
+            TB_Mensaje.Text,
+            int.Parse(Session["idioma"].ToString()));
 
         this.Page.Response.Write(usua.Notificacion);
         Response.Redirect(usua.Url);

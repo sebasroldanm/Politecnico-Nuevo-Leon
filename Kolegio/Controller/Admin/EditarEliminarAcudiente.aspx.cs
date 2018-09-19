@@ -117,7 +117,7 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
         UUser usua = new UUser();
         
 
-        usua = logica.editarBuscarUser(int.Parse(tb_AcudienteId.Text));
+        usua = logica.editarBuscarUser(int.Parse(tb_AcudienteId.Text), int.Parse(Session["idioma"].ToString()));
 
         tb_AcudienteId.ReadOnly = usua.B_Botones1;
         tb_AcudienteNombre.ReadOnly = usua.L_Aceptar1;
@@ -137,6 +137,7 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
         ddt_lugarnacimDep.SelectedValue = usua.Departamento;
         DDT_Ciudad.DataBind();
         DDT_Ciudad.SelectedValue = usua.Ciudad;
+        DDL_Estado.SelectedValue = usua.Estado;
         fechanac.ReadOnly = usua.L_Aceptar1;
         fechanac.Text = usua.fecha_nacimiento;
         ImagenEst.ImageUrl = usua.Foto;

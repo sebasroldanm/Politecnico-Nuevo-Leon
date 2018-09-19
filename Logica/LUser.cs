@@ -394,10 +394,15 @@ namespace Logica
             return usua;
         }
 
-        public UUser editarBuscarUser(int documento )
+        public UUser editarBuscarUser(int documento, int selIdioma)
         {
             UUser usua = new UUser();
             DUser dat = new DUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 16;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             usua.Documento = documento.ToString();
 
@@ -425,18 +430,18 @@ namespace Logica
 
                 if (registros.Rows[0]["estado"].ToString() == "True")
                 {
-                    usua.Estado = "Activo";
+                    usua.Estado = encId.CompIdioma["DDL_Estado"].ToString();
                 }
                 else
                 {
-                    usua.Estado = "Inactivo";
+                    usua.Estado = encId.CompIdioma["DDL_Estado2"].ToString();
                 }
                 usua.L_Aceptar1 = false;
                 usua.B_Botones1 = true;
             }
             else
             {
-                usua.Mensaje = "Sin Registros";
+                usua.Mensaje = encId.CompIdioma["L_ErrorAdmin_sin_registro"].ToString(); //"Sin Registros";
             }
 
             return usua;
@@ -479,7 +484,7 @@ namespace Logica
             {
                 String est;
 
-                if (estado == "Activo")
+                if (estado == "Activo" || estado == "Active")
                 {
                     est = "true";
                 }
@@ -810,7 +815,7 @@ namespace Logica
 
             if (materia == "0")
             {
-                usua.Mensaje = "Debe seleccionar una opcion";
+                usua.Mensaje = encId.CompIdioma["L_Verificar"].ToString(); //"Debe seleccionar una opcion";
             }
             else
             {
@@ -827,7 +832,8 @@ namespace Logica
                 }
                 else
                 {
-                    usua.Mensaje = "El correo digitado no existe";
+                    usua.Mensaje = encId.CompIdioma["L_Error_correo"].ToString();
+
                     usua.CDestinatario = "";
                 }
             }
@@ -839,11 +845,17 @@ namespace Logica
             string apellidos,
             string correo_l,
             string telefono,
-            string mensaje
+            string mensaje,
+            int selIdioma
             )
         {
             DUser dat = new DUser();
             UUser usua = new UUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 30;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             string destinatario = "colegiorespuesta@gmail.com";
             string asunto = "**¡¡CONTACTENOS!!**";
@@ -858,39 +870,19 @@ namespace Logica
                 string cadena = mensaje;
                 DCorreoEnviar correo = new DCorreoEnviar();
                 correo.enviarCorreoEnviar(destinatario, asunto, mensaje);
-                usua.Notificacion = "<script language='JavaScript'>window.alert('Se ha enviado su mensaje con éxito');</script>";
+                //usua.Notificacion = "<script language='JavaScript'>window.alert('Se ha enviado su mensaje con éxito');</script>";
+                usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_men_enviado"].ToString() + "');</script>";
                 usua.Url = "InicioNosotros.aspx";
             }
             else
             {
-                usua.Notificacion = "<script language='JavaScript'>window.alert('Ha ocurrido un problema.');</script>";
+                //usua.Notificacion = "<script language='JavaScript'>window.alert('Ha ocurrido un problema.');</script>";
+                usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_problema"].ToString() + "');</script>";
             }
             return usua;
         }
 
-        //public UUser acudienteBoletin(string anio, int idEstudiante)
-        //{
-        //    DUser dat = new DUser();
-        //    UUser usua = new UUser();
-
-        //    DataTable re = dat.obtenerAniodeCurso(anio);
-        //    usua.Año = re.Rows[0]["id_anio"].ToString();
-        //    usua.Id_estudiante = idEstudiante.ToString();
-
-        //    DataTable registros = dat.obtenerCursoEst(usua);
-        //    if (registros.Rows.Count > 0)
-        //    {
-        //        Session["anio"] = registros.Rows[0]["id_ancu"].ToString();
-        //        Session["est"] = idEstudiante;
-        //    }
-        //    else
-        //    {
-        //        Session["anio"] = "0";
-        //        Session["est"] = idEstudiante;
-        //    }
-
-        //    return usua;
-        //}
+        
 
         public UUser PL_AcudienteObservador(string estudiante)
         {
@@ -988,11 +980,16 @@ namespace Logica
 
         ///////////////////////CONFIGURACION DE PAGINA//////////////////////
 
-        public UUser ModificarPaginaInicio(string nosotros, string mision, string vision, string session)
+        public UUser ModificarPaginaInicio(string nosotros, string mision, string vision, string session, int selIdioma)
         {
 
             UUser usua = new UUser();
             DUser dat = new DUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 19;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             usua.Inicio = nosotros;
             usua.Mision = mision;
@@ -1002,7 +999,8 @@ namespace Logica
 
 
             DataTable registros = dat.editarInicio(usua);
-            usua.Notificacion = "<script language='JavaScript'>window.alert('Datos Modificados');</script>";
+            usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_datos_modificados"].ToString() + "');</script>";
+            //usua.Notificacion = "<script language='JavaScript'>window.alert('Datos Modificados');</script>";
             return usua;
 
 
@@ -1033,17 +1031,24 @@ namespace Logica
 
         }
 
-        public UUser insertarfechafin(string fechater)
+        public UUser insertarfechafin(string fechater, int selIdioma)
         {
 
             UUser usua = new UUser();
             DUser dat = new DUser();
 
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 19;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
             usua.Año = fechater;
             dat.editaFinaño(usua);
             bool ok = true;
             dat.editaBool(ok);
-            usua.Notificacion = "<script language='JavaScript'>window.alert('Insertado con Exito');</script>";
+            usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_datos_insertado"].ToString() + "');</script>";
+            //usua.Notificacion = "<script language='JavaScript'>window.alert('Insertado con Exito');</script>";
 
             return usua;
         }
@@ -1061,10 +1066,15 @@ namespace Logica
 
         ////////////////////////FIN CONFIGURACION PAGINA//////////////////     
 
-        public UUser recuperarContra(string userName)
+        public UUser recuperarContra(string userName, int selIdioma)
         {
             UUser usua = new UUser();
             DUser dat = new DUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 41;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             System.Data.DataTable validez = dat.generarToken(userName);
             if (int.Parse(validez.Rows[0]["id_usua"].ToString()) > 0)
@@ -1088,15 +1098,15 @@ namespace Logica
                 String mensaje = "Su link de acceso es: " + "http://localhost:58629/View/Contrasenia.aspx?" + userToken;
                 correo.enviarCorreo(token.Correo, userToken, mensaje);
 
-                usua.Mensaje = "Revisar su correo para recuperar contraseña";
+                usua.Mensaje = encId.CompIdioma["L_Verificar_ver_correo"].ToString(); //"Revisar su correo para recuperar contraseña";
             }
             else if (int.Parse(validez.Rows[0]["id_usua"].ToString()) == -2)
             {
-                usua.Mensaje = "Ya extsite un link de recuperación, por favor verifique su correo.";
+                usua.Mensaje = encId.CompIdioma["L_Verificar_ver_link"].ToString(); //"Ya extsite un link de recuperación, por favor verifique su correo.";
             }
             else
             {
-                usua.Mensaje = "El usuario digitado no existe";
+                usua.Mensaje = encId.CompIdioma["L_Verificar_no_existe"].ToString(); //"El usuario digitado no existe";
             }
 
             return usua;
@@ -1117,11 +1127,16 @@ namespace Logica
             return output.ToString();
         }
 
-        public UUser cambiarContra(int QueryString, string Query, string session)
+        public UUser cambiarContra(int QueryString, string Query, string session, int selIdioma)
         {
             UUser usua = new UUser();
             DUser dat = new DUser();
-           
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 42;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
             if (QueryString > 0)
             {
                 DataTable info = dat.obtenerUsusarioToken(Query);
@@ -1129,13 +1144,17 @@ namespace Logica
                 if (int.Parse(info.Rows[0][0].ToString()) == -1)
                 {
                     //this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('El Token es invalido. Genere uno nuevo');window.location=\"Loggin.aspx\"</script>");
-                    usua.Notificacion = "<script language='JavaScript'>window.alert('El Token es invalido. Genere uno nuevo');</script>";
+                    
+                    //usua.Notificacion = "<script language='JavaScript'>window.alert('El Token es invalido. Genere uno nuevo');</script>";
+                    usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_invalido"].ToString() + "');</script>";
                     usua.Url = "~/View/Loggin.aspx";
                 }
                 else if (int.Parse(info.Rows[0][0].ToString()) == -1)
                 {
                     //this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('El Token esta vencido. Genere uno nuevo');window.location=\"Loggin.aspx\"</script>");
-                    usua.Notificacion = "<script language='JavaScript'>window.alert('El Token esta vencido. Genere uno nuevo');</script>";
+                    
+                    //usua.Notificacion = "<script language='JavaScript'>window.alert('El Token esta vencido. Genere uno nuevo');</script>";
+                    usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_vencido"].ToString() + "');</script>";
                     usua.Url = "~/View/Loggin.aspx";
                 }
                 else

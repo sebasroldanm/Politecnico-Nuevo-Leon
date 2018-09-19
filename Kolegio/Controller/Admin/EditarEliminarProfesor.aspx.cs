@@ -109,7 +109,7 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
         LUser logica = new LUser();
         UUser usua = new UUser();
 
-        usua = logica.editarBuscarUser(int.Parse(tb_DocenteId.Text));
+        usua = logica.editarBuscarUser(int.Parse(tb_DocenteId.Text), int.Parse(Session["idioma"].ToString()));
         tb_DocenteId.ReadOnly = usua.B_Botones1;
         tb_DocenteNombre.ReadOnly = usua.L_Aceptar1;
         tb_DocenteNombre.Text = usua.Nombre;
@@ -128,6 +128,7 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
         ddt_lugarnacimDep.SelectedValue = usua.Departamento;
         DDT_Ciudad.DataBind();
         DDT_Ciudad.SelectedValue = usua.Ciudad;
+        DDL_Estado.SelectedValue = usua.Estado;
         fechanac.ReadOnly = usua.L_Aceptar1;
         fechanac.Text = usua.fecha_nacimiento;
         ImagenEst.ImageUrl = usua.Foto;

@@ -42,7 +42,8 @@ public partial class View_Recuperar : System.Web.UI.Page
         LUser logica = new LUser();
         UUser usua = new UUser();
 
-        usua = logica.recuperarContra(TB_Usuario.Text);
+        usua = logica.recuperarContra(TB_Usuario.Text, int.Parse(Session["idioma"].ToString())
+);
         L_Verificar.Text = usua.Mensaje;
         
     }

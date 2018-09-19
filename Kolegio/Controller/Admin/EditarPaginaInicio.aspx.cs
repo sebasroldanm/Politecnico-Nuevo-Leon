@@ -71,7 +71,8 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
             TB_Nosotros.Text,
             TB_Mision.Text,
             TB_Vision.Text,
-            Session.SessionID
+            Session.SessionID,
+            int.Parse(Session["idioma"].ToString())
             );
 
         this.Page.Response.Write(usua.Notificacion);
@@ -123,7 +124,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         LUser logica = new LUser();
         UUser usua = new UUser();
 
-        usua = logica.insertarfechafin(fechanac.Text);
+        usua = logica.insertarfechafin(fechanac.Text, int.Parse(Session["idioma"].ToString()));
 
         this.Page.Response.Write(usua.Notificacion);
 

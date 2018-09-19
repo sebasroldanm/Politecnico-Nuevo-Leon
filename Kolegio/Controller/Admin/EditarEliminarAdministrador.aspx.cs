@@ -109,7 +109,7 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
         LUser logica = new LUser();
         UUser usua = new UUser();
 
-        usua = logica.editarBuscarUser(int.Parse(tb_AministradorAdministradorId.Text));
+        usua = logica.editarBuscarUser(int.Parse(tb_AministradorAdministradorId.Text), int.Parse(Session["idioma"].ToString()));
 
 
         tb_AministradorAdministradorId.ReadOnly = usua.B_Botones1;
@@ -129,6 +129,7 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
         tb_AdministradorContrasenia.Text = usua.Clave;
         ddt_lugarnacimDep.SelectedValue = usua.Departamento;
         DDT_Ciudad.DataBind();
+        DDL_Estado.SelectedValue = usua.Estado;
         DDT_Ciudad.SelectedValue = usua.Ciudad;
         fechanac.ReadOnly = usua.L_Aceptar1;
         fechanac.Text = usua.fecha_nacimiento;

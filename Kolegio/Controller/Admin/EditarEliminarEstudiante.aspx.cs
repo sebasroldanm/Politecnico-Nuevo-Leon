@@ -125,7 +125,7 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
         LUser logica = new LUser();
         UUser usua = new UUser();
 
-        usua = logica.editarBuscarUser(int.Parse(tb_EstudianteId.Text));
+        usua = logica.editarBuscarUser(int.Parse(tb_EstudianteId.Text), int.Parse(Session["idioma"].ToString()));
 
 
         tb_EstudianteId.ReadOnly = usua.B_Botones1;
@@ -146,6 +146,7 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
         ddt_lugarnacimDep.SelectedValue = usua.Departamento;
         DDT_Ciudad.DataBind();
         DDT_Ciudad.SelectedValue = usua.Ciudad;
+        DDL_Estado.SelectedValue = usua.Estado;
         fechanac.ReadOnly = usua.L_Aceptar1;
         fechanac.Text = usua.fecha_nacimiento;
         ImagenEst.ImageUrl = usua.Foto;
