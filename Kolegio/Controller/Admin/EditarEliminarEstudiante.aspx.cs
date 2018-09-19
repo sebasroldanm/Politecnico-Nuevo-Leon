@@ -20,6 +20,7 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
         encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
 
         Page.Title = encId.CompIdioma["Title"].ToString();
+        //[L_AdminEditEstuTitulo] ???????????????????????????????????????????????
         L_AdminEditEstuId.Text = encId.CompIdioma["L_AdminEditEstuId"].ToString();
         tb_EstudianteId.Attributes.Add("placeholder", encId.CompIdioma["tb_EstudianteId"].ToString());
         REV_EstudianteId.ErrorMessage = encId.CompIdioma["REV_EstudianteId"].ToString();
@@ -69,7 +70,8 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
         //script_foto_cargada="El archivo de imagen ha sido cargado;
 
 
-
+        DDL_Estado.Items.Add("Activo");
+        DDL_Estado.Items.Add("Inactivo");
         //DDL_Estado
         //item1="Activo";
         //item2="Inactivo";

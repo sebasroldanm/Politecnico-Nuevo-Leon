@@ -74,7 +74,8 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
         //DDL_Estado
         //item1="Activo";
         //item2="Inactivo";
-
+        DDL_Estado.Items.Add("Activo");
+        DDL_Estado.Items.Add("Inactivo");
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();

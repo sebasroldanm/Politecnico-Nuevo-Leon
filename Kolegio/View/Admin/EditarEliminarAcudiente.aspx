@@ -125,8 +125,6 @@
                 <label for="estado" class="control-label" style="color: #FFFFFF">
                     <asp:Label ID="L_AdminEditAcuEstado" runat="server"></asp:Label></label>&nbsp;
                        <asp:DropDownList ID="DDL_Estado" Class="form-control" runat="server">
-                           <asp:ListItem>Activo</asp:ListItem>
-                           <asp:ListItem>Inactivo</asp:ListItem>
                        </asp:DropDownList>
             </div>
         </div>

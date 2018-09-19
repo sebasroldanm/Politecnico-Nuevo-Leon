@@ -124,8 +124,6 @@
             <div class="form-group">
                 <label for="estado" class="control-label" style="color: #FFFFFF">Estado :</label>
                 <asp:DropDownList ID="DDL_Estado" Class="form-control" runat="server">
-                    <asp:ListItem>Activo</asp:ListItem>
-                    <asp:ListItem>Inactivo</asp:ListItem>
                 </asp:DropDownList>
             </div>
         </div>
