@@ -59,8 +59,8 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
 
         //editarAdmin
         //L_ErrorAdmin.Text_sin_selecionar = "Debe seleccionar una opcion";
-        //script_foto = "Usuario Insertado con Exito";
-        //script_foto_null Usuario = "Insertado con Exito";
+        //script_foto = "Usuario Editado con Exito";
+        //script_foto_null Usuario = "Editado con Exito";
 
 
         //cargarFoto
