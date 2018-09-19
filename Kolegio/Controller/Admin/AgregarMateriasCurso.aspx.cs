@@ -23,6 +23,7 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
         REV_materia.ErrorMessage = encId.CompIdioma["REV_materia"].ToString();
         tb_materia.Attributes.Add("placeholder", encId.CompIdioma["tb_materia"].ToString());
         btn_agregam.Text = encId.CompIdioma["btn_agregam"].ToString();
+        L_Docente.Text = encId.CompIdioma["L_Docente"].ToString();
         L_AdminAgreMateCursoSubAnio.Text = encId.CompIdioma["L_AdminAgreMateCursoSubAnio"].ToString();
         L_AdminAgreMateCursoSubCurso.Text = encId.CompIdioma["L_AdminAgreMateCursoSubCurso"].ToString();
         L_AdminAgreMateCursoSubMateria.Text = encId.CompIdioma["L_AdminAgreMateCursoSubMateria"].ToString();
@@ -31,14 +32,14 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
         btn_CursoMateriaAceptar.Text = encId.CompIdioma["btn_CursoMateriaAceptar"].ToString();
 
         //funcion agregaraHorario        
-        //L_Error_falta.Text = "Falta seleccionar";
-        //L_Error.Text_materia_insertada = "Materia Insertada a Curso con Exito";
-        //L_Error.Text_docente_cruce = "El docente presenta un cruce de Horarios";
-        //L_Error.Text_curce = "Presenta un cruce de Horarios";
+        //L_Error_falta = "Falta seleccionar";
+        //L_Error_materia_insertada = "Materia Insertada a Curso con Exito";
+        //L_Error_docente_cruce = "El docente presenta un cruce de Horarios";
+        //L_Error_curce = "Presenta un cruce de Horarios";
 
         //funcion agregarMateria
-        //L_Error.Text_falta = "Materia Insertada con Exito";
-        //L_Error.Text_materia_ya_esta = "La Materia ya se encuentra en nuestra Base de Datos";
+        //L_Error_falta_materia = "Materia Insertada con Exito";
+        //L_Error_materia_ya_esta = "La Materia ya se encuentra en nuestra Base de Datos";
 
 
         //pasarAñoClick

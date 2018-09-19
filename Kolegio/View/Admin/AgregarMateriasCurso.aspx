@@ -60,7 +60,8 @@
 
             <asp:ObjectDataSource ID="ODSmateria" runat="server" SelectMethod="obtenerMateria" TypeName="Datos.DUser"></asp:ObjectDataSource>
 
-            <label for="ddt_Docente" class="control-label" style="color: #FFFFFF">Docente :</label>
+            <label for="ddt_Docente" class="control-label" style="color: #FFFFFF">
+            <asp:Label ID="L_Docente" class="control-label" runat="server"></asp:Label></label>
             <span style="color: #555555; background-color: #FFFFFF"></span>
             <asp:DropDownList ID="ddt_Docente" Class="form-control" runat="server" DataSourceID="ODSdocente" DataTextField="nombre_usua" DataValueField="id_usua"></asp:DropDownList>
             <asp:ObjectDataSource ID="ODSdocente" runat="server" SelectMethod="listardocenteddl" TypeName="Datos.DUser"></asp:ObjectDataSource>
