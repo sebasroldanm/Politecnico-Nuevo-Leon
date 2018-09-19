@@ -22,7 +22,17 @@ public partial class View_Admin_GenerarDiploma : System.Web.UI.Page
         L_AdminGenerarTitulo.Text = encId.CompIdioma["L_AdminGenerarTitulo"].ToString();
         L_AdminGenerarAño.Text = encId.CompIdioma["L_AdminGenerarAño"].ToString();
         L_AdminGenerarCurso.Text = encId.CompIdioma["L_AdminGenerarCurso"].ToString();
-        //GW
+        GridView1.Columns[0].HeaderText = "Foto";
+        GridView1.Columns[1].HeaderText = "Apellido";
+        GridView1.Columns[2].HeaderText = "Nombre";
+        GridView1.Columns[3].HeaderText = "Documento";
+        GridView1.Columns[4].HeaderText = "Correo";
+        GridView1.Columns[5].HeaderText = "Teléfono";
+        GridView1.Columns[6].HeaderText = "Usuario";
+        GridView1.Columns[7].HeaderText = "Contraseña";
+        GridView1.Columns[8].HeaderText = "Estado";
+        GridView1.Columns[9].HeaderText = "Diploma";
+
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
