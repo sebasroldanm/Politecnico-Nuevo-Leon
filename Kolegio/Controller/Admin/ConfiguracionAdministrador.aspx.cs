@@ -32,7 +32,7 @@ public partial class View_Admin_ConfiguraionAdministrador : System.Web.UI.Page
         btn_Editar.Text = encId.CompIdioma["btn_Editar"].ToString();
         btn_Aceptar.Text = encId.CompIdioma["btn_Aceptar"].ToString();
         btn_cancelar.Text = encId.CompIdioma["btn_cancelar"].ToString();
-
+        lb_foto.Text = encId.CompIdioma["lb_foto"].ToString();
 
         //despues de fucion modificarUsuario -> this.Page.Repose.Write
         //srcipt = "Datos Modificados con Exito";
