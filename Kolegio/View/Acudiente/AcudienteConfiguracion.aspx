@@ -33,7 +33,7 @@
                     <label for="tb_usuario" typeof="text" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AdminConfigUsuario" runat="server"></asp:Label> &nbsp;&nbsp;&nbsp;&nbsp;</label>
                     &nbsp;<asp:TextBox ID="tb_usuario" runat="server" class="form-control" title="Usuario"  Width="126px" MaxLength="20"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RV_user" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="tb_usuario" ValidationGroup="form_ejm" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="REV_usuario" runat="server" ControlToValidate="tb_usuario"  ValidationExpression="^[a-zA-Z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="form_ejm"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="REV_usuario" runat="server" ControlToValidate="tb_usuario"  ValidationExpression="^[a-zA-Z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="form_ejm"></asp:RegularExpressionValidator><br />
                     <label for="tb_contrasenia" typeof="text" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AdminConfigContra" runat="server"></asp:Label></label>
                     <asp:TextBox ID="tb_contrasenia" Type="text" runat="server" class="form-control" title="Contraseña" Width="180px" MaxLength="30"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RV_contrasenia" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="tb_contrasenia" ValidationGroup="form_ejm" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator>
