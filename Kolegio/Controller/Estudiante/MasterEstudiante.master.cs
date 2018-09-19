@@ -20,6 +20,7 @@ public partial class View_MasterEstudiante : System.Web.UI.MasterPage
         L_EstuMTitulo.Text = encId.CompIdioma["L_EstuMTitulo"].ToString();
         L_EstuMHorario.Text = encId.CompIdioma["L_EstuMHorario"].ToString();
         L_EstuMCertifica.Text = encId.CompIdioma["L_EstuMCertifica"].ToString();
+        L_EstuMVerNotas.Text = encId.CompIdioma["L_EstuMVerNotas"].ToString();
         L_EstuMProfe.Text = encId.CompIdioma["L_EstuMProfe"].ToString();
         L_EstuMConfig.Text = encId.CompIdioma["L_EstuMConfig"].ToString();
         L_EstuMCerrar.Text = encId.CompIdioma["L_EstuMCerrar"].ToString();

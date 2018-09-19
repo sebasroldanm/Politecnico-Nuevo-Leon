@@ -54,8 +54,8 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         btn_validar.Text = encId.CompIdioma["btn_validar"].ToString();
        
         //Por Agregar
-        //btn_AdministradorAceptar.Text = encId.CompIdioma["btn_AdministradorAceptar"].ToString();
-        //btn_EstudianteNuevo.Text = encId.CompIdioma["btn_EstudianteNuevo"].ToString();
+        btn_AdministradorAceptar.Text = encId.CompIdioma["btn_AdministradorAceptar"].ToString();
+        btn_AdministradorNuevo.Text = encId.CompIdioma["btn_AdministradorNuevo"].ToString();
 
 
         //AgregarAdmin
@@ -133,7 +133,7 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         L_ErrorUsuario.Text = usua.Mensaje;
         this.Page.Response.Write(usua.Notificacion);
         btn_AdministradorAceptar.Visible = usua.L_Aceptar1;
-        btn_EstudianteNuevo.Visible = usua.B_Botones1;
+        btn_AdministradorNuevo.Visible = usua.B_Botones1;
 
         
     }
@@ -151,7 +151,7 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         tb_AdministradorTelefono.Text = "";
         tb_AministradorAdministradorId.Text = "";
         tb_AministradorAdministradorId.Focus();
-        btn_EstudianteNuevo.Visible = false;
+        btn_AdministradorNuevo.Visible = false;
         btn_validar.Visible = true;
         L_ErrorUsuario.Text = "";     
         tb_AdministradorUsuario.ReadOnly = false;
