@@ -69,7 +69,7 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
         //script_error_formato="Solo se admiten imagenes en formato Jpeg o Gif";
         //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
         //script_foto_cargada="El archivo de imagen ha sido cargado";
-
+        DDL_Estado.Items.Clear();
         DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado"].ToString());
         DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado2"].ToString());
 

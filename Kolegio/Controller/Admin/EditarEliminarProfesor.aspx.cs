@@ -74,6 +74,7 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
         //DDL_Estado
         //item1="Activo";
         //item2="Inactivo";
+        DDL_Estado.Items.Clear();
         DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado"].ToString());
         DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado2"].ToString());
 

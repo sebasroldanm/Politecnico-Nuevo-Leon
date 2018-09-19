@@ -54,6 +54,7 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
         //ho_jueves = "Jueves";
         //ho_viernes = "Viernes";
         //ho_libre = "Libre";
+        ddt_Dia.Items.Clear();
         ddt_Dia.Items.Add(encId.CompIdioma["ho_lunes"].ToString());
         ddt_Dia.Items.Add(encId.CompIdioma["ho_martes"].ToString());
         ddt_Dia.Items.Add(encId.CompIdioma["ho_miercoles"].ToString());
@@ -62,6 +63,7 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
 
 
         Response.Cache.SetNoStore();
+        GridView1.DataBind();
         horario();
         LLogin logica = new LLogin();
         UUser usua = new UUser();
@@ -122,6 +124,7 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
         user = l_reg.agregarMateria(tb_materia.Text, Session.SessionID, int.Parse(Session["idioma"].ToString()));
 
         L_Error.Text = user.Mensaje;
+        GridView1.DataBind();
     }
 
     protected void btn_pasaranio_Click(object sender, EventArgs e)

@@ -52,6 +52,7 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         tb_AdministradorContrasenia.Attributes.Add(" placeholder", encId.CompIdioma["tb_AdministradorContrasenia"].ToString());
         REV_AdministradorContrasenia.ErrorMessage = encId.CompIdioma["REV_AdministradorContrasenia"].ToString();
         btn_validar.Text = encId.CompIdioma["btn_validar"].ToString();
+       
         //Por Agregar
         //btn_AdministradorAceptar.Text = encId.CompIdioma["btn_AdministradorAceptar"].ToString();
         //btn_EstudianteNuevo.Text = encId.CompIdioma["btn_EstudianteNuevo"].ToString();
