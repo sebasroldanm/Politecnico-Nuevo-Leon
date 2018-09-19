@@ -51,7 +51,7 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
         UUser enc = new UUser();
         LReg logic = new LReg();
 
-        enc = logic.pasarAño();
+        enc = logic.pasarAño(int.Parse(Session["idioma"].ToString()));
         this.Page.Response.Write(enc.Notificacion);
 
     }

@@ -70,11 +70,6 @@
                 <asp:Label ID="L_AdminAgreMateCursoSubDia" runat="server"></asp:Label></label>
             <asp:DropDownList ID="ddt_Dia" Class="form-control" runat="server">
                 <asp:ListItem Value="0">Seleccione</asp:ListItem>
-                <asp:ListItem>Lunes</asp:ListItem>
-                <asp:ListItem>Martes</asp:ListItem>
-                <asp:ListItem>Miercoles</asp:ListItem>
-                <asp:ListItem>Jueves</asp:ListItem>
-                <asp:ListItem>Viernes</asp:ListItem>
             </asp:DropDownList>
 
             <label for="ddt_Hora" class="control-label" style="color: #FFFFFF">

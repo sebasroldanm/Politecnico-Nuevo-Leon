@@ -63,7 +63,7 @@ public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
         UUser enc = new UUser();
         LReg logic = new LReg();
 
-        enc = logic.selecEstudianteACurso(ddt_curso.SelectedValue, GridView1.SelectedRow.Cells[0].Text);
+        enc = logic.selecEstudianteACurso(ddt_curso.SelectedValue, GridView1.SelectedRow.Cells[0].Text, int.Parse(Session["idioma"].ToString()));
         GridView1.DataBind();
         L_ErrorUsuario.Text = enc.Mensaje; 
     }
@@ -73,7 +73,7 @@ public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
         UUser enc = new UUser();
         LReg logic = new LReg();
 
-        enc = logic.agregarEstudianteACurso(ddt_anio.SelectedValue, ddt_curso.SelectedValue, GridView1.Rows.Count, GridView1);
+        enc = logic.agregarEstudianteACurso(ddt_anio.SelectedValue, ddt_curso.SelectedValue, GridView1.Rows.Count, GridView1, int.Parse(Session["idioma"].ToString()));
                
         L_ErrorUsuario.Text = enc.Mensaje;
         L_OkUsuario.Text = enc.MensajeAcudiente;

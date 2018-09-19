@@ -83,7 +83,7 @@ public partial class View_Profesor_ProfesorMensaje : System.Web.UI.Page
         string asunto = TB_Asuto.Text;
         string mensaje = TB_Mensaje.Text;
 
-        enc = logic.enviarMensajeProf(DDL_Materia.SelectedValue.ToString(), DDL_Alumno.SelectedValue.ToString(), DDL_Curso.SelectedValue.ToString(), userId, persona, apePersona, correo_l, asunto, mensaje, TB_Destinatario.Text.ToString(), destinatario);
+        enc = logic.enviarMensajeProf(DDL_Materia.SelectedValue.ToString(), DDL_Alumno.SelectedValue.ToString(), DDL_Curso.SelectedValue.ToString(), userId, persona, apePersona, correo_l, asunto, mensaje, TB_Destinatario.Text.ToString(), destinatario, int.Parse(Session["idioma"].ToString()));
 
         this.RegisterStartupScript(enc.MensajeAcudiente, enc.Notificacion);
 

@@ -31,6 +31,11 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         L_AdminPagInicioFechaFin.Text = encId.CompIdioma["L_AdminPagInicioFechaFin"].ToString();
         B_Terminaranio.Text = encId.CompIdioma["B_Terminaranio"].ToString();
 
+        //---------------Boton Pasar Año, Desabilitado ----------------//
+        L_AdminPagInicioFechaFin.Visible = false;
+        fechanac.Visible = false;
+        B_Terminaranio.Visible = false;
+        //-------------------------------------------------------------//
 
         //ModificarPaginaInicio
         //script_datos_modificados="Datos Modificados";

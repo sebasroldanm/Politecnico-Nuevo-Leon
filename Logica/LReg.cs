@@ -8,9 +8,14 @@ namespace Logica
 {
     public class LReg
     {
-        public DataTable horario(int curso, int hor_tipo)
+        public DataTable horario(int curso, int hor_tipo, int selIdioma)
         {
             DUser datos = new DUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 10;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             string l8 = " ", m8 = " ", w8 = " ", j8 = " ", v8 = " ", l10 = " ", m10 = " ", w10 = " ", j10 = " ", v10 = " ", l12 = " ", m12 = " ", w12 = " ", j12 = " ", v12 = " ";
 
@@ -42,89 +47,89 @@ namespace Logica
 
             DataTable Dt = new DataTable();
             Dt.Columns.Add("      ", typeof(string));
-            Dt.Columns.Add("  Lunes  ", typeof(string));
-            Dt.Columns.Add("  Martes  ", typeof(string));
-            Dt.Columns.Add(" Miercoles ", typeof(string));
-            Dt.Columns.Add("  Jueves  ", typeof(string));
-            Dt.Columns.Add("  Viernes  ", typeof(string));
-
+            Dt.Columns.Add(encId.CompIdioma["ho_lunes"].ToString(), typeof(string));
+            Dt.Columns.Add(encId.CompIdioma["ho_martes"].ToString(), typeof(string));
+            Dt.Columns.Add(encId.CompIdioma["ho_miercoles"].ToString(), typeof(string));
+            Dt.Columns.Add(encId.CompIdioma["ho_jueves"].ToString(), typeof(string));
+            Dt.Columns.Add(encId.CompIdioma["ho_viernes"].ToString(), typeof(string));
+            string libre = encId.CompIdioma["ho_libre"].ToString();
 
             for (int i = 0; i < n; i++)
             {
                 //8:00:00
-                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == "Lunes")
+                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == encId.CompIdioma["ho_lunes"].ToString())
                 {
                     l8 = registro.Rows[i]["nombre_materia"].ToString();
                 }
 
-                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == "Martes")
+                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == encId.CompIdioma["ho_martes"].ToString())
                 {
                     m8 = registro.Rows[i]["nombre_materia"].ToString();
                 }
 
-                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == "Miercoles")
+                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == encId.CompIdioma["ho_miercoles"].ToString())
                 {
                     w8 = registro.Rows[i]["nombre_materia"].ToString();
                 }
 
-                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == "Jueves")
+                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == encId.CompIdioma["ho_jueves"].ToString())
                 {
                     j8 = registro.Rows[i]["nombre_materia"].ToString();
                 }
 
-                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == "Viernes")
+                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == encId.CompIdioma["ho_viernes"].ToString())
                 {
                     v8 = registro.Rows[i]["nombre_materia"].ToString();
                 }
 
                 //10:00:00
-                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == "Lunes")
+                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == encId.CompIdioma["ho_lunes"].ToString())
                 {
                     l10 = registro.Rows[i]["nombre_materia"].ToString();
                 }
 
-                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == "Martes")
+                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == encId.CompIdioma["ho_martes"].ToString())
                 {
                     m10 = registro.Rows[i]["nombre_materia"].ToString();
                 }
 
-                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == "Miercoles")
+                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == encId.CompIdioma["ho_miercoles"].ToString())
                 {
                     w10 = registro.Rows[i]["nombre_materia"].ToString();
                 }
 
-                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == "Jueves")
+                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == encId.CompIdioma["ho_jueves"].ToString())
                 {
                     j10 = registro.Rows[i]["nombre_materia"].ToString();
                 }
 
-                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == "Viernes")
+                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == encId.CompIdioma["ho_viernes"].ToString())
                 {
                     v10 = registro.Rows[i]["nombre_materia"].ToString();
                 }
 
                 //12:00:00
-                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == "Lunes")
+                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == encId.CompIdioma["ho_lunes"].ToString())
                 {
                     l12 = registro.Rows[i]["nombre_materia"].ToString();
                 }
 
-                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == "Martes")
+                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == encId.CompIdioma["ho_martes"].ToString())
                 {
                     m12 = registro.Rows[i]["nombre_materia"].ToString();
                 }
 
-                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == "Miercoles")
+                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == encId.CompIdioma["ho_miercoles"].ToString())
                 {
                     w12 = registro.Rows[i]["nombre_materia"].ToString();
                 }
 
-                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == "Jueves")
+                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == encId.CompIdioma["ho_jueves"].ToString())
                 {
                     j12 = registro.Rows[i]["nombre_materia"].ToString();
                 }
 
-                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == "Viernes")
+                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == encId.CompIdioma["ho_viernes"].ToString())
                 {
                     v12 = registro.Rows[i]["nombre_materia"].ToString();
                 }
@@ -137,140 +142,17 @@ namespace Logica
             return Dt;
         }
 
-        public DataTable horarioEng(int curso, int hor_tipo)
-        {
-            DUser datos = new DUser();
 
-            string l8 = " ", m8 = " ", w8 = " ", j8 = " ", v8 = " ", l10 = " ", m10 = " ", w10 = " ", j10 = " ", v10 = " ", l12 = " ", m12 = " ", w12 = " ", j12 = " ", v12 = " ";
-
-            int id_curso;
-            id_curso = curso;
-            DataTable registro;
-
-            switch (hor_tipo)
-            {
-                case 1:
-                    //Horario Curso
-                    registro = datos.horarioCurso(id_curso);
-                    break;
-                case 2:
-                    //Horario Profesor
-                    registro = datos.horarioProf(id_curso.ToString());
-                    break;
-                case 3:
-                    //Horario Estudiante
-                    registro = datos.horario(id_curso.ToString());
-                    break;
-                default:
-                    registro = datos.horarioCurso(id_curso);
-                    break;
-            }
-
-            int n = registro.DefaultView.Count;
-            DataSet reg = new DataSet();
-
-            DataTable Dt = new DataTable();
-            Dt.Columns.Add("      ", typeof(string));
-            Dt.Columns.Add("  Monday  ", typeof(string));
-            Dt.Columns.Add("  Tuesday   ", typeof(string));
-            Dt.Columns.Add(" Wednesday ", typeof(string));
-            Dt.Columns.Add("  Thursday  ", typeof(string));
-            Dt.Columns.Add("  Friday  ", typeof(string));
-
-
-            for (int i = 0; i < n; i++)
-            {
-                //8:00:00
-                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == "Lunes")
-                {
-                    l8 = registro.Rows[i]["nombre_materia"].ToString();
-                }
-
-                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == "Martes")
-                {
-                    m8 = registro.Rows[i]["nombre_materia"].ToString();
-                }
-
-                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == "Miercoles")
-                {
-                    w8 = registro.Rows[i]["nombre_materia"].ToString();
-                }
-
-                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == "Jueves")
-                {
-                    j8 = registro.Rows[i]["nombre_materia"].ToString();
-                }
-
-                if (registro.Rows[i]["hora_inicio"].ToString() == "8:00:00" && registro.Rows[i]["dia"].ToString() == "Viernes")
-                {
-                    v8 = registro.Rows[i]["nombre_materia"].ToString();
-                }
-
-                //10:00:00
-                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == "Lunes")
-                {
-                    l10 = registro.Rows[i]["nombre_materia"].ToString();
-                }
-
-                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == "Martes")
-                {
-                    m10 = registro.Rows[i]["nombre_materia"].ToString();
-                }
-
-                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == "Miercoles")
-                {
-                    w10 = registro.Rows[i]["nombre_materia"].ToString();
-                }
-
-                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == "Jueves")
-                {
-                    j10 = registro.Rows[i]["nombre_materia"].ToString();
-                }
-
-                if (registro.Rows[i]["hora_inicio"].ToString() == "10:00:00" && registro.Rows[i]["dia"].ToString() == "Viernes")
-                {
-                    v10 = registro.Rows[i]["nombre_materia"].ToString();
-                }
-
-                //12:00:00
-                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == "Lunes")
-                {
-                    l12 = registro.Rows[i]["nombre_materia"].ToString();
-                }
-
-                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == "Martes")
-                {
-                    m12 = registro.Rows[i]["nombre_materia"].ToString();
-                }
-
-                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == "Miercoles")
-                {
-                    w12 = registro.Rows[i]["nombre_materia"].ToString();
-                }
-
-                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == "Jueves")
-                {
-                    j12 = registro.Rows[i]["nombre_materia"].ToString();
-                }
-
-                if (registro.Rows[i]["hora_inicio"].ToString() == "12:00:00" && registro.Rows[i]["dia"].ToString() == "Viernes")
-                {
-                    v12 = registro.Rows[i]["nombre_materia"].ToString();
-                }
-            }
-            Dt.Rows.Add(" 8:00:00-9:29:00 ", l8, m8, w8, j8, v8);
-            Dt.Rows.Add(" 09:30:00-9:59:00 ", "  B  ", "  R  ", " E ", "  A  ", "  K ");
-            Dt.Rows.Add(" 10:00:00-11:59:00", l10, m10, w10, j10, v10);
-            Dt.Rows.Add(" 12:00:00-2:00:00", l12, m12, w12, j12, v12);
-
-            return Dt;
-        }
-
-        public UUser agregarMateria(string materia, string sesion)
+        public UUser agregarMateria(string materia, string sesion, int selIdioma)
         {
             UUser user = new UUser();
             DUser datos = new DUser();
             LReg l_reg = new LReg();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 10;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             user.Mensaje = " ";
             bool ok = validar_mat(materia);
@@ -281,24 +163,30 @@ namespace Logica
                 user.Session = sesion;
                 datos.insertarMateria(user);
                 //this.Page.Response.Write("<script language='JavaScript'>window.alert('Materia Insertada con Exito');</script>");
-                user.Mensaje = "Materia Insertada con Exito";
+                user.Mensaje = encId.CompIdioma["L_Error_falta_materia"].ToString(); //"Materia Insertada con Exito";
             }
             else
             {
-                user.Mensaje = "La Materia ya se encuentra en nuestra Base de Datos";
+                user.Mensaje = encId.CompIdioma["L_Error_materia_ya_esta"].ToString(); //"La Materia ya se encuentra en nuestra Base de Datos";
             }
             return user;
         }
 
-        public UUser agregaraHorario(string curso, string anio, string dia, string docente, string hora, string materia)
+        public UUser agregaraHorario(string curso, string anio, string dia, string docente, string hora, string materia, int selIdioma)
         {
             UUser enc = new UUser();
             DUser datos = new DUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 6;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
 
             enc.Mensaje = " ";
             if (curso == "0" || anio == "0" || dia == "0" || docente == "0" || hora == "0" || materia == "0")
             {
-                enc.Mensaje = "Falta seleccionar";
+                enc.Mensaje = encId.CompIdioma["L_Error_falta"].ToString(); //"Falta seleccionar";
             }
             else
             {
@@ -332,17 +220,17 @@ namespace Logica
                             enc.Materia = materia;
                             datos.insertarNotaMateria(enc);
                         }
-                        enc.Mensaje = "Materia Insertada a Curso con Exito";
+                        enc.Mensaje = encId.CompIdioma["L_Error_materia_insertada"].ToString(); //"Materia Insertada a Curso con Exito";
                         //this.Page.Response.Write("<script language='JavaScript'>window.alert('Materia Insertada a Curso con Exito');</script>");
                     }
                     else
                     {
-                        enc.Mensaje = "El docente presenta un cruce de Horarios";
+                        enc.Mensaje = encId.CompIdioma["L_Error_docente_cruce"].ToString(); //"El docente presenta un cruce de Horarios";
                     }
                 }
                 else
                 {
-                    enc.Mensaje = "Presenta un cruce de Horarios";
+                    enc.Mensaje = encId.CompIdioma["L_Error_curce"].ToString(); //"Presenta un cruce de Horarios";
                 }
 
             }
@@ -351,15 +239,21 @@ namespace Logica
         }
 
 
-        public UUser subirNota(string alumno, string materia, string curso, string nota1, string nota2, string nota3)
+        public UUser subirNota(string alumno, string materia, string curso, string nota1, string nota2, string nota3, int selIdioma)
         {
             DUser datos = new DUser();
             UUser enc = new UUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 39;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
             enc.Mensaje = " ";
 
             if (alumno == "0" || materia == "0" || curso == "0")
             {
-                enc.Mensaje = "Falta seleccionar";
+                enc.Mensaje = encId.CompIdioma["L_Falta_Selec"].ToString(); //"Falta seleccionar";
             }
             else
             {
@@ -386,14 +280,20 @@ namespace Logica
             return enc;
         }
 
-        public UUser verNota(string alumno, string materia, string curso)
+        public UUser verNota(string alumno, string materia, string curso, int selIdioma)
         {
             DUser datos = new DUser();
             UUser enc = new UUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 39;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
             enc.Mensaje = " ";
             if (alumno == "0" || materia == "0" || curso == "0")
             {
-                enc.Mensaje = "Falta seleccionar";
+                enc.Mensaje = encId.CompIdioma["L_Falta_Selec"].ToString(); //"Falta seleccionar";
             }
             else
             {
@@ -474,15 +374,20 @@ namespace Logica
             return enc;
         }
 
-        public UUser enviarMensajeProf(string materia, string alumno, string curso, string userId, string persona, string apePersona, string correo_l, string asunto, string mensaje, string tb_destinatario, string destinatario)
+        public UUser enviarMensajeProf(string materia, string alumno, string curso, string userId, string persona, string apePersona, string correo_l, string asunto, string mensaje, string tb_destinatario, string destinatario, int selIdioma)
         {
             UUser encapsular = new UUser();
             DUser datos = new DUser();
-            
+
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 37;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             if (materia == "0" || alumno == "0" || curso == "0")
             {
-                encapsular.Mensaje = "Debe seleccionar una opcion";
+                encapsular.Mensaje = encId.CompIdioma["L_Verificar"].ToString(); //"Debe seleccionar una opcion";
             }
             else
             {
@@ -497,25 +402,32 @@ namespace Logica
                     DCorreoEnviar correo = new DCorreoEnviar();
                     correo.enviarCorreoEnviar(destinatario, asunto, mensaje);
                     encapsular.MensajeAcudiente = "mensaje";
-                    encapsular.Notificacion = /* "mensaje",*/ "<script type='text/javascript'>alert('Su Mensaje ha sido Enviado.');window.location=\"ProfesorMensaje.aspx\"</script>";
+                    //encapsular.Notificacion = /* "mensaje",*/ "<script type='text/javascript'>alert('Su Mensaje ha sido Enviado.');window.location=\"ProfesorMensaje.aspx\"</script>";
+                    encapsular.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_men_enviado"].ToString() + "');</script>";
                 }
                 else
                 {
-                    encapsular.Mensaje = "El correo digitado no existe";
+                    encapsular.Mensaje = encId.CompIdioma["L_Error_CorreoNo"].ToString();// "El correo digitado no existe";
                     encapsular.CDestinatario = "";
                 }
             }
             return encapsular;
         }
 
-        public UUser selecEstudianteACurso(string curso, string seleccion)
+        public UUser selecEstudianteACurso(string curso, string seleccion, int selIdioma)
         {
             DUser datos = new DUser();
             UUser enc = new UUser();
 
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 9;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
             if (curso == "0")
             {
-                enc.Mensaje = "Debe Elegir un Curso";
+                enc.Mensaje = encId.CompIdioma["L_ErrorUsuario_estudiante_curso"].ToString(); //"Debe Elegir un Curso";
             }
             else
             {
@@ -542,16 +454,24 @@ namespace Logica
             return enc;
         }
 
-        public UUser agregarEstudianteACurso(string anio, string curso, int cont, GridView GridView1)
+        public UUser agregarEstudianteACurso(string anio, string curso, int cont, GridView GridView1, int selIdioma)
         {
             DUser datos = new DUser();
             UUser enc = new UUser();
+
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 9;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+
             enc.Mensaje = "";
             enc.MensajeAcudiente = "";
 
             if (anio == "0" || curso == "0")
             {
-                enc.Mensaje = "Debe Elegir un Curso";
+                enc.Mensaje = encId.CompIdioma["L_ErrorUsuario_aceptar"].ToString(); //"Debe Elegir un Curso";
             }
             else
             {
@@ -580,7 +500,7 @@ namespace Logica
                         }
 
                         //L_ErrorUsuario.Text = "Debe Elegir un Curso";
-                        enc.MensajeAcudiente = "Estudiantes Agregados al curso";
+                        enc.MensajeAcudiente = encId.CompIdioma["L_OkUsuario_aceptar"].ToString(); //"Estudiantes Agregados al curso";
 
                     }
                 }
@@ -589,12 +509,18 @@ namespace Logica
             return enc;
         }
 
-        public UUser pasarAño()
+        public UUser pasarAño(int selIdioma)
         {
             DUser datos = new DUser();
             UUser enc = new UUser();
 
             DataTable dati = datos.comparaFecha();
+
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 32;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             if (dati.Rows.Count > 0)
             {
@@ -660,18 +586,24 @@ namespace Logica
 
                 bool ok = false;
                 datos.editaBool(ok);
-                enc.Notificacion = "<script language='JavaScript'>window.alert('Se ha migrado de año con Exito');</script>";
-
+                //enc.Notificacion = "<script language='JavaScript'>window.alert('Se ha migrado de año con Exito');</script>";
+                enc.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_migrado"].ToString() + "');</script>";
             }
 
             return enc;
         }
 
-        public UUser pasarAñoClick()
+        public UUser pasarAñoClick(int selIdioma)
         {
             DUser datos = new DUser();
             UUser enc = new UUser();
             datos.insertar_Año();
+
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 32;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             DataTable reg = datos.obtienePromedio();
             int n = reg.DefaultView.Count;
@@ -730,7 +662,8 @@ namespace Logica
                     datos.insertarEstudianteCurso(enc);
                 }
             }
-            enc.Notificacion = "<script language='JavaScript'>window.alert('Se ha migraido de año con Exito');</script>";
+            //enc.Notificacion = "<script language='JavaScript'>window.alert('Se ha migraido de año con Exito');</script>";
+            enc.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_migrado"].ToString() + "');</script>";
 
             return enc;
         }

@@ -91,7 +91,7 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
         UUser enc = new UUser();
         LReg logic = new LReg();
 
-        enc = logic.subirNota(ddl_alumno.SelectedValue, ddl_materia.SelectedValue, ddt_curso.SelectedValue, tb_nt.Text, tb_nt2.Text, tb_nt3.Text);
+        enc = logic.subirNota(ddl_alumno.SelectedValue, ddl_materia.SelectedValue, ddt_curso.SelectedValue, tb_nt.Text, tb_nt2.Text, tb_nt3.Text, int.Parse(Session["idioma"].ToString()));
         L_Error.Text = enc.Mensaje;
 
         tb_denifitiva.Text = enc.Notadef;
@@ -106,7 +106,7 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
         UUser enc = new UUser();
         LReg logic = new LReg();
 
-        enc = logic.verNota(ddl_alumno.SelectedValue, ddl_materia.SelectedValue, ddt_curso.SelectedValue);
+        enc = logic.verNota(ddl_alumno.SelectedValue, ddl_materia.SelectedValue, ddt_curso.SelectedValue, int.Parse(Session["idioma"].ToString()));
 
         tb_nt.Text = enc.Nota1;
         tb_nt2.Text = enc.Nota2;

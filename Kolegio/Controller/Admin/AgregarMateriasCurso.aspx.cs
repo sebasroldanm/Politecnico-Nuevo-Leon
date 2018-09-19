@@ -54,6 +54,11 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
         //ho_jueves = "Jueves";
         //ho_viernes = "Viernes";
         //ho_libre = "Libre";
+        ddt_Dia.Items.Add(encId.CompIdioma["ho_lunes"].ToString());
+        ddt_Dia.Items.Add(encId.CompIdioma["ho_martes"].ToString());
+        ddt_Dia.Items.Add(encId.CompIdioma["ho_miercoles"].ToString());
+        ddt_Dia.Items.Add(encId.CompIdioma["ho_jueves"].ToString());
+        ddt_Dia.Items.Add(encId.CompIdioma["ho_viernes"].ToString());
 
 
         Response.Cache.SetNoStore();
@@ -85,7 +90,7 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
         UUser enc = new UUser();
         LReg logic = new LReg();
 
-        enc = logic.agregaraHorario(ddt_curso.SelectedValue, ddt_anio.SelectedValue, ddt_Dia.SelectedValue, ddt_Docente.SelectedValue, ddt_Hora.SelectedValue, ddt_Materia.SelectedValue);
+        enc = logic.agregaraHorario(ddt_curso.SelectedValue, ddt_anio.SelectedValue, ddt_Dia.SelectedValue, ddt_Docente.SelectedValue, ddt_Hora.SelectedValue, ddt_Materia.SelectedValue, int.Parse(Session["idioma"].ToString()));
         L_Error.Text = enc.Mensaje;
         horario();
         //this.Page.Response.Write("<script language='JavaScript'>window.alert('Materia Insertada a Curso con Exito');</script>");
@@ -104,7 +109,7 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
 
         int curso = int.Parse(ddt_curso.SelectedValue);
 
-        DataTable registro = logic.horario(curso, 1);
+        DataTable registro = logic.horario(curso, 1, int.Parse(Session["idioma"].ToString()));
         GridView1.DataSource = registro;
         GridView1.DataBind();
 
@@ -114,7 +119,7 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
     {
         LReg l_reg = new LReg();
         UUser user = new UUser();
-        user = l_reg.agregarMateria(tb_materia.Text, Session.SessionID);
+        user = l_reg.agregarMateria(tb_materia.Text, Session.SessionID, int.Parse(Session["idioma"].ToString()));
 
         L_Error.Text = user.Mensaje;
     }
@@ -124,7 +129,7 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
         UUser enc = new UUser();
         LReg logic = new LReg();
 
-        enc = logic.pasarAñoClick();
+        enc = logic.pasarAñoClick(int.Parse(Session["idioma"].ToString()));
         this.Page.Response.Write(enc.Notificacion);
 
     }

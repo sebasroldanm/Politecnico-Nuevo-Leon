@@ -42,7 +42,7 @@ public partial class View_Estudiante_EstudianteHorario : System.Web.UI.Page
             String id_est = Session["userId"].ToString();
             int curso = int.Parse(id_est);
 
-            DataTable registro = logic.horario(curso, 3);
+            DataTable registro = logic.horario(curso, 3, int.Parse(Session["idioma"].ToString()));
             GridView1.DataSource = registro;
             GridView1.DataBind();
 
