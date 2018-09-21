@@ -156,6 +156,7 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
         LUser logica = new LUser();
         UUser usua = new UUser();
         string foto = cargarImagen();
+        int rol = 4;
         usua = logica.editarAdmin(
             tb_AcudienteNombre.Text,
             tb_AcudienteUsuario.Text,
@@ -173,7 +174,7 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
             foto,
             Session["fotosinedit"].ToString(),
             int.Parse(Session["idioma"].ToString()),
-            4
+            rol
             );
 
         this.Page.Response.Write(usua.Notificacion);

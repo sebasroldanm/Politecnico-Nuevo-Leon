@@ -147,6 +147,7 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
         LUser logica = new LUser();
         UUser usua = new UUser();
         string foto = cargarImagen();
+        int rol = 2;
         usua = logica.editarAdmin(
             tb_DocenteNombre.Text,
             tb_DocenteUsuario.Text,
@@ -164,7 +165,7 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
             foto,
             Session["fotosinedit"].ToString(),
             int.Parse(Session["idioma"].ToString()),
-            2
+            rol
             );
 
         this.Page.Response.Write(usua.Notificacion);

@@ -165,7 +165,8 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
             LUser logica = new LUser();
             UUser usua = new UUser();
         string foto = cargarImagen();
-            usua = logica.editarAdmin(
+        int rol = 3;
+        usua = logica.editarAdmin(
                 tb_EstudianteNombre.Text,
                 tb_EstudianteUsuario.Text,
                 tb_EstudianteContrasenia.Text,
@@ -182,7 +183,7 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
                 foto,
                 Session["fotosinedit"].ToString(),
                 int.Parse(Session["idioma"].ToString()),
-                3
+                rol
                 );
         this.Page.Response.Write(usua.Notificacion);
 
