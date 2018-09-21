@@ -128,12 +128,16 @@
                                 <br>
                     </br>
                                 <div class="form-inline" role="form">
-                                     <div class="form-group">
-                                         <label for="tb_sessiones" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AjaxNumSesiones" runat="server"></asp:Label></label>
-                                        <asp:TextBox ID="tb_sessiones" MaxLength="40" runat="server" class="form-control" title="Numero de Sesiones" ></asp:TextBox>
-                                     </div>
-                                   
-                                 </div>
+                                    <div class="form-group">
+                                        <label for="tb_sessiones" class="control-label" style="color: #FFFFFF">
+                                            <asp:Label ID="L_AjaxNumSesiones" runat="server"></asp:Label></label>
+
+                                        <asp:TextBox ID="tb_sessiones" runat="server" class="form-control" title="Numero de Sesiones"></asp:TextBox>
+                                        <ajaxToolkit:MaskedEditExtender ID="TextBox3_MaskedEditExtender" runat="server" BehaviorID="TextBox3_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9" MaskType="Number" TargetControlID="tb_sessiones" AutoComplete="False" InputDirection="RightToLeft" />
+
+                                    </div>
+
+                                </div>
                                 <br>
                     </br>
                                 <br>
