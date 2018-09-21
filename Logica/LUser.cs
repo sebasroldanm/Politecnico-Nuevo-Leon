@@ -493,7 +493,7 @@ namespace Logica
             {
                 String est;
 
-                if (estado == "Activo" || estado == "Active")
+                if (estado == "Activo" || estado == encId.CompIdioma["DDL_Estado"].ToString())
                 {
                     est = "true";
                 }
