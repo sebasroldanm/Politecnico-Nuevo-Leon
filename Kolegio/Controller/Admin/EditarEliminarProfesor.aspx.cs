@@ -163,7 +163,8 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
             Session.SessionID,
             foto,
             Session["fotosinedit"].ToString(),
-            int.Parse(Session["idioma"].ToString())
+            int.Parse(Session["idioma"].ToString()),
+            2
             );
 
         this.Page.Response.Write(usua.Notificacion);

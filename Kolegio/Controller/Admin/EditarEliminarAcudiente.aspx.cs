@@ -172,7 +172,8 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
             Session.SessionID,
             foto,
             Session["fotosinedit"].ToString(),
-            int.Parse(Session["idioma"].ToString())
+            int.Parse(Session["idioma"].ToString()),
+            4
             );
 
         this.Page.Response.Write(usua.Notificacion);

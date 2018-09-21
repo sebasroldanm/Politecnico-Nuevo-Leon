@@ -472,12 +472,12 @@ namespace Logica
             string session,
             string fotoup,
             string foto,
-            int selIdioma
+            int selIdioma, 
+            int rol
             )
         {
             UUser usua = new UUser();
             DUser dat = new DUser();
-            int rol = 1;
             UIdioma encId = new UIdioma();
             LIdioma idioma = new LIdioma();
             Int32 FORMULARIO = 16;
@@ -486,7 +486,7 @@ namespace Logica
 
             if (departamento == 0 || ciudad == 0)
             {
-                usua.Mensaje = encId.CompIdioma["L_ErrorAdmin"].ToString();
+                usua.Mensaje = encId.CompIdioma["L_ErrorAdmin_sin_selecionar"].ToString();
                 //"Debe seleccionar una opcion";
             }
             else
@@ -525,7 +525,7 @@ namespace Logica
                     if (usua.Foto != null)
                     {
                         DataTable registros = dat.EditarUsuario(usua);
-                        usua.Notificacion = "script language='JavaScript'>window.alert('" + encId.CompIdioma["script_foto"].ToString() + "');</script>";
+                        usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_foto"].ToString() + "');</script>";
                         //usua.Notificacion = "<script language='JavaScript'>window.alert('Usuario Editado con Éxito');</script>";
                         usua.B_Botones1 = false;
                         //btn_AdministradorAceptar.Visible = false;
