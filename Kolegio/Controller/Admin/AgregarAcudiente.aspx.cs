@@ -52,8 +52,6 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
         btn_AcudienteAceptar.Text = encId.CompIdioma["btn_AcudienteAceptar"].ToString();
         btn_AcudienteNuevo.Text = encId.CompIdioma["btn_AcudienteNuevo"].ToString();
 
-
-        //FALTA
         RV_id_Acudiente.ErrorMessage = encId.CompIdioma["RV_id_Acudiente"].ToString();
 
         //AgregarAdmin

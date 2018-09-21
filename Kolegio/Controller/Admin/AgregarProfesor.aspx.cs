@@ -52,8 +52,6 @@ public partial class View_Admin_AgregarProfesor : System.Web.UI.Page
         btn_DocenteAceptar.Text = encId.CompIdioma["btn_DocenteAceptar"].ToString();
         btn_DocenteNuevo.Text = encId.CompIdioma["btn_DocenteNuevo"].ToString();
 
-
-        //falta
         RV_id_profesor.ErrorMessage = encId.CompIdioma["RV_id_Acudiente"].ToString();
 
 
