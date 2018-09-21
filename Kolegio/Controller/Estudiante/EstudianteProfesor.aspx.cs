@@ -28,7 +28,6 @@ public partial class View_Estudiante_EstudianteProfesor : System.Web.UI.Page
         L_EstuMenMensaje.Text = encId.CompIdioma["L_EstuMenMensaje"].ToString();
         REV_Mensaje.ErrorMessage = encId.CompIdioma["REV_Mensaje"].ToString();
         B_Enviar.Text = encId.CompIdioma["B_Enviar"].ToString();
-        L_Verificar.Text = encId.CompIdioma["L_Verificar"].ToString();
         //L_Error_selecione = "Seleccione una opcion"
         //script_msm_enviado="Se ha enviado su mensaje con éxito"
         //L_Error_correo = "El correo digitado no existe"

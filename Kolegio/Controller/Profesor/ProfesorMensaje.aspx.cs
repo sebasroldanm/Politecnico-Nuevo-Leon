@@ -31,7 +31,6 @@ public partial class View_Profesor_ProfesorMensaje : System.Web.UI.Page
         L_ProfeMensMensaje.Text = encId.CompIdioma["L_ProfeMensMensaje"].ToString();
         REV_Mensaje.ErrorMessage = encId.CompIdioma["REV_Mensaje"].ToString();
         B_Enviar.Text = encId.CompIdioma["B_Enviar"].ToString();
-        L_Verificar.Text = encId.CompIdioma["L_Verificar"].ToString();
         //script_msm_enviado="Su Mensaje ha sido Enviado.";
 
         Response.Cache.SetNoStore();

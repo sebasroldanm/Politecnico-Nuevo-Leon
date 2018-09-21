@@ -27,7 +27,6 @@ public partial class View_Acudiente_AcudienteMensaje : System.Web.UI.Page
         L_AcuMensMensaje.Text = encId.CompIdioma["L_AcuMensMensaje"].ToString();
         RV_Mensaje.ErrorMessage = encId.CompIdioma["RV_Mensaje"].ToString();
         B_Enviar.Text = encId.CompIdioma["B_Enviar"].ToString();
-        L_Verificar.Text = encId.CompIdioma["L_Verificar"].ToString();
         //script_mensaje="Se ha enviado su mensaje con éxito";
 
 
