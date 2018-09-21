@@ -18,6 +18,7 @@
                 <asp:TextBox ID="tb_AcudienteId" runat="server" class="form-control" MaxLength="10" title="Numero de Documento"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RV_id" runat="server" ControlToValidate="tb_AcudienteId" ValidationGroup="form_ejm3" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator><br />
                 <asp:RegularExpressionValidator ID="REV_AcudienteId" runat="server" ControlToValidate="tb_AcudienteId" ValidationExpression="^[0-9]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="form_ejm3"></asp:RegularExpressionValidator>
+                <asp:RangeValidator ID="RV_id_Acudiente" runat="server" ControlToValidate="tb_AcudienteId" CssClass="label-warning" ErrorMessage="Sobrepasó el limite" Font-Bold="True" ForeColor="White" MaximumValue="1499999999" MinimumValue="1" ValidationGroup="form_ejm3"></asp:RangeValidator><br />
             </div>
 
             <div class="form-group">

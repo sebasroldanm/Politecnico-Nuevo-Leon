@@ -53,6 +53,10 @@ public partial class View_Admin_AgregarProfesor : System.Web.UI.Page
         btn_DocenteNuevo.Text = encId.CompIdioma["btn_DocenteNuevo"].ToString();
 
 
+        //falta
+        RV_id_profesor.ErrorMessage = encId.CompIdioma["RV_id_Acudiente"].ToString();
+
+
         //AgregarAdmin
         //L_ErrorUsuario_Seleccione.Text="Debe seleccionar una opcion";
         //script_insertado = "Usuario Insertado con Exito";

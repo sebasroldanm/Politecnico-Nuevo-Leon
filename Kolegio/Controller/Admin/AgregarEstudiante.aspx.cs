@@ -57,6 +57,9 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
         btn_EstudianteAceptar.Text = encId.CompIdioma["btn_EstudianteAceptar"].ToString();
         btn_EstudianteNuevo.Text = encId.CompIdioma["btn_EstudianteNuevo"].ToString();
 
+        //falta:
+        RV_id_estudiante.ErrorMessage = encId.CompIdioma["RV_id_Acudiente"].ToString();
+        //
 
         //agregarEstudiante
         //L_ErrorUsuario_Seleccione.Text="Debe seleccionar una opcion";
