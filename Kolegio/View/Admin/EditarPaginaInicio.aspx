@@ -260,7 +260,124 @@ body
 
 
 
-                
+                <ajaxToolkit:Accordion ID="Accordion1" runat="server" ContentCssClass="accordionContent"
+
+     HeaderCssClass="accordionHeader" FadeTransitions="true" TransitionDuration="250"
+
+      FramesPerSecond="40" RequireOpenedPane="false" HeaderSelectedCssClass="accordionHeaderSelected"  AutoSize="None">
+                    <Panes>
+                        <ajaxToolkit:AccordionPane ID="AccordionPane1" runat="server">
+                            <Header>
+                                EDITAR IDIOMA
+                            </Header>
+                            <Content>
+                                    </br>
+                   
+                                 <div class="container" style="margin: 0% 0% 0% 5%" >
+                                <div class="form-inline" role="form">
+                                    <div class="form-group">
+                                        <label for="DDL_rol" class="control-label" style="color: #333399">Rol - Inicio :</label>
+                                        <asp:DropDownList ID="DDL_rol" Class="form-control" runat="server">
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="DDL_formulario" class="control-label" style="color: #333399">Formulario :</label>
+                                        <asp:DropDownList ID="DDL_formulario" Class="form-control" runat="server">
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="DDL_item" class="control-label" style="color: #333399">Item :</label>
+                                        <asp:DropDownList ID="DDL_item" Class="form-control" runat="server">
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                    </br>
+                    </br>
+                                <div class="form-inline" role="form">
+                                     <div class="form-group">
+                                         <asp:TextBox ID="TB_itemES" MaxLength="30" runat="server" class="form-control" title="Español" placeholder="Español"></asp:TextBox>
+                                     </div>
+                                     <div class="form-group">
+                                         <asp:TextBox ID="TB_itemIN" MaxLength="30" runat="server" class="form-control" title="English" placeholder="English"></asp:TextBox>
+                                     </div>
+                                 </div>
+                    </br>
+                    </br>
+                                <div class="form-inline container">
+                                    <asp:Button ID="btn_editar" runat="server" class="btn btn-info btn-lg" Width="141px" BorderColor="#660033" Text="Editar" />
+
+                                    <asp:Button ID="btn_aceptar" runat="server" Text="Aceptar" class="btn btn-success btn-lg" Width="141px" BorderColor="#660033" />
+                                
+                                </div>
+                </br>
+                </div>
+
+                            </Content>
+                        </ajaxToolkit:AccordionPane>
+
+                        <ajaxToolkit:AccordionPane  ID="AccordionPane2" runat="server">
+
+                            <Header>
+                               AGREGAR IDIOMA
+                            </Header>
+                            <Content>
+                                
+                                    </br>
+                    
+                                <div class="container" style="margin: 0% 0% 0% 5%" >
+                                    
+
+                                <div class="form-inline" role="form">
+                                    <div class="form-group">
+                                         <asp:TextBox ID="TB_terminoidioma" MaxLength="30" runat="server" class="form-control" title="Español" placeholder="Cultura"></asp:TextBox>
+                                     </div>
+                                    <div class="form-group">
+                                         <asp:Button ID="btn_comprobaridiom" runat="server" class="btn btn-primary btn-lg" Width="141px" BorderColor="#660033" Text="Comprobar" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="DDL_rolagregar" class="control-label" style="color: #333399">Rol - Inicio :</label>
+                                        <asp:DropDownList ID="DDL_rolagregar" Class="form-control" runat="server">
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="DDL_formularioagregar" class="control-label" style="color: #333399">Formulario :</label>
+                                        <asp:DropDownList ID="DDL_formularioagregar" Class="form-control" runat="server">
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="DDL_itemagregar" class="control-label" style="color: #333399">Item :</label>
+                                        <asp:DropDownList ID="DDL_itemagregar" Class="form-control" runat="server">
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                    </br>
+                                    <div class="form-inline" role="form">
+                                          <asp:TextBox ID="tb_traduccionIN" MaxLength="30" runat="server" class="form-control" title="Traduccion" placeholder="English"></asp:TextBox>
+
+                                           <asp:TextBox ID="tb_traduccionES" MaxLength="30" runat="server" class="form-control" title="Traduccion" placeholder="Español"></asp:TextBox>
+
+                                         <asp:TextBox ID="tb_traduccion" MaxLength="30" runat="server" class="form-control" title="Traduccion" placeholder="Traduccion"></asp:TextBox>
+
+                                        </div>
+                    </br>
+                    </br>
+                                
+                   
+                                <div class="form-inline container">
+                                    <asp:Button ID="btn_siguiente" runat="server" class="btn btn-info btn-lg" Width="141px" BorderColor="#660033" Text="Ok - Siguiente" />
+
+                                </div>
+ </br>
+                </div>
+
+
+
+                            </Content>
+                        </ajaxToolkit:AccordionPane>
+                    </Panes>
+
+            </ajaxToolkit:Accordion>
 
                
 
