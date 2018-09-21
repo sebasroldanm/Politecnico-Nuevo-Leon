@@ -43,6 +43,49 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         //insertarfechafin
         //script_datos_insertado="Insertado con Éxito";
 
+
+        //--------------Ajax Form - ADD - EDIT - DELETE Language ---------------//
+
+        L_AjaxTabSesion.Text = encId.CompIdioma["L_AjaxTabSesion"].ToString();
+        L_AjaxSubSesion.Text = encId.CompIdioma["L_AjaxSubSesion"].ToString();
+        L_AjaxRol.Text = encId.CompIdioma["L_AjaxRol"].ToString();
+        L_AjaxUsuario.Text = encId.CompIdioma["L_AjaxUsuario"].ToString();
+        L_AjaxNumSesiones.Text = encId.CompIdioma["L_AjaxNumSesiones"].ToString();
+        tb_sessiones.Attributes.Add("placeholder", encId.CompIdioma["tb_sessiones"].ToString());
+        btn_editarsesion.Text = encId.CompIdioma["btn_editarsesion"].ToString();
+        btn_aceptarsesion.Text = encId.CompIdioma["btn_aceptarsesion"].ToString();
+
+        L_AjaxTabIdioma.Text = encId.CompIdioma["L_AjaxTabIdioma"].ToString();
+        L_AjaxSubIdioma.Text = encId.CompIdioma["L_AjaxSubIdioma"].ToString();
+
+        L_AjaxAcorIdioma.Text = encId.CompIdioma["L_AjaxAcorIdioma"].ToString();
+        L_AjaxAcorDDLRol.Text = encId.CompIdioma["L_AjaxAcorDDLRol"].ToString();
+        L_AjaxAcorDDLForm.Text = encId.CompIdioma["L_AjaxAcorDDLForm"].ToString();
+        L_AjaxAcroDDLItem.Text = encId.CompIdioma["L_AjaxAcroDDLItem"].ToString();
+
+        TB_itemES.Attributes.Add("placeholder", encId.CompIdioma["TB_itemES"].ToString());
+        TB_itemIN.Attributes.Add("placeholder", encId.CompIdioma["TB_itemIN"].ToString());
+
+        btn_editar.Text = encId.CompIdioma["btn_editar"].ToString();
+        btn_aceptar.Text = encId.CompIdioma["btn_aceptar"].ToString();
+
+        L_AjaxAcorAgregarIdioma.Text = encId.CompIdioma["L_AjaxAcorAgregarIdioma"].ToString();
+        TB_terminoidioma.Attributes.Add("placeholder=", encId.CompIdioma["TB_terminoidioma"].ToString());
+        btn_comprobaridiom.Text = encId.CompIdioma["btn_comprobaridiom"].ToString();
+        L_AjaxAcorDDLRolAgregar.Text = encId.CompIdioma["L_AjaxAcorDDLRolAgregar"].ToString();
+        L_AjaxAcorDDLFormAgregar.Text = encId.CompIdioma["L_AjaxAcorDDLFormAgregar"].ToString();
+        L_AjaxAcorDDLItemAgregar.Text = encId.CompIdioma["L_AjaxAcorDDLItemAgregar"].ToString();
+        tb_traduccionIN.Attributes.Add("placeholder=", encId.CompIdioma["tb_traduccionIN"].ToString());
+        tb_traduccionES.Attributes.Add("placeholder", encId.CompIdioma["tb_traduccionES"].ToString());
+        tb_traduccion.Attributes.Add("placeholder", encId.CompIdioma["tb_traduccion"].ToString());
+        btn_siguiente.Text = encId.CompIdioma["btn_siguiente"].ToString();
+
+        L_AjaxConfingLeon.Text = encId.CompIdioma["L_AjaxConfingLeon"].ToString();
+
+        tb_usuario.Attributes.Add("placeholder", encId.CompIdioma["tb_usuario"].ToString());
+
+        //--------------Ajax Form - ADD - EDIT - DELETE Language ---------------//
+
         Response.Cache.SetNoStore();
         LLogin Logica = new LLogin();
         UUser usua = new UUser();

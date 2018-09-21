@@ -54,6 +54,9 @@
         <div class="panel-img">
             <img src="../Imagenes/Panel.png" />
         </div>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+                        </asp:ScriptManager>
+                        <ajaxToolkit:NoBot ID="NoBotLogin" runat="server" ResponseMinimumDelaySeconds="3" CutoffWindowSeconds="10" CutoffMaximumInstances="3"  />
         <div style="position: absolute; z-index: 1;" id="layer1">
             <div class="auto-style3" style="margin: -30px 0px 0px 503px;">
                 <div class="row">

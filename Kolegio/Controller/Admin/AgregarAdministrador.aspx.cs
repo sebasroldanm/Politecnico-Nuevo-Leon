@@ -57,7 +57,7 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         btn_AdministradorAceptar.Text = encId.CompIdioma["btn_AdministradorAceptar"].ToString();
         btn_AdministradorNuevo.Text = encId.CompIdioma["btn_AdministradorNuevo"].ToString();
 
-        //falta
+        
         RV_id_Administrador.ErrorMessage = encId.CompIdioma["RV_id_Acudiente"].ToString();
 
 

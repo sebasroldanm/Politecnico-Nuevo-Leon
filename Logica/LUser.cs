@@ -13,7 +13,7 @@ namespace Logica
 {
     public class LUser
     {
-        public UUser loggear(string userName, string clave, int selIdioma)
+        public UUser loggear(string userName, string clave, int selIdioma, Boolean bot)
         {
             UUser user = new UUser();
             DUser datos = new DUser();
@@ -31,53 +31,64 @@ namespace Logica
 
             DataTable resultado = datos.loggin(user);
 
-            if (resultado.Rows.Count > 0)
+            if(bot == true)
             {
-                user.SUserId = resultado.Rows[0]["id_usua"].ToString();
-                user.SUserName = resultado.Rows[0]["user_name"].ToString();
-                user.SNombre = resultado.Rows[0]["nombre_usua"].ToString();
-                user.SApellido = resultado.Rows[0]["apellido_usua"].ToString();
-                user.SClave = resultado.Rows[0]["clave"].ToString();
-                user.SCorreo = resultado.Rows[0]["correo"].ToString();
-                user.SDocumento = resultado.Rows[0]["num_documento"].ToString();
-                user.SFoto = resultado.Rows[0]["foto_usua"].ToString();
-
-                if ((resultado.Rows[0]["estado"].ToString()) == "True")
+                if (resultado.Rows.Count > 0)
                 {
-                    user.Mensaje = " ";
-                    switch (int.Parse(resultado.Rows[0]["rol_id"].ToString()))
+                    user.SUserId = resultado.Rows[0]["id_usua"].ToString();
+                    user.SUserName = resultado.Rows[0]["user_name"].ToString();
+                    user.SNombre = resultado.Rows[0]["nombre_usua"].ToString();
+                    user.SApellido = resultado.Rows[0]["apellido_usua"].ToString();
+                    user.SClave = resultado.Rows[0]["clave"].ToString();
+                    user.SCorreo = resultado.Rows[0]["correo"].ToString();
+                    user.SDocumento = resultado.Rows[0]["num_documento"].ToString();
+                    user.SFoto = resultado.Rows[0]["foto_usua"].ToString();
+
+                    if ((resultado.Rows[0]["estado"].ToString()) == "True")
                     {
-                        case 1:
-                            //Response.Redirect("Admin/AgregarAdministrador.aspx");
-                            user.Url = "~/View/Admin/AgregarAdministrador.aspx";
-                            break;
+                        user.Mensaje = " ";
+                        switch (int.Parse(resultado.Rows[0]["rol_id"].ToString()))
+                        {
+                            case 1:
+                                //Response.Redirect("Admin/AgregarAdministrador.aspx");
+                                user.Url = "~/View/Admin/AgregarAdministrador.aspx";
+                                break;
 
-                        case 2:
-                            //Response.Redirect("Profesor/ProfesorSubirNota.aspx");
-                            user.Url = "~/View/Profesor/ProfesorSubirNota.aspx";
-                            break;
+                            case 2:
+                                //Response.Redirect("Profesor/ProfesorSubirNota.aspx");
+                                user.Url = "~/View/Profesor/ProfesorSubirNota.aspx";
+                                break;
 
-                        case 3:
-                            //Response.Redirect("Estudiante/EstudianteHorario.aspx");
-                            user.Url = "~/View/Estudiante/EstudianteHorario.aspx";
-                            break;
+                            case 3:
+                                //Response.Redirect("Estudiante/EstudianteHorario.aspx");
+                                user.Url = "~/View/Estudiante/EstudianteHorario.aspx";
+                                break;
 
-                        case 4:
-                            //Response.Redirect("Acudiente/AcudienteBoletin.aspx");
-                            user.Url = "~/View/Acudiente/AcudienteObservador.aspx";
-                            break;
+                            case 4:
+                                //Response.Redirect("Acudiente/AcudienteBoletin.aspx");
+                                user.Url = "~/View/Acudiente/AcudienteObservador.aspx";
+                                break;
 
-                        default:
-                            //Response.Redirect("Loggin.aspx");
-                            user.Url = "~/View/Loggin.aspx";
-                            break;
+                            default:
+                                //Response.Redirect("Loggin.aspx");
+                                user.Url = "~/View/Loggin.aspx";
+                                break;
+                        }
+
                     }
-
+                    else
+                    {
+                        user.Mensaje = encId.CompIdioma["L_Error_Inactivo"].ToString();
+                        //user.Mensaje = "Usuario Se Encuentra Inactivo";
+                        //Session["userId"] = null;
+                        user.SUserId = null;
+                        //user.Url = "~/View/Loggin.aspx";
+                    }
                 }
                 else
                 {
-                    user.Mensaje = encId.CompIdioma["L_Error_Inactivo"].ToString();
-                    //user.Mensaje = "Usuario Se Encuentra Inactivo";
+                    user.Mensaje = encId.CompIdioma["L_Error_Incorrecto"].ToString();
+                    //user.Mensaje = "Usuario Y/o Clave Incorrecto";
                     //Session["userId"] = null;
                     user.SUserId = null;
                     //user.Url = "~/View/Loggin.aspx";
@@ -85,12 +96,10 @@ namespace Logica
             }
             else
             {
-                user.Mensaje = encId.CompIdioma["L_Error_Incorrecto"].ToString();
-                //user.Mensaje = "Usuario Y/o Clave Incorrecto";
-                //Session["userId"] = null;
-                user.SUserId = null;
-                //user.Url = "~/View/Loggin.aspx";
+                user.Mensaje = encId.CompIdioma["L_Error_Bot"].ToString();
             }
+
+            
             return user;
         }
 
