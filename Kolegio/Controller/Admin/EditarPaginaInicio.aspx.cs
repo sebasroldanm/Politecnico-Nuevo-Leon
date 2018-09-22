@@ -31,7 +31,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         L_AdminPagInicioFechaFin.Text = encId.CompIdioma["L_AdminPagInicioFechaFin"].ToString();
         B_Terminaranio.Text = encId.CompIdioma["B_Terminaranio"].ToString();
 
-        //--------------------------------DDL_Rol (Nuevo Lenguaje)--------------------------------------------//
+        //------------------------------------DDL_Rol (Nuevo Lenguaje)--------------------------------------------//
         if (!IsPostBack)
         {
             DDL_rolagregar.Items.Clear();
@@ -42,7 +42,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
             DDL_rolagregar.Items.Insert(4, encId.CompIdioma["ddl_Rol_Estudiante"].ToString());
             DDL_rolagregar.Items.Insert(5, encId.CompIdioma["ddl_Rol_Acudiente"].ToString());
         }
-        //--------------------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------------------------//
 
         //---------------Boton Pasar Año, Desabilitado ----------------//
         L_AdminPagInicioFechaFin.Visible = false;
