@@ -31,6 +31,19 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         L_AdminPagInicioFechaFin.Text = encId.CompIdioma["L_AdminPagInicioFechaFin"].ToString();
         B_Terminaranio.Text = encId.CompIdioma["B_Terminaranio"].ToString();
 
+        //--------------------------------DDL_Rol (Nuevo Lenguaje)--------------------------------------------//
+        if (!IsPostBack)
+        {
+            DDL_rolagregar.Items.Clear();
+            DDL_rolagregar.Items.Insert(0, encId.CompIdioma["ddl_Rol_Seleccion"].ToString());
+            DDL_rolagregar.Items.Insert(1, encId.CompIdioma["ddl_Rol_Inicio"].ToString());
+            DDL_rolagregar.Items.Insert(2, encId.CompIdioma["ddl_Rol_Admin"].ToString());
+            DDL_rolagregar.Items.Insert(3, encId.CompIdioma["ddl_Rol_Profesor"].ToString());
+            DDL_rolagregar.Items.Insert(4, encId.CompIdioma["ddl_Rol_Estudiante"].ToString());
+            DDL_rolagregar.Items.Insert(5, encId.CompIdioma["ddl_Rol_Acudiente"].ToString());
+        }
+        //--------------------------------------------------------------------------------------------------//
+
         //---------------Boton Pasar Año, Desabilitado ----------------//
         L_AdminPagInicioFechaFin.Visible = false;
         fechanac.Visible = false;
@@ -186,5 +199,10 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         //datos.editaBool(ok);
 
         //this.Page.Response.Write("<script language='JavaScript'>window.alert('Insertado con Exito');</script>");
+    }
+    protected void btn_siguiente_Click(object sender, EventArgs e)
+    {
+        int h = int.Parse(DDL_rolagregar.SelectedValue);
+
     }
 }

@@ -269,7 +269,7 @@
 
                                     <div class="form-group">
                                         <label for="DDL_rolagregar" class="control-label" style="color: #333399"><asp:Label ID="L_AjaxAcorDDLRolAgregar" runat="server"></asp:Label></label>
-                                        <asp:DropDownList ID="DDL_rolagregar" Class="form-control" runat="server">
+                                        <asp:DropDownList ID="DDL_rolagregar" Class="form-control" runat="server" AutoPostBack="True">
                                         </asp:DropDownList>
                                     </div>
                                     <div class="form-group">
@@ -297,7 +297,7 @@
                     </br>
                    
                                 <div class="form-inline container">
-                                    <asp:Button ID="btn_siguiente" runat="server" class="btn btn-info btn-lg" Width="141px" BorderColor="#660033"  />
+                                    <asp:Button ID="btn_siguiente" runat="server" class="btn btn-info btn-lg" Width="141px" BorderColor="#660033" OnClick ="btn_siguiente_Click" />
 
                                 </div>
                                     <br>
