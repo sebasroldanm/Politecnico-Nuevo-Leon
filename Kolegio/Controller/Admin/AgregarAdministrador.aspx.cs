@@ -177,9 +177,8 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         usua = logica.validarUser(tb_AdministradorUsuario.Text, tb_AministradorAdministradorId.Text, int.Parse(Session["idioma"].ToString()));
         L_ErrorUsuario.Text = usua.Mensaje;
         btn_AdministradorAceptar.Visible = usua.L_Aceptar1;
-        tb_AministradorAdministradorId.Visible = usua.L_Aceptar1;
-        tb_AdministradorUsuario.ReadOnly = usua.L_Aceptar1;
         tb_AministradorAdministradorId.ReadOnly = usua.L_Aceptar1;
+        tb_AdministradorUsuario.ReadOnly = usua.L_Aceptar1;
         btn_validar.Visible = usua.B_Botones1;
 
     }
