@@ -80,7 +80,7 @@ namespace Logica
             }
             if (idIdioma == "")
             {
-                idIdioma = "0";
+                idIdioma = null;
             }
             enc.IdFormulario = form;
             enc.Control = control;

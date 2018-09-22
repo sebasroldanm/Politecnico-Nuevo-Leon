@@ -31,9 +31,10 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         L_AdminPagInicioFechaFin.Text = encId.CompIdioma["L_AdminPagInicioFechaFin"].ToString();
         B_Terminaranio.Text = encId.CompIdioma["B_Terminaranio"].ToString();
 
-        tb_traduccionES.Enabled = false;
-        tb_traduccionIN.Enabled = false;
+        tb_traduccionES.ReadOnly = true;
+        tb_traduccionIN.ReadOnly = true;
         tb_traduccion.ReadOnly = true;
+        btn_siguiente.Visible = false;
 
         //------------------------------------DDL_Rol (Nuevo Lenguaje)--------------------------------------------//
         if (!IsPostBack)
@@ -118,9 +119,9 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         encId = idioma.listarControlIdioma(form, item);
         tb_traduccionES.Text = encId.ControlEsp;
         tb_traduccionIN.Text = encId.ControlIngles;
-
-        string fo = DDL_formularioagregar.SelectedValue;
-        string it = DDL_itemagregar.SelectedValue;
+        
+        string fo = DDL_formulario.SelectedValue;
+        string it = DDL_item.SelectedValue;
         string idi = DDL_idioma.SelectedValue;
         encId = idioma.listarControlIdiomaEditar(fo, it, idi);
         TB_itemES.Text = encId.ControlEsp;
@@ -231,6 +232,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         //Insertar Control
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
+        string id;
         if (tb_traduccion.Text == "")
         {
 
@@ -238,9 +240,10 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         else
         {
             encId = idioma.listarIdiomaVarchar(TB_nomidioma.Text);
-            string id = encId.IdIdioma;
+            id = encId.IdIdioma;
             encId = idioma.insertarControlIdioma(DDL_item.SelectedValue, tb_traduccion.Text, encId.IdIdioma, DDL_formularioagregar.SelectedValue);
         }
+
 
     }
 
@@ -249,10 +252,12 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         //Insertar Idioma
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
+        Session["empezar"] = "true";
         encId = idioma.insertarIdioma(TB_nomidioma.Text, TB_terminoidioma.Text);
         tb_traduccion.ReadOnly = false;
         TB_nomidioma.ReadOnly = true;
         TB_terminoidioma.ReadOnly = true;
+        btn_siguiente.Visible = true;
 
     }
     protected void btn_editar_Click(object sender, EventArgs e)
