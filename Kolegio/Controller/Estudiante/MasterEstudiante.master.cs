@@ -23,6 +23,14 @@ public partial class View_MasterEstudiante : System.Web.UI.MasterPage
         L_EstuMVerNotas.Text = encId.CompIdioma["L_EstuMVerNotas"].ToString();
         L_EstuMProfe.Text = encId.CompIdioma["L_EstuMProfe"].ToString();
         L_EstuMConfig.Text = encId.CompIdioma["L_EstuMConfig"].ToString();
-        L_EstuMCerrar.Text = encId.CompIdioma["L_EstuMCerrar"].ToString();
+        btn_cerrar_sesion.Text = encId.CompIdioma["L_EstuMCerrar"].ToString();
+    }
+    protected void btn_cerrar_sesion_click(object sender, EventArgs e)
+    {
+        LUser logica = new LUser();
+
+        logica.cerrarSession(Session.SessionID);
+
+        Response.Redirect("~/View/Inicio/InicioNosotros.aspx");
     }
 }

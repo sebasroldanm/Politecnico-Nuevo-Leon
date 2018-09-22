@@ -45,7 +45,8 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
 
         L_Inicio.Text = usua.Nosotros;
 
-        logica.cerrarSession(Session.SessionID);
+        //logica.cerrarSession(Session.SessionID);
+
 
 
         UUser enc = new UUser();

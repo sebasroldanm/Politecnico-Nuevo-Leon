@@ -27,6 +27,14 @@ public partial class View_Administrador_MasterAdministrador : System.Web.UI.Mast
         HL_MAdminMensaje.Text = encId.CompIdioma["HL_MAdminMensaje"].ToString();
         HL_MAdminPagInicio.Text = encId.CompIdioma["HL_MAdminPagInicio"].ToString();
         HL_MAdminConfig.Text = encId.CompIdioma["HL_MAdminConfig"].ToString();
-        HL_MAdminInicio.Text = encId.CompIdioma["HL_MAdminInicio"].ToString();
+        btn_cerrar_sesion.Text = encId.CompIdioma["HL_MAdminInicio"].ToString();
+    }
+    protected void btn_cerrar_sesion_click(object sender, EventArgs e)
+    {
+        LUser logica = new LUser();
+
+        logica.cerrarSession(Session.SessionID);
+
+        Response.Redirect("~/View/Inicio/InicioNosotros.aspx");
     }
 }

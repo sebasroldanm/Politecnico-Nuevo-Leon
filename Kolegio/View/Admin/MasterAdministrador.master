@@ -59,7 +59,10 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <asp:HyperLink ID="HL_MAdminInicio" runat="server" NavigateUrl="~/View/Inicio/InicioNosotros.aspx">HyperLink</asp:HyperLink>
+                            <div class="form-inline container-fluid">
+                                <%--<asp:HyperLink ID="HL_MAdminInicio" runat="server" NavigateUrl="~/View/Inicio/InicioNosotros.aspx" >HyperLink</asp:HyperLink>--%>
+                                <asp:Button ID="btn_cerrar_sesion" Height="50px" runat="server" OnClick="btn_cerrar_sesion_click" CssClass="btn btn-link"></asp:Button>
+                            </div>
                         </li>
                     </ul>
                 </div>

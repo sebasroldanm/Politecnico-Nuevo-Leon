@@ -22,17 +22,14 @@ public partial class View_Acudiente_MasterAcudiente : System.Web.UI.MasterPage
         L_AcuSubObservador.Text = encId.CompIdioma["L_AcuSubObservador"].ToString();
         L_AcuSubMensaje.Text = encId.CompIdioma["L_AcuSubMensaje"].ToString();
         L_AcuSubConfig.Text = encId.CompIdioma["L_AcuSubConfig"].ToString();
-        L_AcuSubCerrar.Text = encId.CompIdioma["L_AcuSubCerrar"].ToString();
+        btn_cerrar_sesion.Text = encId.CompIdioma["L_AcuSubCerrar"].ToString();
     }
-    protected void B_Cerrar_Click(object sender, EventArgs e)
+    protected void btn_cerrar_sesion_click(object sender, EventArgs e)
     {
-        UUser datos = new UUser();
-        LLogin logic = new LLogin();
+        LUser logica = new LUser();
 
-        datos = logic.cerrarSessionAcudiente(Session.SessionID);
-        Session["userId"] = datos.SUserId;
-        Session["nombre"] = datos.Nombre;
+        logica.cerrarSession(Session.SessionID);
 
-        Response.Redirect(datos.Url);
+        Response.Redirect("~/View/Inicio/InicioNosotros.aspx");
     }
 }

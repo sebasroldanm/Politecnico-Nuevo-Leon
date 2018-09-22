@@ -20,24 +20,34 @@ public partial class Loggin : System.Web.UI.Page
         LIdioma idioma = new LIdioma();    
         Int32 FORMULARIO = 40;
 
-        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+        try
+        {
 
-        Page.Title = encId.CompIdioma["Title"].ToString();
-        L_LoginTitulo.Text = encId.CompIdioma["L_LoginTitulo"].ToString();
-        L_LoginUsuario.Text = encId.CompIdioma["L_LoginUsuario"].ToString();
-        TB_UserName.Attributes.Add("placeholder", encId.CompIdioma["TB_UserName"].ToString());
-        RFV_UserName.ErrorMessage = encId.CompIdioma["RFV_UserName"].ToString();
-        REV_UserName.ErrorMessage = encId.CompIdioma["REV_UserName"].ToString();
-        L_LoginClave.Text = encId.CompIdioma["L_LoginClave"].ToString();
-        RFV_Clave.ErrorMessage = encId.CompIdioma["RFV_Clave"].ToString();
-        REV_Clave.ErrorMessage = encId.CompIdioma["REV_Clave"].ToString();
-        BT_Ingresar.Text = encId.CompIdioma["BT_Ingresar"].ToString();
-        BT_Recuperar.Text = encId.CompIdioma["BT_Recuperar"].ToString();
-        BT_Salir.Text = encId.CompIdioma["BT_Salir"].ToString();
-        TB_Clave.Attributes.Add("placeholder", encId.CompIdioma["TB_Clave"].ToString());
+            encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
 
-        //L_Error_inactivo.Text = "Usuario Se Encuentra Inactivo";
-        //L_Error_clave_incorrecto.Text = "Usuario Y/o Clave Incorrecto";
+            Page.Title = encId.CompIdioma["Title"].ToString();
+            L_LoginTitulo.Text = encId.CompIdioma["L_LoginTitulo"].ToString();
+            L_LoginUsuario.Text = encId.CompIdioma["L_LoginUsuario"].ToString();
+            TB_UserName.Attributes.Add("placeholder", encId.CompIdioma["TB_UserName"].ToString());
+            RFV_UserName.ErrorMessage = encId.CompIdioma["RFV_UserName"].ToString();
+            REV_UserName.ErrorMessage = encId.CompIdioma["REV_UserName"].ToString();
+            L_LoginClave.Text = encId.CompIdioma["L_LoginClave"].ToString();
+            RFV_Clave.ErrorMessage = encId.CompIdioma["RFV_Clave"].ToString();
+            REV_Clave.ErrorMessage = encId.CompIdioma["REV_Clave"].ToString();
+            BT_Ingresar.Text = encId.CompIdioma["BT_Ingresar"].ToString();
+            BT_Recuperar.Text = encId.CompIdioma["BT_Recuperar"].ToString();
+            BT_Salir.Text = encId.CompIdioma["BT_Salir"].ToString();
+            TB_Clave.Attributes.Add("placeholder", encId.CompIdioma["TB_Clave"].ToString());
+
+            //L_Error_inactivo.Text = "Usuario Se Encuentra Inactivo";
+            //L_Error_clave_incorrecto.Text = "Usuario Y/o Clave Incorrecto";
+        }
+        catch
+        {
+            Session["idioma"] = 1;
+            Response.Redirect("Loggin.aspx");
+                //Response.Redirect("~/View/Inicio/InicioNosotros.aspx");
+        }
 
     }
 
@@ -61,6 +71,12 @@ public partial class Loggin : System.Web.UI.Page
 
         try
         {
+            MAC datosConexion = new MAC();
+            int prueba = int.Parse(Session["userId"].ToString());
+            logic.logicaGuardarSesion(int.Parse(Session["userId"].ToString()),
+                datosConexion.ip(),
+                datosConexion.mac(),
+                Session.SessionID);
             Response.Redirect(datos.Url);
         }
         catch

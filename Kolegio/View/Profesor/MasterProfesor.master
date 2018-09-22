@@ -19,57 +19,69 @@
 
 <body>
     <img id="fondo" src="../../Imagenes/fondoprofesor4.jpg" alt="background image" />
-    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-  <div class="container-fluid">
- 
-    <div class="navbar-header">
-      
-      <a class="navbar-brand" href="#"><asp:Label ID="L_ProfeMTitulo" runat="server"></asp:Label></a>   
-    </div>
+    <form id="MasterUsuario" runat="server">
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <div class="container-fluid">
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+                <div class="navbar-header">
 
-         
-             
-             <li><a href="ProfesorSubirNota.aspx"><asp:Label ID="L_ProfeMSubirNota" runat="server"></asp:Label></a></li>
-             <li><a href="ProfesorHorario.aspx"><asp:Label ID="L_ProfeMHoraio" runat="server"></asp:Label></a></li>
-             <li><a href="ProfesorObservacion.aspx"><asp:Label ID="L_ProfeMObservacion" runat="server"></asp:Label></a></li>
-             <li><a href="ProfesorMensaje.aspx"><asp:Label ID="L_ProfeMMensaje" runat="server"></asp:Label></a></li>
-             <li><a href="ProfesorConfiguracion.aspx"><asp:Label ID="L_ProfeMConfig" runat="server"></asp:Label></a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="../Inicio/InicioNosotros.aspx"><asp:Label ID="L_ProfeMCerrar" runat="server"></asp:Label></a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+                    <a class="navbar-brand" href="#">
+                        <asp:Label ID="L_ProfeMTitulo" runat="server"></asp:Label></a>
+                </div>
 
-    <div class="container">
-        <div class="row">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
 
 
 
-            <div class="col-md-8">
-               <form id="MasterUsuario" runat="server">
-      <div>
-                           
-          <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-    
-             
-              </asp:ContentPlaceHolder>
-    
-                 </div>
-             </form>
-
+                        <li><a href="ProfesorSubirNota.aspx">
+                            <asp:Label ID="L_ProfeMSubirNota" runat="server"></asp:Label></a></li>
+                        <li><a href="ProfesorHorario.aspx">
+                            <asp:Label ID="L_ProfeMHoraio" runat="server"></asp:Label></a></li>
+                        <li><a href="ProfesorObservacion.aspx">
+                            <asp:Label ID="L_ProfeMObservacion" runat="server"></asp:Label></a></li>
+                        <li><a href="ProfesorMensaje.aspx">
+                            <asp:Label ID="L_ProfeMMensaje" runat="server"></asp:Label></a></li>
+                        <li><a href="ProfesorConfiguracion.aspx">
+                            <asp:Label ID="L_ProfeMConfig" runat="server"></asp:Label></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <%--<a href="../Inicio/InicioNosotros.aspx"><asp:Label ID="L_ProfeMCerrar" runat="server"></asp:Label></a>--%>
+                            <div class="form-inline container-fluid">
+                                <asp:Button ID="btn_cerrar_sesion" Height="50px" runat="server" OnClick="btn_cerrar_sesion_click" CssClass="btn btn-link"></asp:Button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
             </div>
+            <!-- /.container-fluid -->
+        </nav>
+
+        <div class="container">
+            <div class="row">
+
+
+
+                <div class="col-md-8">
+
+                    <div>
+
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+
+                    </div>
+    </form>
+
+    </div>
 
         </div>
 
     </div>
 
 
-  
+
 </body>
 </html>
 
