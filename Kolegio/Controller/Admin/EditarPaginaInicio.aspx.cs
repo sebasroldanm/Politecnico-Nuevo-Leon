@@ -41,8 +41,20 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
             DDL_rolagregar.Items.Insert(3, encId.CompIdioma["ddl_Rol_Profesor"].ToString());
             DDL_rolagregar.Items.Insert(4, encId.CompIdioma["ddl_Rol_Estudiante"].ToString());
             DDL_rolagregar.Items.Insert(5, encId.CompIdioma["ddl_Rol_Acudiente"].ToString());
+
+            //------------------------------------DDL_Rol (Editar Lenguaje)--------------------------------------------//
+            DDL_rol.Items.Clear();
+            DDL_rol.Items.Insert(0, encId.CompIdioma["ddl_Rol_Seleccion"].ToString());
+            DDL_rol.Items.Insert(1, encId.CompIdioma["ddl_Rol_Inicio"].ToString());
+            DDL_rol.Items.Insert(2, encId.CompIdioma["ddl_Rol_Admin"].ToString());
+            DDL_rol.Items.Insert(3, encId.CompIdioma["ddl_Rol_Profesor"].ToString());
+            DDL_rol.Items.Insert(4, encId.CompIdioma["ddl_Rol_Estudiante"].ToString());
+            DDL_rol.Items.Insert(5, encId.CompIdioma["ddl_Rol_Acudiente"].ToString());
         }
         //-------------------------------------------------------------------------------------------------------//
+
+
+
 
         //---------------Boton Pasar Año, Desabilitado ----------------//
         L_AdminPagInicioFechaFin.Visible = false;

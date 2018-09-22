@@ -202,17 +202,17 @@
                                 <div class="form-inline" role="form">
                                     <div class="form-group">
                                         <label for="DDL_rol" class="control-label" style="color: #333399"><asp:Label ID="L_AjaxAcorDDLRol" runat="server"></asp:Label></label>
-                                        <asp:DropDownList ID="DDL_rol" Class="form-control" runat="server">
+                                        <asp:DropDownList ID="DDL_rol" Class="form-control" runat="server" AutoPostBack="True">
                                         </asp:DropDownList>
                                     </div>
                                     <div class="form-group">
                                         <label for="DDL_formulario" class="control-label" style="color: #333399"><asp:Label ID="L_AjaxAcorDDLForm" runat="server"></asp:Label></label>
-                                        <asp:DropDownList ID="DDL_formulario" Class="form-control" runat="server">
+                                        <asp:DropDownList ID="DDL_formulario" Class="form-control" runat="server" AutoPostBack="True">
                                         </asp:DropDownList>
                                     </div>
                                     <div class="form-group">
                                         <label for="DDL_item" class="control-label" style="color: #333399"><asp:Label ID="L_AjaxAcroDDLItem" runat="server"></asp:Label></label>
-                                        <asp:DropDownList ID="DDL_item" Class="form-control" runat="server">
+                                        <asp:DropDownList ID="DDL_item" Class="form-control" runat="server" AutoPostBack="True">
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -274,12 +274,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="DDL_formularioagregar" class="control-label" style="color: #333399"><asp:Label ID="L_AjaxAcorDDLFormAgregar" runat="server"></asp:Label></label>
-                                        <asp:DropDownList ID="DDL_formularioagregar" Class="form-control" runat="server">
+                                        <asp:DropDownList ID="DDL_formularioagregar" Class="form-control" runat="server" AutoPostBack="True">
                                         </asp:DropDownList>
                                     </div>
                                     <div class="form-group">
                                         <label for="DDL_itemagregar" class="control-label" style="color: #333399"><asp:Label ID="L_AjaxAcorDDLItemAgregar" runat="server"></asp:Label></label>
-                                        <asp:DropDownList ID="DDL_itemagregar" Class="form-control" runat="server">
+                                        <asp:DropDownList ID="DDL_itemagregar" Class="form-control" runat="server" AutoPostBack="True">
                                         </asp:DropDownList>
                                     </div>
                                 </div>
