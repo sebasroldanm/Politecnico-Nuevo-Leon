@@ -189,7 +189,7 @@ namespace Logica
                      //usua.Notificacion = "<script language='JavaScript'>window.alert('Usuario Insertado con Exito');</script>";
                      usua.Notificacion = "<script language='JavaScript'>window.alert('"+ encId.CompIdioma["script_insertado"].ToString()+"');</script>";
                     usua.B_Botones1 = true;
-                    usua.L_Aceptar1 = true;
+                    usua.L_Aceptar1 = false;
 
                 }
                 else

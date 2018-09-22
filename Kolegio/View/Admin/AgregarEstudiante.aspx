@@ -55,7 +55,7 @@
                 <asp:TextBox ID="tb_EstudianteId" runat="server" class="form-control" title="Numero de Documento" MaxLength="10"></asp:TextBox>
                 <asp:RequiredFieldValidator for="tb_EstudianteId" ID="RequiredFieldValidator6" ValidationGroup="form_ejm3" runat="server" ErrorMessage="*" ControlToValidate="tb_EstudianteId" SetFocusOnError="True" Font-Bold="True" ForeColor="#FC2424" ToolTip="El campo es obligatorio" Font-Size="X-Large"></asp:RequiredFieldValidator><br />
                 <asp:RegularExpressionValidator ID="REV_EstudianteId" runat="server" ControlToValidate="tb_EstudianteId" ValidationExpression="^[0-9]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="form_ejm3"></asp:RegularExpressionValidator>
-                <asp:RangeValidator ID="RV_id_estudiante" runat="server" ControlToValidate="tb_EstudianteId" CssClass="label-warning" Font-Bold="True" ForeColor="White" MaximumValue="1499999999" MinimumValue="1" ValidationGroup="form_ejm3"></asp:RangeValidator><br />
+                <asp:RangeValidator ID="RV_id_estudiante" runat="server" ControlToValidate="tb_EstudianteId" CssClass="label-warning" Font-Bold="True" ForeColor="White" MaximumValue="999999999" MinimumValue="1" ValidationGroup="form_ejm3"></asp:RangeValidator><br />
             </div>
 
             <div class="form-group">

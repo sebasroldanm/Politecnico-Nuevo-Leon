@@ -325,12 +325,18 @@ namespace Logica
                 enc.Materia = materia;
                 enc.Curso = curso;
                 DataTable registros = datos.obtenerNota(enc);
+                try
+                {
+                    enc.Nota1 = registros.Rows[0]["nota1"].ToString();
+                    enc.Nota2 = registros.Rows[0]["nota2"].ToString();
+                    enc.Nota3 = registros.Rows[0]["nota3"].ToString();
 
-                enc.Nota1 = registros.Rows[0]["nota1"].ToString();
-                enc.Nota2 = registros.Rows[0]["nota2"].ToString();
-                enc.Nota3 = registros.Rows[0]["nota3"].ToString();
+                    enc.Notadef = registros.Rows[0]["notadef"].ToString();
+                }
+                catch
+                {
 
-                enc.Notadef = registros.Rows[0]["notadef"].ToString();
+                }
             }
             return enc;
         }
