@@ -215,6 +215,11 @@
                                         <asp:DropDownList ID="DDL_item" Class="form-control" runat="server" AutoPostBack="True">
                                         </asp:DropDownList>
                                     </div>
+                                     <div class="form-group">
+                                        <label for="DDL_idioma" class="control-label" style="color: #333399"><asp:Label ID="Label1" runat="server">Idioma :</asp:Label></label>
+                                        <asp:DropDownList ID="DDL_idioma" Class="form-control" runat="server" AutoPostBack="True">
+                                        </asp:DropDownList>
+                                    </div>
                                 </div>
                                      <br>
                     </br>
@@ -225,7 +230,7 @@
                                          <asp:TextBox ID="TB_itemES" MaxLength="30" runat="server" class="form-control" title="Español" ></asp:TextBox>
                                      </div>
                                      <div class="form-group">
-                                         <asp:TextBox ID="TB_itemIN" MaxLength="30" runat="server" class="form-control" title="English" ></asp:TextBox>
+                                         <asp:TextBox ID="TB_itemIN" MaxLength="30" runat="server" class="form-control" title="English" Visible="False"></asp:TextBox>
                                      </div>
                                  </div>
                                      <br>
@@ -261,7 +266,11 @@
 
                                 <div class="form-inline" role="form">
                                     <div class="form-group">
-                                         <asp:TextBox ID="TB_terminoidioma" MaxLength="30" runat="server" class="form-control" title="Español" ></asp:TextBox>
+                                         <asp:TextBox ID="TB_terminoidioma" MaxLength="30" runat="server" class="form-control" title="Terminacion en Visual" placeholder="Terminacion en Visual" ></asp:TextBox>
+                                     </div>
+
+                                    <div class="form-group">
+                                         <asp:TextBox ID="TB_nomidioma" MaxLength="30" runat="server" class="form-control" title="Nombre Idioma" placeholder="Nombre Idioma" ></asp:TextBox>
                                      </div>
                                     <div class="form-group">
                                          <asp:Button ID="btn_comprobaridiom" runat="server" class="btn btn-primary btn-lg" Width="141px" BorderColor="#660033"  />
