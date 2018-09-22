@@ -202,23 +202,35 @@
                                 <div class="form-inline" role="form">
                                     <div class="form-group">
                                         <label for="DDL_rol" class="control-label" style="color: #333399"><asp:Label ID="L_AjaxAcorDDLRol" runat="server"></asp:Label></label>
-                                        <asp:DropDownList ID="DDL_rol" Class="form-control" runat="server" AutoPostBack="True">
-                                        </asp:DropDownList>
+                                        <asp:DropDownList ID="DDL_rol" Class="form-control" runat="server"  DataSourceID="ODS_RolEditar" DataTextField="rol_idioma" DataValueField="id_rol_idioma"  AutoPostBack="True">
+                                        </asp:DropDownList>  
+                                        <asp:ObjectDataSource ID="ODS_RolEditar" runat="server" SelectMethod="obtenerRolIdioma" TypeName="Datos.DIdioma"></asp:ObjectDataSource>
                                     </div>
                                     <div class="form-group">
                                         <label for="DDL_formulario" class="control-label" style="color: #333399"><asp:Label ID="L_AjaxAcorDDLForm" runat="server"></asp:Label></label>
-                                        <asp:DropDownList ID="DDL_formulario" Class="form-control" runat="server" AutoPostBack="True">
+                                        <asp:DropDownList ID="DDL_formulario" Class="form-control" runat="server" DataSourceID="ODS_FormEditar" DataTextField="nombre" DataValueField="id_formulario" AutoPostBack="True">
                                         </asp:DropDownList>
+                                        <asp:ObjectDataSource ID="ODS_FormEditar" runat="server" SelectMethod="listarFormulario" TypeName="Datos.DIdioma">
+                                            <SelectParameters>
+                                                <asp:ControlParameter ControlID="DDL_rol" Name="idioma" PropertyName="SelectedValue" Type="Int32" />
+                                            </SelectParameters>
+                                            </asp:ObjectDataSource>
                                     </div>
                                     <div class="form-group">
                                         <label for="DDL_item" class="control-label" style="color: #333399"><asp:Label ID="L_AjaxAcroDDLItem" runat="server"></asp:Label></label>
-                                        <asp:DropDownList ID="DDL_item" Class="form-control" runat="server" AutoPostBack="True">
+                                        <asp:DropDownList ID="DDL_item" Class="form-control" runat="server" DataSourceID="ODS_ItemEditar" DataTextField="control" DataValueField="control"  AutoPostBack="True">
                                         </asp:DropDownList>
+                                        <asp:ObjectDataSource ID="ODS_ItemEditar" runat="server" SelectMethod="listarControles" TypeName="Datos.DIdioma">
+                                            <SelectParameters>
+                                                <asp:ControlParameter ControlID="DDL_formulario" Name="idioma" PropertyName="SelectedValue" Type="Int32" />
+                                            </SelectParameters>
+                                        </asp:ObjectDataSource>
                                     </div>
                                      <div class="form-group">
                                         <label for="DDL_idioma" class="control-label" style="color: #333399"><asp:Label ID="Label1" runat="server">Idioma :</asp:Label></label>
-                                        <asp:DropDownList ID="DDL_idioma" Class="form-control" runat="server" AutoPostBack="True">
+                                        <asp:DropDownList ID="DDL_idioma" Class="form-control" runat="server" DataSourceID="ODS_Idioma" DataTextField="nombre" DataValueField="id_idioma" AutoPostBack="True">
                                         </asp:DropDownList>
+                                         <asp:ObjectDataSource ID="ODS_Idioma" runat="server" SelectMethod="obtenerSeleccionIdioma" TypeName="Datos.DIdioma"></asp:ObjectDataSource>
                                     </div>
                                 </div>
                                      <br>
@@ -238,7 +250,7 @@
                                      <br>
                     </br>
                                 <div class="form-inline container">
-                                    <asp:Button ID="btn_editar" runat="server" class="btn btn-info btn-lg" Width="141px" BorderColor="#660033"  />
+                                    <asp:Button ID="btn_editar" runat="server" OnClick ="btn_editar_Click" class="btn btn-info btn-lg" Width="141px" BorderColor="#660033"  />
 
                                     <asp:Button ID="btn_aceptar" runat="server"  class="btn btn-success btn-lg" Width="141px" BorderColor="#660033" />
                                 
@@ -273,23 +285,36 @@
                                          <asp:TextBox ID="TB_nomidioma" MaxLength="30" runat="server" class="form-control" title="Nombre Idioma" placeholder="Nombre Idioma" ></asp:TextBox>
                                      </div>
                                     <div class="form-group">
-                                         <asp:Button ID="btn_comprobaridiom" runat="server" class="btn btn-primary btn-lg" Width="141px" BorderColor="#660033"  />
+                                         <asp:Button ID="btn_comprobaridiom" runat="server" class="btn btn-primary btn-lg" Width="141px" BorderColor="#660033"  OnClick ="btn_comprobaridiom_Click"/>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="DDL_rolagregar" class="control-label" style="color: #333399"><asp:Label ID="L_AjaxAcorDDLRolAgregar" runat="server"></asp:Label></label>
-                                        <asp:DropDownList ID="DDL_rolagregar" Class="form-control" runat="server" AutoPostBack="True">
-                                        </asp:DropDownList>
+                                        <asp:DropDownList ID="DDL_rolagregar" Class="form-control" runat="server" DataSourceID="ODS_Rol" DataTextField="rol_idioma" DataValueField="id_rol_idioma" AutoPostBack="True">
+                                        </asp:DropDownList>  
+                                        <asp:ObjectDataSource ID="ODS_Rol" runat="server" SelectMethod="obtenerRolIdioma" TypeName="Datos.DIdioma"></asp:ObjectDataSource>
                                     </div>
                                     <div class="form-group">
                                         <label for="DDL_formularioagregar" class="control-label" style="color: #333399"><asp:Label ID="L_AjaxAcorDDLFormAgregar" runat="server"></asp:Label></label>
-                                        <asp:DropDownList ID="DDL_formularioagregar" Class="form-control" runat="server" AutoPostBack="True">
+                                        <asp:DropDownList ID="DDL_formularioagregar" Class="form-control" runat="server" DataSourceID="ODS_Form" DataTextField="nombre" DataValueField="id_formulario" AutoPostBack="True">
+                                        <asp:ListItem Value="0"></asp:ListItem>
                                         </asp:DropDownList>
+                                        <asp:ObjectDataSource ID="ODS_Form" runat="server" SelectMethod="listarFormulario" TypeName="Datos.DIdioma">
+                                            <SelectParameters>
+                                                <asp:ControlParameter ControlID="DDL_rolagregar" Name="idioma" PropertyName="SelectedValue" Type="Int32" />
+                                            </SelectParameters>
+                                        </asp:ObjectDataSource>
                                     </div>
                                     <div class="form-group">
                                         <label for="DDL_itemagregar" class="control-label" style="color: #333399"><asp:Label ID="L_AjaxAcorDDLItemAgregar" runat="server"></asp:Label></label>
-                                        <asp:DropDownList ID="DDL_itemagregar" Class="form-control" runat="server" AutoPostBack="True">
+                                        <asp:DropDownList ID="DDL_itemagregar" Class="form-control" runat="server"  DataSourceID="ODS_Item" DataTextField="control" DataValueField="control" AutoPostBack="True">
+                                        <asp:ListItem Value="L"></asp:ListItem>
                                         </asp:DropDownList>
+                                        <asp:ObjectDataSource ID="ODS_Item" runat="server" SelectMethod="listarControles" TypeName="Datos.DIdioma">
+                                            <SelectParameters>
+                                                <asp:ControlParameter ControlID="DDL_formularioagregar" Name="idioma" PropertyName="SelectedValue" Type="Int32" />
+                                            </SelectParameters>
+                                        </asp:ObjectDataSource>
                                     </div>
                                 </div>
                                     <br>

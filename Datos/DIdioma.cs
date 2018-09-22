@@ -99,17 +99,15 @@ namespace Datos
             return Idioma;
         }
 
-
-        public DataTable listarFormulario(UIdioma idioma)
+        public DataTable obtenerRolIdioma()
         {
             DataTable Idioma = new DataTable();
             NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
 
             try
             {
-                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_listar_formulario", conection);
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_seleccion_rol", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("formulario", NpgsqlDbType.Integer).Value = idioma.NumFormulario;
 
                 conection.Open();
                 dataAdapter.Fill(Idioma);
@@ -128,7 +126,35 @@ namespace Datos
             return Idioma;
         }
 
-        public DataTable listarControles(UIdioma idioma)
+        public DataTable listarFormulario(int idioma)
+        {
+            DataTable Idioma = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_listar_formulario", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_rol", NpgsqlDbType.Integer).Value = idioma;
+
+                conection.Open();
+                dataAdapter.Fill(Idioma);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Idioma;
+        }
+
+        public DataTable listarControles(int idioma)
         {
             DataTable Idioma = new DataTable();
             NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
@@ -137,7 +163,7 @@ namespace Datos
             {
                 NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_listar_controles", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_con_formulario_id", NpgsqlDbType.Integer).Value = idioma.IdFormulario;
+                dataAdapter.SelectCommand.Parameters.Add("_con_formulario_id", NpgsqlDbType.Integer).Value = idioma;
 
                 conection.Open();
                 dataAdapter.Fill(Idioma);
@@ -163,10 +189,10 @@ namespace Datos
 
             try
             {
-                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_listar_controles", conection);
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_listar_idioma_control", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_con_formulario_id", NpgsqlDbType.Integer).Value = idioma.IdFormulario;
-                dataAdapter.SelectCommand.Parameters.Add("_control", NpgsqlDbType.Varchar).Value = idioma.Control;
+                dataAdapter.SelectCommand.Parameters.Add("_con_formulario_id", NpgsqlDbType.Integer).Value = int.Parse(idioma.IdFormulario);
+                dataAdapter.SelectCommand.Parameters.Add("_control", NpgsqlDbType.Varchar).Value =idioma.Control;
 
                 conection.Open();
                 dataAdapter.Fill(Idioma);
@@ -184,6 +210,66 @@ namespace Datos
             }
             return Idioma;
         }
+
+        public DataTable listarIdiomaControlesEditar(UIdioma idioma)
+        {
+            DataTable Idioma = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_listar_idioma_control_editar", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_con_formulario_id", NpgsqlDbType.Integer).Value = int.Parse(idioma.IdFormulario);
+                dataAdapter.SelectCommand.Parameters.Add("_control", NpgsqlDbType.Varchar).Value = idioma.Control;
+                dataAdapter.SelectCommand.Parameters.Add("_con_idioma_id", NpgsqlDbType.Integer).Value = int.Parse(idioma.IdIdioma);
+
+                conection.Open();
+                dataAdapter.Fill(Idioma);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Idioma;
+        }
+
+        public DataTable insertarIdioma(string nombre, string termina)
+        {
+            DataTable Idioma = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_insertar_idioma", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_nombre", NpgsqlDbType.Text).Value = nombre;
+                dataAdapter.SelectCommand.Parameters.Add("_terminacion", NpgsqlDbType.Varchar).Value = termina;
+
+                conection.Open();
+                dataAdapter.Fill(Idioma);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Idioma;
+        }
+
 
         public DataTable insertarIdiomaControles(UIdioma idioma)
         {
@@ -192,10 +278,12 @@ namespace Datos
 
             try
             {
-                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_listar_controles", conection);
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_insertar_idioma_control", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                dataAdapter.SelectCommand.Parameters.Add("_con_formulario_id", NpgsqlDbType.Integer).Value = idioma.IdFormulario;
                 dataAdapter.SelectCommand.Parameters.Add("_control", NpgsqlDbType.Varchar).Value = idioma.Control;
+                dataAdapter.SelectCommand.Parameters.Add("_texto", NpgsqlDbType.Text).Value = idioma.Texto;
+                dataAdapter.SelectCommand.Parameters.Add("_con_idioma_id", NpgsqlDbType.Integer).Value = int.Parse(idioma.IdIdioma);
+                dataAdapter.SelectCommand.Parameters.Add("_con_formulario_id", NpgsqlDbType.Integer).Value = int.Parse(idioma.IdFormulario);
 
                 conection.Open();
                 dataAdapter.Fill(Idioma);
@@ -213,5 +301,37 @@ namespace Datos
             }
             return Idioma;
         }
+
+
+        public DataTable listarIdiomaVarchar(string nombre)
+        {
+            DataTable Idioma = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_listar_idioma_varchar", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_nombre", NpgsqlDbType.Text).Value = nombre;
+                ;
+
+                conection.Open();
+                dataAdapter.Fill(Idioma);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Idioma;
+        }
+
+
     }
 }
