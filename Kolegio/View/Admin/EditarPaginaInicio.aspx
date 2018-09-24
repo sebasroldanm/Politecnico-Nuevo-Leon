@@ -199,6 +199,8 @@
                                     </br>
                    
                                  <div class="container" style="margin: 0% 0% 0% 5%" >
+                                
+
                                 <div class="form-inline" role="form">
                                     <div class="form-group">
                                         <label for="DDL_rol" class="control-label" style="color: #333399"><asp:Label ID="L_AjaxAcorDDLRol" runat="server"></asp:Label></label>
@@ -237,6 +239,8 @@
                     </br>
                                      <br>
                     </br>
+                                     <asp:UpdatePanel ID="UP_Editar" UpdateMode="Conditional" runat="server"> 
+                                         <ContentTemplate>
                                 <div class="form-inline" role="form">
                                      <div class="form-group">
                                          <asp:TextBox ID="TB_itemES" MaxLength="30" runat="server" class="form-control" title="Español" ></asp:TextBox>
@@ -245,18 +249,23 @@
                                          <asp:TextBox ID="TB_itemIN" MaxLength="30" runat="server" class="form-control" title="English" Visible="False"></asp:TextBox>
                                      </div>
                                  </div>
+                                             </ContentTemplate>
+                                    </asp:UpdatePanel>
                                      <br>
                     </br>
                                      <br>
                     </br>
+                                     
+                                     
                                 <div class="form-inline container">
                                     <asp:Button ID="btn_editar" runat="server" OnClick ="btn_editar_Click" class="btn btn-info btn-lg" Width="141px" BorderColor="#660033"  />
 
-                                    <asp:Button ID="btn_aceptar" runat="server"  class="btn btn-success btn-lg" Width="141px" BorderColor="#660033" />
+                                    <asp:Button ID="btn_aceptar" runat="server" OnClick ="btn_aceptar_Click" class="btn btn-success btn-lg" Width="141px" BorderColor="#660033" />
                                 
                                 </div>
                                      <br>
                 </br>
+                                             
                 </div>
 
                             </Content>
@@ -282,7 +291,7 @@
                                      </div>
 
                                     <div class="form-group">
-                                         <asp:TextBox ID="TB_nomidioma" MaxLength="30" runat="server" class="form-control" title="Nombre Idioma" placeholder="Nombre Idioma" ></asp:TextBox>
+                                         <asp:TextBox ID="TB_nomidioma" MaxLength="30" runat="server" class="form-control" title="Nombre Idioma" placeholder="Nombre Idioma" Text=" "></asp:TextBox>
                                      </div>
                                     <div class="form-group">
                                          <asp:Button ID="btn_comprobaridiom" runat="server" class="btn btn-primary btn-lg" Width="141px" BorderColor="#660033"  OnClick ="btn_comprobaridiom_Click"/>
@@ -310,9 +319,11 @@
                                         <asp:DropDownList ID="DDL_itemagregar" Class="form-control" runat="server"  DataSourceID="ODS_Item" DataTextField="control" DataValueField="control" AutoPostBack="True">
                                         <asp:ListItem Value="L"></asp:ListItem>
                                         </asp:DropDownList>
-                                        <asp:ObjectDataSource ID="ODS_Item" runat="server" SelectMethod="listarControles" TypeName="Datos.DIdioma">
+                                        <asp:ObjectDataSource ID="ODS_Item" runat="server" SelectMethod="listarControlesExcluir" TypeName="Datos.DIdioma">
                                             <SelectParameters>
-                                                <asp:ControlParameter ControlID="DDL_formularioagregar" Name="idioma" PropertyName="SelectedValue" Type="Int32" />
+                                                <%--<asp:ControlParameter ControlID="DDL_formularioagregar" Name="idioma" PropertyName="SelectedValue" Type="Int32" />--%>
+                                                 <asp:ControlParameter ControlID="DDL_formularioagregar" Name="formular" PropertyName="SelectedValue" Type="Int32" />
+                                                <asp:ControlParameter ControlID="TB_nomidioma" Name="idioma" PropertyName="Text" Type="string" /> 
                                             </SelectParameters>
                                         </asp:ObjectDataSource>
                                     </div>

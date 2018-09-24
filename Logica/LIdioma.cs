@@ -11,7 +11,7 @@ using System.Globalization;
 
 namespace Logica
 {
-    public class LIdioma
+    public class LIdioma : System.Web.UI.Page
     {
         public UIdioma obtIdioma(int form, int idioma)
         { 
@@ -80,7 +80,7 @@ namespace Logica
             }
             if (idIdioma == "")
             {
-                idIdioma = null;
+                idIdioma = "0";
             }
             enc.IdFormulario = form;
             enc.Control = control;
@@ -99,12 +99,13 @@ namespace Logica
             UIdioma enc = new UIdioma();
             DataTable reg = new DataTable();
 
-            reg = datos.insertarIdioma(nombre, termin);
-
+            datos.insertarIdioma(nombre, termin);
+            reg = datos.contadorControl(nombre);
+            enc.Contador = int.Parse(reg.Rows[0]["count"].ToString());
             return enc;
         }
 
-        public UIdioma insertarControlIdioma(string control, string texto, string ididioma, string idform)
+        public UIdioma insertarControlIdioma(string control, string texto, string ididioma, string idform, string nombre)
         {
             DIdioma datos = new DIdioma();
             UIdioma enc = new UIdioma();
@@ -116,6 +117,10 @@ namespace Logica
             enc.IdFormulario = idform;
 
             reg = datos.insertarIdiomaControles(enc);
+
+            reg = datos.contadorControl(nombre);
+            enc.Contador = int.Parse(reg.Rows[0]["count"].ToString());
+
             return enc;
         }
 
@@ -130,5 +135,74 @@ namespace Logica
             return enc;
         }
 
+        public UIdioma editarIdiomaControl(string control, string formul, string idioma, string texto)
+        {
+            DIdioma datos = new DIdioma();
+            UIdioma enc = new UIdioma();
+            DataTable reg = new DataTable();
+
+            reg = datos.editarIdiomaControl(control, formul, idioma, texto);
+            return enc;
+        }
+
+        public UIdioma validaIdiomaEmpezarInsert(string empezar, int contador, int idioma)
+        {
+            DIdioma datos = new DIdioma();
+            UIdioma enc = new UIdioma();
+            DataTable reg = new DataTable();
+            UUser user = new UUser();
+
+            //enc = listarIdiomaVarchar(id);
+            //idioma = int.Parse(enc.IdIdioma);
+
+            if (empezar == "true")
+            {
+
+                if(contador >= 828)
+                {
+                    enc.BoolIdioma = true;
+                    user.Notificacion = "Se Guarda";
+                    //Guarda
+                }
+                else
+                {
+                    enc.BoolIdioma = false;
+                    user.Notificacion = "SI sale ahora se desacartaran los datos, desea salir S/N";
+                    //ver script de aceptar y cancelar
+                    eliminarControles(idioma);
+                    eliminarIdioma(idioma);
+                }
+
+            }
+            else
+            {
+                
+            }
+
+            return enc;
+        }
+
+
+
+        public UIdioma eliminarControles(int idioma)
+        {
+            DIdioma datos = new DIdioma();
+            UIdioma enc = new UIdioma();
+            DataTable reg = new DataTable();
+
+            //datos.eliminarControles(idioma);
+            this.Page.Response.Write("<script language='JavaScript'>window.alert('Presiono Aceptar');</script>");
+            return enc;
+        }
+
+        public UIdioma eliminarIdioma(int idioma)
+        {
+            DIdioma datos = new DIdioma();
+            UIdioma enc = new UIdioma();
+            DataTable reg = new DataTable();
+
+            datos.eliminarIdioma(idioma);
+            return enc;
+        }
     }
 }

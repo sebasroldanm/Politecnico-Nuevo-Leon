@@ -35,7 +35,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         tb_traduccionIN.ReadOnly = true;
         tb_traduccion.ReadOnly = true;
         btn_siguiente.Visible = false;
-
+        btn_editar.Visible = false;
         //------------------------------------DDL_Rol (Nuevo Lenguaje)--------------------------------------------//
         if (!IsPostBack)
         {
@@ -48,13 +48,13 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
             //DDL_rolagregar.Items.Insert(5, encId.CompIdioma["ddl_Rol_Acudiente"].ToString());
 
             //------------------------------------DDL_Rol (Editar Lenguaje)--------------------------------------------//
-            DDL_rol.Items.Clear();
-            DDL_rol.Items.Insert(0, encId.CompIdioma["ddl_Rol_Seleccion"].ToString());
-            DDL_rol.Items.Insert(1, encId.CompIdioma["ddl_Rol_Inicio"].ToString());
-            DDL_rol.Items.Insert(2, encId.CompIdioma["ddl_Rol_Admin"].ToString());
-            DDL_rol.Items.Insert(3, encId.CompIdioma["ddl_Rol_Profesor"].ToString());
-            DDL_rol.Items.Insert(4, encId.CompIdioma["ddl_Rol_Estudiante"].ToString());
-            DDL_rol.Items.Insert(5, encId.CompIdioma["ddl_Rol_Acudiente"].ToString());
+            //DDL_rol.Items.Clear();
+            //DDL_rol.Items.Insert(0, encId.CompIdioma["ddl_Rol_Seleccion"].ToString());
+            //DDL_rol.Items.Insert(1, encId.CompIdioma["ddl_Rol_Inicio"].ToString());
+            //DDL_rol.Items.Insert(2, encId.CompIdioma["ddl_Rol_Admin"].ToString());
+            //DDL_rol.Items.Insert(3, encId.CompIdioma["ddl_Rol_Profesor"].ToString());
+            //DDL_rol.Items.Insert(4, encId.CompIdioma["ddl_Rol_Estudiante"].ToString());
+            //DDL_rol.Items.Insert(5, encId.CompIdioma["ddl_Rol_Acudiente"].ToString());
         }
         //-------------------------------------------------------------------------------------------------------//
 
@@ -93,7 +93,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
 
         TB_itemES.Attributes.Add("placeholder", encId.CompIdioma["TB_itemES"].ToString());
         TB_itemIN.Attributes.Add("placeholder", encId.CompIdioma["TB_itemIN"].ToString());
-
+        
         btn_editar.Text = encId.CompIdioma["btn_editar"].ToString();
         btn_aceptar.Text = encId.CompIdioma["btn_aceptar"].ToString();
 
@@ -119,13 +119,13 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         encId = idioma.listarControlIdioma(form, item);
         tb_traduccionES.Text = encId.ControlEsp;
         tb_traduccionIN.Text = encId.ControlIngles;
-        
-        string fo = DDL_formulario.SelectedValue;
-        string it = DDL_item.SelectedValue;
-        string idi = DDL_idioma.SelectedValue;
-        encId = idioma.listarControlIdiomaEditar(fo, it, idi);
-        TB_itemES.Text = encId.ControlEsp;
 
+            //string fo = DDL_formulario.SelectedValue;
+            //string it = DDL_item.SelectedValue;
+            //string idi = DDL_idioma.SelectedValue;
+            //encId = idioma.listarControlIdiomaEditar(fo, it, idi);
+            //TB_itemES.Text = encId.ControlEsp;
+        
         Response.Cache.SetNoStore();
         LLogin Logica = new LLogin();
         UUser usua = new UUser();
@@ -241,7 +241,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         {
             encId = idioma.listarIdiomaVarchar(TB_nomidioma.Text);
             id = encId.IdIdioma;
-            encId = idioma.insertarControlIdioma(DDL_item.SelectedValue, tb_traduccion.Text, encId.IdIdioma, DDL_formularioagregar.SelectedValue);
+            encId = idioma.insertarControlIdioma(DDL_item.SelectedValue, tb_traduccion.Text, encId.IdIdioma, DDL_formularioagregar.SelectedValue, TB_nomidioma.Text);
         }
 
 
@@ -255,13 +255,36 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         Session["empezar"] = "true";
         encId = idioma.insertarIdioma(TB_nomidioma.Text, TB_terminoidioma.Text);
         tb_traduccion.ReadOnly = false;
-        TB_nomidioma.ReadOnly = true;
         TB_terminoidioma.ReadOnly = true;
+        TB_nomidioma.ReadOnly = true;
         btn_siguiente.Visible = true;
+        Session["idiomaInsert"] = TB_nomidioma.Text;
+
 
     }
     protected void btn_editar_Click(object sender, EventArgs e)
     {
-    } 
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+       
+        encId = idioma.editarIdiomaControl(DDL_item.SelectedValue, DDL_formulario.SelectedValue, DDL_idioma.SelectedValue, TB_itemES.Text);
+        btn_aceptar.Visible = true;
+    }
 
+
+    protected void btn_aceptar_Click(object sender, EventArgs e)
+    {
+        UIdioma encId = new UIdioma();
+        LIdioma idioma = new LIdioma();
+
+        btn_editar.Visible = true;
+        btn_aceptar.Visible = false;
+
+        string fo = DDL_formulario.SelectedValue;
+        string it = DDL_item.SelectedValue;
+        string idi = DDL_idioma.SelectedValue;
+        encId = idioma.listarControlIdiomaEditar(fo, it, idi);
+        TB_itemES.Text = encId.ControlEsp;
+
+    }
     }

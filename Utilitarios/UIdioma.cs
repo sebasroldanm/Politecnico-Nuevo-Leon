@@ -21,6 +21,8 @@ namespace Utilitarios
         private String idIdioma;
         private String texto;
         private String nombreIdioma;
+        private Int32 contador;
+        private Boolean boolIdioma;
 
         public int SelecIdioma { get => selecIdioma; set => selecIdioma = value; }
         public Hashtable CompIdioma { get => compIdioma; set => compIdioma = value; }
@@ -33,5 +35,7 @@ namespace Utilitarios
         public string IdIdioma { get => idIdioma; set => idIdioma = value; }
         public string Texto { get => texto; set => texto = value; }
         public string NombreIdioma { get => nombreIdioma; set => nombreIdioma = value; }
+        public bool BoolIdioma { get => boolIdioma; set => boolIdioma = value; }
+        public int Contador { get => contador; set => contador = value; }
     }
 }
