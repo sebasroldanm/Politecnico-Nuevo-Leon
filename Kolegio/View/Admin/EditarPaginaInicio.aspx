@@ -291,6 +291,10 @@
                                      </div>
 
                                     <div class="form-group">
+                                        <asp:TextBox ID="TB_pruebaCristhian" MaxLength="30" runat="server" class="form-control" title="TB PRUEBA" placeholder="TB PRUEBA" ></asp:TextBox>
+                                    </div>
+
+                                    <div class="form-group">
                                          <asp:TextBox ID="TB_nomidioma" MaxLength="30" runat="server" class="form-control" title="Nombre Idioma" placeholder="Nombre Idioma" Text=" "></asp:TextBox>
                                      </div>
                                     <div class="form-group">
