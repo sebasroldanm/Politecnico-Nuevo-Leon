@@ -30,6 +30,7 @@ public partial class View_Profesor_MasterProfesor : System.Web.UI.MasterPage
         LUser logica = new LUser();
 
         logica.cerrarSession(Session.SessionID);
+        logica.limpiaSesionActiva(Session["userName"].ToString());
 
         Response.Redirect("~/View/Inicio/InicioNosotros.aspx");
     }

@@ -29,6 +29,8 @@ public partial class View_MasterEstudiante : System.Web.UI.MasterPage
     {
         LUser logica = new LUser();
 
+        logica.limpiaSesionActiva(Session["userName"].ToString());
+
         logica.cerrarSession(Session.SessionID);
 
         Response.Redirect("~/View/Inicio/InicioNosotros.aspx");

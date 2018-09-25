@@ -46,8 +46,11 @@ namespace Logica
 
                     if ((resultado.Rows[0]["estado"].ToString()) == "True")
                     {
-                        //if{
+                     DataTable valida = datos.evaluaSesiones(userName);
+                        int idUsuario = int.Parse(valida.Rows[0][0].ToString());
+                        if (idUsuario == 1)
                         {
+
                             user.Mensaje = " ";
                             switch (int.Parse(resultado.Rows[0]["rol_id"].ToString()))
                             {
@@ -77,6 +80,13 @@ namespace Logica
                                     break;
                             }
                         }
+                        else
+                        {
+                         user.MensajeIntentoErroneos = "<script language='JavaScript'>window.alert('Ha exedido el numero de Sesiones Permitidas');</script>";
+
+                        }
+                        datos.LimpiaIntentosErroneos(userName);
+                        
 
                     }
                     else
@@ -132,6 +142,16 @@ namespace Logica
             
             return user;
         }
+
+        public void limpiaSesionActiva(string usuario)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            dat.LimpiaSesionesActivas(usuario);
+   
+        }
+
 
         public void logicaGuardarSesion(int id, string ip, string mac, string sesion)
         {

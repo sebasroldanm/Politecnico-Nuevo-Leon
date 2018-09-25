@@ -63,6 +63,7 @@ public partial class View_Administrador_MasterAdministrador : System.Web.UI.Mast
     {
         LUser logica = new LUser();
 
+        logica.limpiaSesionActiva(Session["userName"].ToString());
         logica.cerrarSession(Session.SessionID);
 
         Response.Redirect("~/View/Inicio/InicioNosotros.aspx");

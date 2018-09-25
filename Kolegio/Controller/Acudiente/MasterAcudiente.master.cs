@@ -28,7 +28,10 @@ public partial class View_Acudiente_MasterAcudiente : System.Web.UI.MasterPage
     {
         LUser logica = new LUser();
 
+
+        logica.limpiaSesionActiva(Session["userName"].ToString());
         logica.cerrarSession(Session.SessionID);
+
 
         Response.Redirect("~/View/Inicio/InicioNosotros.aspx");
     }
