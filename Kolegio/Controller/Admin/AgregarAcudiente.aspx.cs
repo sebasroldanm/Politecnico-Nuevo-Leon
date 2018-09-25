@@ -12,6 +12,38 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetNoStore();
+        LLogin Logica = new LLogin();
+        UUser usua = new UUser();
+        try
+        {
+            usua = Logica.logAgregarAdmin(Session["userId"].ToString());
+            CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + int.Parse(usua.Año));
+            Response.Redirect(usua.Url);
+        }
+        catch
+        {
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
+            }
+        }
+
+        try
+        {
+            usua.SUserName = Session["empezar"].ToString();
+            MPE_Idioma.Show();
+        }
+        catch
+        {
+
+        }
+
+
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 6;
@@ -77,29 +109,25 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
         // script Usuario Insertado con Exito //Error al Seleccionar la Foto
 
         //
+        
+    }
 
+    protected void descartar_idioma_Click(object sender, EventArgs e)
+    {
+        LIdioma logica = new LIdioma();
+        UIdioma enc = new UIdioma();
 
+        int idioma = Convert.ToInt32(Session["nombreIdioma"]);
 
-        Response.Cache.SetNoStore();
-        LLogin Logica = new LLogin();
-        UUser usua = new UUser();
-        try
-        {
-            usua = Logica.logAgregarAdmin(Session["userId"].ToString());
-            CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + int.Parse(usua.Año));
-            Response.Redirect(usua.Url);
-        }
-        catch
-        {
-            try
-            {
-                usua.Session = Session["userId"].ToString();
-            }
-            catch
-            {
-                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
-            }
-        }
+        enc = logica.eliminarIdiomaCompleto(idioma);
+
+        Session["empezar"] = null;
+
+    }
+
+    protected void volver_idioma_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("EditarPaginaInicio.aspx");
     }
 
 

@@ -3,6 +3,62 @@
 <%-- Agregue aquí los controles de contenido --%>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
+    <style type="text/css">
+        .modelBackground {
+            background-color: black;
+            filter: alpha(opacity=90);
+            opacity: 0.8;
+            z-index: 10000;
+        }
+
+        .auto-style6 {
+            text-align: center;
+        }
+    </style>
+
+
+    <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <asp:Button ID="btn_hidden" runat="server" Text="" CssClass="btn btn-link" Enabled="False" />
+            <ajaxToolkit:ModalPopupExtender ID="MPE_Idioma" runat="server" BehaviorID="MPE_Idioma" DynamicServicePath="" TargetControlID="btn_hidden" BackgroundCssClass="modelBackground" PopupControlID="P_IdiomaPregunta" OnOkScript="btn_salir" OnCancelScript="btn_volver">
+            </ajaxToolkit:ModalPopupExtender>
+            <asp:Panel ID="P_IdiomaPregunta" runat="server" Style="display: none; background: white; width: 50%; height: auto">
+
+                <div>
+                    <div class="modal-header">
+                        <label for="username" class="label label-danger">
+                            <asp:Label ID="L_LoginUsuario" runat="server" Font-Size="Larger" Text="Aviso"></asp:Label>
+                        </label>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container-fluid well">
+                            <div class="row-fluid">
+                                <div class="span4 ">
+                                    <div class="control-group">
+                                        <br />
+                                        <label class="control-label"><strong>¿Esta seguro que desea salir y descartar todos los cambios generados en la opción de Idioma?</strong></label><br />
+                                        <div class="controls">
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="modal-footer">
+                        <asp:Button ID="btn_salir" runat="server" Text="Descartar cambios y salir" CssClass="btn btn-danger btn-blockr" OnClick="descartar_idioma_Click" />
+                        <asp:Button ID="btn_volver" runat="server" Text="Vovler a la edición de Idioma" CssClass="btn btn-success btn-blockr" OnClick="volver_idioma_Click" /><br />
+                    </div>
+                </div>
+
+            </asp:Panel>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+
     <div class="container">
         <div class="text-center">
             <h3><span class="label label-danger">
@@ -66,7 +122,7 @@
                 <asp:TextBox ID="fechanac" runat="server" class="form-control" title="Fecha de Nacimiento"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RV_fechaNac" runat="server" ControlToValidate="fechanac" ValidationGroup="form_ejm" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator>
 
-                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
 
                 <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" Format="dd/MMMM/yyyy" PopupButtonID="btnigm_calendar" PopupPosition="BottomRight" TargetControlID="fechanac" />
 

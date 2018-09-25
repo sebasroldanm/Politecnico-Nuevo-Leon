@@ -12,6 +12,40 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetNoStore();
+        GridView1.DataBind();
+        horario();
+        LLogin logica = new LLogin();
+        UUser usua = new UUser();
+
+        try
+        {
+            usua = logica.logAdminSecillo(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
+        }
+        catch
+        {
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
+            }
+        }
+
+        try
+        {
+            usua.SUserName = Session["empezar"].ToString();
+            MPE_Idioma.Show();
+        }
+        catch
+        {
+
+        }
+
+
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 10;
@@ -60,30 +94,25 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
         ddt_Dia.Items.Add(encId.CompIdioma["ho_miercoles"].ToString());
         ddt_Dia.Items.Add(encId.CompIdioma["ho_jueves"].ToString());
         ddt_Dia.Items.Add(encId.CompIdioma["ho_viernes"].ToString());
+        
+    }
 
+    protected void descartar_idioma_Click(object sender, EventArgs e)
+    {
+        LIdioma logica = new LIdioma();
+        UIdioma enc = new UIdioma();
 
-        Response.Cache.SetNoStore();
-        GridView1.DataBind();
-        horario();
-        LLogin logica = new LLogin();
-        UUser usua = new UUser();
+        int idioma = Convert.ToInt32(Session["nombreIdioma"]);
 
-        try
-        {
-            usua = logica.logAdminSecillo(Session["userId"].ToString());
-            Response.Redirect(usua.Url);
-        }
-        catch
-        {
-            try
-            {
-                usua.Session = Session["userId"].ToString();
-            }
-            catch
-            {
-                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
-            }
-        }
+        enc = logica.eliminarIdiomaCompleto(idioma);
+
+        Session["empezar"] = null;
+
+    }
+
+    protected void volver_idioma_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("EditarPaginaInicio.aspx");
     }
 
     protected void btn_CursoMateriaAceptar_Click(object sender, EventArgs e)

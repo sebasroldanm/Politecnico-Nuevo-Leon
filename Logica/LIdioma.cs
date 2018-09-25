@@ -182,7 +182,28 @@ namespace Logica
             return enc;
         }
 
+        public UIdioma traerIdioma(string idioma)
+        {
+            DIdioma datos = new DIdioma();
+            UIdioma enc = new UIdioma();
+            DataTable reg = new DataTable();
 
+            reg = datos.obtenerTraerIdioma(idioma);
+            enc.NombreIdioma = reg.Rows[0][0].ToString();
+
+            return enc;
+        }
+
+        public UIdioma eliminarIdiomaCompleto(int idioma)
+        {
+            UIdioma enc = new UIdioma();
+            eliminarControles(idioma);
+            eliminarIdioma(idioma);
+
+            enc.NombreIdioma = "<script language='JavaScript'>window.alert('Se Eliminaron Los Ultimos Registros');</script>";
+
+            return enc;
+        }
 
         public UIdioma eliminarControles(int idioma)
         {
@@ -190,8 +211,8 @@ namespace Logica
             UIdioma enc = new UIdioma();
             DataTable reg = new DataTable();
 
-            //datos.eliminarControles(idioma);
-            this.Page.Response.Write("<script language='JavaScript'>window.alert('Presiono Aceptar');</script>");
+            datos.eliminarControles(idioma);
+
             return enc;
         }
 

@@ -12,6 +12,38 @@ public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetNoStore();
+        LLogin logica = new LLogin();
+        UUser usua = new UUser();
+
+        try
+        {
+            usua = logica.logAdminSecillo(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
+        }
+        catch
+        {
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
+            }
+        }
+
+        try
+        {
+            usua.SUserName = Session["empezar"].ToString();
+            MPE_Idioma.Show();
+        }
+        catch
+        {
+
+        }
+
+
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 9;
@@ -34,28 +66,25 @@ public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
 
         //L_ErrorUsuario.Text_aceptar = "Debe Elegir un Curso";
         //L_OkUsuario.Text_aceptar = "Estudiantes Agregados al curso";
+        
+    }
 
+    protected void descartar_idioma_Click(object sender, EventArgs e)
+    {
+        LIdioma logica = new LIdioma();
+        UIdioma enc = new UIdioma();
 
-        Response.Cache.SetNoStore();
-        LLogin logica = new LLogin();
-        UUser usua = new UUser();
+        int idioma = Convert.ToInt32(Session["nombreIdioma"]);
 
-        try
-        {
-            usua = logica.logAdminSecillo(Session["userId"].ToString());
-            Response.Redirect(usua.Url);
-        }
-        catch
-        {
-            try
-            {
-                usua.Session = Session["userId"].ToString();
-            }
-            catch
-            {
-                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
-            }
-        }
+        enc = logica.eliminarIdiomaCompleto(idioma);
+
+        Session["empezar"] = null;
+
+    }
+
+    protected void volver_idioma_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("EditarPaginaInicio.aspx");
     }
 
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

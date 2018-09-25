@@ -276,7 +276,11 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         btn_siguiente.Visible = true;
         Session["idiomaInsert"] = TB_nomidioma.Text;
         TB_pruebaCristhian.Text = Session["idiomaInsert"].ToString();
+        encId = idioma.traerIdioma(TB_pruebaCristhian.Text);
+        Session["nombreIdioma"] = encId.NombreIdioma;
+
     }
+
     protected void btn_editar_Click(object sender, EventArgs e)
     {
         UIdioma encId = new UIdioma();

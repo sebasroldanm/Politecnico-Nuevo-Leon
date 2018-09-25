@@ -538,6 +538,33 @@ namespace Datos
             return Idioma;
         }
 
+        public DataTable obtenerTraerIdioma(string idioma)
+        {
+            DataTable Idioma = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("idioma.f_obtener_traer_idioma", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_nombre", NpgsqlDbType.Varchar).Value = idioma;
+                conection.Open();
+                dataAdapter.Fill(Idioma);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Idioma;
+        }
+
         public DataTable eliminarControles(int idioma)
         {
             DataTable Idioma = new DataTable();

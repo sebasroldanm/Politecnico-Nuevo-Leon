@@ -46,43 +46,64 @@ namespace Logica
 
                     if ((resultado.Rows[0]["estado"].ToString()) == "True")
                     {
-                        user.Mensaje = " ";
-                        switch (int.Parse(resultado.Rows[0]["rol_id"].ToString()))
+                        //if{
                         {
-                            case 1:
-                                //Response.Redirect("Admin/AgregarAdministrador.aspx");
-                                user.Url = "~/View/Admin/AgregarAdministrador.aspx";
-                                break;
+                            user.Mensaje = " ";
+                            switch (int.Parse(resultado.Rows[0]["rol_id"].ToString()))
+                            {
+                                case 1:
+                                    //Response.Redirect("Admin/AgregarAdministrador.aspx");
+                                    user.Url = "~/View/Admin/AgregarAdministrador.aspx";
+                                    break;
 
-                            case 2:
-                                //Response.Redirect("Profesor/ProfesorSubirNota.aspx");
-                                user.Url = "~/View/Profesor/ProfesorSubirNota.aspx";
-                                break;
+                                case 2:
+                                    //Response.Redirect("Profesor/ProfesorSubirNota.aspx");
+                                    user.Url = "~/View/Profesor/ProfesorSubirNota.aspx";
+                                    break;
 
-                            case 3:
-                                //Response.Redirect("Estudiante/EstudianteHorario.aspx");
-                                user.Url = "~/View/Estudiante/EstudianteHorario.aspx";
-                                break;
+                                case 3:
+                                    //Response.Redirect("Estudiante/EstudianteHorario.aspx");
+                                    user.Url = "~/View/Estudiante/EstudianteHorario.aspx";
+                                    break;
 
-                            case 4:
-                                //Response.Redirect("Acudiente/AcudienteBoletin.aspx");
-                                user.Url = "~/View/Acudiente/AcudienteObservador.aspx";
-                                break;
+                                case 4:
+                                    //Response.Redirect("Acudiente/AcudienteBoletin.aspx");
+                                    user.Url = "~/View/Acudiente/AcudienteObservador.aspx";
+                                    break;
 
-                            default:
-                                //Response.Redirect("Loggin.aspx");
-                                user.Url = "~/View/Loggin.aspx";
-                                break;
+                                default:
+                                    //Response.Redirect("Loggin.aspx");
+                                    user.Url = "~/View/Loggin.aspx";
+                                    break;
+                            }
                         }
 
                     }
                     else
                     {
-                        user.Mensaje = encId.CompIdioma["L_Error_Inactivo"].ToString();
-                        //user.Mensaje = "Usuario Se Encuentra Inactivo";
-                        //Session["userId"] = null;
-                        user.SUserId = null;
-                        //user.Url = "~/View/Loggin.aspx";
+                        System.Data.DataTable validez = datos.generarToken(userName);
+                        if (int.Parse(validez.Rows[0]["id_usua"].ToString()) > 0)
+                        {
+
+                            //suma contador id_usua
+
+                            user.Mensaje = encId.CompIdioma["L_Error_Inactivo"].ToString();
+                            //user.Mensaje = "Usuario Se Encuentra Inactivo";
+                            //Session["userId"] = null;
+                            user.SUserId = null;
+                            //user.Url = "~/View/Loggin.aspx";
+                        }
+                        else
+                        {
+                            user.Mensaje = encId.CompIdioma["L_Error_Inactivo"].ToString();
+                            //user.Mensaje = "Usuario Se Encuentra Inactivo";
+                            //Session["userId"] = null;
+                            user.SUserId = null;
+                            //user.Url = "~/View/Loggin.aspx";
+                        }
+
+
+
                     }
                 }
                 else

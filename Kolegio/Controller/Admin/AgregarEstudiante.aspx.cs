@@ -12,6 +12,42 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetNoStore();
+        LLogin logica = new LLogin();
+        UUser usua = new UUser();
+        try
+        {
+            usua = logica.logAgregaEstudiante(Session["userId"].ToString());
+            int year;
+            year = int.Parse(DateTime.Now.ToString("yyyy"));
+            year = year - 4;
+            CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + year);
+            //fechanac.ReadOnly = usua.BotonTrue;
+            Response.Redirect(usua.Url);
+        }
+        catch
+        {
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
+            }
+        }
+
+        try
+        {
+            usua.SUserName = Session["empezar"].ToString();
+            MPE_Idioma.Show();
+        }
+        catch
+        {
+
+        }
+
+
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 8;
@@ -79,33 +115,25 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
         //script_error_formato="Solo se admiten imagenes en formato Jpeg o Gif";
         //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
         //script_foto_cargada="El archivo de imagen ha sido cargado";
+        
+    }
 
+    protected void descartar_idioma_Click(object sender, EventArgs e)
+    {
+        LIdioma logica = new LIdioma();
+        UIdioma enc = new UIdioma();
 
+        int idioma = Convert.ToInt32(Session["nombreIdioma"]);
 
-        Response.Cache.SetNoStore();
-        LLogin logica = new LLogin();
-        UUser usua = new UUser();
-        try
-        {
-            usua = logica.logAgregaEstudiante(Session["userId"].ToString());
-            int year;
-            year = int.Parse(DateTime.Now.ToString("yyyy"));
-            year = year - 4;
-            CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + year);
-            //fechanac.ReadOnly = usua.BotonTrue;
-            Response.Redirect(usua.Url);
-        }
-        catch
-        {
-            try
-            {
-                usua.Session = Session["userId"].ToString();
-            }
-            catch
-            {
-                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
-            }
-        }
+        enc = logica.eliminarIdiomaCompleto(idioma);
+
+        Session["empezar"] = null;
+
+    }
+
+    protected void volver_idioma_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("EditarPaginaInicio.aspx");
     }
 
     protected void btn_AdministradorAceptar_Click2(object sender, EventArgs e)
