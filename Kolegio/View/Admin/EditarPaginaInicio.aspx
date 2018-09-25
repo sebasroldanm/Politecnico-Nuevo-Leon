@@ -169,9 +169,8 @@
                                 <br>
                     </br>
                                 <div class="form-inline container">
-                                    <asp:Button ID="btn_editarsesion" runat="server" class="btn btn-info btn-lg" Width="141px" BorderColor="#660033"  />
-
-                                    <asp:Button ID="btn_aceptarsesion" runat="server"  class="btn btn-success btn-lg" Width="141px" BorderColor="#660033" />
+                                    <asp:Button ID="btn_editarsesion" runat="server" class="btn btn-info btn-lg" Width="141px" BorderColor="#660033"  OnClick="btn_editarsesion_Click" Visible="false"/>
+                                    <asp:Button ID="btn_aceptarsesion" runat="server"  class="btn btn-success btn-lg" Width="141px" BorderColor="#660033" OnClick="btn_aceptarsesion_Click"/>
                                 </div>
 
                 </div>

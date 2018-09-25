@@ -308,21 +308,23 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
     }
 
    
-    protected void btn_aceptarsesion_Click(object sender, EventArgs e) {
-
-
+    protected void btn_aceptarsesion_Click(object sender, EventArgs e)
+    {
         UIdioma usesion = new UIdioma();
         LIdioma sesion = new LIdioma();
-        usesion = sesion.editasesion(ddl_usuarioxrol.SelectedValue, tb_sessiones.Text);
-
-
-
+        UUser user = new UUser();
+        user = sesion.listarSesion(ddl_usuarioxrol.SelectedValue);
+        tb_sessiones.Text = user.Session;
+        btn_editarsesion.Visible = true;
+        btn_aceptarsesion.Visible = false;
     }
 
     protected void btn_editarsesion_Click(object sender, EventArgs e)
     {
-       
-        btn_aceptar.Visible = true;
+        UIdioma usesion = new UIdioma();
+        LIdioma sesion = new LIdioma();
+        usesion = sesion.editasesion(ddl_usuarioxrol.SelectedValue, tb_sessiones.Text);
+        btn_aceptarsesion.Visible = false;
 
     }
 

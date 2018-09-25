@@ -621,5 +621,34 @@ namespace Datos
             return Idioma;
         }
 
+        public DataTable listarSesion(string usuario)
+        {
+            DataTable Idioma = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_listar_sesion", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_id_usuario", NpgsqlDbType.Integer).Value = int.Parse(usuario);
+                ;
+
+                conection.Open();
+                dataAdapter.Fill(Idioma);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Idioma;
+        }
+
     }
 }

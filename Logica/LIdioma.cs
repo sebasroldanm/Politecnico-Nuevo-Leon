@@ -238,6 +238,19 @@ namespace Logica
             return enc;
         }
 
+        public UUser listarSesion(string usuario)
+        {
 
+            DIdioma datos = new DIdioma();
+            UUser enc = new UUser();
+            DataTable reg = new DataTable();
+
+            reg = datos.listarSesion(usuario);
+            if(reg.Rows.Count > 0)
+            {
+                enc.Session = (reg.Rows[0]["sesionUsuario"].ToString());
+            }
+            return enc;
+        }
     }
 }
