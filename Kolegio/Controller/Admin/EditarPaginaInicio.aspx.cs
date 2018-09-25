@@ -17,7 +17,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         Int32 FORMULARIO = 19;
 
         encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
-
+        
         Page.Title = encId.CompIdioma["Title"].ToString();
         L_AdminPagInicio.Text = encId.CompIdioma["L_AdminPagInicio"].ToString();
         L_AdminPagInicioNosotros.Text = encId.CompIdioma["L_AdminPagInicioNosotros"].ToString();
@@ -33,10 +33,10 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
 
         tb_traduccionES.ReadOnly = true;
         tb_traduccionIN.ReadOnly = true;
-        tb_traduccion.ReadOnly = true;
-        btn_siguiente.Visible = false;
         btn_editar.Visible = false;
         //------------------------------------DDL_Rol (Nuevo Lenguaje)--------------------------------------------//
+
+
         if (!IsPostBack)
         {
             //DDL_rolagregar.Items.Clear();
@@ -113,6 +113,20 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         tb_usuario.Attributes.Add("placeholder", encId.CompIdioma["tb_usuario"].ToString());
 
         //--------------Ajax Form - ADD - EDIT - DELETE Language ---------------//
+
+        //////
+        ///
+        try
+        {
+            encId.NombreIdioma = Session["idiomaInsert"].ToString();
+            TB_pruebaCristhian.Text = Session["idiomaInsert"].ToString();
+        }
+        catch
+        {
+
+        }
+        //////
+
 
         string form = DDL_formularioagregar.SelectedValue;
         string item = DDL_itemagregar.SelectedValue;
@@ -241,7 +255,8 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         {
             encId = idioma.listarIdiomaVarchar(TB_nomidioma.Text);
             id = encId.IdIdioma;
-            encId = idioma.insertarControlIdioma(DDL_item.SelectedValue, tb_traduccion.Text, encId.IdIdioma, DDL_formularioagregar.SelectedValue, TB_nomidioma.Text);
+            encId = idioma.insertarControlIdioma(DDL_itemagregar.SelectedValue, tb_traduccion.Text, encId.IdIdioma, DDL_formularioagregar.SelectedValue, TB_nomidioma.Text);
+            DDL_rolagregar.SelectedValue = 0.ToString();
         }
 
 
@@ -259,8 +274,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         TB_nomidioma.ReadOnly = true;
         btn_siguiente.Visible = true;
         Session["idiomaInsert"] = TB_nomidioma.Text;
-
-
+        TB_pruebaCristhian.Text = Session["idiomaInsert"].ToString();
     }
     protected void btn_editar_Click(object sender, EventArgs e)
     {

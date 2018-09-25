@@ -101,7 +101,7 @@ namespace Logica
 
             datos.insertarIdioma(nombre, termin);
             reg = datos.contadorControl(nombre);
-            enc.Contador = int.Parse(reg.Rows[0]["count"].ToString());
+            enc.Contador = int.Parse(reg.Rows[0][0].ToString());
             return enc;
         }
 
@@ -119,7 +119,7 @@ namespace Logica
             reg = datos.insertarIdiomaControles(enc);
 
             reg = datos.contadorControl(nombre);
-            enc.Contador = int.Parse(reg.Rows[0]["count"].ToString());
+            enc.Contador = int.Parse(reg.Rows[0][0].ToString());
 
             return enc;
         }

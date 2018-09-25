@@ -287,15 +287,14 @@
 
                                 <div class="form-inline" role="form">
                                     <div class="form-group">
+                                        <asp:TextBox ID="TB_pruebaCristhian" MaxLength="30" runat="server" class="form-control" title="TB PRUEBA" placeholder="TB PRUEBA" Text=" "></asp:TextBox>
+                                    </div>
+                                    <div class="form-group">
                                          <asp:TextBox ID="TB_terminoidioma" MaxLength="30" runat="server" class="form-control" title="Terminacion en Visual" placeholder="Terminacion en Visual" ></asp:TextBox>
                                      </div>
 
                                     <div class="form-group">
-                                        <asp:TextBox ID="TB_pruebaCristhian" MaxLength="30" runat="server" class="form-control" title="TB PRUEBA" placeholder="TB PRUEBA" ></asp:TextBox>
-                                    </div>
-
-                                    <div class="form-group">
-                                         <asp:TextBox ID="TB_nomidioma" MaxLength="30" runat="server" class="form-control" title="Nombre Idioma" placeholder="Nombre Idioma" Text=" "></asp:TextBox>
+                                         <asp:TextBox ID="TB_nomidioma" MaxLength="30" runat="server" class="form-control" title="Nombre Idioma" placeholder="Nombre Idioma"></asp:TextBox>
                                      </div>
                                     <div class="form-group">
                                          <asp:Button ID="btn_comprobaridiom" runat="server" class="btn btn-primary btn-lg" Width="141px" BorderColor="#660033"  OnClick ="btn_comprobaridiom_Click"/>
@@ -327,7 +326,7 @@
                                             <SelectParameters>
                                                 <%--<asp:ControlParameter ControlID="DDL_formularioagregar" Name="idioma" PropertyName="SelectedValue" Type="Int32" />--%>
                                                  <asp:ControlParameter ControlID="DDL_formularioagregar" Name="formular" PropertyName="SelectedValue" Type="Int32" />
-                                                <asp:ControlParameter ControlID="TB_nomidioma" Name="idioma" PropertyName="Text" Type="string" /> 
+                                                <asp:ControlParameter ControlID="TB_pruebaCristhian" Name="idioma" PropertyName="Text" Type="string" /> 
                                             </SelectParameters>
                                         </asp:ObjectDataSource>
                                     </div>
@@ -339,14 +338,14 @@
 
                                            <asp:TextBox ID="tb_traduccionES" MaxLength="30" runat="server" class="form-control" title="Traduccion" ></asp:TextBox>
 
-                                         <asp:TextBox ID="tb_traduccion" MaxLength="30" runat="server" class="form-control" title="Traduccion" ></asp:TextBox>
+                                         <asp:TextBox ID="tb_traduccion" MaxLength="30" runat="server" class="form-control" title="Traduccion" ReadOnly ="true"></asp:TextBox>
 
                                         </div>
                                     <br>
                     </br>
                    
                                 <div class="form-inline container">
-                                    <asp:Button ID="btn_siguiente" runat="server" class="btn btn-info btn-lg" Width="141px" BorderColor="#660033" OnClick ="btn_siguiente_Click" />
+                                    <asp:Button ID="btn_siguiente" runat="server" class="btn btn-info btn-lg" Width="141px" BorderColor="#660033" OnClick ="btn_siguiente_Click" Visible ="false"/>
 
                                 </div>
                                     <br>
