@@ -312,7 +312,7 @@
 
                                 <div class="form-inline" role="form">
                                     <div class="form-group">
-                                        <asp:TextBox ID="TB_pruebaCristhian" MaxLength="30" runat="server" class="form-control" title="TB PRUEBA" placeholder="TB PRUEBA" Text=" "></asp:TextBox>
+                                        <asp:TextBox ID="TB_pruebaCristhian" MaxLength="30" runat="server" class="form-control" title="TB PRUEBA" placeholder="TB PRUEBA" Text=" " Visible="false"></asp:TextBox>
                                     </div>
                                     <div class="form-group">
                                          <asp:TextBox ID="TB_terminoidioma" MaxLength="30" runat="server" class="form-control" title="Terminacion en Visual" placeholder="Terminacion en Visual" ></asp:TextBox>
