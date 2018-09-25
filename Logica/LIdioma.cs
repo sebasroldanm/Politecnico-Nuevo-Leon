@@ -204,5 +204,17 @@ namespace Logica
             datos.eliminarIdioma(idioma);
             return enc;
         }
+
+        public UIdioma editasesion(string usuario, string sesion)
+        {
+            DIdioma datos = new DIdioma();
+            UIdioma enc = new UIdioma();
+            DataTable reg = new DataTable();
+
+            reg = datos.editarsesionusua(usuario, sesion);
+            return enc;
+        }
+
+
     }
 }

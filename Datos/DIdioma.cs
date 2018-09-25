@@ -43,6 +43,117 @@ namespace Datos
         }
 
 
+        //////////////////////////////////////////////DDL ROLES
+
+        public DataTable obtenerroles()
+        {
+            DataTable Rol = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_listar_rol_usuario_ddl", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                conection.Open();
+                dataAdapter.Fill(Rol);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Rol;
+        }
+
+
+
+        ////////////////////////////////// FIN DDL ROLES
+
+        //////////////////////////////////////////////  DDL DE USUARIOS
+
+        public DataTable listarusuariosxrol(int usuario)
+        {
+            DataTable Usuariorol = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_listar_usuario_ddl", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                dataAdapter.SelectCommand.Parameters.Add("_rol_id", NpgsqlDbType.Integer).Value = usuario;
+              
+
+                conection.Open();
+                dataAdapter.Fill(Usuariorol);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usuariorol;
+        }
+
+
+
+        //////////////////////////////////////////////// FIN DDL USUARIOS
+
+
+        ///////////////////////////////////////////////EDITA SESION USUARIO
+
+        public DataTable editarsesionusua(string usuario, string sesion)
+        {
+            DataTable Sesion = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_editar_sesion", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+            
+
+                dataAdapter.SelectCommand.Parameters.Add("_id_usuario", NpgsqlDbType.Integer).Value = int.Parse(usuario);
+                dataAdapter.SelectCommand.Parameters.Add("_sesionusuario", NpgsqlDbType.Integer).Value = int.Parse(sesion);
+
+                ;
+
+                conection.Open();
+                dataAdapter.Fill(Sesion);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Sesion;
+        }
+
+
+
+        ///////////////////////////////////////////// FIN EDITA SESION USUARIO
+
+
+
+
         public DataTable obtenerSeleccionIdioma()
         {
             DataTable Idioma = new DataTable();
@@ -360,6 +471,11 @@ namespace Datos
             }
             return Idioma;
         }
+
+
+
+
+
 
         public DataTable editarIdiomaControl(string control, string formul, string idioma, string texto)
         {

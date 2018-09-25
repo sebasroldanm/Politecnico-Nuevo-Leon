@@ -18,6 +18,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
 
         encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
         
+
         Page.Title = encId.CompIdioma["Title"].ToString();
         L_AdminPagInicio.Text = encId.CompIdioma["L_AdminPagInicio"].ToString();
         L_AdminPagInicioNosotros.Text = encId.CompIdioma["L_AdminPagInicioNosotros"].ToString();
@@ -301,4 +302,26 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         TB_itemES.Text = encId.ControlEsp;
 
     }
+
+   
+    protected void btn_aceptarsesion_Click(object sender, EventArgs e) {
+
+
+        UIdioma usesion = new UIdioma();
+        LIdioma sesion = new LIdioma();
+        usesion = sesion.editasesion(ddl_usuarioxrol.SelectedValue, tb_sessiones.Text);
+
+
+
     }
+
+    protected void btn_editarsesion_Click(object sender, EventArgs e)
+    {
+       
+        btn_aceptar.Visible = true;
+
+    }
+
+  
+
+}

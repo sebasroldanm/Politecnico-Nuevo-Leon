@@ -95,6 +95,7 @@
                                           </br>
                                           <br>
                                           </br>
+<%--                            --------------------------------AQUI EMPIEZA EL ADMINISTRAR SESIONES--------------------------------------------------%>
                                       <div class="container">
                                             <div class="text-center">
                                             <h3><span class="label label-danger"><asp:Label ID="L_AjaxSubSesion" runat="server"></asp:Label></span></h3>
@@ -109,16 +110,41 @@
                                           <br>
                                           </br>
 
+
                             <div class="container" style="margin: 0% 0% 0% 5%" >
                                 <div class="form-inline" role="form">
+
+
+                                    
+                         
+
+
                                     <div class="form-group">
                                         <label for="DDL_rolSession" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AjaxRol" runat="server"></asp:Label></label>
-                                        <asp:DropDownList ID="DDL_rolSession" Class="form-control" runat="server">
+                                        <asp:DropDownList ID="DDL_rolSession" Class="form-control" runat="server" DataSourceID="ODS_ElejirRol" DataTextField="nombre_rol" DataValueField="id_rol" AutoPostBack="True">
                                         </asp:DropDownList>
+                                        <asp:ObjectDataSource ID="ODS_ElejirRol" runat="server" SelectMethod="obtenerroles" TypeName="Datos.DIdioma"></asp:ObjectDataSource>
                                     </div>
+
+
+                                   <div class="form-group">
+                                       <label for="ddl_usuarioxrol" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AjaxUsusarioxRol"  runat="server"></asp:Label></label>
+
+                                       <label for="tb_usuario" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AjaxUsuario" runat="server"></asp:Label></label>
+                                       <asp:DropDownList ID="ddl_usuarioxrol" Class="form-control" runat="server" DataSourceID="ODS_userrol" DataTextField="nombre_usua" DataValueField="id_usua" AutoPostBack="True">
+                                       </asp:DropDownList>
+                                       <asp:ObjectDataSource ID="ODS_userrol" runat="server" SelectMethod="listarusuariosxrol" TypeName="Datos.DIdioma">
+                                        <SelectParameters>
+                                            <asp:ControlParameter ControlID="DDL_rolSession" Name="usuario" PropertyName="SelectedValue" Type="Int32"  />
+                                        </SelectParameters>
+                                       </asp:ObjectDataSource>
+                                   </div>
+
+
+
+
                                     <div class="form-group">
-                                        <label for="tb_usuario" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AjaxUsuario" runat="server"></asp:Label></label>
-                                        <asp:TextBox ID="tb_usuario" MaxLength="30" runat="server" class="form-control" title="Usuario" ></asp:TextBox>
+                                        <asp:TextBox ID="tb_usuario" visible="false" MaxLength="30" runat="server" class="form-control" title="Usuario" ></asp:TextBox>
 
                                     </div>
                                   
@@ -151,7 +177,7 @@
                 </div>
 
                         </ContentTemplate>
-
+<%--           -------------------------------- AQUI TERMINA EL EDITAR SESION--------------------------------------------------------------%>
         </ajaxToolkit:TabPanel>
 
 
