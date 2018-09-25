@@ -207,6 +207,8 @@ namespace Logica
 
         public UIdioma editasesion(string usuario, string sesion)
         {
+
+
             DIdioma datos = new DIdioma();
             UIdioma enc = new UIdioma();
             DataTable reg = new DataTable();
