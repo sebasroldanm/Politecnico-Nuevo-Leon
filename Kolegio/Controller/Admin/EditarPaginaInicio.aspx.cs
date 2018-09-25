@@ -317,6 +317,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         tb_sessiones.Text = user.Session;
         btn_editarsesion.Visible = true;
         btn_aceptarsesion.Visible = false;
+        tb_sessiones.ReadOnly = false;
     }
 
     protected void btn_editarsesion_Click(object sender, EventArgs e)
@@ -324,8 +325,9 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         UIdioma usesion = new UIdioma();
         LIdioma sesion = new LIdioma();
         usesion = sesion.editasesion(ddl_usuarioxrol.SelectedValue, tb_sessiones.Text);
-        btn_aceptarsesion.Visible = false;
-
+        btn_editarsesion.Visible = false;
+        btn_aceptarsesion.Visible = true;
+        tb_sessiones.ReadOnly = true;
     }
 
   

@@ -158,7 +158,7 @@
                                         <label for="tb_sessiones" class="control-label" style="color: #FFFFFF">
                                             <asp:Label ID="L_AjaxNumSesiones" runat="server"></asp:Label></label>
 
-                                        <asp:TextBox ID="tb_sessiones" runat="server" class="form-control" title="Numero de Sesiones"></asp:TextBox>
+                                        <asp:TextBox ID="tb_sessiones" runat="server" class="form-control" title="Numero de Sesiones" ReadOnly =" true"></asp:TextBox>
                                         <ajaxToolkit:MaskedEditExtender ID="TextBox3_MaskedEditExtender" runat="server" BehaviorID="TextBox3_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="9" MaskType="Number" TargetControlID="tb_sessiones" AutoComplete="False" InputDirection="RightToLeft" />
 
                                     </div>
