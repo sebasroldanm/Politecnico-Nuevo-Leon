@@ -104,6 +104,13 @@ namespace Utilitarios
         private String saveLocation;
         private String fotoCargada;
 
+        //
+        // Intentos Erroneos
+        //
+        private Int32 intentosErroneos;
+        private Int32 sesionActiva;
+        private String mensajeIntentoErroneos;
+
         public string Url { get => url; set => url = value; }
         public int UserId { get => userId; set => userId = value; }
         public int RolId { get => rolId; set => rolId = value; }
@@ -171,5 +178,8 @@ namespace Utilitarios
         public string FotoSinEdit { get => fotoSinEdit; set => fotoSinEdit = value; }
         public string SaveLocation { get => saveLocation; set => saveLocation = value; }
         public string FotoCargada { get => fotoCargada; set => fotoCargada = value; }
+        public int IntentosErroneos { get => intentosErroneos; set => intentosErroneos = value; }
+        public int SesionActiva { get => sesionActiva; set => sesionActiva = value; }
+        public string MensajeIntentoErroneos { get => mensajeIntentoErroneos; set => mensajeIntentoErroneos = value; }
     }
 }

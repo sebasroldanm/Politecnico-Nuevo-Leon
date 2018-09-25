@@ -107,10 +107,21 @@ namespace Logica
                 else
                 {
                     user.Mensaje = encId.CompIdioma["L_Error_Incorrecto"].ToString();
+
                     //user.Mensaje = "Usuario Y/o Clave Incorrecto";
                     //Session["userId"] = null;
                     user.SUserId = null;
                     //user.Url = "~/View/Loggin.aspx";
+
+                    DataTable erroneos = datos.sumaIntentosErroneos(userName);
+                    int IntentosErroneos = int.Parse(erroneos.Rows[0][0].ToString());
+                    if (IntentosErroneos == 0)
+                    {
+                        //user.Notificacion = "Ha exedido el numero de intentos erroneos";
+                        user.MensajeIntentoErroneos = "<script language='JavaScript'>window.alert('Ha exedido el numero de intentos erroneos');</script>";
+
+                    }
+
                 }
             }
             else

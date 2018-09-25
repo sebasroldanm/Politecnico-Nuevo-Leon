@@ -83,7 +83,8 @@ public partial class Loggin : System.Web.UI.Page
         {
             L_Error.Text = datos.Mensaje;
         }
-        
+        this.Page.Response.Write(datos.MensajeIntentoErroneos);
+
     }
 
     protected void BT_Recuperar_Click(object sender, EventArgs e)
