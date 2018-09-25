@@ -102,8 +102,6 @@ namespace Logica
                             //user.Url = "~/View/Loggin.aspx";
                         }
 
-
-
                     }
                 }
                 else
