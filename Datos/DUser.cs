@@ -2392,6 +2392,67 @@ namespace Datos
         }
 
 
+        public DataTable Capturafechaintentosesion(string Usuario)
+        {
+            DataTable Administrador = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_compara_hora_sesion", conection);
+                dataAdapter.SelectCommand.Parameters.Add("_usuario", NpgsqlDbType.Varchar).Value = Usuario;
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+                conection.Open();
+                dataAdapter.Fill(Administrador);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Administrador;
+        }
+
+        public DataTable actualizaFechaSesionErronea(string Usuario)
+        {
+            DataTable Administrador = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_actualiza_fecha_sesion_erronea", conection);
+                dataAdapter.SelectCommand.Parameters.Add("_usuario", NpgsqlDbType.Varchar).Value = Usuario;
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+                conection.Open();
+                dataAdapter.Fill(Administrador);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Administrador;
+        }
+
+
+
+
 
     }
 }
