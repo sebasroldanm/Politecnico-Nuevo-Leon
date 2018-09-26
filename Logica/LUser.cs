@@ -248,6 +248,7 @@ namespace Logica
                 if (usua.Foto != null)
                 {
                     dat.insertarUsuarios(usua);
+                    dat.InsertaTablaSesion(usuario);
                      //usua.Notificacion = "<script language='JavaScript'>window.alert('Usuario Insertado con Exito');</script>";
                      usua.Notificacion = "<script language='JavaScript'>window.alert('"+ encId.CompIdioma["script_insertado"].ToString()+"');</script>";
                     usua.B_Botones1 = true;
@@ -370,6 +371,7 @@ namespace Logica
                 if (usua.Foto != null)
                 {
                     dat.insertarEstudiante(usua);
+                    dat.InsertaTablaSesion(usuario);
                     usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_insertado"].ToString() + "');</script>"; // ("<script language='JavaScript'>window.alert('Estudiante Insertado con Exito');</script>");
 
                     usua.L_Aceptar1 = false;
