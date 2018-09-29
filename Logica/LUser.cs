@@ -1240,7 +1240,11 @@ namespace Logica
             return usua;
         }
 
-
+        public void insertarUserMapeo(Usuario text)
+        {
+            DUser dao = new DUser();
+            dao.insertarUserMapeo(text);
+        }
 
     }
 }

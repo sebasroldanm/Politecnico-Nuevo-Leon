@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using Utilitarios;
 
 namespace Datos
 {
@@ -16,13 +17,13 @@ namespace Datos
         private readonly string schema;
 
         public Mapeo(string schema)
-            : base("name=casel")
+            : base("name=Postgres")
         {
             this.schema = schema;
         }
 
 
-
+        public DbSet<Usuario> usuario { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
