@@ -38,8 +38,8 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         //------------------------------------DDL_Rol (Nuevo Lenguaje)--------------------------------------------//
 
 
-        if (!IsPostBack)
-        {
+        //if (!IsPostBack)
+        //{
             //DDL_rolagregar.Items.Clear();
             //DDL_rolagregar.Items.Insert(0, encId.CompIdioma["ddl_Rol_Seleccion"].ToString());
             //DDL_rolagregar.Items.Insert(1, encId.CompIdioma["ddl_Rol_Inicio"].ToString());
@@ -56,7 +56,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
             //DDL_rol.Items.Insert(3, encId.CompIdioma["ddl_Rol_Profesor"].ToString());
             //DDL_rol.Items.Insert(4, encId.CompIdioma["ddl_Rol_Estudiante"].ToString());
             //DDL_rol.Items.Insert(5, encId.CompIdioma["ddl_Rol_Acudiente"].ToString());
-        }
+        //}
         //-------------------------------------------------------------------------------------------------------//
 
 
@@ -257,9 +257,13 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
             encId = idioma.listarIdiomaVarchar(TB_nomidioma.Text);
             id = encId.IdIdioma;
             encId = idioma.insertarControlIdioma(DDL_itemagregar.SelectedValue, tb_traduccion.Text, encId.IdIdioma, DDL_formularioagregar.SelectedValue, TB_nomidioma.Text);
-            DDL_rolagregar.SelectedValue = 0.ToString();
-        }
+            DDL_rolagregar.DataBind();
+            DDL_formularioagregar.DataBind();
+            DDL_rolagregar.DataBind();
+            tb_traduccion.Text = "";
 
+        }
+        
 
     }
 
@@ -274,6 +278,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         TB_terminoidioma.ReadOnly = true;
         TB_nomidioma.ReadOnly = true;
         btn_siguiente.Visible = true;
+        btn_comprobaridiom.Visible = false;
         Session["idiomaInsert"] = TB_nomidioma.Text;
         TB_pruebaCristhian.Text = Session["idiomaInsert"].ToString();
         encId = idioma.traerIdioma(TB_pruebaCristhian.Text);
@@ -288,6 +293,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
        
         encId = idioma.editarIdiomaControl(DDL_item.SelectedValue, DDL_formulario.SelectedValue, DDL_idioma.SelectedValue, TB_itemES.Text);
         btn_aceptar.Visible = true;
+        TB_itemES.ReadOnly = true;
     }
 
 
@@ -304,6 +310,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         string idi = DDL_idioma.SelectedValue;
         encId = idioma.listarControlIdiomaEditar(fo, it, idi);
         TB_itemES.Text = encId.ControlEsp;
+        TB_itemES.ReadOnly = false;
 
     }
 

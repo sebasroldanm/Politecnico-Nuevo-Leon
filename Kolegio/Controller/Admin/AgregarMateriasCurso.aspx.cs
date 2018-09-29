@@ -88,13 +88,15 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
         //ho_jueves = "Jueves";
         //ho_viernes = "Viernes";
         //ho_libre = "Libre";
-        ddt_Dia.Items.Clear();
-        ddt_Dia.Items.Add(encId.CompIdioma["ho_lunes"].ToString());
-        ddt_Dia.Items.Add(encId.CompIdioma["ho_martes"].ToString());
-        ddt_Dia.Items.Add(encId.CompIdioma["ho_miercoles"].ToString());
-        ddt_Dia.Items.Add(encId.CompIdioma["ho_jueves"].ToString());
-        ddt_Dia.Items.Add(encId.CompIdioma["ho_viernes"].ToString());
-        
+        if (IsPostBack == false)
+        {
+            ddt_Dia.Items.Clear();
+            ddt_Dia.Items.Add(encId.CompIdioma["ho_lunes"].ToString());
+            ddt_Dia.Items.Add(encId.CompIdioma["ho_martes"].ToString());
+            ddt_Dia.Items.Add(encId.CompIdioma["ho_miercoles"].ToString());
+            ddt_Dia.Items.Add(encId.CompIdioma["ho_jueves"].ToString());
+            ddt_Dia.Items.Add(encId.CompIdioma["ho_viernes"].ToString());
+        }
     }
 
     protected void descartar_idioma_Click(object sender, EventArgs e)
@@ -154,6 +156,7 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
 
         L_Error.Text = user.Mensaje;
         GridView1.DataBind();
+        ddt_Materia.DataBind();
     }
 
     protected void btn_pasaranio_Click(object sender, EventArgs e)

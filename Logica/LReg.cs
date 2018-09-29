@@ -149,8 +149,25 @@ namespace Logica
             return Dt;
         }
 
+        public UReg ddl_horario(int post, int selIdioma)
+        {
+            DataTable dias = new DataTable();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 10;
+            UReg regDias = new UReg();
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+            
+            regDias.Lunes = encId.CompIdioma["ho_lunes"].ToString();
+            regDias.Martes = (encId.CompIdioma["ho_martes"].ToString());
+            regDias.Miercoles = (encId.CompIdioma["ho_miercoles"].ToString());
+            regDias.Jueves = (encId.CompIdioma["ho_jueves"].ToString());
+            regDias.Viernes = (encId.CompIdioma["ho_viernes"].ToString());
 
-        public UUser agregarMateria(string materia, string sesion, int selIdioma)
+            return regDias;
+        }
+
+            public UUser agregarMateria(string materia, string sesion, int selIdioma)
         {
             UUser user = new UUser();
             DUser datos = new DUser();

@@ -268,7 +268,7 @@
                                          <ContentTemplate>
                                 <div class="form-inline" role="form">
                                      <div class="form-group">
-                                         <asp:TextBox ID="TB_itemES" MaxLength="30" runat="server" class="form-control" title="Español" ></asp:TextBox>
+                                         <asp:TextBox ID="TB_itemES" MaxLength="30" runat="server" class="form-control" title="Español" ReadOnly ="true" ></asp:TextBox>
                                      </div>
                                      <div class="form-group">
                                          <asp:TextBox ID="TB_itemIN" MaxLength="30" runat="server" class="form-control" title="English" Visible="False"></asp:TextBox>
