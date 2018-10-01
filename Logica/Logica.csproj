@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="LIdioma.cs" />
     <Compile Include="LLogin.cs" />
+    <Compile Include="LMUser.cs" />
     <Compile Include="LReg.cs" />
     <Compile Include="LUser.cs">
       <SubType>ASPXCodeBehind</SubType>
