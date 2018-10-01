@@ -24,6 +24,8 @@ namespace Datos
 
 
         public DbSet<Usuario> usuario { get; set; }
+        public DbSet<Sesion> sesion { get; set; }
+        public DbSet<TokenRecuperaUsuario> TokenRecuperaUsuarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
