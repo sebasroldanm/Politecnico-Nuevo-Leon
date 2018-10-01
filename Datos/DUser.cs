@@ -2480,16 +2480,7 @@ namespace Datos
             return Administrador;
         }
 
-        public void insertarUserMapeo(Usuario user)
-        {
-            using (var db = new Mapeo("public"))
-            {
-                db.usuario.Add(user);
-                db.SaveChanges();
-            }
-
-
-        }
+       
 
     }
 }

@@ -72,6 +72,7 @@
     <Compile Include="DCorreo.cs" />
     <Compile Include="DCorreoEnviar.cs" />
     <Compile Include="DIdioma.cs" />
+    <Compile Include="DMUser.cs" />
     <Compile Include="DUser.cs" />
     <Compile Include="Mapeo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -25,7 +25,10 @@ namespace Datos
 
         public DbSet<Usuario> usuario { get; set; }
         public DbSet<Sesion> sesion { get; set; }
-        public DbSet<TokenRecuperaUsuario> TokenRecuperaUsuarios { get; set; }
+        public DbSet<TokenRecuperaUsuario> tokenRecuperaUsuarios { get; set; }
+        public DbSet<Acudiente> acudiente { get; set; }
+        public DbSet<RolUsuario> rolUsuario { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
