@@ -257,7 +257,7 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         user.Ciudad = DDT_Ciudad.SelectedValue;
         user.Sesion = Session.SessionID;
 
-        LUser logica = new LUser();
+        LMUser logica = new LMUser();
         logica.insertarUserMapeo(user);
         /*
          ,

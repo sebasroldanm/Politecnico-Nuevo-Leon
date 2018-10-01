@@ -12,7 +12,7 @@ namespace Logica
     {
         public void insertarUserMapeo(Usuario text)
         {
-            DUser dao = new DUser();
+            DMUser dao = new DMUser();
             dao.insertarUserMapeo(text);
         }
 
