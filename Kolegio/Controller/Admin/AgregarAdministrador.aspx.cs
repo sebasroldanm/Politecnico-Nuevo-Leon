@@ -240,25 +240,25 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
 
     protected void B_InsMap_Click(object sender, EventArgs e)
     {
-        Usuario user = new Usuario();
-        user.Nombre = tb_AdministradorAdministradorNombre.Text;
-        user.Rol = "1";
-        user.UserName = tb_AdministradorUsuario.Text;
-        user.Clave = tb_AdministradorContrasenia.Text;
-        user.Correo = tb_AdministradorAdministradorCorreo.Text;
-        user.Estado = "true";
-        user.Apellido = tb_AdministradorAdministradorApellido.Text;
-        user.Direccion = tb_AdministradorAdministradorDireccion.Text;
-        user.Telefono = tb_AdministradorTelefono.Text;
-        user.Documento = tb_AministradorAdministradorId.Text;
-        user.Foto = cargarImagen();
-        user.fecha_nacimiento = fechanac.Text;
-        user.Departamento = ddt_lugarnacimDep.SelectedValue;
-        user.Ciudad = DDT_Ciudad.SelectedValue;
-        user.Sesion = Session.SessionID;
+        //Usuario user = new Usuario();
+        //user.Nombre = tb_AdministradorAdministradorNombre.Text;
+        //user.Rol = "1";
+        //user.UserName = tb_AdministradorUsuario.Text;
+        //user.Clave = tb_AdministradorContrasenia.Text;
+        //user.Correo = tb_AdministradorAdministradorCorreo.Text;
+        //user.Estado = "true";
+        //user.Apellido = tb_AdministradorAdministradorApellido.Text;
+        //user.Direccion = tb_AdministradorAdministradorDireccion.Text;
+        //user.Telefono = tb_AdministradorTelefono.Text;
+        //user.Documento = tb_AministradorAdministradorId.Text;
+        //user.Foto = cargarImagen();
+        //user.fecha_nacimiento = fechanac.Text;
+        //user.Departamento = ddt_lugarnacimDep.SelectedValue;
+        //user.Ciudad = DDT_Ciudad.SelectedValue;
+        //user.Sesion = Session.SessionID;
 
-        LMUser logica = new LMUser();
-        logica.insertarUserMapeo(user);
+        //LMUser logica = new LMUser();
+        //logica.insertarUserMapeo(user);
         /*
          ,
             int.Parse(),

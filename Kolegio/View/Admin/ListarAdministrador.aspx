@@ -13,7 +13,7 @@
         <div class="container">
             <asp:Button ID="btn_descargar" runat="server" class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargar_Click" />
 
-            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered bs-table" AutoGenerateColumns="False" DataSourceID="DaoUser" BackColor="White" BorderColor="#660033" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" AllowPaging="True" OnDataBound="GridView1_DataBound" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" PageSize="3" HorizontalAlign="Center">
+            <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered bs-table" AutoGenerateColumns="False" DataSourceID="ODS_MapeoListaAdmin" BackColor="White" BorderColor="#660033" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" AllowPaging="True" OnDataBound="GridView1_DataBound" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" PageSize="3" HorizontalAlign="Center">
                 <AlternatingRowStyle BackColor="#F7F7F7" BorderColor="#0677D2" />
                 <Columns>
                     <asp:ImageField DataImageUrlField="foto_usua" HeaderText="Foto ">
@@ -54,6 +54,7 @@
                 <SortedDescendingCellStyle BackColor="#D8D8F0" />
                 <SortedDescendingHeaderStyle BackColor="#3E3277" />
             </asp:GridView>
+            <asp:ObjectDataSource ID="ODS_MapeoListaAdmin" runat="server" SelectMethod="listarAdministradores" TypeName="Datos.DMUser"></asp:ObjectDataSource>
             <asp:ObjectDataSource ID="ODS_prueba" runat="server"></asp:ObjectDataSource>
         </div>
         <asp:ObjectDataSource ID="DaoUser" runat="server" SelectMethod="listarusuario" TypeName="Datos.DUser"></asp:ObjectDataSource>

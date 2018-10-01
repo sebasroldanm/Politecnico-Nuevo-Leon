@@ -17,53 +17,53 @@ namespace Utilitarios
         private String nombre;
         private String userName;
         private String rol;
-        private String clave;
-        private String correo;
-        private String estado;
+        private String Clave;
+        private String Correo;
+        private bool Estado;
         private String apellido;
-        private String direccion;
-        private String telefono;
+        private String Direccion;
+        private String Telefono;
         private String documento;
         private String foto;
         private String Fecha_nacimiento;
         private String departamento;
         private String ciudad;
-        private String sesion;
+        private String sesion1;
 
 
         [Key]
         [Column("id_usua")]
-        public int UserId { get => userId; set => userId = value; }
+        public int id_usua { get => userId; set => userId = value; }
         [Column("nombre_usua")]
-        public string Nombre { get => nombre; set => nombre = value; }
+        public string nombre_usua { get => nombre; set => nombre = value; }
         [Column("user_name")] 
-        public string UserName { get => userName; set => userName = value; }
+        public string user_name { get => userName; set => userName = value; }
         [Column("rol_id")]
-        public string Rol { get => rol; set => rol = value; }
+        public string rol_id { get => rol; set => rol = value; }
         [Column("clave")]
-        public string Clave { get => clave; set => clave = value; }
+        public string clave { get => Clave; set => Clave = value; }
         [Column("correo")]
-        public string Correo { get => correo; set => correo = value; }
+        public string correo { get => Correo; set => Correo = value; }
         [Column("estado")]
-        public string Estado { get => estado; set => estado = value; }
+        public bool estado { get => Estado; set => Estado = value; }
         [Column("apellido_usua")]
-        public string Apellido { get => apellido; set => apellido = value; }
+        public string apellido_usua { get => apellido; set => apellido = value; }
         [Column("direccion")]
-        public string Direccion { get => direccion; set => direccion = value; }
+        public string direccion { get => Direccion; set => Direccion = value; }
         [Column("telefono")]
-        public string Telefono { get => telefono; set => telefono = value; }
+        public string telefono { get => Telefono; set => Telefono = value; }
         [Column("num_documento")]
-        public string Documento { get => documento; set => documento = value; }
+        public string num_documento { get => documento; set => documento = value; }
         [Column("foto_usua")]
-        public string Foto { get => foto; set => foto = value; }
+        public string foto_usua { get => foto; set => foto = value; }
         [Column("fecha_nac")]
-        public string fecha_nacimiento { get => Fecha_nacimiento; set => Fecha_nacimiento = value; }
+        public string fecha_nac { get => Fecha_nacimiento; set => Fecha_nacimiento = value; }
         [Column("dep_nacimiento")]
-        public string Departamento { get => departamento; set => departamento = value; }
+        public string dep_nacimiento { get => departamento; set => departamento = value; }
         [Column("ciu_nacimiento")]
-        public string Ciudad { get => ciudad; set => ciudad = value; }
+        public string ciu_nacimiento { get => ciudad; set => ciudad = value; }
         [Column("sesion")]
-        public string Sesion { get => sesion; set => sesion = value; }
+        public string sesion { get => sesion1; set => sesion1 = value; }
 
 
 
