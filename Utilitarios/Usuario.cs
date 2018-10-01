@@ -64,5 +64,10 @@ namespace Utilitarios
         public string Ciudad { get => ciudad; set => ciudad = value; }
         [Column("sesion")]
         public string Sesion { get => sesion; set => sesion = value; }
+
+
+
+
+
     }
 }

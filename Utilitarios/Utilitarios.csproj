@@ -49,6 +49,8 @@
     </Compile>
     <Compile Include="MAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sesion.cs" />
+    <Compile Include="TokenRecuperaUsuario.cs" />
     <Compile Include="UContrasenia.cs" />
     <Compile Include="UIdioma.cs" />
     <Compile Include="UReg.cs" />
