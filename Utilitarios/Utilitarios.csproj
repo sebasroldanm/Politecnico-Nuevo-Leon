@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Acudiente.cs" />
+    <Compile Include="Idioma.cs" />
     <Compile Include="InfReporte.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
