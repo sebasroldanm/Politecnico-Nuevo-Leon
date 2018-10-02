@@ -136,6 +136,7 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
         fechanac.ReadOnly = usua.L_Aceptar1;
         fechanac.Text = usua.fecha_nacimiento;
         ImagenEst.ImageUrl = usua.Foto;
+        Session["fotosinedit"] = usua.Foto;
         L_ErrorAdmin.Text = "";
 
         btn_DocenteEditar.Visible = usua.B_Botones1;
@@ -205,8 +206,9 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
         user.rol_id = "2";
         user.user_name = tb_DocenteUsuario.Text;
 
-
-
+        int h = int.Parse(Session["idioma"].ToString());
+        string es = DDL_Estado.SelectedValue;
+        string s = Session["fotosinedit"].ToString();
 
         usu = logica.editarProfesor(user, int.Parse(Session["idioma"].ToString()), DDL_Estado.SelectedValue, Session["fotosinedit"].ToString());
 
