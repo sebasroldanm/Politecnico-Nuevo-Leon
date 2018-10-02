@@ -134,32 +134,69 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
     protected void btn_AcudienteAceptar_Click(object sender, EventArgs e)
     {
 
-        LUser logica = new LUser();
-        UUser usua = new UUser();
-        string foto = cargarImagen();
-        usua = logica.AgregarAdmin(
-            int.Parse(ddt_lugarnacimDep.SelectedValue),
-            int.Parse(DDT_Ciudad.SelectedValue),
-            tb_AcudienteNombre.Text,
-            tb_AcudienteApellido.Text,
-            tb_AcudienteDireccion.Text,
-            tb_AcudienteTelefono.Text,
-            tb_AcudienteContrasenia.Text,
-            tb_AcudienteCorreo.Text,
-            foto,
-            int.Parse(tb_AcudienteId.Text),
-            tb_AcudienteUsuario.Text,
-            4,
-            fechanac.Text,
-            Session.SessionID,
-            int.Parse(Session["idioma"].ToString())
-            );
+        /////**************************Aqui Inicia la Migracion***********************************
 
-        L_ErrorUsuario.Text = usua.Mensaje;
-        btn_AcudienteAceptar.Visible = false;
-        this.Page.Response.Write(usua.Notificacion);
+        //LUser logica = new LUser();
+        //UUser usua = new UUser();
+        //string foto = cargarImagen();
+        //usua = logica.AgregarAdmin(
+        //    int.Parse(ddt_lugarnacimDep.SelectedValue),
+        //    int.Parse(DDT_Ciudad.SelectedValue),
+        //    tb_AcudienteNombre.Text,
+        //    tb_AcudienteApellido.Text,
+        //    tb_AcudienteDireccion.Text,
+        //    tb_AcudienteTelefono.Text,
+        //    tb_AcudienteContrasenia.Text,
+        //    tb_AcudienteCorreo.Text,
+        //    foto,
+        //    int.Parse(tb_AcudienteId.Text),
+        //    tb_AcudienteUsuario.Text,
+        //    4,
+        //    fechanac.Text,
+        //    Session.SessionID,
+        //    int.Parse(Session["idioma"].ToString())
+        //    );
 
-        
+        //L_ErrorUsuario.Text = usua.Mensaje;
+        //btn_AcudienteAceptar.Visible = false;
+        //this.Page.Response.Write(usua.Notificacion);
+        /////**************************Aqui Termina la Migracion***********************************
+
+        /////**************************Aqui Inicia el Mapeo***********************************
+
+        LMUser logicaM = new LMUser();
+        Usuario usua = new Usuario();
+        UUser usu = new UUser();
+
+
+        usua.nombre_usua = tb_AcudienteNombre.Text;
+        usua.user_name = tb_AcudienteUsuario.Text;
+        usua.rol_id = "4";
+        usua.clave = tb_AcudienteContrasenia.Text;
+        usua.correo = tb_AcudienteCorreo.Text;
+        usua.estado = true;
+        usua.apellido_usua = tb_AcudienteApellido.Text;
+        usua.direccion = tb_AcudienteDireccion.Text;
+        usua.telefono = tb_AcudienteTelefono.Text;
+        usua.num_documento = tb_AcudienteId.Text;
+        usua.foto_usua = cargarImagen();
+        usua.fecha_nac = fechanac.Text;
+        usua.dep_nacimiento = ddt_lugarnacimDep.SelectedValue;
+        usua.ciu_nacimiento = DDT_Ciudad.SelectedValue;
+        usua.sesion = Session.SessionID;
+        usua.ultima_modificacion = DateTime.Now.ToShortDateString();
+        usua.state_t = "1";
+
+        usu = logicaM.insertaracudiente(usua, int.Parse(Session["idioma"].ToString()));
+
+        L_ErrorUsuario.Text = usu.Mensaje;
+        this.Page.Response.Write(usu.Notificacion);
+        btn_AcudienteAceptar.Visible = usu.L_Aceptar1;
+        btn_AcudienteNuevo.Visible = usu.B_Botones1;
+
+        /////**************************Aqui Termina el Mapeo***********************************
+
+
     }
 
     protected void btn_AcudienteNuevo_Click(object sender, EventArgs e)

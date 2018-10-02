@@ -139,34 +139,72 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
 
     protected void btn_AdministradorAceptar_Click2(object sender, EventArgs e)
     {
+        /////**************************Aqui Inicia la Migracion***********************************
+        //LUser Logica = new LUser();
+        //UUser usua = new UUser();
+        //string foto = cargarImagen();
 
-        LUser Logica = new LUser();
-        UUser usua = new UUser();
-        string foto = cargarImagen();
+        //usua = Logica.AgregarAdmin(
+        //    int.Parse(ddt_lugarnacimDep.SelectedValue),
+        //    int.Parse(DDT_Ciudad.SelectedValue),
+        //    tb_AdministradorAdministradorNombre.Text,
+        //    tb_AdministradorAdministradorApellido.Text,
+        //    tb_AdministradorAdministradorDireccion.Text,
+        //    tb_AdministradorTelefono.Text,
+        //    tb_AdministradorContrasenia.Text,
+        //    tb_AdministradorAdministradorCorreo.Text,
+        //    foto,
+        //    int.Parse(tb_AministradorAdministradorId.Text),
+        //    tb_AdministradorUsuario.Text,
+        //    1,
+        //    fechanac.Text,
+        //    Session.SessionID,
+        //    int.Parse(Session["idioma"].ToString())
+        //    );
+        //L_ErrorUsuario.Text = usua.Mensaje;
+        //this.Page.Response.Write(usua.Notificacion);
+        //btn_AdministradorAceptar.Visible = usua.L_Aceptar1;
+        //btn_AdministradorNuevo.Visible = usua.B_Botones1;
+        /////**************************Aqui Termina la Migracion***********************************
 
-        usua = Logica.AgregarAdmin(
-            int.Parse(ddt_lugarnacimDep.SelectedValue),
-            int.Parse(DDT_Ciudad.SelectedValue),
-            tb_AdministradorAdministradorNombre.Text,
-            tb_AdministradorAdministradorApellido.Text,
-            tb_AdministradorAdministradorDireccion.Text,
-            tb_AdministradorTelefono.Text,
-            tb_AdministradorContrasenia.Text,
-            tb_AdministradorAdministradorCorreo.Text,
-            foto,
-            int.Parse(tb_AministradorAdministradorId.Text),
-            tb_AdministradorUsuario.Text,
-            1,
-            fechanac.Text,
-            Session.SessionID,
-            int.Parse(Session["idioma"].ToString())
-            );
-        L_ErrorUsuario.Text = usua.Mensaje;
-        this.Page.Response.Write(usua.Notificacion);
-        btn_AdministradorAceptar.Visible = usua.L_Aceptar1;
-        btn_AdministradorNuevo.Visible = usua.B_Botones1;
 
+        /////**************************Aqui Inicia el Mapeo***********************************
+
+
+        LMUser logicaM = new LMUser();
+        Usuario usua = new Usuario();
+        UUser usu = new UUser();
+
+        usua.nombre_usua = tb_AdministradorAdministradorNombre.Text;
+        usua.user_name = tb_AdministradorUsuario.Text;
+        usua.rol_id = "1";
+        usua.clave = tb_AdministradorContrasenia.Text;
+        usua.correo = tb_AdministradorAdministradorCorreo.Text;
+        usua.estado = true;
+        usua.apellido_usua = tb_AdministradorAdministradorApellido.Text;
+        usua.direccion = tb_AdministradorAdministradorDireccion.Text;
+        usua.telefono = tb_AdministradorTelefono.Text;
+        usua.num_documento = tb_AministradorAdministradorId.Text;
+        usua.foto_usua = cargarImagen();
+        usua.fecha_nac = fechanac.Text;
+        usua.dep_nacimiento = ddt_lugarnacimDep.SelectedValue;
+        usua.ciu_nacimiento = DDT_Ciudad.SelectedValue;
+        usua.sesion = Session.SessionID;
+        usua.ultima_modificacion = DateTime.Now.ToShortDateString();
+        usua.state_t = "1";
+
+        usu = logicaM.insertaradmin(usua,int.Parse(Session["idioma"].ToString()));
         
+
+        L_ErrorUsuario.Text = usu.Mensaje;
+        this.Page.Response.Write(usu.Notificacion);
+        btn_AdministradorAceptar.Visible = usu.L_Aceptar1;
+        btn_AdministradorNuevo.Visible = usu.B_Botones1;
+
+
+        /////**************************Aqui Termina el Mapeo***********************************
+
+
     }
 
     protected void btn_AdministradorNuevo_Click(object sender, EventArgs e)
@@ -218,7 +256,7 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         try
         {
             ClientScriptManager cm = this.ClientScript;
-            cm.RegisterClientScriptBlock(this.GetType(), "", enc.Notificacion);
+          //  cm.RegisterClientScriptBlock(this.GetType(), "", enc.Notificacion);
             btnigm_calendar.Visible = true;
 
             tb_AdministradorFoto.PostedFile.SaveAs(enc.SaveLocation);

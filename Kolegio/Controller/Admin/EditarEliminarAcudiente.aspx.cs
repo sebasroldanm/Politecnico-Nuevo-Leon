@@ -69,9 +69,13 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
         //script_error_formato="Solo se admiten imagenes en formato Jpeg o Gif";
         //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
         //script_foto_cargada="El archivo de imagen ha sido cargado";
-        DDL_Estado.Items.Clear();
-        DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado"].ToString());
-        DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado2"].ToString());
+
+        if (IsPostBack == false)
+        {
+            DDL_Estado.Items.Clear();
+            DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado"].ToString());
+            DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado2"].ToString());
+        }
 
         //DDL_Estado
         //item1="Activo";
@@ -153,43 +157,85 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
 
     protected void btn_AcudienteEditar_Click(object sender, EventArgs e)
     {
-        LUser logica = new LUser();
-        UUser usua = new UUser();
-        string foto = cargarImagen();
-        int rol = 4;
-        usua = logica.editarAdmin(
-            tb_AcudienteNombre.Text,
-            tb_AcudienteUsuario.Text,
-            tb_AcudienteContrasenia.Text,
-            tb_AcudienteCorreo.Text,
-            tb_AcudienteApellido.Text,
-            tb_AcudienteDireccion.Text,
-            tb_AcudienteTelefono.Text,
-            int.Parse(tb_AcudienteId.Text),
-            DDL_Estado.SelectedValue,
-            fechanac.Text,
-            int.Parse(ddt_lugarnacimDep.SelectedValue),
-            int.Parse(DDT_Ciudad.SelectedValue),
-            Session.SessionID,
-            foto,
-            Session["fotosinedit"].ToString(),
-            int.Parse(Session["idioma"].ToString()),
-            rol
-            );
+        //LUser logica = new LUser();
+        //UUser usua = new UUser();
+        //string foto = cargarImagen();
+        //int rol = 4;
+        //usua = logica.editarAdmin(
+        //    tb_AcudienteNombre.Text,
+        //    tb_AcudienteUsuario.Text,
+        //    tb_AcudienteContrasenia.Text,
+        //    tb_AcudienteCorreo.Text,
+        //    tb_AcudienteApellido.Text,
+        //    tb_AcudienteDireccion.Text,
+        //    tb_AcudienteTelefono.Text,
+        //    int.Parse(tb_AcudienteId.Text),
+        //    DDL_Estado.SelectedValue,
+        //    fechanac.Text,
+        //    int.Parse(ddt_lugarnacimDep.SelectedValue),
+        //    int.Parse(DDT_Ciudad.SelectedValue),
+        //    Session.SessionID,
+        //    foto,
+        //    Session["fotosinedit"].ToString(),
+        //    int.Parse(Session["idioma"].ToString()),
+        //    rol
+        //    );
 
-        this.Page.Response.Write(usua.Notificacion);
+        //this.Page.Response.Write(usua.Notificacion);
 
-        tb_AcudienteId.ReadOnly = usua.BotonTrue;
-        tb_AcudienteNombre.ReadOnly = usua.BotonFalse;
-        tb_AcudienteApellido.ReadOnly = usua.BotonFalse;
-        tb_AcudienteCorreo.ReadOnly = usua.BotonFalse;
-        tb_AcudienteDireccion.ReadOnly = usua.BotonFalse;
-        tb_AcudienteTelefono.ReadOnly = usua.BotonFalse;
-        tb_AcudienteUsuario.ReadOnly = usua.BotonFalse;
-        tb_AcudienteContrasenia.ReadOnly = usua.BotonFalse;
-        btn_AcudienteEditar.Visible = usua.BotonFalse;
-        btn_AcudienteNuevo.Visible = usua.BotonTrue;
-        btn_AcudienteAceptar.Visible = usua.BotonFalse;
+        //tb_AcudienteId.ReadOnly = usua.BotonTrue;
+        //tb_AcudienteNombre.ReadOnly = usua.BotonFalse;
+        //tb_AcudienteApellido.ReadOnly = usua.BotonFalse;
+        //tb_AcudienteCorreo.ReadOnly = usua.BotonFalse;
+        //tb_AcudienteDireccion.ReadOnly = usua.BotonFalse;
+        //tb_AcudienteTelefono.ReadOnly = usua.BotonFalse;
+        //tb_AcudienteUsuario.ReadOnly = usua.BotonFalse;
+        //tb_AcudienteContrasenia.ReadOnly = usua.BotonFalse;
+        //btn_AcudienteEditar.Visible = usua.BotonFalse;
+        //btn_AcudienteNuevo.Visible = usua.BotonTrue;
+        //btn_AcudienteAceptar.Visible = usua.BotonFalse;
+
+        LMUser logica = new LMUser();
+        Usuario user = new Usuario();
+        UUser usu = new UUser();
+
+        user.num_documento = (tb_AcudienteId.Text);
+        user.nombre_usua = tb_AcudienteNombre.Text;
+        user.clave = tb_AcudienteContrasenia.Text;
+        user.correo = tb_AcudienteCorreo.Text;
+        user.apellido_usua = tb_AcudienteApellido.Text;
+        user.direccion = tb_AcudienteDireccion.Text;
+        user.telefono = tb_AcudienteTelefono.Text;
+        user.foto_usua = cargarImagen();
+        user.fecha_nac = fechanac.Text;
+        user.dep_nacimiento = (ddt_lugarnacimDep.SelectedValue.ToString());
+        user.ciu_nacimiento = (DDT_Ciudad.SelectedValue.ToString());
+        user.sesion = Session.SessionID;
+        user.rol_id = "4";
+        user.user_name = tb_AcudienteUsuario.Text;
+
+
+
+
+        usu = logica.editarAcudiente(user, int.Parse(Session["idioma"].ToString()), DDL_Estado.SelectedValue, Session["fotosinedit"].ToString());
+
+        this.Page.Response.Write(usu.Notificacion);
+
+        tb_AcudienteId.ReadOnly = usu.BotonTrue;
+        tb_AcudienteNombre.ReadOnly = usu.BotonFalse;
+        tb_AcudienteApellido.ReadOnly = usu.BotonFalse;
+        tb_AcudienteCorreo.ReadOnly = usu.BotonFalse;
+        tb_AcudienteDireccion.ReadOnly = usu.BotonFalse;
+        tb_AcudienteTelefono.ReadOnly = usu.BotonFalse;
+        tb_AcudienteUsuario.ReadOnly = usu.BotonFalse;
+        tb_AcudienteContrasenia.ReadOnly = usu.BotonFalse;
+        btn_AcudienteEditar.Visible = usu.BotonFalse;
+        btn_AcudienteNuevo.Visible = usu.BotonTrue;
+        btn_AcudienteAceptar.Visible = usu.BotonFalse;
+
+
+
+
     }
 
     protected void btn_AcudienteNuevo_Click(object sender, EventArgs e)

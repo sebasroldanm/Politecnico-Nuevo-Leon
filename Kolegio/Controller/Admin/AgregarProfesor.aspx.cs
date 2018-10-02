@@ -124,32 +124,69 @@ public partial class View_Admin_AgregarProfesor : System.Web.UI.Page
 
     protected void btn_AdministradorAceptar_Click2(object sender, EventArgs e)
     {
+        /////**************************Aqui Inicia la Migracion***********************************
+        //LUser logica = new LUser();
+        //UUser usua = new UUser();
+        //string foto = cargarImagen();
 
-        LUser logica = new LUser();
-        UUser usua = new UUser();
-        string foto = cargarImagen();
+        //usua = logica.AgregarAdmin(
+        //    int.Parse(ddt_lugarnacimDep.SelectedValue),
+        //    int.Parse(DDT_Ciudad.SelectedValue),
+        //    tb_DocenteNombre.Text,
+        //    tb_DocenteApellido.Text,
+        //    tb_DocenteDireccion.Text,
+        //    tb_DocenteTelefono.Text,
+        //    tb_DocenteContrasenia.Text,
+        //    tb_DocenteCorreo.Text,
+        //    foto,
+        //    int.Parse(tb_DocenteId.Text),
+        //    tb_DocenteUsuario.Text,
+        //    2,
+        //    fechanac.Text,
+        //    Session.SessionID,
+        //    int.Parse(Session["idioma"].ToString())
+        //    );
 
-        usua = logica.AgregarAdmin(
-            int.Parse(ddt_lugarnacimDep.SelectedValue),
-            int.Parse(DDT_Ciudad.SelectedValue),
-            tb_DocenteNombre.Text,
-            tb_DocenteApellido.Text,
-            tb_DocenteDireccion.Text,
-            tb_DocenteTelefono.Text,
-            tb_DocenteContrasenia.Text,
-            tb_DocenteCorreo.Text,
-            foto,
-            int.Parse(tb_DocenteId.Text),
-            tb_DocenteUsuario.Text,
-            2,
-            fechanac.Text,
-            Session.SessionID,
-            int.Parse(Session["idioma"].ToString())
-            );
+        //L_ErrorUsuario.Text = usua.Mensaje;
+        //btn_DocenteAceptar.Visible = false;
+        //this.Page.Response.Write(usua.Notificacion);
+        /////**************************Aqui Termina la Migracion***********************************
 
-        L_ErrorUsuario.Text = usua.Mensaje;
-        btn_DocenteAceptar.Visible = false;
-        this.Page.Response.Write(usua.Notificacion);
+
+
+        /////**************************Aqui Inicia el Mapeo***********************************
+
+
+        LMUser logicaM = new LMUser();
+        Usuario usua = new Usuario();
+        UUser usu = new UUser();
+
+
+        usua.nombre_usua = tb_DocenteNombre.Text;
+        usua.user_name = tb_DocenteUsuario.Text;
+        usua.rol_id = "2";
+        usua.clave = tb_DocenteContrasenia.Text;
+        usua.correo = tb_DocenteCorreo.Text;
+        usua.estado = true;
+        usua.apellido_usua = tb_DocenteApellido.Text;
+        usua.direccion = tb_DocenteDireccion.Text;
+        usua.telefono = tb_DocenteTelefono.Text;
+        usua.num_documento = tb_DocenteId.Text;
+        usua.foto_usua = cargarImagen();
+        usua.fecha_nac = fechanac.Text;
+        usua.dep_nacimiento = ddt_lugarnacimDep.SelectedValue;
+        usua.ciu_nacimiento = DDT_Ciudad.SelectedValue;
+        usua.sesion = Session.SessionID;
+        usua.ultima_modificacion = DateTime.Now.ToShortDateString();
+        usua.state_t = "1";
+        usu = logicaM.insertarprofe(usua, int.Parse(Session["idioma"].ToString()));
+
+        L_ErrorUsuario.Text = usu.Mensaje;
+        this.Page.Response.Write(usu.Notificacion);
+        btn_DocenteAceptar.Visible = usu.L_Aceptar1;
+        btn_DocenteNuevo.Visible = usu.B_Botones1;
+
+        /////**************************Aqui Termina el Mapeo***********************************
 
 
     }

@@ -12,7 +12,7 @@
                   <asp:Button ID="btn_descargar" runat="server" Text="Descargar Lista" class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargar_Click"/>
 
 
-    <asp:GridView ID="GridView1" runat="server"  CssClass="table table-bordered bs-table" AutoGenerateColumns="False" DataSourceID="DAOdocen" BackColor="White" BorderColor="#660033" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" AllowPaging="True" PageSize="3" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+    <asp:GridView ID="GridView1" runat="server"  CssClass="table table-bordered bs-table" AutoGenerateColumns="False" DataSourceID="ODS_MapeoListaProfesor" BackColor="White" BorderColor="#660033" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" AllowPaging="True" PageSize="3" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
         <AlternatingRowStyle BackColor="#F7F7F7" BorderColor="#0677D2" />
         <Columns>
             <asp:ImageField DataImageUrlField="foto_usua" HeaderText="Foto">
@@ -23,7 +23,11 @@
             <ControlStyle Font-Size="Large" />
             </asp:BoundField>
             <asp:BoundField DataField="num_documento" HeaderText="Documento" />
-            <asp:BoundField DataField="estado" HeaderText="Estado" />
+                    <asp:TemplateField HeaderText="Estado">
+                        <ItemTemplate>
+                            <%# Convert.ToBoolean(Eval("estado")) ? "Activo" : "Inactivo" %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
             <asp:BoundField DataField="correo" HeaderText="Correo" />
             <asp:BoundField DataField="telefono" HeaderText="Telefono" />
             <asp:BoundField DataField="user_name" HeaderText="Usuario" />
@@ -44,6 +48,9 @@
         <SortedDescendingCellStyle BackColor="#D8D8F0" />
         <SortedDescendingHeaderStyle BackColor="#3E3277" />
         </asp:GridView>
+
+
+                  <asp:ObjectDataSource ID="ODS_MapeoListaProfesor" runat="server" SelectMethod="listarProfesores" TypeName="Datos.DMUser"></asp:ObjectDataSource>
 
 
     <asp:ObjectDataSource ID="DAOdocen" runat="server" SelectMethod="listardocente" TypeName="Datos.DUser"></asp:ObjectDataSource>

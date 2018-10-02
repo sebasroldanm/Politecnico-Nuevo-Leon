@@ -734,7 +734,7 @@ namespace Datos
                 NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.f_valida_admin", conection);
                 dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
                 dataAdapter.SelectCommand.Parameters.Add("_user_name", NpgsqlDbType.Text).Value = dat.UserName;
-                dataAdapter.SelectCommand.Parameters.Add("_num_documento", NpgsqlDbType.Integer).Value = int.Parse(dat.Documento);
+                dataAdapter.SelectCommand.Parameters.Add("_num_documento", NpgsqlDbType.Integer).Value = Int64.Parse(dat.Documento);
 
 
 

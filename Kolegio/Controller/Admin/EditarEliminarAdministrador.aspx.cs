@@ -67,10 +67,12 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
         //script_error_formato="Solo se admiten imagenes en formato Jpeg o Gif";
         //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
         //script_foto_cargada="El archivo de imagen ha sido cargado";
-
-        DDL_Estado.Items.Clear();
-        DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado"].ToString());
-        DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado2"].ToString());
+        if (IsPostBack == false)
+        {
+            DDL_Estado.Items.Clear();
+            DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado"].ToString());
+            DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado2"].ToString());
+        }
         //DDL_Estado
         //item1="Activo";
         //item2="Inactivo";
@@ -83,13 +85,13 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
         {
             usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documento"].ToString());
             tb_AministradorAdministradorId.Text = Session["documento"].ToString();
-            tb_AdministradorAdministradorNombre.ReadOnly = usua.BotonTrue;
-            tb_AdministradorAdministradorApellido.ReadOnly = usua.BotonTrue;
-            tb_AdministradorAdministradorCorreo.ReadOnly = usua.BotonTrue;
-            tb_AdministradorAdministradorDireccion.ReadOnly = usua.BotonTrue;
-            tb_AdministradorTelefono.ReadOnly = usua.BotonTrue;
-            tb_AdministradorUsuario.ReadOnly = usua.BotonTrue;
-            tb_AdministradorContrasenia.ReadOnly = usua.BotonTrue;
+            //tb_AdministradorAdministradorNombre.ReadOnly = usua.BotonTrue;
+            //tb_AdministradorAdministradorApellido.ReadOnly = usua.BotonTrue;
+            //tb_AdministradorAdministradorCorreo.ReadOnly = usua.BotonTrue;
+            //tb_AdministradorAdministradorDireccion.ReadOnly = usua.BotonTrue;
+            //tb_AdministradorTelefono.ReadOnly = usua.BotonTrue;
+            //tb_AdministradorUsuario.ReadOnly = usua.BotonTrue;
+            //tb_AdministradorContrasenia.ReadOnly = usua.BotonTrue;
         }
         catch
         {
@@ -146,48 +148,88 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
 
     protected void btn_AdministradorEdditar_Click(object sender, EventArgs e)
     {
-        LUser logica = new LUser();
-        UUser usua = new UUser();
-        string foto = cargarImagen();
-        int rol = 1;
-        usua = logica.editarAdmin(
-            tb_AdministradorAdministradorNombre.Text,
-            tb_AdministradorUsuario.Text,
-            tb_AdministradorContrasenia.Text,
-            tb_AdministradorAdministradorCorreo.Text,
-            tb_AdministradorAdministradorApellido.Text,
-            tb_AdministradorAdministradorDireccion.Text,
-            tb_AdministradorTelefono.Text,
-            int.Parse(tb_AministradorAdministradorId.Text),
-            DDL_Estado.SelectedValue,
-            fechanac.Text,
-            int.Parse(ddt_lugarnacimDep.SelectedValue),
-            int.Parse(DDT_Ciudad.SelectedValue),
-            Session.SessionID,
-            foto,
-            Session["fotosinedit"].ToString(),
-            int.Parse(Session["idioma"].ToString()),
-            rol
-            );
+        //LUser logica = new LUser();
+        //UUser usua = new UUser();
+        //string foto = cargarImagen();
+        //int rol = 1;
+        //usua = logica.editarAdmin(
+        //    tb_AdministradorAdministradorNombre.Text,
+        //    tb_AdministradorUsuario.Text,
+        //    tb_AdministradorContrasenia.Text,
+        //    tb_AdministradorAdministradorCorreo.Text,
+        //    tb_AdministradorAdministradorApellido.Text,
+        //    tb_AdministradorAdministradorDireccion.Text,
+        //    tb_AdministradorTelefono.Text,
+        //    int.Parse(tb_AministradorAdministradorId.Text),
+        //    DDL_Estado.SelectedValue,
+        //    fechanac.Text,
+        //    int.Parse(ddt_lugarnacimDep.SelectedValue),
+        //    int.Parse(DDT_Ciudad.SelectedValue),
+        //    Session.SessionID,
+        //    foto,
+        //    c,
+        //    int.Parse(Session["idioma"].ToString()),
+        //    rol
+        //    );
 
-        this.Page.Response.Write(usua.Notificacion);
+        //this.Page.Response.Write(usua.Notificacion);
 
-        tb_AministradorAdministradorId.ReadOnly = usua.BotonTrue;
-        tb_AdministradorAdministradorNombre.ReadOnly = usua.BotonFalse;
-        tb_AdministradorAdministradorApellido.ReadOnly = usua.BotonFalse;
-        tb_AdministradorAdministradorCorreo.ReadOnly = usua.BotonFalse;
-        tb_AdministradorAdministradorDireccion.ReadOnly = usua.BotonFalse;
-        tb_AdministradorTelefono.ReadOnly = usua.BotonFalse;
-        tb_AdministradorUsuario.ReadOnly = usua.BotonFalse;
-        tb_AdministradorContrasenia.ReadOnly = usua.BotonFalse;
-        btn_AdministradorEditar.Visible = usua.BotonFalse;
-        btn_AdministradorNuevo.Visible = usua.BotonTrue;
-        btn_AdministradorAceptar.Visible = usua.BotonFalse;
+        //tb_AministradorAdministradorId.ReadOnly = usua.BotonTrue;
+        //tb_AdministradorAdministradorNombre.ReadOnly = usua.BotonFalse;
+        //tb_AdministradorAdministradorApellido.ReadOnly = usua.BotonFalse;
+        //tb_AdministradorAdministradorCorreo.ReadOnly = usua.BotonFalse;
+        //tb_AdministradorAdministradorDireccion.ReadOnly = usua.BotonFalse;
+        //tb_AdministradorTelefono.ReadOnly = usua.BotonFalse;
+        //tb_AdministradorUsuario.ReadOnly = usua.BotonFalse;
+        //tb_AdministradorContrasenia.ReadOnly = usua.BotonFalse;
+        //btn_AdministradorEditar.Visible = usua.BotonFalse;
+        //btn_AdministradorNuevo.Visible = usua.BotonTrue;
+        //btn_AdministradorAceptar.Visible = usua.BotonFalse;
+
+
+        LMUser logica = new LMUser();
+        Usuario user = new Usuario();
+        UUser usu = new UUser();
+
+        user.num_documento = (tb_AministradorAdministradorId.Text);
+        user.nombre_usua = tb_AdministradorAdministradorNombre.Text;
+        user.clave = tb_AdministradorContrasenia.Text;
+        user.correo = tb_AdministradorAdministradorCorreo.Text;
+        user.apellido_usua = tb_AdministradorAdministradorApellido.Text;
+        user.direccion = tb_AdministradorAdministradorDireccion.Text;
+        user.telefono = tb_AdministradorTelefono.Text;
+        user.foto_usua = cargarImagen();
+        user.fecha_nac = fechanac.Text;
+        user.dep_nacimiento = (ddt_lugarnacimDep.SelectedValue.ToString());
+        user.ciu_nacimiento = (DDT_Ciudad.SelectedValue.ToString());
+        user.sesion = Session.SessionID;
+        user.rol_id = "1";
+        user.user_name = tb_AdministradorUsuario.Text;
+
+
+
+
+        usu = logica.editarAdmin(user, int.Parse(Session["idioma"].ToString()), DDL_Estado.SelectedValue, Session["fotosinedit"].ToString());
+
+        this.Page.Response.Write(usu.Notificacion);
+
+        tb_AministradorAdministradorId.ReadOnly = usu.BotonTrue;
+        tb_AdministradorAdministradorNombre.ReadOnly = usu.BotonFalse;
+        tb_AdministradorAdministradorApellido.ReadOnly = usu.BotonFalse;
+        tb_AdministradorAdministradorCorreo.ReadOnly = usu.BotonFalse;
+        tb_AdministradorAdministradorDireccion.ReadOnly = usu.BotonFalse;
+        tb_AdministradorTelefono.ReadOnly = usu.BotonFalse;
+        tb_AdministradorUsuario.ReadOnly = usu.BotonFalse;
+        tb_AdministradorContrasenia.ReadOnly = usu.BotonFalse;
+        btn_AdministradorEditar.Visible = usu.BotonFalse;
+        btn_AdministradorNuevo.Visible = usu.BotonTrue;
+        btn_AdministradorAceptar.Visible = usu.BotonFalse;
+
     }
 
-    
 
-protected void btn_AdministradorNuevo_Click(object sender, EventArgs e)
+
+    protected void btn_AdministradorNuevo_Click(object sender, EventArgs e)
     {
         tb_AministradorAdministradorId.Enabled = true;
         tb_AdministradorAdministradorNombre.Text = "";

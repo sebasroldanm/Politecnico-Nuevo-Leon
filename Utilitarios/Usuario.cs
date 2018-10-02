@@ -19,7 +19,7 @@ namespace Utilitarios
         private String rol;
         private String Clave;
         private String Correo;
-        private bool Estado;
+        private Boolean Estado;
         private String apellido;
         private String Direccion;
         private String Telefono;
@@ -29,6 +29,8 @@ namespace Utilitarios
         private String departamento;
         private String ciudad;
         private String sesion1;
+        private String ultimaModificacion;
+        private string stateT;
 
 
         [Key]
@@ -45,7 +47,7 @@ namespace Utilitarios
         [Column("correo")]
         public string correo { get => Correo; set => Correo = value; }
         [Column("estado")]
-        public bool estado { get => Estado; set => Estado = value; }
+        public Boolean estado { get => Estado; set => Estado = value; }
         [Column("apellido_usua")]
         public string apellido_usua { get => apellido; set => apellido = value; }
         [Column("direccion")]
@@ -64,8 +66,10 @@ namespace Utilitarios
         public string ciu_nacimiento { get => ciudad; set => ciudad = value; }
         [Column("sesion")]
         public string sesion { get => sesion1; set => sesion1 = value; }
-
-
+        [Column("ultima_modificacion")]
+        public string ultima_modificacion { get => ultimaModificacion; set => ultimaModificacion = value; }
+        [Column("state_t")]
+        public string state_t { get => stateT; set => stateT = value; }
 
 
 

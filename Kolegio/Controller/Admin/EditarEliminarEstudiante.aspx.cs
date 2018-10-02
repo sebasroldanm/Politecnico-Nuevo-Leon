@@ -69,9 +69,12 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
         //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
         //script_foto_cargada="El archivo de imagen ha sido cargado;
 
-        DDL_Estado.Items.Clear();
-        DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado"].ToString());
-        DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado2"].ToString());
+        if (IsPostBack == false)
+        {
+            DDL_Estado.Items.Clear();
+            DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado"].ToString());
+            DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado2"].ToString());
+        }
         //DDL_Estado
         //item1="Activo";
         //item2="Inactivo";
@@ -162,44 +165,86 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
     protected void btn_AdministradorEdditar_Click(object sender, EventArgs e)
     {
 
-            LUser logica = new LUser();
-            UUser usua = new UUser();
-        string foto = cargarImagen();
-        int rol = 3;
-        usua = logica.editarAdmin(
-                tb_EstudianteNombre.Text,
-                tb_EstudianteUsuario.Text,
-                tb_EstudianteContrasenia.Text,
-                tb_EstudianteCorreo.Text,
-                tb_EstudianteApellido.Text,
-                tb_EstudianteDireccion.Text,
-                tb_EstudianteTelefono.Text,
-                int.Parse(tb_EstudianteId.Text),
-                DDL_Estado.SelectedValue,
-                fechanac.Text,
-                int.Parse(ddt_lugarnacimDep.SelectedValue),
-                int.Parse(DDT_Ciudad.SelectedValue),
-                Session.SessionID,
-                foto,
-                Session["fotosinedit"].ToString(),
-                int.Parse(Session["idioma"].ToString()),
-                rol
-                );
-        this.Page.Response.Write(usua.Notificacion);
+        //    LUser logica = new LUser();
+        //    UUser usua = new UUser();
+        //    string foto = cargarImagen();
+        //    int rol = 3;
+        //    usua = logica.editarAdmin(
+        //        tb_EstudianteNombre.Text,
+        //        tb_EstudianteUsuario.Text,
+        //        tb_EstudianteContrasenia.Text,
+        //        tb_EstudianteCorreo.Text,
+        //        tb_EstudianteApellido.Text,
+        //        tb_EstudianteDireccion.Text,
+        //        tb_EstudianteTelefono.Text,
+        //        int.Parse(tb_EstudianteId.Text),
+        //        DDL_Estado.SelectedValue,
+        //        fechanac.Text,
+        //        int.Parse(ddt_lugarnacimDep.SelectedValue),
+        //        int.Parse(DDT_Ciudad.SelectedValue),
+        //        Session.SessionID,
+        //        foto,
+        //        Session["fotosinedit"].ToString(),
+        //        int.Parse(Session["idioma"].ToString()),
+        //        rol
+        //        );
+        //this.Page.Response.Write(usua.Notificacion);
 
 
 
-        tb_EstudianteId.ReadOnly = usua.BotonTrue;
-        tb_EstudianteNombre.ReadOnly = usua.BotonFalse;
-        tb_EstudianteApellido.ReadOnly = usua.BotonFalse;
-        tb_EstudianteCorreo.ReadOnly = usua.BotonFalse;
-        tb_EstudianteDireccion.ReadOnly = usua.BotonFalse;
-        tb_EstudianteTelefono.ReadOnly = usua.BotonFalse;
-        tb_EstudianteUsuario.ReadOnly = usua.BotonFalse;
-        tb_EstudianteContrasenia.ReadOnly = usua.BotonFalse;
-        btn_EstudianteEditar.Visible = usua.BotonFalse;
-        btn_EstudianteNuevo.Visible = usua.BotonTrue;
-        btn_EstudianteAceptar.Visible = usua.BotonFalse;
+        //tb_EstudianteId.ReadOnly = usua.BotonTrue;
+        //tb_EstudianteNombre.ReadOnly = usua.BotonFalse;
+        //tb_EstudianteApellido.ReadOnly = usua.BotonFalse;
+        //tb_EstudianteCorreo.ReadOnly = usua.BotonFalse;
+        //tb_EstudianteDireccion.ReadOnly = usua.BotonFalse;
+        //tb_EstudianteTelefono.ReadOnly = usua.BotonFalse;
+        //tb_EstudianteUsuario.ReadOnly = usua.BotonFalse;
+        //tb_EstudianteContrasenia.ReadOnly = usua.BotonFalse;
+        //btn_EstudianteEditar.Visible = usua.BotonFalse;
+        //btn_EstudianteNuevo.Visible = usua.BotonTrue;
+        //btn_EstudianteAceptar.Visible = usua.BotonFalse;
+
+
+        LMUser logica = new LMUser();
+        Usuario user = new Usuario();
+        UUser usu = new UUser();
+
+        user.num_documento = (tb_EstudianteId.Text);
+        user.nombre_usua = tb_EstudianteNombre.Text;
+        user.clave = tb_EstudianteContrasenia.Text;
+        user.correo = tb_EstudianteCorreo.Text;
+        user.apellido_usua = tb_EstudianteApellido.Text;
+        user.direccion = tb_EstudianteDireccion.Text;
+        user.telefono = tb_EstudianteTelefono.Text;
+        user.foto_usua = cargarImagen();
+        user.fecha_nac = fechanac.Text;
+        user.dep_nacimiento = (ddt_lugarnacimDep.SelectedValue.ToString());
+        user.ciu_nacimiento = (DDT_Ciudad.SelectedValue.ToString());
+        user.sesion = Session.SessionID;
+        user.rol_id = "3";
+        user.user_name = tb_EstudianteUsuario.Text;
+
+
+
+
+        usu = logica.editarEstudiante(user, int.Parse(Session["idioma"].ToString()), DDL_Estado.SelectedValue, Session["fotosinedit"].ToString());
+
+        this.Page.Response.Write(usu.Notificacion);
+
+        tb_EstudianteId.ReadOnly = usu.BotonTrue;
+        tb_EstudianteNombre.ReadOnly = usu.BotonFalse;
+        tb_EstudianteApellido.ReadOnly = usu.BotonFalse;
+        tb_EstudianteCorreo.ReadOnly = usu.BotonFalse;
+        tb_EstudianteDireccion.ReadOnly = usu.BotonFalse;
+        tb_EstudianteTelefono.ReadOnly = usu.BotonFalse;
+        tb_EstudianteUsuario.ReadOnly = usu.BotonFalse;
+        tb_EstudianteContrasenia.ReadOnly = usu.BotonFalse;
+        btn_EstudianteEditar.Visible = usu.BotonFalse;
+        btn_EstudianteNuevo.Visible = usu.BotonTrue;
+        btn_EstudianteAceptar.Visible = usu.BotonFalse;
+
+
+
 
     }
             

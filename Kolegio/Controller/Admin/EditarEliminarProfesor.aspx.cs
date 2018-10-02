@@ -74,9 +74,12 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
         //DDL_Estado
         //item1="Activo";
         //item2="Inactivo";
-        DDL_Estado.Items.Clear();
-        DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado"].ToString());
-        DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado2"].ToString());
+        if (IsPostBack == false)
+        {
+            DDL_Estado.Items.Clear();
+            DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado"].ToString());
+            DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado2"].ToString());
+        }
 
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
@@ -144,43 +147,84 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
 
     protected void btn_DocenteEditar_Click(object sender, EventArgs e)
     {
-        LUser logica = new LUser();
-        UUser usua = new UUser();
-        string foto = cargarImagen();
-        int rol = 2;
-        usua = logica.editarAdmin(
-            tb_DocenteNombre.Text,
-            tb_DocenteUsuario.Text,
-            tb_DocenteContrasenia.Text,
-            tb_DocenteCorreo.Text,
-            tb_DocenteApellido.Text,
-            tb_DocenteDireccion.Text,
-            tb_DocenteTelefono.Text,
-            int.Parse(tb_DocenteId.Text),
-            DDL_Estado.SelectedValue,
-            fechanac.Text,
-            int.Parse(ddt_lugarnacimDep.SelectedValue),
-            int.Parse(DDT_Ciudad.SelectedValue),
-            Session.SessionID,
-            foto,
-            Session["fotosinedit"].ToString(),
-            int.Parse(Session["idioma"].ToString()),
-            rol
-            );
+        //LUser logica = new LUser();
+        //UUser usua = new UUser();
+        //string foto = cargarImagen();
+        //int rol = 2;
+        //usua = logica.editarAdmin(
+        //    tb_DocenteNombre.Text,
+        //    tb_DocenteUsuario.Text,
+        //    tb_DocenteContrasenia.Text,
+        //    tb_DocenteCorreo.Text,
+        //    tb_DocenteApellido.Text,
+        //    tb_DocenteDireccion.Text,
+        //    tb_DocenteTelefono.Text,
+        //    int.Parse(tb_DocenteId.Text),
+        //    DDL_Estado.SelectedValue,
+        //    fechanac.Text,
+        //    int.Parse(ddt_lugarnacimDep.SelectedValue),
+        //    int.Parse(DDT_Ciudad.SelectedValue),
+        //    Session.SessionID,
+        //    foto,
+        //    Session["fotosinedit"].ToString(),
+        //    int.Parse(Session["idioma"].ToString()),
+        //    rol
+        //    );
 
-        this.Page.Response.Write(usua.Notificacion);
+        //this.Page.Response.Write(usua.Notificacion);
 
-        tb_DocenteId.ReadOnly = usua.BotonTrue;
-        tb_DocenteNombre.ReadOnly = usua.BotonFalse;
-        tb_DocenteApellido.ReadOnly = usua.BotonFalse;
-        tb_DocenteCorreo.ReadOnly = usua.BotonFalse;
-        tb_DocenteDireccion.ReadOnly = usua.BotonFalse;
-        tb_DocenteTelefono.ReadOnly = usua.BotonFalse;
-        tb_DocenteUsuario.ReadOnly = usua.BotonFalse;
-        tb_DocenteContrasenia.ReadOnly = usua.BotonFalse;
-        btn_DocenteEditar.Visible = usua.BotonFalse;
-        btn_DocenteNuevo.Visible = usua.BotonTrue;
-        btn_DocenteAceptar.Visible = usua.BotonFalse;
+        //tb_DocenteId.ReadOnly = usua.BotonTrue;
+        //tb_DocenteNombre.ReadOnly = usua.BotonFalse;
+        //tb_DocenteApellido.ReadOnly = usua.BotonFalse;
+        //tb_DocenteCorreo.ReadOnly = usua.BotonFalse;
+        //tb_DocenteDireccion.ReadOnly = usua.BotonFalse;
+        //tb_DocenteTelefono.ReadOnly = usua.BotonFalse;
+        //tb_DocenteUsuario.ReadOnly = usua.BotonFalse;
+        //tb_DocenteContrasenia.ReadOnly = usua.BotonFalse;
+        //btn_DocenteEditar.Visible = usua.BotonFalse;
+        //btn_DocenteNuevo.Visible = usua.BotonTrue;
+        //btn_DocenteAceptar.Visible = usua.BotonFalse;
+
+
+        LMUser logica = new LMUser();
+        Usuario user = new Usuario();
+        UUser usu = new UUser();
+
+        user.num_documento = (tb_DocenteId.Text);
+        user.nombre_usua = tb_DocenteNombre.Text;
+        user.clave = tb_DocenteContrasenia.Text;
+        user.correo = tb_DocenteCorreo.Text;
+        user.apellido_usua = tb_DocenteApellido.Text;
+        user.direccion = tb_DocenteDireccion.Text;
+        user.telefono = tb_DocenteTelefono.Text;
+        user.foto_usua = cargarImagen();
+        user.fecha_nac = fechanac.Text;
+        user.dep_nacimiento = (ddt_lugarnacimDep.SelectedValue.ToString());
+        user.ciu_nacimiento = (DDT_Ciudad.SelectedValue.ToString());
+        user.sesion = Session.SessionID;
+        user.rol_id = "2";
+        user.user_name = tb_DocenteUsuario.Text;
+
+
+
+
+        usu = logica.editarProfesor(user, int.Parse(Session["idioma"].ToString()), DDL_Estado.SelectedValue, Session["fotosinedit"].ToString());
+
+        this.Page.Response.Write(usu.Notificacion);
+
+        tb_DocenteId.ReadOnly = usu.BotonTrue;
+        tb_DocenteNombre.ReadOnly = usu.BotonFalse;
+        tb_DocenteApellido.ReadOnly = usu.BotonFalse;
+        tb_DocenteCorreo.ReadOnly = usu.BotonFalse;
+        tb_DocenteDireccion.ReadOnly = usu.BotonFalse;
+        tb_DocenteTelefono.ReadOnly = usu.BotonFalse;
+        tb_DocenteUsuario.ReadOnly = usu.BotonFalse;
+        tb_DocenteContrasenia.ReadOnly = usu.BotonFalse;
+        btn_DocenteEditar.Visible = usu.BotonFalse;
+        btn_DocenteNuevo.Visible = usu.BotonTrue;
+        btn_DocenteAceptar.Visible = usu.BotonFalse;
+
+
 
     }
 
