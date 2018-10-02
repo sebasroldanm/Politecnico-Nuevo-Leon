@@ -122,28 +122,55 @@ public partial class View_Admin_ConfiguraionAdministrador : System.Web.UI.Page
 
     protected void btn_Aceptar_Click(object sender, EventArgs e)
     {
-        UUser enc = new UUser();
-        LUser logic = new LUser();
-        string fo = cargarImagen();
-        String foto = System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName);
-        enc = logic.ModifConfiguracion(
-                           fo,
-                           tb_usuario.Text,
-                           tb_contrasenia.Text,
-                           tb_correo.Text,
-                           Session.SessionID,
-                           Session["userId"].ToString(),
-                           Session["foto"].ToString(),
-                           Session["userName"].ToString(),
-                           Session["clave"].ToString(),
-                           Session["correo"].ToString()
-            );
+        //UUser enc = new UUser();
+        //LUser logic = new LUser();
+        //string fo = cargarImagen();
+        //String foto = System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName);
+        //enc = logic.ModifConfiguracion(
+        //                   fo,
+        //                   tb_usuario.Text,
+        //                   tb_contrasenia.Text,
+        //                   tb_correo.Text,
+        //                   Session.SessionID,
+        //                   Session["userId"].ToString(),
+        //                   Session["foto"].ToString(),
+        //                   Session["userName"].ToString(),
+        //                   Session["clave"].ToString(),
+        //                   Session["correo"].ToString()
+        //    );
 
 
-        Session["userName"] = enc.UserName;
-        Session["clave"] = enc.Clave;
-        Session["correo"] = enc.Correo;
-        Session["foto"] = enc.Foto;
+        //Session["userName"] = enc.UserName;
+        //Session["clave"] = enc.Clave;
+        //Session["correo"] = enc.Correo;
+        //Session["foto"] = enc.Foto;
+
+        //this.Page.Response.Write("<script language='JavaScript'>window.alert('Datos Modificados con Exito');</script>");
+
+        //ImagenEst.ImageUrl = Session["foto"].ToString();
+        //tb_usuario.Text = Session["username"].ToString();
+        //tb_contrasenia.Text = Session["clave"].ToString();
+        //tb_correo.Text = Session["correo"].ToString();
+        //btn_Editar.Visible = true;
+        //btn_Aceptar.Visible = false;
+        Usuario usua = new Usuario();
+        LMUser logica = new LMUser();
+        UUser uuser = new UUser();
+
+        usua.user_name = tb_usuario.Text;
+        usua.clave = tb_contrasenia.Text;
+        usua.correo = tb_correo.Text;
+        usua.num_documento = Session["documento"].ToString();
+        usua.foto_usua = cargarImagen(); ;
+        usua.sesion = Session.SessionID;
+
+        uuser = logica.ModifConfiguracionMapeo(usua, Session["foto"].ToString());
+
+
+        Session["userName"] = uuser.UserName;
+        Session["clave"] = uuser.Clave;
+        Session["correo"] = uuser.Correo;
+        Session["foto"] = uuser.Foto;
 
         this.Page.Response.Write("<script language='JavaScript'>window.alert('Datos Modificados con Exito');</script>");
 
@@ -153,6 +180,8 @@ public partial class View_Admin_ConfiguraionAdministrador : System.Web.UI.Page
         tb_correo.Text = Session["correo"].ToString();
         btn_Editar.Visible = true;
         btn_Aceptar.Visible = false;
+
+
     }
 
     protected string cargarImagen()
@@ -163,7 +192,7 @@ public partial class View_Admin_ConfiguraionAdministrador : System.Web.UI.Page
         try
         {
             ClientScriptManager cm = this.ClientScript;
-            cm.RegisterClientScriptBlock(this.GetType(), "", enc.Notificacion);
+            //cm.RegisterClientScriptBlock(this.GetType(), "", enc.Notificacion);
 
             tb_Foto.PostedFile.SaveAs(enc.SaveLocation);
             return enc.FotoCargada;

@@ -126,7 +126,27 @@ namespace Datos
             return uuser;
 
         }
+        public void editarConfiguracionAdmin(Usuario admin)
+        {
+            UUser uuser = new UUser();
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.usuario.SingleOrDefault(x => x.num_documento == admin.num_documento);
+                if (result != null)
+                {
+                    result.clave = admin.clave;
+                    result.correo = admin.correo;
+                    result.num_documento = admin.num_documento;
+                    result.foto_usua = admin.foto_usua;
+                    result.sesion = admin.sesion;
+                    result.ultima_modificacion = DateTime.Now.ToShortDateString();
+                    db.SaveChanges();
 
+                }
+            }
+            
+
+        }
 
         public UUser editarAcudiente(Usuario acudi)
         {

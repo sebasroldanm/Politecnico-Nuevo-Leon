@@ -496,11 +496,43 @@ namespace Logica
 
             return usua;
 
-
-
-
         }
 
+        public UUser ModifConfiguracionMapeo(Usuario admin, string fotoSesion)
+        {
+            UUser enc = new UUser();
+            DUser datos = new DUser();
+            DMUser mdat = new DMUser();
+
+            if (admin.foto_usua == null)
+            {
+                admin.foto_usua = fotoSesion;
+
+                enc.UserName = admin.user_name;
+                enc.Clave = admin.clave;
+                enc.Correo = admin.correo;
+                enc.Session = admin.sesion;
+                enc.Foto = admin.foto_usua;
+                
+                mdat.editarConfiguracionAdmin(admin);
+
+            }
+            else
+            {
+
+                enc.UserName = admin.user_name;
+                enc.Clave = admin.clave;
+                enc.Correo = admin.correo;
+                enc.Session = admin.sesion;
+                enc.Foto = admin.foto_usua;
+
+                mdat.editarConfiguracionAdmin(admin);
+
+
+            }
+            
+            return enc;
+        }
 
 
 
