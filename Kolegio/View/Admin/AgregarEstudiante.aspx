@@ -76,6 +76,7 @@
                 <asp:Button ID="btn_buscarAcudiente" runat="server" class="btn btn-primary btn-lg" Width="113px" BorderColor="#660033" OnClick="btn_buscarAcudiente_Click" ValidationGroup="valAcu" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:RequiredFieldValidator for="tb_EstudianteId" ID="RV_buscar" ValidationGroup="valAcu" runat="server" ErrorMessage="*" ControlToValidate="tb_AcudienteId" SetFocusOnError="True" Font-Bold="True" ForeColor="#FC2424" ToolTip="El campo es obligatorio" Font-Size="X-Large"></asp:RequiredFieldValidator><br />
                 <asp:RegularExpressionValidator ID="REV_AcudienteId" runat="server" ControlToValidate="tb_AcudienteId"  ValidationExpression="^[0-9]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="valAcu"></asp:RegularExpressionValidator>
+                <asp:RangeValidator ID="RV_ID_Acudiente_Buscar" runat="server" ControlToValidate="tb_AcudienteId" CssClass="label-warning" Font-Bold="True" ForeColor="White" MaximumValue="999999999" MinimumValue="1" ValidationGroup="valAcu"></asp:RangeValidator><br />
                 <asp:Label ID="L_ErrorAcudiente" class="control-label" Style="color: #FFFFFF" runat="server" Font-Bold="True" ForeColor="Red"></asp:Label>
 
             </div>

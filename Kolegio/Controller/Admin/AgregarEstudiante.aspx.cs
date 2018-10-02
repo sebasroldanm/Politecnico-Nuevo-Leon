@@ -94,6 +94,7 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
         btn_EstudianteNuevo.Text = encId.CompIdioma["btn_EstudianteNuevo"].ToString();
 
         RV_id_estudiante.ErrorMessage = encId.CompIdioma["RV_id_Acudiente"].ToString();
+        RV_ID_Acudiente_Buscar.ErrorMessage = encId.CompIdioma["RV_id_Acudiente"].ToString();
 
         //agregarEstudiante
         //L_ErrorUsuario_Seleccione.Text="Debe seleccionar una opcion";
@@ -115,7 +116,7 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
         //script_error_formato="Solo se admiten imagenes en formato Jpeg o Gif";
         //script_error_foto_repite="Ya existe una imagen en el servidor con ese nombre";
         //script_foto_cargada="El archivo de imagen ha sido cargado";
-        
+
     }
 
     protected void descartar_idioma_Click(object sender, EventArgs e)
