@@ -31,8 +31,9 @@ public partial class View_Admin_DescargarAdministradores : System.Web.UI.Page
             {
                 string urlCarpeta = Server.MapPath("~/FotosUser/");
                 LUser log = new LUser();
-
-                CRS_admin.ReportDocument.SetDataSource(log.reporteAdmin(urlCarpeta));
+                LMUser muser = new LMUser();
+                //CRS_admin.ReportDocument.SetDataSource(log.reporteAdmin(urlCarpeta));
+                CRS_admin.ReportDocument.SetDataSource(muser.reporteAdmin(urlCarpeta));
                 CRV_administradores.ReportSource = CRS_admin;
             }
             catch (Exception)

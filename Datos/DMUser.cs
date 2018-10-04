@@ -58,8 +58,17 @@ namespace Datos
                 return estudiante.ToList<Usuario>();
             }
         }
+
+        public List<Usuario> listarAcudientes()
+        {
+            using (var db = new Mapeo("public"))
+            {
+                var estudiante = db.usuario.ToList<Usuario>().Where(x => x.rol_id.Contains("4"));
+                return estudiante.ToList<Usuario>();
+            }
+        }
         ///Insertar con Mapeo///////////////////////////////////////////
-        
+
         public void insertarAdmin(Usuario admin)
         {
 
@@ -244,8 +253,6 @@ namespace Datos
             return uuser;
 
         }
-
-
 
 
     }

@@ -58,17 +58,16 @@ public partial class View_Admin_DescargarAcudientes : System.Web.UI.Page
 
     protected InfReporte ObtenerInforme()
     {
-
         DataTable informacion = new DataTable();
         InfReporte datos = new InfReporte();
 
         informacion = datos.Tables["Acudiente"]; // nombre de la tabla que cree en crystal en el InfReporte.xsd
 
 
-        LUser administrador = new LUser();
-
-        administrador.reporteAcudiente(informacion);
-        
+        //LUser administrador = new LUser();
+        LMUser logica = new LMUser();
+        //administrador.reporteAcudiente(informacion);
+        logica.reporteAcudiente(informacion);
         return datos;
 }
 

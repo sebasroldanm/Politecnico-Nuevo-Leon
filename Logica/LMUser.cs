@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -534,7 +535,67 @@ namespace Logica
             return enc;
         }
 
+        private byte[] streamFile(String filefoto)
+        {
+            FileStream fs = new FileStream(filefoto, FileMode.Open, FileAccess.Read);
+            byte[] imagenData = new byte[fs.Length];
+            fs.Read(imagenData, 0, System.Convert.ToInt32(fs.Length));
+            fs.Close();
+            return imagenData;
+        }
 
+        public void reporteAcudiente(DataTable informacion)
+        {
+            DUser administrador = new DUser();
+            DMUser muser = new DMUser();
+            DataRow fila;
+            DataTable Intermedio = administrador.obteneracudientes();
+            List<Usuario> acu = muser.listarAcudientes();
+
+            foreach (Usuario u in acu)
+            {
+                fila = informacion.NewRow();
+                fila["Apellido"] = u.apellido_usua;
+                fila["Nombre"] = u.nombre_usua;
+                fila["Documento"] = u.num_documento;
+                fila["Telefono"] = u.telefono;
+                fila["Correo"] = u.correo;
+                informacion.Rows.Add(fila);
+
+            }
+        }
+
+
+        public InfReporte reporteAdmin(String urlCarpeta)
+        {
+            DataRow fila;
+
+            DataTable informacion = new DataTable();
+            InfReporte datos = new InfReporte();
+            DMUser muser = new DMUser();
+
+            informacion = datos.Tables["Administrador"];
+
+            DUser administrador = new DUser();
+            //DataTable Intermedio = administrador.obtenerAdministradores();
+            List<Usuario> admin = muser.listarAdministradores();
+
+            foreach(Usuario ad in admin)
+            {
+                fila = informacion.NewRow();
+                string foto = Path.GetFileName(ad.foto_usua);
+                fila["Apellido"] = ad.apellido_usua;
+                fila["Nombre"] = ad.nombre_usua;
+                fila["Documento"] = ad.num_documento;
+                fila["Telefono"] = ad.telefono;
+                fila["Correo"] = ad.correo;
+                fila["Foto"] = streamFile(urlCarpeta + foto);
+
+                informacion.Rows.Add(fila);
+
+            }
+            return datos;
+        }
 
     }
 }
