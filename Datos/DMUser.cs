@@ -67,6 +67,36 @@ namespace Datos
                 return estudiante.ToList<Usuario>();
             }
         }
+
+        public List<ListaAcudiente> listarAcudientesEstudiante()
+        {
+            using (var db = new Mapeo("public"))
+            {
+                return (from c in db.usuario
+                        join o in db.acudiente on c.id_usua equals o.IdEstudiante
+                        where c.rol_id == "4"
+                        select new { c.foto_usua,
+                                     c.apellido_usua,
+                                     c.nombre_usua,
+                                     c.num_documento,
+                                     c.telefono,
+                                     c.user_name,
+                                     c.clave
+                                     })
+                        .ToList().Select(m => new ListaAcudiente
+                        {
+                            fotoacudiente = m.foto_usua,
+                            apeacudiente = m.apellido_usua,
+                            nomacudiente = m.nombre_usua,
+                            docacudiente = m.num_documento,
+                            telefonoacudiente = m.telefono,
+                            useracudiente = m.user_name,
+                            claveacudiente = m.clave
+                            
+                        }).ToList();
+            }
+        }
+
         ///Insertar con Mapeo///////////////////////////////////////////
 
         public void insertarAdmin(Usuario admin)
