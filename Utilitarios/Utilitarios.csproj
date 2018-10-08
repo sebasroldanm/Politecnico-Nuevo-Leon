@@ -51,6 +51,16 @@
     </Compile>
     <Compile Include="ListaAcudiente.cs" />
     <Compile Include="MAC.cs" />
+    <Compile Include="Mregistro\Anio.cs" />
+    <Compile Include="Mregistro\AnioCurso.cs" />
+    <Compile Include="Mregistro\Curso.cs" />
+    <Compile Include="Mregistro\CursoMateria.cs" />
+    <Compile Include="Mregistro\DiaMateria.cs" />
+    <Compile Include="Mregistro\EstudianteCurso.cs" />
+    <Compile Include="Mregistro\Materia.cs" />
+    <Compile Include="Mregistro\MateriaFecha.cs" />
+    <Compile Include="Mregistro\Nota.cs" />
+    <Compile Include="Mregistro\Observador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolUsuario.cs" />
     <Compile Include="Sesion.cs" />

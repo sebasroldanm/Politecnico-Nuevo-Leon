@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using Utilitarios;
+using Utilitarios.Mregistro;
 
 namespace Datos
 {
@@ -28,6 +29,18 @@ namespace Datos
         public DbSet<TokenRecuperaUsuario> tokenRecuperaUsuarios { get; set; }
         public DbSet<Acudiente> acudiente { get; set; }
         public DbSet<RolUsuario> rolUsuario { get; set; }
+        public DbSet<Anio> anio { get; set; }
+        public DbSet<AnioCurso> aniocurso { get; set; }
+        public DbSet<Curso> curso { get; set; }
+        public DbSet<CursoMateria>cursomateria { get; set; }
+        public DbSet<DiaMateria>diamateria { get; set; }
+        public DbSet<EstudianteCurso>estudiantecurso { get; set; }
+        public DbSet<Materia>materia { get; set; }
+        public DbSet<MateriaFecha>materiafecha { get; set; }
+        public DbSet<Nota>nota { get; set; }
+        public DbSet<Observador>observador { get; set; }
+
+
 
 
         protected override void OnModelCreating(DbModelBuilder builder)
