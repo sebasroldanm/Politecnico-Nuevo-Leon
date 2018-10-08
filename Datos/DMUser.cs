@@ -48,6 +48,18 @@ namespace Datos
             }
         }
 
+        public List<Usuario> listadiploma(string docEstudiante)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                var docestudante = db.usuario.ToList<Usuario>().Where(x => x.num_documento == docEstudiante);
+                return docestudante.ToList<Usuario>();
+            }
+
+            
+
+        }
+
         
         public List<Usuario> listarEstudiantes()
         {
@@ -320,24 +332,26 @@ namespace Datos
 
         }
 
-        public UUser validarUser(Usuario usuario)
+        public bool validarUser(Usuario usuario)
         {
             UUser uuser = new UUser();
             UIdioma encId = new UIdioma();
             using (var db = new Mapeo("public"))
             {
                 var result = db.usuario.SingleOrDefault(x => x.num_documento == usuario.num_documento);
-                var resulta = db.usuario.SingleOrDefault(y => y.nombre_usua == usuario.nombre_usua);
-                if (result != null )
+                var resulta = db.usuario.SingleOrDefault(y => y.user_name == usuario.user_name);
+                if (result != null || resulta != null)
                 {
-                    uuser.Mensaje = encId.CompIdioma["L_ErrorUsuario_usuario_existe"].ToString();
 
+                    return true;
                 }
-                if (resulta != null) {
-                    uuser.Mensaje = encId.CompIdioma["L_ErrorUsuario_usuario_existe"].ToString();
+                else {
+
+                    return false;
                 }
+              
             }
-            return uuser;
+            
 
         }
 

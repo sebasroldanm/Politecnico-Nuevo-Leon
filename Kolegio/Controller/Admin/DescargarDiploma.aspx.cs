@@ -16,7 +16,7 @@ public partial class View_Admin_Default : System.Web.UI.Page
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 44;
-
+        LMUser logicaper = new LMUser();
         encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
 
         Page.Title = encId.CompIdioma["Title"].ToString();
@@ -34,9 +34,10 @@ public partial class View_Admin_Default : System.Web.UI.Page
 
 
                 string urlCarpeta = Server.MapPath("~/FotosUser/");
-                LUser log = new LUser();
-                CRS_desdiploma.ReportDocument.SetDataSource(log.reporteDiploma(urlCarpeta, enc));
+               
+                CRS_desdiploma.ReportDocument.SetDataSource(logicaper.reporteDiplomaper(urlCarpeta, enc));
                 CrystalReportViewer1.ReportSource = CRS_desdiploma;
+
             }
             catch (Exception)
             {

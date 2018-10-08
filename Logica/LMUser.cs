@@ -660,57 +660,94 @@ namespace Logica
         }
 
 
-        //public UUser validarUsuario(string usuario, string documento, int selIdioma)
-        //{
-            
+        public UUser validarUsuario(string usuario, string documento, int selIdioma)
+        {
 
 
-        //    UUser usua = new UUser();
-        //    DMUser dat = new DMUser();
-        //    UIdioma encId = new UIdioma();
-        //    LIdioma idioma = new LIdioma();
-        //    Int32 FORMULARIO = 6;
+            Usuario usuaok = new Usuario();
+            UUser usua = new UUser();
+            DMUser dat = new DMUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 6;
+            bool usuariook;
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
-        //    encId = idioma.obtIdioma(FORMULARIO, selIdioma);
-
-        //    usua.Documento = documento.ToString();
-        //    usua.UserName = usuario.ToString();
-           
-
-          
-        //    usua = dat.validarUser(documento,usuario)
-        //    if (registros.Rows.Count > 0)
-        //    {
-
-        //        //tb_Vusuario.Text = Convert.ToString(registros.Rows[0]["user_name"].ToString());
-        //        //tb_Vdocumento.Text = Convert.ToString(registros.Rows[0]["num_documento"].ToString());
-        //        //usua.Mensaje = "El Usuario ya existe";
-        //        usua.Mensaje = encId.CompIdioma["L_ErrorUsuario_usuario_noexiste"].ToString();
-        //        usua.L_Aceptar1 = false;
-        //        usua.B_Botones1 = true;
-
-        //    }
-        //    else
-        //    {
-        //        //L_ErrorUsuario.Text = "";
-
-        //        //usua.Mensaje = "Usuario Disponible";
-        //        usua.Mensaje = encId.CompIdioma["L_ErrorUsuario_usuario_existe"].ToString();
-        //        //btn_DocenteAceptar.Visible = true;
-        //        //btn_DocenteNuevo.Visible = true;
-        //        //btn_validar.Visible = false;
-        //        //tb_DocenteUsuario.ReadOnly = true;
-        //        //tb_DocenteId.ReadOnly = true;
-        //        usua.L_Aceptar1 = true;
-        //        usua.B_Botones1 = false;
-
-        //    }
-
-        //    return usua;
+            usuaok.num_documento = documento.ToString();
+            usuaok.user_name = usuario.ToString();
 
 
 
-        //}
+            usuariook = dat.validarUser(usuaok);
+            if (usuariook == true)
+            {
+
+                //tb_Vusuario.Text = Convert.ToString(registros.Rows[0]["user_name"].ToString());
+                //tb_Vdocumento.Text = Convert.ToString(registros.Rows[0]["num_documento"].ToString());
+                //usua.Mensaje = "El Usuario ya existe";
+                usua.Mensaje = encId.CompIdioma["L_ErrorUsuario_usuario_noexiste"].ToString();
+                usua.L_Aceptar1 = false;
+                usua.B_Botones1 = true;
+
+            }
+            else
+            {
+                //L_ErrorUsuario.Text = "";
+
+                //usua.Mensaje = "Usuario Disponible";
+                usua.Mensaje = encId.CompIdioma["L_ErrorUsuario_usuario_existe"].ToString();
+                //btn_DocenteAceptar.Visible = true;
+                //btn_DocenteNuevo.Visible = true;
+                //btn_validar.Visible = false;
+                //tb_DocenteUsuario.ReadOnly = true;
+                //tb_DocenteId.ReadOnly = true;
+                usua.L_Aceptar1 = true;
+                usua.B_Botones1 = false;
+
+            }
+
+            return usua;
+
+
+
+        }
+
+
+
+          public InfReporte reporteDiplomaper(string urlCarpeta, UUser documento)
+         {
+            DataRow fila;
+            DMUser muser = new DMUser();
+            DataTable informacion = new DataTable();
+            List<Usuario> diplomaper = new List<Usuario>();
+            InfReporte datos = new InfReporte();
+
+            informacion = datos.Tables["EstudianteDiploma"];
+            string docest = documento.Documento;
+            diplomaper = muser.listadiploma(docest);
+
+            DUser diploma = new DUser();
+            DataTable Intermedio = diploma.obtenerUsuarioMod(documento);
+            //for (int i = 0; i < Intermedio.Rows.Count; i++) // for para llenar la lista con cada usurario
+            //                                                //// si es solo un dato como con el certificado de estudio, no se hace el for
+            //{
+
+            foreach (Usuario usrio in diplomaper)
+            {
+                fila = informacion.NewRow();
+                string foto = Path.GetFileName(usrio.foto_usua);
+                ///El primero [""]  es como se llama el campo de la tabla de crystal y el segundo [""] el campo de la tabla en postgres
+                fila["Apellido"] = usrio.apellido_usua;
+                fila["Nombre"] = usrio.nombre_usua;
+                fila["Documento"] = usrio.num_documento;
+                fila["Foto"] = streamFile(urlCarpeta + foto);
+                informacion.Rows.Add(fila);
+
+            }
+               
+            return datos;
+        }
+
 
 
     }
