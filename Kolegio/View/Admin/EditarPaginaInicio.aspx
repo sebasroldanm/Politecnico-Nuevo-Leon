@@ -76,6 +76,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
     <ajaxToolkit:TabContainer ID="TC_Configuracion" runat="server" CssTheme="Plain" TabStripPlacement="TopRight" ActiveTabIndex="3">  
         
         <ajaxToolkit:TabPanel ID="TP_configuracion" runat="server" BorderStyle="NotSet" EnableViewState="True">
@@ -458,8 +460,6 @@
                         <asp:Label ID="L_AdminPagInicioFechaFin" runat="server" Visible="False"></asp:Label></label>
                     <asp:TextBox ID="fechanac" runat="server" class="form-control" title="Fecha de Año" placeholder="Dijite Fecha de Fin Año" Visible="False"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RFV_FechaFin" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="fechanac" ValidationGroup="form_ejm" ForeColor="White" Font-Size="X-Large" CssClass="label-danger" Font-Bold="True">*</asp:RequiredFieldValidator>
-
-                    <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
 
                     <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" Format="dd/MMMM/yyyy" PopupButtonID="btnigm_calendar" PopupPosition="BottomRight" TargetControlID="fechanac" />
                 </td>

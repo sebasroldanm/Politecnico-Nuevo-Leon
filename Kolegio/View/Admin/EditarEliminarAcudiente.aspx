@@ -2,7 +2,12 @@
 
 <%-- Agregue aquí los controles de contenido --%>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">  
+  
+    
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+
     <div class="container">
         <div class="text-center">
             <h3><span class="label label-danger">
@@ -15,7 +20,7 @@
             <div class="form-group">
                 <label for="tb_AcudienteId" class="control-label" style="color: #FFFFFF">
                     <asp:Label ID="L_AdminEditAcuDocumento" runat="server"></asp:Label></label>
-                <asp:TextBox ID="tb_AcudienteId" runat="server" class="form-control" title="Numero de Documento" MaxLength="10"></asp:TextBox>
+                <asp:TextBox ID="tb_AcudienteId" runat="server" class="form-control" title="Numero de Documento" MaxLength="9"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RV_id" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="tb_AcudienteId" ValidationGroup="form_ejm" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator><br />
                 <asp:RegularExpressionValidator ID="REV_AcudienteId" runat="server" ControlToValidate="tb_AcudienteId" ValidationExpression="^[0-9]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="form_ejm"></asp:RegularExpressionValidator>
                 <asp:Label ID="L_ErrorAdmin" class="control-label" Style="color: crimson" runat="server" Font-Bold="True" ForeColor="Red"></asp:Label>
@@ -70,7 +75,7 @@
                 <asp:TextBox ID="fechanac" runat="server" class="form-control" title="Fecha de Nacimiento"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RV_fechaNac" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="fechanac" ValidationGroup="form_ejm2" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator>
 
-                <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
+                
 
                 <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" Format="dd/MMMM/yyyy" PopupButtonID="btnigm_calendar" PopupPosition="BottomRight" TargetControlID="fechanac" />
             </div>

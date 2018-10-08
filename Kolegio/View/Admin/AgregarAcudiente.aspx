@@ -17,10 +17,10 @@
         }
     </style>
 
-
-    <%--<asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>--%>
+    <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
+            
             <asp:Button ID="btn_hidden" runat="server" Text="" CssClass="btn btn-link" Enabled="False" />
             <ajaxToolkit:ModalPopupExtender ID="MPE_Idioma" runat="server" BehaviorID="MPE_Idioma" DynamicServicePath="" TargetControlID="btn_hidden" BackgroundCssClass="modelBackground" PopupControlID="P_IdiomaPregunta" OnOkScript="btn_salir" OnCancelScript="btn_volver">
             </ajaxToolkit:ModalPopupExtender>
@@ -56,6 +56,7 @@
                 </div>
 
             </asp:Panel>
+                
         </ContentTemplate>
     </asp:UpdatePanel>
 
@@ -71,10 +72,10 @@
             <div class="form-group">
                 <label for="tb_AcudienteId" class="control-label" style="color: #FFFFFF">
                     <asp:Label ID="L_AdminAgreAcuDocumento" runat="server"></asp:Label></label>
-                <asp:TextBox ID="tb_AcudienteId" runat="server" class="form-control" MaxLength="10" title="Numero de Documento"></asp:TextBox>
+                <asp:TextBox ID="tb_AcudienteId" runat="server" class="form-control" MaxLength="9" title="Numero de Documento"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RV_id" runat="server" ControlToValidate="tb_AcudienteId" ValidationGroup="form_ejm3" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator><br />
                 <asp:RegularExpressionValidator ID="REV_AcudienteId" runat="server" ControlToValidate="tb_AcudienteId" ValidationExpression="^[0-9]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="form_ejm3"></asp:RegularExpressionValidator>
-                <asp:RangeValidator ID="RV_id_Acudiente" runat="server" ControlToValidate="tb_AcudienteId" CssClass="label-warning" ErrorMessage="Sobrepasó el limite" Font-Bold="True" ForeColor="White" MaximumValue="999999999" MinimumValue="1" ValidationGroup="form_ejm3"></asp:RangeValidator><br />
+                <asp:RangeValidator ID="RV_id_Acudiente" runat="server" ControlToValidate="tb_AcudienteId" CssClass="label-warning" ErrorMessage="Sobrepasó el limite" Font-Bold="True" ForeColor="White" MaximumValue="199999999" MinimumValue="1" ValidationGroup="form_ejm3"></asp:RangeValidator><br />
             </div>
 
             <div class="form-group">

@@ -17,7 +17,7 @@
     </style>
 
 
-    <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:Button ID="btn_hidden" runat="server" Text="" CssClass="btn btn-link" Enabled="False" />
@@ -72,11 +72,11 @@
             <div class="form-group">
                 <label for="tb_AcudienteId" class="control-label" style="color: #FFFFFF">
                     <asp:Label ID="L_AdminAgreEstuNumAcu" runat="server"></asp:Label></label>
-                <asp:TextBox ID="tb_AcudienteId" runat="server" class="form-control" title="Numero de Documento" MaxLength="10"></asp:TextBox>
+                <asp:TextBox ID="tb_AcudienteId" runat="server" class="form-control" title="Numero de Documento" MaxLength="9"></asp:TextBox>
                 <asp:Button ID="btn_buscarAcudiente" runat="server" class="btn btn-primary btn-lg" Width="113px" BorderColor="#660033" OnClick="btn_buscarAcudiente_Click" ValidationGroup="valAcu" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <asp:RequiredFieldValidator for="tb_EstudianteId" ID="RV_buscar" ValidationGroup="valAcu" runat="server" ErrorMessage="*" ControlToValidate="tb_AcudienteId" SetFocusOnError="True" Font-Bold="True" ForeColor="#FC2424" ToolTip="El campo es obligatorio" Font-Size="X-Large"></asp:RequiredFieldValidator><br />
                 <asp:RegularExpressionValidator ID="REV_AcudienteId" runat="server" ControlToValidate="tb_AcudienteId"  ValidationExpression="^[0-9]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="valAcu"></asp:RegularExpressionValidator>
-                <asp:RangeValidator ID="RV_ID_Acudiente_Buscar" runat="server" ControlToValidate="tb_AcudienteId" CssClass="label-warning" Font-Bold="True" ForeColor="White" MaximumValue="999999999" MinimumValue="1" ValidationGroup="valAcu"></asp:RangeValidator><br />
+                <asp:RangeValidator ID="RV_ID_Acudiente_Buscar" runat="server" ControlToValidate="tb_AcudienteId" CssClass="label-warning" Font-Bold="True" ForeColor="White" MaximumValue="199999999" MinimumValue="1" ValidationGroup="valAcu"></asp:RangeValidator><br />
                 <asp:Label ID="L_ErrorAcudiente" class="control-label" Style="color: #FFFFFF" runat="server" Font-Bold="True" ForeColor="Red"></asp:Label>
 
             </div>
@@ -109,10 +109,10 @@
             <div class="form-group">
                 <label for="tb_EstudianteId" class="control-label" style="color: #FFFFFF">
                     <asp:Label ID="L_AdminAgreEstuDocumento" runat="server"></asp:Label></label>
-                <asp:TextBox ID="tb_EstudianteId" runat="server" class="form-control" title="Numero de Documento" MaxLength="10"></asp:TextBox>
+                <asp:TextBox ID="tb_EstudianteId" runat="server" class="form-control" title="Numero de Documento" MaxLength="9"></asp:TextBox>
                 <asp:RequiredFieldValidator for="tb_EstudianteId" ID="RequiredFieldValidator6" ValidationGroup="form_ejm3" runat="server" ErrorMessage="*" ControlToValidate="tb_EstudianteId" SetFocusOnError="True" Font-Bold="True" ForeColor="#FC2424" ToolTip="El campo es obligatorio" Font-Size="X-Large"></asp:RequiredFieldValidator><br />
                 <asp:RegularExpressionValidator ID="REV_EstudianteId" runat="server" ControlToValidate="tb_EstudianteId" ValidationExpression="^[0-9]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="form_ejm3"></asp:RegularExpressionValidator>
-                <asp:RangeValidator ID="RV_id_estudiante" runat="server" ControlToValidate="tb_EstudianteId" CssClass="label-warning" Font-Bold="True" ForeColor="White" MaximumValue="999999999" MinimumValue="1" ValidationGroup="form_ejm3"></asp:RangeValidator><br />
+                <asp:RangeValidator ID="RV_id_estudiante" runat="server" ControlToValidate="tb_EstudianteId" CssClass="label-warning" Font-Bold="True" ForeColor="White" MaximumValue="199999999" MinimumValue="1" ValidationGroup="form_ejm3"></asp:RangeValidator><br />
             </div>
 
             <div class="form-group">

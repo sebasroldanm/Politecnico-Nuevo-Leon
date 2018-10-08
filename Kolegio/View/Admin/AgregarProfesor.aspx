@@ -18,7 +18,7 @@
     </style>
 
 
-    <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:Button ID="btn_hidden" runat="server" Text="" CssClass="btn btn-link" Enabled="False" />
@@ -73,10 +73,10 @@
             <div class="form-group">
                 <label for="tb_DocenteId" class="control-label" style="color: #FFFFFF">
                     <asp:Label ID="L_AdminAgreProDocumento" runat="server"></asp:Label></label>
-                <asp:TextBox ID="tb_DocenteId" runat="server" class="form-control" title="Numero de Documento" MaxLength="10"></asp:TextBox>
+                <asp:TextBox ID="tb_DocenteId" runat="server" class="form-control" title="Numero de Documento" MaxLength="9"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RV_id" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="tb_DocenteId" ValidationGroup="form3" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator><br />
                 <asp:RegularExpressionValidator ID="REV_DocenteId" runat="server" ControlToValidate="tb_DocenteId" ValidationExpression="^[0-9]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="form3"></asp:RegularExpressionValidator>
-                <asp:RangeValidator ID="RV_id_profesor" runat="server" ControlToValidate="tb_DocenteId" CssClass="label-warning" ErrorMessage="Sobrepasó el limite" Font-Bold="True" ForeColor="White" MaximumValue="999999999" MinimumValue="1" ValidationGroup="form3"></asp:RangeValidator><br />
+                <asp:RangeValidator ID="RV_id_profesor" runat="server" ControlToValidate="tb_DocenteId" CssClass="label-warning" ErrorMessage="Sobrepasó el limite" Font-Bold="True" ForeColor="White" MaximumValue="199999999" MinimumValue="1" ValidationGroup="form3"></asp:RangeValidator><br />
             </div>
 
             <div class="form-group">
