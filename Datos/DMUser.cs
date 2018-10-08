@@ -132,6 +132,42 @@ namespace Datos
 
         }
 
+        ///LISTAR PARA EDIAR CON MAPEO////
+
+
+        public UUser obtenerUsuarioMod(Usuario us)
+        {
+            UIdioma encId = new UIdioma();
+            UUser usua = new UUser();
+            Usuario enc = new Usuario();
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.usuario.SingleOrDefault(x => x.num_documento == us.num_documento);
+                if (result != null)
+                {
+                    usua.Nombre = result.nombre_usua;
+                    usua.Apellido = result.apellido_usua;
+                    usua.Correo = result.correo;
+                    usua.Direccion = result.direccion;
+                    usua.Telefono = result.telefono;
+                    usua.UserName = result.user_name;
+                    usua.Clave = result.clave;
+                    usua.fecha_nacimiento = result.fecha_nac;
+                    usua.Foto = result.foto_usua;
+                    usua.Departamento = result.dep_nacimiento;
+                    usua.Ciudad = result.ciu_nacimiento;
+                    usua.Estado = result.estado.ToString();
+                }
+                else
+                {
+                    usua.Mensaje = encId.CompIdioma["L_ErrorAdmin_sin_registro"].ToString(); //"Sin Registros";
+                }
+            }
+            return usua;
+        }
+
+
+
         ///Edita con Mapeo////////////////
 
         public UUser editarAdmin(Usuario admin)

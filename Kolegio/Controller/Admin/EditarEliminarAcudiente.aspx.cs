@@ -117,7 +117,7 @@ public partial class View_Admin_EditarEliminarAcudiente : System.Web.UI.Page
 
     protected void btn_AcudienteAceptar_Click(object sender, EventArgs e)
     {
-        LUser logica = new LUser();
+        LMUser logica = new LMUser();
         UUser usua = new UUser();
         
 

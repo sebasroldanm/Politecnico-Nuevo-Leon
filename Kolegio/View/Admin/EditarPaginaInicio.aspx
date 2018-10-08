@@ -459,7 +459,7 @@
                     <asp:TextBox ID="fechanac" runat="server" class="form-control" title="Fecha de Año" placeholder="Dijite Fecha de Fin Año" Visible="False"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RFV_FechaFin" runat="server" ErrorMessage="Campo Obligatorio" ControlToValidate="fechanac" ValidationGroup="form_ejm" ForeColor="White" Font-Size="X-Large" CssClass="label-danger" Font-Bold="True">*</asp:RequiredFieldValidator>
 
-                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                    <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
 
                     <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" Format="dd/MMMM/yyyy" PopupButtonID="btnigm_calendar" PopupPosition="BottomRight" TargetControlID="fechanac" />
                 </td>

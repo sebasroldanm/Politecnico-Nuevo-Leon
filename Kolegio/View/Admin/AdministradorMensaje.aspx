@@ -18,7 +18,7 @@
     </style>
 
 
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <asp:Button ID="btn_hidden" runat="server" Text="" CssClass="btn btn-link" Enabled="False" />

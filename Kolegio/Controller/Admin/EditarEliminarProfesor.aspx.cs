@@ -110,7 +110,7 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
     }
     protected void btn_DocenteAceptar_Click(object sender, EventArgs e)
     {
-        LUser logica = new LUser();
+        LMUser logica = new LMUser();
         UUser usua = new UUser();
 
         usua = logica.editarBuscarUser(int.Parse(tb_DocenteId.Text), int.Parse(Session["idioma"].ToString()));

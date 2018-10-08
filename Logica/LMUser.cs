@@ -72,6 +72,45 @@ namespace Logica
         }
 
 
+        ///LISTAR PARA EDITAR////
+        ///
+        public UUser editarBuscarUser(int documento, int selIdioma)
+        {
+            UUser usua = new UUser();
+            UUser uuser = new UUser();
+            DMUser dat = new DMUser();
+            Usuario us = new Usuario();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 16;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+            us.num_documento = documento.ToString();
+
+            usua = dat.obtenerUsuarioMod(us);
+
+
+
+            if (usua.Estado.ToString() == "True")
+            {
+                usua.Estado = encId.CompIdioma["DDL_Estado"].ToString();
+            }
+            else
+            {
+                usua.Estado = encId.CompIdioma["DDL_Estado2"].ToString();
+            }
+            usua.L_Aceptar1 = false;
+            usua.B_Botones1 = true;
+
+
+            //else
+            //usua.Mensaje = encId.CompIdioma["L_ErrorAdmin_sin_registro"].ToString(); //"Sin Registros";
+
+            return usua;
+        }
+
+
 
         public UUser editarAdmin(Usuario admin, int selIdioma, string est, string fotoSesion)
         {

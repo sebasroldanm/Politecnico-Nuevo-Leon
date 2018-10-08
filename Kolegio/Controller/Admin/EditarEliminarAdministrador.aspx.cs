@@ -108,7 +108,7 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
 
     protected void btn_AdministradorAceptar_Click(object sender, EventArgs e)
     {
-        LUser logica = new LUser();
+        LMUser logica = new LMUser();
         UUser usua = new UUser();
 
         usua = logica.editarBuscarUser(int.Parse(tb_AministradorAdministradorId.Text), int.Parse(Session["idioma"].ToString()));

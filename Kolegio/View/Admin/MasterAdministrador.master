@@ -19,7 +19,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <%--<style type="text/css">
+        <style type="text/css">
             .modelBackground {
                 background-color: black;
                 filter: alpha(opacity=90);
@@ -36,7 +36,7 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <asp:Button ID="btn_hidden" runat="server" Text="" CssClass="btn btn-link" Enabled="False" />
+                <asp:Button ID="btn_hidden" runat="server" Text="" CssClass="btn btn-link" Enabled="False" Height="1px" />
                 <ajaxToolkit:ModalPopupExtender ID="MPE_Idioma" runat="server" BehaviorID="MPE_Idioma" DynamicServicePath="" TargetControlID="btn_hidden" BackgroundCssClass="modelBackground" PopupControlID="P_IdiomaPregunta" OnOkScript="btn_salir" OnCancelScript="btn_volver">
                 </ajaxToolkit:ModalPopupExtender>
                 <asp:Panel ID="P_IdiomaPregunta" runat="server" Style="display: none; background: white; width: 50%; height: auto">
@@ -72,7 +72,7 @@
 
                 </asp:Panel>
             </ContentTemplate>
-        </asp:UpdatePanel>--%>
+        </asp:UpdatePanel>
 
         <img id="fondo" src="../../Imagenes/fondoadmin.jpg" alt="background image" />
 
