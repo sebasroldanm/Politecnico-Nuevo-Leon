@@ -748,6 +748,154 @@ namespace Logica
             return datos;
         }
 
+        public UUser loggear(string userName, string clave, int selIdioma, Boolean bot)
+        {
+            UUser user = new UUser();
+            DUser datos = new DUser();
+            DMUser muser = new DMUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 40;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+            string estadolist = "";
+            string rollist = "";
+            user.UserName = userName;
+            user.Clave = clave;
+
+            user.Mensaje = "";
+
+            //DataTable resultado = datos.loggin(user);
+            List<Usuario> listuser = muser.loggin(user);
+
+            if (bot == true)
+            {
+                if (listuser.Count > 0)
+                {
+                    DataTable fechasesion = datos.Capturafechaintentosesion(userName);
+                    if (int.Parse(fechasesion.Rows[0][0].ToString()) == 0)
+                    {
+                        foreach (Usuario d in listuser)
+                        {
+                            user.SUserId = d.id_usua.ToString();
+                            user.SUserName = d.user_name.ToString();
+                            user.SNombre = d.nombre_usua.ToString();
+                            user.SApellido = d.apellido_usua.ToString();
+                            user.SClave = d.clave.ToString();
+                            user.SCorreo = d.correo.ToString();
+                            user.SDocumento = d.num_documento.ToString();
+                            user.SFoto = d.foto_usua.ToString();
+                            estadolist = d.estado.ToString();
+                            rollist = d.rol_id.ToString();
+                        }
+                        if (estadolist == "True")
+                        {
+                            DataTable valida = datos.evaluaSesiones(userName);
+                            int idUsuario = int.Parse(valida.Rows[0][0].ToString());
+                            if (idUsuario == 1)
+                            {
+
+                                user.Mensaje = " ";
+                                switch (int.Parse(rollist))
+                                {
+                                    case 1:
+                                        //Response.Redirect("Admin/AgregarAdministrador.aspx");
+                                        user.Url = "~/View/Admin/AgregarAdministrador.aspx";
+                                        break;
+
+                                    case 2:
+                                        //Response.Redirect("Profesor/ProfesorSubirNota.aspx");
+                                        user.Url = "~/View/Profesor/ProfesorSubirNota.aspx";
+                                        break;
+
+                                    case 3:
+                                        //Response.Redirect("Estudiante/EstudianteHorario.aspx");
+                                        user.Url = "~/View/Estudiante/EstudianteHorario.aspx";
+                                        break;
+
+                                    case 4:
+                                        //Response.Redirect("Acudiente/AcudienteBoletin.aspx");
+                                        user.Url = "~/View/Acudiente/AcudienteObservador.aspx";
+                                        break;
+
+                                    default:
+                                        //Response.Redirect("Loggin.aspx");
+                                        user.Url = "~/View/Loggin.aspx";
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                user.MensajeIntentoErroneos = "<script language='JavaScript'>window.alert('Ha exedido el numero de Sesiones Permitidas');</script>";
+
+                            }
+                            datos.LimpiaIntentosErroneos(userName);
+
+
+                        }
+                        else
+                        {
+                            System.Data.DataTable validez = datos.generarToken(userName);
+                            if (int.Parse(validez.Rows[0]["id_usua"].ToString()) > 0)
+                            {
+
+                                //suma contador id_usua
+
+                                user.Mensaje = encId.CompIdioma["L_Error_Inactivo"].ToString();
+                                //user.Mensaje = "Usuario Se Encuentra Inactivo";
+                                //Session["userId"] = null;
+                                user.SUserId = null;
+                                //user.Url = "~/View/Loggin.aspx";
+                            }
+                            else
+                            {
+                                user.Mensaje = encId.CompIdioma["L_Error_Inactivo"].ToString();
+                                //user.Mensaje = "Usuario Se Encuentra Inactivo";
+                                //Session["userId"] = null;
+                                user.SUserId = null;
+                                //user.Url = "~/View/Loggin.aspx";
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        user.MensajeIntentoErroneos = "<script language='JavaScript'>window.alert('No ha cumplido los 30 minutos de suspencion');</script>";
+                    }
+                }
+                else
+                {
+                    user.Mensaje = encId.CompIdioma["L_Error_Incorrecto"].ToString();
+
+                    //user.Mensaje = "Usuario Y/o Clave Incorrecto";
+                    //Session["userId"] = null;
+                    user.SUserId = null;
+                    //user.Url = "~/View/Loggin.aspx";
+
+                    DataTable erroneos = datos.sumaIntentosErroneos(userName);
+                    datos.actualizaFechaSesionErronea(userName);
+                    int IntentosErroneos = int.Parse(erroneos.Rows[0][0].ToString());
+                    if (IntentosErroneos == 0)
+                    {
+                        //user.Notificacion = "Ha exedido el numero de intentos erroneos";
+                        user.MensajeIntentoErroneos = "<script language='JavaScript'>window.alert('Ha exedido el numero de intentos erroneos');</script>";
+
+                    }
+
+                }
+
+
+            }
+            else
+            {
+                user.Mensaje = encId.CompIdioma["L_Error_Bot"].ToString();
+            }
+
+
+            return user;
+        }
+
 
 
     }

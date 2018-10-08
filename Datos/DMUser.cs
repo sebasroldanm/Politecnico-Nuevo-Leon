@@ -14,8 +14,26 @@ namespace Datos
 {
    public class DMUser
     {
+        public List<Usuario> loggin(UUser enc)
+        {
+            Usuario user = new Usuario();
+            using (var db = new Mapeo("public"))
+            {
 
-        public void insertarUserMapeo(Usuario user)
+                var ingres = db.usuario.ToList<Usuario>().Where(x => x.user_name.Contains(enc.UserName)).Where(x => x.clave.Contains(enc.Clave));
+                if (ingres != null)
+                {
+                    return ingres.ToList<Usuario>();
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+        }
+
+            public void insertarUserMapeo(Usuario user)
         {
             using (var db = new Mapeo("public"))
             {
