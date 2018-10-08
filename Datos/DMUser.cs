@@ -284,6 +284,27 @@ namespace Datos
 
         }
 
+        public UUser validarUser(Usuario usuario)
+        {
+            UUser uuser = new UUser();
+            UIdioma encId = new UIdioma();
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.usuario.SingleOrDefault(x => x.num_documento == usuario.num_documento);
+                var resulta = db.usuario.SingleOrDefault(y => y.nombre_usua == usuario.nombre_usua);
+                if (result != null )
+                {
+                    uuser.Mensaje = encId.CompIdioma["L_ErrorUsuario_usuario_existe"].ToString();
+
+                }
+                if (resulta != null) {
+                    uuser.Mensaje = encId.CompIdioma["L_ErrorUsuario_usuario_existe"].ToString();
+                }
+            }
+            return uuser;
+
+        }
+
 
     }
 }

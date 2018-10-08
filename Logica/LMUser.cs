@@ -549,7 +549,7 @@ namespace Logica
             DUser administrador = new DUser();
             DMUser muser = new DMUser();
             DataRow fila;
-            DataTable Intermedio = administrador.obteneracudientes();
+           // DataTable Intermedio = administrador.obteneracudientes();
             List<Usuario> acu = muser.listarAcudientes();
 
             foreach (Usuario u in acu)
@@ -597,5 +597,84 @@ namespace Logica
             return datos;
         }
 
+
+
+        public void reporteDocente(DataTable informacion)
+        {
+            DUser docente = new DUser();
+            DMUser muser = new DMUser();
+            DataRow fila;
+            // DataTable Intermedio = administrador.obteneracudientes();
+            List<Usuario> acu = muser.listarProfesores();
+
+            foreach (Usuario u in acu)
+            {
+                fila = informacion.NewRow();
+                fila["Apellido"] = u.apellido_usua;
+                fila["Nombre"] = u.nombre_usua;
+                fila["Documento"] = u.num_documento;
+                fila["Telefono"] = u.telefono;
+                fila["Correo"] = u.correo;
+                informacion.Rows.Add(fila);
+
+            }
+        }
+
+
+        //public UUser validarUsuario(string usuario, string documento, int selIdioma)
+        //{
+            
+
+
+        //    UUser usua = new UUser();
+        //    DMUser dat = new DMUser();
+        //    UIdioma encId = new UIdioma();
+        //    LIdioma idioma = new LIdioma();
+        //    Int32 FORMULARIO = 6;
+
+        //    encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+        //    usua.Documento = documento.ToString();
+        //    usua.UserName = usuario.ToString();
+           
+
+          
+        //    usua = dat.validarUser(documento,usuario)
+        //    if (registros.Rows.Count > 0)
+        //    {
+
+        //        //tb_Vusuario.Text = Convert.ToString(registros.Rows[0]["user_name"].ToString());
+        //        //tb_Vdocumento.Text = Convert.ToString(registros.Rows[0]["num_documento"].ToString());
+        //        //usua.Mensaje = "El Usuario ya existe";
+        //        usua.Mensaje = encId.CompIdioma["L_ErrorUsuario_usuario_noexiste"].ToString();
+        //        usua.L_Aceptar1 = false;
+        //        usua.B_Botones1 = true;
+
+        //    }
+        //    else
+        //    {
+        //        //L_ErrorUsuario.Text = "";
+
+        //        //usua.Mensaje = "Usuario Disponible";
+        //        usua.Mensaje = encId.CompIdioma["L_ErrorUsuario_usuario_existe"].ToString();
+        //        //btn_DocenteAceptar.Visible = true;
+        //        //btn_DocenteNuevo.Visible = true;
+        //        //btn_validar.Visible = false;
+        //        //tb_DocenteUsuario.ReadOnly = true;
+        //        //tb_DocenteId.ReadOnly = true;
+        //        usua.L_Aceptar1 = true;
+        //        usua.B_Botones1 = false;
+
+        //    }
+
+        //    return usua;
+
+
+
+        //}
+
+
     }
+
+
 }
