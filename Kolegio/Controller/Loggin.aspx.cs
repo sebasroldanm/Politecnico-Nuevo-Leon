@@ -55,10 +55,8 @@ public partial class Loggin : System.Web.UI.Page
     {
         UUser datos = new UUser();
         LUser logic = new LUser();
-
-
-
-        datos = logic.loggear(TB_UserName.Text, TB_Clave.Text, int.Parse(Session["idioma"].ToString()), NoBotLogin.IsValid());
+        LMUser lmuser = new LMUser();
+        datos = lmuser.loggear(TB_UserName.Text, TB_Clave.Text, int.Parse(Session["idioma"].ToString()), NoBotLogin.IsValid());
 
         Session["userId"] = datos.SUserId;
         Session["userName"] = datos.SUserName;

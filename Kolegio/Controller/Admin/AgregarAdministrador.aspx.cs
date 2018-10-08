@@ -236,16 +236,27 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
     protected void btn_validar_Click(object sender, EventArgs e)
     {
 
-        LUser logica = new LUser();
+        //LUser logica = new LUser();
+        //UUser usua = new UUser();
+
+        //usua = logica.validarUser(tb_AdministradorUsuario.Text, tb_AministradorAdministradorId.Text, int.Parse(Session["idioma"].ToString()));
+        //L_ErrorUsuario.Text = usua.Mensaje;
+        //btn_AdministradorAceptar.Visible = usua.L_Aceptar1;
+        //tb_AministradorAdministradorId.ReadOnly = usua.L_Aceptar1;
+        //tb_AdministradorUsuario.ReadOnly = usua.L_Aceptar1;
+        //btn_validar.Visible = usua.B_Botones1;
+
+
+        LMUser logica = new LMUser();
+        Usuario usuario = new Usuario();
         UUser usua = new UUser();
 
-        usua = logica.validarUser(tb_AdministradorUsuario.Text, tb_AministradorAdministradorId.Text, int.Parse(Session["idioma"].ToString()));
+        usua = logica.validarUsuario(tb_AdministradorUsuario.Text, tb_AministradorAdministradorId.Text, int.Parse(Session["idioma"].ToString()));
         L_ErrorUsuario.Text = usua.Mensaje;
         btn_AdministradorAceptar.Visible = usua.L_Aceptar1;
         tb_AministradorAdministradorId.ReadOnly = usua.L_Aceptar1;
         tb_AdministradorUsuario.ReadOnly = usua.L_Aceptar1;
         btn_validar.Visible = usua.B_Botones1;
-
     }
 
     protected string cargarImagen()
