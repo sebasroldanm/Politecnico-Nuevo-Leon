@@ -28,6 +28,7 @@ namespace Logica
                 case 1:
                     //Horario Curso
                     registro = datos.horarioCurso(id_curso);
+                    
                     break;
                 case 2:
                     //Horario Profesor

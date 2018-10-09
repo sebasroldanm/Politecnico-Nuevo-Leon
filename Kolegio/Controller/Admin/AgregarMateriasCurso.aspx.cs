@@ -138,7 +138,7 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
     public void horario()
     {
         UUser util = new UUser();
-        LReg logic = new LReg();
+        LMReg logic = new LMReg();
 
         int curso = int.Parse(ddt_curso.SelectedValue);
 

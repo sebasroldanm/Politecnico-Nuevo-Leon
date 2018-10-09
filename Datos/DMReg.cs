@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Utilitarios;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Datos
+{
+    public class DMReg
+    {
+        public List<HorarioEstudiante> horarioEstudiante(int id)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                return (from usua in db.usuario
+                        join est in db.estudiantecurso on usua.id_usua equals est.id_ec_estudiante
+                        join an in db.aniocurso on est.id_ec_curso equals an.id_ancu
+                        join cur in db.cursomateria on an.id_ancu equals cur.id_cm_curso
+                        join matf in db.materiafecha on cur.id_cm_materia equals matf.id_mf
+                        join diam in db.diamateria on  matf.id_mf_fecha equals diam.id_dia_materia
+                        join mat in db.materia on matf.id_mf_materia equals mat.id_materia
+                        where usua.id_usua == id
+ 
+                        select new
+                        {
+                            mat.nombre_materia,
+                            diam.dia,
+                            diam.hora_inicio,
+                            diam.hora_fin
+      
+                        })
+                        .ToList().Select(h => new HorarioEstudiante
+                        {
+                            nombre_materia = h.nombre_materia,
+                            dia = h.dia,
+                            hora_inicio = h.hora_inicio,
+                            hora_fin = h.hora_fin
+
+
+                        }).ToList();
+            }
+        }
+
+        public List<HorarioEstudiante> horarioCurso(int id)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                return (from cursomateria in db.cursomateria
+                        join aniocurso in db.aniocurso on cursomateria.id_cm_curso equals aniocurso.id_ancu
+                        join materiafecha in db.materiafecha on cursomateria.id_cm_materia equals materiafecha.id_mf
+                        join curso in db.curso on aniocurso.id_ancu_curso equals curso.id_curso
+                        join materia in db.materia on materiafecha.id_mf_materia equals materia.id_materia
+                        join diamateria in db.diamateria on materiafecha.id_mf_fecha equals diamateria.id_dia_materia
+                        join usuario in db.usuario on cursomateria.id_cm_profesor equals usuario.id_usua
+                        where aniocurso.id_ancu == id
+
+                        select new
+                        {
+                            materia.id_materia,
+                            usuario.nombre_usua,
+                            usuario.apellido_usua,
+                            materia.nombre_materia,
+                            diamateria.dia,
+                            diamateria.hora_inicio,
+                            diamateria.hora_fin
+                        })
+                        .ToList().Select(h => new HorarioEstudiante
+                        {
+                            nombre_materia = h.nombre_materia + " " + h.nombre_usua + " " + h.apellido_usua.Substring(0, 1) + ".",
+                            dia = h.dia,
+                            hora_inicio = h.hora_inicio,
+                            hora_fin = h.hora_fin
+                            
+                        }).ToList();
+            }
+        }
+
+        
+
+
+
+
+
+
+    }
+}
