@@ -33,6 +33,6 @@ namespace Utilitarios.Mregistro
         [Column("nota3")]
         public double nota3 { get => Nota3; set => Nota3 = value; }
         [Column("notadef")]
-        public double NotaDef { get => notaDef; set => notaDef = value; }
+        public double notadef { get => notaDef; set => notaDef = value; }
     }
 }

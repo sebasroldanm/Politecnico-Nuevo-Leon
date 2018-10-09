@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Acudiente.cs" />
+    <Compile Include="Boletin.cs" />
     <Compile Include="HorarioEstudiante.cs" />
     <Compile Include="Idioma.cs" />
     <Compile Include="InfReporte.Designer.cs">
