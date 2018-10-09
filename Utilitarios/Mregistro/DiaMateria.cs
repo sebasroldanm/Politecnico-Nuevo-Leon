@@ -14,7 +14,7 @@ namespace Utilitarios.Mregistro
      public class DiaMateria
     {
         Int32 idDiaMateria;
-        String dia;
+        String Dia;
         String horaInicio;
         String horaFin;
 
@@ -22,10 +22,10 @@ namespace Utilitarios.Mregistro
         [Column("id_dia_materia")]
         public int id_dia_materia { get => idDiaMateria; set => idDiaMateria = value; }
         [Column("dia")]
-        public string Dia { get => dia; set => dia = value; }
+        public string dia { get => Dia; set => Dia = value; }
         [Column("hora_inicio")]
         public string hora_inicio { get => horaInicio; set => horaInicio = value; }
         [Column("hora_fin")]
-        public string HoraFin { get => horaFin; set => horaFin = value; }
+        public string hora_fin { get => horaFin; set => horaFin = value; }
     }
 }

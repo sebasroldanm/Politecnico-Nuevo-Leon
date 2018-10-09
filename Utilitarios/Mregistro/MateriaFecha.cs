@@ -18,10 +18,10 @@ namespace Utilitarios.Mregistro
 
         [Key]
         [Column("id_mf")]
-        public int IdMf { get => idMf; set => idMf = value; }
+        public int id_mf { get => idMf; set => idMf = value; }
         [Column("id_mf_materia")]
-        public int IdMfMateria { get => idMfMateria; set => idMfMateria = value; }
+        public int id_mf_materia { get => idMfMateria; set => idMfMateria = value; }
         [Column("id_mf_fecha")]
-        public int IdMfFecha { get => idMfFecha; set => idMfFecha = value; }
+        public int id_mf_fecha { get => idMfFecha; set => idMfFecha = value; }
     }
 }

@@ -38,7 +38,7 @@ public partial class View_Estudiante_EstudianteHorario : System.Web.UI.Page
         {
             util = log.logEstudianteSecillo(Session["userId"].ToString());
 
-            LReg logic = new LReg();
+            LMReg logic = new LMReg();
             String id_est = Session["userId"].ToString();
             int curso = int.Parse(id_est);
 
