@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using Utilitarios;
 using Utilitarios.Mregistro;
+using Utilitarios.Mlugares;
 
 namespace Datos
 {
@@ -39,6 +40,8 @@ namespace Datos
         public DbSet<MateriaFecha>materiafecha { get; set; }
         public DbSet<Nota>nota { get; set; }
         public DbSet<Observador>observador { get; set; }
+        public DbSet<Departamento> departamento { get; set; }
+        public DbSet<Ciudad> ciudad { get; set; }
 
 
 

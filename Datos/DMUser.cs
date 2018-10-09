@@ -1,5 +1,6 @@
 ﻿using System;
 using Utilitarios;
+using Utilitarios.Mlugares;
 using Npgsql;
 using NpgsqlTypes;
 using System.Linq;
@@ -55,6 +56,27 @@ namespace Datos
             }
 
         }
+
+        public List<Departamento> departamento()
+        {
+            using (var db = new Mapeo("public"))
+            {
+                var depar = db.departamento.ToList<Departamento>();
+                return depar.ToList<Departamento>();
+            }
+            
+        }
+
+        public List<Ciudad> ciudad(int idDepart)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                var sel = "Select.";
+                var ciu = db.ciudad.ToList<Ciudad>().Where(x=> x.id_c_depart == idDepart);
+                return  ciu.ToList<Ciudad>();
+            }
+        }
+
 
         public List<Usuario> listarProfesores()
         {
