@@ -738,28 +738,9 @@ namespace Logica
             return ok;
         }
 
+   
 
-
-        public bool validar_materia(string materia)
-        {
-            DUser datos = new DUser();
-
-            bool ok = true;
-            DataTable mat = datos.obtenerMateria();
-            int n = mat.DefaultView.Count;
-            for (int i = 0; i < n; i++)
-            {
-                if ((mat.Rows[i]["nombre_materia"].ToString() == materia))
-                {
-                    return false;
-                }
-                else
-                {
-                    ok = true;
-                }
-            }
-            return ok;
-        }
+      
 
 
         public bool validar_horario(string curso, string dia, string hora)

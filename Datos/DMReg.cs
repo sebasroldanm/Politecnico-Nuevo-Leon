@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Utilitarios;
+using Utilitarios.Mregistro;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -76,10 +77,37 @@ namespace Datos
             }
         }
 
-        
+        public void insertarMateria(Materia mat)
+        {
+
+            using (var db = new Mapeo("public"))
+            {
+                db.materia.Add(mat);
+                db.SaveChanges();
+            }
+        }
 
 
 
+        public bool validaMateria(Materia materia)
+        {
+            UUser umate = new UUser();
+            UIdioma encId = new UIdioma();
+            using (var db = new Mapeo("public"))
+            {
+                var resultado = db.materia.SingleOrDefault(x => x.nombre_materia == materia.nombre_materia);
+                if (resultado == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+
+        }
 
 
 

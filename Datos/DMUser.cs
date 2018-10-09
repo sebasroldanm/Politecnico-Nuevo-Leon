@@ -1,6 +1,5 @@
 ﻿using System;
 using Utilitarios;
-using Utilitarios.Mregistro;
 using Npgsql;
 using NpgsqlTypes;
 using System.Linq;
@@ -146,6 +145,11 @@ namespace Datos
 
         ///Insertar con Mapeo///////////////////////////////////////////
 
+
+
+
+
+
         public void insertarAdmin(Usuario admin)
         {
 
@@ -178,6 +182,9 @@ namespace Datos
             }
 
         }
+
+      
+
 
         ///LISTAR PARA EDIAR CON MAPEO////
 
@@ -375,6 +382,7 @@ namespace Datos
             {
                 var result = db.usuario.SingleOrDefault(x => x.num_documento == usuario.num_documento);
                 var resulta = db.usuario.SingleOrDefault(y => y.user_name == usuario.user_name);
+           
                 if (result != null || resulta != null)
                 {
 
@@ -386,9 +394,12 @@ namespace Datos
                 }
               
             }
-            
+           
 
         }
+
+      
+
 
 
     }

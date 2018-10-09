@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Datos;
 using Utilitarios;
+using Utilitarios.Mregistro;
 using System.Data;
 using System.Text;
 using System.Threading.Tasks;
@@ -152,5 +153,44 @@ namespace Logica
 
             return Dt;
         }
+
+
+
+
+        public UUser agregarMateria(Materia materia, string sesion, int selIdioma)
+        {
+            UUser user = new UUser();
+            DMReg datos = new DMReg();
+            LReg l_reg = new LReg();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 10;
+            Materia mat = new Materia();
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+            user.Mensaje = " ";
+            bool ok = datos.validaMateria(materia);
+
+            if (ok == true)
+            {        
+                materia.sesion = sesion;
+                materia.ultima_modificacion = DateTime.Now.ToShortDateString();
+                datos.insertarMateria(materia);
+                //this.Page.Response.Write("<script language='JavaScript'>window.alert('Materia Insertada con Exito');</script>");
+                user.Mensaje = encId.CompIdioma["L_Error_falta_materia"].ToString(); //"Materia Insertada con Exito";
+            }
+            else
+            {
+                user.Mensaje = encId.CompIdioma["L_Error_materia_ya_esta"].ToString(); //"La Materia ya se encuentra en nuestra Base de Datos";
+            }
+            return user;
+        }
+
+
+
+
     }
+
+
+
 }

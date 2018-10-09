@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
+using Utilitarios.Mregistro;
 
 public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
 {
@@ -150,11 +151,14 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
 
     protected void btn_agregam_Click(object sender, EventArgs e)
     {
-        LReg l_reg = new LReg();
-        UUser user = new UUser();
-        user = l_reg.agregarMateria(tb_materia.Text, Session.SessionID, int.Parse(Session["idioma"].ToString()));
+        LMReg l_reg = new LMReg();
+        Materia mate = new Materia();
+        UUser usu = new UUser();
 
-        L_Error.Text = user.Mensaje;
+        mate.nombre_materia = tb_materia.Text;
+        usu = l_reg.agregarMateria(mate, Session.SessionID, int.Parse(Session["idioma"].ToString()));
+
+        L_Error.Text = usu.Mensaje;
         GridView1.DataBind();
         ddt_Materia.DataBind();
     }
