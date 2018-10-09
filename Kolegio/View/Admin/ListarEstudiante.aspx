@@ -34,6 +34,13 @@
         <div class="container">
             <asp:Button ID="btn_descargar" runat="server" class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargar_Click" />
             <asp:Button ID="B_diploma" runat="server"  class="btn btn-success btn-lg" Width="222px" BorderColor="#660033" OnClick="btn_descargardiploma_Click" />
+           
+            <asp:ObjectDataSource ID="pruebareporte" runat="server" SelectMethod="listaEstcurso" TypeName="Datos.DMUser">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="ODL_Curso" Name="curso" PropertyName="SelectedValue" Type="Int32" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
+            
             <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered bs-table" AutoGenerateColumns="False" DataSourceID="ODS_ListarEstudianteCurso" BackColor="White" BorderColor="#660033" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" PageSize="3">
                 <AlternatingRowStyle BackColor="#F7F7F7" BorderColor="#0677D2" />
                 <Columns>
