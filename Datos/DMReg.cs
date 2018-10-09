@@ -109,6 +109,57 @@ namespace Datos
 
         }
 
+        public List<Observador> listarObservador(string dat)
+        {
+            Usuario user = new Usuario();
+            using (var db = new Mapeo("public"))
+            {
+
+                var ingres = db.observador.ToList<Observador>().Where(x => x.id_estudiante == int.Parse(dat));
+                if (ingres != null)
+                {
+                    return ingres.ToList<Observador>();
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+        }
+
+
+        public List<Boletin> obtenerBoletin(string usu, string ancu)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                int us = int.Parse(usu);
+                int anc = int.Parse(ancu);
+                return (from nota in db.nota
+                        join estudiantecurso in db.estudiantecurso on nota.id_n_estudiante equals estudiantecurso.id_ec
+                        join materia in db.materia on nota.id_n_materia equals materia.id_materia
+                        join aniocurso in db.aniocurso on estudiantecurso.id_ec_curso equals aniocurso.id_ancu
+                        where estudiantecurso.id_ec_estudiante == us
+                        where aniocurso.id_ancu == anc
+                        select new
+                        {
+                            materia.nombre_materia,
+                            nota.nota1,
+                            nota.nota2,
+                            nota.nota3,
+                            nota.notadef
+                        })
+                        .ToList().Select(h => new Boletin
+                        {
+                            nombre_materia = h.nombre_materia,
+                            nota1 = h.nota1,
+                            nota2 = h.nota2,
+                            nota3 = h.nota3,
+                            notadef = h.notadef
+                        }).ToList();
+            }
+        }
+
 
 
     }

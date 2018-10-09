@@ -28,7 +28,7 @@
             <SortedDescendingHeaderStyle BackColor="#15524A" />
         </asp:GridView>
 
-        <asp:ObjectDataSource ID="ODS_Observador" runat="server" SelectMethod="listarObservador" TypeName="Datos.DUser">
+        <asp:ObjectDataSource ID="ODS_Observador" runat="server" SelectMethod="listarObservador" TypeName="Datos.DMReg">
             <SelectParameters>
                 <asp:SessionParameter Name="dat" SessionField="userId" Type="String" />
             </SelectParameters>
