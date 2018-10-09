@@ -52,6 +52,8 @@
     </Compile>
     <Compile Include="ListaAcudiente.cs" />
     <Compile Include="MAC.cs" />
+    <Compile Include="Mlugares\Ciudad.cs" />
+    <Compile Include="Mlugares\Departamento.cs" />
     <Compile Include="Mregistro\Anio.cs" />
     <Compile Include="Mregistro\AnioCurso.cs" />
     <Compile Include="Mregistro\Curso.cs" />
