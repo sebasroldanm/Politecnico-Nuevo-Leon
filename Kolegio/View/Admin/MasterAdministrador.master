@@ -19,8 +19,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager> 
-       <%-- <style type="text/css">
+       <%--  <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager> 
+       <style type="text/css">
             .modelBackground {
                 background-color: black;
                 filter: alpha(opacity=90);
