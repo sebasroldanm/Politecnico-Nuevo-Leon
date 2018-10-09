@@ -25,13 +25,13 @@ namespace Logica
 
             int id_curso;
             id_curso = curso;
-            DataTable registro;
             List<HorarioEstudiante> horar;
+            
             switch (hor_tipo)
             {
                 case 1:
                     //Horario Curso
-                    horar = muser.horarioEstudiante(id_curso); ;
+                    horar = muser.horarioCurso(id_curso); ;
                     break;
                 case 2:
                     //Horario Profesor

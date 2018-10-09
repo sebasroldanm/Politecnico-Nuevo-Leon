@@ -42,6 +42,43 @@ namespace Datos
             }
         }
 
+        public List<HorarioEstudiante> horarioCurso(int id)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                return (from cursomateria in db.cursomateria
+                        join aniocurso in db.aniocurso on cursomateria.id_cm_curso equals aniocurso.id_ancu
+                        join materiafecha in db.materiafecha on cursomateria.id_cm_materia equals materiafecha.id_mf
+                        join curso in db.curso on aniocurso.id_ancu_curso equals curso.id_curso
+                        join materia in db.materia on materiafecha.id_mf_materia equals materia.id_materia
+                        join diamateria in db.diamateria on materiafecha.id_mf_fecha equals diamateria.id_dia_materia
+                        join usuario in db.usuario on cursomateria.id_cm_profesor equals usuario.id_usua
+                        where aniocurso.id_ancu == id
+
+                        select new
+                        {
+                            materia.id_materia,
+                            usuario.nombre_usua,
+                            usuario.apellido_usua,
+                            materia.nombre_materia,
+                            diamateria.dia,
+                            diamateria.hora_inicio,
+                            diamateria.hora_fin
+                        })
+                        .ToList().Select(h => new HorarioEstudiante
+                        {
+                            nombre_materia = h.nombre_materia + " " + h.nombre_usua + " " + h.apellido_usua.Substring(0, 1) + ".",
+                            dia = h.dia,
+                            hora_inicio = h.hora_inicio,
+                            hora_fin = h.hora_fin
+                            
+                        }).ToList();
+            }
+        }
+
+        
+
+
 
 
 
