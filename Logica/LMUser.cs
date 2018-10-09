@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Datos;
 using Utilitarios;
+using Utilitarios.Mregistro;
 
 namespace Logica
 {
@@ -714,7 +715,7 @@ namespace Logica
 
 
 
-          public InfReporte reporteDiplomaper(string urlCarpeta, UUser documento)
+      public InfReporte reporteDiplomaper(string urlCarpeta, UUser documento)
          {
             DataRow fila;
             DMUser muser = new DMUser();
@@ -747,6 +748,27 @@ namespace Logica
                
             return datos;
         }
+
+
+
+        public void reporteEstudiante(DataTable informacion, int curso)
+        {
+
+            DMUser muser = new DMUser();
+            List<Usuario> estcurper = new List<Usuario>();
+           
+            DataRow fila;
+            estcurper = muser.listaEstcurso(curso);
+            foreach (Usuario aniocurest in estcurper)
+            {
+                fila = informacion.NewRow();
+                fila["Apellido"] = aniocurest.apellido_usua;
+                fila["Nombre"] = aniocurest.nombre_usua;
+                informacion.Rows.Add(fila);
+            }
+
+        }
+
 
         public UUser loggear(string userName, string clave, int selIdioma, Boolean bot)
         {

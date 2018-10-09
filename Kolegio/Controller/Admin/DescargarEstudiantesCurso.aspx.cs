@@ -16,6 +16,7 @@ public partial class View_Admin_DescargarEstudiantesCurso : System.Web.UI.Page
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 45;
+        LMUser logicaper = new LMUser();
 
         encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
 
@@ -32,6 +33,11 @@ public partial class View_Admin_DescargarEstudiantesCurso : System.Web.UI.Page
                 InfReporte reporte = ObtenerInforme();
                 CRS_listaestcur.ReportDocument.SetDataSource(reporte);
                 CrystalReportViewer1.ReportSource = CRS_listaestcur;
+
+
+
+
+
             }
             catch (Exception)
             {
@@ -57,7 +63,6 @@ public partial class View_Admin_DescargarEstudiantesCurso : System.Web.UI.Page
 
     protected InfReporte ObtenerInforme()
     {
-
         DataTable informacion = new DataTable();
         InfReporte datos = new InfReporte();
 
@@ -66,7 +71,7 @@ public partial class View_Admin_DescargarEstudiantesCurso : System.Web.UI.Page
 
         informacion = datos.Tables["EstudianteCurso"]; // nombre de la tabla que cree en crystal en el InfReporte.xsd
 
-        LUser estudiante = new LUser();
+        LMUser estudiante = new LMUser();
 
         estudiante.reporteEstudiante(informacion, curs);
         

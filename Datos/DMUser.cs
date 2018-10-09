@@ -1,5 +1,6 @@
 ﻿using System;
 using Utilitarios;
+using Utilitarios.Mregistro;
 using Npgsql;
 using NpgsqlTypes;
 using System.Linq;
@@ -77,6 +78,22 @@ namespace Datos
             
 
         }
+
+
+        public List<Usuario> listaEstcurso(int curso)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                return (from us in db.usuario
+                        join estcur in db.estudiantecurso on us.id_usua equals estcur.id_ec_estudiante
+                        join anicur in db.aniocurso on estcur.id_ec_curso equals anicur.id_ancu
+                        join cur in db.curso on anicur.id_ancu_curso equals cur.id_curso
+                        where anicur.id_ancu == curso
+                        select us).ToList<Usuario>();
+                       
+            }
+        }
+
 
         
         public List<Usuario> listarEstudiantes()
