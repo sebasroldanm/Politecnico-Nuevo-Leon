@@ -83,6 +83,7 @@ public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Pag
 
     protected void btn_Aceptar_Click(object sender, EventArgs e)
     {
+        /*
         UUser enc = new UUser();
         LUser logic = new LUser();
         string fo = cargarImagen();
@@ -114,6 +115,36 @@ public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Pag
         tb_correo.Text = Session["correo"].ToString();
         btn_Editar.Visible = true;
         btn_Aceptar.Visible = false;
+        */
+
+        Usuario usua = new Usuario();
+        LMUser logica = new LMUser();
+        UUser uuser = new UUser();
+
+        usua.user_name = tb_usuario.Text;
+        usua.clave = tb_contrasenia.Text;
+        usua.correo = tb_correo.Text;
+        usua.num_documento = Session["documento"].ToString();
+        usua.foto_usua = cargarImagen(); ;
+        usua.sesion = Session.SessionID;
+
+        uuser = logica.ModifConfiguracionMapeo(usua, Session["foto"].ToString());
+
+
+        Session["userName"] = uuser.UserName;
+        Session["clave"] = uuser.Clave;
+        Session["correo"] = uuser.Correo;
+        Session["foto"] = uuser.Foto;
+
+        this.Page.Response.Write("<script language='JavaScript'>window.alert('Datos Modificados con Exito');</script>");
+
+        ImagenEst.ImageUrl = Session["foto"].ToString();
+        tb_usuario.Text = Session["username"].ToString();
+        tb_contrasenia.Text = Session["clave"].ToString();
+        tb_correo.Text = Session["correo"].ToString();
+        btn_Editar.Visible = true;
+        btn_Aceptar.Visible = false;
+
     }
 
 
