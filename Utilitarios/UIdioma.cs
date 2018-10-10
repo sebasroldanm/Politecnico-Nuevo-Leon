@@ -15,7 +15,7 @@ namespace Utilitarios
         Hashtable compIdioma = new Hashtable();
         private String numFormulario;
         private String idFormulario;
-        private String control; 
+        private String control;
         private String controlIngles;
         private String controlEsp;
         private String idIdioma;
@@ -23,6 +23,8 @@ namespace Utilitarios
         private String nombreIdioma;
         private Int32 contador;
         private Boolean boolIdioma;
+        private String notificacion;
+        private String empezar;
 
         public int SelecIdioma { get => selecIdioma; set => selecIdioma = value; }
         public Hashtable CompIdioma { get => compIdioma; set => compIdioma = value; }
@@ -37,5 +39,7 @@ namespace Utilitarios
         public string NombreIdioma { get => nombreIdioma; set => nombreIdioma = value; }
         public bool BoolIdioma { get => boolIdioma; set => boolIdioma = value; }
         public int Contador { get => contador; set => contador = value; }
+        public string Notificacion { get => notificacion; set => notificacion = value; }
+        public string Empezar { get => empezar; set => empezar = value; }
     }
 }

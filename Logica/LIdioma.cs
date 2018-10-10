@@ -98,11 +98,54 @@ namespace Logica
             DIdioma datos = new DIdioma();
             UIdioma enc = new UIdioma();
             DataTable reg = new DataTable();
+            DataTable valida = new DataTable();
 
-            datos.insertarIdioma(nombre, termin);
-            reg = datos.contadorControl(nombre);
-            enc.Contador = int.Parse(reg.Rows[0][0].ToString());
+            valida = datos.verificarIdiomaBD(termin);
+
+            if (int.Parse(valida.Rows[0][0].ToString()) == 1)
+            {
+                enc.IdiomaTermina = null;
+                enc.Notificacion = "<script language='JavaScript'>window.alert('Idioma ya fue Insertado');</script>";
+            }
+            else
+            {
+                datos.insertarIdioma(nombre, termin);
+                reg = datos.contadorControl(nombre);
+                enc.Contador = int.Parse(reg.Rows[0][0].ToString());
+                enc.IdiomaTermina = "true";
+                enc.Notificacion = "<script language='JavaScript'>window.alert('Idioma Insertado');</script>";
+            }
             return enc;
+
+
+        }
+
+        public UIdioma terminarIdioma(string español, string insertando)
+        {
+            DIdioma datos = new DIdioma();
+            UIdioma encId = new UIdioma();
+            DataTable reg = new DataTable();
+            DataTable inser = new DataTable();
+
+            int conEspañol;
+            int conInsertando;
+
+            reg = datos.contadorControl(español);
+            inser = datos.contadorControl(insertando);
+
+            conEspañol = int.Parse(reg.Rows[0][0].ToString());
+            conInsertando = int.Parse(inser.Rows[0][0].ToString());
+
+            if ((conEspañol - 1) < conInsertando)
+            {
+                encId.Empezar = null;
+                encId.Notificacion = "<script language='JavaScript'>window.alert('Idioma Agregado Exitosamente');</script>";
+            }
+            else
+            {
+                encId.Empezar = "true";
+            }
+            return encId;
         }
 
         public UIdioma insertarControlIdioma(string control, string texto, string ididioma, string idform, string nombre)
