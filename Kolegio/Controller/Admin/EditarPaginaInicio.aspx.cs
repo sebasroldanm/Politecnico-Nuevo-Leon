@@ -242,6 +242,8 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
 
         //this.Page.Response.Write("<script language='JavaScript'>window.alert('Insertado con Exito');</script>");
     }
+
+
     protected void btn_siguiente_Click(object sender, EventArgs e)
     {
         //Insertar Control
@@ -263,8 +265,16 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
             tb_traduccion.Text = "";
 
         }
-        
-
+        try
+        {
+            encId = idioma.terminarIdioma("Español", Session["idiomaInsert"].ToString());
+            Session["empezar"] = encId.Empezar;
+            string cerrar = Session["empezar"].ToString();
+        }
+        catch
+        {
+            this.Page.Response.Write(encId.Notificacion);
+        }
     }
 
     protected void btn_comprobaridiom_Click(object sender, EventArgs e)
@@ -272,17 +282,31 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         //Insertar Idioma
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
-        Session["empezar"] = "true";
-        encId = idioma.insertarIdioma(TB_nomidioma.Text, TB_terminoidioma.Text);
-        tb_traduccion.ReadOnly = false;
-        TB_terminoidioma.ReadOnly = true;
-        TB_nomidioma.ReadOnly = true;
-        btn_siguiente.Visible = true;
-        btn_comprobaridiom.Visible = false;
-        Session["idiomaInsert"] = TB_nomidioma.Text;
-        TB_pruebaCristhian.Text = Session["idiomaInsert"].ToString();
-        encId = idioma.traerIdioma(TB_pruebaCristhian.Text);
-        Session["nombreIdioma"] = encId.NombreIdioma;
+        UUser usua = new UUser();
+
+        try
+        {
+            encId = idioma.insertarIdioma(TB_nomidioma.Text, TB_terminoidioma.Text);
+            this.Page.Response.Write(usua.Notificacion);
+            Session["empezar"] = encId.IdiomaTermina;
+            string prueba = Session["empezar"].ToString();
+            this.Page.Response.Write(encId.Notificacion);
+            tb_traduccion.ReadOnly = false;
+            TB_terminoidioma.ReadOnly = true;
+            TB_nomidioma.ReadOnly = true;
+            btn_siguiente.Visible = true;
+            btn_comprobaridiom.Visible = false;
+            Session["idiomaInsert"] = TB_nomidioma.Text;
+            TB_pruebaCristhian.Text = Session["idiomaInsert"].ToString();
+            encId = idioma.traerIdioma(TB_pruebaCristhian.Text);
+            Session["nombreIdioma"] = encId.NombreIdioma;
+        }
+        catch
+        {
+            TB_nomidioma.Text = "";
+            TB_terminoidioma.Text = "";
+            this.Page.Response.Write("<script language='JavaScript'>window.alert('Idioma Completado Con Éxito');</script>");
+        }
 
     }
 
@@ -290,7 +314,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
     {
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
-       
+
         encId = idioma.editarIdiomaControl(DDL_item.SelectedValue, DDL_formulario.SelectedValue, DDL_idioma.SelectedValue, TB_itemES.Text);
         btn_aceptar.Visible = true;
         TB_itemES.ReadOnly = true;
