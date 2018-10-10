@@ -1,6 +1,7 @@
 ﻿using System;
 using Utilitarios;
 using Utilitarios.Mlugares;
+using Utilitarios.Mregistro;
 using Npgsql;
 using NpgsqlTypes;
 using System.Linq;
@@ -62,11 +63,106 @@ namespace Datos
             using (var db = new Mapeo("public"))
             {
                 var query = select();
-                var depar = db.departamento.ToList<Departamento>();
+                var depar = db.departamento.ToList<Departamento>().OrderBy(x=> x.nom_dep);
                 return query.Union(depar).ToList<Departamento>();
             }
             
         }
+
+
+        public List<Anio> obtenerAnio()
+        {
+            using (var db = new Mapeo("public"))
+            {
+
+                List<Anio> lista = null;
+                Anio aniddl = new Anio();
+                lista = new List<Anio>();
+                aniddl.id_anio = 0;
+                aniddl.nombre_anio = "Selec.";
+                lista.Add(aniddl);
+                var query = lista;
+                var anio = db.anio.ToList<Anio>();
+                return query.Union(anio).ToList<Anio>();
+            }
+        }
+
+
+        public List<Materia> obtenerMateria()
+        {
+
+            using (var db = new Mapeo("public"))
+            {
+
+                List<Materia> lista = null;
+                Materia ddlmateria = new Materia();
+                lista = new List<Materia>();
+                ddlmateria.id_materia = 0;
+                ddlmateria.nombre_materia = "Selec.";
+                lista.Add(ddlmateria);
+                var query = lista;
+                var mate = db.materia.ToList<Materia>();
+                return query.Union(mate).ToList<Materia>();
+
+            }
+
+              
+
+        }
+
+        public List<Usuario> listardocenteddl()
+        {
+            using (var db = new Mapeo("public"))
+            {
+
+                List<Usuario> lista = null;
+                Usuario ddlprof = new Usuario();
+                lista = new List<Usuario>();
+                ddlprof.id_usua = 0;
+                ddlprof.nombre_usua = "Selec.";
+                lista.Add(ddlprof);
+                var query = lista;
+                var prof = db.usuario.ToList<Usuario>().Where(x => x.rol_id.Contains("2")).Select(u => new Usuario
+                {
+                    nombre_usua = u.nombre_usua + " " + u.apellido_usua
+                }).ToList();
+                return query.Union(prof).ToList<Usuario>();
+            }
+            
+
+        }
+
+
+
+        public List<CursoAnioVista> obtenerCursoanio(int anio)
+        {
+            using (var db = new Mapeo("public"))
+            {
+
+                List<CursoAnioVista> lista = null;
+                CursoAnioVista curddl = new CursoAnioVista();
+                lista = new List<CursoAnioVista>();
+                curddl.id_ancu = 0;
+                curddl.nombre_curso = "Selec.";
+                lista.Add(curddl);
+                var query = lista;
+                var curso = (from ani in db.anio
+                             join anicur in db.aniocurso on ani.id_anio equals anicur.id_ancu_anio
+                             join cur in db.curso on anicur.id_ancu_curso equals cur.id_curso
+                             where anicur.id_ancu_anio == anio 
+                             select new {
+                                 anicur.id_ancu,
+                                 cur.nombre_curso}
+                        ).ToList().Select(ob => new CursoAnioVista {
+                            id_ancu = ob.id_ancu, 
+                            nombre_curso = ob.nombre_curso
+                        }).ToList();
+                return query.Union(curso).ToList<CursoAnioVista>();
+            }
+
+        }
+
+
 
         public List<Ciudad> ciudad(int idDepart)
         {
@@ -76,11 +172,11 @@ namespace Datos
                 Ciudad ciuddl = new Ciudad();
                 lista = new List<Ciudad>();
                 ciuddl.id_ciudad = 0;
-                ciuddl.nombre_ciudad = "Select";
+                ciuddl.nombre_ciudad = "Selec.";
                 ciuddl.id_c_depart = 0;
                 lista.Add(ciuddl);
                 var query = lista;
-                var ciu = db.ciudad.ToList<Ciudad>().Where(x=> x.id_c_depart == idDepart);
+                var ciu = db.ciudad.ToList<Ciudad>().Where(x=> x.id_c_depart == idDepart).OrderBy(y=> y.nombre_ciudad);
 
                 return query.Union(ciu).ToList<Ciudad>();
             }
@@ -91,7 +187,7 @@ namespace Datos
             Departamento dep = new Departamento();
             lista = new List<Departamento>();
             dep.id_dep = 0;
-            dep.nom_dep = "Select";
+            dep.nom_dep = "Selec.";
             lista.Add(dep);
             return lista;
         }

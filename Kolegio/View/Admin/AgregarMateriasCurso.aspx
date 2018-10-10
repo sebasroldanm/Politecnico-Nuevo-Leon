@@ -95,7 +95,7 @@
                 <asp:Label ID="L_AdminAgreMateCursoSubAnio" runat="server"></asp:Label></label>
             <asp:DropDownList ID="ddt_anio" Class="form-control" runat="server" DataSourceID="ODS_anio" DataTextField="nombre_anio" DataValueField="id_anio" AutoPostBack="True"></asp:DropDownList>
 
-            <asp:ObjectDataSource ID="ODS_anio" runat="server" SelectMethod="obtenerAnio" TypeName="Datos.DUser"></asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="ODS_anio" runat="server" SelectMethod="obtenerAnio" TypeName="Datos.DMUser"></asp:ObjectDataSource>
 
             <label for="ddt_curso" class="control-label" style="color: #FFFFFF">
                 <asp:Label ID="L_AdminAgreMateCursoSubCurso" runat="server"></asp:Label></label>
@@ -103,7 +103,7 @@
                 <asp:ListItem Value="0">seleccione</asp:ListItem>
             </asp:DropDownList>
 
-            <asp:ObjectDataSource ID="ODS_Cur" runat="server" SelectMethod="obtenerCursoanio" TypeName="Datos.DUser">
+            <asp:ObjectDataSource ID="ODS_Cur" runat="server" SelectMethod="obtenerCursoanio" TypeName="Datos.DMUser">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="ddt_anio" Name="anio" PropertyName="SelectedValue" Type="Int32" />
                 </SelectParameters>
@@ -113,13 +113,13 @@
                 <asp:Label ID="L_AdminAgreMateCursoSubMateria" runat="server"></asp:Label></label>
             <asp:DropDownList ID="ddt_Materia" Class="form-control" runat="server" DataSourceID="ODSmateria" DataTextField="nombre_materia" DataValueField="id_materia"></asp:DropDownList>
 
-            <asp:ObjectDataSource ID="ODSmateria" runat="server" SelectMethod="obtenerMateria" TypeName="Datos.DUser"></asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="ODSmateria" runat="server" SelectMethod="obtenerMateria" TypeName="Datos.DMUser"></asp:ObjectDataSource>
 
             <label for="ddt_Docente" class="control-label" style="color: #FFFFFF">
             <asp:Label ID="L_Docente" class="control-label" runat="server"></asp:Label></label>
             <span style="color: #555555; background-color: #FFFFFF"></span>
             <asp:DropDownList ID="ddt_Docente" Class="form-control" runat="server" DataSourceID="ODSdocente" DataTextField="nombre_usua" DataValueField="id_usua"></asp:DropDownList>
-            <asp:ObjectDataSource ID="ODSdocente" runat="server" SelectMethod="listardocenteddl" TypeName="Datos.DUser"></asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="ODSdocente" runat="server" SelectMethod="listardocenteddl" TypeName="Datos.DMUser"></asp:ObjectDataSource>
 
             <label for="ddt_Dia" class="control-label" style="color: #FFFFFF">
                 <asp:Label ID="L_AdminAgreMateCursoSubDia" runat="server"></asp:Label></label>

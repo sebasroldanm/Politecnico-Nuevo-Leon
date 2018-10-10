@@ -247,13 +247,14 @@ namespace Logica
                         enc.Hora_in = hora;
                         
                         DataTable registros = datos.obtenerHora(enc);
+                        if(registros.Rows.Count > 0)
+                        { 
+                            enc.Cur_mat = registros.Rows[0]["id_mf"].ToString();
+                            enc.Curso = curso;
+                            enc.Id_docente = docente;
 
-                        enc.Cur_mat = registros.Rows[0]["id_mf"].ToString();
-                        enc.Curso = curso;
-                        enc.Id_docente = docente;
-
-                        datos.insertarCursoMateria(enc);
-
+                            datos.insertarCursoMateria(enc);
+                        }
                         int cur = Convert.ToInt32(curso);
                         DataTable est = datos.gEstudiante(cur);
                         int n = est.DefaultView.Count;
