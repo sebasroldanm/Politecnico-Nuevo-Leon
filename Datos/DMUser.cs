@@ -61,8 +61,9 @@ namespace Datos
         {
             using (var db = new Mapeo("public"))
             {
+                var query = select();
                 var depar = db.departamento.ToList<Departamento>();
-                return depar.ToList<Departamento>();
+                return query.Union(depar).ToList<Departamento>();
             }
             
         }
@@ -71,12 +72,29 @@ namespace Datos
         {
             using (var db = new Mapeo("public"))
             {
-                var sel = "Select.";
+                List<Ciudad> lista = null;
+                Ciudad ciuddl = new Ciudad();
+                lista = new List<Ciudad>();
+                ciuddl.id_ciudad = 0;
+                ciuddl.nombre_ciudad = "Select";
+                ciuddl.id_c_depart = 0;
+                lista.Add(ciuddl);
+                var query = lista;
                 var ciu = db.ciudad.ToList<Ciudad>().Where(x=> x.id_c_depart == idDepart);
-                return  ciu.ToList<Ciudad>();
+
+                return query.Union(ciu).ToList<Ciudad>();
             }
         }
-
+         public List<Departamento> select()
+        {
+            List<Departamento> lista = null;
+            Departamento dep = new Departamento();
+            lista = new List<Departamento>();
+            dep.id_dep = 0;
+            dep.nom_dep = "Select";
+            lista.Add(dep);
+            return lista;
+        }
 
         public List<Usuario> listarProfesores()
         {
