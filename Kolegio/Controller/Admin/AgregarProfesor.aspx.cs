@@ -220,15 +220,27 @@ public partial class View_Admin_AgregarProfesor : System.Web.UI.Page
     protected void btn_validar_Click(object sender, EventArgs e)
     {
 
-        LUser logica = new LUser();
+        //LUser logica = new LUser();
+        //UUser usua = new UUser();
+
+        //usua = logica.validarUser(tb_DocenteUsuario.Text, tb_DocenteId.Text, int.Parse(Session["idioma"].ToString()));
+        //L_ErrorUsuario.Text = usua.Mensaje;
+        //btn_DocenteAceptar.Visible = usua.L_Aceptar1;
+        //btn_DocenteNuevo.Visible = usua.L_Aceptar1;
+        //tb_DocenteUsuario.ReadOnly = usua.L_Aceptar1;
+        //tb_DocenteId.ReadOnly = usua.L_Aceptar1;
+        //btn_validar.Visible = usua.B_Botones1;
+
+
+        LMUser logica = new LMUser();
+        Usuario usuario = new Usuario();
         UUser usua = new UUser();
 
-        usua = logica.validarUser(tb_DocenteUsuario.Text, tb_DocenteId.Text, int.Parse(Session["idioma"].ToString()));
+        usua = logica.validarUsuario(tb_DocenteUsuario.Text, tb_DocenteId.Text, int.Parse(Session["idioma"].ToString()));
         L_ErrorUsuario.Text = usua.Mensaje;
         btn_DocenteAceptar.Visible = usua.L_Aceptar1;
-        btn_DocenteNuevo.Visible = usua.L_Aceptar1;
-        tb_DocenteUsuario.ReadOnly = usua.L_Aceptar1;
         tb_DocenteId.ReadOnly = usua.L_Aceptar1;
+        tb_DocenteUsuario.ReadOnly = usua.L_Aceptar1;
         btn_validar.Visible = usua.B_Botones1;
 
 

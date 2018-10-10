@@ -227,18 +227,31 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
     protected void btn_validar_Click(object sender, EventArgs e)
     {
 
-        LUser logica = new LUser();
+        //LUser logica = new LUser();
+        //UUser usua = new UUser();
+
+        //usua = logica.validarUser(tb_AcudienteUsuario.Text, tb_AcudienteId.Text, int.Parse(Session["idioma"].ToString()));
+        //L_ErrorUsuario.Text = usua.Mensaje;
+
+        //btn_AcudienteAceptar.Visible = usua.L_Aceptar1;
+        //btn_AcudienteNuevo.Visible = usua.L_Aceptar1;
+
+        //tb_AcudienteUsuario.ReadOnly = usua.L_Aceptar1;
+        //tb_AcudienteId.ReadOnly = usua.L_Aceptar1;
+        //btn_validar.Visible = usua.B_Botones1;
+
+
+        LMUser logica = new LMUser();
+        Usuario usuario = new Usuario();
         UUser usua = new UUser();
 
-        usua = logica.validarUser(tb_AcudienteUsuario.Text, tb_AcudienteId.Text, int.Parse(Session["idioma"].ToString()));
+        usua = logica.validarUsuario(tb_AcudienteUsuario.Text, tb_AcudienteId.Text, int.Parse(Session["idioma"].ToString()));
         L_ErrorUsuario.Text = usua.Mensaje;
-
         btn_AcudienteAceptar.Visible = usua.L_Aceptar1;
-        btn_AcudienteNuevo.Visible = usua.L_Aceptar1;
-
-        tb_AcudienteUsuario.ReadOnly = usua.L_Aceptar1;
         tb_AcudienteId.ReadOnly = usua.L_Aceptar1;
+        tb_AcudienteUsuario.ReadOnly = usua.L_Aceptar1;
         btn_validar.Visible = usua.B_Botones1;
+
 
     }
 

@@ -194,16 +194,31 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
     protected void btn_validar_Click(object sender, EventArgs e)
     {
 
-        LUser logica = new LUser();
+        //LUser logica = new LUser();
+        //UUser usua = new UUser();
+
+        //usua = logica.validarUser(tb_EstudianteUsuario.Text, tb_EstudianteId.Text, int.Parse(Session["idioma"].ToString()));
+        //L_ErrorUser.Text = usua.Mensaje;
+        //btn_EstudianteAceptar.Visible = usua.L_Aceptar1;
+        //btn_EstudianteNuevo.Visible = usua.L_Aceptar1;
+        //tb_EstudianteId.ReadOnly = usua.L_Aceptar1;
+        //tb_EstudianteUsuario.ReadOnly = usua.L_Aceptar1;
+        //btn_validar.Visible = false;
+
+
+
+        LMUser logica = new LMUser();
+        Usuario usuario = new Usuario();
         UUser usua = new UUser();
 
-        usua = logica.validarUser(tb_EstudianteUsuario.Text, tb_EstudianteId.Text, int.Parse(Session["idioma"].ToString()));
-        L_ErrorUser.Text = usua.Mensaje;
+        usua = logica.validarUsuario(tb_EstudianteUsuario.Text, tb_EstudianteId.Text, int.Parse(Session["idioma"].ToString()));
+        L_ErrorUsuario.Text = usua.Mensaje;
         btn_EstudianteAceptar.Visible = usua.L_Aceptar1;
-        btn_EstudianteNuevo.Visible = usua.L_Aceptar1;
         tb_EstudianteId.ReadOnly = usua.L_Aceptar1;
         tb_EstudianteUsuario.ReadOnly = usua.L_Aceptar1;
-        btn_validar.Visible = false;
+        btn_validar.Visible = usua.B_Botones1;
+
+
 
     }
 
