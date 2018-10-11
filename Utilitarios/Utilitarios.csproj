@@ -74,6 +74,7 @@
     <Compile Include="UContrasenia.cs" />
     <Compile Include="UIdioma.cs" />
     <Compile Include="UReg.cs" />
+    <Compile Include="UsuaMensajeVista.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="UToken.cs" />
     <Compile Include="UUser.cs" />

@@ -17,18 +17,20 @@
             <div class="form-group">
                 <div class="form-inline">
                     <label for="ddl_estudiante" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AcuMensEstudiante" runat="server"></asp:Label></label>
-                    <asp:DropDownList class="control-label" ID="DDL_Estudiante" runat="server" AutoPostBack="True" DataSourceID="ODS_obtener_est_acu" DataTextField="nombre_usua" DataValueField="id_usua"></asp:DropDownList>
+                   
+                    
+                    <asp:DropDownList Class="form-control" ID="DDL_Estudiante" runat="server" AutoPostBack="True" DataSourceID="ODS_obtener_est_acu" DataTextField="nombre_usua" DataValueField="id_usua" Width="319px"></asp:DropDownList>
 
-                    <asp:ObjectDataSource ID="ODS_obtener_est_acu" runat="server" SelectMethod="obtener_est_acu" TypeName="Datos.DUser">
+                    <asp:ObjectDataSource ID="ODS_obtener_est_acu" runat="server" SelectMethod="listarEstAcudiente" TypeName="Datos.DMUser">
                         <SelectParameters>
-                            <asp:SessionParameter Name="id_usua" SessionField="userId" Type="Int32" />
+                            <asp:SessionParameter Name="usu" SessionField="userId" Type="String" />
                         </SelectParameters>
                     </asp:ObjectDataSource>
 
                     <label for="ddl_materia" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AcuMensProfe" runat="server"></asp:Label></label>
-                    <asp:DropDownList ID="DDL_Profesor" class="control-label" runat="server" AutoPostBack="True" DataSourceID="ODS_profe_mensaje_aco" DataTextField="nombre_usua" DataValueField="correo"></asp:DropDownList>
+                    <asp:DropDownList ID="DDL_Profesor" Class="form-control" runat="server" AutoPostBack="True" DataSourceID="ODS_profe_mensaje_aco" DataTextField="nombre_usua" DataValueField="correo" Width="315px"></asp:DropDownList>
 
-                    <asp:ObjectDataSource ID="ODS_profe_mensaje_aco" runat="server" SelectMethod="profemensaje" TypeName="Datos.DUser">
+                    <asp:ObjectDataSource ID="ODS_profe_mensaje_aco" runat="server" SelectMethod="profemensaje" TypeName="Datos.DMUser">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="DDL_Estudiante" Name="id_usua" PropertyName="SelectedValue" Type="Int32" />
                         </SelectParameters>

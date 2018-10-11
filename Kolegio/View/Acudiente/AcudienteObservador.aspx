@@ -8,7 +8,7 @@
         <asp:DropDownList ID="DDT_estudiante" runat="server" Class="form-control" DataSourceID="ODS_Estudiante" DataTextField="nombre_usua" DataValueField="id_usua" AutoPostBack="True">
             <asp:ListItem Value="0"></asp:ListItem>
         </asp:DropDownList>
-        <asp:ObjectDataSource ID="ODS_Estudiante" runat="server" SelectMethod="listarEstAcudiente" TypeName="Datos.DUser">
+        <asp:ObjectDataSource ID="ODS_Estudiante" runat="server" SelectMethod="listarEstAcudiente" TypeName="Datos.DMUser">
             <SelectParameters>
                 <asp:SessionParameter Name="usu" SessionField="userId" Type="String" />
             </SelectParameters>
@@ -29,7 +29,7 @@
             <SortedDescendingCellStyle BackColor="#D8D8F0" />
             <SortedDescendingHeaderStyle BackColor="#3E3277" />
         </asp:GridView>
-        <asp:ObjectDataSource ID="ODS_Boletin" runat="server" SelectMethod="listarObservador" TypeName="Datos.DUser">
+        <asp:ObjectDataSource ID="ODS_Boletin" runat="server" SelectMethod="listarObservador" TypeName="Datos.DMReg">
             <SelectParameters>
                 <asp:SessionParameter Name="dat" SessionField="est" Type="String" />
             </SelectParameters>

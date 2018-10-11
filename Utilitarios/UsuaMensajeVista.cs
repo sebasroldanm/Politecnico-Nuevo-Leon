@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Utilitarios
 {
-    public class  AcudienteEstudianteVista
+
+    public class UsuaMensajeVista
     {
-
-
         private Int32 idUsua;
         private String nombreUsua;
+        private String correo;
 
         public int id_usua { get => idUsua; set => idUsua = value; }
         public string nombre_usua { get => nombreUsua; set => nombreUsua = value; }
-
+        public string Correo { get => correo; set => correo = value; }
     }
 }

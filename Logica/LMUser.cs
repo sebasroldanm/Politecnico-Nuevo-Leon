@@ -20,6 +20,61 @@ namespace Logica
         }
 
 
+
+
+
+        /////////ENVIAR CORREO A PROFESOR//////////////////////
+
+        public UUser verificarCorreo(
+        string userId,
+        string persona,
+        string apePersona,
+        string correo_l,
+        string destinatario,
+        string asunto,
+        string mensaje,
+        int selIdioma
+        )
+        {
+            DMUser dat = new DMUser();
+            UUser usua = new UUser();
+
+            usua.Correo = destinatario;
+            List<Usuario> resultado = new List<Usuario>();
+         //   DataTable resultado = dat.verificarCorreo(usua);
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 5;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+            if (resultado.Count > 0)
+            {
+                mensaje = mensaje + "<br><br>Atentamente: " + persona + " " + apePersona + "<br>Correo para responder: " + correo_l + "";
+                string cadena = mensaje;
+                DCorreoEnviar correo = new DCorreoEnviar();
+                correo.enviarCorreoEnviar(destinatario, asunto, mensaje);
+                //usua.Notificacion = "<script language='JavaScript'>window.alert('Se ha enviado su mensaje con éxito');</script>";
+                usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["scrip_msm_enviado"].ToString() + "');</script>";
+                usua.Url = "AdministradorMensaje.aspx";
+                usua.Mensaje = "";
+            }
+            else
+            {
+                usua.Mensaje = encId.CompIdioma["L_Verificar"].ToString();
+                //"El correo digitado no existe";
+                usua.CDestinatario = "";
+            }
+
+
+            return usua;
+        }
+
+
+
+
+        ////////FIN ENVIAR CORREO A PROFESOR////////////////
+
         public UUser insertaradmin(Usuario admin, int selIdioma)
         {
             DMUser admon = new DMUser();

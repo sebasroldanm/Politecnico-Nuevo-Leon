@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace Datos
 {
-   public class DMUser
+    public class DMUser
     {
         public List<Usuario> loggin(UUser enc)
         {
@@ -35,7 +35,7 @@ namespace Datos
             }
         }
 
-            public void insertarUserMapeo(Usuario user)
+        public void insertarUserMapeo(Usuario user)
         {
             using (var db = new Mapeo("public"))
             {
@@ -58,15 +58,27 @@ namespace Datos
 
         }
 
+        public List<Usuario> verificarCorreo(UUser datos)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                var vercor = db.usuario.ToList<Usuario>().Where(x => x.correo.Contains(datos.Correo));
+                return vercor.ToList<Usuario>();
+
+            }
+
+        }
+
+
         public List<Departamento> departamento()
         {
             using (var db = new Mapeo("public"))
             {
                 var query = select();
-                var depar = db.departamento.ToList<Departamento>().OrderBy(x=> x.nom_dep);
+                var depar = db.departamento.ToList<Departamento>().OrderBy(x => x.nom_dep);
                 return query.Union(depar).ToList<Departamento>();
             }
-            
+
         }
 
 
@@ -86,7 +98,7 @@ namespace Datos
                 var anio = db.anio.ToList<Anio>().Select(j => new Anio
                 {
                     id_anio = j.id_anio,
-                    nombre_anio = j.nombre_anio.Substring(0,4)
+                    nombre_anio = j.nombre_anio.Substring(0, 4)
                 }).ToList();
 
                 return query.Union(anio).ToList<Anio>();
@@ -112,7 +124,7 @@ namespace Datos
 
             }
 
-              
+
 
         }
 
@@ -134,7 +146,7 @@ namespace Datos
                 }).ToList();
                 return query.Union(prof).ToList<Usuario>();
             }
-            
+
 
         }
 
@@ -153,15 +165,82 @@ namespace Datos
                 var daia = db.diamateria.ToList<DiaMateria>().Select(u => new DiaMateria
                 {
                     dia = u.dia
-    
+
                 }).ToList();
                 return query.Union(daia).ToList<DiaMateria>();
             }
 
         }
 
+        public List<UsuaMensajeVista> profemensaje(int id_usua)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                //List<UsuaMensajeVista> listmen = null;
+                //UsuaMensajeVista ddlprof = new UsuaMensajeVista();
+                //ddlprof.id_usua = 0;
+                //ddlprof.nombre_usua = "Selec.";
+                //listmen.Add(ddlprof);
+                //var query = listmen;
+                var profmensa = (from estcur in db.estudiantecurso
+                                 join anicur in db.aniocurso on estcur.id_ec_curso equals anicur.id_ancu
+                                 join curmar in db.cursomateria on anicur.id_ancu equals curmar.id_cm_curso
+                                 join us in db.usuario on curmar.id_cm_profesor equals us.id_usua
+                                 where estcur.id_ec_estudiante == id_usua
+                                 select new {
+                                     us.id_usua,
+                                     us.nombre_usua,
+                                     us.apellido_usua
+                                 }).ToList(). Select(d=> new UsuaMensajeVista {
+                                     id_usua = d.id_usua,
+                                     nombre_usua = d.nombre_usua + " " + d.apellido_usua
+
+                                 }).ToList();
+
+                //return query.Union(profmensa).ToList<UsuaMensajeVista>();
+                return profmensa.ToList<UsuaMensajeVista>();
+
+            }
+        }
 
 
+
+        public List<AcudienteEstudianteVista> listarEstAcudiente(string usu)
+        {
+
+            using (var db = new Mapeo("public"))
+            {              
+                //List<AcudienteEstudianteVista> list = null;
+                //AcudienteEstudianteVista ddlestac = new AcudienteEstudianteVista();
+                //ddlestac.id_usua = 0;
+                //ddlestac.nombre_usua = "Selec.";
+                //list.Add(ddlestac);
+                //var query = list;
+                int usuacu = int.Parse(usu);
+                var estacu = (from us in db.usuario
+                              join acu in db.acudiente on us.id_usua equals acu.id_ac_estudiante
+                              where acu.id_ac_acudiente == usuacu
+                              select new
+                              {
+                                  us.id_usua,
+                                  us.nombre_usua,
+                                  us.apellido_usua
+
+
+                              }).ToList().Select(y => new AcudienteEstudianteVista
+                              {
+                                  id_usua = y.id_usua,
+                                  nombre_usua = y.nombre_usua + " " + y.apellido_usua
+                              }).ToList();
+                //      return query.Union(estacu).ToList<AcudienteEstudianteVista>();
+                return estacu.ToList<AcudienteEstudianteVista>();
+
+
+
+
+            }
+
+        }
         public List<CursoAnioVista> obtenerCursoanio(int anio)
         {
             using (var db = new Mapeo("public"))
@@ -287,7 +366,7 @@ namespace Datos
             using (var db = new Mapeo("public"))
             {
                 return (from c in db.usuario
-                        join o in db.acudiente on c.id_usua equals o.IdEstudiante
+                        join o in db.acudiente on c.id_usua equals o.id_ac_estudiante
                         where c.rol_id == "4"
                         select new { c.foto_usua,
                                      c.apellido_usua,

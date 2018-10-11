@@ -20,8 +20,8 @@ namespace Utilitarios
         [Column("id_ac")]
         public int IdAc { get => idAc; set => idAc = value; }
         [Column("id_ac_estudiante")]
-        public int IdEstudiante { get => idEstudiante; set => idEstudiante = value; }
+        public int id_ac_estudiante { get => idEstudiante; set => idEstudiante = value; }
         [Column("id_ac_acudiente")]
-        public int IdAcudiente { get => idAcudiente; set => idAcudiente = value; }
+        public int id_ac_acudiente { get => idAcudiente; set => idAcudiente = value; }
     }
 }
