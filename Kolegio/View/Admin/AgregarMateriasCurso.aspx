@@ -123,14 +123,16 @@
 
             <label for="ddt_Dia" class="control-label" style="color: #FFFFFF">
                 <asp:Label ID="L_AdminAgreMateCursoSubDia" runat="server"></asp:Label></label>
-            <asp:DropDownList ID="ddt_Dia" Class="form-control" runat="server">
+            <asp:DropDownList ID="ddt_Dia" Class="form-control" runat="server" DataSourceID="ODSdaia" DataTextField="dia" DataValueField="id_dia_materia">
                 <asp:ListItem Value="0">Seleccione</asp:ListItem>
             </asp:DropDownList>
+
+            <asp:ObjectDataSource ID="ODSdaia" runat="server" SelectMethod="obtenerdiak" TypeName="Datos.DMUser"></asp:ObjectDataSource>
 
             <label for="ddt_Hora" class="control-label" style="color: #FFFFFF">
                 <asp:Label ID="L_AdminAgreMateCursoSubHora" runat="server"></asp:Label></label>
             <asp:DropDownList ID="ddt_Hora" Class="form-control" runat="server" OnSelectedIndexChanged="ddt_Hora_SelectedIndexChanged">
-                <asp:ListItem Value="0">Seleccione</asp:ListItem>
+                <asp:ListItem Value="0">Selec.</asp:ListItem>
                 <asp:ListItem Value="8:00:00">8:00:00 - 9:29:00</asp:ListItem>
                 <asp:ListItem Value="10:00:00">10:00:00 - 11:59:00</asp:ListItem>
                 <asp:ListItem Value="12:00:00">12:00:00 - 02:00:00</asp:ListItem>

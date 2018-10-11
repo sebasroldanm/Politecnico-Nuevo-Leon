@@ -82,7 +82,11 @@ namespace Datos
                 aniddl.nombre_anio = "Selec.";
                 lista.Add(aniddl);
                 var query = lista;
-                var anio = db.anio.ToList<Anio>();
+                var anio = db.anio.ToList<Anio>().Select(j => new Anio
+                {
+                    nombre_anio = j.nombre_anio
+                }).ToList();
+
                 return query.Union(anio).ToList<Anio>();
             }
         }
@@ -129,6 +133,28 @@ namespace Datos
                 return query.Union(prof).ToList<Usuario>();
             }
             
+
+        }
+
+
+        public List<DiaMateria> obtenerdiak()
+        {
+            using (var db = new Mapeo("public"))
+            {
+                List<DiaMateria> lista = null;
+                DiaMateria ddldia = new DiaMateria();
+                lista = new List<DiaMateria>();
+                ddldia.id_dia_materia = 0;
+                ddldia.dia = "Selec.";
+                lista.Add(ddldia);
+                var query = lista;
+                var daia = db.diamateria.ToList<DiaMateria>().Select(u => new DiaMateria
+                {
+                    dia = u.dia
+    
+                }).ToList();
+                return query.Union(daia).ToList<DiaMateria>();
+            }
 
         }
 
@@ -191,6 +217,10 @@ namespace Datos
             lista.Add(dep);
             return lista;
         }
+
+
+
+
 
         public List<Usuario> listarProfesores()
         {
