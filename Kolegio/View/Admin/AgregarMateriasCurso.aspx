@@ -13,10 +13,7 @@
             z-index: 10000;
         }
 
-        .auto-style6 {
-            text-align: center;
-        }
-    </style>
+        </style>
 
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -123,11 +120,9 @@
 
             <label for="ddt_Dia" class="control-label" style="color: #FFFFFF">
                 <asp:Label ID="L_AdminAgreMateCursoSubDia" runat="server"></asp:Label></label>
-            <asp:DropDownList ID="ddt_Dia" Class="form-control" runat="server" DataSourceID="ODSdaia" DataTextField="dia" DataValueField="id_dia_materia">
+            <asp:DropDownList ID="ddt_Dia" Class="form-control" runat="server">
                 <asp:ListItem Value="0">Seleccione</asp:ListItem>
             </asp:DropDownList>
-
-            <asp:ObjectDataSource ID="ODSdaia" runat="server" SelectMethod="obtenerdiak" TypeName="Datos.DMUser"></asp:ObjectDataSource>
 
             <label for="ddt_Hora" class="control-label" style="color: #FFFFFF">
                 <asp:Label ID="L_AdminAgreMateCursoSubHora" runat="server"></asp:Label></label>
