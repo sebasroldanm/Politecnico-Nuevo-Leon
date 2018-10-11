@@ -79,12 +79,27 @@ namespace Datos
 
         public void insertarMateria(Materia mat)
         {
-
             using (var db = new Mapeo("public"))
             {
                 db.materia.Add(mat);
                 db.SaveChanges();
+
+                string materia = mat.nombre_materia;
+                List<Materia> matlist = (db.materia.ToList<Materia>().Where(x => x.nombre_materia.Contains(materia))).ToList<Materia>();
+
+                MateriaFecha matfe = new MateriaFecha();
+                foreach (Materia m in matlist)
+                {
+                    matfe.id_mf_materia = m.id_materia;
+                    for (int i = 1; i <= 20; i++)
+                    {
+                        matfe.id_mf_fecha = i;
+                        db.materiafecha.Add(matfe);
+                        db.SaveChanges();
+                    }
+                }
             }
+
         }
 
 

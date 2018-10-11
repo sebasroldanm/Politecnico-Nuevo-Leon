@@ -13,10 +13,7 @@
             z-index: 10000;
         }
 
-        .auto-style6 {
-            text-align: center;
-        }
-    </style>
+        </style>
 
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -91,6 +88,9 @@
             </div>
             <br />
             <br />
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+            <ContentTemplate>
+            
             <label for="ddt_anio" class="control-label" style="color: #FFFFFF">
                 <asp:Label ID="L_AdminAgreMateCursoSubAnio" runat="server"></asp:Label></label>
             <asp:DropDownList ID="ddt_anio" Class="form-control" runat="server" DataSourceID="ODS_anio" DataTextField="nombre_anio" DataValueField="id_anio" AutoPostBack="True"></asp:DropDownList>
@@ -102,13 +102,13 @@
             <asp:DropDownList ID="ddt_curso" Class="form-control" runat="server" DataSourceID="ODS_Cur" DataTextField="nombre_curso" DataValueField="id_ancu" AutoPostBack="True">
                 <asp:ListItem Value="0">seleccione</asp:ListItem>
             </asp:DropDownList>
-
+                 
             <asp:ObjectDataSource ID="ODS_Cur" runat="server" SelectMethod="obtenerCursoanio" TypeName="Datos.DMUser">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="ddt_anio" Name="anio" PropertyName="SelectedValue" Type="Int32" />
                 </SelectParameters>
             </asp:ObjectDataSource>
-
+            
             <label for="ddt_Materia" class="control-label" style="color: #FFFFFF">
                 <asp:Label ID="L_AdminAgreMateCursoSubMateria" runat="server"></asp:Label></label>
             <asp:DropDownList ID="ddt_Materia" Class="form-control" runat="server" DataSourceID="ODSmateria" DataTextField="nombre_materia" DataValueField="id_materia"></asp:DropDownList>
@@ -123,11 +123,9 @@
 
             <label for="ddt_Dia" class="control-label" style="color: #FFFFFF">
                 <asp:Label ID="L_AdminAgreMateCursoSubDia" runat="server"></asp:Label></label>
-            <asp:DropDownList ID="ddt_Dia" Class="form-control" runat="server" DataSourceID="ODSdaia" DataTextField="dia" DataValueField="id_dia_materia">
+            <asp:DropDownList ID="ddt_Dia" Class="form-control" runat="server">
                 <asp:ListItem Value="0">Seleccione</asp:ListItem>
             </asp:DropDownList>
-
-            <asp:ObjectDataSource ID="ODSdaia" runat="server" SelectMethod="obtenerdiak" TypeName="Datos.DMUser"></asp:ObjectDataSource>
 
             <label for="ddt_Hora" class="control-label" style="color: #FFFFFF">
                 <asp:Label ID="L_AdminAgreMateCursoSubHora" runat="server"></asp:Label></label>
@@ -144,7 +142,8 @@
 
             <asp:Button ID="btn_CursoMateriaAceptar" runat="server" class="btn btn-success btn-lg" Width="227px" BorderColor="#660033" OnClick="btn_CursoMateriaAceptar_Click" />
             &nbsp;&nbsp;&nbsp;
-               
+            </ContentTemplate>
+            </asp:UpdatePanel>   
             <asp:Label ID="L_Error" runat="server" CssClass="label-danger" Font-Bold="True" Font-Size="Large" ForeColor="White"></asp:Label>
 
         </div>
