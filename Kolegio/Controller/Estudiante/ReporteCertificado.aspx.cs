@@ -55,7 +55,7 @@ public partial class View_Estudiante_ReporteCertificado : System.Web.UI.Page
 
         string documento = Session["userId"].ToString(); ;
 
-        LUser reporte = new LUser();
+        LMUser reporte = new LMUser();
 
         reporte.reporteCertidicadoEstudiante(informacion, documento);
         

@@ -672,9 +672,18 @@ namespace Datos
 
         }
 
-
-        
-
+        public List<Usuario> obtenerCertificadoEst(String reg)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                int usu = int.Parse(reg);
+                var est = db.usuario.ToList<Usuario>().Where(x => x.rol_id.Contains("3")).Where(x => x.id_usua == usu);
+                return est.ToList<Usuario>();
+            }
 
         }
+
+
+
+    }
 }

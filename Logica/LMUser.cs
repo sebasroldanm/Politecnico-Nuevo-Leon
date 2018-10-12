@@ -1079,7 +1079,7 @@ namespace Logica
             UUser enc = new UUser();
             DateTime fecha = DateTime.Now;
             DMReg dato = new DMReg();
-
+            enc.SAño = "0";
             string año = (fecha.Year).ToString();
             año = año + "-01-01";
             //DataTable re = datos.obtenerAniodeCurso(año);
@@ -1091,7 +1091,7 @@ namespace Logica
             }
             enc.Id_estudiante = userId;
 
-            List<CursoDeEstudianteVista> registros = new List<CursoDeEstudianteVista>;
+            List<CursoDeEstudianteVista> registros = new List<CursoDeEstudianteVista>();
             foreach(CursoDeEstudianteVista ce in registros)
             {
                 if (registros.Count > 0)
@@ -1107,7 +1107,24 @@ namespace Logica
         }
 
 
+        public void reporteCertidicadoEstudiante(DataTable informacion, string docuemtno)
+        {
+            DMUser estudiante = new DMUser();
+            DataRow fila;
 
+            //DataTable Intermedio = estudiante.obtenerCertificadoEst(docuemtno.ToString());
+            List<Usuario> Intermedio = estudiante.obtenerCertificadoEst(docuemtno.ToString());
+
+            
+            foreach(Usuario u in Intermedio)
+            {
+                fila = informacion.NewRow();
+                fila["Apellido"] = u.apellido_usua.ToString();
+                fila["Nombre"] = u.nombre_usua.ToString();
+                fila["Documento"] = int.Parse(u.num_documento.ToString());
+                informacion.Rows.Add(fila);
+            }
+        }
     }
 
 
