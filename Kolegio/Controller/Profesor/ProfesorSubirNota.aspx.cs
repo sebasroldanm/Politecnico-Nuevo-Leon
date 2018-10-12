@@ -52,7 +52,7 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
         LLogin logica = new LLogin();
         UUser usua = new UUser();
 
-        LReg logic = new LReg();
+        LMReg logic = new LMReg();
         UUser enc = new UUser();
         try
         {   
@@ -89,7 +89,7 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
     protected void btn_Subirnota_Click(object sender, EventArgs e)
     {
         UUser enc = new UUser();
-        LReg logic = new LReg();
+        LMReg logic = new LMReg();
 
         enc = logic.subirNota(ddl_alumno.SelectedValue, ddl_materia.SelectedValue, ddt_curso.SelectedValue, tb_nt.Text, tb_nt2.Text, tb_nt3.Text, int.Parse(Session["idioma"].ToString()));
         L_Error.Text = enc.Mensaje;

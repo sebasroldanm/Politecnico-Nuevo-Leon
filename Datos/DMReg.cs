@@ -189,5 +189,139 @@ namespace Datos
             }
         }
 
+        public List<CursoAnioVista> cursoProfesor(string id_p, string anio)
+        {
+            using (var db = new Mapeo("public"))
+            { int an = int.Parse(anio);
+                int profe = int.Parse(id_p);
+                List<CursoAnioVista> lista = null;
+                CursoAnioVista curanio = new CursoAnioVista();
+                lista = new List<CursoAnioVista>();
+                curanio.id_ancu = 0;
+                curanio.nombre_curso = "Selec.";
+                lista.Add(curanio);
+                var query = lista;
+                return lista.ToList<CursoAnioVista>().Union((from curso in db.curso
+                        join aniocurso in db.aniocurso on curso.id_curso equals aniocurso.id_ancu_curso
+                        join cursomateria in db.cursomateria on aniocurso.id_ancu equals cursomateria.id_cm_curso
+                        where aniocurso.id_ancu_anio == an
+                        where cursomateria.id_cm_profesor == profe
+                        select new
+                        {
+                            aniocurso.id_ancu,
+                            curso.nombre_curso,
+                            
+                        })
+                        .ToList().Select(m => new CursoAnioVista
+                        {
+                            id_ancu = m.id_ancu,
+                            nombre_curso = m.nombre_curso
+
+                        }).ToList()).ToList<CursoAnioVista>();
+            }
+        }
+
+
+        public List<Materia> obtenermateriacurso(string Curso, string Prof)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                int cur = int.Parse(Curso);
+                int profe = int.Parse(Prof);
+                List<Materia> lista = null;
+                Materia mat = new Materia();
+                lista = new List<Materia>();
+                mat.id_materia = 0;
+                mat.nombre_materia = "Selec.";
+                lista.Add(mat);
+                var query = lista;
+                return lista.ToList<Materia>().Union((from materia in db.materia
+                                                      join materiafecha in db.materiafecha on materia.id_materia equals materiafecha.id_mf_materia
+                                                      join cursomateria in db.cursomateria on materiafecha.id_mf equals cursomateria.id_cm_materia
+                                                      where cursomateria.id_cm_curso == cur
+                                                      where cursomateria.id_cm_profesor == profe
+                                                             
+                                                      select materia)
+                                                    .ToList()).ToList<Materia>();
+            }
+        }
+
+
+        public List<UsuaMensajeVista> obtenerEstApel(int curs)
+        {
+            using (var db = new Mapeo("public"))
+            {
+
+                List<UsuaMensajeVista> lista = null;
+                UsuaMensajeVista est = new UsuaMensajeVista();
+                lista = new List<UsuaMensajeVista>();
+                est.id_usua = 0;
+                est.nombre_usua = "Selec.";
+                est.Correo = " ";
+                lista.Add(est);
+                var query = lista;
+                return lista.ToList<UsuaMensajeVista>().Union((from estudiantecurso in db.estudiantecurso
+                                                             join usuario in db.usuario on estudiantecurso.id_ec_estudiante equals usuario.id_usua
+                                                             join aniocurso in db.aniocurso on estudiantecurso.id_ec_curso equals aniocurso.id_ancu
+                                                             join curso in db.curso on aniocurso.id_ancu_curso equals curso.id_curso
+                                                             where aniocurso.id_ancu == curs
+
+                                                             select new
+                                                             {
+                                                                 usuario.id_usua,
+                                                                 usuario.nombre_usua,
+                                                                 usuario.apellido_usua
+
+                                                             })
+                        .ToList().Select(m => new UsuaMensajeVista
+                        {
+                            id_usua = m.id_usua,
+                            nombre_usua = m.nombre_usua + " " + m.nombre_usua
+                            
+                        }).ToList()).ToList<UsuaMensajeVista>();
+            }
+        }
+
+        public List<Nota> obtenerNota(UUser dat)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                int est = int.Parse(dat.Id_estudiante);
+                int cur = int.Parse(dat.Curso);
+                int mat = int.Parse(dat.Materia);
+                return (from nota in db.nota
+                        join estudiantecurso in db.estudiantecurso on nota.id_n_estudiante equals estudiantecurso.id_ec
+                        join materia in db.materia on nota.id_n_materia equals materia.id_materia
+                        join aniocurso in db.aniocurso on estudiantecurso.id_ec_curso equals aniocurso.id_ancu
+                        where estudiantecurso.id_ec_estudiante == est
+                        where aniocurso.id_ancu == cur
+                        where materia.id_materia == mat
+
+                        select nota
+                        )
+                       .ToList<Nota>();
+            }
+        }
+
+        public void insertarNota(Nota dat)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.nota.SingleOrDefault(x => x.id_nota == dat.id_nota);
+                if (result != null)
+                {
+                    result.nota1 = dat.nota1;
+                    result.nota2 = dat.nota2;
+                    result.nota3 = dat.nota3;
+                    result.notadef = dat.notadef;
+                    db.SaveChanges();
+
+                }
+            }
+
+
+        }
+
+
     }
 }

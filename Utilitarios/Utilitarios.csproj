@@ -63,7 +63,7 @@
     <Compile Include="Mregistro\Anio.cs" />
     <Compile Include="Mregistro\AnioCurso.cs" />
     <Compile Include="Mregistro\Curso.cs" />
-    <Compile Include="Mregistro\CursoAnioVista.cs" />
+    <Compile Include="MVistasRegistro\CursoAnioVista.cs" />
     <Compile Include="Mregistro\CursoMateria.cs" />
     <Compile Include="Mregistro\DiaMateria.cs" />
     <Compile Include="Mregistro\EstudianteCurso.cs" />

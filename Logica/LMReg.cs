@@ -161,7 +161,6 @@ namespace Logica
         {
             UUser user = new UUser();
             DMReg datos = new DMReg();
-            LReg l_reg = new LReg();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 10;
@@ -187,10 +186,84 @@ namespace Logica
         }
 
 
+        public UUser ObAniodeCurso(string sesion)
+        {
+            UUser enc = new UUser();
+            DMReg datos = new DMReg();
+            enc.Año = 0.ToString();
+            if (sesion != null)
+            {
+                DateTime fecha = DateTime.Now;
+                string año = (fecha.Year).ToString();
+                año = año + "-01-01";
+                List<Anio> re = datos.obtenerAniodeCurso(año);
+                foreach (Anio an in re)
+                {
+                    enc.Año = an.id_anio.ToString();
+                }
+            }
+            else
+                enc.Url = "~/View/Profesor/AccesoDenegado.aspx";
+
+            return enc;
+        }
+
+        public UUser subirNota(string alumno, string materia, string curso, string nota1, string nota2, string nota3, int selIdioma)
+        {
+            DMReg datos = new DMReg();
+            UUser enc = new UUser();
+            UIdioma encId = new UIdioma();
+            LMIdioma idioma = new LMIdioma();
+            Int32 FORMULARIO = 39;
+            Nota not = new Nota();
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+            enc.Mensaje = " ";
+
+            if (alumno == "0" || materia == "0" || curso == "0")
+            {
+                enc.Mensaje = encId.CompIdioma["L_Falta_Selec"].ToString(); //"Falta seleccionar";
+            }
+            else
+            {
+                enc.Id_estudiante = alumno;
+                enc.Materia = materia;
+                enc.Curso = curso;
+                List<Nota> registros = datos.obtenerNota(enc);
+                //DataTable registros = datos.obtenerNota(enc);
+                foreach (Nota no in registros)
+                {
+                    enc.IdNota = no.id_nota.ToString();
+                    not.id_nota = no.id_nota;
+                }
+                
+                Double n1 = Convert.ToDouble(nota1);
+                Double n2 = Convert.ToDouble(nota2);
+                Double n3 = Convert.ToDouble(nota3);
+
+                Double nd = (n1 + n2 + n3) / 3.0;
+
+                enc.Nota1 = n1.ToString();
+                enc.Nota2 = n2.ToString();
+                enc.Nota3 = n3.ToString();
+
+                enc.Notadef = nd.ToString();
+
+                not.nota1 = n1;
+                not.nota2 = n2;
+                not.nota3 = n3;
+                
+                not.notadef = nd;
+                datos.insertarNota(not);
+
+            }
+            return enc;
+        }
+
 
 
     }
-
 
 
 }
