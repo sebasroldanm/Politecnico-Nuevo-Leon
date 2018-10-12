@@ -976,7 +976,6 @@ namespace Logica
         public UUser CargaFotoM(string fotoIO, string fotExten, string foto, string server, int selIdioma)
         {
             UUser enc = new UUser();
-            DUser datos = new DUser();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 6;
