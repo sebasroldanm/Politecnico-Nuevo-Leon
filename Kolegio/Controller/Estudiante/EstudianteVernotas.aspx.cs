@@ -29,7 +29,7 @@ public partial class View_Estudiante_EstudianteVernotas : System.Web.UI.Page
         GV_boletin.Columns[4].HeaderText = encId.CompIdioma["GridView1_4"].ToString();
 
         Response.Cache.SetNoStore();
-        LUser logic = new LUser();
+        LMUser logic = new LMUser();
         UUser enc = new UUser();
         LLogin log = new LLogin();
         try

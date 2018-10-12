@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Datos;
 using Utilitarios;
+using Utilitarios.MVistasUsuario;
 using Utilitarios.Mregistro;
 
 namespace Logica
@@ -1090,14 +1091,17 @@ namespace Logica
             }
             enc.Id_estudiante = userId;
 
-            DataTable registros = datos.obtenerCursoEst(enc);
-            if (registros.Rows.Count > 0)
+            List<CursoDeEstudianteVista> registros = new List<CursoDeEstudianteVista>;
+            foreach(CursoDeEstudianteVista ce in registros)
             {
-                enc.SAño = registros.Rows[0]["id_ancu"].ToString();
-            }
-            else
-            {
-                enc.SAño = "0";
+                if (registros.Count > 0)
+                {
+                    enc.SAño = ce.id_ancu.ToString();
+                }
+                else
+                {
+                    enc.SAño = "0";
+                }
             }
             return enc;
         }
