@@ -21,6 +21,15 @@ namespace Datos
 
         }
 
+        public List<Idioma> obtenerSeleccionIdioma()
+        {
+            using (var db = new Mapeo("public"))
+            {
+                return (db.idioma.ToList<Idioma>().OrderBy(i => i.id_idioma)).ToList<Idioma>();
+            }
+
+        }
+
 
         public List<RolUsuario> obtenerroles()
         {

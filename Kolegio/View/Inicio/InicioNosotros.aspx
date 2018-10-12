@@ -93,7 +93,7 @@ img {vertical-align: middle;}
                     <asp:ListItem Value="1"></asp:ListItem>
                 </asp:DropDownList>
                 
-                <asp:ObjectDataSource ID="ODS_Idioma" runat="server" SelectMethod="obtenerSeleccionIdioma" TypeName="Datos.DIdioma"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="ODS_Idioma" runat="server" SelectMethod="obtenerSeleccionIdioma" TypeName="Datos.DMIdioma"></asp:ObjectDataSource>
             
             </div>
 
