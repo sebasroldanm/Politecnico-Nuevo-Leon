@@ -61,7 +61,7 @@ public partial class View_Estudiante_EstudianteProfesor : System.Web.UI.Page
     protected void B_Enviar_Click(object sender, EventArgs e)
     {
         UUser usua = new UUser();
-        LUser logica = new LUser();
+        LMUser logica = new LMUser();
 
         usua = logica.verificarCorreoEstudoiante(
             DDL_Materia.SelectedValue,

@@ -42,11 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Acudiente.cs" />
+    <Compile Include="MIdioma\Controles.cs" />
+    <Compile Include="MIdioma\Formulario.cs" />
+    <Compile Include="MIdioma\RolIdioma.cs" />
+    <Compile Include="MIdioma\Terminacion.cs" />
+    <Compile Include="MUsuario\Acudiente.cs" />
     <Compile Include="AcudienteEstudianteVista.cs" />
     <Compile Include="Boletin.cs" />
     <Compile Include="HorarioEstudiante.cs" />
-    <Compile Include="Idioma.cs" />
+    <Compile Include="MIdioma\Idioma.cs" />
     <Compile Include="InfReporte.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,13 +73,13 @@
     <Compile Include="Mregistro\Observador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolUsuario.cs" />
-    <Compile Include="Sesion.cs" />
+    <Compile Include="MUsuario\Sesion.cs" />
     <Compile Include="TokenRecuperaUsuario.cs" />
     <Compile Include="UContrasenia.cs" />
     <Compile Include="UIdioma.cs" />
     <Compile Include="UReg.cs" />
-    <Compile Include="UsuaMensajeVista.cs" />
-    <Compile Include="Usuario.cs" />
+    <Compile Include="MVistasUsuario\UsuaMensajeVista.cs" />
+    <Compile Include="MUsuario\Usuario.cs" />
     <Compile Include="UToken.cs" />
     <Compile Include="UUser.cs" />
   </ItemGroup>
@@ -93,5 +97,6 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

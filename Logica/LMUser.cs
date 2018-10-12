@@ -973,6 +973,136 @@ namespace Logica
             return user;
         }
 
+        public UUser CargaFotoM(string fotoIO, string fotExten, string foto, string server, int selIdioma)
+        {
+            UUser enc = new UUser();
+            DUser datos = new DUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 6;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+            string sDia = Convert.ToString(DateTime.Now.Day);
+            string sMes = Convert.ToString(DateTime.Now.Month);
+            string sAgno = Convert.ToString(DateTime.Now.Year);
+            string sHora = Convert.ToString(DateTime.Now.Hour);
+            string sMinu = Convert.ToString(DateTime.Now.Minute);
+            string sSeco = Convert.ToString(DateTime.Now.Second);
+            string sFecha = sDia + sMes + sAgno + sHora + sMinu + sSeco;
+
+            String nombreArchivo = fotoIO;
+            String extension = fotExten;
+            String saveLocation = "";
+            string ext = extension;
+            if (!(string.Compare(extension, ".png", true) == 0 || string.Compare(extension, ".jpeg", true) == 0 || string.Compare(extension, ".jpg", true) == 0))
+            {
+                enc.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_error_formato"].ToString() + "');</script>";
+                //enc.Notificacion = "<script type='text/javascript'>alert('Solo se admiten imagenes en formato Jpeg o Gif');</script>";
+                return enc;
+            }
+
+            saveLocation = server + "/" + sFecha + sMinu + nombreArchivo;
+
+            if (System.IO.File.Exists(saveLocation))
+            {
+                enc.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_error_foto_repite"].ToString() + "');</script>";
+                //enc.Notificacion = "<script type='text/javascript'>alert('Ya existe una imagen en el servidor con ese nombre');</script>";
+                return enc;
+            }
+            string h = encId.CompIdioma["script_foto_cargada"].ToString();
+            enc.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_foto_cargada"].ToString() + "');</script>";
+            //enc.Notificacion = "<script type='text/javascript'>alert('El archivo de imagen ha sido cargado');</script>";
+            enc.SaveLocation = saveLocation;
+            enc.FotoCargada = "~/FotosUser" + "/" + sFecha + sMinu + nombreArchivo;
+            return enc;
+        }
+
+
+
+        public UUser verificarCorreoEstudoiante(
+                 string materia,
+                 string userId,
+                 string persona,
+                 string apePersona,
+                 string correo_l,
+                 string destinatario,
+                 string asunto,
+                 string mensaje,
+                 int selIdioma
+                 )
+        {
+            DMUser dat = new DMUser();
+            UUser usua = new UUser();
+
+            usua.Correo = destinatario;
+            //DataTable resultado = dat.verificarCorreo(usua);
+            List<Usuario> resultado = dat.verificarCorreo(usua);
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 28;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+
+            if (materia == "0")
+            {
+                usua.Mensaje = encId.CompIdioma["L_Verificar"].ToString(); //"Debe seleccionar una opcion";
+            }
+            else
+            {
+                if (resultado.Count > 0)
+                {
+                    mensaje = mensaje + "<br><br>Atentamente: " + persona + " " + apePersona + "<br>Correo para responder: " + correo_l + "";
+                    string cadena = mensaje;
+                    DCorreoEnviar correo = new DCorreoEnviar();
+                    correo.enviarCorreoEnviar(destinatario, asunto, mensaje);
+                    //usua.Notificacion = "<script language='JavaScript'>window.alert('Se ha enviado su mensaje con éxito');</script>";
+                    usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_msm_enviado"].ToString() + "');</script>";
+                    usua.Url = "EstudianteProfesor.aspx";
+                    usua.Mensaje = "";
+                }
+                else
+                {
+                    usua.Mensaje = encId.CompIdioma["L_Error_correo"].ToString();
+
+                    usua.CDestinatario = "";
+                }
+            }
+            return usua;
+        }
+
+
+        public UUser PL_EstudianteVerNotas(string userId)
+        {
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+            DateTime fecha = DateTime.Now;
+            DMReg dato = new DMReg();
+
+            string año = (fecha.Year).ToString();
+            año = año + "-01-01";
+            //DataTable re = datos.obtenerAniodeCurso(año);
+            List<Anio> re = dato.obtenerAniodeCurso(año);
+            foreach (Anio an in re)
+            {
+                enc.Año = an.id_anio.ToString();
+                //enc.Año = re.Rows[0]["id_anio"].ToString();
+            }
+            enc.Id_estudiante = userId;
+
+            DataTable registros = datos.obtenerCursoEst(enc);
+            if (registros.Rows.Count > 0)
+            {
+                enc.SAño = registros.Rows[0]["id_ancu"].ToString();
+            }
+            else
+            {
+                enc.SAño = "0";
+            }
+            return enc;
+        }
+
 
 
     }
