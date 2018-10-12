@@ -197,16 +197,17 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
     protected void B_Traer_Click(object sender, EventArgs e)
     {
 
-        LUser logica = new LUser();
+        LMUser logica = new LMUser();
         UUser usua = new UUser();
 
         usua = logica.TraerDatosPagina();
 
-        TB_Nosotros.Text = usua.Nosotros;
+        TB_Nosotros.Text = usua.Inicio;
         TB_Vision.Text = usua.Vision;
         TB_Mision.Text = usua.Mision;
 
-
+        B_Modificar.Visible = true;
+        B_Traer.Visible = false;
         //EUser usua = new EUser();
         //DaoUser dat = new DaoUser();
 
@@ -220,6 +221,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
 
         //}
     }
+
 
     protected void B_Terminaranio_Click(object sender, EventArgs e)
     {
@@ -281,12 +283,13 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
     {
         //Insertar Idioma
         UIdioma encId = new UIdioma();
+        LMIdioma mIdioma = new LMIdioma();
         LIdioma idioma = new LIdioma();
         UUser usua = new UUser();
 
         try
         {
-            encId = idioma.insertarIdioma(TB_nomidioma.Text, TB_terminoidioma.Text);
+            encId = mIdioma.insertarIdioma(TB_nomidioma.Text, TB_terminoidioma.Text);
             this.Page.Response.Write(usua.Notificacion);
             Session["empezar"] = encId.IdiomaTermina;
             string prueba = Session["empezar"].ToString();
@@ -338,13 +341,13 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
 
     }
 
-   
+
     protected void btn_aceptarsesion_Click(object sender, EventArgs e)
     {
         UIdioma usesion = new UIdioma();
-        LIdioma sesion = new LIdioma();
+        LMIdioma sesion = new LMIdioma();
         UUser user = new UUser();
-        user = sesion.listarSesion(ddl_usuarioxrol.SelectedValue);
+        user = sesion.listarSesion(int.Parse(ddl_usuarioxrol.SelectedValue));
         tb_sessiones.Text = user.Session;
         btn_editarsesion.Visible = true;
         btn_aceptarsesion.Visible = false;
@@ -353,14 +356,13 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
 
     protected void btn_editarsesion_Click(object sender, EventArgs e)
     {
-        UIdioma usesion = new UIdioma();
-        LIdioma sesion = new LIdioma();
-        usesion = sesion.editasesion(ddl_usuarioxrol.SelectedValue, tb_sessiones.Text);
+        LMIdioma sesion = new LMIdioma();
+        sesion.editasesion(int.Parse(ddl_usuarioxrol.SelectedValue), tb_sessiones.Text);
         btn_editarsesion.Visible = false;
         btn_aceptarsesion.Visible = true;
         tb_sessiones.ReadOnly = true;
     }
 
-  
+
 
 }

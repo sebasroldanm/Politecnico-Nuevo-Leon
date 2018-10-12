@@ -50,6 +50,8 @@ namespace Datos
         public DbSet<RolIdioma> rolIdioma { get; set; }
         public DbSet<Terminacion> terminacion { get; set; }
 
+        public DbSet<Inicio> inicio { get; set; }
+
 
 
 

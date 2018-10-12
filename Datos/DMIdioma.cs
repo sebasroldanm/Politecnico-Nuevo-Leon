@@ -71,6 +71,43 @@ namespace Datos
 
         }
 
+        public void editarsesionusua(int usuario, string sesion)
+        {
+            UUser uuser = new UUser();
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.sesion.SingleOrDefault(x => x.IdSesion == usuario);
+                if (result != null)
+                {
+                    result.SesionUsuario = sesion;
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        public UUser listarSesion(int usuario)
+        {
+            UUser usua = new UUser();
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.sesion.SingleOrDefault(x => x.IdSesion == usuario);
+                if (result != null)
+                {
+                    usua.Session = result.SesionUsuario;
+                }
+            }
+            return usua;
+        }
+
+        public void insertarIdioma(Idioma enc)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                db.idioma.Add(enc);
+                db.SaveChanges();
+            }
+        }
+
 
 
 

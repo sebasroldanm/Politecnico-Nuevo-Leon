@@ -1125,6 +1125,43 @@ namespace Logica
                 informacion.Rows.Add(fila);
             }
         }
+
+
+        public UUser TraerDatosPagina()
+        {
+            UUser usua = new UUser();
+            DMUser dat = new DMUser();
+
+            usua = dat.inicio();
+
+            return usua;
+        }
+
+        public UUser ModificarPaginaInicio(string nosotros, string mision, string vision, string session, int selIdioma)
+        {
+
+            UUser usua = new UUser();
+            DMUser dat = new DMUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 19;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+            usua.Inicio = nosotros;
+            usua.Mision = mision;
+            usua.Vision = vision;
+
+            usua.Session = session;
+
+
+            dat.editarInicio(usua);
+            usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_datos_modificados"].ToString() + "');</script>";
+            //usua.Notificacion = "<script language='JavaScript'>window.alert('Datos Modificados');</script>";
+            return usua;
+        }
+
+
     }
 
 

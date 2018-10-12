@@ -204,6 +204,52 @@ namespace Datos
             }
         }
 
+        public UUser inicio()
+        {
+            UUser usua = new UUser();
+
+            using (var db = new Mapeo("public"))
+            {
+                //var query = db.inicio.ToList<Inicio>().Select(u => new )
+
+
+
+                var result = db.inicio.SingleOrDefault(x => x.IdInicio == 1);
+                if (result != null)
+                {
+                    usua.Inicio = result.InicioCont;
+                    usua.Mision = result.MisionInicio;
+                    usua.Vision = result.VisionInicio;
+                }
+                else
+                {
+
+                }
+            }
+            return usua;
+        }
+
+        public void editarInicio(UUser enc)
+        {
+            UUser uuser = new UUser();
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.inicio.SingleOrDefault(x => x.IdInicio == 1);
+                if (result != null)
+                {
+                    result.InicioCont = enc.Inicio;
+                    result.MisionInicio = enc.Mision;
+                    result.VisionInicio = enc.Vision;
+
+                    result.Sesion = enc.Session;
+                    result.UltimaModificacion = DateTime.Now.ToShortDateString();
+                    db.SaveChanges();
+
+                }
+            }
+            //return uuser;
+
+        }
 
 
         public List<AcudienteEstudianteVista> listarEstAcudiente(string usu)
