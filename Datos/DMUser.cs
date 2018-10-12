@@ -210,13 +210,19 @@ namespace Datos
         {
 
             using (var db = new Mapeo("public"))
-            {              
+            {
                 //List<AcudienteEstudianteVista> list = null;
                 //AcudienteEstudianteVista ddlestac = new AcudienteEstudianteVista();
                 //ddlestac.id_usua = 0;
                 //ddlestac.nombre_usua = "Selec.";
                 //list.Add(ddlestac);
                 //var query = list;
+                List<AcudienteEstudianteVista> lista = new List<AcudienteEstudianteVista>();
+                AcudienteEstudianteVista ddlacu = new AcudienteEstudianteVista();
+                ddlacu.id_usua = 0;
+                ddlacu.nombre_usua = "Select";
+                lista.Add(ddlacu);
+                var q = lista;
                 int usuacu = int.Parse(usu);
                 var estacu = (from us in db.usuario
                               join acu in db.acudiente on us.id_usua equals acu.id_ac_estudiante
@@ -234,7 +240,7 @@ namespace Datos
                                   nombre_usua = y.nombre_usua + " " + y.apellido_usua
                               }).ToList();
                 //      return query.Union(estacu).ToList<AcudienteEstudianteVista>();
-                return estacu.ToList<AcudienteEstudianteVista>();
+                return q.Union(estacu).ToList<AcudienteEstudianteVista>();
 
 
 
