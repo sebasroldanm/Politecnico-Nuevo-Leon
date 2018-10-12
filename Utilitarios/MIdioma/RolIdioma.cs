@@ -10,7 +10,7 @@ namespace Utilitarios.MIdioma
 {
     [Serializable]
     [Table("rol_idioma", Schema = "idioma")]
-    class RolIdioma
+    public class RolIdioma
     {
         private Int32 IdRolIdioma;
         private String Rol_Idioma;

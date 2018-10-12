@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="LIdioma.cs" />
     <Compile Include="LLogin.cs" />
+    <Compile Include="LMIdioma.cs" />
     <Compile Include="LMReg.cs" />
     <Compile Include="LMUser.cs" />
     <Compile Include="LReg.cs" />

@@ -13,7 +13,7 @@ public partial class View_Profesor_CertificadoTrabajoProf : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         UIdioma encId = new UIdioma();
-        LIdioma idioma = new LIdioma();
+        LMIdioma idioma = new LMIdioma();
         Int32 FORMULARIO = 61;
 
         encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));

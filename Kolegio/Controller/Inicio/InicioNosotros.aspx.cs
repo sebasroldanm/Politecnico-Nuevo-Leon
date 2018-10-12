@@ -15,7 +15,7 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         UIdioma encId = new UIdioma();
-        LIdioma idioma = new LIdioma();
+        LMIdioma idioma = new LMIdioma();
         Int32 FORMULARIO = 32;
 
         Int32 IDIOMA = int.Parse(DDL_Idioma.SelectedValue);

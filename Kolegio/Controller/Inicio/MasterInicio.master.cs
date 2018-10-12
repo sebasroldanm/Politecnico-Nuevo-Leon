@@ -12,7 +12,7 @@ public partial class View_Inicio_MasterInicio : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
         UIdioma encId = new UIdioma();
-        LIdioma idioma = new LIdioma();
+        LMIdioma idioma = new LMIdioma();
         Int32 FORMULARIO = 43;
 
         encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));

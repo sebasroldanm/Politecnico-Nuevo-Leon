@@ -13,7 +13,7 @@ public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Pag
     protected void Page_Load(object sender, EventArgs e)
     {
         UIdioma encId = new UIdioma();
-        LIdioma idioma = new LIdioma();
+        LMIdioma idioma = new LMIdioma();
         Int32 FORMULARIO = 25;
 
         encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));

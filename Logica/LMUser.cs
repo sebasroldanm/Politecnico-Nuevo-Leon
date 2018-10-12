@@ -43,7 +43,7 @@ namespace Logica
             List<Usuario> resultado = new List<Usuario>();
          //   DataTable resultado = dat.verificarCorreo(usua);
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 5;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -81,7 +81,7 @@ namespace Logica
             UUser usua = new UUser();
             DUser dat = new DUser();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 7;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -137,7 +137,7 @@ namespace Logica
             DMUser dat = new DMUser();
             Usuario us = new Usuario();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 16;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -175,7 +175,7 @@ namespace Logica
             UUser usua = new UUser();
             DUser dat = new DUser();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 16;
 
 
@@ -255,7 +255,7 @@ namespace Logica
             UUser usua = new UUser();
             DUser dat = new DUser();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 11;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -308,7 +308,7 @@ namespace Logica
             UUser usua = new UUser();
             DUser dat = new DUser();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 6;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -361,7 +361,7 @@ namespace Logica
             UUser usua = new UUser();
             DUser dat = new DUser();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 18;
 
 
@@ -443,7 +443,7 @@ namespace Logica
             UUser usua = new UUser();
             DUser dat = new DUser();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 17;
 
 
@@ -524,7 +524,7 @@ namespace Logica
             UUser usua = new UUser();
             DUser dat = new DUser();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 15;
 
 
@@ -724,7 +724,7 @@ namespace Logica
             UUser usua = new UUser();
             DMUser dat = new DMUser();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 6;
             bool usuariook;
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -831,7 +831,7 @@ namespace Logica
             DUser datos = new DUser();
             DMUser muser = new DMUser();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 40;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -978,7 +978,7 @@ namespace Logica
             UUser enc = new UUser();
             DUser datos = new DUser();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 6;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -1039,7 +1039,7 @@ namespace Logica
             //DataTable resultado = dat.verificarCorreo(usua);
             List<Usuario> resultado = dat.verificarCorreo(usua);
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 28;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);

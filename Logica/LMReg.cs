@@ -17,7 +17,7 @@ namespace Logica
         {
             DMReg muser = new DMReg();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 10;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -163,7 +163,7 @@ namespace Logica
             DMReg datos = new DMReg();
             LReg l_reg = new LReg();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 10;
             Materia mat = new Materia();
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);

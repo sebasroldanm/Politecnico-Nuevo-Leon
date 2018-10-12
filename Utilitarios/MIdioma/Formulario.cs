@@ -10,7 +10,7 @@ namespace Utilitarios.MIdioma
 {
     [Serializable]
     [Table("formulario", Schema = "idioma")]
-    class Formulario
+    public class Formulario
     {
         private Int32 IdFormulario;
         private String Nombre;

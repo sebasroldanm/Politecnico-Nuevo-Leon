@@ -16,7 +16,7 @@ public partial class View_Recuperar : System.Web.UI.Page
     {
         Response.Cache.SetNoStore();
         UIdioma encId = new UIdioma();
-        LIdioma idioma = new LIdioma();
+        LMIdioma idioma = new LMIdioma();
         Int32 FORMULARIO = 41;
 
         encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));

@@ -46,7 +46,7 @@ public partial class View_Administrador_AdministradorMensaje : System.Web.UI.Pag
 
 
         UIdioma encId = new UIdioma();
-        LIdioma idioma = new LIdioma();
+        LMIdioma idioma = new LMIdioma();
         Int32 FORMULARIO = 5;
 
         encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));

@@ -7,6 +7,7 @@ using System.Data.Entity;
 using Utilitarios;
 using Utilitarios.Mregistro;
 using Utilitarios.Mlugares;
+using Utilitarios.MIdioma;
 
 namespace Datos
 {
@@ -42,6 +43,12 @@ namespace Datos
         public DbSet<Observador>observador { get; set; }
         public DbSet<Departamento> departamento { get; set; }
         public DbSet<Ciudad> ciudad { get; set; }
+
+        public DbSet<Controles> controles { get; set; }
+        public DbSet<Formulario> formulario { get; set; }
+        public DbSet<Idioma> idioma { get; set; }
+        public DbSet<RolIdioma> rolIdioma { get; set; }
+        public DbSet<Terminacion> terminacion { get; set; }
 
 
 
