@@ -12,6 +12,34 @@ public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Pag
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetNoStore();
+        LLogin logica = new LLogin();
+        UUser usua = new UUser();
+        try
+        {
+            usua = logica.logAgregaEstudiante(Session["userId"].ToString());
+
+            ImagenEst.ImageUrl = Session["foto"].ToString();
+            tb_correo.ReadOnly = usua.BotonTrue;
+            tb_contrasenia.ReadOnly = usua.BotonTrue;
+            tb_usuario.ReadOnly = usua.BotonTrue;
+            tb_Foto.Visible = usua.BotonFalse;
+            lb_foto.Visible = usua.BotonFalse;
+            Response.Redirect(usua.Url);
+        }
+        catch
+        {
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Estudiante/AccesoDenegado.aspx");
+            }
+        }
+
+
         UIdioma encId = new UIdioma();
         LMIdioma idioma = new LMIdioma();
         Int32 FORMULARIO = 25;
@@ -36,32 +64,7 @@ public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Pag
 
         //script_modificado="Datos Modificados con Exito";
 
-        Response.Cache.SetNoStore();
-        LLogin logica = new LLogin();
-        UUser usua = new UUser();
-        try
-        {
-            usua = logica.logAgregaEstudiante(Session["userId"].ToString());
-            
-            ImagenEst.ImageUrl = Session["foto"].ToString();
-            tb_correo.ReadOnly = usua.BotonTrue;
-            tb_contrasenia.ReadOnly = usua.BotonTrue;
-            tb_usuario.ReadOnly = usua.BotonTrue;
-            tb_Foto.Visible = usua.BotonFalse;
-            lb_foto.Visible = usua.BotonFalse;
-            Response.Redirect(usua.Url);
-        }
-        catch
-        {
-            try
-            {
-                usua.Session = Session["userId"].ToString();
-            }
-            catch
-            {
-                Response.Redirect("~/View/Estudiante/AccesoDenegado.aspx");
-            }
-        }
+        
         
     }
 

@@ -12,6 +12,34 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetNoStore();
+        LLogin logica = new LLogin();
+        UUser usua = new UUser();
+        try
+        {
+            usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documento"].ToString());
+            tb_DocenteId.Text = (string)Session["documento"];
+            tb_DocenteNombre.ReadOnly = usua.BotonTrue;
+            tb_DocenteApellido.ReadOnly = usua.BotonTrue;
+            tb_DocenteCorreo.ReadOnly = usua.BotonTrue;
+            tb_DocenteDireccion.ReadOnly = usua.BotonTrue;
+            tb_DocenteTelefono.ReadOnly = usua.BotonTrue;
+            tb_DocenteUsuario.ReadOnly = usua.BotonTrue;
+            tb_DocenteContrasenia.ReadOnly = usua.BotonTrue;
+        }
+        catch
+        {
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
+            }
+        }
+
+
         UIdioma encId = new UIdioma();
         LMIdioma idioma = new LMIdioma();
         Int32 FORMULARIO = 18;
@@ -81,32 +109,7 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
             DDL_Estado.Items.Add(encId.CompIdioma["DDL_Estado2"].ToString());
         }
 
-        Response.Cache.SetNoStore();
-        LLogin logica = new LLogin();
-        UUser usua = new UUser();
-        try
-        {
-            usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documento"].ToString());
-            tb_DocenteId.Text = (string)Session["documento"];
-            tb_DocenteNombre.ReadOnly = usua.BotonTrue;
-            tb_DocenteApellido.ReadOnly = usua.BotonTrue;
-            tb_DocenteCorreo.ReadOnly = usua.BotonTrue;
-            tb_DocenteDireccion.ReadOnly = usua.BotonTrue;
-            tb_DocenteTelefono.ReadOnly = usua.BotonTrue;
-            tb_DocenteUsuario.ReadOnly = usua.BotonTrue;
-            tb_DocenteContrasenia.ReadOnly = usua.BotonTrue;
-        }
-        catch
-        {
-            try
-            {
-                usua.Session = Session["userId"].ToString();
-            }
-            catch
-            {
-                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
-            }
-        }
+        
     }
     protected void btn_DocenteAceptar_Click(object sender, EventArgs e)
     {

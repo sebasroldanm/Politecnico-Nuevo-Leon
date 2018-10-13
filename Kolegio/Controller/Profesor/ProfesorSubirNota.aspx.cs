@@ -12,6 +12,40 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetNoStore();
+        LLogin logica = new LLogin();
+        UUser usua = new UUser();
+
+        LMReg logic = new LMReg();
+        UUser enc = new UUser();
+        try
+        {
+            enc = logic.ObAniodeCurso(Session["userId"].ToString());
+            Session["anio"] = enc.Año;
+            btn_Subirnota.Visible = false;
+            ButtonVerNota.Visible = true;
+            tb_nt.Enabled = false;
+            tb_nt2.Enabled = false;
+            tb_nt3.Enabled = false;
+
+            usua = logica.logAdminSecillo(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
+        }
+        catch
+        {
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Profesor/AccesoDenegado.aspx");
+            }
+        }
+
+
+
+
         UIdioma encId = new UIdioma();
         LMIdioma idioma = new LMIdioma();
         Int32 FORMULARIO = 39;
@@ -48,36 +82,7 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
         //L_Error_falta_seleccionar.Text = "Falta seleccionar";
 
 
-        Response.Cache.SetNoStore();
-        LLogin logica = new LLogin();
-        UUser usua = new UUser();
-
-        LMReg logic = new LMReg();
-        UUser enc = new UUser();
-        try
-        {   
-            enc = logic.ObAniodeCurso(Session["userId"].ToString());
-            Session["anio"] = enc.Año;
-            btn_Subirnota.Visible = false;
-            ButtonVerNota.Visible = true;
-            tb_nt.Enabled = false;
-            tb_nt2 .Enabled = false;
-            tb_nt3.Enabled = false;
-
-            usua = logica.logAdminSecillo(Session["userId"].ToString());
-            Response.Redirect(usua.Url);
-        }
-        catch
-        {
-            try
-            {
-                usua.Session = Session["userId"].ToString();
-            }
-            catch
-            {
-                Response.Redirect("~/View/Profesor/AccesoDenegado.aspx");
-            }
-        }
+        
         
     }
 

@@ -13,15 +13,6 @@ public partial class View_Admin_DescargarEstudiantesCurso : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        UIdioma encId = new UIdioma();
-        LMIdioma idioma = new LMIdioma();
-        Int32 FORMULARIO = 45;
-        LMUser logicaper = new LMUser();
-
-        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
-
-        Page.Title = encId.CompIdioma["Title"].ToString();
-
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();
@@ -33,11 +24,6 @@ public partial class View_Admin_DescargarEstudiantesCurso : System.Web.UI.Page
                 InfReporte reporte = ObtenerInforme();
                 CRS_listaestcur.ReportDocument.SetDataSource(reporte);
                 CrystalReportViewer1.ReportSource = CRS_listaestcur;
-
-
-
-
-
             }
             catch (Exception)
             {
@@ -57,6 +43,18 @@ public partial class View_Admin_DescargarEstudiantesCurso : System.Web.UI.Page
                 Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
             }
         }
+
+
+        UIdioma encId = new UIdioma();
+        LMIdioma idioma = new LMIdioma();
+        Int32 FORMULARIO = 45;
+        LMUser logicaper = new LMUser();
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+
+        
 
      
     }

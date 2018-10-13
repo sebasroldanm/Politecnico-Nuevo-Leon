@@ -12,30 +12,6 @@ public partial class View_Acudiente_AcudienteConfiguracion : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        UIdioma encId = new UIdioma();
-        LMIdioma idioma = new LMIdioma();
-        Int32 FORMULARIO = 2;
-        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
-
-
-        Page.Title = encId.CompIdioma["Title"].ToString();
-        L_AdminTituloConfig.Text = encId.CompIdioma["L_AdminTituloConfig"].ToString();
-        L_AdminConfigUsuario.Text = encId.CompIdioma["L_AdminConfigUsuario"].ToString();
-        tb_usuario.Attributes.Add("placeholder", encId.CompIdioma["tb_usuario"].ToString());
-        REV_usuario.ErrorMessage = encId.CompIdioma["REV_usuario"].ToString();
-        L_AdminConfigContra.Text = encId.CompIdioma["L_AdminConfigContra"].ToString();
-        tb_contrasenia.Attributes.Add(" placeholder", encId.CompIdioma["tb_contrasenia"].ToString());
-        REV_contrasenia.ErrorMessage = encId.CompIdioma["REV_contrasenia"].ToString();
-        L_AdminConfigCorreo.Text = encId.CompIdioma["L_AdminConfigCorreo"].ToString();
-        tb_correo.Attributes.Add("placeholder", encId.CompIdioma["tb_correo"].ToString());
-        REV_correo.ErrorMessage = encId.CompIdioma["REV_correo"].ToString();
-        lb_foto.Text = encId.CompIdioma["lb_foto"].ToString();
-        btn_Editar.Text = encId.CompIdioma["btn_Editar"].ToString();
-        btn_Aceptar.Text = encId.CompIdioma["btn_Aceptar"].ToString();
-        btn_cancelar.Text = encId.CompIdioma["btn_cancelar"].ToString();
-
-        //script_modificacion="Datos Modificados con Exito";
-
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();
@@ -61,6 +37,32 @@ public partial class View_Acudiente_AcudienteConfiguracion : System.Web.UI.Page
                 Response.Redirect("~/View/Acudiente/AccesoDenegado.aspx");
             }
         }
+
+        UIdioma encId = new UIdioma();
+        LMIdioma idioma = new LMIdioma();
+        Int32 FORMULARIO = 2;
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AdminTituloConfig.Text = encId.CompIdioma["L_AdminTituloConfig"].ToString();
+        L_AdminConfigUsuario.Text = encId.CompIdioma["L_AdminConfigUsuario"].ToString();
+        tb_usuario.Attributes.Add("placeholder", encId.CompIdioma["tb_usuario"].ToString());
+        REV_usuario.ErrorMessage = encId.CompIdioma["REV_usuario"].ToString();
+        L_AdminConfigContra.Text = encId.CompIdioma["L_AdminConfigContra"].ToString();
+        tb_contrasenia.Attributes.Add(" placeholder", encId.CompIdioma["tb_contrasenia"].ToString());
+        REV_contrasenia.ErrorMessage = encId.CompIdioma["REV_contrasenia"].ToString();
+        L_AdminConfigCorreo.Text = encId.CompIdioma["L_AdminConfigCorreo"].ToString();
+        tb_correo.Attributes.Add("placeholder", encId.CompIdioma["tb_correo"].ToString());
+        REV_correo.ErrorMessage = encId.CompIdioma["REV_correo"].ToString();
+        lb_foto.Text = encId.CompIdioma["lb_foto"].ToString();
+        btn_Editar.Text = encId.CompIdioma["btn_Editar"].ToString();
+        btn_Aceptar.Text = encId.CompIdioma["btn_Aceptar"].ToString();
+        btn_cancelar.Text = encId.CompIdioma["btn_cancelar"].ToString();
+
+        //script_modificacion="Datos Modificados con Exito";
+
+        
         
 
     }

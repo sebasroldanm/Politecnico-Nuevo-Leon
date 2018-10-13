@@ -12,27 +12,6 @@ public partial class View_Profesor_ProfesorHorario : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        UIdioma encId = new UIdioma();
-        LMIdioma idioma = new LMIdioma();
-        Int32 FORMULARIO = 35;
-
-        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
-
-        Page.Title = encId.CompIdioma["Title"].ToString();
-        L_ProfeConfigHorario.Text = encId.CompIdioma["L_ProfeConfigHorario"].ToString();
-        btn_descargar.Text = encId.CompIdioma["btn_descargar"].ToString();
-
-
-
-        //HORARIO
-        //ho_lunes = "Lunes";
-        //ho_martes = "Martes";
-        //ho_miercoles = "Miercoles";
-        //ho_jueves = "Jueves";
-        //ho_viernes = "Viernes";
-        //ho_libre = "Libre";
-
-
         Response.Cache.SetNoStore();
         LLogin log = new LLogin();
         UUser util = new UUser();
@@ -60,6 +39,31 @@ public partial class View_Profesor_ProfesorHorario : System.Web.UI.Page
                 Response.Redirect("~/View/Profesor/AccesoDenegado.aspx");
             }
         }
+
+
+
+        UIdioma encId = new UIdioma();
+        LMIdioma idioma = new LMIdioma();
+        Int32 FORMULARIO = 35;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_ProfeConfigHorario.Text = encId.CompIdioma["L_ProfeConfigHorario"].ToString();
+        btn_descargar.Text = encId.CompIdioma["btn_descargar"].ToString();
+
+
+
+        //HORARIO
+        //ho_lunes = "Lunes";
+        //ho_martes = "Martes";
+        //ho_miercoles = "Miercoles";
+        //ho_jueves = "Jueves";
+        //ho_viernes = "Viernes";
+        //ho_libre = "Libre";
+
+
+        
     }
 
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

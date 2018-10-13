@@ -11,6 +11,27 @@ public partial class View_Admin_ListarProfesor : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetNoStore();
+        LLogin logica = new LLogin();
+        UUser usua = new UUser();
+        try
+        {
+            usua = logica.logAdminSecillo(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
+        }
+        catch
+        {
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
+            }
+        }
+
+
         UIdioma encId = new UIdioma();
         LMIdioma idioma = new LMIdioma();
         Int32 FORMULARIO = 24;
@@ -31,25 +52,7 @@ public partial class View_Admin_ListarProfesor : System.Web.UI.Page
         GridView1.Columns[7].HeaderText = encId.CompIdioma["GridView1_7"].ToString();
         GridView1.Columns[8].HeaderText = encId.CompIdioma["GridView1_8"].ToString();
 
-        Response.Cache.SetNoStore();
-        LLogin logica = new LLogin();
-        UUser usua = new UUser();
-        try
-        {
-            usua = logica.logAdminSecillo(Session["userId"].ToString());
-            Response.Redirect(usua.Url);
-        }
-        catch
-        {
-            try
-            {
-                usua.Session = Session["userId"].ToString();
-            }
-            catch
-            {
-                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
-            }
-        }
+        
     }
 
         protected void btn_descargar_Click(object sender, EventArgs e)

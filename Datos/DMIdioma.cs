@@ -32,24 +32,6 @@ namespace Datos
 
         }
 
-
-        public List<RolUsuario> obtenerroles()
-        {
-            using (var db = new Mapeo("public"))
-            {
-                List<RolUsuario> lista = null;
-                RolUsuario rol = new RolUsuario();
-                lista = new List<RolUsuario>();
-                rol.IdRol = 0;
-                rol.RolUsua = "Select";
-                lista.Add(rol);
-                var query = lista;
-                var rolU = db.rolUsuario.ToList<RolUsuario>();
-
-                return query.Union(rolU).ToList<RolUsuario>();
-            }
-        }
-
         public List<UsuarioVista> listarusuariosxrol(int usuario)
         {
             using (var db = new Mapeo("public"))
@@ -249,30 +231,78 @@ namespace Datos
             }
         }
 
+        public List<RolUsuario> obtenerroles()
+        {
+            using (var db = new Mapeo("public"))
+            {
+                RolUsuario formSelect = new RolUsuario();
+                List<RolUsuario> lista = new List<RolUsuario>();
+                formSelect.id_rol = 0;
+                formSelect.nombre_rol = "Selec.";
+
+                lista.Add(formSelect);
+                var q = lista;
+
+
+                List<RolUsuario> f = new List<RolUsuario>();
+                RolUsuario form = new RolUsuario();
+
+                var rol = f;
+                rol = (db.rolUsuario.ToList<RolUsuario>().ToList<RolUsuario>());
+                return q.Union(rol).ToList<RolUsuario>();
+            }
+
+        }
 
 
 
+        public List<RolIdioma> obtenerRolIdioma()
+        {
+            using (var db = new Mapeo("public"))
+            {
+                RolIdioma formSelect = new RolIdioma();
+                List<RolIdioma> lista = new List<RolIdioma>();
+                formSelect.id_rol_idioma = 0;
+                formSelect.rol_idioma = "Selec.";
+
+                lista.Add(formSelect);
+                var q = lista;
 
 
+                List<RolIdioma> f = new List<RolIdioma>();
+                RolIdioma form = new RolIdioma();
 
+                var rol = f;
+                rol = (db.rolIdioma.ToList<RolIdioma>().ToList<RolIdioma>());
+                return q.Union(rol).ToList<RolIdioma>();
+            }
 
+        }
 
-
-
-
-
-
-
-        //public List<RolIdioma> select()
+        //public List<RolUsuario> listarusuariosxrol(int usuario)
         //{
-        //    List<RolIdioma> lista = null;
-        //    RolIdioma rolI = new RolIdioma();
-        //    lista = new List<RolIdioma>();
-        //    rolI.id_rol_idioma = 0;
-        //    rolI.rol_idioma = "Selec.";
-        //    lista.Add(rolI);
-        //    return lista;
+        //    using (var db = new Mapeo("public"))
+        //    {
+        //        RolUsuario formSelect = new RolUsuario();
+        //        List<RolUsuario> lista = new List<RolUsuario>();
+        //        formSelect.id_rol = 0;
+        //        formSelect.nombre_rol = "Selec.";
+
+        //        lista.Add(formSelect);
+        //        var q = lista;
+
+
+        //        List<RolUsuario> f = new List<RolUsuario>();
+        //        RolUsuario form = new RolUsuario();
+
+        //        var rol = f;
+        //        rol = (db.rolUsuario.ToList<RolUsuario>().ToList<RolUsuario>());
+        //        return q.Union(rol).ToList<RolUsuario>();
+        //    }
+
         //}
+
+
 
     }
 }

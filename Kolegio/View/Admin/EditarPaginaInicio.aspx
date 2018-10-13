@@ -120,7 +120,7 @@
                                 <asp:Label ID="L_AjaxRol" runat="server"></asp:Label></label>
                             <asp:DropDownList ID="DDL_rolSession" Class="form-control" runat="server" DataSourceID="ODS_ElejirRol" DataTextField="nombre_rol" DataValueField="id_rol" AutoPostBack="True">
                             </asp:DropDownList>
-                            <asp:ObjectDataSource ID="ODS_ElejirRol" runat="server" SelectMethod="obtenerroles" TypeName="Datos.DIdioma"></asp:ObjectDataSource>
+                            <asp:ObjectDataSource ID="ODS_ElejirRol" runat="server" SelectMethod="obtenerroles" TypeName="Datos.DMIdioma"></asp:ObjectDataSource>
                         </div>
 
 
@@ -132,7 +132,7 @@
                                 <asp:Label ID="L_AjaxUsuario" runat="server"></asp:Label></label>
                             <asp:DropDownList ID="ddl_usuarioxrol" Class="form-control" runat="server" DataSourceID="ODS_userrol" DataTextField="nombre_usua" DataValueField="id_usua" AutoPostBack="True">
                             </asp:DropDownList>
-                            <asp:ObjectDataSource ID="ODS_userrol" runat="server" SelectMethod="listarusuariosxrol" TypeName="Datos.DIdioma">
+                            <asp:ObjectDataSource ID="ODS_userrol" runat="server" SelectMethod="listarusuariosxrol" TypeName="Datos.DMIdioma">
                                 <SelectParameters>
                                     <asp:ControlParameter ControlID="DDL_rolSession" Name="usuario" PropertyName="SelectedValue" Type="Int32" />
                                 </SelectParameters>
@@ -224,7 +224,7 @@
                                                 <asp:Label ID="L_AjaxAcorDDLRol" runat="server"></asp:Label></label>
                                             <asp:DropDownList ID="DDL_rol" Class="form-control" runat="server" DataSourceID="ODS_RolEditar" DataTextField="rol_idioma" DataValueField="id_rol_idioma" AutoPostBack="True">
                                             </asp:DropDownList>
-                                            <asp:ObjectDataSource ID="ODS_RolEditar" runat="server" SelectMethod="obtenerRolIdioma" TypeName="Datos.DIdioma"></asp:ObjectDataSource>
+                                            <asp:ObjectDataSource ID="ODS_RolEditar" runat="server" SelectMethod="obtenerRolIdioma" TypeName="Datos.DMIdioma"></asp:ObjectDataSource>
                                         </div>
                                         <div class="form-group">
                                             <label for="DDL_formulario" class="control-label" style="color: #333399">

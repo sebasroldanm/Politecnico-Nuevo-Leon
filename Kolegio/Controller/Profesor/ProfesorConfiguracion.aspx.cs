@@ -12,25 +12,6 @@ public partial class View_Profesor_ProfesorConfiguracion : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        UIdioma encId = new UIdioma();
-        LMIdioma idioma = new LMIdioma();
-        Int32 FORMULARIO = 34;
-
-        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
-        //Title ????????????????????????
-        L_ProfeConfigTitulo.Text = encId.CompIdioma["L_ProfeConfigTitulo"].ToString();
-        L_ProfeConfiUsua.Text = encId.CompIdioma["L_ProfeConfiUsua"].ToString();
-        tb_usuario.Attributes.Add("placeholder", encId.CompIdioma["tb_usuario"].ToString());
-        REV_usuario.ErrorMessage = encId.CompIdioma["REV_usuario"].ToString();
-        L_ProfeConfigCorreo.Text = encId.CompIdioma["L_ProfeConfigCorreo"].ToString();
-        tb_correo.Attributes.Add("placeholder", encId.CompIdioma["tb_correo"].ToString());
-        REV_correo.ErrorMessage = encId.CompIdioma["REV_correo"].ToString();
-        btn_Editar.Text = encId.CompIdioma["btn_Editar"].ToString();
-        btn_Aceptar.Text = encId.CompIdioma["btn_Aceptar"].ToString();
-        btn_cancelar.Text = encId.CompIdioma["btn_cancelar"].ToString();
-
-        //script_datos_modificados="Datos Modificados con Exito";
-
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();
@@ -56,6 +37,29 @@ public partial class View_Profesor_ProfesorConfiguracion : System.Web.UI.Page
                 Response.Redirect("~/View/Profesor/AccesoDenegado.aspx");
             }
         }
+
+
+
+        UIdioma encId = new UIdioma();
+        LMIdioma idioma = new LMIdioma();
+        Int32 FORMULARIO = 34;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+        //Title ????????????????????????
+        L_ProfeConfigTitulo.Text = encId.CompIdioma["L_ProfeConfigTitulo"].ToString();
+        L_ProfeConfiUsua.Text = encId.CompIdioma["L_ProfeConfiUsua"].ToString();
+        tb_usuario.Attributes.Add("placeholder", encId.CompIdioma["tb_usuario"].ToString());
+        REV_usuario.ErrorMessage = encId.CompIdioma["REV_usuario"].ToString();
+        L_ProfeConfigCorreo.Text = encId.CompIdioma["L_ProfeConfigCorreo"].ToString();
+        tb_correo.Attributes.Add("placeholder", encId.CompIdioma["tb_correo"].ToString());
+        REV_correo.ErrorMessage = encId.CompIdioma["REV_correo"].ToString();
+        btn_Editar.Text = encId.CompIdioma["btn_Editar"].ToString();
+        btn_Aceptar.Text = encId.CompIdioma["btn_Aceptar"].ToString();
+        btn_cancelar.Text = encId.CompIdioma["btn_cancelar"].ToString();
+
+        //script_datos_modificados="Datos Modificados con Exito";
+
+        
 
     }
 

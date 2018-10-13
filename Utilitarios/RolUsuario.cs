@@ -17,8 +17,8 @@ namespace Utilitarios
 
         [Key]
         [Column("id_rol")]
-        public int IdRol { get => idRol; set => idRol = value; }
+        public int id_rol { get => idRol; set => idRol = value; }
         [Column("nombre_rol")]
-        public string RolUsua { get => rolUsua; set => rolUsua = value; }
+        public string nombre_rol { get => rolUsua; set => rolUsua = value; }
     }
 }

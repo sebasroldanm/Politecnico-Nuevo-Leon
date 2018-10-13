@@ -13,28 +13,22 @@ public partial class View_Admin_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        UIdioma encId = new UIdioma();
-        LMIdioma idioma = new LMIdioma();
-        Int32 FORMULARIO = 44;
-        LMUser logicaper = new LMUser();
-        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
-
-        Page.Title = encId.CompIdioma["Title"].ToString();
-
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
+        
         UUser usua = new UUser();
         try
         {
             usua = logica.logAdminSecillo(Session["userId"].ToString());
             try
             {
+                LMUser logicaper = new LMUser();
                 UUser enc = new UUser();
                 enc.Documento = Session["documentoe"].ToString();
 
 
                 string urlCarpeta = Server.MapPath("~/FotosUser/");
-               
+
                 CRS_desdiploma.ReportDocument.SetDataSource(logicaper.reporteDiplomaper(urlCarpeta, enc));
                 CrystalReportViewer1.ReportSource = CRS_desdiploma;
 
@@ -57,6 +51,17 @@ public partial class View_Admin_Default : System.Web.UI.Page
                 Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
             }
         }
+
+
+        UIdioma encId = new UIdioma();
+        LMIdioma idioma = new LMIdioma();
+        Int32 FORMULARIO = 44;
+        
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+
+        
        
     }
 

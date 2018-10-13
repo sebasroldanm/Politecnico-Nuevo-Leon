@@ -12,22 +12,6 @@ public partial class View_Profesor_ProfesorObservacion : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        UIdioma encId = new UIdioma();
-        LMIdioma idioma = new LMIdioma();
-        Int32 FORMULARIO = 38;
-
-        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
-
-        Page.Title = encId.CompIdioma["Title"].ToString();
-        L_ProfeObseTitulo.Text = encId.CompIdioma["L_ProfeObseTitulo"].ToString();
-        L_ProfeObseCurso.Text = encId.CompIdioma["L_ProfeObseCurso"].ToString();
-
-
-        GridView2.Columns[0].HeaderText = "Documento";
-        GridView2.Columns[1].HeaderText = "Apellido";
-        GridView2.Columns[2].HeaderText = "Nombre";
-        GridView2.Columns[3].HeaderText = "Observador";
-
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();
@@ -52,6 +36,26 @@ public partial class View_Profesor_ProfesorObservacion : System.Web.UI.Page
                 Response.Redirect("~/View/Profesor/AccesoDenegado.aspx");
             }
         }
+
+
+
+        UIdioma encId = new UIdioma();
+        LMIdioma idioma = new LMIdioma();
+        Int32 FORMULARIO = 38;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_ProfeObseTitulo.Text = encId.CompIdioma["L_ProfeObseTitulo"].ToString();
+        L_ProfeObseCurso.Text = encId.CompIdioma["L_ProfeObseCurso"].ToString();
+
+
+        GridView2.Columns[0].HeaderText = "Documento";
+        GridView2.Columns[1].HeaderText = "Apellido";
+        GridView2.Columns[2].HeaderText = "Nombre";
+        GridView2.Columns[3].HeaderText = "Observador";
+
+        
 
     }
 

@@ -12,6 +12,34 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)  //  <asp:Label ID = "" runat="server"></asp:Label>
     {
+        Response.Cache.SetNoStore();
+        LLogin logica = new LLogin();
+        UUser usua = new UUser();
+        try
+        {
+            usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documento"].ToString());
+            tb_AministradorAdministradorId.Text = Session["documento"].ToString();
+            //tb_AdministradorAdministradorNombre.ReadOnly = usua.BotonTrue;
+            //tb_AdministradorAdministradorApellido.ReadOnly = usua.BotonTrue;
+            //tb_AdministradorAdministradorCorreo.ReadOnly = usua.BotonTrue;
+            //tb_AdministradorAdministradorDireccion.ReadOnly = usua.BotonTrue;
+            //tb_AdministradorTelefono.ReadOnly = usua.BotonTrue;
+            //tb_AdministradorUsuario.ReadOnly = usua.BotonTrue;
+            //tb_AdministradorContrasenia.ReadOnly = usua.BotonTrue;
+        }
+        catch
+        {
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
+            }
+        }
+
+
         UIdioma encId = new UIdioma();
         LMIdioma idioma = new LMIdioma();
         Int32 FORMULARIO = 16;
@@ -78,32 +106,7 @@ public partial class View_Admin_EditarEliminarAdministrador : System.Web.UI.Page
         //item2="Inactivo";
 
 
-        Response.Cache.SetNoStore();
-        LLogin logica = new LLogin();
-        UUser usua = new UUser();
-        try
-        {
-            usua = logica.logEditarAcudienteAdmin(Session["userId"].ToString(), Session["documento"].ToString());
-            tb_AministradorAdministradorId.Text = Session["documento"].ToString();
-            //tb_AdministradorAdministradorNombre.ReadOnly = usua.BotonTrue;
-            //tb_AdministradorAdministradorApellido.ReadOnly = usua.BotonTrue;
-            //tb_AdministradorAdministradorCorreo.ReadOnly = usua.BotonTrue;
-            //tb_AdministradorAdministradorDireccion.ReadOnly = usua.BotonTrue;
-            //tb_AdministradorTelefono.ReadOnly = usua.BotonTrue;
-            //tb_AdministradorUsuario.ReadOnly = usua.BotonTrue;
-            //tb_AdministradorContrasenia.ReadOnly = usua.BotonTrue;
-        }
-        catch
-        {
-            try
-            {
-                usua.Session = Session["userId"].ToString();
-            }
-            catch
-            {
-                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
-            }
-        }
+        
     }
 
     protected void btn_AdministradorAceptar_Click(object sender, EventArgs e)

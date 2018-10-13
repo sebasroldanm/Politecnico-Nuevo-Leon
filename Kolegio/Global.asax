@@ -17,7 +17,7 @@
     void Application_Error(object sender, EventArgs e)
     {
         // Código que se ejecuta cuando se produce un error sin procesar
-
+        Response.Redirect("~/View/Inicio/MantenimientoPagina.aspx");
     }
 
     void Session_Start(object sender, EventArgs e)

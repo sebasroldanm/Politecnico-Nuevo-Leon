@@ -11,6 +11,26 @@ public partial class View_Admin_ListarAdministrador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetNoStore();
+        LLogin logica = new LLogin();
+        UUser usua = new UUser();
+        try
+        {
+            usua = logica.logAdminSecillo(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
+        }
+        catch
+        {
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
+            }
+        }
+
 
         UIdioma encId = new UIdioma();
         LMIdioma idioma = new LMIdioma();
@@ -32,25 +52,7 @@ public partial class View_Admin_ListarAdministrador : System.Web.UI.Page
         GridView1.Columns[7].HeaderText = encId.CompIdioma["GridView1_7"].ToString();
 
 
-        Response.Cache.SetNoStore();
-        LLogin logica = new LLogin();
-        UUser usua = new UUser();
-        try
-        {
-            usua = logica.logAdminSecillo(Session["userId"].ToString());
-            Response.Redirect(usua.Url);
-        }
-        catch
-        {
-            try
-            {
-                usua.Session = Session["userId"].ToString();
-            }
-            catch
-            {
-                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
-            }
-        }
+        
     }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

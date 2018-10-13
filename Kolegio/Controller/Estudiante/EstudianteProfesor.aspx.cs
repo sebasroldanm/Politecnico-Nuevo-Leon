@@ -13,25 +13,6 @@ public partial class View_Estudiante_EstudianteProfesor : System.Web.UI.Page
     string destinatario;
     protected void Page_Load(object sender, EventArgs e)
     {
-        UIdioma encId = new UIdioma();
-        LMIdioma idioma = new LMIdioma();
-        Int32 FORMULARIO = 28;
-
-        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
-
-        Page.Title = encId.CompIdioma["Title"].ToString();
-        L_EstuMensaTitulo.Text = encId.CompIdioma["L_EstuMensaTitulo"].ToString();
-        L_EstuMensProfe.Text = encId.CompIdioma["L_EstuMensProfe"].ToString();
-        L_EstuMenAsunto.Text = encId.CompIdioma["L_EstuMenAsunto"].ToString();
-        REV_Asuto.ErrorMessage = encId.CompIdioma["REV_Asuto"].ToString();
-        L_EstuMenDestinatario.Text = encId.CompIdioma["L_EstuMenDestinatario"].ToString();
-        L_EstuMenMensaje.Text = encId.CompIdioma["L_EstuMenMensaje"].ToString();
-        REV_Mensaje.ErrorMessage = encId.CompIdioma["REV_Mensaje"].ToString();
-        B_Enviar.Text = encId.CompIdioma["B_Enviar"].ToString();
-        //L_Error_selecione = "Seleccione una opcion"
-        //script_msm_enviado="Se ha enviado su mensaje con éxito"
-        //L_Error_correo = "El correo digitado no existe"
-
         Response.Cache.SetNoStore();
         UUser usua = new UUser();
         LLogin log = new LLogin();
@@ -56,6 +37,29 @@ public partial class View_Estudiante_EstudianteProfesor : System.Web.UI.Page
                 Response.Redirect("~/View/Estudiante/AccesoDenegado.aspx");
             }
         }
+
+
+
+        UIdioma encId = new UIdioma();
+        LMIdioma idioma = new LMIdioma();
+        Int32 FORMULARIO = 28;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_EstuMensaTitulo.Text = encId.CompIdioma["L_EstuMensaTitulo"].ToString();
+        L_EstuMensProfe.Text = encId.CompIdioma["L_EstuMensProfe"].ToString();
+        L_EstuMenAsunto.Text = encId.CompIdioma["L_EstuMenAsunto"].ToString();
+        REV_Asuto.ErrorMessage = encId.CompIdioma["REV_Asuto"].ToString();
+        L_EstuMenDestinatario.Text = encId.CompIdioma["L_EstuMenDestinatario"].ToString();
+        L_EstuMenMensaje.Text = encId.CompIdioma["L_EstuMenMensaje"].ToString();
+        REV_Mensaje.ErrorMessage = encId.CompIdioma["REV_Mensaje"].ToString();
+        B_Enviar.Text = encId.CompIdioma["B_Enviar"].ToString();
+        //L_Error_selecione = "Seleccione una opcion"
+        //script_msm_enviado="Se ha enviado su mensaje con éxito"
+        //L_Error_correo = "El correo digitado no existe"
+
+        
     }
 
     protected void B_Enviar_Click(object sender, EventArgs e)

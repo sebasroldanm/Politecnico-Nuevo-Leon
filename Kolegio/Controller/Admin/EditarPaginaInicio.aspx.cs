@@ -12,6 +12,28 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Response.Cache.SetNoStore();
+        LLogin Logica = new LLogin();
+        UUser usua = new UUser();
+        try
+        {
+            usua = Logica.logAgregarAdmin(Session["userId"].ToString());
+            Response.Redirect(usua.Url);
+            CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + usua.RolId);
+        }
+        catch
+        {
+            try
+            {
+                usua.Session = Session["userId"].ToString();
+            }
+            catch
+            {
+                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
+            }
+        }
+
+
         UIdioma encId = new UIdioma();
         LIdioma idioma = new LIdioma();
         Int32 FORMULARIO = 19;
@@ -141,26 +163,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
             //encId = idioma.listarControlIdiomaEditar(fo, it, idi);
             //TB_itemES.Text = encId.ControlEsp;
         
-        Response.Cache.SetNoStore();
-        LLogin Logica = new LLogin();
-        UUser usua = new UUser();
-        try
-        {
-            usua = Logica.logAgregarAdmin(Session["userId"].ToString());
-            Response.Redirect(usua.Url);
-            CalendarExtender1.EndDate = Convert.ToDateTime("31/12/" + usua.RolId);
-        }
-        catch
-        {
-            try
-            {
-                usua.Session = Session["userId"].ToString();
-            }
-            catch
-            {
-                Response.Redirect("~/View/Admin/AccesoDenegado.aspx");
-            }
-        }
+        
     }
 
     protected void B_Modificar_Click(object sender, EventArgs e)

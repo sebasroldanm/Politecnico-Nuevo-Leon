@@ -12,17 +12,6 @@ public partial class View_Acudiente_AcudienteObservador : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        UIdioma encId = new UIdioma();
-        LMIdioma idioma = new LMIdioma();
-        Int32 FORMULARIO = 4;
-        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
-
-        Page.Title = encId.CompIdioma["Title"].ToString();
-        L_AcuObEstu.Text = encId.CompIdioma["L_AcuObEstu"].ToString();
-
-        GridView1.Columns[0].HeaderText = encId.CompIdioma["GridView1_0"].ToString();
-        GridView1.Columns[1].HeaderText = encId.CompIdioma["GridView1_1"].ToString();
-
         Response.Cache.SetNoStore();
         LUser logic = new LUser();
         LLogin log = new LLogin();
@@ -48,6 +37,19 @@ public partial class View_Acudiente_AcudienteObservador : System.Web.UI.Page
                 Response.Redirect("~/View/Acudiente/AccesoDenegado.aspx");
             }
         }
+
+        UIdioma encId = new UIdioma();
+        LMIdioma idioma = new LMIdioma();
+        Int32 FORMULARIO = 4;
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AcuObEstu.Text = encId.CompIdioma["L_AcuObEstu"].ToString();
+
+        GridView1.Columns[0].HeaderText = encId.CompIdioma["GridView1_0"].ToString();
+        GridView1.Columns[1].HeaderText = encId.CompIdioma["GridView1_1"].ToString();
+
+        
 
 
         //try

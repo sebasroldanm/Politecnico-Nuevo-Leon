@@ -12,15 +12,6 @@ public partial class View_Acudiente_AcudienteExcuda : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        UIdioma encId = new UIdioma();
-        LMIdioma idioma = new LMIdioma();
-        Int32 FORMULARIO = 58;
-
-        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
-
-        Page.Title = encId.CompIdioma["Title"].ToString();
-        L_AcuDescargar.Text = encId.CompIdioma["L_AcuDescargar"].ToString();
-
         Response.Cache.SetNoStore();
         LLogin logica = new LLogin();
         UUser usua = new UUser();
@@ -40,6 +31,18 @@ public partial class View_Acudiente_AcudienteExcuda : System.Web.UI.Page
                 Response.Redirect("~/View/Acudiente/AccesoDenegado.aspx");
             }
         }
+
+
+        UIdioma encId = new UIdioma();
+        LMIdioma idioma = new LMIdioma();
+        Int32 FORMULARIO = 58;
+
+        encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
+
+        Page.Title = encId.CompIdioma["Title"].ToString();
+        L_AcuDescargar.Text = encId.CompIdioma["L_AcuDescargar"].ToString();
+
+        
     }
 
 
