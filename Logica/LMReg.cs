@@ -4,6 +4,7 @@ using System.Linq;
 using Datos;
 using Utilitarios;
 using Utilitarios.Mregistro;
+using Utilitarios.MVistasUsuario;
 using System.Data;
 using System.Text;
 using System.Threading.Tasks;
@@ -261,7 +262,40 @@ namespace Logica
             return enc;
         }
 
+        public UUser PL_EstudianteVerNotas(string userId)
+        {
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+            DateTime fecha = DateTime.Now;
+            DMReg dato = new DMReg();
+            enc.SAño = "0";
+            string año = (fecha.Year).ToString();
+            año = año + "-01-01";
+            //DataTable re = datos.obtenerAniodeCurso(año);
+            List<Anio> re = dato.obtenerAniodeCurso(año);
+            foreach (Anio an in re)
+            {
+                enc.Año = an.id_anio.ToString();
+                //enc.Año = re.Rows[0]["id_anio"].ToString();
+            }
+            enc.Id_estudiante = userId;
 
+            List<CursoDeEstudianteVista> registros = new List<CursoDeEstudianteVista>();
+            //DataTable registros = datos.obtenerCursoEst(enc);
+            registros = dato.obtenerCursoEst(enc);
+            foreach (CursoDeEstudianteVista ce in registros)
+            {
+                if (registros.Count > 0)
+                {
+                    enc.SAño = ce.id_ancu.ToString();
+                }
+                else
+                {
+                    enc.SAño = "0";
+                }
+            }
+            return enc;
+        }
 
     }
 

@@ -1075,7 +1075,7 @@ namespace Logica
 
         public UUser PL_EstudianteVerNotas(string userId)
         {
-            DUser datos = new DUser();
+            DMUser datos = new DMUser();
             UUser enc = new UUser();
             DateTime fecha = DateTime.Now;
             DMReg dato = new DMReg();
@@ -1092,7 +1092,8 @@ namespace Logica
             enc.Id_estudiante = userId;
 
             List<CursoDeEstudianteVista> registros = new List<CursoDeEstudianteVista>();
-            foreach(CursoDeEstudianteVista ce in registros)
+            registros = dato.obtenerCursoEst(enc);
+            foreach (CursoDeEstudianteVista ce in registros)
             {
                 if (registros.Count > 0)
                 {

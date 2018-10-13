@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Utilitarios;
 using Utilitarios.Mregistro;
+using Utilitarios.MVistasUsuario;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -179,10 +180,11 @@ namespace Datos
         {
             using (var db = new Mapeo("public"))
             {
-                var anioo = db.anio.ToList<Anio>().Select(j => new Anio
+                var anioo = db.anio.ToList<Anio>().Where(x => x.nombre_anio.Contains(anio)).Select(j => new Anio
                 {
                     id_anio = j.id_anio,
                     nombre_anio = j.nombre_anio.Substring(0, 4)
+
                 }).ToList();
 
                 return (anioo).ToList<Anio>();
@@ -221,6 +223,34 @@ namespace Datos
             }
         }
 
+        public List<CursoDeEstudianteVista> obtenerCursoEst(UUser dat)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                int est = int.Parse(dat.Id_estudiante);
+                int aniio = int.Parse(dat.Año);
+                return (from estudiantecurso in db.estudiantecurso
+                        join aniocurso in db.aniocurso on estudiantecurso.id_ec_curso equals aniocurso.id_ancu
+                        join anio in db.anio on aniocurso.id_ancu_anio equals anio.id_anio
+                        join curso in db.curso on aniocurso.id_ancu_curso equals curso.id_curso
+                        where estudiantecurso.id_ec_estudiante == est
+                        where anio.id_anio == aniio
+                        select new
+                        {
+                            aniocurso.id_ancu,
+                            curso.id_curso,
+                            curso.nombre_curso
+
+                        })
+                        .ToList().Select(m => new CursoDeEstudianteVista
+                        {
+                            id_ancu = m.id_ancu,
+                            id_curso = m.id_curso,
+                            nombre_curso = m.nombre_curso
+
+                        }).ToList();
+            }
+        }
 
         public List<Materia> obtenermateriacurso(string Curso, string Prof)
         {

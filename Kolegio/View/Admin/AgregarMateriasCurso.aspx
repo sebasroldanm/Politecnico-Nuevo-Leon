@@ -88,8 +88,6 @@
             </div>
             <br />
             <br />
-            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-            <ContentTemplate>
             
             <label for="ddt_anio" class="control-label" style="color: #FFFFFF">
                 <asp:Label ID="L_AdminAgreMateCursoSubAnio" runat="server"></asp:Label></label>
@@ -142,8 +140,7 @@
 
             <asp:Button ID="btn_CursoMateriaAceptar" runat="server" class="btn btn-success btn-lg" Width="227px" BorderColor="#660033" OnClick="btn_CursoMateriaAceptar_Click" />
             &nbsp;&nbsp;&nbsp;
-            </ContentTemplate>
-            </asp:UpdatePanel>   
+
             <asp:Label ID="L_Error" runat="server" CssClass="label-danger" Font-Bold="True" Font-Size="Large" ForeColor="White"></asp:Label>
 
         </div>
