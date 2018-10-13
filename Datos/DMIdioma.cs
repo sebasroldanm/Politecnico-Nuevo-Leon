@@ -15,7 +15,9 @@ namespace Datos
         {
             using (var db = new Mapeo("public"))
             {
-                var idiom = db.controles.ToList<Controles>().Where(x => x.con_formulario_id == form).Where(x => x.con_idioma_id == idioma);
+                var idiom = db.controles.ToList<Controles>()
+                    .Where(x => x.con_formulario_id == form)
+                    .Where(x => x.con_idioma_id == idioma);
                 return idiom.ToList<Controles>();
             }
 
@@ -109,6 +111,76 @@ namespace Datos
         }
 
 
+        public UIdioma verificarIdiomaBD(string termin)
+        {
+            UIdioma usua = new UIdioma();
+            using (var db = new Mapeo("public"))
+            {
+                if (db.idioma.LongCount(x => x.terminacion == termin) != 0)
+                {
+                    usua.Control = "ya esta";
+                    var resut = db.idioma.SingleOrDefault(x => x.terminacion == termin);
+                    usua.IdIdioma = resut.id_idioma.ToString();
+                }
+                else
+                {
+                    usua.Control = "no esta";
+                }
+            }
+            return usua;
+        }
+
+        public UIdioma contadorControl(int idIdioma)
+        {
+            UIdioma usua = new UIdioma();
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.controles.Count(x => x.con_idioma_id == idIdioma);
+                if (result != 0)
+                {
+                    usua.Contador = int.Parse(result.ToString());
+                }
+            }
+            return usua;
+        }
+
+        public UIdioma listarIdiomaVarchar(string nombre)
+        {
+            UIdioma usua = new UIdioma();
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.idioma.SingleOrDefault(x => x.nombre == nombre);
+                if (result != null)
+                {
+                    usua.IdIdioma = result.id_idioma.ToString();
+                }
+            }
+            return usua;
+        }
+
+        public void insertarIdiomaControles(Controles enc)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                db.controles.Add(enc);
+                db.SaveChanges();
+            }
+        }
+
+        public List<Controles> listarControlIdiomaEditar(UIdioma enc)
+        {
+            UIdioma usua = new UIdioma();
+            using (var db = new Mapeo("public"))
+            {
+                var contr = db.controles.ToList<Controles>()
+                    .Where(x => x.con_formulario_id == int.Parse(enc.IdFormulario))
+                    .Where(x => x.control == enc.Control)
+                    .Where(x => x.con_idioma_id == int.Parse(enc.IdIdioma));
+                var result = db.controles.SingleOrDefault(x => x.con_formulario_id == int.Parse(enc.IdFormulario));
+                return contr.ToList<Controles>();
+            }
+
+        }
 
 
 

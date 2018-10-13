@@ -250,26 +250,35 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
     {
         //Insertar Control
         UIdioma encId = new UIdioma();
-        LIdioma idioma = new LIdioma();
+        LMIdioma idioma = new LMIdioma();
         string id;
-        if (tb_traduccion.Text == "")
-        {
+        
+        encId = idioma.listarIdiomaVarchar(TB_nomidioma.Text);        
 
-        }
-        else
-        {
-            encId = idioma.listarIdiomaVarchar(TB_nomidioma.Text);
-            id = encId.IdIdioma;
-            encId = idioma.insertarControlIdioma(DDL_itemagregar.SelectedValue, tb_traduccion.Text, encId.IdIdioma, DDL_formularioagregar.SelectedValue, TB_nomidioma.Text);
-            DDL_rolagregar.DataBind();
-            DDL_formularioagregar.DataBind();
-            DDL_rolagregar.DataBind();
-            tb_traduccion.Text = "";
+        string a = DDL_itemagregar.SelectedValue;
+        string b = tb_traduccion.Text;
+        string c = encId.IdIdioma;
+        string d = DDL_formularioagregar.SelectedValue;
+        string f = TB_nomidioma.Text;
 
-        }
+
+
+
+        idioma.insertarControlIdioma(
+            DDL_itemagregar.SelectedValue, 
+            tb_traduccion.Text, 
+            int.Parse(encId.IdIdioma), 
+            int.Parse(DDL_formularioagregar.SelectedValue), 
+            TB_nomidioma.Text);
+
+        DDL_rolagregar.DataBind();
+        DDL_formularioagregar.DataBind();
+        DDL_rolagregar.DataBind();
+        tb_traduccion.Text = "";
+
         try
         {
-            encId = idioma.terminarIdioma("Español", Session["idiomaInsert"].ToString());
+            encId = idioma.terminarIdioma(1, int.Parse(encId.IdIdioma));
             Session["empezar"] = encId.Empezar;
             string cerrar = Session["empezar"].ToString();
         }
@@ -308,7 +317,15 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         {
             TB_nomidioma.Text = "";
             TB_terminoidioma.Text = "";
-            this.Page.Response.Write("<script language='JavaScript'>window.alert('Idioma Completado Con Éxito');</script>");
+            try
+            {
+                string notificacion = encId.Notificacion;
+                this.Page.Response.Write(notificacion);
+            }
+            catch
+            {
+                this.Page.Response.Write("<script language='JavaScript'>window.alert('Idioma Completado Con Éxito');</script>");
+            }
         }
 
     }
@@ -327,7 +344,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
     protected void btn_aceptar_Click(object sender, EventArgs e)
     {
         UIdioma encId = new UIdioma();
-        LIdioma idioma = new LIdioma();
+        LMIdioma idioma = new LMIdioma();
 
         btn_editar.Visible = true;
         btn_aceptar.Visible = false;

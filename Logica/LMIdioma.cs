@@ -52,29 +52,130 @@ namespace Logica
             DMIdioma da = new DMIdioma();
             UIdioma enc = new UIdioma();
             Idioma encapsulado = new Idioma();
-            DataTable reg = new DataTable();
-            DataTable valida = new DataTable();
 
-            valida = datos.verificarIdiomaBD(termin);
 
-            if (int.Parse(valida.Rows[0][0].ToString()) == 1)
+            UIdioma usua = new UIdioma();
+
+            usua = da.verificarIdiomaBD(termin);
+
+            if (usua.Control == "ya esta")
             {
-                enc.IdiomaTermina = "true";
-                enc.Notificacion = "<script language='JavaScript'>window.alert('Idioma ya fue Insertado');</script>";
+                enc = da.contadorControl(int.Parse(usua.IdIdioma));
+                if (enc.Contador < 828)
+                {
+                    encapsulado.nombre = nombre;
+                    encapsulado.terminacion = termin;
+                    //da.insertarIdioma(encapsulado);
+                    enc.IdiomaTermina = "true";
+                }
+                else
+                {
+                    enc.IdiomaTermina = null;
+                    enc.Notificacion = "<script language='JavaScript'>window.alert('Idioma ya fue Insertado');</script>";
+                }
             }
             else
             {
                 encapsulado.nombre = nombre;
                 encapsulado.terminacion = termin;
                 da.insertarIdioma(encapsulado);
-                reg = datos.contadorControl(nombre);
-                enc.Contador = int.Parse(reg.Rows[0][0].ToString());
                 enc.IdiomaTermina = "true";
                 enc.Notificacion = "<script language='JavaScript'>window.alert('Idioma Insertado');</script>";
             }
             return enc;
+        }
+
+        public UIdioma listarIdiomaVarchar(string nombre)
+        {
+            DMIdioma datos = new DMIdioma();
+            UIdioma enc = new UIdioma();
+            DataTable reg = new DataTable();
+
+            enc = datos.listarIdiomaVarchar(nombre);
+            
+            return enc;
+        }
+
+        public void insertarControlIdioma(string control, string texto, int ididioma, int idform, string nombre)
+        {
+            DIdioma datos = new DIdioma();
+            DMIdioma dat = new DMIdioma();
+            Controles enc = new Controles();
+
+            enc.control = control;
+            enc.texto = texto;
+            enc.con_idioma_id = ididioma;
+            enc.con_formulario_id = idform;
+
+            dat.insertarIdiomaControles(enc);
+
+            //reg = datos.contadorControl(nombre);
+            //enc.Contador = int.Parse(reg.Rows[0][0].ToString());
+
+            //return enc;
+        }
+
+        public UIdioma terminarIdioma(int español, int insertando)
+        {
+            DMIdioma datos = new DMIdioma();
+            UIdioma encId = new UIdioma();
+            DataTable reg = new DataTable();
+            DataTable inser = new DataTable();
+
+            int conEspañol;
+            int conInsertando;
+
+            encId = datos.contadorControl(español);
+            conEspañol = encId.Contador;
+            encId = datos.contadorControl(insertando);
+            conInsertando = encId.Contador;
+
+            if ((conEspañol - 1) < conInsertando)
+            {
+                encId.Empezar = null;
+                encId.Notificacion = "<script language='JavaScript'>window.alert('Idioma Agregado Exitosamente');</script>";
+            }
+            else
+            {
+                encId.Empezar = "true";
+            }
+            return encId;
+        }
+
+        public UIdioma listarControlIdiomaEditar(string form, string control, string idIdioma)
+        {
+            DMIdioma datos = new DMIdioma();
+            UIdioma enc = new UIdioma();
+            DataTable reg = new DataTable();
 
 
+
+            DIdioma datosFalta = new DIdioma();
+
+
+
+            if (form == "")
+            {
+                form = "0";
+            }
+            if (control == "")
+            {
+                control = "L";
+            }
+            if (idIdioma == "")
+            {
+                idIdioma = "0";
+            }
+            enc.IdFormulario = form;
+            enc.Control = control;
+            enc.IdIdioma = idIdioma;
+            reg = datosFalta.listarIdiomaControlesEditar(enc);
+
+            if (reg.Rows.Count > 0)
+            {
+                enc.ControlEsp = reg.Rows[0]["texto"].ToString();
+            }
+            return enc;
         }
 
 
