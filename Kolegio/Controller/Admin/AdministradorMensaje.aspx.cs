@@ -90,7 +90,7 @@ public partial class View_Administrador_AdministradorMensaje : System.Web.UI.Pag
 
     protected void B_Enviar_Click(object sender, EventArgs e)
     {
-        LUser logica = new LUser();
+        LMUser logica = new LMUser();
         UUser usua = new UUser();
 
         usua = logica.verificarCorreo(

@@ -41,7 +41,7 @@ namespace Logica
             UUser usua = new UUser();
 
             usua.Correo = destinatario;
-            List<Usuario> resultado = new List<Usuario>();
+            List<Usuario> resultado = dat.verificarCorreo(usua) ;
          //   DataTable resultado = dat.verificarCorreo(usua);
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
