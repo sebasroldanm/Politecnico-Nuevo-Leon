@@ -148,7 +148,7 @@ namespace Logica
             UIdioma enc = new UIdioma();
             DataTable reg = new DataTable();
 
-
+            
 
             DIdioma datosFalta = new DIdioma();
 
@@ -166,19 +166,32 @@ namespace Logica
             {
                 idIdioma = "0";
             }
-            enc.IdFormulario = form;
-            enc.Control = control;
-            enc.IdIdioma = idIdioma;
-            reg = datosFalta.listarIdiomaControlesEditar(enc);
+            //enc.IdFormulario = int.Parse(form);
+            //enc.Control = control;
+            //enc.IdIdioma = int.Parse(idIdioma);
+           List<Controles> regis =  datos.listarControlIdiomaEditar(form, control, idIdioma);
 
-            if (reg.Rows.Count > 0)
+            foreach(Controles con in regis)
             {
-                enc.ControlEsp = reg.Rows[0]["texto"].ToString();
+                enc.IdIdioma = con.id_controles.ToString();
+                enc.ControlEsp = con.texto.ToString();
             }
+            //if (reg.Rows.Count > 0)
+            //{
+            //    enc.ControlEsp = reg.Rows[0]["texto"].ToString();
+            //}
             return enc;
         }
 
+        public UIdioma editarIdiomaControl(int id, string texto)
+        {
+            DMIdioma datos = new DMIdioma();
+            UIdioma enc = new UIdioma();
+            DataTable reg = new DataTable();
 
+            datos.editarIdiomaControl(id, texto);
+            return enc;
+        }
 
 
 

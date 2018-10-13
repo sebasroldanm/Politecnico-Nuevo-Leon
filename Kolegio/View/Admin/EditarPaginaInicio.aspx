@@ -231,7 +231,7 @@
                                                 <asp:Label ID="L_AjaxAcorDDLForm" runat="server"></asp:Label></label>
                                             <asp:DropDownList ID="DDL_formulario" Class="form-control" runat="server" DataSourceID="ODS_FormEditar" DataTextField="nombre" DataValueField="id_formulario" AutoPostBack="True">
                                             </asp:DropDownList>
-                                            <asp:ObjectDataSource ID="ODS_FormEditar" runat="server" SelectMethod="listarFormulario" TypeName="Datos.DIdioma">
+                                            <asp:ObjectDataSource ID="ODS_FormEditar" runat="server" SelectMethod="listarFormulario" TypeName="Datos.DMIdioma">
                                                 <SelectParameters>
                                                     <asp:ControlParameter ControlID="DDL_rol" Name="idioma" PropertyName="SelectedValue" Type="Int32" />
                                                 </SelectParameters>

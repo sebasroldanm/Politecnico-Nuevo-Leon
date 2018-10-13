@@ -332,10 +332,10 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
 
     protected void btn_editar_Click(object sender, EventArgs e)
     {
-        UIdioma encId = new UIdioma();
-        LIdioma idioma = new LIdioma();
+        //UIdioma encId = new UIdioma();
+        LMIdioma idioma = new LMIdioma();
 
-        encId = idioma.editarIdiomaControl(DDL_item.SelectedValue, DDL_formulario.SelectedValue, DDL_idioma.SelectedValue, TB_itemES.Text);
+        idioma.editarIdiomaControl(int.Parse(Session["idIdiomaEditar"].ToString()), TB_itemES.Text);
         btn_aceptar.Visible = true;
         TB_itemES.ReadOnly = true;
     }
@@ -353,6 +353,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         string it = DDL_item.SelectedValue;
         string idi = DDL_idioma.SelectedValue;
         encId = idioma.listarControlIdiomaEditar(fo, it, idi);
+        Session["idIdiomaEditar"] = encId.IdIdioma;
         TB_itemES.Text = encId.ControlEsp;
         TB_itemES.ReadOnly = false;
 

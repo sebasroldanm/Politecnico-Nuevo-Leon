@@ -167,22 +167,112 @@ namespace Datos
             }
         }
 
-        public List<Controles> listarControlIdiomaEditar(UIdioma enc)
+        public List<Controles> listarControlIdiomaEditar(string form, string control, string idIdioma)
         {
             UIdioma usua = new UIdioma();
             using (var db = new Mapeo("public"))
+                
             {
                 var contr = db.controles.ToList<Controles>()
-                    .Where(x => x.con_formulario_id == int.Parse(enc.IdFormulario))
-                    .Where(x => x.control == enc.Control)
-                    .Where(x => x.con_idioma_id == int.Parse(enc.IdIdioma));
-                var result = db.controles.SingleOrDefault(x => x.con_formulario_id == int.Parse(enc.IdFormulario));
+                    .Where(x => x.con_formulario_id == Convert.ToInt32(form))
+                    .Where(x => x.control == control)
+                    .Where(x => x.con_idioma_id == Convert.ToInt32(idIdioma));
+
                 return contr.ToList<Controles>();
             }
 
         }
 
+        public void editarIdiomaControl(int id, string texto)
+        {
+            UUser uuser = new UUser();
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.controles.SingleOrDefault(x => x.id_controles == id);
+                if (result != null)
+                {
+                    result.texto = texto;
+                    db.SaveChanges();
+                }
+            }
+        }
 
+        public List<Formulario> listarFormulario(int idioma)
+        {
+            using (var db = new Mapeo("public"))
+            {
+
+                
+                Formulario formSelect = new Formulario();
+                List<Formulario> lista = new List<Formulario>();
+                formSelect.id_formulario = 0;
+                formSelect.nombre = "Selec.";
+                formSelect.url = "";
+
+                lista.Add(formSelect);
+                var q = lista;
+
+                                           
+                List<Formulario> f = new List<Formulario>();
+                Formulario form = new Formulario();
+               
+                var rol = f;
+                if (idioma == 0)
+                {
+                    form.id_formulario = 0;
+                    form.nombre = "";
+                    form.url = "";
+                    f.Add(form);
+                    rol = f;
+                }
+                if (idioma == 1)
+                {
+                    rol = (db.formulario.ToList<Formulario>().Where(x => x.id_formulario >= 30 &&  x.id_formulario <= 33 || x.id_formulario >= 40 && x.id_formulario <= 43)).ToList<Formulario>();
+                }
+                if (idioma == 2)
+                {
+                    rol = (db.formulario.ToList<Formulario>().Where(x => x.id_formulario >= 5 && x.id_formulario <= 24 || x.id_formulario >= 44 && x.id_formulario <= 53)).ToList<Formulario>();
+                }
+                if (idioma == 3)
+                {
+                    rol = (db.formulario.ToList<Formulario>().Where(x => x.id_formulario >= 34 && x.id_formulario <= 39 || x.id_formulario >= 61 && x.id_formulario <= 62)).ToList<Formulario>();
+                }
+                if (idioma ==  4)
+                {
+                    rol = (db.formulario.ToList<Formulario>().Where(x => x.id_formulario >= 25 && x.id_formulario <= 29 || x.id_formulario == 60)).ToList<Formulario>();
+                }
+                if (idioma == 5)
+                {
+                    rol = (db.formulario.ToList<Formulario>().Where(x => x.id_formulario >= 1 && x.id_formulario <= 4 || x.id_formulario >= 58 && x.id_formulario <= 59)).ToList<Formulario>();
+                }
+                return q.Union(rol).ToList<Formulario>();
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //public List<RolIdioma> select()
+        //{
+        //    List<RolIdioma> lista = null;
+        //    RolIdioma rolI = new RolIdioma();
+        //    lista = new List<RolIdioma>();
+        //    rolI.id_rol_idioma = 0;
+        //    rolI.rol_idioma = "Selec.";
+        //    lista.Add(rolI);
+        //    return lista;
+        //}
 
     }
 }
