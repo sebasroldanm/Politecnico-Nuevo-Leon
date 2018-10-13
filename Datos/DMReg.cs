@@ -180,10 +180,11 @@ namespace Datos
         {
             using (var db = new Mapeo("public"))
             {
-                var anioo = db.anio.ToList<Anio>().Select(j => new Anio
+                var anioo = db.anio.ToList<Anio>().Where(x => x.nombre_anio.Contains(anio)).Select(j => new Anio
                 {
                     id_anio = j.id_anio,
                     nombre_anio = j.nombre_anio.Substring(0, 4)
+
                 }).ToList();
 
                 return (anioo).ToList<Anio>();

@@ -143,6 +143,7 @@ namespace Datos
                 var query = lista;
                 var prof = db.usuario.ToList<Usuario>().Where(x => x.rol_id.Contains("2")).Select(u => new Usuario
                 {
+                    id_usua = u.id_usua,
                     nombre_usua = u.nombre_usua + " " + u.apellido_usua
                 }).ToList();
                 return query.Union(prof).ToList<Usuario>();
