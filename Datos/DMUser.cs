@@ -91,7 +91,29 @@ namespace Datos
                 List<Anio> lista = null;
                 Anio aniddl = new Anio();
                 lista = new List<Anio>();
-                DateTime year = new DateTime();
+                int year = int.Parse(DateTime.Now.ToString("yyyy"));
+                aniddl.id_anio = 0;
+                aniddl.nombre_anio = "Selec.";
+                lista.Add(aniddl);
+                var query = lista;
+                var anio = db.anio.ToList<Anio>().Where(x => int.Parse((x.nombre_anio.Substring(0, 4))) >= (year)).Select(j => new Anio
+                {
+                    id_anio = j.id_anio,
+                    nombre_anio = j.nombre_anio.Substring(0, 4)
+                }).ToList();
+
+                return query.Union(anio).ToList<Anio>();
+            }
+        }
+
+        public List<Anio> obtenertodosAnio()
+        {
+            using (var db = new Mapeo("public"))
+            {
+
+                List<Anio> lista = null;
+                Anio aniddl = new Anio();
+                lista = new List<Anio>();
                 aniddl.id_anio = 0;
                 aniddl.nombre_anio = "Selec.";
                 lista.Add(aniddl);
@@ -106,8 +128,7 @@ namespace Datos
             }
         }
 
-
-        public List<Materia> obtenerMateria()
+            public List<Materia> obtenerMateria()
         {
 
             using (var db = new Mapeo("public"))

@@ -18,7 +18,7 @@
             <br />
             <asp:DropDownList ID="ddt_anio" Class="form-control" runat="server" DataSourceID="ODS_anio" DataTextField="nombre_anio" DataValueField="id_anio" AutoPostBack="True" Width="132px"></asp:DropDownList>
 
-            <asp:ObjectDataSource ID="ODS_anio" runat="server" SelectMethod="obtenertodosAnio" TypeName="Datos.DUser"></asp:ObjectDataSource>
+            <asp:ObjectDataSource ID="ODS_anio" runat="server" SelectMethod="obtenertodosAnio" TypeName="Datos.DMUser"></asp:ObjectDataSource>
             <label for="curso" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AdminListaEstuCurso" runat="server"></asp:Label></label>
             <asp:DropDownList ID="ODL_Curso" runat="server" Class="form-control" AutoPostBack="True" DataSourceID="ODS_Curso" DataTextField="nombre_curso" DataValueField="id_ancu"></asp:DropDownList>
 
