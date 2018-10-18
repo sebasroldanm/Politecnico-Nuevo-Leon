@@ -154,10 +154,7 @@ namespace Logica
 
             return Dt;
         }
-
-
-
-
+        
         public UUser agregarMateria(Materia materia, string sesion, int selIdioma)
         {
             UUser user = new UUser();
@@ -185,8 +182,7 @@ namespace Logica
             }
             return user;
         }
-
-
+        
         public UUser ObAniodeCurso(string sesion)
         {
             UUser enc = new UUser();
