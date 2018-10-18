@@ -22,7 +22,7 @@
             <label for="curso" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_AdminListaEstuCurso" runat="server"></asp:Label></label>
             <asp:DropDownList ID="ODL_Curso" runat="server" Class="form-control" AutoPostBack="True" DataSourceID="ODS_Curso" DataTextField="nombre_curso" DataValueField="id_ancu"></asp:DropDownList>
 
-            <asp:ObjectDataSource ID="ODS_Curso" runat="server" SelectMethod="obtenerCursoanio" TypeName="Datos.DUser">
+            <asp:ObjectDataSource ID="ODS_Curso" runat="server" SelectMethod="obtenerCursoanio" TypeName="Datos.DMUser">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="ddt_anio" Name="anio" PropertyName="SelectedValue" Type="Int32" />
                 </SelectParameters>
