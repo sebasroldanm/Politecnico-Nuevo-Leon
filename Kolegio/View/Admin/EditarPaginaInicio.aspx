@@ -242,7 +242,7 @@
                                                 <asp:Label ID="L_AjaxAcroDDLItem" runat="server"></asp:Label></label>
                                             <asp:DropDownList ID="DDL_item" Class="form-control" runat="server" DataSourceID="ODS_ItemEditar" DataTextField="control" DataValueField="control" AutoPostBack="True">
                                             </asp:DropDownList>
-                                            <asp:ObjectDataSource ID="ODS_ItemEditar" runat="server" SelectMethod="listarControles" TypeName="Datos.DIdioma">
+                                            <asp:ObjectDataSource ID="ODS_ItemEditar" runat="server" SelectMethod="listarControles" TypeName="Datos.DMIdioma">
                                                 <SelectParameters>
                                                     <asp:ControlParameter ControlID="DDL_formulario" Name="idioma" PropertyName="SelectedValue" Type="Int32" />
                                                 </SelectParameters>
@@ -253,7 +253,7 @@
                                                 <asp:Label ID="Label1" runat="server">Idioma :</asp:Label></label>
                                             <asp:DropDownList ID="DDL_idioma" Class="form-control" runat="server" DataSourceID="ODS_Idioma" DataTextField="nombre" DataValueField="id_idioma" AutoPostBack="True">
                                             </asp:DropDownList>
-                                            <asp:ObjectDataSource ID="ODS_Idioma" runat="server" SelectMethod="obtenerSeleccionIdioma" TypeName="Datos.DIdioma"></asp:ObjectDataSource>
+                                            <asp:ObjectDataSource ID="ODS_Idioma" runat="server" SelectMethod="obtenerSeleccionIdioma" TypeName="Datos.DMIdioma"></asp:ObjectDataSource>
                                         </div>
                                     </div>
                                     <br></br>
@@ -262,10 +262,15 @@
                                         <ContentTemplate>
                                             <div class="form-inline" role="form">
                                                 <div class="form-group">
-                                                    <asp:TextBox ID="TB_itemES" MaxLength="30" runat="server" class="form-control" title="Español" ReadOnly="true"></asp:TextBox>
+                                                    <asp:TextBox ID="TB_itemES" MaxLength="50" runat="server" class="form-control" title="Español" ReadOnly="true" TextMode="MultiLine"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RFV_TB_itemES" runat="server" ControlToValidate="TB_itemES" ValidationGroup="boton_acep" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator><br />
+                                            <asp:RegularExpressionValidator ID="REV_TB_itemES" runat="server" ControlToValidate="TB_itemES" ValidationExpression="^[a-zA-Z0-9ñÑ,./\sáéíóú]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" 
+                                                ValidationGroup="boton_siguiente" ErrorMessage ="No se aceptan Caracteres Especiales"></asp:RegularExpressionValidator>
+
                                                 </div>
                                                 <div class="form-group">
-                                                    <asp:TextBox ID="TB_itemIN" MaxLength="30" runat="server" class="form-control" title="English" Visible="False"></asp:TextBox>
+                                                    <asp:TextBox ID="TB_itemIN" MaxLength="30" runat="server" class="form-control" title="English" Visible="False" ValidationGroup="boton_acep"></asp:TextBox>
+                                                    
                                                 </div>
                                             </div>
                                         </ContentTemplate>
@@ -327,7 +332,7 @@
                                                 <asp:Label ID="L_AjaxAcorDDLRolAgregar" runat="server"></asp:Label></label>
                                             <asp:DropDownList ID="DDL_rolagregar" Class="form-control" runat="server" DataSourceID="ODS_Rol" DataTextField="rol_idioma" DataValueField="id_rol_idioma" AutoPostBack="True">
                                             </asp:DropDownList>
-                                            <asp:ObjectDataSource ID="ODS_Rol" runat="server" SelectMethod="obtenerRolIdioma" TypeName="Datos.DIdioma"></asp:ObjectDataSource>
+                                            <asp:ObjectDataSource ID="ODS_Rol" runat="server" SelectMethod="obtenerRolIdioma" TypeName="Datos.DMIdioma"></asp:ObjectDataSource>
                                         </div>
                                         <div class="form-group">
                                             <label for="DDL_formularioagregar" class="control-label" style="color: #333399">
@@ -335,7 +340,7 @@
                                             <asp:DropDownList ID="DDL_formularioagregar" Class="form-control" runat="server" DataSourceID="ODS_Form" DataTextField="nombre" DataValueField="id_formulario" AutoPostBack="True">
                                                 <asp:ListItem Value="0"></asp:ListItem>
                                             </asp:DropDownList>
-                                            <asp:ObjectDataSource ID="ODS_Form" runat="server" SelectMethod="listarFormulario" TypeName="Datos.DIdioma">
+                                            <asp:ObjectDataSource ID="ODS_Form" runat="server" SelectMethod="listarFormulario" TypeName="Datos.DMIdioma">
                                                 <SelectParameters>
                                                     <asp:ControlParameter ControlID="DDL_rolagregar" Name="idioma" PropertyName="SelectedValue" Type="Int32" />
                                                 </SelectParameters>

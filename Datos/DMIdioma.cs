@@ -279,6 +279,29 @@ namespace Datos
 
         }
 
+        public List<Controles> listarControles(int idioma)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                Controles formSelect = new Controles();
+                List<Controles> lista = new List<Controles>();
+                formSelect.id_controles = 0;
+                formSelect.texto = "Selec.";
+
+                lista.Add(formSelect);
+                var q = lista;
+
+
+                List<Controles> f = new List<Controles>();
+                Controles form = new Controles();
+
+                var rol = f;
+                rol = (db.controles.ToList<Controles>().Where(x => x.con_formulario_id == idioma && x.con_idioma_id == 1).ToList<Controles>());
+                return q.Union(rol).ToList<Controles>();
+            }
+
+        }
+
         //public List<RolUsuario> listarusuariosxrol(int usuario)
         //{
         //    using (var db = new Mapeo("public"))
