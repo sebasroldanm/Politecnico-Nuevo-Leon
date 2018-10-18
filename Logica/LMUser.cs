@@ -19,11 +19,7 @@ namespace Logica
             DMUser dao = new DMUser();
             dao.insertarUserMapeo(text);
         }
-
-
-
-
-
+        
         /////////ENVIAR CORREO A PROFESOR//////////////////////
 
         public UUser verificarCorreo(
@@ -70,10 +66,7 @@ namespace Logica
 
             return usua;
         }
-
-
-
-
+        
         ////////FIN ENVIAR CORREO A PROFESOR////////////////
 
         public UUser insertaradmin(Usuario admin, int selIdioma)
@@ -127,10 +120,9 @@ namespace Logica
 
 
         }
-
-
+        
         ///LISTAR PARA EDITAR////
-        ///
+        
         public UUser editarBuscarUser(int documento, int selIdioma)
         {
             UUser usua = new UUser();
@@ -166,9 +158,7 @@ namespace Logica
 
             return usua;
         }
-
-
-
+        
         public UUser editarAdmin(Usuario admin, int selIdioma, string est, string fotoSesion)
         {
 
@@ -248,8 +238,7 @@ namespace Logica
 
 
         }
-
-
+        
         public UUser insertarprofe(Usuario profe, int selIdioma)
         {
             DMUser admon = new DMUser();
@@ -301,8 +290,7 @@ namespace Logica
 
 
         }
-
-
+        
         public UUser insertaracudiente(Usuario acudi, int selIdioma)
         {
             DMUser admon = new DMUser();
@@ -434,9 +422,7 @@ namespace Logica
 
 
         }
-
-
-
+        
         public UUser editarEstudiante(Usuario estudi, int selIdioma, string est, string fotoSesion)
         {
 
@@ -516,8 +502,7 @@ namespace Logica
 
 
         }
-
-
+        
         public UUser editarAcudiente(Usuario acudi, int selIdioma, string est, string fotoSesion)
         {
 
@@ -660,8 +645,7 @@ namespace Logica
 
             }
         }
-
-
+        
         public InfReporte reporteAdmin(String urlCarpeta)
         {
             DataRow fila;
@@ -692,9 +676,7 @@ namespace Logica
             }
             return datos;
         }
-
-
-
+        
         public void reporteDocente(DataTable informacion)
         {
             DUser docente = new DUser();
@@ -715,8 +697,7 @@ namespace Logica
 
             }
         }
-
-
+        
         public UUser validarUsuario(string usuario, string documento, int selIdioma)
         {
 
@@ -768,10 +749,8 @@ namespace Logica
 
 
         }
-
-
-
-      public InfReporte reporteDiplomaper(string urlCarpeta, UUser documento)
+        
+        public InfReporte reporteDiplomaper(string urlCarpeta, UUser documento)
          {
             DataRow fila;
             DMUser muser = new DMUser();
@@ -804,9 +783,7 @@ namespace Logica
                
             return datos;
         }
-
-
-
+        
         public void reporteEstudiante(DataTable informacion, int curso)
         {
 
@@ -824,8 +801,7 @@ namespace Logica
             }
 
         }
-
-
+        
         public UUser loggear(string userName, string clave, int selIdioma, Boolean bot)
         {
             UUser user = new UUser();
@@ -1017,9 +993,7 @@ namespace Logica
             enc.FotoCargada = "~/FotosUser" + "/" + sFecha + sMinu + nombreArchivo;
             return enc;
         }
-
-
-
+        
         public UUser verificarCorreoEstudoiante(
                  string materia,
                  string userId,
@@ -1071,8 +1045,7 @@ namespace Logica
             }
             return usua;
         }
-
-
+        
         public UUser PL_EstudianteVerNotas(string userId)
         {
             DMUser datos = new DMUser();
@@ -1106,8 +1079,7 @@ namespace Logica
             }
             return enc;
         }
-
-
+        
         public void reporteCertidicadoEstudiante(DataTable informacion, string docuemtno)
         {
             DMUser estudiante = new DMUser();
@@ -1126,8 +1098,7 @@ namespace Logica
                 informacion.Rows.Add(fila);
             }
         }
-
-
+        
         public UUser TraerDatosPagina()
         {
             UUser usua = new UUser();
@@ -1161,8 +1132,7 @@ namespace Logica
             //usua.Notificacion = "<script language='JavaScript'>window.alert('Datos Modificados');</script>";
             return usua;
         }
-
-
+        
         public UUser verificarCorreoContactenos(
             string nombres,
             string apellidos,
@@ -1194,9 +1164,6 @@ namespace Logica
             return usua;
 
         }
-
-
-
-
+       
     }
 }
