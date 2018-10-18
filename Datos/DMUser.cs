@@ -229,10 +229,6 @@ namespace Datos
 
             using (var db = new Mapeo("public"))
             {
-                //var query = db.inicio.ToList<Inicio>().Select(u => new )
-
-
-
                 var result = db.inicio.SingleOrDefault(x => x.IdInicio == 1);
                 if (result != null)
                 {
@@ -737,14 +733,11 @@ namespace Datos
 
         }
 
-        public List<Inicio> incio()
-        {
-            using(var db = new Mapeo("public"))
-            {
-                var result = db.inicio.ToList<Inicio>();
-                return result.ToList<Inicio>();
-            }
-        }
+
+
+
+
+
         
     }
 }
