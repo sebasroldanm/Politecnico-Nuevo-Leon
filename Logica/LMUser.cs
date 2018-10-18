@@ -1163,7 +1163,40 @@ namespace Logica
         }
 
 
+        public UUser verificarCorreoContactenos(
+            string nombres,
+            string apellidos,
+            string correo_l,
+            string telefono,
+            string mensaje,
+            int selIdioma
+            )
+        {
+            DUser dat = new DUser();
+            UUser usua = new UUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 30;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+            string destinatario = "colegiorespuesta@gmail.com";
+            string asunto = "**¡¡CONTACTENOS!!**";
+
+            mensaje = mensaje + "<br><br>Atentamente: " + nombres + "<br>" + apellidos + "<br>Correo para responder: " + correo_l + "<br>Telefono: " + telefono + "";
+            string cadena = mensaje;
+            DCorreoEnviar correo = new DCorreoEnviar();
+            correo.enviarCorreoEnviar(destinatario, asunto, mensaje);
+            //usua.Notificacion = "<script language='JavaScript'>window.alert('Se ha enviado su mensaje con éxito');</script>";
+            usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_men_enviado"].ToString() + "');</script>";
+            usua.Url = "InicioNosotros.aspx";
+
+            return usua;
+
+        }
+
+
+
+
     }
-
-
 }

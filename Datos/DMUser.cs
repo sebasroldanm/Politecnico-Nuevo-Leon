@@ -757,6 +757,15 @@ namespace Datos
 
         }
 
-        
+        public List<Inicio> incio()
+        {
+            using(var db = new Mapeo("public"))
+            {
+                var result = db.inicio.ToList<Inicio>();
+                return result.ToList<Inicio>();
+            }
+        }
+
+
     }
 }

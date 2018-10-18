@@ -36,14 +36,14 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
         Session["userId"] = null;
         Session["nombre"] = null;
 
-        LUser logica = new LUser();
+        LMUser logica = new LMUser();
         UUser usua = new UUser();
 
 
 
         usua = logica.TraerDatosPagina();
 
-        L_Inicio.Text = usua.Nosotros;
+        L_Inicio.Text = usua.Inicio;
 
         //logica.cerrarSession(Session.SessionID);
 

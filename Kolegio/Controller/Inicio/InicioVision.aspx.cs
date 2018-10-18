@@ -28,7 +28,7 @@ public partial class View_Inicio_Vision : System.Web.UI.Page
 
        
 
-        LUser logica = new LUser();
+        LMUser logica = new LMUser();
         UUser usua = new UUser();
 
         usua = logica.TraerDatosPagina();
