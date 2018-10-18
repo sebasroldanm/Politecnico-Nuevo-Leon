@@ -91,8 +91,7 @@ namespace Datos
                 db.SaveChanges();
             }
         }
-
-
+        
         public UIdioma verificarIdiomaBD(string termin)
         {
             UIdioma usua = new UIdioma();
@@ -253,9 +252,7 @@ namespace Datos
             }
 
         }
-
-
-
+        
         public List<RolIdioma> obtenerRolIdioma()
         {
             using (var db = new Mapeo("public"))
@@ -324,8 +321,6 @@ namespace Datos
         //    }
 
         //}
-
-
-
+        
     }
 }

@@ -103,8 +103,6 @@ namespace Datos
 
         }
 
-
-
         public bool validaMateria(Materia materia)
         {
             UUser umate = new UUser();
@@ -143,7 +141,6 @@ namespace Datos
 
             }
         }
-
 
         public List<Boletin> obtenerBoletin(string usu, string ancu)
         {
@@ -275,8 +272,7 @@ namespace Datos
                                                     .ToList()).ToList<Materia>();
             }
         }
-
-
+        
         public List<UsuaMensajeVista> obtenerEstApel(int curs)
         {
             using (var db = new Mapeo("public"))

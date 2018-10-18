@@ -69,8 +69,7 @@ namespace Datos
             }
 
         }
-
-
+        
         public List<Departamento> departamento()
         {
             using (var db = new Mapeo("public"))
@@ -81,8 +80,7 @@ namespace Datos
             }
 
         }
-
-
+        
         public List<Anio> obtenerAnio()
         {
             using (var db = new Mapeo("public"))
@@ -128,7 +126,7 @@ namespace Datos
             }
         }
 
-            public List<Materia> obtenerMateria()
+        public List<Materia> obtenerMateria()
         {
 
             using (var db = new Mapeo("public"))
@@ -172,8 +170,7 @@ namespace Datos
 
 
         }
-
-
+        
         public List<DiaMateria> obtenerdiak()
         {
             using (var db = new Mapeo("public"))
@@ -272,8 +269,7 @@ namespace Datos
             //return uuser;
 
         }
-
-
+        
         public List<AcudienteEstudianteVista> listarEstAcudiente(string usu)
         {
 
@@ -316,6 +312,7 @@ namespace Datos
             }
 
         }
+
         public List<CursoAnioVista> obtenerCursoanio(int anio)
         {
             using (var db = new Mapeo("public"))
@@ -343,9 +340,7 @@ namespace Datos
             }
 
         }
-
-
-
+        
         public List<Ciudad> ciudad(int idDepart)
         {
             using (var db = new Mapeo("public"))
@@ -363,7 +358,8 @@ namespace Datos
                 return query.Union(ciu).ToList<Ciudad>();
             }
         }
-         public List<Departamento> select()
+
+        public List<Departamento> select()
         {
             List<Departamento> lista = null;
             Departamento dep = new Departamento();
@@ -373,11 +369,7 @@ namespace Datos
             lista.Add(dep);
             return lista;
         }
-
-
-
-
-
+        
         public List<Usuario> listarProfesores()
         {
 
@@ -399,8 +391,7 @@ namespace Datos
             
 
         }
-
-
+        
         public List<Usuario> listaEstcurso(int curso)
         {
             using (var db = new Mapeo("public"))
@@ -492,12 +483,7 @@ namespace Datos
         }
 
         ///Insertar con Mapeo///////////////////////////////////////////
-
-
-
-
-
-
+        
         public void insertarAdmin(Usuario admin)
         {
 
@@ -530,13 +516,9 @@ namespace Datos
             }
 
         }
-
-      
-
-
+        
         ///LISTAR PARA EDIAR CON MAPEO////
-
-
+        
         public UUser obtenerUsuarioMod(Usuario us)
         {
             UIdioma encId = new UIdioma();
@@ -567,9 +549,7 @@ namespace Datos
             }
             return usua;
         }
-
-
-
+        
         ///Edita con Mapeo////////////////
 
         public UUser editarAdmin(Usuario admin)
@@ -603,6 +583,7 @@ namespace Datos
             return uuser;
 
         }
+
         public void editarConfiguracionAdmin(Usuario admin)
         {
             UUser uuser = new UUser();
@@ -656,8 +637,7 @@ namespace Datos
             return uuser;
 
         }
-
-
+        
         public UUser editarEstudiante(Usuario estudi)
         {
             UUser uuser = new UUser();
@@ -765,7 +745,6 @@ namespace Datos
                 return result.ToList<Inicio>();
             }
         }
-
-
+        
     }
 }
