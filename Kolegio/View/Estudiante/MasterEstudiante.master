@@ -46,7 +46,7 @@
                         <li>
                             <div class="form-inline container-fluid">
                                 <%--<li><a href="../Inicio/InicioNosotros.aspx"><asp:Label ID="L_EstuMCerrar" runat="server"></asp:Label></a></li>--%>
-                                <asp:Button ID="btn_cerrar_sesion" Height="50px" runat="server" OnClick="btn_cerrar_sesion_click" CssClass="btn btn-link"></asp:Button>
+                                <asp:Button ID="btn_cerrar_sesion" Height="50px" runat="server" OnClick="btn_cerrar_sesion_click" CssClass="btn btn-link" ValidationGroup="jiaa"></asp:Button>
                             </div>
                         </li>
                     </ul>

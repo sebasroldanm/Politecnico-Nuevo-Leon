@@ -336,7 +336,7 @@ namespace Datos
                         .ToList().Select(m => new UsuaMensajeVista
                         {
                             id_usua = m.id_usua,
-                            nombre_usua = m.nombre_usua + " " + m.nombre_usua
+                            nombre_usua = m.nombre_usua + " " + m.apellido_usua
 
                         }).ToList()).ToList<UsuaMensajeVista>();
             }

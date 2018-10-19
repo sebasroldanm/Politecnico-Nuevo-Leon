@@ -1243,7 +1243,34 @@ namespace Datos
             return usua;
         }
 
-        
+        public DataTable listaestsincurso()
+        {
+            DataTable est = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapt = new NpgsqlDataAdapter("registro.f_estudiantes_sincurso", conection);
+                dataAdapt.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+                conection.Open();
+                dataAdapt.Fill(est);
+
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return est;
+        }
+
 
         public DataTable obtenerAniodeCurso(string anio)
         {
@@ -1631,7 +1658,7 @@ namespace Datos
 
 
 
-        public DataTable obtenermateriacurso(string Curso, string Prof)
+        public DataTable rrmateriacurso(string Curso, string Prof)
         {
             DataTable An = new DataTable();
             NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
@@ -2187,7 +2214,35 @@ namespace Datos
             return Administrador;
         }
 
-        
+        /////////LISTA ACUDIENTES CON ESTUDIANTES//////////
+        public DataTable listaacuestu()
+        {
+            DataTable Usua = new DataTable();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.listaestuacu", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+                conection.Open();
+                dataAdapter.Fill(Usua);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usua;
+        }
+        //////////////////////////////////////////////
 
         public DataTable obteneracudientes()
         {
@@ -2425,70 +2480,7 @@ namespace Datos
             return Administrador;
         }
 
-        //
-        // ////////////////////Funciones Sin Persistencia///////////////////////////////////////////
-        //
-        /////////LISTA ACUDIENTES CON ESTUDIANTES//////////
-        public DataTable listaacuestu()
-        {
-            DataTable Usua = new DataTable();
-            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
-
-            try
-            {
-                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.listaestuacu", conection);
-                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-
-
-                conection.Open();
-                dataAdapter.Fill(Usua);
-            }
-            catch (Exception Ex)
-            {
-                throw Ex;
-            }
-            finally
-            {
-                if (conection != null)
-                {
-                    conection.Close();
-                }
-            }
-            return Usua;
-        }
-        //////////////////////////////////////////////
-        ///
-
-
-        public DataTable listaestsincurso()
-        {
-            DataTable est = new DataTable();
-            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
-
-            try
-            {
-                NpgsqlDataAdapter dataAdapt = new NpgsqlDataAdapter("registro.f_estudiantes_sincurso", conection);
-                dataAdapt.SelectCommand.CommandType = CommandType.StoredProcedure;
-
-                conection.Open();
-                dataAdapt.Fill(est);
-
-            }
-            catch (Exception Ex)
-            {
-                throw Ex;
-            }
-            finally
-            {
-                if (conection != null)
-                {
-                    conection.Close();
-                }
-            }
-            return est;
-        }
-
-
+       
 
     }
 }

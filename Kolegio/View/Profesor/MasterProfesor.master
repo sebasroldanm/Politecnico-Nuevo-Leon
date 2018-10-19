@@ -49,7 +49,7 @@
                         <li>
                             <%--<a href="../Inicio/InicioNosotros.aspx"><asp:Label ID="L_ProfeMCerrar" runat="server"></asp:Label></a>--%>
                             <div class="form-inline container-fluid">
-                                <asp:Button ID="btn_cerrar_sesion" Height="50px" runat="server" OnClick="btn_cerrar_sesion_click" CssClass="btn btn-link" ValidationGroup="hola"></asp:Button>
+                                <asp:Button ID="btn_cerrar_sesion" Height="50px" runat="server" OnClick="btn_cerrar_sesion_click" CssClass="btn btn-link" ValidationGroup="holauuw"></asp:Button>
                             </div>
                         </li>
                     </ul>
