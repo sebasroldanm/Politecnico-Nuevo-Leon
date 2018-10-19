@@ -20,7 +20,7 @@
             <label for="ddt_curso" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_ProfeObseCurso" runat="server"></asp:Label></label>
             <asp:DropDownList ID="ddt_curso" Class="form-control" runat="server" AutoPostBack="True" DataSourceID="ODS_curs" DataTextField="nombre_curso" DataValueField="id_ancu" OnSelectedIndexChanged="ddt_curso_SelectedIndexChanged"></asp:DropDownList>
 
-            <asp:ObjectDataSource ID="ODS_curs" runat="server" SelectMethod="cursoProfesor" TypeName="Datos.DUser">
+            <asp:ObjectDataSource ID="ODS_curs" runat="server" SelectMethod="cursoProfesor" TypeName="Datos.DMReg">
                 <SelectParameters>
                     <asp:SessionParameter DefaultValue="userId" Name="id_p" SessionField="userId" Type="String" />
                     <asp:SessionParameter DefaultValue="" Name="anio" SessionField="anio" Type="String" />
@@ -49,7 +49,7 @@
                 <SortedDescendingHeaderStyle BackColor="#15524A" />
             </asp:GridView>
 
-            <asp:ObjectDataSource ID="ODS_Estudiante" runat="server" SelectMethod="gEstudiante" TypeName="Datos.DUser">
+            <asp:ObjectDataSource ID="ODS_Estudiante" runat="server" SelectMethod="gEstudiante" TypeName="Datos.DMUser">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="ddt_curso" Name="curs" PropertyName="SelectedValue" Type="Int32" />
                 </SelectParameters>

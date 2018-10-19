@@ -41,7 +41,7 @@
                         <asp:DropDownList ID="DDL_Curso" CssClass="form-control" runat="server" DataSourceID="ODS_Obterner_curso" DataTextField="nombre_curso" DataValueField="id_ancu" AutoPostBack="True" ValidationGroup="actua"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RVF_Curso" runat="server" ErrorMessage="*" ControlToValidate="DDL_Curso" ValidationGroup="actua" ForeColor="Red" Font-Size="X-Large"></asp:RequiredFieldValidator>
 
-                        <asp:ObjectDataSource ID="ODS_Obterner_curso" runat="server" SelectMethod="cursoProfesor" TypeName="Datos.DUser">
+                        <asp:ObjectDataSource ID="ODS_Obterner_curso" runat="server" SelectMethod="cursoProfesor" TypeName="Datos.DMReg">
                             <SelectParameters>
                                 <asp:SessionParameter DefaultValue="userId" Name="id_p" SessionField="userId" Type="String" />
                                 <asp:SessionParameter DefaultValue="" Name="anio" SessionField="anio" Type="String" />
@@ -51,9 +51,10 @@
                         <label typeof="text" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_ProfeMensMateria" runat="server"></asp:Label></label>
                         <asp:DropDownList ID="DDL_Materia" CssClass="form-control" runat="server" DataSourceID="ODS_Traer_materia" DataTextField="nombre_materia" DataValueField="id_materia" AutoPostBack="True" ValidationGroup="actua"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RFV_Materia" runat="server" ErrorMessage="*" ControlToValidate="DDL_Materia" ValidationGroup="actua" ForeColor="Red" Font-Size="X-Large"></asp:RequiredFieldValidator>
-                        <asp:ObjectDataSource ID="ODS_Traer_materia" runat="server" SelectMethod="obtenermateriadecurso" TypeName="Datos.DUser">
+                        <asp:ObjectDataSource ID="ODS_Traer_materia" runat="server" SelectMethod="obtenermateriacurso" TypeName="Datos.DMReg">
                             <SelectParameters>
-                                <asp:ControlParameter ControlID="DDL_Curso" Name="reg" PropertyName="SelectedValue" Type="Int32" />
+                                <asp:ControlParameter ControlID="DDL_Curso" Name="Curso" PropertyName="SelectedValue" Type="String" />
+                                <asp:Parameter Name="Prof" Type="String" />
                             </SelectParameters>
                         </asp:ObjectDataSource>
 
@@ -64,7 +65,7 @@
                         <label typeof="text" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_ProfeMensAlumon" runat="server"></asp:Label></label>
                         <asp:DropDownList ID="DDL_Alumno" CssClass="form-control" runat="server" AutoPostBack="True" DataSourceID="ODS_Obtener_alumno" DataTextField="nombre_usua" DataValueField="id_usua" ValidationGroup="actua"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RFV_Alumno" runat="server" ErrorMessage="*" ControlToValidate="DDL_Alumno" ValidationGroup="actua" ForeColor="Red" Font-Size="X-Large"></asp:RequiredFieldValidator>
-                        <asp:ObjectDataSource ID="ODS_Obtener_alumno" runat="server" SelectMethod="obtenerEstApel" TypeName="Datos.DUser">
+                        <asp:ObjectDataSource ID="ODS_Obtener_alumno" runat="server" SelectMethod="obtenerEstApel" TypeName="Datos.DMReg">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="DDL_Curso" Name="curs" PropertyName="SelectedValue" Type="Int32" />
                             </SelectParameters>
