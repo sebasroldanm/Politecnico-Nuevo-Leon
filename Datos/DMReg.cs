@@ -393,12 +393,13 @@ namespace Datos
 
         public List<Materia> obtener_MatCur(UUser reg)
         {
+            int cur = int.Parse(reg.Curso);
             using (var db = new Mapeo("public"))
             {
                 return (from materia in db.materia
                         join materiafecha in db.materiafecha on materia.id_materia equals materiafecha.id_mf_materia
                         join cursomateria in db.cursomateria on materiafecha.id_mf equals cursomateria.id_cm_materia
-                        where cursomateria.id_cm_curso == int.Parse(reg.Curso)
+                        where cursomateria.id_cm_curso == cur
                         select materia
                         ).ToList();
 
