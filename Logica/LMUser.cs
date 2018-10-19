@@ -1234,7 +1234,7 @@ namespace Logica
         public void logicaGuardarSesion(int id, string ip, string mac, string sesion)
         {
             UUser usua = new UUser();
-            DUser dat = new DUser();
+            DMUser dat = new DMUser();
             Autenticacion aut = new Autenticacion();
             //Mac datosConexion = new MAC();
 
@@ -1246,9 +1246,9 @@ namespace Logica
             aut.ip = ip;
             aut.mac = mac;
             aut.session= sesion;
-            aut.fecha_inicio = DateTime.Now.ToString();
+            aut.fecha_inicio = DateTime.Now.ToShortDateString() +" "+ DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
 
-            dat.guardadoSession(usua);
+            dat.guardadoSession(aut);
         }
 
     }
