@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MEncSeguridad\MEncInicio.cs" />
     <Compile Include="MIdioma\Controles.cs" />
     <Compile Include="MIdioma\Formulario.cs" />
     <Compile Include="MIdioma\RolIdioma.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="UReg.cs" />
     <Compile Include="MVistasUsuario\UsuaMensajeVista.cs" />
     <Compile Include="MUsuario\Usuario.cs" />
+    <Compile Include="USeguridad.cs" />
     <Compile Include="UToken.cs" />
     <Compile Include="UUser.cs" />
   </ItemGroup>
