@@ -122,7 +122,7 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
     {
 
         UUser enc = new UUser();
-        LReg logic = new LReg();
+        LMReg logic = new LMReg();
 
         enc = logic.agregaraHorario(ddt_curso.SelectedValue, ddt_anio.SelectedValue, ddt_Dia.SelectedValue, ddt_Docente.SelectedValue, ddt_Hora.SelectedValue, ddt_Materia.SelectedValue, int.Parse(Session["idioma"].ToString()));
         L_Error.Text = enc.Mensaje;
@@ -165,11 +165,11 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
 
     protected void btn_pasaranio_Click(object sender, EventArgs e)
     {
-        UUser enc = new UUser();
-        LReg logic = new LReg();
+        //UUser enc = new UUser();
+        //LReg logic = new LReg();
 
-        enc = logic.pasarAñoClick(int.Parse(Session["idioma"].ToString()));
-        this.Page.Response.Write(enc.Notificacion);
+        //enc = logic.pasarAñoClick(int.Parse(Session["idioma"].ToString()));
+        //this.Page.Response.Write(enc.Notificacion);
 
     }
 

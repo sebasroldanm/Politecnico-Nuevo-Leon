@@ -414,7 +414,8 @@ namespace Logica
         public UUser agregaraHorario(string curso, string anio, string dia, string docente, string hora, string materia, int selIdioma)
         {
             UUser enc = new UUser();
-            DUser datos = new DUser();
+            DMReg datos = new DMReg();
+            DMUser muser = new DMUser();
             UIdioma encId = new UIdioma();
             LIdioma idioma = new LIdioma();
             Int32 FORMULARIO = 10;
@@ -460,25 +461,37 @@ namespace Logica
                         enc.Dia_materia = dia;
                         enc.Hora_in = hora;
 
-                        DataTable registros = datos.obtenerHora(enc);
-                        if (registros.Rows.Count > 0)
+                        List<MateriaFecha> registros = datos.obtenerHora(enc);
+                        if (registros.Count > 0)
                         {
-                            enc.Cur_mat = registros.Rows[0]["id_mf"].ToString();
-                            enc.Curso = curso;
-                            enc.Id_docente = docente;
+                            foreach(MateriaFecha mf in registros)
+                            {
+                                enc.Cur_mat = mf.id_mf.ToString();  //registros.Rows[0]["id_mf"].ToString();
+                                enc.Curso = curso;
+                                enc.Id_docente = docente;
 
-                            datos.insertarCursoMateria(enc);
+                                datos.insertarCursoMateria(enc);
+                            }
+                            
                         }
                         int cur = Convert.ToInt32(curso);
-                        DataTable est = datos.gEstudiante(cur);
-                        int n = est.DefaultView.Count;
-
-                        for (int i = 0; i < n; i++)
+                        List<Usuario> est = muser.gEstudiante(cur);
+                        
+                        foreach(Usuario u in est)
                         {
-                            enc.Id_estudiante = est.Rows[i]["id_usua"].ToString();
+                            enc.Id_estudiante = u.id_usua.ToString();
                             enc.Materia = materia;
                             datos.insertarNotaMateria(enc);
                         }
+
+                        //int n = est.DefaultView.Count;
+
+                        //for (int i = 0; i < n; i++)
+                        //{
+                        //    enc.Id_estudiante = est.Rows[i]["id_usua"].ToString();
+                        //    enc.Materia = materia;
+                        //    datos.insertarNotaMateria(enc);
+                        //}
                         enc.Mensaje = encId.CompIdioma["L_Error_materia_insertada"].ToString(); //"Materia Insertada a Curso con Exito";
                         //this.Page.Response.Write("<script language='JavaScript'>window.alert('Materia Insertada a Curso con Exito');</script>");
                     }

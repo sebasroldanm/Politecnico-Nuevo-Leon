@@ -405,7 +405,7 @@ namespace Datos
             }
         }
 
-        public void insertarNotaMateria( UUser enc)
+        public void insertarNotaMateria(UUser enc)
         {
             Nota not = new Nota();
             using (var db = new Mapeo("public"))
@@ -415,7 +415,7 @@ namespace Datos
                 not.nota1 = 1;
                 not.nota2 = 1;
                 not.nota3 = 1;
-                not.notadef = 1; 
+                not.notadef = 1;
                 db.nota.Add(not);
                 db.SaveChanges();
             }
@@ -438,6 +438,36 @@ namespace Datos
                 return r;
             }
 
+        }
+
+        public List<MateriaFecha> obtenerHora(UUser reg)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                return (from materia in db.materia
+                        join materiafecha in db.materiafecha on materia.id_materia equals materiafecha.id_mf_materia
+                        join diamateria in db.diamateria on materiafecha.id_mf_fecha equals diamateria.id_dia_materia
+                        where materia.id_materia == int.Parse(reg.Materia)
+                        where diamateria.dia == reg.Dia_materia
+                        where diamateria.hora_inicio == reg.Hora_in
+
+                        select materiafecha
+                            )
+                           .ToList<MateriaFecha>();
+            }
+        }
+
+        public void insertarCursoMateria(UUser dat)
+        {
+            CursoMateria cm = new CursoMateria();
+            using (var db = new Mapeo("public"))
+            {
+                cm.id_cm_curso = int.Parse(dat.Curso);
+                cm.id_cm_materia = int.Parse(dat.Cur_mat);
+                cm.id_cm_profesor = int.Parse(dat.Id_docente);
+                db.cursomateria.Add(cm);
+                db.SaveChanges();
+            }
         }
     }
 }
