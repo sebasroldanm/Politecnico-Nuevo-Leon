@@ -802,7 +802,7 @@ namespace Datos
                 return us;
             }
         }
-        /*
+        
         public int Capturafechaintentosesion(string Usuario)
         {
             List<Sesion> ses = new List<Sesion>();
@@ -813,10 +813,19 @@ namespace Datos
                 ses = db.sesion.ToList<Sesion>().Where(x => x.IdUsuario == IdUsuadeUser(Usuario)).ToList();
                 foreach (Sesion s in ses)
                 {
-                    fe = DateTime.Parse(s.HoraLibre) + femas;
+                    fe = DateTime.Parse(s.HoraLibre).AddMinutes(30);
+                }
+
+                if (DateTime.Now > fe)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }            
         }
-        */
+        
     }
 }
