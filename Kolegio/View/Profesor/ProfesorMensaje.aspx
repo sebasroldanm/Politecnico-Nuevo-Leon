@@ -41,7 +41,7 @@
                         <asp:DropDownList ID="DDL_Curso" CssClass="form-control" runat="server" DataSourceID="ODS_Obterner_curso" DataTextField="nombre_curso" DataValueField="id_ancu" AutoPostBack="True" ValidationGroup="actua"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RVF_Curso" runat="server" ErrorMessage="*" ControlToValidate="DDL_Curso" ValidationGroup="actua" ForeColor="Red" Font-Size="X-Large"></asp:RequiredFieldValidator>
 
-                        <asp:ObjectDataSource ID="ODS_Obterner_curso" runat="server" SelectMethod="cursoProfesor" TypeName="Datos.DUser">
+                        <asp:ObjectDataSource ID="ODS_Obterner_curso" runat="server" SelectMethod="cursoProfesor" TypeName="Datos.DMReg">
                             <SelectParameters>
                                 <asp:SessionParameter DefaultValue="userId" Name="id_p" SessionField="userId" Type="String" />
                                 <asp:SessionParameter DefaultValue="" Name="anio" SessionField="anio" Type="String" />
