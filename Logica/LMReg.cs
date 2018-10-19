@@ -37,7 +37,7 @@ namespace Logica
                     break;
                 case 2:
                     //Horario Profesor
-                    horar = muser.horarioEstudiante(id_curso); ;
+                    horar = muser.horarioProfesor(id_curso); ;
                     break;
                 case 3:
                     //Horario Estudiante
@@ -292,7 +292,7 @@ namespace Logica
             }
             return enc;
         }
-        //
+        
         public UUser selecEstudianteACurso(string curso, string seleccion, int selIdioma)
         {
             DMUser datos = new DMUser();
@@ -344,7 +344,7 @@ namespace Logica
 
             return enc;
         }
-        //
+        
         public UUser agregarEstudianteACurso(string anio, string curso, int cont, GridView GridView1, int selIdioma)
         {
             DMUser datos = new DMUser();
@@ -410,6 +410,137 @@ namespace Logica
             }
             return enc;
         }
+        //
+        public UUser agregaraHorario(string curso, string anio, string dia, string docente, string hora, string materia, int selIdioma)
+        {
+            UUser enc = new UUser();
+            DUser datos = new DUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 10;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+
+            enc.Mensaje = " ";
+            if (curso == "0" || anio == "0" || dia == "0" || docente == "0" || hora == "0" || materia == "0")
+            {
+                enc.Mensaje = encId.CompIdioma["L_Error_falta"].ToString(); //"Falta seleccionar";
+            }
+            else
+            {
+                bool ok = validar_horario(curso, dia, hora);
+
+                if (ok == true)
+                {
+                    bool wp = validar_profesor(docente, dia, hora);
+                    if (wp == true)
+                    {
+                        if (dia == "Monday")
+                        {
+                            dia = "Lunes";
+                        }
+                        if (dia == "Tuesday")
+                        {
+                            dia = "Martes";
+                        }
+                        if (dia == "Wednesday")
+                        {
+                            dia = "Miercoles";
+                        }
+                        if (dia == "Thursday")
+                        {
+                            dia = "Jueves";
+                        }
+                        if (dia == "Friday")
+                        {
+                            dia = "Viernes";
+                        }
+                        enc.Materia = materia;
+                        enc.Dia_materia = dia;
+                        enc.Hora_in = hora;
+
+                        DataTable registros = datos.obtenerHora(enc);
+                        if (registros.Rows.Count > 0)
+                        {
+                            enc.Cur_mat = registros.Rows[0]["id_mf"].ToString();
+                            enc.Curso = curso;
+                            enc.Id_docente = docente;
+
+                            datos.insertarCursoMateria(enc);
+                        }
+                        int cur = Convert.ToInt32(curso);
+                        DataTable est = datos.gEstudiante(cur);
+                        int n = est.DefaultView.Count;
+
+                        for (int i = 0; i < n; i++)
+                        {
+                            enc.Id_estudiante = est.Rows[i]["id_usua"].ToString();
+                            enc.Materia = materia;
+                            datos.insertarNotaMateria(enc);
+                        }
+                        enc.Mensaje = encId.CompIdioma["L_Error_materia_insertada"].ToString(); //"Materia Insertada a Curso con Exito";
+                        //this.Page.Response.Write("<script language='JavaScript'>window.alert('Materia Insertada a Curso con Exito');</script>");
+                    }
+                    else
+                    {
+                        enc.Mensaje = encId.CompIdioma["L_Error_docente_cruce"].ToString(); //"El docente presenta un cruce de Horarios";
+                    }
+                }
+                else
+                {
+                    enc.Mensaje = encId.CompIdioma["L_Error_curce"].ToString(); //"Presenta un cruce de Horarios";
+                }
+
+            }
+            return enc;
+
+        }
+        //Funcion de agregaraHorario
+        public bool validar_horario(string curso, string dia, string hora)
+        {
+            DUser datos = new DUser();
+            String id = curso;
+            int g = int.Parse(id);
+            bool ok = true;
+            DataTable mat = datos.horarioCurso(g);
+            int n = mat.DefaultView.Count;
+            for (int i = 0; i < n; i++)
+            {
+                if ((mat.Rows[i]["dia"].ToString() == dia) & (mat.Rows[i]["hora_inicio"].ToString() == hora))
+                {
+                    return false;
+                }
+                else
+                {
+                    ok = true;
+                }
+            }
+            return ok;
+        }
+        //Funcion de agregaraHorario
+        public bool validar_profesor(string docente, string dia, string hora)
+        {
+            DUser datos = new DUser();
+            String id = docente;
+            bool ok = true;
+            DataTable mat = datos.horarioProf(id);
+            int n = mat.DefaultView.Count;
+            for (int i = 0; i < n; i++)
+            {
+                if ((mat.Rows[i]["dia"].ToString() == dia) & (mat.Rows[i]["hora_inicio"].ToString() == hora))
+                {
+                    return false;
+                }
+                else
+                {
+                    ok = true;
+                }
+            }
+            return ok;
+        }
+
+
     }
 
 
