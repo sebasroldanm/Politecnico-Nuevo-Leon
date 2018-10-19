@@ -128,14 +128,14 @@ namespace Logica
             UUser usua = new UUser();
             UUser uuser = new UUser();
             DMUser dat = new DMUser();
-            Usuario us = new Usuario();
+            UUser us = new UUser();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 16;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
-            us.num_documento = documento.ToString();
+            us.Documento = documento.ToString();
 
             usua = dat.obtenerUsuarioMod(us);
 
@@ -697,7 +697,34 @@ namespace Logica
 
             }
         }
-        
+
+        public InfReporte reporteProfe(String urlCarpeta)
+        {
+            DataRow fila;
+
+            DataTable informacion = new DataTable();
+            InfReporte datos = new InfReporte();
+
+            informacion = datos.Tables["Profesor"];
+
+            DMUser profe = new DMUser();
+            List<Usuario> acu = profe.listarProfesores();
+            foreach (Usuario u in acu)
+            {
+                fila = informacion.NewRow();
+                string foto = Path.GetFileName(u.foto_usua);
+                fila["Apellido"] = u.apellido_usua;
+                fila["Nombre"] = u.nombre_usua;
+                fila["Documento"] = u.num_documento;
+                fila["Telefono"] = u.telefono;
+                fila["Correo"] = u.correo;
+                fila["Foto"] = streamFile(urlCarpeta + foto);
+                informacion.Rows.Add(fila);
+
+            }
+            return datos;
+        }
+
         public UUser validarUsuario(string usuario, string documento, int selIdioma)
         {
 
@@ -750,7 +777,7 @@ namespace Logica
 
         }
         
-        public InfReporte reporteDiplomaper(string urlCarpeta, UUser documento)
+        public InfReporte reporteDiploma(string urlCarpeta, UUser documento)
          {
             DataRow fila;
             DMUser muser = new DMUser();
@@ -762,11 +789,9 @@ namespace Logica
             string docest = documento.Documento;
             diplomaper = muser.listadiploma(docest);
 
-            DUser diploma = new DUser();
-            DataTable Intermedio = diploma.obtenerUsuarioMod(documento);
-            //for (int i = 0; i < Intermedio.Rows.Count; i++) // for para llenar la lista con cada usurario
-            //                                                //// si es solo un dato como con el certificado de estudio, no se hace el for
-            //{
+            DMUser diploma = new DMUser();
+            UUser Intermedio = diploma.obtenerUsuarioMod(documento);
+
 
             foreach (Usuario usrio in diplomaper)
             {

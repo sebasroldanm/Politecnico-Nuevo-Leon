@@ -22,8 +22,9 @@ public partial class View_Admin_DescargarProfesores : System.Web.UI.Page
             try
             {
                 string urlCarpeta = Server.MapPath("~/FotosUser/");
-                LUser log = new LUser();
+                LMUser log = new LMUser();
 
+                //CRS_listaProfesor.ReportDocument.SetDataSource(log.reporteProfe(urlCarpeta));
                 CRS_listaProfesor.ReportDocument.SetDataSource(log.reporteProfe(urlCarpeta));
                 CrystalReportViewer1.ReportSource = CRS_listaProfesor;
             }

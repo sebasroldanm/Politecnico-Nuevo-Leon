@@ -515,14 +515,14 @@ namespace Datos
         
         ///LISTAR PARA EDIAR CON MAPEO////
         
-        public UUser obtenerUsuarioMod(Usuario us)
+        public UUser obtenerUsuarioMod(UUser us)
         {
             UIdioma encId = new UIdioma();
             UUser usua = new UUser();
             Usuario enc = new Usuario();
             using (var db = new Mapeo("public"))
             {
-                var result = db.usuario.SingleOrDefault(x => x.num_documento == us.num_documento);
+                var result = db.usuario.SingleOrDefault(x => x.num_documento == us.Documento);
                 if (result != null)
                 {
                     usua.Nombre = result.nombre_usua;

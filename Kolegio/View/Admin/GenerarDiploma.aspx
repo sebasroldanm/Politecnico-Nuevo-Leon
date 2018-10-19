@@ -57,7 +57,7 @@
                     <asp:DropDownList ID="DropDownList1" Class="form-control" runat="server" DataSourceID="ODS_anio" DataTextField="nombre_anio" DataValueField="id_anio" Width="130px" AutoPostBack="True">
 
                     </asp:DropDownList>
-                    <asp:ObjectDataSource ID="ODS_anio" runat="server" SelectMethod="obtenertodosAnio" TypeName="Datos.DUser"></asp:ObjectDataSource>
+                    <asp:ObjectDataSource ID="ODS_anio" runat="server" SelectMethod="obtenertodosAnio" TypeName="Datos.DMUser"></asp:ObjectDataSource>
                 </td>
                 <td class="auto-style8">
                     &nbsp;</td>
@@ -70,7 +70,7 @@
                 <td class="auto-style5" colspan="2">
              <asp:DropDownList ID="ddt_anio" Class="form-control" runat="server" DataSourceID="ODS_curso" DataTextField="nombre_curso" DataValueField="id_ancu" AutoPostBack="True" Width="132px"></asp:DropDownList>
 
-                    <asp:ObjectDataSource ID="ODS_curso" runat="server" SelectMethod="obtenerCursoanio" TypeName="Datos.DUser" OnSelecting="ODS_curso_Selecting">
+                    <asp:ObjectDataSource ID="ODS_curso" runat="server" SelectMethod="obtenerCursoanio" TypeName="Datos.DMUser" OnSelecting="ODS_curso_Selecting">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="DropDownList1" Name="anio" PropertyName="SelectedValue" Type="Int32" />
                         </SelectParameters>

@@ -29,7 +29,8 @@ public partial class View_Admin_Default : System.Web.UI.Page
 
                 string urlCarpeta = Server.MapPath("~/FotosUser/");
 
-                CRS_desdiploma.ReportDocument.SetDataSource(logicaper.reporteDiplomaper(urlCarpeta, enc));
+                //CRS_desdiploma.ReportDocument.SetDataSource(logicaper.reporteDiplomaper(urlCarpeta, enc));
+                CRS_desdiploma.ReportDocument.SetDataSource(logicaper.reporteDiploma(urlCarpeta, enc));
                 CrystalReportViewer1.ReportSource = CRS_desdiploma;
 
             }

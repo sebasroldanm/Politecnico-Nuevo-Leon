@@ -23,7 +23,7 @@ public partial class View_Admin_ReporteAdministradores : System.Web.UI.Page
             {
 
                 string urlCarpeta = Server.MapPath("~/FotosUser/");
-                LUser log = new LUser();
+                LMUser log = new LMUser();
 
                 CRS_reporteAdmin.ReportDocument.SetDataSource(log.reporteAdmin(urlCarpeta));
                 CRV_reporteAdmin.ReportSource = CRS_reporteAdmin;
