@@ -72,7 +72,7 @@ public partial class View_Administrador_AdministradorMensaje : System.Web.UI.Pag
 
     protected void descartar_idioma_Click(object sender, EventArgs e)
     {
-        LIdioma logica = new LIdioma();
+        LMIdioma logica = new LMIdioma();
         UIdioma enc = new UIdioma();
 
         int idioma = Convert.ToInt32(Session["nombreIdioma"]);

@@ -46,6 +46,77 @@ namespace Logica
             return enc;
         }
 
+
+
+        public UIdioma validaIdiomaEmpezarInsert(string empezar, int contador, int idioma)
+        {
+            DMIdioma datos = new DMIdioma();
+            UIdioma enc = new UIdioma();
+            UUser user = new UUser();
+
+            //enc = listarIdiomaVarchar(id);
+            //idioma = int.Parse(enc.IdIdioma);
+
+            if (empezar == "true")
+            {
+
+                if (contador >= 828)
+                {
+                    enc.BoolIdioma = true;
+                    user.Notificacion = "Se Guarda";
+                    //Guarda
+                }
+                else
+                {
+                    enc.BoolIdioma = false;
+                    user.Notificacion = "SI sale ahora se desacartaran los datos, desea salir S/N";
+                    //ver script de aceptar y cancelar
+                    eliminarControles(idioma);
+                    eliminarIdioma(idioma);
+                }
+
+            }
+            else
+            {
+
+            }
+
+            return enc;
+        }
+
+
+        public UIdioma eliminarIdiomaCompleto(int idioma)
+        {
+            UIdioma enc = new UIdioma();
+            eliminarControles(idioma);
+            eliminarIdioma(idioma);
+
+            enc.NombreIdioma = "<script language='JavaScript'>window.alert('Se Eliminaron Los Ultimos Registros');</script>";
+
+            return enc;
+        }
+
+
+
+
+        public UIdioma eliminarControles(int idioma)
+        {
+            DMIdioma datos = new DMIdioma();
+            UIdioma enc = new UIdioma();    
+            datos.eliminarControles(idioma);
+
+            return enc;
+        }
+
+        public UIdioma eliminarIdioma(int idioma)
+        {
+            DMIdioma datos = new DMIdioma();
+            UIdioma enc = new UIdioma();
+            datos.eliminarIdioma(idioma);
+            return enc;
+        }
+
+
         public UIdioma insertarIdioma(string nombre, string termin)
         {
             DIdioma datos = new DIdioma();
