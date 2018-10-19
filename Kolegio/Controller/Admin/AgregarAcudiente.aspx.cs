@@ -114,7 +114,7 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
 
     protected void descartar_idioma_Click(object sender, EventArgs e)
     {
-        LIdioma logica = new LIdioma();
+        LMIdioma logica = new LMIdioma();
         UIdioma enc = new UIdioma();
 
         int idioma = Convert.ToInt32(Session["nombreIdioma"]);

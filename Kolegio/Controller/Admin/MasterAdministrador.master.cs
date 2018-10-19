@@ -62,14 +62,14 @@ public partial class View_Administrador_MasterAdministrador : System.Web.UI.Mast
     protected void btn_cerrar_sesion_click(object sender, EventArgs e)
     {
         LUser logica = new LUser();
-
+      
         logica.limpiaSesionActiva(Session["userName"].ToString());
         logica.cerrarSession(Session.SessionID);
 
 
         ///MIENTRAS ARREGLO SCRIPTMANAGER
 
-        LIdioma logicaIdioma = new LIdioma();
+        LMIdioma logicaIdioma = new LMIdioma();
         UIdioma enc = new UIdioma();
 
         int idioma = Convert.ToInt32(Session["nombreIdioma"]);
