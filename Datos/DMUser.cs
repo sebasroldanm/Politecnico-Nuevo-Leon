@@ -826,11 +826,6 @@ namespace Datos
             }            
         }
 
-        public DataTable evaluaSesiones(string Usuario)
-        {
-
-        }
-
 
     }
 }
