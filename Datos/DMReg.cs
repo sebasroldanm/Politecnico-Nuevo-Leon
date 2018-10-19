@@ -434,7 +434,7 @@ namespace Datos
 
                 foreach (EstudianteCurso e in estuu)
                 {
-                    r = e.id_ec_estudiante;
+                    r = e.id_ec;
                 }
                 return r;
             }
