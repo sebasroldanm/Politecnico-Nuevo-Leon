@@ -74,6 +74,7 @@
     <Compile Include="DIdioma.cs" />
     <Compile Include="DMIdioma.cs" />
     <Compile Include="DMReg.cs" />
+    <Compile Include="DMSeguridad.cs" />
     <Compile Include="DMUser.cs" />
     <Compile Include="DUser.cs" />
     <Compile Include="Mapeo.cs" />
