@@ -49,7 +49,7 @@
                 <SortedDescendingHeaderStyle BackColor="#15524A" />
             </asp:GridView>
 
-            <asp:ObjectDataSource ID="ODS_Estudiante" runat="server" SelectMethod="gEstudiante" TypeName="Datos.DUser">
+            <asp:ObjectDataSource ID="ODS_Estudiante" runat="server" SelectMethod="gEstudiante" TypeName="Datos.DMUser">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="ddt_curso" Name="curs" PropertyName="SelectedValue" Type="Int32" />
                 </SelectParameters>
