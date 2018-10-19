@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Datos;
 using Utilitarios;
+using Utilitarios.MSeguridad;
 using Utilitarios.MVistasUsuario;
 using Utilitarios.Mregistro;
 
@@ -1180,7 +1181,7 @@ namespace Logica
             UUser usua = new UUser();
             DMUser dat = new DMUser();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 19;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -1210,7 +1211,7 @@ namespace Logica
             DUser dat = new DUser();
             UUser usua = new UUser();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 30;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -1229,6 +1230,26 @@ namespace Logica
             return usua;
 
         }
-       
+
+        public void logicaGuardarSesion(int id, string ip, string mac, string sesion)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+            Autenticacion aut = new Autenticacion();
+            //Mac datosConexion = new MAC();
+
+            //usua.UserId = id;
+            //usua.Ip = ip;
+            //usua.Mac = mac;
+            //usua.Session = sesion;
+            aut.user_id = id;
+            aut.ip = ip;
+            aut.mac = mac;
+            aut.session= sesion;
+            aut.fecha_inicio = DateTime.Now.ToString();
+
+            dat.guardadoSession(usua);
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Utilitarios;
+using Utilitarios.MSeguridad;
 using Utilitarios.Mlugares;
 using Utilitarios.Mregistro;
 using Utilitarios.MVistasUsuario;
@@ -69,7 +70,7 @@ namespace Datos
             }
 
         }
-        
+
         public List<Departamento> departamento()
         {
             using (var db = new Mapeo("public"))
@@ -80,7 +81,7 @@ namespace Datos
             }
 
         }
-        
+
         public List<Anio> obtenerAnio()
         {
             using (var db = new Mapeo("public"))
@@ -170,7 +171,7 @@ namespace Datos
 
 
         }
-        
+
         public List<DiaMateria> obtenerdiak()
         {
             using (var db = new Mapeo("public"))
@@ -207,11 +208,13 @@ namespace Datos
                                  join curmar in db.cursomateria on anicur.id_ancu equals curmar.id_cm_curso
                                  join us in db.usuario on curmar.id_cm_profesor equals us.id_usua
                                  where estcur.id_ec_estudiante == id_usua
-                                 select new {
+                                 select new
+                                 {
                                      us.id_usua,
                                      us.nombre_usua,
                                      us.apellido_usua
-                                 }).ToList(). Select(d=> new UsuaMensajeVista {
+                                 }).ToList().Select(d => new UsuaMensajeVista
+                                 {
                                      id_usua = d.id_usua,
                                      nombre_usua = d.nombre_usua + " " + d.apellido_usua
 
@@ -222,7 +225,7 @@ namespace Datos
 
             }
         }
-        
+
         public List<Usuario> obtenerAcudiente(UUser dat)
         {
 
@@ -240,7 +243,7 @@ namespace Datos
             }
 
         }
-        
+
         public UUser inicio()
         {
             UUser usua = new UUser();
@@ -283,7 +286,7 @@ namespace Datos
             //return uuser;
 
         }
-        
+
         public List<AcudienteEstudianteVista> listarEstAcudiente(string usu)
         {
 
@@ -342,19 +345,22 @@ namespace Datos
                 var curso = (from ani in db.anio
                              join anicur in db.aniocurso on ani.id_anio equals anicur.id_ancu_anio
                              join cur in db.curso on anicur.id_ancu_curso equals cur.id_curso
-                             where anicur.id_ancu_anio == anio 
-                             select new {
+                             where anicur.id_ancu_anio == anio
+                             select new
+                             {
                                  anicur.id_ancu,
-                                 cur.nombre_curso}
-                        ).ToList().Select(ob => new CursoAnioVista {
-                            id_ancu = ob.id_ancu, 
+                                 cur.nombre_curso
+                             }
+                        ).ToList().Select(ob => new CursoAnioVista
+                        {
+                            id_ancu = ob.id_ancu,
                             nombre_curso = ob.nombre_curso
                         }).ToList();
                 return query.Union(curso).ToList<CursoAnioVista>();
             }
 
         }
-        
+
         public List<Ciudad> ciudad(int idDepart)
         {
             using (var db = new Mapeo("public"))
@@ -367,7 +373,7 @@ namespace Datos
                 ciuddl.id_c_depart = 0;
                 lista.Add(ciuddl);
                 var query = lista;
-                var ciu = db.ciudad.ToList<Ciudad>().Where(x=> x.id_c_depart == idDepart).OrderBy(y=> y.nombre_ciudad);
+                var ciu = db.ciudad.ToList<Ciudad>().Where(x => x.id_c_depart == idDepart).OrderBy(y => y.nombre_ciudad);
 
                 return query.Union(ciu).ToList<Ciudad>();
             }
@@ -383,12 +389,12 @@ namespace Datos
             lista.Add(dep);
             return lista;
         }
-        
+
         public List<Usuario> listarProfesores()
         {
 
             using (var db = new Mapeo("public"))
-                {
+            {
                 var profe = db.usuario.ToList<Usuario>().Where(x => x.rol_id.Contains("2"));
                 return profe.ToList<Usuario>();
             }
@@ -402,10 +408,10 @@ namespace Datos
                 return docestudante.ToList<Usuario>();
             }
 
-            
+
 
         }
-        
+
         public List<Usuario> listaEstcurso(int curso)
         {
             using (var db = new Mapeo("public"))
@@ -416,14 +422,15 @@ namespace Datos
                         join cur in db.curso on anicur.id_ancu_curso equals cur.id_curso
                         where anicur.id_ancu == curso
                         select us).ToList<Usuario>();
-                       
+
             }
         }
 
         public List<CursoDeEstudianteVista> obtenerCursoEst(UUser dat)
         {
             using (var db = new Mapeo("public"))
-            {   int est = int.Parse(dat.Id_estudiante);
+            {
+                int est = int.Parse(dat.Id_estudiante);
                 int aniio = int.Parse(dat.Año);
                 return (from estudiantecurso in db.estudiantecurso
                         join aniocurso in db.aniocurso on estudiantecurso.id_ec_curso equals aniocurso.id_ancu
@@ -434,9 +441,9 @@ namespace Datos
                         select new
                         {
                             aniocurso.id_ancu,
-                            curso.id_curso, 
+                            curso.id_curso,
                             curso.nombre_curso
-                     
+
                         })
                         .ToList().Select(m => new CursoDeEstudianteVista
                         {
@@ -474,14 +481,16 @@ namespace Datos
                 return (from c in db.usuario
                         join o in db.acudiente on c.id_usua equals o.id_ac_estudiante
                         where c.rol_id == "4"
-                        select new { c.foto_usua,
-                                     c.apellido_usua,
-                                     c.nombre_usua,
-                                     c.num_documento,
-                                     c.telefono,
-                                     c.user_name,
-                                     c.clave
-                                     })
+                        select new
+                        {
+                            c.foto_usua,
+                            c.apellido_usua,
+                            c.nombre_usua,
+                            c.num_documento,
+                            c.telefono,
+                            c.user_name,
+                            c.clave
+                        })
                         .ToList().Select(m => new ListaAcudiente
                         {
                             fotoacudiente = m.foto_usua,
@@ -491,13 +500,13 @@ namespace Datos
                             telefonoacudiente = m.telefono,
                             useracudiente = m.user_name,
                             claveacudiente = m.clave
-                            
+
                         }).ToList();
             }
         }
 
         ///Insertar con Mapeo///////////////////////////////////////////
-        
+
         public void insertarAdmin(Usuario admin)
         {
 
@@ -530,45 +539,45 @@ namespace Datos
             }
 
         }
-        
+
         ///LISTAR PARA EDIAR CON MAPEO////
-        
+
         public UUser obtenerUsuarioMod(UUser us)
         {
-            
-                UIdioma encId = new UIdioma();
-                UUser usua = new UUser();
-                Usuario enc = new Usuario();
-                using (var db = new Mapeo("public"))
-                {
-                    var result = db.usuario.SingleOrDefault(x => x.num_documento == us.Documento);
+
+            UIdioma encId = new UIdioma();
+            UUser usua = new UUser();
+            Usuario enc = new Usuario();
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.usuario.SingleOrDefault(x => x.num_documento == us.Documento);
                 if (result != null)
                 {
-                        usua.IdUsua = result.id_usua.ToString();
-                        usua.Nombre = result.nombre_usua;
-                        usua.Rol = result.rol_id;
-                        usua.UserName = result.user_name;
-                        usua.Clave = result.clave;
-                        usua.Correo = result.correo;
-                        usua.Estado = result.estado.ToString();
-                        usua.Apellido = result.apellido_usua;
-                        usua.Direccion = result.direccion;
-                        usua.Telefono = result.telefono;
-                        usua.Documento = result.num_documento;
-                        usua.Foto = result.foto_usua;
-                        usua.fecha_nacimiento = result.fecha_nac;
-                        usua.Departamento = result.dep_nacimiento;
-                        usua.Ciudad = result.ciu_nacimiento;
-                        usua.Session = result.sesion;
-                    }
-                    else
-                    {
-                        usua.Mensaje = encId.CompIdioma["L_ErrorAdmin_sin_registro"].ToString(); //"Sin Registros";
-                    }
+                    usua.IdUsua = result.id_usua.ToString();
+                    usua.Nombre = result.nombre_usua;
+                    usua.Rol = result.rol_id;
+                    usua.UserName = result.user_name;
+                    usua.Clave = result.clave;
+                    usua.Correo = result.correo;
+                    usua.Estado = result.estado.ToString();
+                    usua.Apellido = result.apellido_usua;
+                    usua.Direccion = result.direccion;
+                    usua.Telefono = result.telefono;
+                    usua.Documento = result.num_documento;
+                    usua.Foto = result.foto_usua;
+                    usua.fecha_nacimiento = result.fecha_nac;
+                    usua.Departamento = result.dep_nacimiento;
+                    usua.Ciudad = result.ciu_nacimiento;
+                    usua.Session = result.sesion;
                 }
-                return usua;
+                else
+                {
+                    usua.Mensaje = encId.CompIdioma["L_ErrorAdmin_sin_registro"].ToString(); //"Sin Registros";
+                }
             }
-        
+            return usua;
+        }
+
         ///Edita con Mapeo////////////////
 
         public UUser editarAdmin(Usuario admin)
@@ -596,7 +605,7 @@ namespace Datos
                     result.sesion = admin.sesion;
                     result.ultima_modificacion = DateTime.Now.ToShortDateString();
                     db.SaveChanges();
-                   
+
                 }
             }
             return uuser;
@@ -621,7 +630,7 @@ namespace Datos
 
                 }
             }
-            
+
 
         }
 
@@ -656,7 +665,7 @@ namespace Datos
             return uuser;
 
         }
-        
+
         public UUser editarEstudiante(Usuario estudi)
         {
             UUser uuser = new UUser();
@@ -729,19 +738,20 @@ namespace Datos
             {
                 var result = db.usuario.SingleOrDefault(x => x.num_documento == usuario.num_documento);
                 var resulta = db.usuario.SingleOrDefault(y => y.user_name == usuario.user_name);
-           
+
                 if (result != null || resulta != null)
                 {
 
                     return true;
                 }
-                else {
+                else
+                {
 
                     return false;
                 }
-              
+
             }
-           
+
 
         }
 
@@ -769,6 +779,44 @@ namespace Datos
             }
         }
 
-        
+        public void guardadoSession(Autenticacion aut)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                db.autenticacion.Add(aut);
+                db.SaveChanges();
+            }
+        }
+
+        public int IdUsuadeUser(string user)
+        {
+            List<Usuario> lusua = new List<Usuario>();
+            int us = 0;
+            using (var db = new Mapeo("public"))
+            {
+                lusua = db.usuario.ToList<Usuario>().Where(x => x.user_name.Contains(user)).ToList();
+                foreach(Usuario u in lusua )
+                {
+                    us = u.id_usua;
+                }
+                return us;
+            }
+        }
+        /*
+        public int Capturafechaintentosesion(string Usuario)
+        {
+            List<Sesion> ses = new List<Sesion>();
+            DateTime fe = new DateTime();
+            DateTime femas = DateTime.Parse("00:30:00");
+            using (var db = new Mapeo("public"))
+            {
+                ses = db.sesion.ToList<Sesion>().Where(x => x.IdUsuario == IdUsuadeUser(Usuario)).ToList();
+                foreach (Sesion s in ses)
+                {
+                    fe = DateTime.Parse(s.HoraLibre) + femas;
+                }
+            }            
+        }
+        */
     }
 }

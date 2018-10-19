@@ -54,7 +54,7 @@ public partial class Loggin : System.Web.UI.Page
     protected void BT_Ingresar_Click(object sender, EventArgs e)
     {
         UUser datos = new UUser();
-        LUser logic = new LUser();
+        //LUser logic = new LUser();
         LMUser lmuser = new LMUser();
         datos = lmuser.loggear(TB_UserName.Text, TB_Clave.Text, int.Parse(Session["idioma"].ToString()), NoBotLogin.IsValid());
 
@@ -71,7 +71,7 @@ public partial class Loggin : System.Web.UI.Page
         {
             MAC datosConexion = new MAC();
             int prueba = int.Parse(Session["userId"].ToString());
-            logic.logicaGuardarSesion(int.Parse(Session["userId"].ToString()),
+            lmuser.logicaGuardarSesion(int.Parse(Session["userId"].ToString()),
                 datosConexion.ip(),
                 datosConexion.mac(),
                 Session.SessionID);
