@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using Utilitarios;
+using Utilitarios.MSeguridad;
 using Utilitarios.Mregistro;
 using Utilitarios.Mlugares;
 using Utilitarios.MIdioma;
@@ -52,6 +53,9 @@ namespace Datos
 
         public DbSet<Inicio> inicio { get; set; }
 
+
+        public DbSet<Autenticacion> autenticacion { get; set; }
+        public DbSet<Auditoria> auditoria { get; set; }
 
 
 

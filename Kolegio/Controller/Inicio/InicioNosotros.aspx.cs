@@ -48,19 +48,19 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
         //logica.cerrarSession(Session.SessionID);
 
 
+        ////Pasar Año
+        //UUser enc = new UUser();
+        //LReg logic = new LReg();
 
-        UUser enc = new UUser();
-        LReg logic = new LReg();
-
-        enc = logic.pasarAño(int.Parse(Session["idioma"].ToString()));
-        this.Page.Response.Write(enc.Notificacion);
+        //enc = logic.pasarAño(int.Parse(Session["idioma"].ToString()));
+        //this.Page.Response.Write(enc.Notificacion);
 
     }
 
     protected void DDL_Idioma_SelectedIndexChanged(object sender, EventArgs e)
     {
         UIdioma encId = new UIdioma();
-        LIdioma idioma = new LIdioma();
+        LMIdioma idioma = new LMIdioma();
         encId = idioma.obtTerminacionIdioma(int.Parse(Session["idioma"].ToString()));
 
         Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(encId.IdiomaTermina);

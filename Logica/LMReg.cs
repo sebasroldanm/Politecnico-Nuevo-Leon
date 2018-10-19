@@ -347,9 +347,9 @@ namespace Logica
         //
         public UUser agregarEstudianteACurso(string anio, string curso, int cont, GridView GridView1, int selIdioma)
         {
-            DUser datos = new DUser();
+            DMUser datos = new DMUser();
             UUser enc = new UUser();
-
+            DMReg mreg = new DMReg();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 9;
@@ -374,21 +374,32 @@ namespace Logica
                     if (ch.Checked == true)
                     {
                         enc.Documento = lb.Text;
-                        DataTable reg = datos.obtenerUsuarioMod(enc);
+                        //DataTable reg = datos.obtenerUsuarioMod(enc);
+                        
+                        enc = datos.obtenerUsuarioMod(enc);
 
-                        enc.Id_estudiante = reg.Rows[0]["id_usua"].ToString();
+                        enc.Id_estudiante = enc.IdUsua;
                         enc.Curso = curso;
-                        datos.insertarEstudianteCurso(enc);
 
-                        DataTable materias = datos.obtener_MatCur(enc);
-                        int n = materias.DefaultView.Count;
+                        EstudianteCurso ecur = new EstudianteCurso();
+                        ecur.id_ec_curso = int.Parse(curso);
+                        ecur.id_ec_estudiante = int.Parse(enc.Id_estudiante);
+                        mreg.insertarEstudianteCurso(ecur);
 
-                        for (int k = 0; k < n; k++)
+                        List<Materia> materias = mreg.obtener_MatCur(enc);
+                        foreach(Materia m in materias)
                         {
-                            enc.Materia = materias.Rows[k]["id_materia"].ToString();
-                            datos.insertarNotaMateria(enc);
-
+                            enc.Materia = m.id_materia.ToString();
+                            mreg.insertarNotaMateria(enc);
                         }
+                        //int n = materias.DefaultView.Count;
+
+                        //for (int k = 0; k < n; k++)
+                        //{
+                        //    enc.Materia = materias.Rows[k]["id_materia"].ToString();
+                        //    mreg.insertarNotaMateria(enc);
+
+                        //}
 
                         //L_ErrorUsuario.Text = "Debe Elegir un Curso";
                         enc.MensajeAcudiente = encId.CompIdioma["L_OkUsuario_aceptar"].ToString(); //"Estudiantes Agregados al curso";

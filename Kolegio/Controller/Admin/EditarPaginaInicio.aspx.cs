@@ -229,12 +229,12 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
     protected void B_Terminaranio_Click(object sender, EventArgs e)
     {
 
-        LUser logica = new LUser();
-        UUser usua = new UUser();
+        //////LUser logica = new LUser();
+        //////UUser usua = new UUser();
 
-        usua = logica.insertarfechafin(fechanac.Text, int.Parse(Session["idioma"].ToString()));
+        //////usua = logica.insertarfechafin(fechanac.Text, int.Parse(Session["idioma"].ToString()));
 
-        this.Page.Response.Write(usua.Notificacion);
+        //////this.Page.Response.Write(usua.Notificacion);
 
         //DaoUser datos = new DaoUser();
         //EUser enc = new EUser();

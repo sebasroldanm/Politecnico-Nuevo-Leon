@@ -193,7 +193,21 @@ namespace Logica
             return enc;
         }
 
+        public UIdioma obtTerminacionIdioma(int idioma)
+        {
+            DMIdioma datos = new DMIdioma();
+            UIdioma enc = new UIdioma();
+            List<Idioma> reg = new List<Idioma>();
 
+            reg = datos.obtenerTerminacionIdioma(idioma);
+            foreach(Idioma i in reg)
+            {
+                enc.IdiomaTermina = i.terminacion.ToString();
+            }
+            //enc.IdiomaTermina = reg.Rows[0]["terminacion"].ToString();
+
+            return enc;
+        }
 
     }
 }

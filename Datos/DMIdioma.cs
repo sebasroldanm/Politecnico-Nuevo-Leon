@@ -321,6 +321,15 @@ namespace Datos
         //    }
 
         //}
-        
+
+        public List<Idioma> obtenerTerminacionIdioma(int idioma)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                var idiom = db.idioma.ToList<Idioma>().Where(x => x.id_idioma == idioma);
+                return idiom.ToList<Idioma>();
+            }
+        }
+
     }
 }
