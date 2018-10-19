@@ -57,7 +57,7 @@ namespace Utilitarios
         private String sEstudiante;
 
         //
-
+        private String idUsua;
         private String userName;
         private String clave;
         private String rol;
@@ -181,5 +181,6 @@ namespace Utilitarios
         public int IntentosErroneos { get => intentosErroneos; set => intentosErroneos = value; }
         public int SesionActiva { get => sesionActiva; set => sesionActiva = value; }
         public string MensajeIntentoErroneos { get => mensajeIntentoErroneos; set => mensajeIntentoErroneos = value; }
+        public string IdUsua { get => idUsua; set => idUsua = value; }
     }
 }

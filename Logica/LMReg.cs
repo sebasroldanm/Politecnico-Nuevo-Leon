@@ -292,7 +292,113 @@ namespace Logica
             }
             return enc;
         }
+        //
+        public UUser selecEstudianteACurso(string curso, string seleccion, int selIdioma)
+        {
+            DMUser datos = new DMUser();
+            UUser enc = new UUser();
+            DMReg mreg = new DMReg();
+            UIdioma encId = new UIdioma();
+            LMIdioma idioma = new LMIdioma();
 
+            List<Usuario> lusua = new List<Usuario>();
+
+           EstudianteCurso est = new EstudianteCurso();
+            Int32 FORMULARIO = 9;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+            if (curso == "0")
+            {
+                enc.Mensaje = encId.CompIdioma["L_ErrorUsuario_estudiante_curso"].ToString(); //"Debe Elegir un Curso";
+            }
+            else
+            {
+                enc.Documento = seleccion;
+                enc = datos.obtenerUsuarioMod(enc);
+
+                est.id_ec_curso = int.Parse(enc.IdUsua);
+                est.id_ec_estudiante = int.Parse(curso);
+                enc.Id_estudiante = est.id_ec_estudiante.ToString();
+
+                mreg.insertarEstudianteCurso(est);
+
+                List<Materia> materias = mreg.obtener_MatCur(enc);
+
+                foreach (Materia m in materias)
+                {
+                    enc.Materia = m.id_materia.ToString();
+                    mreg.insertarNotaMateria(enc);
+                }
+                //int n = materias.DefaultView.Count;
+
+                //for (int i = 0; i < n; i++)
+                //{
+                //    enc.Materia = materias.Rows[i]["id_materia"].ToString();
+                //    datos.insertarNotaMateria(enc);
+
+                //}
+
+                enc.Mensaje = "";
+            }
+
+            return enc;
+        }
+        //
+        public UUser agregarEstudianteACurso(string anio, string curso, int cont, GridView GridView1, int selIdioma)
+        {
+            DUser datos = new DUser();
+            UUser enc = new UUser();
+
+            UIdioma encId = new UIdioma();
+            LMIdioma idioma = new LMIdioma();
+            Int32 FORMULARIO = 9;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+
+            enc.Mensaje = "";
+            enc.MensajeAcudiente = "";
+
+            if (anio == "0" || curso == "0")
+            {
+                enc.Mensaje = encId.CompIdioma["L_ErrorUsuario_aceptar"].ToString(); //"Debe Elegir un Curso";
+            }
+            else
+            {
+                for (int i = 0; i < cont; i++)
+                {
+                    CheckBox ch = (CheckBox)GridView1.Rows[i].FindControl("CBest");
+                    Label lb = (Label)GridView1.Rows[i].FindControl("label1");
+
+                    if (ch.Checked == true)
+                    {
+                        enc.Documento = lb.Text;
+                        DataTable reg = datos.obtenerUsuarioMod(enc);
+
+                        enc.Id_estudiante = reg.Rows[0]["id_usua"].ToString();
+                        enc.Curso = curso;
+                        datos.insertarEstudianteCurso(enc);
+
+                        DataTable materias = datos.obtener_MatCur(enc);
+                        int n = materias.DefaultView.Count;
+
+                        for (int k = 0; k < n; k++)
+                        {
+                            enc.Materia = materias.Rows[k]["id_materia"].ToString();
+                            datos.insertarNotaMateria(enc);
+
+                        }
+
+                        //L_ErrorUsuario.Text = "Debe Elegir un Curso";
+                        enc.MensajeAcudiente = encId.CompIdioma["L_OkUsuario_aceptar"].ToString(); //"Estudiantes Agregados al curso";
+
+                    }
+                }
+
+            }
+            return enc;
+        }
     }
 
 

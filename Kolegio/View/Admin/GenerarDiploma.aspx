@@ -147,7 +147,7 @@
             </tr>
             <tr>
                 <td class="auto-style9" colspan="2">
-                    <asp:ObjectDataSource ID="ODS_estudiante" runat="server" SelectMethod="gEstudiante" TypeName="Datos.DUser">
+                    <asp:ObjectDataSource ID="ODS_estudiante" runat="server" SelectMethod="gEstudiante" TypeName="Datos.DMUser">
                         <SelectParameters>
                             <asp:ControlParameter ControlID="ddt_anio" Name="curs" PropertyName="SelectedValue" Type="Int32" />
                         </SelectParameters>

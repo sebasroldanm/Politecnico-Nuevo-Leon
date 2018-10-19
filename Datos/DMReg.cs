@@ -20,17 +20,17 @@ namespace Datos
                         join an in db.aniocurso on est.id_ec_curso equals an.id_ancu
                         join cur in db.cursomateria on an.id_ancu equals cur.id_cm_curso
                         join matf in db.materiafecha on cur.id_cm_materia equals matf.id_mf
-                        join diam in db.diamateria on  matf.id_mf_fecha equals diam.id_dia_materia
+                        join diam in db.diamateria on matf.id_mf_fecha equals diam.id_dia_materia
                         join mat in db.materia on matf.id_mf_materia equals mat.id_materia
                         where usua.id_usua == id
- 
+
                         select new
                         {
                             mat.nombre_materia,
                             diam.dia,
                             diam.hora_inicio,
                             diam.hora_fin
-      
+
                         })
                         .ToList().Select(h => new HorarioEstudiante
                         {
@@ -73,7 +73,7 @@ namespace Datos
                             dia = h.dia,
                             hora_inicio = h.hora_inicio,
                             hora_fin = h.hora_fin
-                            
+
                         }).ToList();
             }
         }
@@ -191,7 +191,8 @@ namespace Datos
         public List<CursoAnioVista> cursoProfesor(string id_p, string anio)
         {
             using (var db = new Mapeo("public"))
-            { int an = int.Parse(anio);
+            {
+                int an = int.Parse(anio);
                 int profe = int.Parse(id_p);
                 List<CursoAnioVista> lista = null;
                 CursoAnioVista curanio = new CursoAnioVista();
@@ -201,16 +202,16 @@ namespace Datos
                 lista.Add(curanio);
                 var query = lista;
                 return lista.ToList<CursoAnioVista>().Union((from curso in db.curso
-                        join aniocurso in db.aniocurso on curso.id_curso equals aniocurso.id_ancu_curso
-                        join cursomateria in db.cursomateria on aniocurso.id_ancu equals cursomateria.id_cm_curso
-                        where aniocurso.id_ancu_anio == an
-                        where cursomateria.id_cm_profesor == profe
-                        select new
-                        {
-                            aniocurso.id_ancu,
-                            curso.nombre_curso,
-                            
-                        })
+                                                             join aniocurso in db.aniocurso on curso.id_curso equals aniocurso.id_ancu_curso
+                                                             join cursomateria in db.cursomateria on aniocurso.id_ancu equals cursomateria.id_cm_curso
+                                                             where aniocurso.id_ancu_anio == an
+                                                             where cursomateria.id_cm_profesor == profe
+                                                             select new
+                                                             {
+                                                                 aniocurso.id_ancu,
+                                                                 curso.nombre_curso,
+
+                                                             })
                         .ToList().Select(m => new CursoAnioVista
                         {
                             id_ancu = m.id_ancu,
@@ -267,12 +268,12 @@ namespace Datos
                                                       join cursomateria in db.cursomateria on materiafecha.id_mf equals cursomateria.id_cm_materia
                                                       where cursomateria.id_cm_curso == cur
                                                       where cursomateria.id_cm_profesor == profe
-                                                             
+
                                                       select materia)
                                                     .ToList()).ToList<Materia>();
             }
         }
-        
+
         public List<UsuaMensajeVista> obtenerEstApel(int curs)
         {
             using (var db = new Mapeo("public"))
@@ -287,23 +288,23 @@ namespace Datos
                 lista.Add(est);
                 var query = lista;
                 return lista.ToList<UsuaMensajeVista>().Union((from estudiantecurso in db.estudiantecurso
-                                                             join usuario in db.usuario on estudiantecurso.id_ec_estudiante equals usuario.id_usua
-                                                             join aniocurso in db.aniocurso on estudiantecurso.id_ec_curso equals aniocurso.id_ancu
-                                                             join curso in db.curso on aniocurso.id_ancu_curso equals curso.id_curso
-                                                             where aniocurso.id_ancu == curs
+                                                               join usuario in db.usuario on estudiantecurso.id_ec_estudiante equals usuario.id_usua
+                                                               join aniocurso in db.aniocurso on estudiantecurso.id_ec_curso equals aniocurso.id_ancu
+                                                               join curso in db.curso on aniocurso.id_ancu_curso equals curso.id_curso
+                                                               where aniocurso.id_ancu == curs
 
-                                                             select new
-                                                             {
-                                                                 usuario.id_usua,
-                                                                 usuario.nombre_usua,
-                                                                 usuario.apellido_usua
+                                                               select new
+                                                               {
+                                                                   usuario.id_usua,
+                                                                   usuario.nombre_usua,
+                                                                   usuario.apellido_usua
 
-                                                             })
+                                                               })
                         .ToList().Select(m => new UsuaMensajeVista
                         {
                             id_usua = m.id_usua,
                             nombre_usua = m.nombre_usua + " " + m.nombre_usua
-                            
+
                         }).ToList()).ToList<UsuaMensajeVista>();
             }
         }
@@ -348,6 +349,63 @@ namespace Datos
 
         }
 
+        public void insertarEstudianteCurso(EstudianteCurso est)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                db.estudiantecurso.Add(est);
+                db.SaveChanges();
+            }
+        }
 
+        public List<Materia> obtener_MatCur(UUser reg)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                return (from materia in db.materia
+                        join materiafecha in db.materiafecha on materia.id_materia equals materiafecha.id_mf_materia
+                        join cursomateria in db.cursomateria on materiafecha.id_mf equals cursomateria.id_cm_materia
+                        where cursomateria.id_cm_curso == int.Parse(reg.Curso)
+                        select materia
+                        ).ToList();
+
+            }
+        }
+
+        public void insertarNotaMateria( UUser enc)
+        {
+            Nota not = new Nota();
+            using (var db = new Mapeo("public"))
+            {
+                not.id_n_estudiante = obtenerIdestcur(int.Parse(enc.Id_estudiante));
+                not.id_n_materia = int.Parse(enc.Materia);
+                not.nota1 = 1;
+                not.nota2 = 1;
+                not.nota3 = 1;
+                not.notadef = 1; 
+                db.nota.Add(not);
+                db.SaveChanges();
+            }
+        }
+
+        public int obtenerIdestcur(int idest)  ///Funcion de obtener_MatCur
+        {
+            List<EstudianteCurso> estuu = new List<EstudianteCurso>();
+            int r = 0;
+            using (var db = new Mapeo("public"))
+
+            {
+                var est = db.estudiantecurso.ToList<EstudianteCurso>().Where(x => x.id_ec_estudiante == idest);
+                estuu = (est).ToList<EstudianteCurso>();
+
+                foreach (EstudianteCurso e in estuu)
+                {
+                    r = e.id_ec_estudiante;
+                }
+                return r;
+            }
+
+        }
     }
 }
+

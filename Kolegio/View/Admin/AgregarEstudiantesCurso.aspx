@@ -72,14 +72,14 @@
         <br />
         <asp:DropDownList ID="ddt_anio" Class="form-control" runat="server" DataSourceID="ODS_anio" DataTextField="nombre_anio" DataValueField="id_anio" AutoPostBack="True" Width="132px"></asp:DropDownList>
 
-        <asp:ObjectDataSource ID="ODS_anio" runat="server" SelectMethod="obtenerAnio" TypeName="Datos.DUser"></asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="ODS_anio" runat="server" SelectMethod="obtenerAnio" TypeName="Datos.DMUser"></asp:ObjectDataSource>
 
         <label for="ddt_curso" class="control-label" style="color: #FFFFFF">
             <asp:Label ID="L_AdminEstuCursoSubCurso" runat="server"></asp:Label></label>
         <br />
         <asp:DropDownList ID="ddt_curso" Class="form-control" runat="server" DataSourceID="ODS_Cur" DataTextField="nombre_curso" DataValueField="id_ancu" AutoPostBack="True" Width="130px"></asp:DropDownList>
 
-        <asp:ObjectDataSource ID="ODS_Cur" runat="server" SelectMethod="obtenerCursoanio" TypeName="Datos.DUser">
+        <asp:ObjectDataSource ID="ODS_Cur" runat="server" SelectMethod="obtenerCursoanio" TypeName="Datos.DMUser">
             <SelectParameters>
                 <asp:ControlParameter ControlID="ddt_anio" Name="anio" PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>

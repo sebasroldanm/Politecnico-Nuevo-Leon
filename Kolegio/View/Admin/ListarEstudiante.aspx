@@ -83,7 +83,7 @@
             <asp:ObjectDataSource ID="OBD_est" runat="server" SelectMethod="listarestudiante" TypeName="DaoUser"></asp:ObjectDataSource>
             <asp:ObjectDataSource ID="ObjectDataSource1" runat="server"></asp:ObjectDataSource>
 
-            <asp:ObjectDataSource ID="ODS_ListarEstudianteCurso" runat="server" SelectMethod="gEstudiante" TypeName="Datos.DUser">
+            <asp:ObjectDataSource ID="ODS_ListarEstudianteCurso" runat="server" SelectMethod="gEstudiante" TypeName="Datos.DMUser">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="ODL_Curso" Name="curs" PropertyName="SelectedValue" Type="Int32" />
                 </SelectParameters>

@@ -222,8 +222,7 @@ namespace Datos
 
             }
         }
-
-
+        
         public List<Usuario> obtenerAcudiente(UUser dat)
         {
 
@@ -241,8 +240,7 @@ namespace Datos
             }
 
         }
-
-
+        
         public UUser inicio()
         {
             UUser usua = new UUser();
@@ -537,34 +535,39 @@ namespace Datos
         
         public UUser obtenerUsuarioMod(UUser us)
         {
-            UIdioma encId = new UIdioma();
-            UUser usua = new UUser();
-            Usuario enc = new Usuario();
-            using (var db = new Mapeo("public"))
-            {
-                var result = db.usuario.SingleOrDefault(x => x.num_documento == us.Documento);
+            
+                UIdioma encId = new UIdioma();
+                UUser usua = new UUser();
+                Usuario enc = new Usuario();
+                using (var db = new Mapeo("public"))
+                {
+                    var result = db.usuario.SingleOrDefault(x => x.num_documento == us.Documento);
                 if (result != null)
                 {
-                    usua.Nombre = result.nombre_usua;
-                    usua.Apellido = result.apellido_usua;
-                    usua.Correo = result.correo;
-                    usua.Direccion = result.direccion;
-                    usua.Telefono = result.telefono;
-                    usua.UserName = result.user_name;
-                    usua.Clave = result.clave;
-                    usua.fecha_nacimiento = result.fecha_nac;
-                    usua.Foto = result.foto_usua;
-                    usua.Departamento = result.dep_nacimiento;
-                    usua.Ciudad = result.ciu_nacimiento;
-                    usua.Estado = result.estado.ToString();
+                        usua.IdUsua = result.id_usua.ToString();
+                        usua.Nombre = result.nombre_usua;
+                        usua.Rol = result.rol_id;
+                        usua.UserName = result.user_name;
+                        usua.Clave = result.clave;
+                        usua.Correo = result.correo;
+                        usua.Estado = result.estado.ToString();
+                        usua.Apellido = result.apellido_usua;
+                        usua.Direccion = result.direccion;
+                        usua.Telefono = result.telefono;
+                        usua.Documento = result.num_documento;
+                        usua.Foto = result.foto_usua;
+                        usua.fecha_nacimiento = result.fecha_nac;
+                        usua.Departamento = result.dep_nacimiento;
+                        usua.Ciudad = result.ciu_nacimiento;
+                        usua.Session = result.sesion;
+                    }
+                    else
+                    {
+                        usua.Mensaje = encId.CompIdioma["L_ErrorAdmin_sin_registro"].ToString(); //"Sin Registros";
+                    }
                 }
-                else
-                {
-                    usua.Mensaje = encId.CompIdioma["L_ErrorAdmin_sin_registro"].ToString(); //"Sin Registros";
-                }
+                return usua;
             }
-            return usua;
-        }
         
         ///Edita con Mapeo////////////////
 
@@ -753,10 +756,18 @@ namespace Datos
 
         }
 
-
-
-
-
+        public List<Usuario> gEstudiante(int curs)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                return (from usuario in db.usuario
+                        join estudiantecurso in db.estudiantecurso on usuario.id_usua equals estudiantecurso.id_ec_estudiante
+                        join aniocurso in db.aniocurso on estudiantecurso.id_ec_curso equals aniocurso.id_ancu
+                        join curso in db.curso on aniocurso.id_ancu_curso equals curso.id_curso
+                        where aniocurso.id_ancu == curs
+                        select usuario).ToList<Usuario>();
+            }
+        }
 
         
     }

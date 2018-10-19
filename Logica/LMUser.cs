@@ -131,6 +131,7 @@ namespace Logica
             UUser us = new UUser();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
+            List<Usuario> lusua = new List<Usuario>();
             Int32 FORMULARIO = 16;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);

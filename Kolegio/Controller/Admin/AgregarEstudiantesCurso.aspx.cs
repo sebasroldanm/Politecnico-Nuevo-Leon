@@ -90,7 +90,7 @@ public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
         UUser enc = new UUser();
-        LReg logic = new LReg();
+        LMReg logic = new LMReg();
 
         enc = logic.selecEstudianteACurso(ddt_curso.SelectedValue, GridView1.SelectedRow.Cells[0].Text, int.Parse(Session["idioma"].ToString()));
         GridView1.DataBind();
@@ -100,7 +100,7 @@ public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
     protected void btn_Aceptar_Click(object sender, EventArgs e)
     {
         UUser enc = new UUser();
-        LReg logic = new LReg();
+        LMReg logic = new LMReg();
 
         enc = logic.agregarEstudianteACurso(ddt_anio.SelectedValue, ddt_curso.SelectedValue, GridView1.Rows.Count, GridView1, int.Parse(Session["idioma"].ToString()));
                
