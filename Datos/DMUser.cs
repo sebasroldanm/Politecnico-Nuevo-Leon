@@ -223,6 +223,26 @@ namespace Datos
             }
         }
 
+
+        public List<Usuario> obtenerAcudiente(UUser dat)
+        {
+
+            Usuario usua = new Usuario();
+
+
+            using (var db = new Mapeo("public"))
+            {
+
+                var acudi = db.usuario.ToList<Usuario>().Where(x => x.num_documento == dat.Documento).Where(g => g.rol_id.Contains("4"));
+
+                return acudi.ToList<Usuario>();
+
+
+            }
+
+        }
+
+
         public UUser inicio()
         {
             UUser usua = new UUser();

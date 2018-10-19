@@ -238,7 +238,46 @@ namespace Logica
 
 
         }
-        
+
+
+        public UUser buscarAcudiete(int departamento, int ciudad, String documento, int selIdioma)
+        {
+            UUser usua = new UUser();
+            DMUser dat = new DMUser();
+            UIdioma encId = new UIdioma();
+            LMIdioma idioma = new LMIdioma();
+            Int32 FORMULARIO = 8;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+            usua.Documento = documento.ToString();
+
+            List<Usuario> registros = dat.obtenerAcudiente(usua);
+
+            if (departamento == 0 || ciudad == 0)
+            {
+                usua.Mensaje = encId.CompIdioma["L_ErrorUsuario_Seleccione"].ToString(); //"Debe seleccionar una opcion";
+            }
+
+            if (registros.Count > 0)
+            {
+                foreach (Usuario acudi in registros)
+                {
+                    usua.Nombre = Convert.ToString(acudi.nombre_usua.ToString());
+                    usua.Apellido = Convert.ToString(acudi.apellido_usua.ToString());
+                    usua.id_Acudiente = Convert.ToString(acudi.id_usua.ToString());
+                }
+                usua.L_Aceptar1 = true;
+                usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_acudiente_ok"].ToString() + "');</script>";// ("<script language='JavaScript'>window.alert('Acudiente Seleccionado');</script>");
+
+            }
+            else
+            {
+                usua.MensajeAcudiente = encId.CompIdioma["L_ErrorAcudiente"].ToString();// "El Acudiente No se encuentra en la base de Datos";
+            }
+            return usua;
+        }
+
         public UUser insertarprofe(Usuario profe, int selIdioma)
         {
             DMUser admon = new DMUser();

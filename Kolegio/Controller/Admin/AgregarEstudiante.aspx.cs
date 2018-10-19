@@ -225,7 +225,25 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
     protected void btn_buscarAcudiente_Click(object sender, EventArgs e)
     {
 
-        LUser logica = new LUser();
+        //LUser logica = new LUser();
+        //UUser usua = new UUser();
+
+        //usua = logica.buscarAcudiete(
+        //    int.Parse(ddt_lugarnacimDep.SelectedValue),
+        //    int.Parse(DDT_Ciudad.SelectedValue),
+        //    tb_AcudienteId.Text,
+        //    int.Parse(Session["idioma"].ToString()));
+
+        //L_ErrorAcudiente.Text = usua.MensajeAcudiente;
+        //tb_AcudienteNombre.ReadOnly = usua.L_Aceptar1;
+        //tb_AcudienteNombre.Text = usua.Nombre;
+        //tb_AcudienteApellido.ReadOnly = usua.L_Aceptar1;
+        //tb_AcudienteApellido.Text = usua.Apellido;
+        //tb_AcudienteId.ReadOnly = usua.L_Aceptar1;
+        //Session["id_acu"] = usua.id_Acudiente;
+        //this.Page.Response.Write(usua.Notificacion);
+
+        LMUser logica = new LMUser();
         UUser usua = new UUser();
 
         usua = logica.buscarAcudiete(
@@ -242,7 +260,9 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
         tb_AcudienteId.ReadOnly = usua.L_Aceptar1;
         Session["id_acu"] = usua.id_Acudiente;
         this.Page.Response.Write(usua.Notificacion);
-        
+
+
+
     }
     protected string cargarImagen()
     {
