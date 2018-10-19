@@ -47,6 +47,8 @@
     <Compile Include="MIdioma\RolIdioma.cs" />
     <Compile Include="MIdioma\Terminacion.cs" />
     <Compile Include="MInicio\Inicio.cs" />
+    <Compile Include="MSeguridad\Auditoria.cs" />
+    <Compile Include="MSeguridad\Autenticacion.cs" />
     <Compile Include="MUsuario\Acudiente.cs" />
     <Compile Include="AcudienteEstudianteVista.cs" />
     <Compile Include="Boletin.cs" />
