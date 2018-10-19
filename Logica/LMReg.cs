@@ -410,14 +410,14 @@ namespace Logica
             }
             return enc;
         }
-        //
+        
         public UUser agregaraHorario(string curso, string anio, string dia, string docente, string hora, string materia, int selIdioma)
         {
             UUser enc = new UUser();
             DMReg datos = new DMReg();
             DMUser muser = new DMUser();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 10;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -512,15 +512,19 @@ namespace Logica
         //Funcion de agregaraHorario
         public bool validar_horario(string curso, string dia, string hora)
         {
-            DUser datos = new DUser();
+            DMReg datos = new DMReg();
             String id = curso;
             int g = int.Parse(id);
             bool ok = true;
-            DataTable mat = datos.horarioCurso(g);
-            int n = mat.DefaultView.Count;
-            for (int i = 0; i < n; i++)
+            List<HorarioEstudiante> mat = datos.horarioCurso(g);
+            //int n = mat.DefaultView.Count;
+            //for (int i = 0; i < n; i++)
+            //{
+            //    if ((mat.Rows[i]["dia"].ToString() == dia) & (mat.Rows[i]["hora_inicio"].ToString() == hora))
+            //    {
+            foreach(HorarioEstudiante h in mat)
             {
-                if ((mat.Rows[i]["dia"].ToString() == dia) & (mat.Rows[i]["hora_inicio"].ToString() == hora))
+                if ((h.dia.ToString() == dia) & (h.hora_inicio.ToString() == hora))
                 {
                     return false;
                 }
@@ -534,14 +538,18 @@ namespace Logica
         //Funcion de agregaraHorario
         public bool validar_profesor(string docente, string dia, string hora)
         {
-            DUser datos = new DUser();
+            DMReg datos = new DMReg();
             String id = docente;
             bool ok = true;
-            DataTable mat = datos.horarioProf(id);
-            int n = mat.DefaultView.Count;
-            for (int i = 0; i < n; i++)
+            List<HorarioEstudiante> mat = datos.horarioProfesor(int.Parse(id));
+            //int n = mat.DefaultView.Count;
+            //for (int i = 0; i < n; i++)
+            //{
+            //    if ((mat.Rows[i]["dia"].ToString() == dia) & (mat.Rows[i]["hora_inicio"].ToString() == hora))
+            //    {
+            foreach(HorarioEstudiante h in mat)
             {
-                if ((mat.Rows[i]["dia"].ToString() == dia) & (mat.Rows[i]["hora_inicio"].ToString() == hora))
+                if ((h.dia.ToString() == dia) & (h.hora_inicio.ToString() == hora))
                 {
                     return false;
                 }

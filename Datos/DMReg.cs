@@ -444,10 +444,11 @@ namespace Datos
         {
             using (var db = new Mapeo("public"))
             {
-                return (from materia in db.materia
+                int mat = int.Parse(reg.Materia);
+;                return (from materia in db.materia
                         join materiafecha in db.materiafecha on materia.id_materia equals materiafecha.id_mf_materia
                         join diamateria in db.diamateria on materiafecha.id_mf_fecha equals diamateria.id_dia_materia
-                        where materia.id_materia == int.Parse(reg.Materia)
+                        where materia.id_materia == mat
                         where diamateria.dia == reg.Dia_materia
                         where diamateria.hora_inicio == reg.Hora_in
 
