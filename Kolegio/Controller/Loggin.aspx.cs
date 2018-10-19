@@ -67,15 +67,15 @@ public partial class Loggin : System.Web.UI.Page
         Session["documento"] = datos.SDocumento;
         Session["foto"] = datos.SFoto;
 
-        MAC datosConexion = new MAC();
-        int prueba = int.Parse(Session["userId"].ToString());
-        lmuser.logicaGuardarSesion(int.Parse(Session["userId"].ToString()),
-            datosConexion.ip(),
-            datosConexion.mac(),
-            Session.SessionID);
+        
         try
         {
-           
+            MAC datosConexion = new MAC();
+
+            lmuser.logicaGuardarSesion(int.Parse(Session["userId"].ToString()),
+                datosConexion.ip(),
+                datosConexion.mac(),
+                Session.SessionID);
             Response.Redirect(datos.Url);
         }
         catch
