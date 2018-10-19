@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Datos;
 using Utilitarios;
+using Utilitarios.MEncSeguridad;
 using Utilitarios.MSeguridad;
 using Utilitarios.MVistasUsuario;
 using Utilitarios.Mregistro;
@@ -1175,12 +1176,13 @@ namespace Logica
             return usua;
         }
 
-        public UUser ModificarPaginaInicio(string nosotros, string mision, string vision, string session, int selIdioma)
+        public UUser ModificarPaginaInicio(string nosotros, string mision, string vision, string session, int selIdioma, MEncInicio enc)
         {
 
             UUser usua = new UUser();
             DMUser dat = new DMUser();
             UIdioma encId = new UIdioma();
+            DMSeguridad s = new DMSeguridad();
             LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 19;
 
@@ -1196,6 +1198,7 @@ namespace Logica
             dat.editarInicio(usua);
             usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_datos_modificados"].ToString() + "');</script>";
             //usua.Notificacion = "<script language='JavaScript'>window.alert('Datos Modificados');</script>";
+            s.fiel_auditoria_inicio("UPDATE", session, enc);
             return usua;
         }
         

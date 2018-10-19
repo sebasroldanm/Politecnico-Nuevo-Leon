@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
+using Utilitarios.MEncSeguridad;
 
 public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
 {
@@ -170,15 +171,27 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
     {
 
 
-        LUser logica = new LUser();
+        LMUser logica = new LMUser();
         UUser usua = new UUser();
+        MEncInicio enc = new MEncInicio();
+
+        enc.inicio_cont_nuevo = TB_Nosotros.Text;
+        enc.inicio_cont_old = Session["inicio_old"].ToString();
+        enc.mision_inicio_nuevo = TB_Mision.Text;
+        enc.mision_inicio_old = Session["mision_old"].ToString();
+        enc.vision_inicio_nuevo = TB_Vision.Text;
+        enc.vision_inicio_old = Session["vision_old"].ToString();
+        
+        
+        
 
         usua = logica.ModificarPaginaInicio(
             TB_Nosotros.Text,
             TB_Mision.Text,
             TB_Vision.Text,
             Session.SessionID,
-            int.Parse(Session["idioma"].ToString())
+            int.Parse(Session["idioma"].ToString()),
+            enc
             );
 
         this.Page.Response.Write(usua.Notificacion);
@@ -205,6 +218,10 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
 
         usua = logica.TraerDatosPagina();
 
+        Session["inicio_old"] = usua.Inicio;
+        Session["mision_old"] = usua.Mision;
+        Session["vision_old"] = usua.Vision;
+        
         TB_Nosotros.Text = usua.Inicio;
         TB_Vision.Text = usua.Vision;
         TB_Mision.Text = usua.Mision;
