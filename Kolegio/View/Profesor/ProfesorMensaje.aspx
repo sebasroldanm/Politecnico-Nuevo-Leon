@@ -51,9 +51,9 @@
                         <label typeof="text" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_ProfeMensMateria" runat="server"></asp:Label></label>
                         <asp:DropDownList ID="DDL_Materia" CssClass="form-control" runat="server" DataSourceID="ODS_Traer_materia" DataTextField="nombre_materia" DataValueField="id_materia" AutoPostBack="True" ValidationGroup="actua"></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RFV_Materia" runat="server" ErrorMessage="*" ControlToValidate="DDL_Materia" ValidationGroup="actua" ForeColor="Red" Font-Size="X-Large"></asp:RequiredFieldValidator>
-                        <asp:ObjectDataSource ID="ODS_Traer_materia" runat="server" SelectMethod="obtenermateriadecurso" TypeName="Datos.DUser">
+                        <asp:ObjectDataSource ID="ODS_Traer_materia" runat="server" SelectMethod="obtener_MatCur" TypeName="Datos.DMReg">
                             <SelectParameters>
-                                <asp:ControlParameter ControlID="DDL_Curso" Name="reg" PropertyName="SelectedValue" Type="Int32" />
+                                <asp:ControlParameter ControlID="DDL_Curso" Name="reg" PropertyName="SelectedValue" Type="Object" />
                             </SelectParameters>
                         </asp:ObjectDataSource>
 
