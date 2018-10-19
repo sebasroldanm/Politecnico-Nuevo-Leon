@@ -807,7 +807,6 @@ namespace Datos
         {
             List<Sesion> ses = new List<Sesion>();
             DateTime fe = new DateTime();
-            DateTime femas = DateTime.Parse("00:30:00");
             using (var db = new Mapeo("public"))
             {
                 ses = db.sesion.ToList<Sesion>().Where(x => x.IdUsuario == IdUsuadeUser(Usuario)).ToList();
@@ -826,6 +825,12 @@ namespace Datos
                 }
             }            
         }
-        
+
+        public DataTable evaluaSesiones(string Usuario)
+        {
+
+        }
+
+
     }
 }
