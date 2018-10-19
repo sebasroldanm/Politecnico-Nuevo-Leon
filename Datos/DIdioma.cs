@@ -598,7 +598,7 @@ namespace Datos
             return Idioma;
         }
 
-        public DataTable eliminarControles(int idioma)
+        public DataTable eliminarControles(int idioma)///eliminar
         {
             DataTable Idioma = new DataTable();
             NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
@@ -626,7 +626,7 @@ namespace Datos
             return Idioma;
         }
 
-        public DataTable eliminarIdioma(int idioma)
+        public DataTable eliminarIdioma(int idioma)/// borrar
         {
             DataTable Idioma = new DataTable();
             NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);

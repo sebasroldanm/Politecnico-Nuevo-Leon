@@ -23,12 +23,52 @@ namespace Datos
 
         }
 
+
+
+
         public List<Idioma> obtenerSeleccionIdioma()
         {
             using (var db = new Mapeo("public"))
             {
                 return (db.idioma.ToList<Idioma>().OrderBy(i => i.id_idioma)).ToList<Idioma>();
             }
+
+        }
+
+
+
+        public void eliminarControles(int idioma)
+        {
+            List<Controles> contro = new List<Controles>();
+            using (var db = new Mapeo("public"))
+            {
+                contro = db.controles.ToList<Controles>().Where(x => x.con_idioma_id == idioma).ToList();
+                foreach (Controles c in contro)
+                {
+                    var result = db.controles.SingleOrDefault(y => y.id_controles == c.id_controles);
+                    if (result != null)
+                    {
+                        db.controles.Remove(result);
+                        db.SaveChanges();
+                    }
+                }
+            }
+
+        }
+
+        public void eliminarIdioma(int idioma)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.idioma.SingleOrDefault(y => y.id_idioma == idioma);
+                if (result != null)
+                {
+                    db.idioma.Remove(result);
+                    db.SaveChanges();
+                }
+
+            }
+
 
         }
 
