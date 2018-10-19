@@ -15,7 +15,7 @@ public partial class View_Profesor_ProfesorHorario : System.Web.UI.Page
         Response.Cache.SetNoStore();
         LLogin log = new LLogin();
         UUser util = new UUser();
-        LReg logic = new LReg();
+        LMReg logic = new LMReg();
         try
         {
             String id_est = Session["userId"].ToString();
