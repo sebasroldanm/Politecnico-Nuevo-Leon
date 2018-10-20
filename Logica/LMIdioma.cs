@@ -97,8 +97,42 @@ namespace Logica
         }
 
 
+        public UIdioma listarControlIdioma(string form, string control)
+        {
+            DMIdioma datos = new DMIdioma();
+            UIdioma enc = new UIdioma();
+            int contador = 0;
+            if (form == "")
+            {
+                form = "0";
+            }
+            if (control == "")
+            {
+                control = "L";
+            }
+            enc.IdFormulario = form;
+            enc.Control = control;
+            List<Controles> reg = datos.listarIdiomaControles(enc);
+            if (reg.Count > 0)
+            {
+                foreach (Controles con in reg)
+                {
+                    if (contador == 0)
+                    {
+                        enc.ControlEsp = con.texto.ToString();
+                    }
+                    if (contador == 1)
+                    {
+                        enc.ControlIngles =con.texto.ToString();
+                    }
+                   
+                }
+                
+            }
+            return enc;
+        }
 
-
+  
         public UIdioma eliminarControles(int idioma)
         {
             DMIdioma datos = new DMIdioma();
@@ -108,7 +142,28 @@ namespace Logica
             return enc;
         }
 
-        public UIdioma eliminarIdioma(int idioma)
+        public UIdioma traerIdioma(string idioma)
+        {
+            DMIdioma datos = new DMIdioma();
+            UIdioma enc = new UIdioma();
+
+           List<Idioma> reg = datos.obtenerTraerIdioma(idioma);
+            foreach (Idioma idi in reg)
+
+            {
+
+                enc.NombreIdioma = idi.id_idioma.ToString();
+            }
+                 
+ 
+            return enc;
+        }
+
+
+
+
+
+    public UIdioma eliminarIdioma(int idioma)
         {
             DMIdioma datos = new DMIdioma();
             UIdioma enc = new UIdioma();
@@ -263,6 +318,10 @@ namespace Logica
             datos.editarIdiomaControl(id, texto);
             return enc;
         }
+
+
+
+
 
         public UIdioma obtTerminacionIdioma(int idioma)
         {
