@@ -35,7 +35,7 @@
 
         try
         {
-            Logica.LUser logica = new Logica.LUser();
+            Logica.LMUser logica = new Logica.LMUser();
 
             logica.cerrarSession(Session.SessionID);
         }
