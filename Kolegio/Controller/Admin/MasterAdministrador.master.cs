@@ -61,7 +61,7 @@ public partial class View_Administrador_MasterAdministrador : System.Web.UI.Mast
 
     protected void btn_cerrar_sesion_click(object sender, EventArgs e)
     {
-        LUser logica = new LUser();
+        LMUser logica = new LMUser();
       
         logica.limpiaSesionActiva(Session["userName"].ToString());
         logica.cerrarSession(Session.SessionID);

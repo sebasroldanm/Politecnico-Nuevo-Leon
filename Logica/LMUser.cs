@@ -1231,5 +1231,24 @@ namespace Logica
             dat.guardadoSession(aut);
         }
 
+        public void limpiaSesionActiva(string usuario)
+        {
+            UUser usua = new UUser();
+            DMUser dat = new DMUser();
+
+            dat.LimpiaSesionesActivas(usuario);
+
+        }
+
+        public void cerrarSession(string sesion)
+        {
+            UUser usua = new UUser();
+            DMUser dat = new DMUser();
+
+            usua.Session = sesion;
+
+            dat.cerrarSession(usua);
+        }
+
     }
 }

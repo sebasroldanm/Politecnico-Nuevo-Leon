@@ -972,5 +972,31 @@ namespace Datos
             }
         }
 
+        public void LimpiaSesionesActivas(string usuario)
+        {
+            int usua = IdUsuadeUser(usuario);
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.sesion.SingleOrDefault(x => x.IdUsuario == usua);
+                if (result != null)
+                {
+                    result.SesionActiva = (int.Parse(result.SesionActiva) - 1).ToString();
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        public void cerrarSession(UUser datos)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.autenticacion.SingleOrDefault(x => x.session == datos.Session);
+                if (result != null)
+                {
+                    result.fecha_fin = DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }
