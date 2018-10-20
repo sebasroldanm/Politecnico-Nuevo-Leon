@@ -109,7 +109,7 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
     protected void ButtonVerNota_Click(object sender, EventArgs e)
     {
         UUser enc = new UUser();
-        LReg logic = new LReg();
+        LMReg logic = new LMReg();
 
         enc = logic.verNota(ddl_alumno.SelectedValue, ddl_materia.SelectedValue, ddt_curso.SelectedValue, int.Parse(Session["idioma"].ToString()));
 

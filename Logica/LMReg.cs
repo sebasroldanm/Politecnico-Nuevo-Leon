@@ -561,6 +561,50 @@ namespace Logica
             return ok;
         }
 
+        public UUser verNota(string alumno, string materia, string curso, int selIdioma)
+        {
+            DMReg datos = new DMReg();
+            UUser enc = new UUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 39;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+            enc.Mensaje = " ";
+            if (alumno == "0" || materia == "0" || curso == "0")
+            {
+                enc.Mensaje = encId.CompIdioma["L_Falta_Selec"].ToString(); //"Falta seleccionar";
+            }
+            else
+            {
+                enc.Id_estudiante = alumno;
+                enc.Materia = materia;
+                enc.Curso = curso;
+                List<Nota> registros = datos.obtenerNota(enc);
+                try
+                {
+                    foreach (Nota n in registros)
+                    {
+                        enc.Nota1 = n.nota1.ToString();
+                        enc.Nota2 = n.nota2.ToString();
+                        enc.Nota3 = n.nota3.ToString();
+
+                        enc.Notadef = n.notadef.ToString();
+                        //enc.Nota1 = registros.Rows[0]["nota1"].ToString();
+                        //enc.Nota2 = registros.Rows[0]["nota2"].ToString();
+                        //enc.Nota3 = registros.Rows[0]["nota3"].ToString();
+
+                        //enc.Notadef = registros.Rows[0]["notadef"].ToString();
+                    }
+                }
+                catch
+                {
+
+                }
+            }
+            return enc;
+        }
 
     }
 
