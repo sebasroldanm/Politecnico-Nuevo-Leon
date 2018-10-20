@@ -951,7 +951,7 @@ namespace Logica
                                 user.MensajeIntentoErroneos = "<script language='JavaScript'>window.alert('Ha exedido el numero de Sesiones Permitidas');</script>";
 
                             }
-                            datos.LimpiaIntentosErroneos(userName);
+                            muser.LimpiaIntentosErroneos(userName);
 
 
                         }
