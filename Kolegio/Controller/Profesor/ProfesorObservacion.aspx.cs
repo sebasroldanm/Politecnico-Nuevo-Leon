@@ -17,7 +17,7 @@ public partial class View_Profesor_ProfesorObservacion : System.Web.UI.Page
         UUser usua = new UUser();
         try
         {
-            LReg logic = new LReg();
+            LMReg logic = new LMReg();
             UUser enc = new UUser();
             enc = logic.ObAniodeCurso(Session["userId"].ToString());
             Session["anio"] = enc.Año;

@@ -260,7 +260,7 @@ namespace Logica
 
         public UUser PL_EstudianteVerNotas(string userId)
         {
-            DUser datos = new DUser();
+            
             UUser enc = new UUser();
             DateTime fecha = DateTime.Now;
             DMReg dato = new DMReg();
@@ -566,7 +566,7 @@ namespace Logica
             DMReg datos = new DMReg();
             UUser enc = new UUser();
             UIdioma encId = new UIdioma();
-            LIdioma idioma = new LIdioma();
+            LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 39;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);

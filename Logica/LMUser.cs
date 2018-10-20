@@ -463,15 +463,12 @@ namespace Logica
         
         public UUser editarEstudiante(Usuario estudi, int selIdioma, string est, string fotoSesion)
         {
-
             DMUser estudo = new DMUser();
             UUser usua = new UUser();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 17;
-
-
-
+            
             int dep;
             dep = int.Parse(estudi.dep_nacimiento.ToString());
 
@@ -856,7 +853,7 @@ namespace Logica
             }
 
         }
-        
+        //Maldito Token Duser
         public UUser loggear(string userName, string clave, int selIdioma, Boolean bot)
         {
             UUser user = new UUser();
@@ -1188,7 +1185,7 @@ namespace Logica
             int selIdioma
             )
         {
-            DUser dat = new DUser();
+            
             UUser usua = new UUser();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
@@ -1253,8 +1250,6 @@ namespace Logica
         public UUser PL_AcudienteObservador(string estudiante)
         {
             UUser usua = new UUser();
-            DUser dat = new DUser();
-
             DMReg datos = new DMReg();
             DateTime fecha = DateTime.Now;
             string año = (fecha.Year).ToString();
