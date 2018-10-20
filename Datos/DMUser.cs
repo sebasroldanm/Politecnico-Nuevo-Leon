@@ -988,13 +988,18 @@ namespace Datos
 
         public void cerrarSession(UUser datos)
         {
+            List<Autenticacion> au = new List<Autenticacion>();
             using (var db = new Mapeo("public"))
             {
-                var result = db.autenticacion.SingleOrDefault(x => x.session == datos.Session);
-                if (result != null)
+                au = (db.autenticacion.ToList<Autenticacion>().Where(x => x.session == datos.Session)).ToList();
+                foreach (Autenticacion a in au)
                 {
-                    result.fecha_fin = DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
-                    db.SaveChanges();
+                    var result = db.autenticacion.SingleOrDefault(x => x.id == a.id);
+                    if (result != null)
+                    {
+                        result.fecha_fin = DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
+                        db.SaveChanges();
+                    }
                 }
             }
         }
