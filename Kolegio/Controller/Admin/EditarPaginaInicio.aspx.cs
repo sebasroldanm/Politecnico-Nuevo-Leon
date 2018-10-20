@@ -36,7 +36,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
 
 
         UIdioma encId = new UIdioma();
-        LIdioma idioma = new LIdioma();
+        LMIdioma idioma = new LMIdioma();
         Int32 FORMULARIO = 19;
 
         encId = idioma.obtIdioma(FORMULARIO, int.Parse(Session["idioma"].ToString()));
@@ -328,7 +328,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         //Insertar Idioma
         UIdioma encId = new UIdioma();
         LMIdioma mIdioma = new LMIdioma();
-        LIdioma idioma = new LIdioma();
+        LMIdioma idioma = new LMIdioma();
         UUser usua = new UUser();
 
         try

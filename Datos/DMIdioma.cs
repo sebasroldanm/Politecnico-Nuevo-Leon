@@ -316,6 +316,55 @@ namespace Datos
 
         }
 
+        public List<Controles> listarIdiomaControles(UIdioma idioma)
+        {
+
+            int form = int.Parse(idioma.IdFormulario);
+            using (var db = new Mapeo("public"))
+            {
+                var control = (from controles in db.controles
+                               where controles.con_formulario_id == form
+                               where controles.control == idioma.Control
+                               select
+                               controles
+
+                    ).ToList();
+                return control.ToList<Controles>();
+            }
+            
+        }
+
+        public List<Idioma> obtenerTraerIdioma(string idioma)
+        {
+            using (var db = new Mapeo("publich"))
+            {
+                var nomidi = db.idioma.ToList<Idioma>().Where(c => c.nombre == idioma).ToList<Idioma>();
+                return nomidi.ToList<Idioma>();                  
+
+            }
+
+        }
+
+        public List<Controles> listarIdiomaControlesEditar(UIdioma idioma)
+        {
+
+           int form = int.Parse(idioma.IdFormulario);
+           int idi = int.Parse(idioma.IdIdioma);
+            using (var bd = new Mapeo("public"))
+            {
+                var control = (from controles in bd.controles
+                               where controles.con_formulario_id == form
+                               where controles.control == idioma.Control
+                               where controles.con_idioma_id == idi
+                               select
+                               controles
+                    ).ToList();
+                return control.ToList<Controles>();
+            }
+
+
+        }
+
         public List<Controles> listarControles(int idioma)
         {
             using (var db = new Mapeo("public"))
