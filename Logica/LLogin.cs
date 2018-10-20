@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using Datos;
 using Utilitarios;
+using Utilitarios.Mregistro;
+using Utilitarios.MVistasUsuario;
 
 namespace Logica
 {
@@ -128,13 +131,15 @@ namespace Logica
 
             if (sesion != "wpygkcrggjyqsrtf50nlfjlu")
             {
-                Console.WriteLine("");
+                Console.WriteLine(""); 
             }
             else
                 usua.Url = "~/View/Acudiente/AccesoDenegado.aspx";
 
             return usua;
         }
+
+        
 
         public UUser logAcudienteBoletin(string sesion)
         {

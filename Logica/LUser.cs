@@ -956,7 +956,6 @@ namespace Logica
         }
 
         
-
         public UUser PL_AcudienteObservador(string estudiante)
         {
             DUser datos = new DUser();

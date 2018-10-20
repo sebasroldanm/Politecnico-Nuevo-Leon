@@ -13,14 +13,17 @@ public partial class View_Acudiente_AcudienteBoletin : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Response.Cache.SetNoStore();
-        LUser logica = new LUser();
+        LMUser logica = new LMUser();
         LLogin log = new LLogin();
         UUser usua = new UUser();
+        UUser enc = new UUser();
         try
         {
             usua = log.logAcudienteSecillo(Session["userId"].ToString());
 
-            logica.PL_AcudienteObservador(DDT_estudiante.SelectedValue);
+            enc = logica.PL_AcudienteObservador(DDT_estudiante.SelectedValue);
+            Session["anio"] = enc.SAño;
+            Session["est"] = enc.SEstudiante;
             Response.Redirect(usua.Url);
         }
         catch

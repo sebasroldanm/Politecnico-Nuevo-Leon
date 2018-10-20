@@ -925,7 +925,7 @@ namespace Logica
 
                                     case 4:
                                         //Response.Redirect("Acudiente/AcudienteBoletin.aspx");
-                                        user.Url = "~/View/Acudiente/AcudienteObservador.aspx";
+                                        user.Url = "~/View/Acudiente/AcudienteBoletin.aspx";
                                         break;
 
                                     default:
@@ -1250,5 +1250,41 @@ namespace Logica
             dat.cerrarSession(usua);
         }
 
+        public UUser PL_AcudienteObservador(string estudiante)
+        {
+            UUser usua = new UUser();
+            DUser dat = new DUser();
+
+            DMReg datos = new DMReg();
+            DateTime fecha = DateTime.Now;
+            string año = (fecha.Year).ToString();
+            año = año + "-01-01";
+            List<Anio> re = datos.obtenerAniodeCurso(año);
+            foreach (Anio a in re)
+            {
+                usua.Año = a.id_anio.ToString();
+                usua.Id_estudiante = estudiante;
+            }
+
+            List<CursoDeEstudianteVista> registros = datos.obtenerCursoEst(usua);
+            if (registros.Count > 0)
+            {
+                foreach (CursoDeEstudianteVista cev in registros)
+                {
+                    usua.SAño = cev.id_ancu.ToString();
+                    usua.SEstudiante = estudiante;
+                }
+                //Session["anio"] = registros.Rows[0]["id_ancu"].ToString();
+                //Session["est"] = DDT_estudiante.SelectedValue;
+            }
+            else
+            {
+                usua.SAño = "0";
+                usua.SEstudiante = estudiante;
+                //Session["anio"] = "0";
+                //Session["est"] = DDT_estudiante.SelectedValue;
+            }
+            return usua;
+        }
     }
 }
