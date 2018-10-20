@@ -67,7 +67,7 @@ public partial class View_Profesor_ProfesorObservacion : System.Web.UI.Page
     protected void GridView2_SelectedIndexChanged(object sender, EventArgs e)
     {
         UUser enc = new UUser();
-        LReg logic = new LReg();
+        LMReg logic = new LMReg();
 
         Session["documentoestudiante"] = GridView2.SelectedRow.Cells[0].Text;
         enc = logic.selecObservador(Session["documentoestudiante"].ToString());

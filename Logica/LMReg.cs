@@ -628,6 +628,19 @@ namespace Logica
             return enc;
         }
 
+        public UUser selecObservador(string documento)
+        {
+            DMUser datos = new DMUser();
+            UUser enc = new UUser();
+
+            enc.Documento = documento;
+
+            UUser registro = datos.obtenerUsuarioMod(enc);
+            enc.Id_estudiante = registro.IdUsua.ToString();
+            enc.Url = ("~/View/Profesor/ProfesorListado.aspx");
+
+            return enc;
+        }
     }
 
 
