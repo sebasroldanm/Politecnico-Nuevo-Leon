@@ -879,5 +879,98 @@ namespace Datos
                 }
             }
         }
+        //Vacia :'v
+        public void generarToken(String user_name)
+        {
+
+        }
+
+        public void InsertaTablaSesion(string usuario)
+        {
+            int us = IdUsuadeUser(usuario);
+            Sesion lusua = new Sesion();
+            using (var db = new Mapeo("public"))
+            {
+                lusua.IdUsuario = us;
+                lusua.SesionUsuario = "2";
+                lusua.SesionActiva = "0";
+                lusua.IntentosErroneos = "0";
+                lusua.HoraLibre = "1946-09-05 09:30:00.21804-05";
+                db.sesion.Add(lusua);
+                db.SaveChanges();
+            }
+        }
+
+        public int sumaIntentosErroneos(string usuario)
+        {
+            List<Sesion> ses = new List<Sesion>();
+            int intentosErroneos = 0;
+            using (var db = new Mapeo("public"))
+            {
+                ses = db.sesion.ToList<Sesion>().Where(x => x.IdUsuario == IdUsuadeUser(usuario)).ToList();
+                foreach (Sesion s in ses)
+                {
+                    intentosErroneos = int.Parse(s.IntentosErroneos);
+                }
+
+                if (intentosErroneos > 2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    editarSumIntErroneos(IdUsuadeUser(usuario));
+                    return 1;
+                }
+            }
+
+        }
+
+        public void editarSumIntErroneos(int usuario)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.sesion.SingleOrDefault(x => x.IdUsuario == usuario);
+                if (result != null)
+                {
+                    result.IntentosErroneos = (int.Parse(result.IntentosErroneos) + 1).ToString();
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        public void actualizaFechaSesionErronea(string usuario)
+        {
+            List<Sesion> ses = new List<Sesion>();
+            int intentosErroneos = 0;
+            using (var db = new Mapeo("public"))
+            {
+                ses = db.sesion.ToList<Sesion>().Where(x => x.IdUsuario == IdUsuadeUser(usuario)).ToList();
+                foreach (Sesion s in ses)
+                {
+                    intentosErroneos = int.Parse(s.IntentosErroneos);
+                }
+
+                if (intentosErroneos == 3)
+                {
+                    editarAcrtualizaHora(IdUsuadeUser(usuario));
+                }
+            }
+
+        }
+
+        public void editarAcrtualizaHora(int usuario)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.sesion.SingleOrDefault(x => x.IdUsuario == usuario);
+                if (result != null)
+                {
+                    result.HoraLibre = DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
+                    db.SaveChanges();
+                }
+            }
+        }
+
     }
 }

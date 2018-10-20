@@ -75,7 +75,7 @@ namespace Logica
         {
             DMUser admon = new DMUser();
             UUser usua = new UUser();
-            DUser dat = new DUser();
+            
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 7;
@@ -103,7 +103,7 @@ namespace Logica
                 if (admin.foto_usua != null)
                 {
                     admon.insertarAdmin(admin);
-                    dat.InsertaTablaSesion(admin.user_name);
+                    admon.InsertaTablaSesion(admin.user_name);
                     //usua.Notificacion = "<script language='JavaScript'>window.alert('Usuario Insertado con Exito');</script>";
                     usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_insertado"].ToString() + "');</script>";
                     usua.B_Botones1 = true;
@@ -167,7 +167,7 @@ namespace Logica
 
             DMUser admon = new DMUser();
             UUser usua = new UUser();
-            DUser dat = new DUser();
+            
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 16;
@@ -241,8 +241,7 @@ namespace Logica
 
 
         }
-
-
+        
         public UUser buscarAcudiete(int departamento, int ciudad, String documento, int selIdioma)
         {
             UUser usua = new UUser();
@@ -285,7 +284,6 @@ namespace Logica
         {
             DMUser admon = new DMUser();
             UUser usua = new UUser();
-            DUser dat = new DUser();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 11;
@@ -313,7 +311,7 @@ namespace Logica
                 if (profe.foto_usua != null)
                 {
                     admon.insertarProfe(profe);
-                    dat.InsertaTablaSesion(profe.user_name);
+                    admon.InsertaTablaSesion(profe.user_name);
                     //usua.Notificacion = "<script language='JavaScript'>window.alert('Usuario Insertado con Exito');</script>";
                     usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_insertado"].ToString() + "');</script>";
                     usua.B_Botones1 = true;
@@ -337,7 +335,6 @@ namespace Logica
         {
             DMUser admon = new DMUser();
             UUser usua = new UUser();
-            DUser dat = new DUser();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 6;
@@ -365,7 +362,7 @@ namespace Logica
                 if (acudi.foto_usua != null)
                 {
                     admon.insertarAcudiente(acudi);
-                    dat.InsertaTablaSesion(acudi.user_name);
+                    admon.InsertaTablaSesion(acudi.user_name);
                     //usua.Notificacion = "<script language='JavaScript'>window.alert('Usuario Insertado con Exito');</script>";
                     usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_insertado"].ToString() + "');</script>";
                     usua.B_Botones1 = true;
@@ -390,7 +387,6 @@ namespace Logica
 
             DMUser profo = new DMUser();
             UUser usua = new UUser();
-            DUser dat = new DUser();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 18;
@@ -470,7 +466,6 @@ namespace Logica
 
             DMUser estudo = new DMUser();
             UUser usua = new UUser();
-            DUser dat = new DUser();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 17;
@@ -550,7 +545,6 @@ namespace Logica
 
             DMUser acudo = new DMUser();
             UUser usua = new UUser();
-            DUser dat = new DUser();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 15;
@@ -625,7 +619,6 @@ namespace Logica
         public UUser ModifConfiguracionMapeo(Usuario admin, string fotoSesion)
         {
             UUser enc = new UUser();
-            DUser datos = new DUser();
             DMUser mdat = new DMUser();
 
             if (admin.foto_usua == null)
@@ -669,7 +662,6 @@ namespace Logica
 
         public void reporteAcudiente(DataTable informacion)
         {
-            DUser administrador = new DUser();
             DMUser muser = new DMUser();
             DataRow fila;
            // DataTable Intermedio = administrador.obteneracudientes();
@@ -697,8 +689,7 @@ namespace Logica
             DMUser muser = new DMUser();
 
             informacion = datos.Tables["Administrador"];
-
-            DUser administrador = new DUser();
+            
             //DataTable Intermedio = administrador.obtenerAdministradores();
             List<Usuario> admin = muser.listarAdministradores();
 
@@ -721,7 +712,6 @@ namespace Logica
         
         public void reporteDocente(DataTable informacion)
         {
-            DUser docente = new DUser();
             DMUser muser = new DMUser();
             DataRow fila;
             // DataTable Intermedio = administrador.obteneracudientes();
@@ -769,8 +759,6 @@ namespace Logica
 
         public UUser validarUsuario(string usuario, string documento, int selIdioma)
         {
-
-
             Usuario usuaok = new Usuario();
             UUser usua = new UUser();
             DMUser dat = new DMUser();
@@ -960,22 +948,13 @@ namespace Logica
                             System.Data.DataTable validez = datos.generarToken(userName);
                             if (int.Parse(validez.Rows[0]["id_usua"].ToString()) > 0)
                             {
-
-                                //suma contador id_usua
-
                                 user.Mensaje = encId.CompIdioma["L_Error_Inactivo"].ToString();
-                                //user.Mensaje = "Usuario Se Encuentra Inactivo";
-                                //Session["userId"] = null;
                                 user.SUserId = null;
-                                //user.Url = "~/View/Loggin.aspx";
                             }
                             else
                             {
                                 user.Mensaje = encId.CompIdioma["L_Error_Inactivo"].ToString();
-                                //user.Mensaje = "Usuario Se Encuentra Inactivo";
-                                //Session["userId"] = null;
                                 user.SUserId = null;
-                                //user.Url = "~/View/Loggin.aspx";
                             }
 
                         }
@@ -988,15 +967,13 @@ namespace Logica
                 else
                 {
                     user.Mensaje = encId.CompIdioma["L_Error_Incorrecto"].ToString();
-
-                    //user.Mensaje = "Usuario Y/o Clave Incorrecto";
-                    //Session["userId"] = null;
+                    
                     user.SUserId = null;
-                    //user.Url = "~/View/Loggin.aspx";
 
-                    DataTable erroneos = datos.sumaIntentosErroneos(userName);
-                    datos.actualizaFechaSesionErronea(userName);
-                    int IntentosErroneos = int.Parse(erroneos.Rows[0][0].ToString());
+                    int erroneos = muser.sumaIntentosErroneos(userName);
+                    muser.actualizaFechaSesionErronea(userName);
+                    //int IntentosErroneos = int.Parse(erroneos.Rows[0][0].ToString());
+                    int IntentosErroneos = erroneos;
                     if (IntentosErroneos == 0)
                     {
                         //user.Notificacion = "Ha exedido el numero de intentos erroneos";

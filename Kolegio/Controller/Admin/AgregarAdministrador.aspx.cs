@@ -261,7 +261,7 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
 
     protected string cargarImagen()
     {
-        LUser logic = new LUser();
+        LMUser logic = new LMUser();
         UUser enc = new UUser();
         enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_AdministradorFoto.PostedFile.FileName), System.IO.Path.GetExtension(tb_AdministradorFoto.PostedFile.FileName), tb_AdministradorFoto.ToString(), Server.MapPath("~/FotosUser"), int.Parse(Session["idioma"].ToString()));
         try
