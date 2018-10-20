@@ -27,7 +27,7 @@ public partial class View_Profesor_MasterProfesor : System.Web.UI.MasterPage
     }
     protected void btn_cerrar_sesion_click(object sender, EventArgs e)
     {
-        LUser logica = new LUser();
+        LMUser logica = new LMUser();
 
         logica.cerrarSession(Session.SessionID);
         logica.limpiaSesionActiva(Session["userName"].ToString());
