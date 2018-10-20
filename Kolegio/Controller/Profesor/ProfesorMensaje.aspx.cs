@@ -18,13 +18,23 @@ public partial class View_Profesor_ProfesorMensaje : System.Web.UI.Page
         LLogin log = new LLogin();
         UUser usua = new UUser();
         LUser logica = new LUser();
+        ///
+        UUser enc = new UUser();
+        LMReg logic = new LMReg();
+
+        enc = logic.ActualizarMensajeProf(int.Parse(DDL_Alumno.SelectedValue));
+        TB_Destinatario.Text = enc.Mensaje;
+        destinatario = enc.CDestinatario;
+        TB_Destinatario.Enabled = false;
+        ///
+        
         try
         {
             usua = logica.profeMensaje();
 
             Session["anio"] = usua.Año;
-            TB_Destinatario.Enabled = usua.BotonFalse;
-
+            //TB_Destinatario.Enabled = usua.BotonFalse;
+            
             usua = log.logAdminSecillo(Session["userId"].ToString());
             Response.Redirect(usua.Url);
         }
@@ -67,7 +77,7 @@ public partial class View_Profesor_ProfesorMensaje : System.Web.UI.Page
     protected void B_Actualizar_Click(object sender, EventArgs e)
     {
         UUser enc = new UUser();
-        LReg logic = new LReg();
+        LMReg logic = new LMReg();
 
         enc = logic.ActualizarMensajeProf(int.Parse(DDL_Alumno.SelectedValue));
         TB_Destinatario.Text = enc.Mensaje;

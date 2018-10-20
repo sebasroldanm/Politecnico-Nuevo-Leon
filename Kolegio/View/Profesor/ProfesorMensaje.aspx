@@ -62,7 +62,9 @@
                     <div class="form-inline" role="form">
 
                         <label typeof="text" class="control-label" style="color: #FFFFFF"><asp:Label ID="L_ProfeMensAlumon" runat="server"></asp:Label></label>
-                        <asp:DropDownList ID="DDL_Alumno" CssClass="form-control" runat="server" AutoPostBack="True" DataSourceID="ODS_Obtener_alumno" DataTextField="nombre_usua" DataValueField="id_usua" ValidationGroup="actua"></asp:DropDownList>
+                        <asp:DropDownList ID="DDL_Alumno" CssClass="form-control" runat="server" AutoPostBack="True" DataSourceID="ODS_Obtener_alumno" DataTextField="nombre_usua" DataValueField="id_usua" ValidationGroup="actua">
+                            <asp:ListItem Value="0">Select.</asp:ListItem>
+                        </asp:DropDownList>
                         <asp:RequiredFieldValidator ID="RFV_Alumno" runat="server" ErrorMessage="*" ControlToValidate="DDL_Alumno" ValidationGroup="actua" ForeColor="Red" Font-Size="X-Large"></asp:RequiredFieldValidator>
                         <asp:ObjectDataSource ID="ODS_Obtener_alumno" runat="server" SelectMethod="obtenerEstApel" TypeName="Datos.DMReg">
                             <SelectParameters>

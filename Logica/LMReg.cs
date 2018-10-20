@@ -606,6 +606,28 @@ namespace Logica
             return enc;
         }
 
+        public UUser ActualizarMensajeProf(int ddl_alumno)
+        {
+            DMReg datos = new DMReg();
+            UUser enc = new UUser();
+            int alumno = ddl_alumno;
+
+            List<Usuario> mensaje = datos.acudientemensaje(alumno);
+            if (mensaje.Count > 0)
+            {
+                foreach (Usuario u in mensaje)
+                {
+                    enc.Mensaje = u.correo.ToString();
+                    enc.CDestinatario = u.correo.ToString();
+                }
+            }
+            else
+            {
+                enc.Mensaje = "";
+            }
+            return enc;
+        }
+
     }
 
 

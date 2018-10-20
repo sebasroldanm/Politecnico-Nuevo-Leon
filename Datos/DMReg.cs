@@ -410,7 +410,13 @@ namespace Datos
         {
             using (var db = new Mapeo("public"))
             {
-                return (from materia in db.materia
+                Materia mat= new Materia();
+                List<Materia> lmat = new List<Materia>();
+                mat.id_materia = 0;
+                mat.nombre_materia = "Select.";
+                lmat.Add(mat);
+                var query = lmat;
+                return lmat.Union(from materia in db.materia
                         join materiafecha in db.materiafecha on materia.id_materia equals materiafecha.id_mf_materia
                         join cursomateria in db.cursomateria on materiafecha.id_mf equals cursomateria.id_cm_materia
                         where cursomateria.id_cm_curso == reg
@@ -486,6 +492,18 @@ namespace Datos
             }
         }
 
+        public List<Usuario> acudientemensaje(int acu)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                return (from usuario in db.usuario
+                        join acudiente in db.acudiente on usuario.id_usua equals acudiente.id_ac_acudiente
+                        where acudiente.id_ac_estudiante == acu
+                        select usuario
+                        )
+                        .ToList();
+            }
+        }
     }
 }
 
