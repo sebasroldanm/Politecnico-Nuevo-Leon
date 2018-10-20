@@ -894,8 +894,8 @@ namespace Logica
             {
                 if (listuser.Count > 0)
                 {
-                    DataTable fechasesion = datos.Capturafechaintentosesion(userName);
-                    if (int.Parse(fechasesion.Rows[0][0].ToString()) == 0)
+                    int fechasesion = muser.Capturafechaintentosesion(userName);
+                    if (fechasesion == 0)
                     {
                         foreach (Usuario d in listuser)
                         {
@@ -912,8 +912,8 @@ namespace Logica
                         }
                         if (estadolist == "True")
                         {
-                            DataTable valida = datos.evaluaSesiones(userName);
-                            int idUsuario = int.Parse(valida.Rows[0][0].ToString());
+                            int valida = muser.evaluaSesiones(userName);
+                            int idUsuario = valida;
                             if (idUsuario == 1)
                             {
 
@@ -951,7 +951,7 @@ namespace Logica
                                 user.MensajeIntentoErroneos = "<script language='JavaScript'>window.alert('Ha exedido el numero de Sesiones Permitidas');</script>";
 
                             }
-                            datos.LimpiaIntentosErroneos(userName);
+                            muser.LimpiaIntentosErroneos(userName);
 
 
                         }

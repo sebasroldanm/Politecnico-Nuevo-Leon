@@ -795,14 +795,14 @@ namespace Datos
             using (var db = new Mapeo("public"))
             {
                 lusua = db.usuario.ToList<Usuario>().Where(x => x.user_name.Contains(user)).ToList();
-                foreach(Usuario u in lusua )
+                foreach (Usuario u in lusua)
                 {
                     us = u.id_usua;
                 }
                 return us;
             }
         }
-        
+
         public int Capturafechaintentosesion(string Usuario)
         {
             List<Sesion> ses = new List<Sesion>();
@@ -823,9 +823,61 @@ namespace Datos
                 {
                     return 1;
                 }
-            }            
+            }
         }
 
+        public int evaluaSesiones(string usuario)
+        {
+            List<Sesion> ses = new List<Sesion>();
+            int sesionActiva = 0;
+            int sesionUsuario = 0;
+            using (var db = new Mapeo("public"))
+            {
+                ses = db.sesion.ToList<Sesion>().Where(x => x.IdUsuario == IdUsuadeUser(usuario)).ToList();
+                foreach (Sesion s in ses)
+                {
+                    sesionActiva = int.Parse(s.SesionActiva);
+                    sesionUsuario = int.Parse(s.SesionUsuario);
+                }
 
+                if (sesionActiva >= sesionUsuario)
+                {
+                    return 0;
+                }
+                else
+                {
+                    editarSumSesion(IdUsuadeUser(usuario));
+                    return 1;
+                }
+            }
+
+        }
+
+        public void editarSumSesion(int usuario)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.sesion.SingleOrDefault(x => x.IdUsuario == usuario);
+                if (result != null)
+                {
+                    result.SesionActiva = (int.Parse(result.SesionActiva) + 1).ToString();
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        public void LimpiaIntentosErroneos(string usuario)
+        {
+            int u = IdUsuadeUser(usuario);
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.sesion.SingleOrDefault(x => x.IdUsuario == u);
+                if (result != null)
+                {
+                    result.IntentosErroneos = 0.ToString();
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }
