@@ -145,7 +145,10 @@ namespace Datos
                 }
                 else
                 {
-                    usua.Control = "no esta";
+                    if (db.terminacion.LongCount(y => y.termino == termin) != 0)
+                    {
+                        usua.Control = "no esta";
+                    }
                 }
             }
             return usua;

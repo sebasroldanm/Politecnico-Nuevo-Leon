@@ -202,11 +202,19 @@ namespace Logica
             }
             else
             {
-                encapsulado.nombre = nombre;
-                encapsulado.terminacion = termin;
-                da.insertarIdioma(encapsulado);
-                enc.IdiomaTermina = "true";
-                enc.Notificacion = "<script language='JavaScript'>window.alert('Idioma Insertado');</script>";
+                if(usua.Control == "no esta")
+                {
+                    encapsulado.nombre = nombre;
+                    encapsulado.terminacion = termin;
+                    da.insertarIdioma(encapsulado);
+                    enc.IdiomaTermina = "true";
+                    enc.Notificacion = "<script language='JavaScript'>window.alert('Idioma Insertado');</script>";
+                }
+                else
+                {
+                    enc.IdiomaTermina = null;
+                    enc.Notificacion = "<script language='JavaScript'>window.alert('La terminación no es válida');</script>";
+                }
             }
             return enc;
         }

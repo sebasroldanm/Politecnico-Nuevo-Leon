@@ -122,13 +122,19 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         btn_aceptar.Text = encId.CompIdioma["btn_aceptar"].ToString();
 
         L_AjaxAcorAgregarIdioma.Text = encId.CompIdioma["L_AjaxAcorAgregarIdioma"].ToString();
-        TB_terminoidioma.Attributes.Add("placeholder=", encId.CompIdioma["TB_terminoidioma"].ToString());
+        TB_terminoidioma.Attributes.Add("placeholder", encId.CompIdioma["TB_terminoidioma"].ToString());
         btn_comprobaridiom.Text = encId.CompIdioma["btn_comprobaridiom"].ToString();
         L_AjaxAcorDDLRolAgregar.Text = encId.CompIdioma["L_AjaxAcorDDLRolAgregar"].ToString();
         L_AjaxAcorDDLFormAgregar.Text = encId.CompIdioma["L_AjaxAcorDDLFormAgregar"].ToString();
         L_AjaxAcorDDLItemAgregar.Text = encId.CompIdioma["L_AjaxAcorDDLItemAgregar"].ToString();
-        tb_traduccionIN.Attributes.Add("placeholder=", encId.CompIdioma["tb_traduccionIN"].ToString());
+
+        tb_traduccionIN.Attributes.Add("placeholder", encId.CompIdioma["tb_traduccionIN"].ToString());
+        string p = encId.CompIdioma["tb_traduccionIN"].ToString();
+
         tb_traduccionES.Attributes.Add("placeholder", encId.CompIdioma["tb_traduccionES"].ToString());
+        string a = encId.CompIdioma["tb_traduccionES"].ToString();
+
+
         tb_traduccion.Attributes.Add("placeholder", encId.CompIdioma["tb_traduccion"].ToString());
         btn_siguiente.Text = encId.CompIdioma["btn_siguiente"].ToString();
 
@@ -289,15 +295,6 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         string id;
         
         encId = idioma.listarIdiomaVarchar(TB_nomidioma.Text);        
-
-        string a = DDL_itemagregar.SelectedValue;
-        string b = tb_traduccion.Text;
-        string c = encId.IdIdioma;
-        string d = DDL_formularioagregar.SelectedValue;
-        string f = TB_nomidioma.Text;
-
-
-
 
         idioma.insertarControlIdioma(
             DDL_itemagregar.SelectedValue, 
