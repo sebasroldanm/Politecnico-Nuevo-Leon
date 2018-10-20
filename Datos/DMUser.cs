@@ -197,12 +197,13 @@ namespace Datos
         {
             using (var db = new Mapeo("public"))
             {
-                //List<UsuaMensajeVista> listmen = null;
-                //UsuaMensajeVista ddlprof = new UsuaMensajeVista();
-                //ddlprof.id_usua = 0;
-                //ddlprof.nombre_usua = "Selec.";
-                //listmen.Add(ddlprof);
-                //var query = listmen;
+                List<UsuaMensajeVista> listmen = new List<UsuaMensajeVista>();
+                UsuaMensajeVista ddlprof = new UsuaMensajeVista();
+                ddlprof.id_usua = 0;
+                ddlprof.nombre_usua = "Selec.";
+                listmen.Add(ddlprof);
+                var query = listmen;
+
                 var profmensa = (from estcur in db.estudiantecurso
                                  join anicur in db.aniocurso on estcur.id_ec_curso equals anicur.id_ancu
                                  join curmar in db.cursomateria on anicur.id_ancu equals curmar.id_cm_curso
@@ -212,16 +213,18 @@ namespace Datos
                                  {
                                      us.id_usua,
                                      us.nombre_usua,
-                                     us.apellido_usua
+                                     us.apellido_usua,
+                                     us.correo
                                  }).ToList().Select(d => new UsuaMensajeVista
                                  {
                                      id_usua = d.id_usua,
-                                     nombre_usua = d.nombre_usua + " " + d.apellido_usua
+                                     nombre_usua = d.nombre_usua + " " + d.apellido_usua,
+                                     correo = d.correo
 
                                  }).ToList();
 
-                //return query.Union(profmensa).ToList<UsuaMensajeVista>();
-                return profmensa.ToList<UsuaMensajeVista>();
+                return query.Union(profmensa).ToList<UsuaMensajeVista>();
+                //return profmensa.ToList<UsuaMensajeVista>();
 
             }
         }

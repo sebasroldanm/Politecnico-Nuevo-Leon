@@ -317,7 +317,7 @@ namespace Datos
                 lista = new List<UsuaMensajeVista>();
                 est.id_usua = 0;
                 est.nombre_usua = "Selec.";
-                est.Correo = " ";
+                est.correo = " ";
                 lista.Add(est);
                 var query = lista;
                 return lista.ToList<UsuaMensajeVista>().Union((from estudiantecurso in db.estudiantecurso

@@ -11,10 +11,10 @@ namespace Utilitarios
     {
         private Int32 idUsua;
         private String nombreUsua;
-        private String correo;
+        private String Correo;
 
         public int id_usua { get => idUsua; set => idUsua = value; }
         public string nombre_usua { get => nombreUsua; set => nombreUsua = value; }
-        public string Correo { get => correo; set => correo = value; }
+        public string correo { get => Correo; set => Correo = value; }
     }
 }
