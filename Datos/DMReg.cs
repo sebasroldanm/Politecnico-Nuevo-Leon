@@ -504,6 +504,19 @@ namespace Datos
                         .ToList();
             }
         }
+
+        public void insertarObservacion(UUser dat)
+        {
+            Observador obs = new Observador();
+            obs.id_estudiante = int.Parse(dat.Id_estudiante);
+            obs.observacion = dat.Observacion;
+            obs.fecha_observacion = DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
+            using (var db = new Mapeo("public"))
+            {
+                db.observador.Add(obs);
+                db.SaveChanges();
+            }
+        }
     }
 }
 

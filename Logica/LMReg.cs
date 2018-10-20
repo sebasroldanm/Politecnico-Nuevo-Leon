@@ -641,6 +641,18 @@ namespace Logica
 
             return enc;
         }
+
+        public UUser insertObservacion(string id, string observacion)
+        {
+            DMReg datos = new DMReg();
+            UUser enc = new UUser();
+
+            enc.Id_estudiante = id;
+            enc.Observacion = observacion;
+
+            datos.insertarObservacion(enc);
+            return enc;
+        }
     }
 
 

@@ -67,7 +67,7 @@ public partial class View_Profesor_ProfesorListado : System.Web.UI.Page
     protected void btn_AdministradorAceptar_Click2(object sender, EventArgs e)
     {
         UUser enc = new UUser();
-        LReg logic = new LReg();
+        LMReg logic = new LMReg();
         enc = logic.insertObservacion(Session["id"].ToString(), TB_Observ.Text.ToString());
 
         GridView1.DataBind();
