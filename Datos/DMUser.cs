@@ -580,7 +580,15 @@ namespace Datos
         }
 
 
+        public void insertarAcudientedesdeEstudiante( Acudiente acu)
+            {
+            using (var db = new Mapeo("public"))
+            {
+                db.acudiente.Add(acu);
+                db.SaveChanges();
+            }
 
+            }
 
 
         public UUser obtenerUsuarioMod(UUser us)
