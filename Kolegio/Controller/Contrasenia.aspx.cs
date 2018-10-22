@@ -17,6 +17,7 @@ public partial class View_Contrasenia : System.Web.UI.Page
         LMUser logica = new LMUser();
 
         usua = logica.cambiarContra(Request.QueryString.Count, Request.QueryString[0], usua.SUserId, int.Parse(Session["idioma"].ToString()));
+        Session["user_id"] = usua.SUserId;
         UIdioma encId = new UIdioma();
         LMIdioma idioma = new LMIdioma();
         Int32 FORMULARIO = 42;

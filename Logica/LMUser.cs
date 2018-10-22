@@ -1016,18 +1016,8 @@ namespace Logica
                         }
                         else
                         {
-                            System.Data.DataTable validez = datos.generarToken(userName);
-                            if (int.Parse(validez.Rows[0]["id_usua"].ToString()) > 0)
-                            {
-                                user.Mensaje = encId.CompIdioma["L_Error_Inactivo"].ToString();
-                                user.SUserId = null;
-                            }
-                            else
-                            {
-                                user.Mensaje = encId.CompIdioma["L_Error_Inactivo"].ToString();
-                                user.SUserId = null;
-                            }
-
+                            user.Mensaje = encId.CompIdioma["L_Error_Inactivo"].ToString();
+                            user.SUserId = null;
                         }
                     }
                     else
@@ -1480,7 +1470,7 @@ namespace Logica
                     usua.Url = "~/View/Loggin.aspx";
                 }
                 else
-                    usua.UserId = int.Parse((info.ToString()));
+                    usua.SUserId = ((info.ToString()));
             }
             else
                 //Response.Redirect("~/View/Loggin.aspx");

@@ -933,13 +933,27 @@ namespace Datos
         {
             Usuario us = new Usuario();
             List<Usuario> lus = new List<Usuario>();
+            List<TokenRecuperaUsuario> ltru = new List<TokenRecuperaUsuario>();
+            DateTime fecreado = new DateTime();
+            DateTime fevigencia = new DateTime();
             using (var db = new Mapeo("public"))
             {
                 var q = db.usuario.ToList<Usuario>().Where(x => x.user_name.Contains(user_name)).ToList<Usuario>();
+                var pru = (from usuario in db.usuario
+                           join tokenRecuperaUsuarios in db.tokenRecuperaUsuarios on usuario.id_usua equals tokenRecuperaUsuarios.id_usuario
+                           where usuario.user_name == user_name
+                           select tokenRecuperaUsuarios).ToList<TokenRecuperaUsuario>();
+                foreach(TokenRecuperaUsuario t in pru)
+                {
+                    fecreado = DateTime.Parse(t.fecha_creado);
+                    fevigencia = DateTime.Parse(t.fecha_vigencia);
+
+                }
                 var j = (from usuario in db.usuario
                          join tokenRecuperaUsuarios in db.tokenRecuperaUsuarios on usuario.id_usua equals tokenRecuperaUsuarios.id_usuario
-                         where DateTime.Now >= DateTime.Parse(tokenRecuperaUsuarios.fecha_creado)
-                         where DateTime.Now <= DateTime.Parse(tokenRecuperaUsuarios.fecha_vigencia)
+                         where DateTime.Now >= fecreado
+                         where DateTime.Now <= fevigencia
+                         where usuario.user_name == user_name
                          select usuario).ToList<Usuario>();
                 if (q.Count == 0)
                 {
@@ -1155,7 +1169,8 @@ namespace Datos
 
         public void almacenarToken(String token, Int32 userId)
         {
-            DateTime fe = DateTime.Parse(DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second).AddHours(2);
+            string fe = (DateTime.Now.ToShortDateString() + " " + ((DateTime.Now.Hour)+2) + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second);
+            //DateTime fe = DateTime.Parse(DateTime.Now.ToShortDateString() + " " + (DateTime.Now.Hour) + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second).AddHours(2);
             TokenRecuperaUsuario tok = new TokenRecuperaUsuario();
             tok.id_usuario = userId;
             tok.token = token;
@@ -1171,13 +1186,25 @@ namespace Datos
         public int obtenerUsusarioToken(String token)
         {
             int id = 0;
+            DateTime fecreado = new DateTime();
+            DateTime fevigencia = new DateTime();
             List<TokenRecuperaUsuario> tr = new List<TokenRecuperaUsuario>();
             using (var db = new Mapeo("public"))
             {
                 var q = db.tokenRecuperaUsuarios.ToList<TokenRecuperaUsuario>().Where(x => x.token.Contains(token)).ToList();
+
+                var pru = db.tokenRecuperaUsuarios.ToList<TokenRecuperaUsuario>().Where(x => x.token.Contains(token)).ToList();
+
+                foreach (TokenRecuperaUsuario t in pru)
+                {
+                    fecreado = DateTime.Parse(t.fecha_creado);
+                    fevigencia = DateTime.Parse(t.fecha_vigencia);
+
+                }
+
                 var j = db.tokenRecuperaUsuarios.ToList<TokenRecuperaUsuario>().Where(x => x.token.Contains(token))
-                                                                               .Where(x => DateTime.Now >= DateTime.Parse(x.fecha_creado))
-                                                                               .Where(x => DateTime.Now <= DateTime.Parse(x.fecha_vigencia)).ToList();
+                                                                               .Where(x => DateTime.Now >= fecreado)
+                                                                               .Where(x => DateTime.Now <= fevigencia).ToList();
 
                 if (q.Count == 0)
                 {
@@ -1222,7 +1249,7 @@ namespace Datos
                 var resu = db.usuario.SingleOrDefault(x => x.id_usua == datos.UserId);
                 if (resu != null)
                 {
-                    resu.state_t = "2";
+                    resu.state_t = "1";
                     resu.clave = datos.Clave;
                     db.SaveChanges();
                 }
