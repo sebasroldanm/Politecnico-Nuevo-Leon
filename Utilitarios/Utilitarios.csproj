@@ -46,6 +46,7 @@
     <Compile Include="MEncSeguridad\MEncInicio.cs" />
     <Compile Include="MEncSeguridad\MEncMateria.cs" />
     <Compile Include="MEncSeguridad\MEncMateriaFecha.cs" />
+    <Compile Include="MEncSeguridad\MEncNota.cs" />
     <Compile Include="MIdioma\Controles.cs" />
     <Compile Include="MIdioma\Formulario.cs" />
     <Compile Include="MIdioma\RolIdioma.cs" />
