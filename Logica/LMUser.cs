@@ -1449,5 +1449,56 @@ namespace Logica
             return output.ToString();
         }
 
+        public UUser cambiarContra(int QueryString, string Query, string session, int selIdioma)
+        {
+            UUser usua = new UUser();
+            DMUser dat = new DMUser();
+            UIdioma encId = new UIdioma();
+            LMIdioma idioma = new LMIdioma();
+            Int32 FORMULARIO = 42;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+            if (QueryString > 0)
+            {
+                int info = dat.obtenerUsusarioToken(Query);
+
+                if (int.Parse(info.ToString()) == -1)
+                {
+                    //this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('El Token es invalido. Genere uno nuevo');window.location=\"Loggin.aspx\"</script>");
+
+                    //usua.Notificacion = "<script language='JavaScript'>window.alert('El Token es invalido. Genere uno nuevo');</script>";
+                    usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_invalido"].ToString() + "');</script>";
+                    usua.Url = "~/View/Loggin.aspx";
+                }
+                else if (int.Parse(info.ToString()) == -1)
+                {
+                    //this.RegisterStartupScript("mensaje", "<script type='text/javascript'>alert('El Token esta vencido. Genere uno nuevo');window.location=\"Loggin.aspx\"</script>");
+
+                    //usua.Notificacion = "<script language='JavaScript'>window.alert('El Token esta vencido. Genere uno nuevo');</script>";
+                    usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_vencido"].ToString() + "');</script>";
+                    usua.Url = "~/View/Loggin.aspx";
+                }
+                else
+                    usua.UserId = int.Parse((info.ToString()));
+            }
+            else
+                //Response.Redirect("~/View/Loggin.aspx");
+                usua.Url = "~/View/Loggin.aspx";
+
+            return usua;
+        }
+
+        public UContrasenia ContraseñaBEnviar(string NuevamenteClave, string userId)
+        {
+            DMUser datos = new DMUser();
+            UContrasenia usua = new UContrasenia();
+
+            usua.UserId = int.Parse(userId);
+            usua.Clave = NuevamenteClave;
+            datos.actualziarContrasena(usua);
+            return usua;
+        }
+
     }
 }
