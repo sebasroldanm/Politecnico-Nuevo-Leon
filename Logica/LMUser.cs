@@ -163,7 +163,79 @@ namespace Logica
 
             return usua;
         }
-        
+
+
+
+        public UUser agregarEstudiante(
+        int departamento,
+        int ciudad,
+        string nombre,
+        string apellido,
+        string direccion,
+        string telefono,
+        string clave,
+        string correo,
+        string foto,
+        int documento,
+        string usuario,
+        int rol,
+        string fechanac,
+        string session,
+        int id_acu,
+        int selIdioma
+        )
+        {
+            UUser usua = new UUser();
+            DMUser dat = new DMUser();
+            UIdioma encId = new UIdioma();
+            LIdioma idioma = new LIdioma();
+            Int32 FORMULARIO = 8;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+            int dep;
+            dep = (departamento);
+
+            int ciu;
+            ciu = (ciudad);
+            usua.Mensaje = "";
+            if (departamento == 0 || ciudad == 0)
+            {
+                usua.Mensaje = encId.CompIdioma["L_ErrorUsuario_Seleccione"].ToString();// "Debe seleccionar una opcion";
+            }
+            else
+            {
+                usua.Nombre = nombre;
+                usua.Rol = Convert.ToString(rol);
+                usua.UserName = usuario;
+                usua.Clave = clave;
+                usua.Correo = correo;
+                usua.Apellido = apellido;
+                usua.Direccion = direccion;
+                usua.Telefono = telefono;
+                usua.Documento = documento.ToString();
+                usua.fecha_nacimiento = fechanac;
+                usua.Departamento = Convert.ToString(dep);
+                usua.Ciudad = Convert.ToString(ciu);
+                usua.Session = session;
+                usua.Foto = foto;
+                usua.id_Acudiente = Convert.ToString(id_acu);
+
+                if (usua.Foto != null)
+                {
+                    dat.insertarEstudiante(usua);
+                    dat.InsertaTablaSesion(usuario);
+                    usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_insertado"].ToString() + "');</script>"; // ("<script language='JavaScript'>window.alert('Estudiante Insertado con Exito');</script>");
+
+                    usua.L_Aceptar1 = false;
+                    usua.B_Botones1 = true;
+
+                }
+            }
+            return usua;
+        }
+
+
         public UUser editarAdmin(Usuario admin, int selIdioma, string est, string fotoSesion)
         {
 

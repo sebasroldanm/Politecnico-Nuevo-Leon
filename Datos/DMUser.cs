@@ -545,6 +545,44 @@ namespace Datos
 
         ///LISTAR PARA EDIAR CON MAPEO////
 
+
+        public void insertarEstudiante(UUser dat)
+        {
+            Usuario usua = new Usuario();
+            Acudiente acu = new Acudiente();
+            UUser uuser = new UUser();
+            usua.nombre_usua = dat.Nombre;
+            usua.rol_id = dat.Rol;
+            usua.user_name = dat.UserName;
+            usua.clave = dat.Clave;
+            usua.correo = dat.Correo;
+            usua.apellido_usua = dat.Apellido;
+            usua.direccion = dat.Direccion;
+            usua.telefono = dat.Telefono;
+            usua.num_documento = dat.Documento;
+            usua.foto_usua = dat.Foto;
+            acu.id_ac_acudiente = int.Parse(dat.id_Acudiente);
+            usua.fecha_nac = dat.fecha_nacimiento;
+            usua.dep_nacimiento = dat.Departamento;
+            usua.ciu_nacimiento = dat.Ciudad;
+            usua.sesion = dat.Session;
+            uuser.Documento = dat.Documento;
+            using (var db = new Mapeo("public"))
+            {
+                db.usuario.Add(usua);
+                db.SaveChanges();
+
+                uuser = obtenerUsuarioMod(uuser);
+                acu.id_ac_estudiante = int.Parse(uuser.IdUsua);
+                insertarAcudientedesdeEstudiante(acu);
+            }
+
+        }
+
+
+
+
+
         public UUser obtenerUsuarioMod(UUser us)
         {
 

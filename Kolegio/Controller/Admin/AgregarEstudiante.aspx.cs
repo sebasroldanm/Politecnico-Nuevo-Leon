@@ -139,7 +139,7 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
 
     protected void btn_AdministradorAceptar_Click2(object sender, EventArgs e)
     {
-        LUser logica = new LUser();
+        LMUser logica = new LMUser();
         UUser usua = new UUser();
         string foto = cargarImagen();
         usua = logica.agregarEstudiante(

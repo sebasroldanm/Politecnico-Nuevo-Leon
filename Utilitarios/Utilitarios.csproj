@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MEncSeguridad\MEncEstCurso.cs" />
     <Compile Include="MEncSeguridad\MEncInicio.cs" />
     <Compile Include="MIdioma\Controles.cs" />
     <Compile Include="MIdioma\Formulario.cs" />
