@@ -894,7 +894,7 @@ namespace Datos
                          join tokenRecuperaUsuarios in db.tokenRecuperaUsuarios on usuario.id_usua equals tokenRecuperaUsuarios.id_usuario
                          where DateTime.Now >= DateTime.Parse(tokenRecuperaUsuarios.fecha_creado)
                          where DateTime.Now <= DateTime.Parse(tokenRecuperaUsuarios.fecha_vigencia)
-                         select usuario).ToList<Usuario>(); //Falta fechas
+                         select usuario).ToList<Usuario>();
                 if (q.Count == 0)
                 {
                     us.id_usua = -1;
@@ -1119,6 +1119,67 @@ namespace Datos
             {
                 db.tokenRecuperaUsuarios.Add(tok);
                 db.SaveChanges();
+            }
+        }
+
+        public int obtenerUsusarioToken(String token)
+        {
+            int id = 0;
+            List<TokenRecuperaUsuario> tr = new List<TokenRecuperaUsuario>();
+            using (var db = new Mapeo("public"))
+            {
+                var q = db.tokenRecuperaUsuarios.ToList<TokenRecuperaUsuario>().Where(x => x.token.Contains(token)).ToList();
+                var j = db.tokenRecuperaUsuarios.ToList<TokenRecuperaUsuario>().Where(x => x.token.Contains(token))
+                                                                               .Where(x => DateTime.Now >= DateTime.Parse(x.fecha_creado))
+                                                                               .Where(x => DateTime.Now <= DateTime.Parse(x.fecha_vigencia)).ToList();
+
+                if (q.Count == 0)
+                {
+                    return -1;
+                }
+                else if (j.Count == 0)
+                {
+                    var result = db.tokenRecuperaUsuarios.SingleOrDefault(x => x.token == token);
+                    if (result != null)
+                    {
+                        db.tokenRecuperaUsuarios.Remove(result);
+                        db.SaveChanges();
+                    }
+                    return -2;
+                }
+                else
+                {
+                    tr = db.tokenRecuperaUsuarios.ToList<TokenRecuperaUsuario>().Where(x => x.token.Contains(token)).ToList();
+
+                    foreach (TokenRecuperaUsuario t in tr)
+                    {
+                        id = t.id_usuario;
+                    }
+                    return id;
+                }
+            }
+        }
+
+        public void actualziarContrasena(UContrasenia datos)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                //Delete
+                var result = db.tokenRecuperaUsuarios.SingleOrDefault(x => x.id_usuario == datos.UserId);
+                if (result != null)
+                {
+                    db.tokenRecuperaUsuarios.Remove(result);
+                    db.SaveChanges();
+                }
+
+                //Update
+                var resu = db.usuario.SingleOrDefault(x => x.id_usua == datos.UserId);
+                if (resu != null)
+                {
+                    resu.state_t = "2";
+                    resu.clave = datos.Clave;
+                    db.SaveChanges();
+                }
             }
         }
     }
