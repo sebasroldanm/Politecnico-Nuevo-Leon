@@ -18,11 +18,9 @@ public partial class View_Inicio_InicioNosotros : System.Web.UI.Page
         UIdioma encId = new UIdioma();
         LMIdioma idioma = new LMIdioma();
         Int32 FORMULARIO = 32;
-        DMUser user = new DMUser();
         Int32 IDIOMA = int.Parse(DDL_Idioma.SelectedValue);
         Session["idioma"] = IDIOMA;
         encId = idioma.obtIdioma(FORMULARIO, IDIOMA);
-        user.generarToken("admin");
         Page.Title = encId.CompIdioma["Title"].ToString();
         IMG_Slider1.ImageUrl = encId.CompIdioma["IMG_Slider1"].ToString();
         IMG_Slider2.ImageUrl = encId.CompIdioma["IMG_Slider2"].ToString();
