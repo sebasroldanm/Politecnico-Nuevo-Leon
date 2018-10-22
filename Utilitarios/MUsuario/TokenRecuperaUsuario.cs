@@ -14,24 +14,24 @@ namespace Utilitarios
 
     public class TokenRecuperaUsuario
     {
-        private Int32 id;
-        private String idUsuario;
-        private String token;
+        private Int32 Id;
+        private Int32 idUsuario;
+        private String Token;
         private String fechaCreado;
         private String fechaVigencia;
 
 
         [Key]
         [Column("id")]
-        public int Id { get => id; set => id = value; }
+        public int id { get => Id; set => Id = value; }
         [Column("id_usuario")]
-        public string IdUsuario { get => idUsuario; set => idUsuario = value; }
+        public int id_usuario { get => idUsuario; set => idUsuario = value; }
         [Column("token")]
-        public string Token { get => token; set => token = value; }
+        public string token { get => Token; set => Token = value; }
         [Column("fecha_creado")]
-        public string FechaCreado { get => fechaCreado; set => fechaCreado = value; }
+        public string fecha_creado { get => fechaCreado; set => fechaCreado = value; }
         [Column("fecha_vigencia")]
-        public string FechaVigencia { get => fechaVigencia; set => fechaVigencia = value; }
+        public string fecha_vigencia { get => fechaVigencia; set => fechaVigencia = value; }
 
 
 

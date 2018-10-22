@@ -882,10 +882,110 @@ namespace Datos
                 }
             }
         }
-        //Vacia :'v
-        public void generarToken(String user_name)
-        {
 
+        public List<Usuario> generarToken(String user_name)
+        {
+            Usuario us = new Usuario();
+            List<Usuario> lus = new List<Usuario>();
+            using (var db = new Mapeo("public"))
+            {
+                var q = db.usuario.ToList<Usuario>().Where(x => x.user_name.Contains(user_name)).ToList<Usuario>();
+                var j = (from usuario in db.usuario
+                         join tokenRecuperaUsuarios in db.tokenRecuperaUsuarios on usuario.id_usua equals tokenRecuperaUsuarios.id_usuario
+                         where DateTime.Now >= DateTime.Parse(tokenRecuperaUsuarios.fecha_creado)
+                         where DateTime.Now <= DateTime.Parse(tokenRecuperaUsuarios.fecha_vigencia)
+                         select usuario).ToList<Usuario>(); //Falta fechas
+                if (q.Count == 0)
+                {
+                    us.id_usua = -1;
+                    us.nombre_usua = "";
+                    us.rol_id = "1";
+                    us.user_name = "";
+                    us.clave = "";
+                    us.correo = "";
+                    us.estado = true;
+                    us.apellido_usua = "";
+                    us.direccion = "";
+                    us.telefono = "";
+                    us.num_documento = "1";
+                    us.foto_usua = "";
+                    us.fecha_nac = "";
+                    us.dep_nacimiento = "1";
+                    us.ciu_nacimiento = "1";
+                    us.sesion = "";
+                    us.ultima_modificacion = "";
+                    us.state_t = "1";
+                    lus.Add(us);
+                    return lus;
+                }
+                else if (j.Count > 0)
+                {
+                    us.id_usua = -2;
+                    us.nombre_usua = "";
+                    us.rol_id = "1";
+                    us.user_name = "";
+                    us.clave = "";
+                    us.correo = "";
+                    us.estado = true;
+                    us.apellido_usua = "";
+                    us.direccion = "";
+                    us.telefono = "";
+                    us.num_documento = "1";
+                    us.foto_usua = "";
+                    us.fecha_nac = "";
+                    us.dep_nacimiento = "1";
+                    us.ciu_nacimiento = "1";
+                    us.sesion = "";
+                    us.ultima_modificacion = "";
+                    us.state_t = "1";
+                    lus.Add(us);
+                    return lus;
+                }
+                else if (q.Count > 0)
+                {
+                    //Aca hace un Update
+                    editarStateGenerarToken(user_name);
+                    //Lista
+                    var query = db.usuario.ToList<Usuario>();
+                    return query.ToList();
+                }
+                else
+                {
+                    us.id_usua = -1;
+                    us.nombre_usua = "";
+                    us.rol_id = "1";
+                    us.user_name = "";
+                    us.clave = "";
+                    us.correo = "";
+                    us.estado = true;
+                    us.apellido_usua = "";
+                    us.direccion = "";
+                    us.telefono = "";
+                    us.num_documento = "1";
+                    us.foto_usua = "";
+                    us.fecha_nac = "";
+                    us.dep_nacimiento = "1";
+                    us.ciu_nacimiento = "1";
+                    us.sesion = "";
+                    us.ultima_modificacion = "";
+                    us.state_t = "1";
+                    lus.Add(us);
+                    return lus;
+                }
+            }
+        }
+
+        public void editarStateGenerarToken(String user_name) //Funcion Editar de Generar Token
+        {
+            using (var db = new Mapeo("public"))
+            {
+                var result = db.usuario.SingleOrDefault(x => x.user_name == user_name);
+                if (result != null)
+                {
+                    result.state_t = 2.ToString();
+                    db.SaveChanges();
+                }
+            }
         }
 
         public void InsertaTablaSesion(string usuario)
@@ -1007,6 +1107,19 @@ namespace Datos
             }
         }
 
-        
+        public void almacenarToken(String token, Int32 userId)
+        {
+            DateTime fe = DateTime.Parse(DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second).AddHours(2);
+            TokenRecuperaUsuario tok = new TokenRecuperaUsuario();
+            tok.id_usuario = userId;
+            tok.token = token;
+            tok.fecha_creado = DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
+            tok.fecha_vigencia = fe.ToString();
+            using (var db = new Mapeo("public"))
+            {
+                db.tokenRecuperaUsuarios.Add(tok);
+                db.SaveChanges();
+            }
+        }
     }
 }

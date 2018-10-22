@@ -39,7 +39,7 @@ public partial class View_Recuperar : System.Web.UI.Page
 
     protected void B_Enviar_Click(object sender, EventArgs e)
     {
-        LUser logica = new LUser();
+        LMUser logica = new LMUser();
         UUser usua = new UUser();
 
         usua = logica.recuperarContra(TB_Usuario.Text, int.Parse(Session["idioma"].ToString()));
