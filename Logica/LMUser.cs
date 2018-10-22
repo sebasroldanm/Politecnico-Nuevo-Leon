@@ -11,6 +11,8 @@ using Utilitarios.MEncSeguridad;
 using Utilitarios.MSeguridad;
 using Utilitarios.MVistasUsuario;
 using Utilitarios.Mregistro;
+using Newtonsoft.Json;
+using System.Security.Cryptography;
 
 namespace Logica
 {
@@ -1281,5 +1283,99 @@ namespace Logica
             }
             return usua;
         }
+
+        public UUser recuperarContra(string userName, int selIdioma)
+        {
+            UUser usua = new UUser();
+            DMUser dat = new DMUser();
+            UIdioma encId = new UIdioma();
+            LMIdioma idioma = new LMIdioma();
+            Int32 FORMULARIO = 41;
+
+            encId = idioma.obtIdioma(FORMULARIO, selIdioma);
+
+            List<Usuario> validez = dat.generarToken(userName);
+            foreach (Usuario u in validez) {
+                if (int.Parse(u.id_usua.ToString()) > 0)
+                {
+                    UToken token = new UToken();
+                    //EUserToken token = new EUserToken();
+                    token.Id = int.Parse(u.id_usua.ToString());
+                    token.Nombre =u.nombre_usua.ToString();
+                    token.User_name = u.user_name.ToString();
+                    token.Estado = int.Parse(u.state_t.ToString());
+
+                    token.Correo = u.correo.ToString();
+                    token.Fecha = DateTime.Now.ToFileTimeUtc();
+
+
+                    String userToken = encriptar(JsonConvert.SerializeObject(token));
+                    dat.almacenarToken(userToken, token.Id);
+
+                    DCorreo correo = new DCorreo();
+
+                    String mensaje = "Su link de acceso es: " + "http://localhost:58629/View/Contrasenia.aspx?" + userToken;
+                    correo.enviarCorreo(token.Correo, userToken, mensaje);
+
+                    usua.Mensaje = encId.CompIdioma["L_Verificar_ver_correo"].ToString(); //"Revisar su correo para recuperar contraseña";
+                }
+                else if (int.Parse(u.id_usua.ToString()) == -2)
+                {
+                    usua.Mensaje = encId.CompIdioma["L_Verificar_ver_link"].ToString(); //"Ya extsite un link de recuperación, por favor verifique su correo.";
+                }
+                else
+                {
+                    usua.Mensaje = encId.CompIdioma["L_Verificar_no_existe"].ToString(); //"El usuario digitado no existe";
+                }
+                //if (int.Parse(validez.Rows[0]["id_usua"].ToString()) > 0)
+                //{
+                //    UToken token = new UToken();
+                //    //EUserToken token = new EUserToken();
+                //    token.Id = int.Parse(validez.Rows[0]["id_usua"].ToString());
+                //    token.Nombre = validez.Rows[0]["nombre_usua"].ToString();
+                //    token.User_name = validez.Rows[0]["user_name"].ToString();
+                //    token.Estado = int.Parse(validez.Rows[0]["state_t"].ToString());
+
+                //    token.Correo = validez.Rows[0]["correo"].ToString();
+                //    token.Fecha = DateTime.Now.ToFileTimeUtc();
+
+
+                //    String userToken = encriptar(JsonConvert.SerializeObject(token));
+                //    dat.almacenarToken(userToken, token.Id);
+
+                //    DCorreo correo = new DCorreo();
+
+                //    String mensaje = "Su link de acceso es: " + "http://localhost:58629/View/Contrasenia.aspx?" + userToken;
+                //    correo.enviarCorreo(token.Correo, userToken, mensaje);
+
+                //    usua.Mensaje = encId.CompIdioma["L_Verificar_ver_correo"].ToString(); //"Revisar su correo para recuperar contraseña";
+                //}
+                //else if (int.Parse(validez.Rows[0]["id_usua"].ToString()) == -2)
+                //{
+                //    usua.Mensaje = encId.CompIdioma["L_Verificar_ver_link"].ToString(); //"Ya extsite un link de recuperación, por favor verifique su correo.";
+                //}
+                //else
+                //{
+                //    usua.Mensaje = encId.CompIdioma["L_Verificar_no_existe"].ToString(); //"El usuario digitado no existe";
+                //}
+            }
+            return usua;
+        }
+
+        private string encriptar(string input)
+        {
+            SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
+
+            byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+            byte[] hashedBytes = provider.ComputeHash(inputBytes);
+
+            StringBuilder output = new StringBuilder();
+
+            for (int i = 0; i < hashedBytes.Length; i++)
+                output.Append(hashedBytes[i].ToString("x2").ToLower());
+
+            return output.ToString();
+        }
+
     }
 }
