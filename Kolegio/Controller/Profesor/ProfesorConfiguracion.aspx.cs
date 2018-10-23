@@ -117,7 +117,7 @@ public partial class View_Profesor_ProfesorConfiguracion : System.Web.UI.Page
 
     protected string cargarImagen()
     {
-        LUser logic = new LUser();
+        LMUser logic = new LMUser();
         UUser enc = new UUser();
         enc = logic.CargaFotoM(System.IO.Path.GetFileName(tb_Foto.PostedFile.FileName), System.IO.Path.GetExtension(tb_Foto.PostedFile.FileName), tb_Foto.ToString(), Server.MapPath("~/FotosUser"), int.Parse(Session["idioma"].ToString()));
         try
