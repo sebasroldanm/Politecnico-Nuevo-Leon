@@ -253,12 +253,12 @@ namespace Datos
 
             using (var db = new Mapeo("public"))
             {
-                var result = db.inicio.SingleOrDefault(x => x.IdInicio == 1);
+                var result = db.inicio.SingleOrDefault(x => x.id_inicio == 1);
                 if (result != null)
                 {
-                    usua.Inicio = result.InicioCont;
-                    usua.Mision = result.MisionInicio;
-                    usua.Vision = result.VisionInicio;
+                    usua.Inicio = result.inicio_cont;
+                    usua.Mision = result.mision_inicio;
+                    usua.Vision = result.vision_inicio;
                 }
                 else
                 {
@@ -273,15 +273,15 @@ namespace Datos
             UUser uuser = new UUser();
             using (var db = new Mapeo("public"))
             {
-                var result = db.inicio.SingleOrDefault(x => x.IdInicio == 1);
+                var result = db.inicio.SingleOrDefault(x => x.id_inicio == 1);
                 if (result != null)
                 {
-                    result.InicioCont = enc.Inicio;
-                    result.MisionInicio = enc.Mision;
-                    result.VisionInicio = enc.Vision;
+                    result.inicio_cont = enc.Inicio;
+                    result.mision_inicio = enc.Mision;
+                    result.vision_inicio = enc.Vision;
 
-                    result.Sesion = enc.Session;
-                    result.UltimaModificacion = DateTime.Now.ToShortDateString();
+                    result.sesion = enc.Session;
+                    result.ultima_modificacion = DateTime.Parse(DateTime.Now.ToShortDateString());
                     db.SaveChanges();
 
                 }
