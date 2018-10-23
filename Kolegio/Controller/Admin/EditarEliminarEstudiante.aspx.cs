@@ -289,7 +289,7 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
 
     protected string cargarImagen()
     {
-        LUser logic = new LUser();
+        LMUser logic = new LMUser();
         UUser enc = new UUser();
         enc = logic.CargaFotoM(System.IO.Path.GetFileName(FileUpload1.PostedFile.FileName), System.IO.Path.GetExtension(FileUpload1.PostedFile.FileName), FileUpload1.ToString(), Server.MapPath("~/FotosUser"), int.Parse(Session["idioma"].ToString()));
         try
