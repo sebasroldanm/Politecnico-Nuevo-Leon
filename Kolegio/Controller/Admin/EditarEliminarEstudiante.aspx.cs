@@ -213,7 +213,7 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
         Usuario user = new Usuario();
         UUser usu = new UUser();
 
-        user.num_documento = (tb_EstudianteId.Text);
+        user.num_documento = int.Parse(tb_EstudianteId.Text);
         user.nombre_usua = tb_EstudianteNombre.Text;
         user.clave = tb_EstudianteContrasenia.Text;
         user.correo = tb_EstudianteCorreo.Text;
@@ -222,10 +222,10 @@ public partial class View_Admin_EditarEliminarEstudiante : System.Web.UI.Page
         user.telefono = tb_EstudianteTelefono.Text;
         user.foto_usua = cargarImagen();
         user.fecha_nac = fechanac.Text;
-        user.dep_nacimiento = (ddt_lugarnacimDep.SelectedValue.ToString());
-        user.ciu_nacimiento = (DDT_Ciudad.SelectedValue.ToString());
+        user.dep_nacimiento = int.Parse(ddt_lugarnacimDep.SelectedValue.ToString());
+        user.ciu_nacimiento = int.Parse(DDT_Ciudad.SelectedValue.ToString());
         user.sesion = Session.SessionID;
-        user.rol_id = "3";
+        user.rol_id = 3;
         user.user_name = tb_EstudianteUsuario.Text;
 
 

@@ -21,18 +21,15 @@ namespace Datos
         public List<Usuario> loggin(UUser enc)
         {
             Usuario user = new Usuario();
+            List<Usuario> luser = new List<Usuario>();
             using (var db = new Mapeo("public"))
             {
 
-                var ingres = db.usuario.ToList<Usuario>().Where(x => x.user_name.Contains(enc.UserName)).Where(x => x.clave.Contains(enc.Clave));
-                if (ingres != null)
-                {
-                    return ingres.ToList<Usuario>();
-                }
-                else
-                {
-                    return null;
-                }
+                luser = db.usuario.ToList<Usuario>().Where(x => x.user_name == (enc.UserName) && x.clave == (enc.Clave)).ToList();
+                    return luser;
+                    //return ingres.ToList<Usuario>();
+                
+
 
             }
         }
@@ -53,7 +50,7 @@ namespace Datos
             using (var db = new Mapeo("public"))
             {
 
-                var admin = db.usuario.ToList<Usuario>().Where(x => x.rol_id.Contains("1"));
+                var admin = db.usuario.ToList<Usuario>().Where(x => x.rol_id ==1);
                 return admin.ToList<Usuario>();
 
             }
@@ -161,7 +158,7 @@ namespace Datos
                 ddlprof.nombre_usua = "Selec.";
                 lista.Add(ddlprof);
                 var query = lista;
-                var prof = db.usuario.ToList<Usuario>().Where(x => x.rol_id.Contains("2")).Select(u => new Usuario
+                var prof = db.usuario.ToList<Usuario>().Where(x => x.rol_id == 2).Select(u => new Usuario
                 {
                     id_usua = u.id_usua,
                     nombre_usua = u.nombre_usua + " " + u.apellido_usua
@@ -233,12 +230,12 @@ namespace Datos
         {
 
             Usuario usua = new Usuario();
-
+            int doc = int.Parse(dat.Documento);
 
             using (var db = new Mapeo("public"))
             {
 
-                var acudi = db.usuario.ToList<Usuario>().Where(x => x.num_documento == dat.Documento).Where(g => g.rol_id.Contains("4"));
+                var acudi = db.usuario.ToList<Usuario>().Where(x => x.num_documento == doc).Where(g => g.rol_id == 4);
 
                 return acudi.ToList<Usuario>();
 
@@ -281,7 +278,7 @@ namespace Datos
                     result.vision_inicio = enc.Vision;
 
                     result.sesion = enc.Session;
-                    result.ultima_modificacion = DateTime.Parse(DateTime.Now.ToShortDateString());
+                    result.ultima_modificacion = (DateTime.Now.ToShortDateString());
                     db.SaveChanges();
 
                 }
@@ -398,16 +395,17 @@ namespace Datos
 
             using (var db = new Mapeo("public"))
             {
-                var profe = db.usuario.ToList<Usuario>().Where(x => x.rol_id.Contains("2"));
+                var profe = db.usuario.ToList<Usuario>().Where(x => x.rol_id == 2);
                 return profe.ToList<Usuario>();
             }
         }
 
         public List<Usuario> listadiploma(string docEstudiante)
         {
+            int doc = int.Parse(docEstudiante);
             using (var db = new Mapeo("public"))
             {
-                var docestudante = db.usuario.ToList<Usuario>().Where(x => x.num_documento == docEstudiante);
+                var docestudante = db.usuario.ToList<Usuario>().Where(x => x.num_documento == doc);
                 return docestudante.ToList<Usuario>();
             }
 
@@ -463,7 +461,7 @@ namespace Datos
 
             using (var db = new Mapeo("public"))
             {
-                var estudiante = db.usuario.ToList<Usuario>().Where(x => x.rol_id.Contains("3"));
+                var estudiante = db.usuario.ToList<Usuario>().Where(x => x.rol_id == 3);
                 return estudiante.ToList<Usuario>();
             }
         }
@@ -472,7 +470,7 @@ namespace Datos
         {
             using (var db = new Mapeo("public"))
             {
-                var estudiante = db.usuario.ToList<Usuario>().Where(x => x.rol_id.Contains("4"));
+                var estudiante = db.usuario.ToList<Usuario>().Where(x => x.rol_id == 4);
                 return estudiante.ToList<Usuario>();
             }
         }
@@ -483,7 +481,7 @@ namespace Datos
             {
                 return (from c in db.usuario
                         join o in db.acudiente on c.id_usua equals o.id_ac_estudiante
-                        where c.rol_id == "4"
+                        where c.rol_id == 4
                         select new
                         {
                             c.foto_usua,
@@ -499,7 +497,7 @@ namespace Datos
                             fotoacudiente = m.foto_usua,
                             apeacudiente = m.apellido_usua,
                             nomacudiente = m.nombre_usua,
-                            docacudiente = m.num_documento,
+                            docacudiente = m.num_documento.ToString(),
                             telefonoacudiente = m.telefono,
                             useracudiente = m.user_name,
                             claveacudiente = m.clave
@@ -552,19 +550,19 @@ namespace Datos
             Acudiente acu = new Acudiente();
             UUser uuser = new UUser();
             usua.nombre_usua = dat.Nombre;
-            usua.rol_id = dat.Rol;
+            usua.rol_id = int.Parse(dat.Rol);
             usua.user_name = dat.UserName;
             usua.clave = dat.Clave;
             usua.correo = dat.Correo;
             usua.apellido_usua = dat.Apellido;
             usua.direccion = dat.Direccion;
             usua.telefono = dat.Telefono;
-            usua.num_documento = dat.Documento;
+            usua.num_documento = int.Parse(dat.Documento);
             usua.foto_usua = dat.Foto;
             acu.id_ac_acudiente = int.Parse(dat.id_Acudiente);
             usua.fecha_nac = dat.fecha_nacimiento;
-            usua.dep_nacimiento = dat.Departamento;
-            usua.ciu_nacimiento = dat.Ciudad;
+            usua.dep_nacimiento = int.Parse(dat.Departamento);
+            usua.ciu_nacimiento = int.Parse(dat.Ciudad);
             usua.sesion = dat.Session;
             uuser.Documento = dat.Documento;
             using (var db = new Mapeo("public"))
@@ -597,14 +595,15 @@ namespace Datos
             UIdioma encId = new UIdioma();
             UUser usua = new UUser();
             Usuario enc = new Usuario();
+            int doc = int.Parse(us.Documento);
             using (var db = new Mapeo("public"))
             {
-                var result = db.usuario.SingleOrDefault(x => x.num_documento == us.Documento);
+                var result = db.usuario.SingleOrDefault(x => x.num_documento == doc);
                 if (result != null)
                 {
                     usua.IdUsua = result.id_usua.ToString();
                     usua.Nombre = result.nombre_usua;
-                    usua.Rol = result.rol_id;
+                    usua.Rol = result.rol_id.ToString();
                     usua.UserName = result.user_name;
                     usua.Clave = result.clave;
                     usua.Correo = result.correo;
@@ -612,11 +611,11 @@ namespace Datos
                     usua.Apellido = result.apellido_usua;
                     usua.Direccion = result.direccion;
                     usua.Telefono = result.telefono;
-                    usua.Documento = result.num_documento;
+                    usua.Documento = result.num_documento.ToString();
                     usua.Foto = result.foto_usua;
                     usua.fecha_nacimiento = result.fecha_nac;
-                    usua.Departamento = result.dep_nacimiento;
-                    usua.Ciudad = result.ciu_nacimiento;
+                    usua.Departamento = result.dep_nacimiento.ToString();
+                    usua.Ciudad =  result.ciu_nacimiento.ToString();
                     usua.Session = result.sesion;
                 }
                 else
@@ -652,7 +651,7 @@ namespace Datos
                     result.dep_nacimiento = admin.dep_nacimiento;
                     result.ciu_nacimiento = admin.ciu_nacimiento;
                     result.sesion = admin.sesion;
-                    result.ultima_modificacion = DateTime.Now.ToShortDateString();
+                    result.ultima_modificacion = (DateTime.Now.ToShortDateString());
                     db.SaveChanges();
 
                 }
@@ -674,7 +673,7 @@ namespace Datos
                     result.num_documento = admin.num_documento;
                     result.foto_usua = admin.foto_usua;
                     result.sesion = admin.sesion;
-                    result.ultima_modificacion = DateTime.Now.ToShortDateString();
+                    result.ultima_modificacion = (DateTime.Now.ToShortDateString());
                     db.SaveChanges();
 
                 }
@@ -706,7 +705,7 @@ namespace Datos
                     result.dep_nacimiento = acudi.dep_nacimiento;
                     result.ciu_nacimiento = acudi.ciu_nacimiento;
                     result.sesion = acudi.sesion;
-                    result.ultima_modificacion = DateTime.Now.ToShortDateString();
+                    result.ultima_modificacion = (DateTime.Now.ToShortDateString());
                     db.SaveChanges();
 
                 }
@@ -738,7 +737,7 @@ namespace Datos
                     result.dep_nacimiento = estudi.dep_nacimiento;
                     result.ciu_nacimiento = estudi.ciu_nacimiento;
                     result.sesion = estudi.sesion;
-                    result.ultima_modificacion = DateTime.Now.ToShortDateString();
+                    result.ultima_modificacion = (DateTime.Now.ToShortDateString());
                     db.SaveChanges();
 
                 }
@@ -770,7 +769,7 @@ namespace Datos
                     result.dep_nacimiento = profe.dep_nacimiento;
                     result.ciu_nacimiento = profe.ciu_nacimiento;
                     result.sesion = profe.sesion;
-                    result.ultima_modificacion = DateTime.Now.ToShortDateString();
+                    result.ultima_modificacion = (DateTime.Now.ToShortDateString());
                     db.SaveChanges();
 
                 }
@@ -809,7 +808,7 @@ namespace Datos
             using (var db = new Mapeo("public"))
             {
                 int usu = int.Parse(reg);
-                var est = db.usuario.ToList<Usuario>().Where(x => x.rol_id.Contains("3")).Where(x => x.id_usua == usu);
+                var est = db.usuario.ToList<Usuario>().Where(x => x.rol_id == 3).Where(x => x.id_usua == usu);
                 return est.ToList<Usuario>();
             }
 
@@ -885,8 +884,8 @@ namespace Datos
                 ses = db.sesion.ToList<Sesion>().Where(x => x.IdUsuario == IdUsuadeUser(usuario)).ToList();
                 foreach (Sesion s in ses)
                 {
-                    sesionActiva = int.Parse(s.SesionActiva);
-                    sesionUsuario = int.Parse(s.SesionUsuario);
+                    sesionActiva = (s.SesionActiva);
+                    sesionUsuario = (s.SesionUsuario);
                 }
 
                 if (sesionActiva >= sesionUsuario)
@@ -909,7 +908,7 @@ namespace Datos
                 var result = db.sesion.SingleOrDefault(x => x.IdUsuario == usuario);
                 if (result != null)
                 {
-                    result.SesionActiva = (int.Parse(result.SesionActiva) + 1).ToString();
+                    result.SesionActiva = ((result.SesionActiva) + 1);
                     db.SaveChanges();
                 }
             }
@@ -923,7 +922,7 @@ namespace Datos
                 var result = db.sesion.SingleOrDefault(x => x.IdUsuario == u);
                 if (result != null)
                 {
-                    result.IntentosErroneos = 0.ToString();
+                    result.IntentosErroneos = 0;
                     db.SaveChanges();
                 }
             }
@@ -959,7 +958,7 @@ namespace Datos
                 {
                     us.id_usua = -1;
                     us.nombre_usua = "";
-                    us.rol_id = "1";
+                    us.rol_id = 1;
                     us.user_name = "";
                     us.clave = "";
                     us.correo = "";
@@ -967,14 +966,14 @@ namespace Datos
                     us.apellido_usua = "";
                     us.direccion = "";
                     us.telefono = "";
-                    us.num_documento = "1";
+                    us.num_documento = 1;
                     us.foto_usua = "";
                     us.fecha_nac = "";
-                    us.dep_nacimiento = "1";
-                    us.ciu_nacimiento = "1";
+                    us.dep_nacimiento = 1;
+                    us.ciu_nacimiento = 1;
                     us.sesion = "";
-                    us.ultima_modificacion = "";
-                    us.state_t = "1";
+                    us.ultima_modificacion = (DateTime.Now.ToShortDateString());
+                    us.state_t = 1;
                     lus.Add(us);
                     return lus;
                 }
@@ -982,7 +981,7 @@ namespace Datos
                 {
                     us.id_usua = -2;
                     us.nombre_usua = "";
-                    us.rol_id = "1";
+                    us.rol_id = 1;
                     us.user_name = "";
                     us.clave = "";
                     us.correo = "";
@@ -990,14 +989,14 @@ namespace Datos
                     us.apellido_usua = "";
                     us.direccion = "";
                     us.telefono = "";
-                    us.num_documento = "1";
+                    us.num_documento = 1;
                     us.foto_usua = "";
                     us.fecha_nac = "";
-                    us.dep_nacimiento = "1";
-                    us.ciu_nacimiento = "1";
+                    us.dep_nacimiento = 1;
+                    us.ciu_nacimiento = 1;
                     us.sesion = "";
-                    us.ultima_modificacion = "";
-                    us.state_t = "1";
+                    us.ultima_modificacion = (DateTime.Now.ToShortDateString());
+                    us.state_t = 1;
                     lus.Add(us);
                     return lus;
                 }
@@ -1013,7 +1012,7 @@ namespace Datos
                 {
                     us.id_usua = -1;
                     us.nombre_usua = "";
-                    us.rol_id = "1";
+                    us.rol_id = 1;
                     us.user_name = "";
                     us.clave = "";
                     us.correo = "";
@@ -1021,14 +1020,14 @@ namespace Datos
                     us.apellido_usua = "";
                     us.direccion = "";
                     us.telefono = "";
-                    us.num_documento = "1";
+                    us.num_documento = 1;
                     us.foto_usua = "";
                     us.fecha_nac = "";
-                    us.dep_nacimiento = "1";
-                    us.ciu_nacimiento = "1";
+                    us.dep_nacimiento = 1;
+                    us.ciu_nacimiento = 1;
                     us.sesion = "";
-                    us.ultima_modificacion = "";
-                    us.state_t = "1";
+                    us.ultima_modificacion = (DateTime.Now.ToShortDateString());
+                    us.state_t = 1;
                     lus.Add(us);
                     return lus;
                 }
@@ -1042,7 +1041,7 @@ namespace Datos
                 var result = db.usuario.SingleOrDefault(x => x.user_name == user_name);
                 if (result != null)
                 {
-                    result.state_t = 2.ToString();
+                    result.state_t = 2;
                     db.SaveChanges();
                 }
             }
@@ -1055,9 +1054,9 @@ namespace Datos
             using (var db = new Mapeo("public"))
             {
                 lusua.IdUsuario = us;
-                lusua.SesionUsuario = "2";
-                lusua.SesionActiva = "0";
-                lusua.IntentosErroneos = "0";
+                lusua.SesionUsuario = 2;
+                lusua.SesionActiva = 0;
+                lusua.IntentosErroneos = 0;
                 lusua.HoraLibre = "1946-09-05 09:30:00.21804-05";
                 db.sesion.Add(lusua);
                 db.SaveChanges();
@@ -1073,7 +1072,7 @@ namespace Datos
                 ses = db.sesion.ToList<Sesion>().Where(x => x.IdUsuario == IdUsuadeUser(usuario)).ToList();
                 foreach (Sesion s in ses)
                 {
-                    intentosErroneos = int.Parse(s.IntentosErroneos);
+                    intentosErroneos = (s.IntentosErroneos);
                 }
 
                 if (intentosErroneos > 2)
@@ -1096,7 +1095,7 @@ namespace Datos
                 var result = db.sesion.SingleOrDefault(x => x.IdUsuario == usuario);
                 if (result != null)
                 {
-                    result.IntentosErroneos = (int.Parse(result.IntentosErroneos) + 1).ToString();
+                    result.IntentosErroneos = ((result.IntentosErroneos) + 1);
                     db.SaveChanges();
                 }
             }
@@ -1111,7 +1110,7 @@ namespace Datos
                 ses = db.sesion.ToList<Sesion>().Where(x => x.IdUsuario == IdUsuadeUser(usuario)).ToList();
                 foreach (Sesion s in ses)
                 {
-                    intentosErroneos = int.Parse(s.IntentosErroneos);
+                    intentosErroneos = (s.IntentosErroneos);
                 }
 
                 if (intentosErroneos == 3)
@@ -1143,7 +1142,7 @@ namespace Datos
                 var result = db.sesion.SingleOrDefault(x => x.IdUsuario == usua);
                 if (result != null)
                 {
-                    result.SesionActiva = (int.Parse(result.SesionActiva) - 1).ToString();
+                    result.SesionActiva = ((result.SesionActiva) - 1);
                     db.SaveChanges();
                 }
             }
@@ -1160,7 +1159,7 @@ namespace Datos
                     var result = db.autenticacion.SingleOrDefault(x => x.id == a.id);
                     if (result != null)
                     {
-                        result.fecha_fin = DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
+                        result.fecha_fin = (DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second);
                         db.SaveChanges();
                     }
                 }
@@ -1249,7 +1248,7 @@ namespace Datos
                 var resu = db.usuario.SingleOrDefault(x => x.id_usua == datos.UserId);
                 if (resu != null)
                 {
-                    resu.state_t = "1";
+                    resu.state_t = 1;
                     resu.clave = datos.Clave;
                     db.SaveChanges();
                 }

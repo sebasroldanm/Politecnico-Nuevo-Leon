@@ -16,9 +16,9 @@ namespace Utilitarios
 
         private Int32 idSesion;
         private Int32 idUsuario;
-        private String sesionUsuario;
-        private String sesionActiva;
-        private String intentosErroneos;
+        private Int32 sesionUsuario;
+        private Int32 sesionActiva;
+        private Int32 intentosErroneos;
         private String horaLibre;
 
 
@@ -28,11 +28,11 @@ namespace Utilitarios
         [Column("id_usuario")]
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
         [Column("sesionUsuario")]
-        public string SesionUsuario { get => sesionUsuario; set => sesionUsuario = value; }
+        public int SesionUsuario { get => sesionUsuario; set => sesionUsuario = value; }
         [Column("sesionActiva")]
-        public string SesionActiva { get => sesionActiva; set => sesionActiva = value; }
+        public int SesionActiva { get => sesionActiva; set => sesionActiva = value; }
         [Column("intentosErroneos")]
-        public string IntentosErroneos { get => intentosErroneos; set => intentosErroneos = value; }
+        public int IntentosErroneos { get => intentosErroneos; set => intentosErroneos = value; }
         [Column("horaLibre")]
         public string HoraLibre { get => horaLibre; set => horaLibre = value; }
 

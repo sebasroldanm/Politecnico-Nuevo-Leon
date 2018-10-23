@@ -194,7 +194,7 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
         Usuario user = new Usuario();
         UUser usu = new UUser();
 
-        user.num_documento = (tb_DocenteId.Text);
+        user.num_documento = int.Parse(tb_DocenteId.Text);
         user.nombre_usua = tb_DocenteNombre.Text;
         user.clave = tb_DocenteContrasenia.Text;
         user.correo = tb_DocenteCorreo.Text;
@@ -203,10 +203,10 @@ public partial class View_Admin_EditarEliminarProfesor : System.Web.UI.Page
         user.telefono = tb_DocenteTelefono.Text;
         user.foto_usua = cargarImagen();
         user.fecha_nac = fechanac.Text;
-        user.dep_nacimiento = (ddt_lugarnacimDep.SelectedValue.ToString());
-        user.ciu_nacimiento = (DDT_Ciudad.SelectedValue.ToString());
+        user.dep_nacimiento = int.Parse(ddt_lugarnacimDep.SelectedValue.ToString());
+        user.ciu_nacimiento = int.Parse(DDT_Ciudad.SelectedValue.ToString());
         user.sesion = Session.SessionID;
-        user.rol_id = "2";
+        user.rol_id = 2;
         user.user_name = tb_DocenteUsuario.Text;
 
         int h = int.Parse(Session["idioma"].ToString());

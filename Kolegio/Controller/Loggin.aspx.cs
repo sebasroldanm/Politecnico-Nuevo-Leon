@@ -76,6 +76,7 @@ public partial class Loggin : System.Web.UI.Page
                 datosConexion.ip(),
                 datosConexion.mac(),
                 Session.SessionID);
+
             Response.Redirect(datos.Url);
         }
         catch

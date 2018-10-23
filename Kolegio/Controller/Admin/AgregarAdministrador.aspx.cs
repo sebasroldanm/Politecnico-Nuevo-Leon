@@ -177,21 +177,21 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
 
         usua.nombre_usua = tb_AdministradorAdministradorNombre.Text;
         usua.user_name = tb_AdministradorUsuario.Text;
-        usua.rol_id = "1";
+        usua.rol_id = 1;
         usua.clave = tb_AdministradorContrasenia.Text;
         usua.correo = tb_AdministradorAdministradorCorreo.Text;
         usua.estado = true;
         usua.apellido_usua = tb_AdministradorAdministradorApellido.Text;
         usua.direccion = tb_AdministradorAdministradorDireccion.Text;
         usua.telefono = tb_AdministradorTelefono.Text;
-        usua.num_documento = tb_AministradorAdministradorId.Text;
+        usua.num_documento = int.Parse(tb_AministradorAdministradorId.Text);
         usua.foto_usua = cargarImagen();
         usua.fecha_nac = fechanac.Text;
-        usua.dep_nacimiento = ddt_lugarnacimDep.SelectedValue;
-        usua.ciu_nacimiento = DDT_Ciudad.SelectedValue;
+        usua.dep_nacimiento = int.Parse(ddt_lugarnacimDep.SelectedValue);
+        usua.ciu_nacimiento = int.Parse(DDT_Ciudad.SelectedValue);
         usua.sesion = Session.SessionID;
-        usua.ultima_modificacion = DateTime.Now.ToShortDateString();
-        usua.state_t = "1";
+        usua.ultima_modificacion = (DateTime.Now.ToShortDateString());
+        usua.state_t = 1;
 
         usu = logicaM.insertaradmin(usua,int.Parse(Session["idioma"].ToString()));
         

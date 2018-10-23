@@ -13,7 +13,7 @@ namespace Utilitarios
         private String misionInicio;
         private String visionInicio;
         private String Sesion;
-        private DateTime ultimaModificacion;
+        private String ultimaModificacion;
 
         [Key]
         [Column("id_inicio")]
@@ -27,6 +27,6 @@ namespace Utilitarios
         [Column("sesion")]
         public string sesion { get => Sesion; set => Sesion = value; }
         [Column("ultima_modificacion")]
-        public DateTime ultima_modificacion { get => ultimaModificacion; set => ultimaModificacion = value; }
+        public string ultima_modificacion { get => ultimaModificacion; set => ultimaModificacion = value; }
     }
 }

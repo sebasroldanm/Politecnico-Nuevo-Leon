@@ -839,7 +839,7 @@ namespace Logica
             bool usuariook;
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
-            usuaok.num_documento = documento.ToString();
+            usuaok.num_documento = int.Parse(documento);
             usuaok.user_name = usuario.ToString();
 
 
@@ -1287,7 +1287,7 @@ namespace Logica
             aut.ip = ip;
             aut.mac = mac;
             aut.session= sesion;
-            aut.fecha_inicio = DateTime.Now.ToShortDateString() +" "+ DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
+            aut.fecha_inicio = (DateTime.Now.ToShortDateString() +" "+ DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second);
 
             dat.guardadoSession(aut);
         }

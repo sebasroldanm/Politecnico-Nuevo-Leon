@@ -164,21 +164,21 @@ public partial class View_Admin_AgregarProfesor : System.Web.UI.Page
 
         usua.nombre_usua = tb_DocenteNombre.Text;
         usua.user_name = tb_DocenteUsuario.Text;
-        usua.rol_id = "2";
+        usua.rol_id = 2;
         usua.clave = tb_DocenteContrasenia.Text;
         usua.correo = tb_DocenteCorreo.Text;
         usua.estado = true;
         usua.apellido_usua = tb_DocenteApellido.Text;
         usua.direccion = tb_DocenteDireccion.Text;
         usua.telefono = tb_DocenteTelefono.Text;
-        usua.num_documento = tb_DocenteId.Text;
+        usua.num_documento = int.Parse(tb_DocenteId.Text);
         usua.foto_usua = cargarImagen();
         usua.fecha_nac = fechanac.Text;
-        usua.dep_nacimiento = ddt_lugarnacimDep.SelectedValue;
-        usua.ciu_nacimiento = DDT_Ciudad.SelectedValue;
+        usua.dep_nacimiento = int.Parse(ddt_lugarnacimDep.SelectedValue);
+        usua.ciu_nacimiento = int.Parse(DDT_Ciudad.SelectedValue);
         usua.sesion = Session.SessionID;
-        usua.ultima_modificacion = DateTime.Now.ToShortDateString();
-        usua.state_t = "1";
+        usua.ultima_modificacion = (DateTime.Now.ToShortDateString());
+        usua.state_t = 1;
         usu = logicaM.insertarprofe(usua, int.Parse(Session["idioma"].ToString()));
 
         L_ErrorUsuario.Text = usu.Mensaje;

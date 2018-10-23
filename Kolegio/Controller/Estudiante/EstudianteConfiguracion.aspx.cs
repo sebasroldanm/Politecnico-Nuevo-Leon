@@ -127,7 +127,7 @@ public partial class View_Estudiante_EstudianteConfiguracion : System.Web.UI.Pag
         usua.user_name = tb_usuario.Text;
         usua.clave = tb_contrasenia.Text;
         usua.correo = tb_correo.Text;
-        usua.num_documento = Session["documento"].ToString();
+        usua.num_documento = int.Parse(Session["documento"].ToString());
         usua.foto_usua = cargarImagen(); ;
         usua.sesion = Session.SessionID;
 

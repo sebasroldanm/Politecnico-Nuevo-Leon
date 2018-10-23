@@ -171,21 +171,21 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
 
         usua.nombre_usua = tb_AcudienteNombre.Text;
         usua.user_name = tb_AcudienteUsuario.Text;
-        usua.rol_id = "4";
+        usua.rol_id = 4;
         usua.clave = tb_AcudienteContrasenia.Text;
         usua.correo = tb_AcudienteCorreo.Text;
         usua.estado = true;
         usua.apellido_usua = tb_AcudienteApellido.Text;
         usua.direccion = tb_AcudienteDireccion.Text;
         usua.telefono = tb_AcudienteTelefono.Text;
-        usua.num_documento = tb_AcudienteId.Text;
+        usua.num_documento = int.Parse(tb_AcudienteId.Text);
         usua.foto_usua = cargarImagen();
         usua.fecha_nac = fechanac.Text;
-        usua.dep_nacimiento = ddt_lugarnacimDep.SelectedValue;
-        usua.ciu_nacimiento = DDT_Ciudad.SelectedValue;
+        usua.dep_nacimiento = int.Parse(ddt_lugarnacimDep.SelectedValue);
+        usua.ciu_nacimiento = int.Parse(DDT_Ciudad.SelectedValue);
         usua.sesion = Session.SessionID;
-        usua.ultima_modificacion = DateTime.Now.ToShortDateString();
-        usua.state_t = "1";
+        usua.ultima_modificacion = (DateTime.Now.ToShortDateString());
+        usua.state_t = 1;
 
         usu = logicaM.insertaracudiente(usua, int.Parse(Session["idioma"].ToString()));
 

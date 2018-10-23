@@ -83,7 +83,7 @@ namespace Datos
                 lista = new List<UsuarioVista>();
                 lista.Add(us);
                 var query = lista;
-                var usus = db.usuario.ToList<Usuario>().Where(x => x.rol_id.Contains(usuario.ToString()))
+                var usus = db.usuario.ToList<Usuario>().Where(x => x.rol_id == usuario)
                     .Select (m => new UsuarioVista
                     {
                         id_usua = m.id_usua,
@@ -97,13 +97,14 @@ namespace Datos
 
         public void editarsesionusua(int usuario, string sesion)
         {
+            int s = int.Parse(sesion);
             UUser uuser = new UUser();
             using (var db = new Mapeo("public"))
             {
                 var result = db.sesion.SingleOrDefault(x => x.IdSesion == usuario);
                 if (result != null)
                 {
-                    result.SesionUsuario = sesion;
+                    result.SesionUsuario = s;
                     db.SaveChanges();
                 }
             }
@@ -117,7 +118,7 @@ namespace Datos
                 var result = db.sesion.SingleOrDefault(x => x.IdSesion == usuario);
                 if (result != null)
                 {
-                    usua.Session = result.SesionUsuario;
+                    usua.Session = result.SesionUsuario.ToString();
                 }
             }
             return usua;
