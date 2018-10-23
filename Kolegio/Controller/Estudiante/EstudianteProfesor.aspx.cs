@@ -78,8 +78,12 @@ public partial class View_Estudiante_EstudianteProfesor : System.Web.UI.Page
             TB_Mensaje.Text,
             int.Parse(Session["idioma"].ToString())
             );
-        L_Verificar.Text = usua.Mensaje;
         this.Page.Response.Write(usua.Notificacion);
-        Response.Redirect(usua.Url);
+
+        L_Verificar.Text = usua.Mensaje;
+
+        TB_Mensaje.Text = usua.Mensaje;
+
     }
 }
+

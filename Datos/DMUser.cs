@@ -50,7 +50,7 @@ namespace Datos
             using (var db = new Mapeo("public"))
             {
 
-                var admin = db.usuario.ToList<Usuario>().Where(x => x.rol_id ==1);
+                var admin = db.usuario.ToList<Usuario>().Where(x => x.rol_id == 1);
                 return admin.ToList<Usuario>();
 
             }
