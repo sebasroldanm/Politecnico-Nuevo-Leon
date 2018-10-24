@@ -75,9 +75,10 @@ namespace Datos
 
                 }
             }
+        }
 
-
-
+        public void fiel_auditoria_agrega_materia_fecha(string _accion, string sesion, MEncMateriaFecha enc)
+        {
         }
     }
 }
