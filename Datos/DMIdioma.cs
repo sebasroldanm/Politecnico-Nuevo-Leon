@@ -6,6 +6,7 @@ using Utilitarios.MIdioma;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace Datos
 {
@@ -424,5 +425,28 @@ namespace Datos
             }
         }
 
+        // Funcion de Idioma Migracion a SQL Server
+        public DataTable listarControlesExcluir(int formular, string idioma)
+        {
+            DataTable list = new DataTable();
+
+            DIdioma postgres = new DIdioma();
+            DSql sqlserver = new DSql();
+
+            using (var db = new Mapeo("public"))
+            {
+                if (db.Database.Connection.ConnectionString == "Host= localhost; Database=ColegioFinal; User Id=postgres; Password=1234; Port= 5432;")
+                {
+                    list = postgres.listarControlesExcluir(formular, idioma);
+                }
+                else
+                {
+                    list = sqlserver.listarControlesExcluir(formular, idioma);
+                }
+            }
+            return list;
+        }
+
+        /////////////////////////////////////////
     }
 }

@@ -352,7 +352,7 @@
                                             <asp:DropDownList ID="DDL_itemagregar" Class="form-control" runat="server" DataSourceID="ODS_Item" DataTextField="control" DataValueField="control" AutoPostBack="True">
                                                 <asp:ListItem Value="L"></asp:ListItem>
                                             </asp:DropDownList>
-                                            <asp:ObjectDataSource ID="ODS_Item" runat="server" SelectMethod="listarControlesExcluir" TypeName="Datos.DIdioma">
+                                            <asp:ObjectDataSource ID="ODS_Item" runat="server" SelectMethod="listarControlesExcluir" TypeName="Datos.DMIdioma">
                                                 <SelectParameters>
                                                     <%--<asp:ControlParameter ControlID="DDL_formularioagregar" Name="idioma" PropertyName="SelectedValue" Type="Int32" />--%>
                                                     <asp:ControlParameter ControlID="DDL_formularioagregar" Name="formular" PropertyName="SelectedValue" Type="Int32" />
