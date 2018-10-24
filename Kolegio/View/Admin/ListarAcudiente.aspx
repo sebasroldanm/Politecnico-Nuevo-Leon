@@ -15,7 +15,7 @@
 
 
 
-    <asp:GridView ID="GridView1" runat="server"  CssClass="table table-bordered bs-table" AutoGenerateColumns="False" DataSourceID="DAOacu" BackColor="White" BorderColor="#660033" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" PageSize="3">
+    <asp:GridView ID="GridView1" runat="server"  CssClass="table table-bordered bs-table" AutoGenerateColumns="False" DataSourceID="ODS_ListarSQLPostgres" BackColor="White" BorderColor="#660033" BorderWidth="1px" CellPadding="3" GridLines="Horizontal" AllowPaging="True" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" PageSize="3">
         <AlternatingRowStyle BackColor="#F7F7F7" BorderColor="#0677D2" />
         <Columns>
              <asp:ImageField DataImageUrlField="fotoacudiente" HeaderText="Acudiente">
@@ -70,6 +70,9 @@
         <SortedDescendingCellStyle BackColor="#D8D8F0" />
         <SortedDescendingHeaderStyle BackColor="#3E3277" />
         </asp:GridView>
+
+
+                  <asp:ObjectDataSource ID="ODS_ListarSQLPostgres" runat="server" SelectMethod="listaacuestu" TypeName="Datos.DMUser"></asp:ObjectDataSource>
 
 
         <asp:ObjectDataSource ID="DAOacu" runat="server" SelectMethod="listaacuestu" TypeName="Datos.DUser"></asp:ObjectDataSource>

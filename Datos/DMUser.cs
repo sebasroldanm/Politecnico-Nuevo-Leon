@@ -26,9 +26,9 @@ namespace Datos
             {
 
                 luser = db.usuario.ToList<Usuario>().Where(x => x.user_name == (enc.UserName) && x.clave == (enc.Clave)).ToList();
-                    return luser;
-                    //return ingres.ToList<Usuario>();
-                
+                return luser;
+                //return ingres.ToList<Usuario>();
+
 
 
             }
@@ -497,7 +497,7 @@ namespace Datos
                             fotoacudiente = m.foto_usua,
                             apeacudiente = m.apellido_usua,
                             nomacudiente = m.nombre_usua,
-                            docacudiente = m.num_documento.ToString(),
+                            docacudiente = m.num_documento,
                             telefonoacudiente = m.telefono,
                             useracudiente = m.user_name,
                             claveacudiente = m.clave
@@ -578,15 +578,15 @@ namespace Datos
         }
 
 
-        public void insertarAcudientedesdeEstudiante( Acudiente acu)
-            {
+        public void insertarAcudientedesdeEstudiante(Acudiente acu)
+        {
             using (var db = new Mapeo("public"))
             {
                 db.acudiente.Add(acu);
                 db.SaveChanges();
             }
 
-            }
+        }
 
 
         public UUser obtenerUsuarioMod(UUser us)
@@ -615,7 +615,7 @@ namespace Datos
                     usua.Foto = result.foto_usua;
                     usua.fecha_nacimiento = result.fecha_nac;
                     usua.Departamento = result.dep_nacimiento.ToString();
-                    usua.Ciudad =  result.ciu_nacimiento.ToString();
+                    usua.Ciudad = result.ciu_nacimiento.ToString();
                     usua.Session = result.sesion;
                 }
                 else
@@ -942,7 +942,7 @@ namespace Datos
                            join tokenRecuperaUsuarios in db.tokenRecuperaUsuarios on usuario.id_usua equals tokenRecuperaUsuarios.id_usuario
                            where usuario.user_name == user_name
                            select tokenRecuperaUsuarios).ToList<TokenRecuperaUsuario>();
-                foreach(TokenRecuperaUsuario t in pru)
+                foreach (TokenRecuperaUsuario t in pru)
                 {
                     fecreado = DateTime.Parse(t.fecha_creado);
                     fevigencia = DateTime.Parse(t.fecha_vigencia);
@@ -1168,7 +1168,7 @@ namespace Datos
 
         public void almacenarToken(String token, Int32 userId)
         {
-            string fe = (DateTime.Now.ToShortDateString() + " " + ((DateTime.Now.Hour)+2) + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second);
+            string fe = (DateTime.Now.ToShortDateString() + " " + ((DateTime.Now.Hour) + 2) + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second);
             //DateTime fe = DateTime.Parse(DateTime.Now.ToShortDateString() + " " + (DateTime.Now.Hour) + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second).AddHours(2);
             TokenRecuperaUsuario tok = new TokenRecuperaUsuario();
             tok.id_usuario = userId;
@@ -1253,6 +1253,29 @@ namespace Datos
                     db.SaveChanges();
                 }
             }
+        }
+
+
+        //Funcion QUe se Migra de BD
+        public DataTable listaacuestu()
+        {
+            DataTable list = new DataTable();
+
+            DUser postgres = new DUser();
+            DSql sqlserver = new DSql();
+
+            using (var db = new Mapeo("public"))
+            {
+                if(db.Database.Connection.ConnectionString == "Host= localhost; Database=ColegioFinal; User Id=postgres; Password=1234; Port= 5432;")
+                {
+                    list = postgres.listaacuestu();
+                }
+                else
+                {
+                    list = sqlserver.listaacuestu();
+                }
+            }
+            return list;
         }
     }
 }
