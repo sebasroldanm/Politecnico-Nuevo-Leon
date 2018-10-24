@@ -8,6 +8,7 @@ using Utilitarios.MVistasUsuario;
 using System.Data;
 using System.Text;
 using System.Threading.Tasks;
+using Utilitarios.MEncSeguridad;
 using System.Web.UI.WebControls;
 
 namespace Logica
@@ -345,13 +346,15 @@ namespace Logica
             return enc;
         }
         
-        public UUser agregarEstudianteACurso(string anio, string curso, int cont, GridView GridView1, int selIdioma)
+        public UUser agregarEstudianteACurso(string anio, string curso,string sesion, int cont, GridView GridView1, int selIdioma)
         {
             DMUser datos = new DMUser();
             UUser enc = new UUser();
             DMReg mreg = new DMReg();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
+            DMSeguridad dmseg = new DMSeguridad();
+            MEncEstCurso mencest = new MEncEstCurso();
             Int32 FORMULARIO = 9;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -368,6 +371,9 @@ namespace Logica
             {
                 for (int i = 0; i < cont; i++)
                 {
+
+
+
                     CheckBox ch = (CheckBox)GridView1.Rows[i].FindControl("CBest");
                     Label lb = (Label)GridView1.Rows[i].FindControl("label1");
 
@@ -403,6 +409,10 @@ namespace Logica
 
                         //L_ErrorUsuario.Text = "Debe Elegir un Curso";
                         enc.MensajeAcudiente = encId.CompIdioma["L_OkUsuario_aceptar"].ToString(); //"Estudiantes Agregados al curso";
+                        mencest.id_ec_estudiante_nuevo = ecur.id_ec_estudiante;
+                        mencest.id_ec_curso_nuevo = ecur.id_ec_curso;
+                        dmseg.fiel_auditoria_agrega_estudiantes_curso("INSERT", sesion, mencest);
+
 
                     }
                 }

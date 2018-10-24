@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utilitarios;
+using Utilitarios.MEncSeguridad;
 using Logica;
 
 public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
@@ -101,8 +102,11 @@ public partial class View_Admin_AgregarEstudiantesCurso : System.Web.UI.Page
     {
         UUser enc = new UUser();
         LMReg logic = new LMReg();
+        MEncEstCurso encs = new MEncEstCurso();
 
-        enc = logic.agregarEstudianteACurso(ddt_anio.SelectedValue, ddt_curso.SelectedValue, GridView1.Rows.Count, GridView1, int.Parse(Session["idioma"].ToString()));
+
+
+        enc = logic.agregarEstudianteACurso(ddt_anio.SelectedValue, ddt_curso.SelectedValue,Session.SessionID, GridView1.Rows.Count, GridView1, int.Parse(Session["idioma"].ToString()));
                
         L_ErrorUsuario.Text = enc.Mensaje;
         L_OkUsuario.Text = enc.MensajeAcudiente;
