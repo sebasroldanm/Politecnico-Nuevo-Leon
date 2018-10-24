@@ -75,7 +75,8 @@ namespace Datos
             try
             {
                 conection.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM idioma.f_listar_controles_excluir("+ idioma + ",'"+ formular + "')", conection);
+                String query = "Select * FROM idioma.f_listar_controles_excluir(" + formular + ",'" + idioma + "');";
+                SqlCommand cmd = new SqlCommand(query, conection);
                 SqlDataAdapter ad = new SqlDataAdapter(cmd);
 
                 ds = new DataSet();

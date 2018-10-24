@@ -1266,7 +1266,7 @@ namespace Datos
 
             using (var db = new Mapeo("public"))
             {
-                if(db.Database.Connection.ConnectionString == "Host= localhost; Database=ColegioFinal; User Id=postgres; Password=1234; Port= 5432;")
+                if ((db.Database.Connection).ToString() == "Npgsql.NpgsqlConnection")
                 {
                     list = postgres.listaacuestu();
                 }
@@ -1288,7 +1288,7 @@ namespace Datos
 
             using (var db = new Mapeo("public"))
             {
-                if (db.Database.Connection.ConnectionString == "Host= localhost; Database=ColegioFinal; User Id=postgres; Password=1234; Port= 5432;")
+                if ((db.Database.Connection).ToString() == "Npgsql.NpgsqlConnection")//"System.Data.SqlClient.SqlConnection"
                 {
                     list = postgres.listaestsincurso();
                 }
