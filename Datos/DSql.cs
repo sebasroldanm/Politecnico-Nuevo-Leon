@@ -69,5 +69,33 @@ namespace Datos
             return ds.Tables["tabla"];
         }
 
+
+        public DataTable listarControlesExcluir(int formular, string idioma)
+        {
+            try
+            {
+                conection.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM idioma.f_listar_controles_excluir("+ idioma + ",'"+ formular + "')", conection);
+                SqlDataAdapter ad = new SqlDataAdapter(cmd);
+
+                ds = new DataSet();
+                ad.Fill(ds, "tabla");
+
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return ds.Tables["tabla"];
+        }
+
     }
 }
