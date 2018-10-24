@@ -1277,5 +1277,27 @@ namespace Datos
             }
             return list;
         }
+
+
+        public DataTable listaestsincurso()
+        {
+            DataTable list = new DataTable();
+
+            DUser postgres = new DUser();
+            DSql sqlserver = new DSql();
+
+            using (var db = new Mapeo("public"))
+            {
+                if (db.Database.Connection.ConnectionString == "Host= localhost; Database=ColegioFinal; User Id=postgres; Password=1234; Port= 5432;")
+                {
+                    list = postgres.listaestsincurso();
+                }
+                else
+                {
+                    list = sqlserver.listaestsincurso();
+                }
+            }
+            return list;
+        }
     }
 }

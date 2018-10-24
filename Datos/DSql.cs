@@ -40,5 +40,34 @@ namespace Datos
 
             return ds.Tables["tabla"];
         }
+
+
+        public DataTable listaestsincurso()
+        {
+            try
+            {
+                conection.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM registro.f_estudiantes_sincurso()", conection);
+                SqlDataAdapter ad = new SqlDataAdapter(cmd);
+
+                ds = new DataSet();
+                ad.Fill(ds, "tabla");
+
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return ds.Tables["tabla"];
+        }
+
     }
 }
