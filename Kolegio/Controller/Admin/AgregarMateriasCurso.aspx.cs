@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
 using Utilitarios.Mregistro;
+using Utilitarios.MEncSeguridad;
 
 public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
 {
@@ -154,7 +155,7 @@ public partial class View_Admin_AgregarMateriasCurso : System.Web.UI.Page
         LMReg l_reg = new LMReg();
         Materia mate = new Materia();
         UUser usu = new UUser();
-
+        MEncMateria agrmat = new MEncMateria();
         mate.nombre_materia = tb_materia.Text;
         usu = l_reg.agregarMateria(mate, Session.SessionID, int.Parse(Session["idioma"].ToString()));
 

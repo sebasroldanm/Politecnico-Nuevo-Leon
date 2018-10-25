@@ -20,9 +20,9 @@ namespace Utilitarios.MEncSeguridad
        
 
         
-        public string Nombre_materia_nuevo1 { get => Nombre_materia_nuevo; set => Nombre_materia_nuevo = value; }
-        public string Sesion_nuevo1 { get => Sesion_nuevo; set => Sesion_nuevo = value; }
-        public string Nombre_materia_old1 { get => Nombre_materia_old; set => Nombre_materia_old = value; }
-        public string Sesion_old1 { get => Sesion_old; set => Sesion_old = value; }
+        public string nombre_materia_nuevo { get => Nombre_materia_nuevo; set => Nombre_materia_nuevo = value; }
+        public string sesion_nuevo { get => Sesion_nuevo; set => Sesion_nuevo = value; }
+        public string nombre_materia_old { get => Nombre_materia_old; set => Nombre_materia_old = value; }
+        public string sesion_old { get => Sesion_old; set => Sesion_old = value; }
     }
 }

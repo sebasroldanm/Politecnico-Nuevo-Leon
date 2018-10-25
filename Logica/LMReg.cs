@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Utilitarios.MEncSeguridad;
 using System.Web.UI.WebControls;
 
+
 namespace Logica
 {
     public class LMReg
@@ -156,7 +157,7 @@ namespace Logica
             return Dt;
         }
         
-        public UUser agregarMateria(Materia materia, string sesion, int selIdioma)
+        public UUser agregarMateria(Materia materia, string sesion, int selIdioma)////aqui
         {
             UUser user = new UUser();
             DMReg datos = new DMReg();
@@ -164,6 +165,10 @@ namespace Logica
             LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 10;
             Materia mat = new Materia();
+            DMSeguridad dmseg = new DMSeguridad();
+            MEncMateria mencmateria = new MEncMateria();
+
+
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
 
             user.Mensaje = " ";
@@ -176,6 +181,10 @@ namespace Logica
                 datos.insertarMateria(materia);
                 //this.Page.Response.Write("<script language='JavaScript'>window.alert('Materia Insertada con Exito');</script>");
                 user.Mensaje = encId.CompIdioma["L_Error_falta_materia"].ToString(); //"Materia Insertada con Exito";
+                mencmateria.nombre_materia_nuevo = materia.nombre_materia;
+                mencmateria.sesion_nuevo = materia.sesion;
+                dmseg.fiel_auditoria_agrega_materia("INSERT", sesion, mencmateria);
+
             }
             else
             {
@@ -504,6 +513,8 @@ namespace Logica
                         //}
                         enc.Mensaje = encId.CompIdioma["L_Error_materia_insertada"].ToString(); //"Materia Insertada a Curso con Exito";
                         //this.Page.Response.Write("<script language='JavaScript'>window.alert('Materia Insertada a Curso con Exito');</script>");
+
+
                     }
                     else
                     {
