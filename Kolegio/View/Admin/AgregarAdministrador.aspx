@@ -75,11 +75,11 @@
         <div class="form-inline" role="form">
             <div class="form-group">
                 <label for="tb_AministradorAdministradorId" typeof="number" class="control-label" style="color: #FFFFFF">
-                    <asp:Label ID="L_AdminAgreAdminDocumento" runat="server"></asp:Label></label>
-                <asp:TextBox ID="tb_AministradorAdministradorId" runat="server" class="form-control" MaxLength="9" title="Numero de Documento"></asp:TextBox>
+                    <asp:Label ID="L_AdminAgreAdminDocumento" runat="server"></asp:Label></label> 
+                <asp:TextBox ID="tb_AministradorAdministradorId" runat="server" class="form-control" MaxLength="8" title="Numero de Documento"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RV_id" runat="server" ControlToValidate="tb_AministradorAdministradorId" ValidationGroup="form_ejm3" ForeColor="Red" Font-Size="X-Large">*</asp:RequiredFieldValidator><br />
                 <asp:RegularExpressionValidator ID="REV_AministradorAdministradorId" runat="server" ControlToValidate="tb_AministradorAdministradorId" ValidationExpression="^[0-9]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="form_ejm3"></asp:RegularExpressionValidator>
-                <asp:RangeValidator ID="RV_id_Administrador" runat="server" ControlToValidate="tb_AministradorAdministradorId" CssClass="label-warning" ErrorMessage="Sobrepasó el limite" Font-Bold="True" ForeColor="White" MaximumValue="199999999" MinimumValue="1" ValidationGroup="form_ejm3"></asp:RangeValidator><br />
+                <asp:RangeValidator ID="RV_id_Administrador" runat="server" ControlToValidate="tb_AministradorAdministradorId" CssClass="label-warning" ErrorMessage="Sobrepasó el limite" Font-Bold="True" ForeColor="White" MaximumValue="99999999" MinimumValue="1" ValidationGroup="form_ejm3"></asp:RangeValidator><br />
             </div>
             <div class="form-group">
                 <label for="tb_AdministradorAdministradorNombre" class="control-label" style="color: #FFFFFF">
