@@ -10,6 +10,7 @@ using System.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
+using Utilitarios.MEncSeguridad;
 using System.Configuration;
 using System.Collections.Generic;
 
@@ -532,11 +533,12 @@ namespace Datos
 
         public void insertarAcudiente(Usuario acudi)
         {
-
+           
             using (var db = new Mapeo("public"))
             {
                 db.usuario.Add(acudi);
                 db.SaveChanges();
+
             }
 
         }
@@ -580,6 +582,12 @@ namespace Datos
 
         public void insertarAcudientedesdeEstudiante(Acudiente acu)
         {
+            DMSeguridad dmseg = new DMSeguridad();
+            MEncAcudiente encacu = new MEncAcudiente();
+            encacu.id_ac_acudiente_nuevo = acu.id_ac_acudiente;
+            encacu.id_ac_estudiante_nuevo = acu.id_ac_estudiante;
+            dmseg.fiel_auditoria_agrega_acudiente("INSERT", encacu);
+
             using (var db = new Mapeo("public"))
             {
                 db.acudiente.Add(acu);

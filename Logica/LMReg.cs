@@ -178,12 +178,13 @@ namespace Logica
             {        
                 materia.sesion = sesion;
                 materia.ultima_modificacion = DateTime.Now.ToShortDateString();
-                datos.insertarMateria(materia);
+                datos.insertarMateria(materia, sesion);
                 //this.Page.Response.Write("<script language='JavaScript'>window.alert('Materia Insertada con Exito');</script>");
                 user.Mensaje = encId.CompIdioma["L_Error_falta_materia"].ToString(); //"Materia Insertada con Exito";
                 mencmateria.nombre_materia_nuevo = materia.nombre_materia;
                 mencmateria.sesion_nuevo = materia.sesion;
                 dmseg.fiel_auditoria_agrega_materia("INSERT", sesion, mencmateria);
+
 
             }
             else

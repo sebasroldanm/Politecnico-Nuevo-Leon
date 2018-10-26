@@ -4,6 +4,7 @@ using System.Linq;
 using Utilitarios;
 using Utilitarios.Mregistro;
 using Utilitarios.MVistasUsuario;
+using Utilitarios.MEncSeguridad;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -111,8 +112,10 @@ namespace Datos
             }
         }
 
-        public void insertarMateria(Materia mat)
+        public void insertarMateria(Materia mat, string sesion)
         {
+            DMSeguridad dmseg = new DMSeguridad();
+            MEncMateriaFecha encmatfech = new MEncMateriaFecha();
             using (var db = new Mapeo("public"))
             {
                 db.materia.Add(mat);
@@ -125,12 +128,17 @@ namespace Datos
                 foreach (Materia m in matlist)
                 {
                     matfe.id_mf_materia = m.id_materia;
+                    encmatfech.id_mf_materia_nuevo = m.id_materia;
+                    
                     for (int i = 1; i <= 20; i++)
                     {
                         matfe.id_mf_fecha = i;
                         db.materiafecha.Add(matfe);
                         db.SaveChanges();
+                        encmatfech.id_mf_fecha_nuevo = i;
+                        dmseg.fiel_auditoria_agrega_materia_fecha("INSERT",sesion,encmatfech);
                     }
+
                 }
             }
 

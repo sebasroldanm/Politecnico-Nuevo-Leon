@@ -113,19 +113,19 @@ namespace Logica
                     usua.L_Aceptar1 = false;
                     encusua.apellido_usua_nuevo = admin.apellido_usua;
                     encusua.ciu_nacimiento_nuevo = admin.ciu_nacimiento;
-                    encusua.clave_nuevo = usua.Clave;
-                    encusua.correo_nuevo = usua.Correo;
-                    encusua.dep_nacimiento_nuevo = int.Parse(usua.Departamento);
-                    encusua.direccion_nuevo = usua.Direccion;
-                    encusua.estado_nuevo = int.Parse(usua.Estado);
-                    encusua.fecha_nac_nuevo = usua.fecha_nacimiento;
-                    encusua.foto_usua_nuevo = usua.Foto;
-                    encusua.nombre_usua_nuevo = usua.Nombre;
-                    encusua.num_documento_nuevo = int.Parse(usua.Documento);
-                    encusua.rol_id_nuevo = usua.RolId;
-                    encusua.sesion_nuevo = usua.Session;
-                    encusua.telefono_nuevo = usua.Telefono;
-                    encusua.user_name_nuevo = usua.UserName;
+                    encusua.clave_nuevo = admin.clave;
+                    encusua.correo_nuevo = admin.correo;
+                    encusua.dep_nacimiento_nuevo = admin.dep_nacimiento;
+                    encusua.direccion_nuevo = admin.direccion;
+                    encusua.estado_nuevo = admin.estado;
+                    encusua.fecha_nac_nuevo = admin.fecha_nac;
+                    encusua.foto_usua_nuevo = admin.foto_usua;
+                    encusua.nombre_usua_nuevo = admin.nombre_usua;
+                    encusua.num_documento_nuevo = admin.num_documento;
+                    encusua.rol_id_nuevo = admin.rol_id;
+                    encusua.sesion_nuevo = admin.sesion;
+                    encusua.telefono_nuevo = admin.telefono;
+                    encusua.user_name_nuevo = admin.user_name;
                     dmseg.fiel_auditoria_agrega_usuario("INSERT", encusua);
 
 
@@ -250,10 +250,8 @@ namespace Logica
 
                     usua.L_Aceptar1 = false;
                     usua.B_Botones1 = true;
-                    encacudi.id_ac_acudiente_nuevo = int.Parse(usua.id_Acudiente);
-                    encacudi.id_ac_estudiante_nuevo = int.Parse(usua.Id_estudiante);
+                 
 
-                    dmseg.fiel_auditoria_agrega_acudiente("INSERT", session, encacudi);
 
                 }
             }
