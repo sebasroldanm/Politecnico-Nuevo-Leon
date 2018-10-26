@@ -77,7 +77,8 @@ namespace Logica
         {
             DMUser admon = new DMUser();
             UUser usua = new UUser();
-            
+            DMSeguridad dmseg = new DMSeguridad();
+            MencUsuario encusua = new MencUsuario();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
             Int32 FORMULARIO = 7;
@@ -110,6 +111,23 @@ namespace Logica
                     usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_insertado"].ToString() + "');</script>";
                     usua.B_Botones1 = true;
                     usua.L_Aceptar1 = false;
+                    encusua.apellido_usua_nuevo = admin.apellido_usua;
+                    encusua.ciu_nacimiento_nuevo = admin.ciu_nacimiento;
+                    encusua.clave_nuevo = usua.Clave;
+                    encusua.correo_nuevo = usua.Correo;
+                    encusua.dep_nacimiento_nuevo = int.Parse(usua.Departamento);
+                    encusua.direccion_nuevo = usua.Direccion;
+                    encusua.estado_nuevo = int.Parse(usua.Estado);
+                    encusua.fecha_nac_nuevo = usua.fecha_nacimiento;
+                    encusua.foto_usua_nuevo = usua.Foto;
+                    encusua.nombre_usua_nuevo = usua.Nombre;
+                    encusua.num_documento_nuevo = int.Parse(usua.Documento);
+                    encusua.rol_id_nuevo = usua.RolId;
+                    encusua.sesion_nuevo = usua.Session;
+                    encusua.telefono_nuevo = usua.Telefono;
+                    encusua.user_name_nuevo = usua.UserName;
+                    dmseg.fiel_auditoria_agrega_usuario("INSERT", encusua);
+
 
                 }
                 else

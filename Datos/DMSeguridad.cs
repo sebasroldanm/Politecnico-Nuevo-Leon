@@ -172,7 +172,7 @@ namespace Datos
         }
 
 
-        public void fiel_auditoria_agrega_usuario(string _accion, string sesion, MEncAcudiente enc)
+        public void fiel_auditoria_agrega_usuario(string _accion, MencUsuario enc)
         {
             Auditoria au = new Auditoria();
             au.fecha = DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
@@ -180,7 +180,6 @@ namespace Datos
             au.schema = "usuario";
             au.tabla = "usuario";
             au.pk = "1";
-            au.session = sesion;
             au.user_bd = "postgres";
             if (_accion == "INSERT")
             {
