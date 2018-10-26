@@ -101,7 +101,7 @@ namespace Datos
         }
 
 
-        public void fiel_auditoria_registro_nota(string _accion, string sesion, MEncMateriaFecha enc)
+        public void fiel_auditoria_registro_nota(string _accion, string sesion, MEncNota enc)
         {
             Auditoria au = new Auditoria();
             au.fecha = DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;

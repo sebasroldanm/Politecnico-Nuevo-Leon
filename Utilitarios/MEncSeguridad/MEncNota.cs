@@ -9,10 +9,7 @@ namespace Utilitarios.MEncSeguridad
     public class MEncNota
     {
        
-        private Int32 Id_n_estudiante_nuevo;
-        private Int32 Id_n_estudiante_anterior;
-        private Int32 Id_n_materia_nuevo;
-        private Int32 Id_n_materia_old;
+
         private String Nota1_nuevo;
         private String Nota1_old;
         private String Nota2_nuevo;
@@ -22,11 +19,7 @@ namespace Utilitarios.MEncSeguridad
         private String Notadef_nuevo;
         private String Notadef_old;
 
-        public int id_n_estudiante_nuevo { get => Id_n_estudiante_nuevo; set => Id_n_estudiante_nuevo = value; }
-        public int id_n_estudiante_anterior { get => Id_n_estudiante_anterior; set => Id_n_estudiante_anterior = value; }
 
-        public int id_n_materia_nuevo { get => Id_n_materia_nuevo; set => Id_n_materia_nuevo = value; }
-        public int id_n_materia_old { get => Id_n_materia_old; set => Id_n_materia_old = value; }
 
         public string nota1_nuevo { get => Nota1_nuevo; set => Nota1_nuevo = value; }
         public string nota1_old { get => Nota1_old; set => Nota1_old = value; }
