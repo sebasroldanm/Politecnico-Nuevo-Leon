@@ -674,11 +674,19 @@ namespace Logica
         {
             DMReg datos = new DMReg();
             UUser enc = new UUser();
-
+            Observador obd = new Observador();
+            DMSeguridad dmseg = new DMSeguridad();
+            MEnsObservador mencob = new MEnsObservador();
             enc.Id_estudiante = id;
             enc.Observacion = observacion;
 
             datos.insertarObservacion(enc);
+            mencob.id_estudiante_nuevo = int.Parse(id);
+            mencob.observacion_nuevo = observacion;
+            dmseg.fiel_auditoria_agrega_orservador("INSERT", mencob);
+
+
+
             return enc;
         }
     }
