@@ -125,7 +125,9 @@ namespace Logica
                     {
                         enc.ControlIngles =con.texto.ToString();
                     }
-                   
+
+                    contador = contador + 1;
+
                 }
                 
             }
