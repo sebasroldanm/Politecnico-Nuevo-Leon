@@ -190,7 +190,7 @@ namespace Logica
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
             DMSeguridad dmseg = new DMSeguridad();
-            UUser encusu = new UUser();
+            MEncAcudiente encacudi = new MEncAcudiente();
         
             Int32 FORMULARIO = 8;
 
@@ -232,8 +232,10 @@ namespace Logica
 
                     usua.L_Aceptar1 = false;
                     usua.B_Botones1 = true;
-                    encusu. = usua.
-                    dmseg.fiel_auditoria_agrega_acudiente("INSERT",session,)
+                    encacudi.id_ac_acudiente_nuevo = int.Parse(usua.id_Acudiente);
+                    encacudi.id_ac_estudiante_nuevo = int.Parse(usua.Id_estudiante);
+
+                    dmseg.fiel_auditoria_agrega_acudiente("INSERT", session, encacudi);
 
                 }
             }
