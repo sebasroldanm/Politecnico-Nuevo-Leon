@@ -7,6 +7,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Logica;
 using Utilitarios;
+using Utilitarios.Mregistro;
+using Utilitarios.MEncSeguridad;
 
 public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
 {

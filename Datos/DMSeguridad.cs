@@ -101,7 +101,7 @@ namespace Datos
         }
 
 
-        public void fiel_auditoria_registro_nota(string _accion, string sesion, MEncNota enc)
+        public void fiel_auditoria_registro_nota(string _accion, MEncNota enc)
         {
             Auditoria au = new Auditoria();
             au.fecha = DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
@@ -109,7 +109,6 @@ namespace Datos
             au.schema = "registro";
             au.tabla = "nota";
             au.pk = "1";
-            au.session = sesion;
             au.user_bd = "postgres";
             if (_accion == "INSERT")
             {

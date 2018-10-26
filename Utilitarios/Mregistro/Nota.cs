@@ -19,6 +19,7 @@ namespace Utilitarios.Mregistro
         Double Nota2;
         Double Nota3;
         Double notaDef;
+        
         [Key]
         [Column("id_nota")]
         public int id_nota { get => idNota; set => idNota = value; }
