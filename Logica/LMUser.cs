@@ -189,6 +189,9 @@ namespace Logica
             DMUser dat = new DMUser();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
+            DMSeguridad dmseg = new DMSeguridad();
+            UUser encusu = new UUser();
+        
             Int32 FORMULARIO = 8;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -229,6 +232,8 @@ namespace Logica
 
                     usua.L_Aceptar1 = false;
                     usua.B_Botones1 = true;
+                    encusu. = usua.
+                    dmseg.fiel_auditoria_agrega_acudiente("INSERT",session,)
 
                 }
             }
@@ -411,6 +416,8 @@ namespace Logica
             UUser usua = new UUser();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
+            DMSeguridad dmseg = new DMSeguridad();
+            Acudiente encacudi = new Acudiente();
             Int32 FORMULARIO = 6;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -441,6 +448,8 @@ namespace Logica
                     usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_insertado"].ToString() + "');</script>";
                     usua.B_Botones1 = true;
                     usua.L_Aceptar1 = false;
+                   
+
 
                 }
                 else
