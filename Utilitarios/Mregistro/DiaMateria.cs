@@ -13,10 +13,10 @@ namespace Utilitarios.Mregistro
     [Table("dia_materia", Schema ="registro")]
      public class DiaMateria
     {
-        Int32 idDiaMateria;
-        String Dia;
-        String horaInicio;
-        String horaFin;
+       private Int32 idDiaMateria;
+        private String Dia;
+        private String horaInicio;
+        private String horaFin;
 
         [Key]
         [Column("id_dia_materia")]
