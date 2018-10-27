@@ -12,9 +12,9 @@ namespace Utilitarios.Mregistro
     [Table("materia_fecha",Schema ="registro")]
     public class MateriaFecha
     {
-        Int32 idMf;
-        Int32 idMfMateria;
-        Int32 idMfFecha;
+       private Int32 idMf;
+        private Int32 idMfMateria;
+        private Int32 idMfFecha;
 
         [Key]
         [Column("id_mf")]
