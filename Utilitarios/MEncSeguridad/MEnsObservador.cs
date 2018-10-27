@@ -8,12 +8,12 @@ namespace Utilitarios.MEncSeguridad
 {
     public class MEnsObservador
     {
-        String Observacion_nuevo;
-        String Observacion_old;
-        Int32 Id_estudiante_nuevo;
-        Int32 Id_estudiante_old;
-        String Fecha_observacion_nuevo;
-        String Fecha_observacion_old;
+        private String Observacion_nuevo;
+        private String Observacion_old;
+        private Int32 Id_estudiante_nuevo;
+        private Int32 Id_estudiante_old;
+        private String Fecha_observacion_nuevo;
+        private String Fecha_observacion_old;
 
         public string observacion_nuevo { get => Observacion_nuevo; set => Observacion_nuevo = value; }
         public string observacion_old { get => Observacion_old; set => Observacion_old = value; }
