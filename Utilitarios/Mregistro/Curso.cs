@@ -13,8 +13,8 @@ namespace Utilitarios.Mregistro
     [Table("curso",Schema ="registro")]
     public class Curso
     {
-        Int32 idCurso;
-        String nombreCurso;
+        private Int32 idCurso;
+        private String nombreCurso;
 
         [Key]
         [Column("id_curso")]
