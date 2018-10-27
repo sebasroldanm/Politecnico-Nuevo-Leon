@@ -14,10 +14,10 @@ namespace Utilitarios.Mregistro
    public class Materia
     {
 
-        Int32 idMateria;
-        String nombreMateria;
-        String Sesionm;
-        String ultimaModificacion;
+        private  Int32 idMateria;
+        private String nombreMateria;
+        private String Sesionm;
+        private String ultimaModificacion;
 
 
         [Key]
