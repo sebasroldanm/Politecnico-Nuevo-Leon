@@ -13,9 +13,9 @@ namespace Utilitarios.Mregistro
     [Table("estudiante_curso", Schema = "registro")]
     public class EstudianteCurso
     {
-        Int32 idEc;
-        Int32 idEcEstudiante;
-        Int32 idEcCurso;
+        private Int32 idEc;
+        private Int32 idEcEstudiante;
+        private Int32 idEcCurso;
 
 
         [Key]
