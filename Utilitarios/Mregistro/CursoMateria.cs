@@ -13,10 +13,10 @@ namespace Utilitarios.Mregistro
     public class CursoMateria
     {
 
-        Int32 idCM;
-        Int32 idCMMateria;
-        Int32 idCMCurso;
-        Int32 idCMProfesor;
+       private Int32 idCM;
+     private   Int32 idCMMateria;
+      private  Int32 idCMCurso;
+    private    Int32 idCMProfesor;
         [Key]
         [Column("id_cm")]
         public int id_cm { get => idCM; set => idCM = value; }
