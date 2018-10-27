@@ -13,10 +13,10 @@ namespace Utilitarios.Mregistro
     [Table("observador", Schema = "registro")]
     public class Observador
     {
-        Int32 idObservador;
-        String Observacion;
-        Int32 idEstudiante;
-        String fechaObservacion;
+        private Int32 idObservador;
+        private String Observacion;
+        private Int32 idEstudiante;
+        private String fechaObservacion;
         [Key]
         [Column("id_observador")]
         public int id_observador { get => idObservador; set => idObservador = value; }
