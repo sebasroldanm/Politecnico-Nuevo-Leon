@@ -12,12 +12,12 @@ namespace Utilitarios.Mregistro
     [Table("nota", Schema ="registro")]
     public class Nota
     {
-        Int32 idNota;
-        Int32 idNEstudiante;
-        Int32 idNMateria;
-        Double Nota1;
-        Double Nota2;
-        Double Nota3;
+        private Int32 idNota;
+        private Int32 idNEstudiante;
+        private Int32 idNMateria;
+        private Double Nota1;
+        private Double Nota2;
+        private Double Nota3;
         Double notaDef;
         
         [Key]
