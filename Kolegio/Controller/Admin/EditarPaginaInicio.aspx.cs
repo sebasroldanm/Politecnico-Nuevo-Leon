@@ -34,7 +34,9 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
             }
         }
 
-
+        TB_Nosotros.ReadOnly = true;
+        TB_Vision.ReadOnly = true;
+        TB_Mision.ReadOnly = true;
         UIdioma encId = new UIdioma();
         LMIdioma idioma = new LMIdioma();
         Int32 FORMULARIO = 19;
@@ -45,7 +47,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         Page.Title = encId.CompIdioma["Title"].ToString();
         L_AdminPagInicio.Text = encId.CompIdioma["L_AdminPagInicio"].ToString();
         L_AdminPagInicioNosotros.Text = encId.CompIdioma["L_AdminPagInicioNosotros"].ToString();
-        RFV_Nosotros.ErrorMessage = encId.CompIdioma["RFV_Nosotros"].ToString();
+        REV_Nosotros.ErrorMessage = encId.CompIdioma["RFV_Nosotros"].ToString();
         L_AdminpajInicioMision.Text = encId.CompIdioma["L_AdminpajInicioMision"].ToString();
         REV_Mision.ErrorMessage = encId.CompIdioma["REV_Mision"].ToString();
         L_AdminPagInicioVision.Text = encId.CompIdioma["L_AdminPagInicioVision"].ToString();
@@ -201,7 +203,7 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
             );
 
         this.Page.Response.Write(usua.Notificacion);
-
+        B_Modificar.Visible = false;
 
         //EUser Edusua = new EUser();
         //DaoUser datos = new DaoUser();
@@ -246,6 +248,9 @@ public partial class View_Admin_EditarPaginaInicio : System.Web.UI.Page
         TB_Nosotros.Text = usua.Inicio;
         TB_Vision.Text = usua.Vision;
         TB_Mision.Text = usua.Mision;
+        TB_Nosotros.ReadOnly = false;
+        TB_Vision.ReadOnly = false;
+        TB_Mision.ReadOnly = false;
 
         B_Modificar.Visible = true;
         B_Traer.Visible = false;
