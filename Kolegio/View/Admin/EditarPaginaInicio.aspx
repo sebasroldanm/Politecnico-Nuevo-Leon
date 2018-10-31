@@ -429,7 +429,7 @@
                                 <label for="TB_Asuto" class="control-label" style="color: #FFFFFF">
                                     <asp:Label ID="L_AdminPagInicioNosotros" runat="server"></asp:Label></label>
                                 <asp:TextBox ID="TB_Nosotros" runat="server" class="form-control" Width="370px" TextMode="MultiLine" Height="100px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RFV_Nosotros" runat="server" ControlToValidate="TB_Nosotros" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True" ValidationGroup="mod">*</asp:RequiredFieldValidator><br />
+                                <asp:RequiredFieldValidator ID="RFV_Nosotros" runat="server" ControlToValidate="TB_Nosotros" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True" ValidationGroup="vacio">*</asp:RequiredFieldValidator><br />
                                 <br />
                                 <asp:RegularExpressionValidator ID="REV_Nosotros" runat="server" ControlToValidate="TB_Nosotros" ValidationExpression="^[a-zA-z0-9ñÑ,.\s\n()áéíóú]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="mod"></asp:RegularExpressionValidator>
                             </td>
@@ -439,7 +439,7 @@
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                 </label>
                                 &nbsp;<asp:TextBox ID="TB_Mision" class="form-control" runat="server" Width="370px" TextMode="MultiLine" Height="100px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RFV_Mision" runat="server" ControlToValidate="TB_Mision" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True" ValidationGroup="mod">*</asp:RequiredFieldValidator><br />
+                                <asp:RequiredFieldValidator ID="RFV_Mision" runat="server" ControlToValidate="TB_Mision" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True" ValidationGroup="vacio">*</asp:RequiredFieldValidator><br />
                                 <br />
                                 <asp:RegularExpressionValidator ID="REV_Mision" runat="server" ControlToValidate="TB_Mision" ValidationExpression="^[a-zA-z0-9ñ,.\s\nÑ()áéíóú]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="mod"></asp:RegularExpressionValidator>
                             </td>
@@ -450,12 +450,12 @@
                                     <asp:Label ID="L_AdminPagInicioVision" runat="server"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
                                 </label>
                                 &nbsp;<asp:TextBox ID="TB_Vision" class="form-control" runat="server" Width="370px" TextMode="MultiLine" Height="100px"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RFV_Vision" runat="server" ControlToValidate="TB_Vision" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True" ValidationGroup="mod">*</asp:RequiredFieldValidator><br />
+                                <asp:RequiredFieldValidator ID="RFV_Vision" runat="server" ControlToValidate="TB_Vision" ErrorMessage="Campo Vacio" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True" ValidationGroup="vacio">*</asp:RequiredFieldValidator><br />
                                 <br />
-                                <asp:RegularExpressionValidator ID="REV_Vision" runat="server" ControlToValidate="TB_Vision" ValidationExpression="^[a-zA-z0-9ñÑ,.\s\n()áéíóú]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="modificar"></asp:RegularExpressionValidator></td>
+                                <asp:RegularExpressionValidator ID="REV_Vision" runat="server" ControlToValidate="TB_Vision" ValidationExpression="^[a-zA-z0-9ñÑ,.\s\n()áéíóú]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="mod"></asp:RegularExpressionValidator></td>
                             <td>
-                                <asp:Button ID="B_Modificar" runat="server" class="btn btn-success btn-lg" Width="141px" BorderColor="#660033" OnClick="B_Modificar_Click" ValidationGroup="mod" Visible="False" />
-                                <asp:Button ID="B_Traer" runat="server" BorderColor="#660033" OnClick="B_Traer_Click" class="btn btn-info btn-lg" CausesValidation="False" />
+                                <asp:Button ID="B_Modificar" runat="server" class="btn btn-success btn-lg" Width="141px" BorderColor="#660033" OnClick="B_Modificar_Click" CausesValidation="True" Visible="False" />
+                                <asp:Button ID="B_Traer" runat="server" BorderColor="#660033" OnClick="B_Traer_Click" class="btn btn-info btn-lg" ValidationGroup="mod" />
                                 <asp:Label ID="L_Verificar" runat="server" ForeColor="White" CssClass="label-danger" Font-Bold="True"></asp:Label>
                             </td>
                         </tr>
