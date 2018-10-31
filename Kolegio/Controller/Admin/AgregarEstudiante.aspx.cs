@@ -187,6 +187,8 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
         tb_EstudianteId.Focus();
         L_ErrorUsuario.Text = "";
         L_ErrorUser.Text = "";
+        L_ErrorAcudiente.Text = "";
+        
 
 
     }
