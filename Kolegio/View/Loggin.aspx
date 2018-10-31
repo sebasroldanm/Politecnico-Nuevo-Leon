@@ -70,7 +70,7 @@
                             <asp:TextBox ID="TB_UserName" runat="server" CssClass="form-control" MaxLength="20" placeholder="Digitar Usuario"></asp:TextBox>
                             <span class="help-block">
                                 <asp:RequiredFieldValidator ID="RFV_UserName" runat="server" ControlToValidate="TB_UserName"  CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
-                                <asp:RegularExpressionValidator ID="REV_UserName" runat="server" ControlToValidate="TB_UserName" ValidationExpression="^[a-zA-Z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator ID="REV_UserName" runat="server" ControlToValidate="TB_UserName" ValidationExpression="^[a-zA-Z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="form_ejm"></asp:RegularExpressionValidator>
                             </span>
 
                         </div>
@@ -81,17 +81,17 @@
                             <asp:TextBox ID="TB_Clave" runat="server" Type="password" CssClass="form-control" MaxLength="20" placeholder="Digitar Contraseña"></asp:TextBox>
                             <span class="help-block">
                                 <asp:RequiredFieldValidator ID="RFV_Clave" runat="server" ControlToValidate="TB_Clave" CssClass="label-danger" ForeColor="White" Font-Bold="True" SetFocusOnError="True"></asp:RequiredFieldValidator><br />
-                                <asp:RegularExpressionValidator ID="REV_Clave" runat="server" ControlToValidate="TB_Clave" ValidationExpression="^[a-zA-Z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White"></asp:RegularExpressionValidator>
+                                <asp:RegularExpressionValidator ID="REV_Clave" runat="server" ControlToValidate="TB_Clave" ValidationExpression="^[a-zA-Z0-9ñÑ]*$" CssClass="label-warning" Font-Bold="True" ForeColor="White" ValidationGroup="form_ejm"></asp:RegularExpressionValidator>
                             </span>
 
                         </div>
                         <asp:Label ID="L_Error" runat="server" Font-Bold="True" CssClass="label-danger" ForeColor="White"></asp:Label>
                        
 
-                        <asp:Button ID="BT_Ingresar" runat="server" CssClass="btn btn-success btn-block" OnClick="BT_Ingresar_Click" />
+                        <asp:Button ID="BT_Ingresar" runat="server" CssClass="btn btn-success btn-block" ValidationGroup="form_ejm" OnClick="BT_Ingresar_Click" />
 
-                        <asp:Button ID="BT_Recuperar" runat="server" CssClass="btn btn-info btn-block" OnClick="BT_Recuperar_Click" CausesValidation="False" />
-                        <asp:Button ID="BT_Salir" runat="server"  CssClass="btn btn-danger btn-block" OnClick="BT_Salir_Click" CausesValidation="False" />
+                        <asp:Button ID="BT_Recuperar" runat="server" CssClass="btn btn-info btn-block" OnClick="BT_Recuperar_Click" ValidationGroup="form_ejm" />
+                        <asp:Button ID="BT_Salir" runat="server"  CssClass="btn btn-danger btn-block" OnClick="BT_Salir_Click" ValidationGroup="form_ejm" />
                     </div>
                 </div>
             </div>
