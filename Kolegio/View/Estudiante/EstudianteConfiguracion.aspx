@@ -60,7 +60,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                <asp:Button ID="btn_Aceptar" runat="server" class="btn btn-success btn-lg" Width="107px" BorderColor="#660033" ValidationGroup="form_ejm" OnClick="btn_Aceptar_Click" Visible="False" />
                     &nbsp;&nbsp;
-               <asp:Button ID="btn_cancelar" runat="server" class="btn btn-danger btn-lg" Width="107px" BorderColor="#660033" Visible="False" OnClick="btn_cancelar_Click" />
+               <asp:Button ID="btn_cancelar" runat="server" class="btn btn-danger btn-lg" Width="107px" BorderColor="#660033" Visible="False" OnClick="btn_cancelar_Click" ValidationGroup="form_ejm"  />
                     &nbsp;&nbsp;
                 </div>
             </div>
