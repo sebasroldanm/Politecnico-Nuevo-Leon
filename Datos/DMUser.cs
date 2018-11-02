@@ -26,7 +26,7 @@ namespace Datos
             using (var db = new Mapeo("public"))
             {
 
-                luser = db.usuario.ToList<Usuario>().Where(x => x.user_name == (enc.UserName) && x.clave == (enc.Clave)).ToList();
+                luser = db.usuario.ToList<Usuario>().Where(x => (x.user_name).ToLower() == (enc.UserName).ToLower() && x.clave == (enc.Clave)).ToList();
                 return luser;
                 //return ingres.ToList<Usuario>();
 
@@ -850,7 +850,7 @@ namespace Datos
             int us = 0;
             using (var db = new Mapeo("public"))
             {
-                lusua = db.usuario.ToList<Usuario>().Where(x => x.user_name.Contains(user)).ToList();
+                lusua = db.usuario.ToList<Usuario>().Where(x => (x.user_name).ToLower().Contains((user).ToLower())).ToList();
                 foreach (Usuario u in lusua)
                 {
                     us = u.id_usua;
