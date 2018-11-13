@@ -11,6 +11,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using Utilitarios.MEncSeguridad;
+using Utilitarios.MVistasServicios;
 using System.Configuration;
 using System.Collections.Generic;
 
@@ -1307,5 +1308,29 @@ namespace Datos
             }
             return list;
         }
+        //////////////////////// AQUI EMPIEZAN LOS SERVICIOS/////////////////////////////////7
+
+        public List<DatosPersonalesVista> Datospersonales()
+        {
+            using (var db = new Mapeo("public"))
+            {
+                var vercor = db.usuario.ToList<Usuario>().Select(x => new DatosPersonalesVista
+                {
+                    Nombre = x.nombre_usua,
+                    Apellido = x.apellido_usua,
+                    Correo = x.correo,
+                    Telefono = x.telefono,
+                    Fechanac = x.fecha_nac
+
+                }).ToList();
+
+                return vercor.ToList();
+            }
+
+        }
+
+
+
+
     }
 }
