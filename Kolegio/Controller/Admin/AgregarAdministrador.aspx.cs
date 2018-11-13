@@ -193,7 +193,7 @@ public partial class View_Admin_AgregarAdministrador : System.Web.UI.Page
         usua.ultima_modificacion = (DateTime.Now.ToShortDateString());
         usua.state_t = 1;
 
-        usu = logicaM.insertaradmin(usua,int.Parse(Session["idioma"].ToString()));
+        usu = logicaM.insertaradmin(usua,  int.Parse(Session["idioma"].ToString()), Session.SessionID);
         
 
         L_ErrorUsuario.Text = usu.Mensaje;

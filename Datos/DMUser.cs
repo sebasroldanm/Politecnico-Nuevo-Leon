@@ -575,19 +575,19 @@ namespace Datos
 
                 uuser = obtenerUsuarioMod(uuser);
                 acu.id_ac_estudiante = int.Parse(uuser.IdUsua);
-                insertarAcudientedesdeEstudiante(acu);
+                insertarAcudientedesdeEstudiante(acu, usua.sesion);
             }
 
         }
 
 
-        public void insertarAcudientedesdeEstudiante(Acudiente acu)
+        public void insertarAcudientedesdeEstudiante(Acudiente acu, string sesion)
         {
             DMSeguridad dmseg = new DMSeguridad();
             MEncAcudiente encacu = new MEncAcudiente();
             encacu.id_ac_acudiente_nuevo = acu.id_ac_acudiente;
             encacu.id_ac_estudiante_nuevo = acu.id_ac_estudiante;
-            dmseg.fiel_auditoria_agrega_acudiente("INSERT", encacu);
+            dmseg.fiel_auditoria_agrega_acudiente("INSERT", sesion, encacu);
 
             using (var db = new Mapeo("public"))
             {

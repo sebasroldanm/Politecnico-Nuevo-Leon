@@ -101,7 +101,7 @@ namespace Datos
         }
 
 
-        public void fiel_auditoria_registro_nota(string _accion, MEncNota enc)
+        public void fiel_auditoria_registro_nota(string _accion, string sesion, MEncNota enc)
         {
             Auditoria au = new Auditoria();
             au.fecha = DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
@@ -109,6 +109,7 @@ namespace Datos
             au.schema = "registro";
             au.tabla = "nota";
             au.pk = "1";
+            au.session = sesion;
             au.user_bd = "postgres";
             if (_accion == "INSERT")
             {
@@ -124,14 +125,15 @@ namespace Datos
         }
 
 
-        public void fiel_auditoria_agrega_orservador(string _accion, MEnsObservador enc)
+        public void fiel_auditoria_agrega_orservador(string _accion, string sesion, MEnsObservador enc)
         {
             Auditoria au = new Auditoria();
             au.fecha = DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
             au.accion = _accion;
             au.schema = "registro";
             au.tabla = "observador";
-            au.pk = "1";       
+            au.pk = "1";
+            au.session = sesion;
             au.user_bd = "postgres";
             if (_accion == "INSERT")
             {
@@ -148,7 +150,7 @@ namespace Datos
 
 
 
-        public void fiel_auditoria_agrega_acudiente(string _accion, MEncAcudiente enc)
+        public void fiel_auditoria_agrega_acudiente(string _accion, string sesion, MEncAcudiente enc)
         {
             Auditoria au = new Auditoria();
             au.fecha = DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
@@ -156,6 +158,7 @@ namespace Datos
             au.schema = "usuario";
             au.tabla = "acudiente";
             au.pk = "1";
+            au.session = sesion;
             au.user_bd = "postgres";
             if (_accion == "INSERT")
             {
@@ -171,7 +174,7 @@ namespace Datos
         }
 
 
-        public void fiel_auditoria_agrega_usuario(string _accion, MencUsuario enc)
+        public void fiel_auditoria_agrega_usuario(string _accion, string sesion, MencUsuario enc)
         {
             Auditoria au = new Auditoria();
             au.fecha = DateTime.Now.ToShortDateString() + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ":" + DateTime.Now.Second;
@@ -179,6 +182,7 @@ namespace Datos
             au.schema = "usuario";
             au.tabla = "usuario";
             au.pk = "1";
+            au.session = sesion;
             au.user_bd = "postgres";
             if (_accion == "INSERT")
             {

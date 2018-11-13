@@ -98,7 +98,7 @@ public partial class View_Profesor_ProfesorSubirNota : System.Web.UI.Page
         UUser enc = new UUser();
         LMReg logic = new LMReg();
 
-        enc = logic.subirNota(ddl_alumno.SelectedValue, ddl_materia.SelectedValue, ddt_curso.SelectedValue, tb_nt.Text, tb_nt2.Text, tb_nt3.Text, int.Parse(Session["idioma"].ToString()));
+        enc = logic.subirNota(ddl_alumno.SelectedValue, ddl_materia.SelectedValue, ddt_curso.SelectedValue, tb_nt.Text, tb_nt2.Text, tb_nt3.Text, int.Parse(Session["idioma"].ToString()), Session.SessionID);
         L_Error.Text = enc.Mensaje;
 
         tb_denifitiva.Text = enc.Notadef;

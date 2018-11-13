@@ -73,7 +73,7 @@ namespace Logica
         
         ////////FIN ENVIAR CORREO A PROFESOR////////////////
 
-        public UUser insertaradmin(Usuario admin, int selIdioma)
+        public UUser insertaradmin(Usuario admin, int selIdioma, string sesion)
         {
             DMUser admon = new DMUser();
             UUser usua = new UUser();
@@ -126,7 +126,7 @@ namespace Logica
                     encusua.sesion_nuevo = admin.sesion;
                     encusua.telefono_nuevo = admin.telefono;
                     encusua.user_name_nuevo = admin.user_name;
-                    dmseg.fiel_auditoria_agrega_usuario("INSERT", encusua);
+                    dmseg.fiel_auditoria_agrega_usuario("INSERT", sesion, encusua);
 
 
                 }

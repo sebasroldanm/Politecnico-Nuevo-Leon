@@ -68,7 +68,7 @@ public partial class View_Profesor_ProfesorListado : System.Web.UI.Page
     {
         UUser enc = new UUser();
         LMReg logic = new LMReg();
-        enc = logic.insertObservacion(Session["id"].ToString(), TB_Observ.Text.ToString());
+        enc = logic.insertObservacion(Session["id"].ToString(), TB_Observ.Text.ToString(), Session.SessionID);
 
         GridView1.DataBind();
     }

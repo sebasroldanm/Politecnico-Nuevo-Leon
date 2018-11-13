@@ -216,7 +216,7 @@ namespace Logica
             return enc;
         }
 
-        public UUser subirNota(string alumno, string materia, string curso, string nota1, string nota2, string nota3, int selIdioma)
+        public UUser subirNota(string alumno, string materia, string curso, string nota1, string nota2, string nota3, int selIdioma, string sesion)
         {
             DMReg datos = new DMReg();
             UUser enc = new UUser();
@@ -271,7 +271,7 @@ namespace Logica
                 mencnota.nota2_nuevo = not.nota2.ToString();
                 mencnota.nota3_nuevo = nota3.ToString();
                 mencnota.notadef_nuevo = not.notadef.ToString();
-                dmseg.fiel_auditoria_registro_nota("INSERT", mencnota);
+                dmseg.fiel_auditoria_registro_nota("INSERT", sesion, mencnota);
             }
             return enc;
         }
@@ -671,7 +671,7 @@ namespace Logica
             return enc;
         }
 
-        public UUser insertObservacion(string id, string observacion)
+        public UUser insertObservacion(string id, string observacion, string sesion)
         {
             DMReg datos = new DMReg();
             UUser enc = new UUser();
@@ -684,7 +684,7 @@ namespace Logica
             datos.insertarObservacion(enc);
             mencob.id_estudiante_nuevo = int.Parse(id);
             mencob.observacion_nuevo = observacion;
-            dmseg.fiel_auditoria_agrega_orservador("INSERT", mencob);
+            dmseg.fiel_auditoria_agrega_orservador("INSERT", sesion, mencob);
 
 
 
