@@ -41,6 +41,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,16 +50,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LIdioma.cs" />
+    <Compile Include="clsSeguridad.cs" />
+    <Compile Include="clsSeguridadContactenos.cs" />
+    <Compile Include="clsSeguridadOnce.cs" />
+    <Compile Include="LIdioma.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="LLogin.cs" />
     <Compile Include="LMIdioma.cs" />
     <Compile Include="LMReg.cs" />
     <Compile Include="LMSeguridad.cs" />
     <Compile Include="LMUser.cs" />
     <Compile Include="LReg.cs" />
-    <Compile Include="LUser.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="LUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
