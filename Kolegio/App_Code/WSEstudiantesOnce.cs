@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using Utilitarios.MVistasServicios;
+using Datos;
 
 /// <summary>
 /// Descripción breve de WSEstudiantesOnce
@@ -53,6 +55,25 @@ public class WSEstudiantesOnce : System.Web.Services.WebService
         }
     }
 
+    [WebMethod]
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
+    public List<DatosPersonalesEstOnceVista> Datospersonales()
+    {
+        try
+        {
+            if (SoapHeader == null) throw new Exception("Requiere Validacion");
+
+            if (!SoapHeader.blCredencialesValidas(SoapHeader)) throw new Exception("Requiere Validacion");
+
+            DMUser dmus = new DMUser();
+            return dmus.listarEstudiantes11();
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+
+    }
 
 
     //[WebMethod]

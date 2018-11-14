@@ -1329,16 +1329,25 @@ namespace Datos
 
         }
 
-        public List<Usuario> listarEstudiantes11()
+        public List<DatosPersonalesEstOnceVista> listarEstudiantes11()
         {
             using (var db = new Mapeo("public"))
             {
-                return (from usuario in db.usuario
+                var query = (from usuario in db.usuario
                         join estudiantecurso in db.estudiantecurso on usuario.id_usua equals estudiantecurso.id_ec_estudiante
                         join aniocurso in db.aniocurso on estudiantecurso.id_ec_curso equals aniocurso.id_ancu
                         join curso in db.curso on aniocurso.id_ancu_curso equals curso.id_curso
                         where curso.nombre_curso == "1101" || curso.nombre_curso == "1102" || curso.nombre_curso == "1103" || curso.nombre_curso == "1104"
-                        select usuario).ToList<Usuario>();
+                        select usuario).ToList<Usuario>().Select(x => new DatosPersonalesEstOnceVista
+                        {
+                            Nombre = x.nombre_usua,
+                            Apellido = x.apellido_usua,
+                            Correo = x.correo
+                          
+                           
+
+                        }).ToList();
+                return query;
             }
 
         }

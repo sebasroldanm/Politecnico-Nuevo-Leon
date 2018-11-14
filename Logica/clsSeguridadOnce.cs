@@ -16,7 +16,7 @@ namespace WebServiceTokens.Logica
         {
             try
             {
-                if (stToken == "def")
+                if (stToken == "once")
                 {
                     return true;
                 }
