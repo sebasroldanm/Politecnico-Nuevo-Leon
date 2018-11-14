@@ -56,6 +56,7 @@
     <Compile Include="clsSeguridadEstudianteAcu.cs" />
     <Compile Include="clsSeguridadNotas.cs" />
     <Compile Include="clsSeguridadOnce.cs" />
+    <Compile Include="clsSeguridDesencriptar.cs" />
     <Compile Include="LIdioma.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

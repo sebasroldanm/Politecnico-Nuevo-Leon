@@ -8,9 +8,8 @@ using System.Web;
 
 namespace WebServiceTokens.Logica
 {
-    class clsSeguridadEncriptar : System.Web.Services.Protocols.SoapHeader
+    class clsSeguridDesencriptar : System.Web.Services.Protocols.SoapHeader
     {
-
 
         public string stToken { get; set; }
         public string AutenticacionToken { get; set; }
@@ -19,7 +18,7 @@ namespace WebServiceTokens.Logica
         {
             try
             {
-                if (stToken == "encriptar")
+                if (stToken == "desencriptar")
                 {
                     return true;
                 }
@@ -34,7 +33,7 @@ namespace WebServiceTokens.Logica
             }
         }
 
-        public bool blCredencialesValidas(clsSeguridadEncriptar SoapHeader)
+        public bool blCredencialesValidas(clsSeguridDesencriptar SoapHeader)
         {
             try
             {
