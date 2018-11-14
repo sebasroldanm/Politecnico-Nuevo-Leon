@@ -108,7 +108,8 @@
                         <li>
                             <asp:HyperLink ID="HL_MAdminConfig" runat="server" NavigateUrl="~/View/Admin/ConfiguracionAdministrador.aspx">HyperLink</asp:HyperLink>
                         </li>
-                          <li><a href="Alianzas.aspx">Alianzas</a></li>
+                          <li><a href="Brais.aspx">Alianzas</a></li>
+                       
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
