@@ -82,6 +82,7 @@
     <Compile Include="Mregistro\MateriaFecha.cs" />
     <Compile Include="Mregistro\Nota.cs" />
     <Compile Include="Mregistro\Observador.cs" />
+    <Compile Include="MVistasServicios\DatosPersonalesEstAcuVista.cs" />
     <Compile Include="MVistasServicios\DatosPersonalesEstOnceVista.cs" />
     <Compile Include="MVistasServicios\DatosPersonalesVista.cs" />
     <Compile Include="MVistasUsuario\CursoDeEstudianteVista.cs" />
