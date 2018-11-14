@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="clsSeguridad.cs" />
     <Compile Include="clsSeguridadContactenos.cs" />
+    <Compile Include="clsSeguridadEstudianteAcu.cs" />
     <Compile Include="clsSeguridadNotas.cs" />
     <Compile Include="clsSeguridadOnce.cs" />
     <Compile Include="LIdioma.cs">
