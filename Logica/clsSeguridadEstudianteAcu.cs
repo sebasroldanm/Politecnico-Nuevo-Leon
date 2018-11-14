@@ -8,7 +8,7 @@ using System.Web;
 
 namespace WebServiceTokens.Logica
 {
-    class clsSeguridadEstudianteAcu : System.Web.Services.Protocols.SoapHeader
+    public class clsSeguridadEstudianteAcu : System.Web.Services.Protocols.SoapHeader
     {
 
         public string stToken { get; set; }

@@ -41,7 +41,8 @@
                             <asp:Label ID="L_EstuMProfe" runat="server"></asp:Label></a></li>
                         <li><a href="EstudianteConfiguracion.aspx">
                             <asp:Label ID="L_EstuMConfig" runat="server"></asp:Label></a></li>
-                    </ul>
+                       
+                        </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <div class="form-inline container-fluid">
