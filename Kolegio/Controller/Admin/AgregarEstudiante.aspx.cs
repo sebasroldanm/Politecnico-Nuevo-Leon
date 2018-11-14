@@ -188,7 +188,11 @@ public partial class View_Admin_AgregarEstudiante : System.Web.UI.Page
         L_ErrorUsuario.Text = "";
         L_ErrorUser.Text = "";
         L_ErrorAcudiente.Text = "";
-        
+        tb_AcudienteNombre.ReadOnly = false;
+        tb_AcudienteNombre.Text = "";
+        tb_AcudienteApellido.ReadOnly = false;
+        tb_AcudienteApellido.Text = "";
+        tb_AcudienteId.ReadOnly = false;
 
 
     }
