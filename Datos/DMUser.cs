@@ -556,6 +556,7 @@ namespace Datos
             usua.rol_id = int.Parse(dat.Rol);
             usua.user_name = dat.UserName;
             usua.clave = dat.Clave;
+            usua.estado = true;
             usua.correo = dat.Correo;
             usua.apellido_usua = dat.Apellido;
             usua.direccion = dat.Direccion;
