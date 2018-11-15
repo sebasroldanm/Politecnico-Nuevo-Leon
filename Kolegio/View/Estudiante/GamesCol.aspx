@@ -13,7 +13,7 @@
 
 
 
-    <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered bs-table"  CellPadding="4" ForeColor="#333333" GridLines="None">
+    <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered bs-table"  CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
         <AlternatingRowStyle BackColor="White" />
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -26,10 +26,17 @@
         <SortedDescendingCellStyle BackColor="#E9EBEF" />
         <SortedDescendingHeaderStyle BackColor="#4870BE" />
 
-
-
-
-    </asp:GridView>
+        <Columns>
+                    <asp:TemplateField HeaderText="Contenido">
+                        <HeaderTemplate>
+                            <asp:Label ID="LB_conten" runat="server"></asp:Label>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="LB_contenido" runat="server" Text='<%# Bind("contenido") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
 
 
 </asp:Content>
