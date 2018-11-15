@@ -21,7 +21,7 @@ namespace Datos
         private readonly string schema;
 
         public Mapeo(string schema)
-            : base("name=Postgres")
+            : base("name=SqlServer")
         {
             this.schema = schema;
         }
