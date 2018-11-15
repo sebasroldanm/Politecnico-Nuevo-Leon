@@ -63,6 +63,7 @@ public class WSEncript : System.Web.Services.WebService
     }
 
     [WebMethod]
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
     public string desencriptar(string encriptado)
     {
         var base64EncodedBytes = System.Convert.FromBase64String(encriptado);
