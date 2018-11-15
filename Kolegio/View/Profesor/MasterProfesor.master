@@ -44,6 +44,9 @@
                             <asp:Label ID="L_ProfeMMensaje" runat="server"></asp:Label></a></li>
                         <li><a href="ProfesorConfiguracion.aspx">
                             <asp:Label ID="L_ProfeMConfig" runat="server"></asp:Label></a></li>
+                        <li><a href="PlatoWeb.aspx">Plato a la WEB</a></li>
+                        <li><a href="Uniempleo.aspx">Uniempleo</a></li>
+                       
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
