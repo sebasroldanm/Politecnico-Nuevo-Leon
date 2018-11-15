@@ -1371,5 +1371,46 @@ namespace Datos
             }
         }
 
+        public List<NotasEstudiantesVista> NotasConDocumento(int doc)
+        {
+            using (var db = new Mapeo("public"))
+            {
+                var query = (from usuario in db.usuario
+                             join estudiantecurso in db.estudiantecurso on usuario.id_usua equals estudiantecurso.id_ec_estudiante
+                             join nota in db.nota on estudiantecurso.id_ec equals nota.id_n_estudiante
+                             join aniocurso in db.aniocurso on estudiantecurso.id_ec_curso equals aniocurso.id_ancu
+                             join curso in db.curso on aniocurso.id_ancu_curso equals curso.id_curso
+                             join cursomateria in db.cursomateria on aniocurso.id_ancu equals cursomateria.id_cm_curso
+                             join materiafecha in db.materiafecha on cursomateria.id_cm_materia equals materiafecha.id_mf
+                             join materia in db.materia on materiafecha.id_mf_materia equals materia.id_materia
+                             where usuario.num_documento == doc
+                             select new
+                             {
+                                 usuario.nombre_usua,
+                                 usuario.apellido_usua,
+                                 curso.nombre_curso,
+                                 materia.nombre_materia,
+                                 nota.nota1,
+                                 nota.nota2,
+                                 nota.nota3,
+                                 nota.notadef
+                             })
+                            .ToList().Select(m => new NotasEstudiantesVista
+                            {
+                                Nombre = m.nombre_usua,
+                                Apellido = m.apellido_usua,
+                                Curso = m.nombre_curso,
+                                Materia = m.nombre_materia,
+                                Nota1 = m.nota1,
+                                Nota2 = m.nota2,
+                                Nota3 = m.nota3,
+                                NotaDef = m.notadef
+
+                            }).ToList();
+                return query;
+            }
+
+        }
+
     }
 }

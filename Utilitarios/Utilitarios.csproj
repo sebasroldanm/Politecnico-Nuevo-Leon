@@ -85,6 +85,7 @@
     <Compile Include="MVistasServicios\DatosPersonalesEstAcuVista.cs" />
     <Compile Include="MVistasServicios\DatosPersonalesEstOnceVista.cs" />
     <Compile Include="MVistasServicios\DatosPersonalesVista.cs" />
+    <Compile Include="MVistasServicios\NotasEstudiantesVista.cs" />
     <Compile Include="MVistasUsuario\CursoDeEstudianteVista.cs" />
     <Compile Include="MVistasUsuario\UsuarioVista.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
