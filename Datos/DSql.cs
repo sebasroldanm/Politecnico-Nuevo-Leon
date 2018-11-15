@@ -98,5 +98,33 @@ namespace Datos
             return ds.Tables["tabla"];
         }
 
+
+        public DataSet ListaEstAcuServ()
+        {
+            try
+            {
+                conection.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM usuario.listaestuacu()", conection);
+                SqlDataAdapter ad = new SqlDataAdapter(cmd);
+
+                ds = new DataSet();
+                ad.Fill(ds);
+
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+
+            return ds;
+        }
+
     }
 }

@@ -1264,7 +1264,25 @@ namespace Datos
             }
         }
 
+        public DataSet listaEstAcuPrueba()
+        {
+            DataSet list = new DataSet();
+            DUser postgres = new DUser();
+            DSql sqlserver = new DSql();
 
+            using (var db = new Mapeo("public"))
+            {
+                if ((db.Database.Connection).ToString() == "Npgsql.NpgsqlConnection")
+                {
+                    list = postgres.ListaEstAcu();
+                }
+                else
+                {
+                    list = sqlserver.ListaEstAcuServ();
+                }
+                return list;
+            }
+        }
         //Funcion QUe se Migra de BD
         public DataTable listaacuestu()
         {
@@ -1273,7 +1291,7 @@ namespace Datos
             DUser postgres = new DUser();
             DSql sqlserver = new DSql();
 
-            using (var db = new Mapeo("public"))
+            using (var db = new Mapeo("public")) 
             {
                 if ((db.Database.Connection).ToString() == "Npgsql.NpgsqlConnection")
                 {

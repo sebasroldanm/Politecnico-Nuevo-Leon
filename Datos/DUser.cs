@@ -2242,6 +2242,35 @@ namespace Datos
             }
             return Usua;
         }
+
+
+        public DataSet ListaEstAcu()
+        {
+            DataSet Usua = new DataSet();
+            NpgsqlConnection conection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Postgres"].ConnectionString);
+
+            try
+            {
+                NpgsqlDataAdapter dataAdapter = new NpgsqlDataAdapter("usuario.listaestuacu", conection);
+                dataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+
+
+                conection.Open();
+                dataAdapter.Fill(Usua);
+            }
+            catch (Exception Ex)
+            {
+                throw Ex;
+            }
+            finally
+            {
+                if (conection != null)
+                {
+                    conection.Close();
+                }
+            }
+            return Usua;
+        }
         //////////////////////////////////////////////
 
         public DataTable obteneracudientes()
