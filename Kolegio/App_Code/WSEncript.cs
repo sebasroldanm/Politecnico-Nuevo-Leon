@@ -21,7 +21,41 @@ public class WSEncript : System.Web.Services.WebService
         //InitializeComponent(); 
     }
 
+    public WebServiceTokens.Logica.clsSeguridadEncriptar SoapHeader;
+
     [WebMethod]
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
+    public string AutenticacionUsuario()
+    {
+        try
+        {
+            if (SoapHeader == null)
+            {
+                return "-1";
+            }
+            if (!SoapHeader.blCredencialesValidas(SoapHeader.stToken))
+            {
+                return "-1";
+            }
+            string stToken = Guid.NewGuid().ToString();
+            HttpRuntime.Cache.Add(stToken,
+                                    SoapHeader.stToken,
+                                    null,
+                                    System.Web.Caching.Cache.NoAbsoluteExpiration,
+                                    TimeSpan.FromMinutes(30),
+                                    System.Web.Caching.CacheItemPriority.NotRemovable,
+                                    null
+                                    );
+            return stToken;
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
+    [WebMethod]
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
     public string encriptar(string cadena)
     {
         var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(cadena);
