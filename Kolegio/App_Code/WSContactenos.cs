@@ -60,11 +60,22 @@ public class WSContactenos : System.Web.Services.WebService
     [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
     public void contactenos(string nombre, string apellido,  string correo, string telefono, string mensaje)
     {
+
+        try
+        {
+            if (SoapHeader == null) throw new Exception("Requiere Validacion");
+
+            if (!SoapHeader.blCredencialesValidas(SoapHeader)) throw new Exception("Requiere Validacion");
         UUser usua = new UUser();
         LMUser logica = new LMUser();
       
         usua = logica.verificarCorreoContactenos(nombre,apellido,correo,telefono,mensaje,1);
 
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
 
     }
 }

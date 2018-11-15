@@ -8,7 +8,7 @@ using System.Web;
 
 namespace WebServiceTokens.Logica
 {
-    class clsSeguridadEncriptar : System.Web.Services.Protocols.SoapHeader
+   public class clsSeguridadEncriptar : System.Web.Services.Protocols.SoapHeader
     {
 
 
