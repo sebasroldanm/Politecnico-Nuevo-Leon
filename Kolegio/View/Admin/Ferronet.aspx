@@ -7,10 +7,20 @@
         <div class="text-center">
             <h3><span class="label label-danger">Ferronet</span></h3>
             <br/>
-            <asp:Label ID="LB_Link" runat="server" Text=""></asp:Label>
+            
             <br/>
             </div>
         
+              <div class="container">
+            <div class="text-center">
+
+                <h5><span class="label label-info">La mejor opcion para sus compras Onilne</span></h5>
+               
+                    
+                <br />
+            </div>
+        </div>
+
             <div style="text-align: left">
                 <div class="form-inline" role="form">
                     <label for="LB_Select" class="control-label" style="color: #FFFFFF"> 
