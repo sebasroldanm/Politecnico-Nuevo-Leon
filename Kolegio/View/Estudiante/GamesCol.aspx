@@ -11,7 +11,17 @@
         </div>
     </div>
 
+      <div class="container">
+            <div class="text-center">
+                <asp:Image ID="Image2" runat="server" ImageUrl="~/Imagenes/gamecol.jpg" Width="127px" Height="75px" />
 
+                <h5><span class="label label-info">Noticas sobre los mejores Videojuegos</span></h5>
+                <label class="control-label" style="color: #FFFFFF">
+                    <asp:Label ID="L_AdminAgreEstuUser" runat="server" Text="Para mas Informacion :"></asp:Label></label>
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="http://GamesCol.ddns.net" Target="_blank">GamesCol.com</asp:HyperLink>
+                <br />
+            </div>
+        </div>
 
     <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered bs-table"  CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
         <AlternatingRowStyle BackColor="White" />
