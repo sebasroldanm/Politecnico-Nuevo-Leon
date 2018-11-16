@@ -15,19 +15,19 @@
 
        
          <div class="form-group">
-         <label for="fechanac" class="control-label" style="color: #FFFFFF">
+         <label for="tb_fecha" class="control-label" style="color: #FFFFFF">
                     <asp:Label ID="L_AdminAgreAdminFechanac" runat="server" Text="Fecha :"></asp:Label></label>
 
              </div>
          <div class="form-inline" role="form">
 
                
-                <asp:TextBox ID="fechanac" runat="server" class="form-control" title="Fecha de Reserva"></asp:TextBox>
+                <asp:TextBox ID="tb_fecha" runat="server" class="form-control" title="Fecha de Reserva"></asp:TextBox>
                  &nbsp;&nbsp;&nbsp;<asp:ImageButton ID="btnigm_calendar" runat="server" ImageUrl="~/Imagenes/calendario 3030.png" />
 
                 <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
 
-                <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" Format="dd/MMMM/yyyy" PopupButtonID="btnigm_calendar" PopupPosition="BottomRight" TargetControlID="fechanac" />
+                <ajaxToolkit:CalendarExtender ID="CalendarExtender1" runat="server" Format="dd/MMMM/yyyy" PopupButtonID="btnigm_calendar" PopupPosition="BottomRight" TargetControlID="tb_fecha" />
 
             </div>
 

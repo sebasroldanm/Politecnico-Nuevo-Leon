@@ -75,6 +75,9 @@ namespace Logica
 
         public UUser insertaradmin(Usuario admin, int selIdioma, string sesion)
         {
+
+    
+
             DMUser admon = new DMUser();
             UUser usua = new UUser();
             DMSeguridad dmseg = new DMSeguridad();
@@ -377,12 +380,14 @@ namespace Logica
             return usua;
         }
 
-        public UUser insertarprofe(Usuario profe, int selIdioma)
+        public UUser insertarprofe(Usuario profe, int selIdioma, string sesion)
         {
             DMUser admon = new DMUser();
             UUser usua = new UUser();
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
+            DMSeguridad dmseg = new DMSeguridad();
+            MencUsuario encusua = new MencUsuario();
             Int32 FORMULARIO = 11;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -404,7 +409,6 @@ namespace Logica
             }
             else
             {
-
                 if (profe.foto_usua != null)
                 {
                     admon.insertarProfe(profe);
@@ -413,6 +417,22 @@ namespace Logica
                     usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_insertado"].ToString() + "');</script>";
                     usua.B_Botones1 = true;
                     usua.L_Aceptar1 = false;
+                    encusua.apellido_usua_nuevo = profe.apellido_usua;
+                    encusua.ciu_nacimiento_nuevo = profe.ciu_nacimiento;
+                    encusua.clave_nuevo = profe.clave;
+                    encusua.correo_nuevo = profe.correo;
+                    encusua.dep_nacimiento_nuevo = profe.dep_nacimiento;
+                    encusua.direccion_nuevo = profe.direccion;
+                    encusua.estado_nuevo = profe.estado;
+                    encusua.fecha_nac_nuevo = profe.fecha_nac;
+                    encusua.foto_usua_nuevo = profe.foto_usua;
+                    encusua.nombre_usua_nuevo = profe.nombre_usua;
+                    encusua.num_documento_nuevo = profe.num_documento;
+                    encusua.rol_id_nuevo = profe.rol_id;
+                    encusua.sesion_nuevo = profe.sesion;
+                    encusua.telefono_nuevo = profe.telefono;
+                    encusua.user_name_nuevo = profe.user_name;
+                    dmseg.fiel_auditoria_agrega_usuario("INSERT", sesion, encusua);
 
                 }
                 else

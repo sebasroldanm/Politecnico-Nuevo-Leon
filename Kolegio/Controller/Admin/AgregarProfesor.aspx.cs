@@ -179,7 +179,8 @@ public partial class View_Admin_AgregarProfesor : System.Web.UI.Page
         usua.sesion = Session.SessionID;
         usua.ultima_modificacion = (DateTime.Now.ToShortDateString());
         usua.state_t = 1;
-        usu = logicaM.insertarprofe(usua, int.Parse(Session["idioma"].ToString()));
+
+        usu = logicaM.insertarprofe(usua, int.Parse(Session["idioma"].ToString()), Session.SessionID);
 
         L_ErrorUsuario.Text = usu.Mensaje;
         this.Page.Response.Write(usu.Notificacion);
