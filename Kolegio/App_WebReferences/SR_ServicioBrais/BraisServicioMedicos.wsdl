@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="Servicios Brais" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="Servicios Brais" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="Servicios Brais">
+      <s:element name="getAllEspecialidades">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tokenApp" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllEspecialidadesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllEspecialidadesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMedicosByEspecialidad">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tokenApp" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="idEspecialidad" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMedicosByEspecialidadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getMedicosByEspecialidadResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerarToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Contrasena" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerarTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerarTokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getAllEspecialidadesSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllEspecialidades" />
+  </wsdl:message>
+  <wsdl:message name="getAllEspecialidadesSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllEspecialidadesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMedicosByEspecialidadSoapIn">
+    <wsdl:part name="parameters" element="tns:getMedicosByEspecialidad" />
+  </wsdl:message>
+  <wsdl:message name="getMedicosByEspecialidadSoapOut">
+    <wsdl:part name="parameters" element="tns:getMedicosByEspecialidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerarTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerarToken" />
+  </wsdl:message>
+  <wsdl:message name="GenerarTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerarTokenResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BraisServicioMedicosSoap">
+    <wsdl:operation name="getAllEspecialidades">
+      <wsdl:input message="tns:getAllEspecialidadesSoapIn" />
+      <wsdl:output message="tns:getAllEspecialidadesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getMedicosByEspecialidad">
+      <wsdl:input message="tns:getMedicosByEspecialidadSoapIn" />
+      <wsdl:output message="tns:getMedicosByEspecialidadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerarToken">
+      <wsdl:input message="tns:GenerarTokenSoapIn" />
+      <wsdl:output message="tns:GenerarTokenSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BraisServicioMedicosSoap" type="tns:BraisServicioMedicosSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAllEspecialidades">
+      <soap:operation soapAction="Servicios Brais/getAllEspecialidades" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMedicosByEspecialidad">
+      <soap:operation soapAction="Servicios Brais/getMedicosByEspecialidad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerarToken">
+      <soap:operation soapAction="Servicios Brais/GenerarToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BraisServicioMedicosSoap12" type="tns:BraisServicioMedicosSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAllEspecialidades">
+      <soap12:operation soapAction="Servicios Brais/getAllEspecialidades" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMedicosByEspecialidad">
+      <soap12:operation soapAction="Servicios Brais/getMedicosByEspecialidad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerarToken">
+      <soap12:operation soapAction="Servicios Brais/GenerarToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BraisServicioMedicos">
+    <wsdl:port name="BraisServicioMedicosSoap" binding="tns:BraisServicioMedicosSoap">
+      <soap:address location="http://35.194.166.98/Servicios/BraisServicioMedicos.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BraisServicioMedicosSoap12" binding="tns:BraisServicioMedicosSoap12">
+      <soap12:address location="http://35.194.166.98/Servicios/BraisServicioMedicos.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
