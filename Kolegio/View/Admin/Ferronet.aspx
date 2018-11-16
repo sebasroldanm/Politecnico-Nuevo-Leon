@@ -31,7 +31,7 @@
                  </div>
             </div>
         <div class="text-center">
-            <asp:GridView ID="GV_Compramatic" runat="server" CssClass="table table-bordered bs-table" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <asp:GridView ID="GV_Ferronet" runat="server" CssClass="table table-bordered bs-table" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" />
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
