@@ -6,11 +6,20 @@
     <div class="container">
         <div class="text-center">
             <h3><span class="label label-danger">Compromatic</span></h3>
-            <asp:Label ID="LB_Mensaje" runat="server" Text=""></asp:Label>
-            <br/>
-            <asp:Label ID="LB_Link" runat="server" Text=""></asp:Label>
-            <br/>
+            
             </div>
+
+          <div class="container">
+            <div class="text-center">
+                <asp:Image ID="Image2" runat="server" ImageUrl="~/Imagenes/Conpromatic.jpg" Width="132px" Height="48px" />
+
+                <h5><span class="label label-info">La mejor opcion para sus compras Onilne</span></h5>
+                <label class="control-label" style="color: #FFFFFF">
+                    <asp:Label ID="L_AdminAgreEstuUser" runat="server" Text="Para mas Informacion :"></asp:Label></label>
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="http://compramatic.hopto.org:88" Target="_blank">Compromatic.com</asp:HyperLink>
+                <br />
+            </div>
+        </div>
         
             <div style="text-align: left">
                 <div class="form-inline" role="form">
@@ -19,7 +28,7 @@
                     </label>
             
                     <br/>
-                    <asp:DropDownList ID="DDL_Categoria"  Class="form-control" runat="server" AutoPostBack="True" DataTextField="nomCategoria" DataValueField="Id_cate" Width="402px"></asp:DropDownList>
+                    <asp:DropDownList ID="DDL_Categoria"  Class="form-control" runat="server" AutoPostBack="True" DataTextField="nomCategoria" DataValueField="Id_cate" Width="402px" ></asp:DropDownList>
                  </div>
             </div>
         <div class="text-center">

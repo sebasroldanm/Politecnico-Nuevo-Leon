@@ -40,9 +40,11 @@ public partial class View_Profesor_Uniempleo : System.Web.UI.Page
             GridView1.DataBind();
         }
 
-        catch (Exception ex)
+        catch (Exception)
         {
-            throw ex;
+            Response.Write("<Script Language='JavaScript'>parent.Alert('El servicio No se encuentra Activo');</Script>");
+
+           
 
         }
     }

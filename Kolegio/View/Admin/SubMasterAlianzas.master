@@ -23,9 +23,9 @@
       <ul class="nav navbar-nav">
       <!-- links here -->
           
-           <li style="background-color:white"><a href="Brais.aspx"> <h4>BRAIS </h4> </a></li>
+<%--           <li style="background-color:white"><a href="Brais.aspx"> <h4>BRAIS </h4> </a></li>--%>
              <li style="background-color:white"><a href="Compromatic.aspx"><h4>COMPROMATIC </h4></a></li>
-          <%-- <li style="background-color:white"><a href="Ferronet.aspx"><h4>FERRONET </h4></a></li>--%>
+          <li style="background-color:white"><a href="Ferronet.aspx"><h4>FERRONET </h4></a></li>
             
       </ul>
     </div>

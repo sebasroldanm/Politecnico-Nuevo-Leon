@@ -1,11 +1,10 @@
-﻿
-<%@ Page Title="" Language="C#" MasterPageFile="~/View/Profesor/MasterProfesor.master" AutoEventWireup="true" CodeFile="~/Controller/Profesor/Uniempleo.aspx.cs" Inherits="View_Profesor_Uniempleo" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Profesor/MasterProfesor.master" AutoEventWireup="true" CodeFile="~/Controller/Profesor/Uniempleo.aspx.cs" Inherits="View_Profesor_Uniempleo" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-      <div class="container">
+    <div class="container">
         <div class="text-center">
             <h3><span class="label label-danger">Uniempleo Ofertas de Empleo</span></h3>
             <br />
@@ -14,19 +13,32 @@
 
     <div class="modal-body" style="margin: 0% 0% 0% 5%">
 
-       
-        
-         <div class="form-inline" role="form">
 
-                <asp:TextBox ID="tb_buscar" runat="server" class="form-control" title="Buscar Ofertas" Width="433px"></asp:TextBox>
-                <asp:Button ID="btn_buscaroferta" runat="server" class="btn btn-primary btn-lg" Width="141px" BorderColor="#660033" Visible="True" Text="Buscar" OnClick="btn_buscaroferta_Click"/>
+        <div class="container">
+            <div class="text-center">
+                <asp:Image ID="Image2" runat="server" ImageUrl="~/Imagenes/maletin.png" Width="90px" />
 
-             </div>
-        
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered bs-table" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                <h5><span class="label label-info">La mejor opcion para conseguir Empleo</span></h5>
+                <label class="control-label" style="color: #FFFFFF">
+                    <asp:Label ID="L_AdminAgreEstuUser" runat="server" Text="Para mas Informacion :"></asp:Label></label>
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="http://uniempleo.ddns.net" Target="_blank">Uniempleo.com</asp:HyperLink>
+                <br />
+            </div>
+        </div>
+
+
+        <div class="form-inline" role="form">
+
+            <asp:TextBox ID="tb_buscar" runat="server" class="form-control" title="Buscar Ofertas" Width="433px"></asp:TextBox>
+            <asp:Button ID="btn_buscaroferta" runat="server" class="btn btn-primary btn-lg" Width="141px" BorderColor="#660033" Visible="True" Text="Buscar" OnClick="btn_buscaroferta_Click" />
+            <br />
+            <br />
+            <br />
+
+        </div>
+
+
+        <asp:GridView ID="GridView1" runat="server" CssClass="table table-bordered bs-table" AllowPaging="True" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" AutoGenerateColumns="False" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" PageSize="4">
             <AlternatingRowStyle BackColor="#DCDCDC" />
             <Columns>
                 <asp:BoundField DataField="Nombre_oferta" HeaderText="Empleo" />
@@ -43,7 +55,7 @@
             <SortedAscendingHeaderStyle BackColor="#0000A9" />
             <SortedDescendingCellStyle BackColor="#CAC9C9" />
             <SortedDescendingHeaderStyle BackColor="#000065" />
-         </asp:GridView>
+        </asp:GridView>
 
     </div>
 
