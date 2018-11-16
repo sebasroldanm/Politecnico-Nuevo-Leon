@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="52d6664f-a2c2-4ab9-8867-c545af66c930" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c8bfc04f-7fe6-4689-9560-f669f64d2e29" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,8 +22,8 @@
     <MetadataSource Address="http://gamescol.ddns.net/servicios/facebook_servide.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="facebook_servide.wsdl" MetadataType="Wsdl" ID="ea8788cc-60dc-48e8-9d7d-d1edf2930831" SourceId="1" SourceUrl="http://gamescol.ddns.net/servicios/facebook_servide.asmx?wsdl" />
-    <MetadataFile FileName="facebook_servide.disco" MetadataType="Disco" ID="bf6e57c3-7e86-4c7f-92b0-8502bae8a20a" SourceId="1" SourceUrl="http://gamescol.ddns.net/servicios/facebook_servide.asmx?disco" />
+    <MetadataFile FileName="facebook_servide.wsdl" MetadataType="Wsdl" ID="f928a0c9-1e0c-405a-ad67-59943168e69f" SourceId="1" SourceUrl="http://gamescol.ddns.net/servicios/facebook_servide.asmx?wsdl" />
+    <MetadataFile FileName="facebook_servide.disco" MetadataType="Disco" ID="3d469d91-3e6a-4706-a5ac-ac10f355e5b5" SourceId="1" SourceUrl="http://gamescol.ddns.net/servicios/facebook_servide.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

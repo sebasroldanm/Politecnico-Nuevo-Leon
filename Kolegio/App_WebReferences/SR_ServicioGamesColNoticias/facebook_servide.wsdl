@@ -226,9 +226,6 @@
   <wsdl:message name="etiquetasSoapOut">
     <wsdl:part name="parameters" element="tns:etiquetasResponse" />
   </wsdl:message>
-  <wsdl:message name="etiquetasServiceToken">
-    <wsdl:part name="ServiceToken" element="tns:ServiceToken" />
-  </wsdl:message>
   <wsdl:message name="postpcSoapIn">
     <wsdl:part name="parameters" element="tns:postpc" />
   </wsdl:message>
@@ -385,7 +382,6 @@
       <soap:operation soapAction="http://tempuri.org/etiquetas" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
-        <soap:header message="tns:etiquetasServiceToken" part="ServiceToken" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -507,7 +503,6 @@
       <soap12:operation soapAction="http://tempuri.org/etiquetas" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
-        <soap12:header message="tns:etiquetasServiceToken" part="ServiceToken" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
