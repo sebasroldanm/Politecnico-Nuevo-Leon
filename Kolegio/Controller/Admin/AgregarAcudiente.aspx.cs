@@ -187,7 +187,7 @@ public partial class View_Admin_AgregarAcudiente : System.Web.UI.Page
         usua.ultima_modificacion = (DateTime.Now.ToShortDateString());
         usua.state_t = 1;
 
-        usu = logicaM.insertaracudiente(usua, int.Parse(Session["idioma"].ToString()));
+        usu = logicaM.insertaracudiente(usua, int.Parse(Session["idioma"].ToString()), Session.SessionID);
 
         L_ErrorUsuario.Text = usu.Mensaje;
         this.Page.Response.Write(usu.Notificacion);

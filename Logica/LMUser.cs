@@ -379,7 +379,7 @@ namespace Logica
             }
             return usua;
         }
-
+      
         public UUser insertarprofe(Usuario profe, int selIdioma, string sesion)
         {
             DMUser admon = new DMUser();
@@ -447,8 +447,8 @@ namespace Logica
 
 
         }
-        
-        public UUser insertaracudiente(Usuario acudi, int selIdioma)
+   
+        public UUser insertaracudiente(Usuario acudi, int selIdioma, string sesion)
         {
             DMUser admon = new DMUser();
             UUser usua = new UUser();
@@ -456,6 +456,7 @@ namespace Logica
             LMIdioma idioma = new LMIdioma();
             DMSeguridad dmseg = new DMSeguridad();
             Acudiente encacudi = new Acudiente();
+            MencUsuario encusua = new MencUsuario();
             Int32 FORMULARIO = 6;
 
             encId = idioma.obtIdioma(FORMULARIO, selIdioma);
@@ -486,8 +487,22 @@ namespace Logica
                     usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_insertado"].ToString() + "');</script>";
                     usua.B_Botones1 = true;
                     usua.L_Aceptar1 = false;
-                   
-
+                    encusua.apellido_usua_nuevo = acudi.apellido_usua;
+                    encusua.ciu_nacimiento_nuevo = acudi.ciu_nacimiento;
+                    encusua.clave_nuevo = acudi.clave;
+                    encusua.correo_nuevo = acudi.correo;
+                    encusua.dep_nacimiento_nuevo = acudi.dep_nacimiento;
+                    encusua.direccion_nuevo = acudi.direccion;
+                    encusua.estado_nuevo = acudi.estado;
+                    encusua.fecha_nac_nuevo = acudi.fecha_nac;
+                    encusua.foto_usua_nuevo = acudi.foto_usua;
+                    encusua.nombre_usua_nuevo = acudi.nombre_usua;
+                    encusua.num_documento_nuevo = acudi.num_documento;
+                    encusua.rol_id_nuevo = acudi.rol_id;
+                    encusua.sesion_nuevo = acudi.sesion;
+                    encusua.telefono_nuevo = acudi.telefono;
+                    encusua.user_name_nuevo = acudi.user_name;
+                    dmseg.fiel_auditoria_agrega_usuario("INSERT", sesion, encusua);
 
                 }
                 else
