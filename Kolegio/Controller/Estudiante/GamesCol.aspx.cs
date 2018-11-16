@@ -15,7 +15,7 @@ public partial class View_Estudiante_GamesCol : System.Web.UI.Page
             SR_ServicioGamesColNoticias.Facebook_servideSoapClient etiqueta = new SR_ServicioGamesColNoticias.Facebook_servideSoapClient();
 
             {
-                token.sToken = DateTime.Now.ToString("yyyyMMdd");
+                token.sToken = "colegioecFYoio16Ghu0OfDiHhV";
             };
 
             string sToken = etiqueta.AutenticacionCliente(token);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c8bfc04f-7fe6-4689-9560-f669f64d2e29" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0bad562b-a3a3-4c1d-8608-f0bed9073ffc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://gamescol.ddns.net/servicios/facebook_servide.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://ferronet.hopto.org/view/Servicios.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="facebook_servide.wsdl" MetadataType="Wsdl" ID="f928a0c9-1e0c-405a-ad67-59943168e69f" SourceId="1" SourceUrl="http://gamescol.ddns.net/servicios/facebook_servide.asmx?wsdl" />
-    <MetadataFile FileName="facebook_servide.disco" MetadataType="Disco" ID="3d469d91-3e6a-4706-a5ac-ac10f355e5b5" SourceId="1" SourceUrl="http://gamescol.ddns.net/servicios/facebook_servide.asmx?disco" />
+    <MetadataFile FileName="Servicios.disco" MetadataType="Disco" ID="e854348d-94cd-4c4e-b008-57ee97d29f30" SourceId="1" SourceUrl="http://ferronet.hopto.org/view/Servicios.asmx?disco" />
+    <MetadataFile FileName="Servicios.wsdl" MetadataType="Wsdl" ID="3d7e711b-aa95-4b24-8db5-8284e11db413" SourceId="1" SourceUrl="http://ferronet.hopto.org/view/Servicios.asmx?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
