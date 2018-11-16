@@ -211,6 +211,7 @@ namespace Logica
             UIdioma encId = new UIdioma();
             LMIdioma idioma = new LMIdioma();
             DMSeguridad dmseg = new DMSeguridad();
+            MencUsuario encusua = new MencUsuario();
             MEncAcudiente encacudi = new MEncAcudiente();
         
             Int32 FORMULARIO = 8;
@@ -247,6 +248,23 @@ namespace Logica
 
                 if (usua.Foto != null)
                 {
+                    encusua.apellido_usua_nuevo = usua.Apellido;
+                    encusua.ciu_nacimiento_nuevo = int.Parse(usua.Ciudad);
+                    encusua.clave_nuevo = usua.Clave;
+                    encusua.correo_nuevo = usua.Correo;
+                    encusua.dep_nacimiento_nuevo = int.Parse(usua.Departamento);
+                    encusua.direccion_nuevo = usua.Direccion;
+                    encusua.estado_nuevo = true;
+                    encusua.fecha_nac_nuevo = usua.fecha_nacimiento;
+                    encusua.foto_usua_nuevo = usua.Foto;
+                    encusua.nombre_usua_nuevo = usua.Nombre;
+                    encusua.num_documento_nuevo = int.Parse(usua.Documento);
+                    encusua.rol_id_nuevo = int.Parse(usua.Rol);
+                    encusua.sesion_nuevo = usua.Session;
+                    encusua.telefono_nuevo = usua.Telefono;
+                    encusua.user_name_nuevo = usua.UserName;
+                    dmseg.fiel_auditoria_agrega_usuario("INSERT", session, encusua);
+
                     dat.insertarEstudiante(usua);
                     dat.InsertaTablaSesion(usuario);
                     usua.Notificacion = "<script language='JavaScript'>window.alert('" + encId.CompIdioma["script_insertado"].ToString() + "');</script>"; // ("<script language='JavaScript'>window.alert('Estudiante Insertado con Exito');</script>");
