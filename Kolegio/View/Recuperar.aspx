@@ -40,7 +40,7 @@
                             <span class="help-block"></span>
                         </div>
                         <asp:Button ID="B_Enviar" runat="server" CssClass="btn btn-success btn-block" OnClick="B_Enviar_Click" />
-                        <asp:Button ID="B_Salir" runat="server" CssClass="btn btn-success btn-danger" OnClick="B_Salir_Click" />
+                        <asp:Button ID="B_Salir" runat="server" CssClass="btn btn-danger btn-block" OnClick="B_Salir_Click" ValidationGroup="Salir" />
                         <asp:Label ID="L_Verificar" runat="server" CssClass="label-danger" Font-Bold="true" ForeColor="White"></asp:Label>
                     </div>
                 </div>
