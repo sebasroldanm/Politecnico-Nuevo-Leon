@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClasesServicios\Usuario.cs" />
     <Compile Include="MEncSeguridad\MEncAcudiente.cs" />
     <Compile Include="MEncSeguridad\MEncEstCurso.cs" />
     <Compile Include="MEncSeguridad\MEncInicio.cs" />
