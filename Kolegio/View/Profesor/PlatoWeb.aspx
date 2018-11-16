@@ -11,16 +11,19 @@
         </div>
     </div>
 
-    <div class="modal-body" style="margin: 0% 0% 0% 10%">
+    <div class="modal-body" style="margin: 0% 0% 0% 0%">
 
        
-        
-         <div class="form-inline" role="form">
-             <asp:ImageButton ID="btnigm_calendar" runat="server" ImageUrl="~/Imagenes/calendario 3030.png" />
-
-                <label for="fechanac" class="control-label" style="color: #FFFFFF">
+         <div class="form-group">
+         <label for="fechanac" class="control-label" style="color: #FFFFFF">
                     <asp:Label ID="L_AdminAgreAdminFechanac" runat="server" Text="Fecha :"></asp:Label></label>
-                <asp:TextBox ID="fechanac" runat="server" class="form-control" title="Fecha de Nacimiento"></asp:TextBox>
+
+             </div>
+         <div class="form-inline" role="form">
+
+               
+                <asp:TextBox ID="fechanac" runat="server" class="form-control" title="Fecha de Reserva"></asp:TextBox>
+                 &nbsp;&nbsp;&nbsp;<asp:ImageButton ID="btnigm_calendar" runat="server" ImageUrl="~/Imagenes/calendario 3030.png" />
 
                 <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
 

@@ -57,6 +57,7 @@
     <Compile Include="clsSeguridadNotas.cs" />
     <Compile Include="clsSeguridadOnce.cs" />
     <Compile Include="clsSeguridDesencriptar.cs" />
+    <Compile Include="JoinOferta.cs" />
     <Compile Include="LIdioma.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
