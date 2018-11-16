@@ -1456,7 +1456,7 @@ namespace Logica
 
                     DCorreo correo = new DCorreo();
 
-                    String mensaje = "Su link de acceso es: " + "http://localhost:58629/View/Contrasenia.aspx?" + userToken;
+                    String mensaje = "Su link de acceso es: " + "http://colegioleon.ddns.net/View/Contrasenia.aspx?" + userToken;
                     correo.enviarCorreo(token.Correo, userToken, mensaje);
 
                     usua.Mensaje = encId.CompIdioma["L_Verificar_ver_correo"].ToString(); //"Revisar su correo para recuperar contraseña";
