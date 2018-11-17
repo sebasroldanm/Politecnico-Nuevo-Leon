@@ -59,14 +59,14 @@ public class WSEstudianteAcudiente : System.Web.Services.WebService
     }
 
     [WebMethod]
-    //[System.Web.Services.Protocols.SoapHeader("SoapHeader")]
+    [System.Web.Services.Protocols.SoapHeader("SoapHeader")]
     public DataSet listaEstudianteAcudiente()
     {
         try
         {
-      //      if (SoapHeader == null) throw new Exception("Requiere Validacion");
+            if (SoapHeader == null) throw new Exception("Requiere Validacion");
 
-      //    if (!SoapHeader.blCredencialesValidas(SoapHeader)) throw new Exception("Requiere Validacion");
+          if (!SoapHeader.blCredencialesValidas(SoapHeader)) throw new Exception("Requiere Validacion");
 
             DMUser dmuser = new DMUser();
             DataSet table = dmuser.listaEstAcuPrueba();
