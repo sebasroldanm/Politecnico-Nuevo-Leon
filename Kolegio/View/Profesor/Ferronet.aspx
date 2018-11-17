@@ -9,6 +9,13 @@
             <h3><span class="label label-danger">Ferronet</span></h3>
              <br />
         </div>
+
+          <div class="container">
+            <div class="text-center">
+                <asp:Image ID="Image2" runat="server" ImageUrl="~/Imagenes/Ferronet.jpeg" Width="179px" Height="76px" />
+                <br />
+            </div>
+        </div>
     </div>
 
     <div class="modal-body" style="margin: 0% 0% 0% 5%">

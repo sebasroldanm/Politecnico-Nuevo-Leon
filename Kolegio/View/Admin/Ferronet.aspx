@@ -13,7 +13,8 @@
         
               <div class="container">
             <div class="text-center">
-
+                <asp:Image ID="Image2" runat="server" ImageUrl="~/Imagenes/Ferronet.jpeg" Width="172px" Height="73px" />
+                <br />
                 <h5><span class="label label-info">La mejor opcion para sus compras Onilne</span></h5>
                
                     

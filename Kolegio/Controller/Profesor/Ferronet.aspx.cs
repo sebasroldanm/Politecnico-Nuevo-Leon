@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using Utilitarios;
 public partial class View_Profesor_Ferronet : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -39,21 +39,31 @@ public partial class View_Profesor_Ferronet : System.Web.UI.Page
 
             }
             obclsSeguridad.AutenticacionToken = stToken;
-            data = obwsClientesSoap.ConsultaDeProductos(obclsSeguridad, tb_buscar.Text);
-            DataTable inf = JsonConvert.DeserializeObject<DataTable>(data);
+            // data = 
+            String resultado = "";
+            //DataTable inf = 
+            List<Productos> a= JsonConvert.DeserializeObject<List<Productos>>(obwsClientesSoap.ConsultaDeProductos(obclsSeguridad, tb_buscar.Text));
+            List<Productos> u = new List<Productos>();
+            foreach (Productos p in a)
+            {
+                resultado = p.Imagen.Replace("~", "http://ferronet.hopto.org");
+                p.Imagen = resultado;
+                u.Add(p);
+            }
 
+            GV_Ferronet.DataSource = u;
+            GV_Ferronet.DataBind();
 
-
-            if (inf.Rows.Count > 0)
+            /*if (inf.Rows.Count > 0)
             {
                 GV_Ferronet.DataSource = inf;
             }
             else
             {
                 GV_Ferronet.DataSource = null;
-            }
+            }*/
 
-            GV_Ferronet.DataBind();
+           // GV_Ferronet.DataBind();
 
         }
         catch (Exception ex)

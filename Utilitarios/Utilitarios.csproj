@@ -89,6 +89,7 @@
     <Compile Include="MVistasServicios\NotasEstudiantesVista.cs" />
     <Compile Include="MVistasUsuario\CursoDeEstudianteVista.cs" />
     <Compile Include="MVistasUsuario\UsuarioVista.cs" />
+    <Compile Include="Productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolUsuario.cs" />
     <Compile Include="MUsuario\Sesion.cs" />
